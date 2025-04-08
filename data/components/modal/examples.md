@@ -1,0 +1,24 @@
+## Examples
+
+- **basic**: Basic
+- **async**: Asynchronously close
+- **footer**: Customized Footer
+- **loading**: Loading
+- **footer-render**: Customized Footer render function
+- **hooks**: Use hooks to get context
+- **locale**: Internationalization
+- **manual**: Manual to update destroy
+- **position**: To customize the position of modal
+- **dark**: Dark Bg
+- **button-props**: Customize footer buttons props
+- **modal-render**: Custom modal content render
+- **width**: To customize the width of modal
+- **static-info**: Static Method
+- **confirm**: Static confirmation
+- **classNames**: Customize className for build-in module
+- **confirm-router**: destroy confirmation modal dialog
+- **nested**: Nested Modal
+- **render-panel**: \_InternalPanelDoNotUseOrYouWillBeFired
+- **custom-mouse-position**: Control modal's animation origin position
+- **wireframe**: Wireframe
+- **component-token**: Component Token

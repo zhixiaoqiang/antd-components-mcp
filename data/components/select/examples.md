@@ -1,0 +1,33 @@
+## Examples
+
+- **basic**: Basic Usage
+- **search**: Select with search field
+- **search-filter-option**: Custom Search
+- **multiple**: multiple selection
+- **size**: Sizes
+- **option-render**: Custom dropdown options
+- **search-sort**: Search with sort
+- **tags**: Tags
+- **optgroup**: Option Group
+- **coordinate**: coordinate
+- **search-box**: Search Box
+- **label-in-value**: Get value of selected item
+- **automatic-tokenization**: Automatic tokenization
+- **select-users**: Search and Select Users
+- **suffix**: Prefix and Suffix
+- **custom-dropdown-menu**: Custom dropdown
+- **hide-selected**: Hide Already Selected
+- **variant**: Variants
+- **filled-debug**: Filled debug
+- **custom-tag-render**: Custom Tag Render
+- **custom-label-render**: Custom Selected Label Render
+- **responsive**: Responsive maxTagCount
+- **big-data**: Big Data
+- **status**: Status
+- **placement**: Placement
+- **placement-debug**: Dynamic Height
+- **debug**: 4.0 Debug
+- **render-panel**: \_InternalPanelDoNotUseOrYouWillBeFired
+- **option-label-center**: Options label Centered
+- **component-token**: Component Token
+- **maxCount**: Max Count

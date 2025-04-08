@@ -1,0 +1,21 @@
+## Examples
+
+- **simple**: Basic
+- **small-size**: Mini version
+- **icon**: With icon
+- **step-next**: Switch Step
+- **vertical**: Vertical
+- **vertical-small**: Vertical mini version
+- **error**: Error status
+- **progress-dot**: Dot Style
+- **customized-progress-dot**: Customized Dot Style
+- **progress-dot-small**: Dot Style Size Small
+- **clickable**: Clickable
+- **nav**: Navigation Steps
+- **progress**: Steps with progress
+- **label-placement**: Label Placement
+- **progress-debug**: Progress Debug
+- **steps-in-steps**: Steps inside Steps
+- **inline**: Inline Steps
+- **wireframe**: Wireframe
+- **component-token**: Component Token

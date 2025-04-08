@@ -1,0 +1,26 @@
+## Examples
+
+- **basic**: Basic usage
+- **size**: Three sizes of Input
+- **variant**: Variants
+- **filled-debug**: Filled Debug
+- **addon**: Pre / Post tab
+- **compact-style**: Compact Style
+- **group**: Input Group
+- **search-input**: Search box
+- **search-input-loading**: Search box with loading
+- **textarea**: TextArea
+- **autosize-textarea**: Autosizing the height to fit the content
+- **otp**: OTP
+- **tooltip**: Format Tooltip Input
+- **presuffix**: prefix and suffix
+- **password-input**: Password box
+- **allowClear**: With clear icon
+- **show-count**: With character counting
+- **advance-count**: = 5.10.0">Custom count logic
+- **status**: Status
+- **focus**: Focus
+- **borderless-debug**: Style Debug
+- **align**: Text Align
+- **textarea-resize**: TextArea
+- **component-token**: debug token

@@ -1,0 +1,282 @@
+[
+  {
+    "name": "Affix",
+    "dirName": "affix"
+  },
+  {
+    "name": "Alert",
+    "dirName": "alert"
+  },
+  {
+    "name": "Anchor",
+    "dirName": "anchor"
+  },
+  {
+    "name": "App",
+    "dirName": "app"
+  },
+  {
+    "name": "AutoComplete",
+    "dirName": "auto-complete"
+  },
+  {
+    "name": "Avatar",
+    "dirName": "avatar"
+  },
+  {
+    "name": "Badge",
+    "dirName": "badge"
+  },
+  {
+    "name": "Breadcrumb",
+    "dirName": "breadcrumb"
+  },
+  {
+    "name": "Button",
+    "dirName": "button"
+  },
+  {
+    "name": "Calendar",
+    "dirName": "calendar"
+  },
+  {
+    "name": "Card",
+    "dirName": "card"
+  },
+  {
+    "name": "Carousel",
+    "dirName": "carousel"
+  },
+  {
+    "name": "Cascader",
+    "dirName": "cascader"
+  },
+  {
+    "name": "Checkbox",
+    "dirName": "checkbox"
+  },
+  {
+    "name": "Collapse",
+    "dirName": "collapse"
+  },
+  {
+    "name": "ColorPicker",
+    "dirName": "color-picker"
+  },
+  {
+    "name": "ConfigProvider",
+    "dirName": "config-provider"
+  },
+  {
+    "name": "DatePicker",
+    "dirName": "date-picker"
+  },
+  {
+    "name": "Descriptions",
+    "dirName": "descriptions"
+  },
+  {
+    "name": "Divider",
+    "dirName": "divider"
+  },
+  {
+    "name": "Drawer",
+    "dirName": "drawer"
+  },
+  {
+    "name": "Dropdown",
+    "dirName": "dropdown"
+  },
+  {
+    "name": "Empty",
+    "dirName": "empty"
+  },
+  {
+    "name": "Flex",
+    "dirName": "flex"
+  },
+  {
+    "name": "FloatButton",
+    "dirName": "float-button"
+  },
+  {
+    "name": "Form",
+    "dirName": "form"
+  },
+  {
+    "name": "Grid",
+    "dirName": "grid"
+  },
+  {
+    "name": "Icon",
+    "dirName": "icon"
+  },
+  {
+    "name": "Image",
+    "dirName": "image"
+  },
+  {
+    "name": "Input",
+    "dirName": "input"
+  },
+  {
+    "name": "InputNumber",
+    "dirName": "input-number"
+  },
+  {
+    "name": "Layout",
+    "dirName": "layout"
+  },
+  {
+    "name": "List",
+    "dirName": "list"
+  },
+  {
+    "name": "Mentions",
+    "dirName": "mentions"
+  },
+  {
+    "name": "Menu",
+    "dirName": "menu"
+  },
+  {
+    "name": "Message",
+    "dirName": "message"
+  },
+  {
+    "name": "Modal",
+    "dirName": "modal"
+  },
+  {
+    "name": "Notification",
+    "dirName": "notification"
+  },
+  {
+    "name": "Overview",
+    "dirName": "overview"
+  },
+  {
+    "name": "Pagination",
+    "dirName": "pagination"
+  },
+  {
+    "name": "Popconfirm",
+    "dirName": "popconfirm"
+  },
+  {
+    "name": "Popover",
+    "dirName": "popover"
+  },
+  {
+    "name": "Progress",
+    "dirName": "progress"
+  },
+  {
+    "name": "QrCode",
+    "dirName": "qr-code"
+  },
+  {
+    "name": "Radio",
+    "dirName": "radio"
+  },
+  {
+    "name": "Rate",
+    "dirName": "rate"
+  },
+  {
+    "name": "Result",
+    "dirName": "result"
+  },
+  {
+    "name": "Segmented",
+    "dirName": "segmented"
+  },
+  {
+    "name": "Select",
+    "dirName": "select"
+  },
+  {
+    "name": "Skeleton",
+    "dirName": "skeleton"
+  },
+  {
+    "name": "Slider",
+    "dirName": "slider"
+  },
+  {
+    "name": "Space",
+    "dirName": "space"
+  },
+  {
+    "name": "Spin",
+    "dirName": "spin"
+  },
+  {
+    "name": "Splitter",
+    "dirName": "splitter"
+  },
+  {
+    "name": "Statistic",
+    "dirName": "statistic"
+  },
+  {
+    "name": "Steps",
+    "dirName": "steps"
+  },
+  {
+    "name": "Switch",
+    "dirName": "switch"
+  },
+  {
+    "name": "Table",
+    "dirName": "table"
+  },
+  {
+    "name": "Tabs",
+    "dirName": "tabs"
+  },
+  {
+    "name": "Tag",
+    "dirName": "tag"
+  },
+  {
+    "name": "TimePicker",
+    "dirName": "time-picker"
+  },
+  {
+    "name": "Timeline",
+    "dirName": "timeline"
+  },
+  {
+    "name": "Tooltip",
+    "dirName": "tooltip"
+  },
+  {
+    "name": "Tour",
+    "dirName": "tour"
+  },
+  {
+    "name": "Transfer",
+    "dirName": "transfer"
+  },
+  {
+    "name": "Tree",
+    "dirName": "tree"
+  },
+  {
+    "name": "TreeSelect",
+    "dirName": "tree-select"
+  },
+  {
+    "name": "Typography",
+    "dirName": "typography"
+  },
+  {
+    "name": "Upload",
+    "dirName": "upload"
+  },
+  {
+    "name": "Watermark",
+    "dirName": "watermark"
+  }
+]
