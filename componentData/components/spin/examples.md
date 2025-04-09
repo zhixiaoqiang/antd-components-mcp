@@ -1,0 +1,296 @@
+## Spin 组件示例
+
+### 基本用法
+
+#### zh-CN
+
+一个简单的 loading 状态。
+
+#### en-US
+
+A simple loading status.
+
+```typescript
+import React from 'react';
+import { Spin } from 'antd';
+
+const App: React.FC = () => <Spin />;
+
+export default App;
+
+```
+
+### 各种大小
+
+#### zh-CN
+
+小的用于文本加载，默认用于卡片容器级加载，大的用于**页面级**加载。
+
+#### en-US
+
+A small `Spin` is used for loading text, default sized `Spin` for loading a card-level block, and large `Spin` used for loading a **page**.
+
+```typescript
+import React from 'react';
+import { Flex, Spin } from 'antd';
+
+const App: React.FC = () => (
+  <Flex align="center" gap="middle">
+    <Spin size="small" />
+    <Spin />
+    <Spin size="large" />
+  </Flex>
+);
+
+export default App;
+
+```
+
+### 卡片加载中
+
+#### zh-CN
+
+可以直接把内容内嵌到 `Spin` 中，将现有容器变为加载状态。
+
+#### en-US
+
+Embedding content into `Spin` will set it into loading state.
+
+```typescript
+import React from 'react';
+import { Alert, Flex, Spin, Switch } from 'antd';
+
+const App: React.FC = () => {
+  const [loading, setLoading] = React.useState<boolean>(false);
+  return (
+    <Flex gap="middle" vertical>
+      <Spin spinning={loading}>
+        <Alert
+          type="info"
+          message="Alert message title"
+          description="Further details about the context of this alert."
+        />
+      </Spin>
+      <p>
+        Loading state：
+        <Switch checked={loading} onChange={setLoading} />
+      </p>
+    </Flex>
+  );
+};
+
+export default App;
+
+```
+
+### 自定义描述文案
+
+#### zh-CN
+
+自定义描述文案。
+
+#### en-US
+
+Customize the description text.
+
+```typescript
+import React from 'react';
+import { Alert, Flex, Spin } from 'antd';
+
+const contentStyle: React.CSSProperties = {
+  padding: 50,
+  background: 'rgba(0, 0, 0, 0.05)',
+  borderRadius: 4,
+};
+
+const content = <div style={contentStyle} />;
+
+const App: React.FC = () => (
+  <Flex gap="middle" vertical>
+    <Flex gap="middle">
+      <Spin tip="Loading" size="small">
+        {content}
+      </Spin>
+      <Spin tip="Loading">{content}</Spin>
+      <Spin tip="Loading" size="large">
+        {content}
+      </Spin>
+    </Flex>
+    <Spin tip="Loading...">
+      <Alert
+        message="Alert message title"
+        description="Further details about the context of this alert."
+        type="info"
+      />
+    </Spin>
+  </Flex>
+);
+
+export default App;
+
+```
+
+### 延迟
+
+#### zh-CN
+
+延迟显示 loading 效果。当 spinning 状态在 `delay` 时间内结束，则不显示 loading 状态。
+
+#### en-US
+
+Specifies a delay for loading state. If `spinning` ends during delay, loading status won't appear.
+
+```typescript
+import React from 'react';
+import { Alert, Flex, Spin, Switch } from 'antd';
+
+const App: React.FC = () => {
+  const [loading, setLoading] = React.useState<boolean>(false);
+  return (
+    <Flex gap="middle" vertical>
+      <Spin spinning={loading} delay={500}>
+        <Alert
+          type="info"
+          message="Alert message title"
+          description="Further details about the context of this alert."
+        />
+      </Spin>
+      <p>
+        Loading state：
+        <Switch checked={loading} onChange={setLoading} />
+      </p>
+    </Flex>
+  );
+};
+
+export default App;
+
+```
+
+### 自定义指示符
+
+#### zh-CN
+
+使用自定义指示符。
+
+#### en-US
+
+Use custom loading indicator.
+
+```typescript
+import React from 'react';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Flex, Spin } from 'antd';
+
+const App: React.FC = () => (
+  <Flex align="center" gap="middle">
+    <Spin indicator={<LoadingOutlined spin />} size="small" />
+    <Spin indicator={<LoadingOutlined spin />} />
+    <Spin indicator={<LoadingOutlined spin />} size="large" />
+    <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+  </Flex>
+);
+
+export default App;
+
+```
+
+### 进度
+
+#### zh-CN
+
+展示进度，当设置 `percent="auto"` 时会预估一个永远不会停止的进度条。
+
+#### en-US
+
+Show the progress. When `percent="auto"` is set, an indeterminate progress will be displayed.
+
+```typescript
+import React from 'react';
+import { Flex, Spin, Switch } from 'antd';
+
+const App: React.FC = () => {
+  const [auto, setAuto] = React.useState(false);
+  const [percent, setPercent] = React.useState(-50);
+  const timerRef = React.useRef<ReturnType<typeof setTimeout>>(null);
+
+  React.useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      setPercent((v) => {
+        const nextPercent = v + 5;
+        return nextPercent > 150 ? -50 : nextPercent;
+      });
+    }, 100);
+    return () => clearTimeout(timerRef.current!);
+  }, [percent]);
+
+  const mergedPercent = auto ? 'auto' : percent;
+
+  return (
+    <Flex align="center" gap="middle">
+      <Switch
+        checkedChildren="Auto"
+        unCheckedChildren="Auto"
+        checked={auto}
+        onChange={() => {
+          setAuto(!auto);
+          setPercent(-50);
+        }}
+      />
+      <Spin percent={mergedPercent} size="small" />
+      <Spin percent={mergedPercent} />
+      <Spin percent={mergedPercent} size="large" />
+    </Flex>
+  );
+};
+
+export default App;
+
+```
+
+### 全屏
+
+#### zh-CN
+
+`fullscreen` 属性非常适合创建流畅的页面加载器。它添加了半透明覆盖层，并在其中心放置了一个旋转加载符号。
+
+#### en-US
+
+The `fullscreen` mode is perfect for creating page loaders. It adds a dimmed overlay with a centered spinner.
+
+```typescript
+import React from 'react';
+import { Button, Spin } from 'antd';
+
+const App: React.FC = () => {
+  const [spinning, setSpinning] = React.useState(false);
+  const [percent, setPercent] = React.useState(0);
+
+  const showLoader = () => {
+    setSpinning(true);
+    let ptg = -10;
+
+    const interval = setInterval(() => {
+      ptg += 5;
+      setPercent(ptg);
+
+      if (ptg > 120) {
+        clearInterval(interval);
+        setSpinning(false);
+        setPercent(0);
+      }
+    }, 100);
+  };
+
+  return (
+    <>
+      <Button onClick={showLoader}>Show fullscreen</Button>
+      <Spin spinning={spinning} percent={percent} fullscreen />
+    </>
+  );
+};
+
+export default App;
+
+```
+

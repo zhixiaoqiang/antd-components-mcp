@@ -1,0 +1,308 @@
+## Result 组件示例
+
+### Success
+
+#### zh-CN
+
+成功的结果。
+
+#### en-US
+
+Show successful results.
+
+```typescript
+import React from 'react';
+import { Button, Result } from 'antd';
+
+const App: React.FC = () => (
+  <Result
+    status="success"
+    title="Successfully Purchased Cloud Server ECS!"
+    subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+    extra={[
+      <Button type="primary" key="console">
+        Go Console
+      </Button>,
+      <Button key="buy">Buy Again</Button>,
+    ]}
+  />
+);
+
+export default App;
+
+```
+
+### Info
+
+#### zh-CN
+
+展示处理结果。
+
+#### en-US
+
+Show processing results.
+
+```typescript
+import React from 'react';
+import { Button, Result } from 'antd';
+
+const App: React.FC = () => (
+  <Result
+    title="Your operation has been executed"
+    extra={
+      <Button type="primary" key="console">
+        Go Console
+      </Button>
+    }
+  />
+);
+
+export default App;
+
+```
+
+### Warning
+
+#### zh-CN
+
+警告类型的结果。
+
+#### en-US
+
+The result of the warning.
+
+```typescript
+import React from 'react';
+import { Button, Result } from 'antd';
+
+const App: React.FC = () => (
+  <Result
+    status="warning"
+    title="There are some problems with your operation."
+    extra={
+      <Button type="primary" key="console">
+        Go Console
+      </Button>
+    }
+  />
+);
+
+export default App;
+
+```
+
+### 403
+
+#### zh-CN
+
+你没有此页面的访问权限。
+
+#### en-US
+
+you are not authorized to access this page.
+
+```typescript
+import React from 'react';
+import { Button, Result } from 'antd';
+
+const App: React.FC = () => (
+  <Result
+    status="403"
+    title="403"
+    subTitle="Sorry, you are not authorized to access this page."
+    extra={<Button type="primary">Back Home</Button>}
+  />
+);
+
+export default App;
+
+```
+
+### 404
+
+#### zh-CN
+
+此页面未找到。
+
+#### en-US
+
+The page you visited does not exist.
+
+```typescript
+import React from 'react';
+import { Button, Result } from 'antd';
+
+const App: React.FC = () => (
+  <Result
+    status="404"
+    title="404"
+    subTitle="Sorry, the page you visited does not exist."
+    extra={<Button type="primary">Back Home</Button>}
+  />
+);
+
+export default App;
+
+```
+
+### 500
+
+#### zh-CN
+
+服务器发生了错误。
+
+#### en-US
+
+Something went wrong on server.
+
+```typescript
+import React from 'react';
+import { Button, Result } from 'antd';
+
+const App: React.FC = () => (
+  <Result
+    status="500"
+    title="500"
+    subTitle="Sorry, something went wrong."
+    extra={<Button type="primary">Back Home</Button>}
+  />
+);
+
+export default App;
+
+```
+
+### Error
+
+#### zh-CN
+
+复杂的错误反馈。
+
+#### en-US
+
+Complex error feedback.
+
+```css
+.site-result-demo-error-icon {
+  color: red;
+}
+```
+
+```typescript
+import React from 'react';
+import { CloseCircleOutlined } from '@ant-design/icons';
+import { Button, Result, Typography } from 'antd';
+
+const { Paragraph, Text } = Typography;
+
+const App: React.FC = () => (
+  <Result
+    status="error"
+    title="Submission Failed"
+    subTitle="Please check and modify the following information before resubmitting."
+    extra={[
+      <Button type="primary" key="console">
+        Go Console
+      </Button>,
+      <Button key="buy">Buy Again</Button>,
+    ]}
+  >
+    <div className="desc">
+      <Paragraph>
+        <Text
+          strong
+          style={{
+            fontSize: 16,
+          }}
+        >
+          The content you submitted has the following error:
+        </Text>
+      </Paragraph>
+      <Paragraph>
+        <CloseCircleOutlined className="site-result-demo-error-icon" /> Your account has been
+        frozen. <a>Thaw immediately &gt;</a>
+      </Paragraph>
+      <Paragraph>
+        <CloseCircleOutlined className="site-result-demo-error-icon" /> Your account is not yet
+        eligible to apply. <a>Apply Unlock &gt;</a>
+      </Paragraph>
+    </div>
+  </Result>
+);
+
+export default App;
+
+```
+
+### 自定义 icon
+
+#### zh-CN
+
+自定义 icon。
+
+#### en-US
+
+Custom icon.
+
+```typescript
+import React from 'react';
+import { SmileOutlined } from '@ant-design/icons';
+import { Button, Result } from 'antd';
+
+const App: React.FC = () => (
+  <Result
+    icon={<SmileOutlined />}
+    title="Great, we have done all the operations!"
+    extra={<Button type="primary">Next</Button>}
+  />
+);
+
+export default App;
+
+```
+
+### 组件 Token
+
+#### zh-CN
+
+Component Token Debug.
+
+#### en-US
+
+Component Token Debug.
+
+```typescript
+import React from 'react';
+import { Button, ConfigProvider, Result } from 'antd';
+
+const App: React.FC = () => (
+  <ConfigProvider
+    theme={{
+      components: {
+        Result: {
+          titleFontSize: 18,
+          subtitleFontSize: 14,
+          iconFontSize: 48,
+          extraMargin: `12px 0 0 0`,
+        },
+      },
+    }}
+  >
+    <Result
+      status="success"
+      title="Successfully Purchased Cloud Server ECS!"
+      subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+      extra={[
+        <Button type="primary" key="console">
+          Go Console
+        </Button>,
+        <Button key="buy">Buy Again</Button>,
+      ]}
+    />
+  </ConfigProvider>
+);
+
+export default App;
+
+```
+

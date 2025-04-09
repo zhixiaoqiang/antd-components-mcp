@@ -1,0 +1,1527 @@
+## Cascader 组件示例
+
+### 基本
+
+#### zh-CN
+
+省市区级联。
+
+#### en-US
+
+Cascade selection box for selecting province/city/district.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => (
+  <Cascader options={options} onChange={onChange} placeholder="Please select" />
+);
+
+export default App;
+
+```
+
+### 默认值
+
+#### zh-CN
+
+默认值通过数组的方式指定。
+
+#### en-US
+
+Specifies default value by an array.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => (
+  <Cascader defaultValue={['zhejiang', 'hangzhou', 'xihu']} options={options} onChange={onChange} />
+);
+
+export default App;
+
+```
+
+### 可以自定义显示
+
+#### zh-CN
+
+切换按钮和结果分开。
+
+#### en-US
+
+Separate trigger button and result.
+
+```typescript
+import React, { useState } from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+      },
+    ],
+  },
+];
+
+const App: React.FC = () => {
+  const [text, setText] = useState('Unselect');
+
+  const onChange: CascaderProps<Option>['onChange'] = (_, selectedOptions) => {
+    setText(selectedOptions.map((o) => o.label).join(', '));
+  };
+
+  return (
+    <span>
+      {text}
+      &nbsp;
+      <Cascader options={options} onChange={onChange}>
+        <a>Change city</a>
+      </Cascader>
+    </span>
+  );
+};
+
+export default App;
+
+```
+
+### 移入展开
+
+#### zh-CN
+
+通过移入展开下级菜单，点击完成选择。
+
+#### en-US
+
+Hover to expand sub menu, click to select option.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+// Just show the latest item.
+const displayRender = (labels: string[]) => labels[labels.length - 1];
+
+const App: React.FC = () => (
+  <Cascader
+    options={options}
+    expandTrigger="hover"
+    displayRender={displayRender}
+    onChange={onChange}
+  />
+);
+
+export default App;
+
+```
+
+### 禁用选项
+
+#### zh-CN
+
+通过指定 options 里的 `disabled` 字段。
+
+#### en-US
+
+Disable option by specifying the `disabled` property in `options`.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  disabled?: boolean;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    disabled: true,
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => <Cascader options={options} onChange={onChange} />;
+
+export default App;
+
+```
+
+### 选择即改变
+
+#### zh-CN
+
+这种交互允许只选中父级选项。
+
+#### en-US
+
+Allows the selection of only parent options.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hanzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => <Cascader options={options} onChange={onChange} changeOnSelect />;
+
+export default App;
+
+```
+
+### 多选
+
+#### zh-CN
+
+一次性选择多个选项。通过添加 `disableCheckbox` 属性,选择具体某一个`checkbox`禁用 。可以通过类名修改禁用的样式。
+
+#### en-US
+
+Select multiple options. Disable the `checkbox` by adding the `disableCheckbox` property and selecting a specific item. The style of the disable can be modified by the className.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string | number;
+  label: string;
+  children?: Option[];
+  disableCheckbox?: boolean;
+}
+
+const options: Option[] = [
+  {
+    label: 'Light',
+    value: 'light',
+    children: Array.from({ length: 20 }).map((_, index) => ({
+      label: `Number ${index}`,
+      value: index,
+    })),
+  },
+  {
+    label: 'Bamboo',
+    value: 'bamboo',
+    children: [
+      {
+        label: 'Little',
+        value: 'little',
+        children: [
+          {
+            label: 'Toy Fish',
+            value: 'fish',
+            disableCheckbox: true,
+          },
+          {
+            label: 'Toy Cards',
+            value: 'cards',
+          },
+          {
+            label: 'Toy Bird',
+            value: 'bird',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option, 'value', true>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => (
+  <Cascader
+    style={{ width: '100%' }}
+    options={options}
+    onChange={onChange}
+    multiple
+    maxTagCount="responsive"
+  />
+);
+
+export default App;
+
+```
+
+### 自定义回填方式
+
+#### zh-CN
+
+通过设置 `showCheckedStrategy` 选择回填方式。
+
+#### en-US
+
+Shows a selected item in a box using `showCheckedStrategy`.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+const { SHOW_CHILD } = Cascader;
+
+interface Option {
+  value: string | number;
+  label: string;
+  children?: Option[];
+}
+const options: Option[] = [
+  {
+    label: 'Light',
+    value: 'light',
+    children: Array.from({ length: 20 }).map((_, index) => ({
+      label: `Number ${index}`,
+      value: index,
+    })),
+  },
+  {
+    label: 'Bamboo',
+    value: 'bamboo',
+    children: [
+      {
+        label: 'Little',
+        value: 'little',
+        children: [
+          {
+            label: 'Toy Fish',
+            value: 'fish',
+          },
+          {
+            label: 'Toy Cards',
+            value: 'cards',
+          },
+          {
+            label: 'Toy Bird',
+            value: 'bird',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const App: React.FC = () => {
+  const onChange: CascaderProps<Option, 'value', true>['onChange'] = (value) => {
+    console.log(value);
+  };
+  return (
+    <>
+      <Cascader
+        style={{ width: '100%' }}
+        options={options}
+        onChange={onChange}
+        multiple
+        maxTagCount="responsive"
+        showCheckedStrategy={SHOW_CHILD}
+        defaultValue={[
+          ['bamboo', 'little', 'fish'],
+          ['bamboo', 'little', 'cards'],
+          ['bamboo', 'little', 'bird'],
+        ]}
+      />
+      <br />
+      <br />
+      <Cascader
+        style={{ width: '100%' }}
+        options={options}
+        onChange={onChange}
+        multiple
+        maxTagCount="responsive"
+        defaultValue={[['bamboo']]}
+      />
+    </>
+  );
+};
+
+export default App;
+
+```
+
+### 大小
+
+#### zh-CN
+
+不同大小的级联选择器。
+
+#### en-US
+
+Cascade selection box of different sizes.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => (
+  <>
+    <Cascader size="large" options={options} onChange={onChange} />
+    <br />
+    <br />
+    <Cascader options={options} onChange={onChange} />
+    <br />
+    <br />
+    <Cascader size="small" options={options} onChange={onChange} />
+    <br />
+    <br />
+  </>
+);
+
+export default App;
+
+```
+
+### 自定义已选项
+
+#### zh-CN
+
+例如给最后一项加上邮编链接。
+
+#### en-US
+
+For instance, add an external link after the selected value.
+
+```typescript
+import React from 'react';
+import { Cascader } from 'antd';
+import type { CascaderProps, GetProp } from 'antd';
+
+type DefaultOptionType = GetProp<CascaderProps, 'options'>[number];
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+  code?: number;
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+            code: 752100,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+            code: 453400,
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const handleAreaClick = (
+  e: React.MouseEvent<HTMLAnchorElement>,
+  label: string,
+  option: DefaultOptionType,
+) => {
+  e.stopPropagation();
+  console.log('clicked', label, option);
+};
+
+const displayRender: CascaderProps<Option>['displayRender'] = (labels, selectedOptions = []) =>
+  labels.map((label, i) => {
+    const option = selectedOptions[i];
+    if (i === labels.length - 1) {
+      return (
+        <span key={option.value}>
+          {label} (<a onClick={(e) => handleAreaClick(e, label, option)}>{option.code}</a>)
+        </span>
+      );
+    }
+    return <span key={option.value}>{label} / </span>;
+  });
+
+const App: React.FC = () => (
+  <Cascader
+    options={options}
+    defaultValue={['zhejiang', 'hangzhou', 'xihu']}
+    displayRender={displayRender}
+    style={{ width: '100%' }}
+  />
+);
+
+export default App;
+
+```
+
+### 搜索
+
+#### zh-CN
+
+可以直接搜索选项并选择。
+
+> `Cascader[showSearch]` 暂不支持服务端搜索，更多信息见 [##5547](https://github.com/ant-design/ant-design/issues/5547)
+
+#### en-US
+
+Search and select options directly.
+
+> Now, `Cascader[showSearch]` doesn't support search on server, more info [##5547](https://github.com/ant-design/ant-design/issues/5547)
+
+```typescript
+import React from 'react';
+import { Cascader } from 'antd';
+import type { CascaderProps, GetProp } from 'antd';
+
+type DefaultOptionType = GetProp<CascaderProps, 'options'>[number];
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+  disabled?: boolean;
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+          {
+            value: 'xiasha',
+            label: 'Xia Sha',
+            disabled: true,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value, selectedOptions) => {
+  console.log(value, selectedOptions);
+};
+
+const filter = (inputValue: string, path: DefaultOptionType[]) =>
+  path.some(
+    (option) => (option.label as string).toLowerCase().indexOf(inputValue.toLowerCase()) > -1,
+  );
+
+const App: React.FC = () => (
+  <Cascader
+    options={options}
+    onChange={onChange}
+    placeholder="Please select"
+    showSearch={{ filter }}
+    onSearch={(value) => console.log(value)}
+  />
+);
+
+export default App;
+
+```
+
+### 动态加载选项
+
+#### zh-CN
+
+使用 `loadData` 实现动态加载选项。
+
+> 注意：`loadData` 与 `showSearch` 无法一起使用。
+
+#### en-US
+
+Load options lazily with `loadData`.
+
+> Note: `loadData` cannot work with `showSearch`.
+
+```typescript
+import React, { useState } from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value?: string | number | null;
+  label: React.ReactNode;
+  children?: Option[];
+  isLeaf?: boolean;
+}
+
+const optionLists: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    isLeaf: false,
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    isLeaf: false,
+  },
+];
+
+const App: React.FC = () => {
+  const [options, setOptions] = useState<Option[]>(optionLists);
+
+  const onChange: CascaderProps<Option>['onChange'] = (value, selectedOptions) => {
+    console.log(value, selectedOptions);
+  };
+
+  const loadData = (selectedOptions: Option[]) => {
+    const targetOption = selectedOptions[selectedOptions.length - 1];
+
+    // load options lazily
+    setTimeout(() => {
+      targetOption.children = [
+        {
+          label: `${targetOption.label} Dynamic 1`,
+          value: 'dynamic1',
+        },
+        {
+          label: `${targetOption.label} Dynamic 2`,
+          value: 'dynamic2',
+        },
+      ];
+      setOptions([...options]);
+    }, 1000);
+  };
+
+  return <Cascader options={options} loadData={loadData} onChange={onChange} changeOnSelect />;
+};
+
+export default App;
+
+```
+
+### 自定义字段名
+
+#### zh-CN
+
+自定义字段名。
+
+#### en-US
+
+Custom field names.
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  code: string;
+  name: string;
+  items?: Option[];
+}
+
+const options: Option[] = [
+  {
+    code: 'zhejiang',
+    name: 'Zhejiang',
+    items: [
+      {
+        code: 'hangzhou',
+        name: 'Hangzhou',
+        items: [
+          {
+            code: 'xihu',
+            name: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    code: 'jiangsu',
+    name: 'Jiangsu',
+    items: [
+      {
+        code: 'nanjing',
+        name: 'Nanjing',
+        items: [
+          {
+            code: 'zhonghuamen',
+            name: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => (
+  <Cascader
+    fieldNames={{ label: 'name', value: 'code', children: 'items' }}
+    options={options}
+    onChange={onChange}
+    placeholder="Please select"
+  />
+);
+
+export default App;
+
+```
+
+### 前后缀
+
+#### zh-CN
+
+通过 `prefix` 自定前缀，通过 `suffixIcon` 自定义选择框后缀图标，通过 `expandIcon` 自定义次级菜单展开图标。
+
+#### en-US
+
+Use `prefix` to customize the prefix content, use `suffixIcon` to customize the selection box suffix icon, and use `expandIcon` to customize the current item expand icon.
+
+```typescript
+import React from 'react';
+import { SmileOutlined } from '@ant-design/icons';
+import type { CascaderProps } from 'antd';
+import { Cascader } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => (
+  <>
+    <Cascader
+      suffixIcon={<SmileOutlined />}
+      options={options}
+      onChange={onChange}
+      placeholder="Please select"
+    />
+    <br />
+    <br />
+    <Cascader suffixIcon="ab" options={options} onChange={onChange} placeholder="Please select" />
+    <br />
+    <br />
+    <Cascader
+      expandIcon={<SmileOutlined />}
+      options={options}
+      onChange={onChange}
+      placeholder="Please select"
+    />
+    <br />
+    <br />
+    <Cascader expandIcon="ab" options={options} onChange={onChange} placeholder="Please select" />
+    <br />
+    <br />
+    <Cascader
+      prefix={<SmileOutlined />}
+      options={options}
+      onChange={onChange}
+      placeholder="Please select"
+    />
+  </>
+);
+
+export default App;
+
+```
+
+### 扩展菜单
+
+#### zh-CN
+
+使用 `dropdownRender` 对下拉菜单进行自由扩展。
+
+#### en-US
+
+Customize the dropdown menu via `dropdownRender`.
+
+```typescript
+import React from 'react';
+import { Cascader, Divider } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const dropdownRender = (menus: React.ReactNode) => (
+  <div>
+    {menus}
+    <Divider style={{ margin: 0 }} />
+    <div style={{ padding: 8 }}>The footer is not very short.</div>
+  </div>
+);
+
+const App: React.FC = () => (
+  <Cascader options={options} dropdownRender={dropdownRender} placeholder="Please select" />
+);
+
+export default App;
+
+```
+
+### 弹出位置
+
+#### zh-CN
+
+可以通过 `placement` 手动指定弹出的位置。
+
+#### en-US
+
+You can manually specify the position of the popup via `placement`.
+
+```typescript
+import React, { useState } from 'react';
+import type { RadioChangeEvent } from 'antd';
+import { Cascader, Radio } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const App: React.FC = () => {
+  const [placement, SetPlacement] = useState<'bottomLeft' | 'bottomRight' | 'topLeft' | 'topRight'>(
+    'topLeft',
+  );
+
+  const placementChange = (e: RadioChangeEvent) => {
+    SetPlacement(e.target.value);
+  };
+
+  return (
+    <>
+      <Radio.Group value={placement} onChange={placementChange}>
+        <Radio.Button value="topLeft">topLeft</Radio.Button>
+        <Radio.Button value="topRight">topRight</Radio.Button>
+        <Radio.Button value="bottomLeft">bottomLeft</Radio.Button>
+        <Radio.Button value="bottomRight">bottomRight</Radio.Button>
+      </Radio.Group>
+      <br />
+      <br />
+      <Cascader options={options} placeholder="Please select" placement={placement} />
+    </>
+  );
+};
+
+export default App;
+
+```
+
+### 形态变体
+
+#### zh-CN
+
+Cascader 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
+
+#### en-US
+
+Variants of Cascader, there are four variants: `outlined` `filled` `borderless` and `underlined`.
+
+```typescript
+import React from 'react';
+import { Cascader, Flex } from 'antd';
+
+const App: React.FC = () => (
+  <Flex vertical gap="middle">
+    <Cascader placeholder="Please select" variant="borderless" />
+    <Cascader placeholder="Please select" variant="filled" />
+    <Cascader placeholder="Please select" variant="outlined" />
+    <Cascader placeholder="Please select" variant="underlined" />
+  </Flex>
+);
+
+export default App;
+
+```
+
+### 自定义状态
+
+#### zh-CN
+
+使用 `status` 为 Cascader 添加状态，可选 `error` 或者 `warning`。
+
+#### en-US
+
+Add status to Cascader with `status`, which could be `error` or `warning`.
+
+```typescript
+import React from 'react';
+import { Cascader, Space } from 'antd';
+
+const App: React.FC = () => (
+  <Space direction="vertical">
+    <Cascader status="error" placeholder="Error" />
+    <Cascader status="warning" multiple placeholder="Warning multiple" />
+  </Space>
+);
+
+export default App;
+
+```
+
+### = 5.10.0">面板使用
+
+#### zh-CN
+
+适用于一些需要内嵌适用的场景。
+
+#### en-US
+
+Used for inline view case.
+
+```typescript
+import React, { useState } from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader, Flex, Switch } from 'antd';
+
+interface Option {
+  value: string | number;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const onMultipleChange: CascaderProps<Option, 'value', true>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => {
+  const [disabled, setDisabled] = useState(false);
+
+  return (
+    <Flex vertical gap="small" align="flex-start">
+      <Switch
+        checked={disabled}
+        checkedChildren="Enabled"
+        unCheckedChildren="Disabled"
+        onChange={setDisabled}
+        aria-label="disabled switch"
+      />
+      <Cascader.Panel options={options} onChange={onChange} disabled={disabled} />
+      <Cascader.Panel multiple options={options} onChange={onMultipleChange} disabled={disabled} />
+      <Cascader.Panel />
+    </Flex>
+  );
+};
+
+export default App;
+
+```
+
+### _InternalPanelDoNotUseOrYouWillBeFired
+
+#### zh-CN
+
+调试用组件，请勿直接使用。
+
+#### en-US
+
+Debug usage. Do not use in your production.
+
+```typescript
+import React from 'react';
+import { Cascader } from 'antd';
+
+const { _InternalPanelDoNotUseOrYouWillBeFired: InternalCascader } = Cascader;
+
+interface Option {
+  value: string | number;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const App: React.FC = () => <InternalCascader options={options} placeholder="Please select" />;
+
+export default App;
+
+```
+
+### Component Token
+
+#### zh-CN
+
+组件 Token
+
+#### en-US
+
+Component Token
+
+```typescript
+import React from 'react';
+import type { CascaderProps } from 'antd';
+import { Cascader, ConfigProvider } from 'antd';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange: CascaderProps<Option>['onChange'] = (value) => {
+  console.log(value);
+};
+
+const App: React.FC = () => (
+  <ConfigProvider
+    theme={{
+      components: {
+        Cascader: {
+          optionSelectedColor: 'red',
+        },
+      },
+    }}
+  >
+    <Cascader options={options} onChange={onChange} placeholder="Please select" />
+  </ConfigProvider>
+);
+
+export default App;
+
+```
+

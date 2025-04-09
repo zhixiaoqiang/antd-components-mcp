@@ -1,0 +1,610 @@
+## Collapse 组件示例
+
+### 折叠面板
+
+#### zh-CN
+
+可以同时展开多个面板，这个例子默认展开了第一个。
+
+#### en-US
+
+By default, any number of panels can be expanded at a time. The first panel is expanded in this example.
+
+```typescript
+import React from 'react';
+import type { CollapseProps } from 'antd';
+import { Collapse } from 'antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const items: CollapseProps['items'] = [
+  {
+    key: '1',
+    label: 'This is panel header 1',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '2',
+    label: 'This is panel header 2',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '3',
+    label: 'This is panel header 3',
+    children: <p>{text}</p>,
+  },
+];
+
+const App: React.FC = () => {
+  const onChange = (key: string | string[]) => {
+    console.log(key);
+  };
+
+  return <Collapse items={items} defaultActiveKey={['1']} onChange={onChange} />;
+};
+
+export default App;
+
+```
+
+### 面板尺寸
+
+#### zh-CN
+
+折叠面板有大、中、小三种尺寸。
+
+通过设置 `size` 为 `large` `small` 分别把折叠面板设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
+
+#### en-US
+
+Ant Design supports a default collapse size as well as a large and small size.
+
+If a large or small collapse is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a collapse with the default size.
+
+```typescript
+import React from 'react';
+import { Collapse, Divider } from 'antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const App: React.FC = () => (
+  <>
+    <Divider orientation="left">Default Size</Divider>
+    <Collapse
+      items={[{ key: '1', label: 'This is default size panel header', children: <p>{text}</p> }]}
+    />
+    <Divider orientation="left">Small Size</Divider>
+    <Collapse
+      size="small"
+      items={[{ key: '1', label: 'This is small size panel header', children: <p>{text}</p> }]}
+    />
+    <Divider orientation="left">Large Size</Divider>
+    <Collapse
+      size="large"
+      items={[{ key: '1', label: 'This is large size panel header', children: <p>{text}</p> }]}
+    />
+  </>
+);
+
+export default App;
+
+```
+
+### 手风琴
+
+#### zh-CN
+
+手风琴模式，始终只有一个面板处在激活状态。
+
+#### en-US
+
+In accordion mode, only one panel can be expanded at a time.
+
+```typescript
+import React from 'react';
+import type { CollapseProps } from 'antd';
+import { Collapse } from 'antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const items: CollapseProps['items'] = [
+  {
+    key: '1',
+    label: 'This is panel header 1',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '2',
+    label: 'This is panel header 2',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '3',
+    label: 'This is panel header 3',
+    children: <p>{text}</p>,
+  },
+];
+
+const App: React.FC = () => <Collapse accordion items={items} />;
+
+export default App;
+
+```
+
+### 面板嵌套
+
+#### zh-CN
+
+嵌套折叠面板。
+
+#### en-US
+
+`Collapse` is nested inside the `Collapse`.
+
+```typescript
+import React from 'react';
+import type { CollapseProps } from 'antd';
+import { Collapse } from 'antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const itemsNest: CollapseProps['items'] = [
+  {
+    key: '1',
+    label: 'This is panel nest panel',
+    children: <p>{text}</p>,
+  },
+];
+
+const items: CollapseProps['items'] = [
+  {
+    key: '1',
+    label: 'This is panel header 1',
+    children: <Collapse defaultActiveKey="1" items={itemsNest} />,
+  },
+  {
+    key: '2',
+    label: 'This is panel header 2',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '3',
+    label: 'This is panel header 3',
+    children: <p>{text}</p>,
+  },
+];
+
+const App: React.FC = () => {
+  const onChange = (key: string | string[]) => {
+    console.log(key);
+  };
+
+  return <Collapse onChange={onChange} items={items} />;
+};
+
+export default App;
+
+```
+
+### 简洁风格
+
+#### zh-CN
+
+一套没有边框的简洁样式。
+
+#### en-US
+
+A borderless style of Collapse.
+
+```typescript
+import React from 'react';
+import type { CollapseProps } from 'antd';
+import { Collapse } from 'antd';
+
+const text = (
+  <p style={{ paddingInlineStart: 24 }}>
+    A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found
+    as a welcome guest in many households across the world.
+  </p>
+);
+
+const items: CollapseProps['items'] = [
+  {
+    key: '1',
+    label: 'This is panel header 1',
+    children: text,
+  },
+  {
+    key: '2',
+    label: 'This is panel header 2',
+    children: text,
+  },
+  {
+    key: '3',
+    label: 'This is panel header 3',
+    children: text,
+  },
+];
+
+const App: React.FC = () => <Collapse items={items} bordered={false} defaultActiveKey={['1']} />;
+
+export default App;
+
+```
+
+### 自定义面板
+
+#### zh-CN
+
+自定义各个面板的背景色、圆角、边距和图标。
+
+#### en-US
+
+Customize the background, border, margin styles and icon for each panel.
+
+```typescript
+import type { CSSProperties } from 'react';
+import React from 'react';
+import { CaretRightOutlined } from '@ant-design/icons';
+import type { CollapseProps } from 'antd';
+import { Collapse, theme } from 'antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const getItems: (panelStyle: CSSProperties) => CollapseProps['items'] = (panelStyle) => [
+  {
+    key: '1',
+    label: 'This is panel header 1',
+    children: <p>{text}</p>,
+    style: panelStyle,
+  },
+  {
+    key: '2',
+    label: 'This is panel header 2',
+    children: <p>{text}</p>,
+    style: panelStyle,
+  },
+  {
+    key: '3',
+    label: 'This is panel header 3',
+    children: <p>{text}</p>,
+    style: panelStyle,
+  },
+];
+
+const App: React.FC = () => {
+  const { token } = theme.useToken();
+
+  const panelStyle: React.CSSProperties = {
+    marginBottom: 24,
+    background: token.colorFillAlter,
+    borderRadius: token.borderRadiusLG,
+    border: 'none',
+  };
+
+  return (
+    <Collapse
+      bordered={false}
+      defaultActiveKey={['1']}
+      expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+      style={{ background: token.colorBgContainer }}
+      items={getItems(panelStyle)}
+    />
+  );
+};
+
+export default App;
+
+```
+
+### 隐藏箭头
+
+#### zh-CN
+
+你可以通过 `showArrow={false}` 隐藏 `CollapsePanel` 组件的箭头图标。
+
+#### en-US
+
+You can hide the arrow icon by passing `showArrow={false}` to `CollapsePanel` component.
+
+```typescript
+import React from 'react';
+import type { CollapseProps } from 'antd';
+import { Collapse } from 'antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const items: CollapseProps['items'] = [
+  {
+    key: '1',
+    label: 'This is panel header with arrow icon',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '2',
+    label: 'This is panel header with no arrow icon',
+    children: <p>{text}</p>,
+    showArrow: false,
+  },
+];
+
+const App: React.FC = () => {
+  const onChange = (key: string | string[]) => {
+    console.log(key);
+  };
+
+  return <Collapse defaultActiveKey={['1']} onChange={onChange} items={items} />;
+};
+
+export default App;
+
+```
+
+### 额外节点
+
+#### zh-CN
+
+自定义渲染每个面板右上角的内容。
+
+#### en-US
+
+Render extra element in the top-right corner of each panel.
+
+```typescript
+import React, { useState } from 'react';
+import { SettingOutlined } from '@ant-design/icons';
+import type { CollapseProps } from 'antd';
+import { Collapse, Select } from 'antd';
+
+const { Option } = Select;
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+type ExpandIconPosition = 'start' | 'end';
+
+const App: React.FC = () => {
+  const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('start');
+
+  const onPositionChange = (newExpandIconPosition: ExpandIconPosition) => {
+    setExpandIconPosition(newExpandIconPosition);
+  };
+
+  const onChange = (key: string | string[]) => {
+    console.log(key);
+  };
+
+  const genExtra = () => (
+    <SettingOutlined
+      onClick={(event) => {
+        // If you don't want click extra trigger collapse, you can prevent this:
+        event.stopPropagation();
+      }}
+    />
+  );
+
+  const items: CollapseProps['items'] = [
+    {
+      key: '1',
+      label: 'This is panel header 1',
+      children: <div>{text}</div>,
+      extra: genExtra(),
+    },
+    {
+      key: '2',
+      label: 'This is panel header 2',
+      children: <div>{text}</div>,
+      extra: genExtra(),
+    },
+    {
+      key: '3',
+      label: 'This is panel header 3',
+      children: <div>{text}</div>,
+      extra: genExtra(),
+    },
+  ];
+
+  return (
+    <>
+      <Collapse
+        defaultActiveKey={['1']}
+        onChange={onChange}
+        expandIconPosition={expandIconPosition}
+        items={items}
+      />
+      <br />
+      <span>Expand Icon Position: </span>
+      <Select value={expandIconPosition} style={{ margin: '0 8px' }} onChange={onPositionChange}>
+        <Option value="start">start</Option>
+        <Option value="end">end</Option>
+      </Select>
+    </>
+  );
+};
+
+export default App;
+
+```
+
+### 幽灵折叠面板
+
+#### zh-CN
+
+将折叠面板的背景变成透明。
+
+#### en-US
+
+Making collapse's background to transparent.
+
+```typescript
+import React from 'react';
+import type { CollapseProps } from 'antd';
+import { Collapse } from 'antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const items: CollapseProps['items'] = [
+  {
+    key: '1',
+    label: 'This is panel header 1',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '2',
+    label: 'This is panel header 2',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '3',
+    label: 'This is panel header 3',
+    children: <p>{text}</p>,
+  },
+];
+
+const App: React.FC = () => <Collapse defaultActiveKey={['1']} ghost items={items} />;
+
+export default App;
+
+```
+
+### 可折叠触发区域
+
+#### zh-CN
+
+通过 `collapsible` 属性，可以设置面板的可折叠触发区域。
+
+#### en-US
+
+Specify the trigger area of collapsible by `collapsible`.
+
+<style>
+##collapse-demo-collapsible .ant-space {
+  width: 100%;
+}
+</style>
+
+```typescript
+import React from 'react';
+import { Collapse, Space } from 'antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+const App: React.FC = () => (
+  <Space direction="vertical">
+    <Collapse
+      collapsible="header"
+      defaultActiveKey={['1']}
+      items={[
+        {
+          key: '1',
+          label: 'This panel can only be collapsed by clicking text',
+          children: <p>{text}</p>,
+        },
+      ]}
+    />
+    <Collapse
+      collapsible="icon"
+      defaultActiveKey={['1']}
+      items={[
+        {
+          key: '1',
+          label: 'This panel can only be collapsed by clicking icon',
+          children: <p>{text}</p>,
+        },
+      ]}
+    />
+    <Collapse
+      collapsible="disabled"
+      items={[
+        {
+          key: '1',
+          label: "This panel can't be collapsed",
+          children: <p>{text}</p>,
+        },
+      ]}
+    />
+  </Space>
+);
+
+export default App;
+
+```
+
+### 组件 Token
+
+#### zh-CN
+
+Component Token Debug.
+
+#### en-US
+
+Component Token Debug
+
+```typescript
+import React from 'react';
+import { Collapse, ConfigProvider } from 'antd';
+/** Test usage. Do not use in your production. */
+import type { CollapseProps } from 'antd';
+
+const text = `Ant Design! `.repeat(26);
+
+const items: CollapseProps['items'] = [
+  { key: '1', label: `This is panel header 1, (${text})`, children: text },
+  { key: '2', label: `This is panel header 2, (${text})`, children: text },
+  { key: '3', label: `This is panel header 3, (${text})`, children: text },
+];
+
+export default () => (
+  <ConfigProvider
+    theme={{
+      components: {
+        Collapse: {
+          headerPadding: '0px 10px 20px 30px',
+          headerBg: '#eaeeff',
+          contentPadding: '0px 10px 20px 30px',
+          contentBg: '#e6f7ff',
+        },
+      },
+    }}
+  >
+    <Collapse items={items} />
+  </ConfigProvider>
+);
+
+```
+

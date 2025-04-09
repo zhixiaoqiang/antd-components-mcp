@@ -1,0 +1,1365 @@
+## Menu 组件示例
+
+### 顶部导航
+
+#### zh-CN
+
+水平的顶部导航菜单。
+
+#### en-US
+
+Horizontal top navigation menu.
+
+```typescript
+import React, { useState } from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Menu } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    label: 'Navigation One',
+    key: 'mail',
+    icon: <MailOutlined />,
+  },
+  {
+    label: 'Navigation Two',
+    key: 'app',
+    icon: <AppstoreOutlined />,
+    disabled: true,
+  },
+  {
+    label: 'Navigation Three - Submenu',
+    key: 'SubMenu',
+    icon: <SettingOutlined />,
+    children: [
+      {
+        type: 'group',
+        label: 'Item 1',
+        children: [
+          { label: 'Option 1', key: 'setting:1' },
+          { label: 'Option 2', key: 'setting:2' },
+        ],
+      },
+      {
+        type: 'group',
+        label: 'Item 2',
+        children: [
+          { label: 'Option 3', key: 'setting:3' },
+          { label: 'Option 4', key: 'setting:4' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'alipay',
+    label: (
+      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+        Navigation Four - Link
+      </a>
+    ),
+  },
+];
+
+const App: React.FC = () => {
+  const [current, setCurrent] = useState('mail');
+
+  const onClick: MenuProps['onClick'] = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
+
+  return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
+};
+
+export default App;
+
+```
+
+### 顶部导航（dark）
+
+#### zh-CN
+
+水平的顶部导航菜单。
+
+#### en-US
+
+Horizontal top navigation menu.
+
+```typescript
+import React, { useState } from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Menu } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    label: 'Navigation One',
+    key: 'mail',
+    icon: <MailOutlined />,
+  },
+  {
+    label: 'Navigation Two',
+    key: 'app',
+    icon: <AppstoreOutlined />,
+    disabled: true,
+  },
+  {
+    label: 'Navigation Three - Submenu',
+    key: 'SubMenu',
+    icon: <SettingOutlined />,
+    children: [
+      {
+        type: 'group',
+        label: 'Item 1',
+        children: [
+          { label: 'Option 1', key: 'setting:1' },
+          { label: 'Option 2', key: 'setting:2' },
+        ],
+      },
+      {
+        type: 'group',
+        label: 'Item 2',
+        children: [
+          { label: 'Option 3', key: 'setting:3' },
+          { label: 'Option 4', key: 'setting:4' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'alipay',
+    label: (
+      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+        Navigation Four - Link
+      </a>
+    ),
+  },
+];
+
+const App: React.FC = () => {
+  const [current, setCurrent] = useState('mail');
+
+  const onClick: MenuProps['onClick'] = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
+
+  return (
+    <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} theme="dark" />
+  );
+};
+
+export default App;
+
+```
+
+### 内嵌菜单
+
+#### zh-CN
+
+垂直菜单，子菜单内嵌在菜单区域。
+
+#### en-US
+
+Vertical menu with inline submenus.
+
+```typescript
+import React from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Menu } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    key: 'sub1',
+    label: 'Navigation One',
+    icon: <MailOutlined />,
+    children: [
+      {
+        key: 'g1',
+        label: 'Item 1',
+        type: 'group',
+        children: [
+          { key: '1', label: 'Option 1' },
+          { key: '2', label: 'Option 2' },
+        ],
+      },
+      {
+        key: 'g2',
+        label: 'Item 2',
+        type: 'group',
+        children: [
+          { key: '3', label: 'Option 3' },
+          { key: '4', label: 'Option 4' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Navigation Two',
+    icon: <AppstoreOutlined />,
+    children: [
+      { key: '5', label: 'Option 5' },
+      { key: '6', label: 'Option 6' },
+      {
+        key: 'sub3',
+        label: 'Submenu',
+        children: [
+          { key: '7', label: 'Option 7' },
+          { key: '8', label: 'Option 8' },
+        ],
+      },
+    ],
+  },
+  {
+    type: 'divider',
+  },
+  {
+    key: 'sub4',
+    label: 'Navigation Three',
+    icon: <SettingOutlined />,
+    children: [
+      { key: '9', label: 'Option 9' },
+      { key: '10', label: 'Option 10' },
+      { key: '11', label: 'Option 11' },
+      { key: '12', label: 'Option 12' },
+    ],
+  },
+  {
+    key: 'grp',
+    label: 'Group',
+    type: 'group',
+    children: [
+      { key: '13', label: 'Option 13' },
+      { key: '14', label: 'Option 14' },
+    ],
+  },
+];
+
+const App: React.FC = () => {
+  const onClick: MenuProps['onClick'] = (e) => {
+    console.log('click ', e);
+  };
+
+  return (
+    <Menu
+      onClick={onClick}
+      style={{ width: 256 }}
+      defaultSelectedKeys={['1']}
+      defaultOpenKeys={['sub1']}
+      mode="inline"
+      items={items}
+    />
+  );
+};
+
+export default App;
+
+```
+
+### 缩起内嵌菜单
+
+#### zh-CN
+
+内嵌菜单可以被缩起/展开。
+
+你可以在 [Layout](/components/layout-cn/##layout-demo-side) 里查看侧边布局结合的完整示例。
+
+#### en-US
+
+Inline menu could be collapsed.
+
+Here is [a complete demo](/components/layout/##layout-demo-side) with sider layout.
+
+```typescript
+import React, { useState } from 'react';
+import {
+  AppstoreOutlined,
+  ContainerOutlined,
+  DesktopOutlined,
+  MailOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  PieChartOutlined,
+} from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Button, Menu } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  { key: '1', icon: <PieChartOutlined />, label: 'Option 1' },
+  { key: '2', icon: <DesktopOutlined />, label: 'Option 2' },
+  { key: '3', icon: <ContainerOutlined />, label: 'Option 3' },
+  {
+    key: 'sub1',
+    label: 'Navigation One',
+    icon: <MailOutlined />,
+    children: [
+      { key: '5', label: 'Option 5' },
+      { key: '6', label: 'Option 6' },
+      { key: '7', label: 'Option 7' },
+      { key: '8', label: 'Option 8' },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Navigation Two',
+    icon: <AppstoreOutlined />,
+    children: [
+      { key: '9', label: 'Option 9' },
+      { key: '10', label: 'Option 10' },
+      {
+        key: 'sub3',
+        label: 'Submenu',
+        children: [
+          { key: '11', label: 'Option 11' },
+          { key: '12', label: 'Option 12' },
+        ],
+      },
+    ],
+  },
+];
+
+const App: React.FC = () => {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
+
+  return (
+    <div style={{ width: 256 }}>
+      <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
+        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+      </Button>
+      <Menu
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['sub1']}
+        mode="inline"
+        theme="dark"
+        inlineCollapsed={collapsed}
+        items={items}
+      />
+    </div>
+  );
+};
+
+export default App;
+
+```
+
+### 只展开当前父级菜单
+
+#### zh-CN
+
+点击菜单，收起其他展开的所有菜单，保持菜单聚焦简洁。
+
+#### en-US
+
+Click the menu and you will see that all the other menus gets collapsed to keep the entire menu compact.
+
+```typescript
+import React, { useState } from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Menu } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    key: '1',
+    icon: <MailOutlined />,
+    label: 'Navigation One',
+    children: [
+      { key: '11', label: 'Option 1' },
+      { key: '12', label: 'Option 2' },
+      { key: '13', label: 'Option 3' },
+      { key: '14', label: 'Option 4' },
+    ],
+  },
+  {
+    key: '2',
+    icon: <AppstoreOutlined />,
+    label: 'Navigation Two',
+    children: [
+      { key: '21', label: 'Option 1' },
+      { key: '22', label: 'Option 2' },
+      {
+        key: '23',
+        label: 'Submenu',
+        children: [
+          { key: '231', label: 'Option 1' },
+          { key: '232', label: 'Option 2' },
+          { key: '233', label: 'Option 3' },
+        ],
+      },
+      {
+        key: '24',
+        label: 'Submenu 2',
+        children: [
+          { key: '241', label: 'Option 1' },
+          { key: '242', label: 'Option 2' },
+          { key: '243', label: 'Option 3' },
+        ],
+      },
+    ],
+  },
+  {
+    key: '3',
+    icon: <SettingOutlined />,
+    label: 'Navigation Three',
+    children: [
+      { key: '31', label: 'Option 1' },
+      { key: '32', label: 'Option 2' },
+      { key: '33', label: 'Option 3' },
+      { key: '34', label: 'Option 4' },
+    ],
+  },
+];
+
+interface LevelKeysProps {
+  key?: string;
+  children?: LevelKeysProps[];
+}
+
+const getLevelKeys = (items1: LevelKeysProps[]) => {
+  const key: Record<string, number> = {};
+  const func = (items2: LevelKeysProps[], level = 1) => {
+    items2.forEach((item) => {
+      if (item.key) {
+        key[item.key] = level;
+      }
+      if (item.children) {
+        func(item.children, level + 1);
+      }
+    });
+  };
+  func(items1);
+  return key;
+};
+
+const levelKeys = getLevelKeys(items as LevelKeysProps[]);
+
+const App: React.FC = () => {
+  const [stateOpenKeys, setStateOpenKeys] = useState(['2', '23']);
+
+  const onOpenChange: MenuProps['onOpenChange'] = (openKeys) => {
+    const currentOpenKey = openKeys.find((key) => stateOpenKeys.indexOf(key) === -1);
+    // open
+    if (currentOpenKey !== undefined) {
+      const repeatIndex = openKeys
+        .filter((key) => key !== currentOpenKey)
+        .findIndex((key) => levelKeys[key] === levelKeys[currentOpenKey]);
+
+      setStateOpenKeys(
+        openKeys
+          // remove repeat key
+          .filter((_, index) => index !== repeatIndex)
+          // remove current level all child
+          .filter((key) => levelKeys[key] <= levelKeys[currentOpenKey]),
+      );
+    } else {
+      // close
+      setStateOpenKeys(openKeys);
+    }
+  };
+
+  return (
+    <Menu
+      mode="inline"
+      defaultSelectedKeys={['231']}
+      openKeys={stateOpenKeys}
+      onOpenChange={onOpenChange}
+      style={{ width: 256 }}
+      items={items}
+    />
+  );
+};
+
+export default App;
+
+```
+
+### 垂直菜单
+
+#### zh-CN
+
+子菜单是弹出的形式。
+
+#### en-US
+
+Submenus open as pop-ups.
+
+```typescript
+import React from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Menu } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    key: 'sub1',
+    icon: <MailOutlined />,
+    label: 'Navigation One',
+    children: [
+      {
+        key: '1-1',
+        label: 'Item 1',
+        type: 'group',
+        children: [
+          { key: '1', label: 'Option 1' },
+          { key: '2', label: 'Option 2' },
+        ],
+      },
+      {
+        key: '1-2',
+        label: 'Item 2',
+        type: 'group',
+        children: [
+          { key: '3', label: 'Option 3' },
+          { key: '4', label: 'Option 4' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'sub2',
+    icon: <AppstoreOutlined />,
+    label: 'Navigation Two',
+    children: [
+      { key: '5', label: 'Option 5' },
+      { key: '6', label: 'Option 6' },
+      {
+        key: 'sub3',
+        label: 'Submenu',
+        children: [
+          { key: '7', label: 'Option 7' },
+          { key: '8', label: 'Option 8' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'sub4',
+    label: 'Navigation Three',
+    icon: <SettingOutlined />,
+    children: [
+      { key: '9', label: 'Option 9' },
+      { key: '10', label: 'Option 10' },
+      { key: '11', label: 'Option 11' },
+      { key: '12', label: 'Option 12' },
+    ],
+  },
+];
+
+const onClick: MenuProps['onClick'] = (e) => {
+  console.log('click', e);
+};
+
+const App: React.FC = () => (
+  <Menu onClick={onClick} style={{ width: 256 }} mode="vertical" items={items} />
+);
+
+export default App;
+
+```
+
+### 主题
+
+#### zh-CN
+
+内建了两套主题 `light` 和 `dark`，默认 `light`。
+
+#### en-US
+
+There are two built-in themes: `light` and `dark`. The default value is `light`.
+
+```typescript
+import React, { useState } from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import type { MenuProps, MenuTheme } from 'antd';
+import { Menu, Switch } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    key: 'sub1',
+    label: 'Navigation One',
+    icon: <MailOutlined />,
+    children: [
+      { key: '1', label: 'Option 1' },
+      { key: '2', label: 'Option 2' },
+      { key: '3', label: 'Option 3' },
+      { key: '4', label: 'Option 4' },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Navigation Two',
+    icon: <AppstoreOutlined />,
+    children: [
+      { key: '5', label: 'Option 5' },
+      { key: '6', label: 'Option 6' },
+      {
+        key: 'sub3',
+        label: 'Submenu',
+        children: [
+          { key: '7', label: 'Option 7' },
+          { key: '8', label: 'Option 8' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'sub4',
+    label: 'Navigation Three',
+    icon: <SettingOutlined />,
+    children: [
+      { key: '9', label: 'Option 9' },
+      { key: '10', label: 'Option 10' },
+      { key: '11', label: 'Option 11' },
+      { key: '12', label: 'Option 12' },
+    ],
+  },
+];
+
+const App: React.FC = () => {
+  const [theme, setTheme] = useState<MenuTheme>('dark');
+  const [current, setCurrent] = useState('1');
+
+  const changeTheme = (value: boolean) => {
+    setTheme(value ? 'dark' : 'light');
+  };
+
+  const onClick: MenuProps['onClick'] = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
+
+  return (
+    <>
+      <Switch
+        checked={theme === 'dark'}
+        onChange={changeTheme}
+        checkedChildren="Dark"
+        unCheckedChildren="Light"
+      />
+      <br />
+      <br />
+      <Menu
+        theme={theme}
+        onClick={onClick}
+        style={{ width: 256 }}
+        defaultOpenKeys={['sub1']}
+        selectedKeys={[current]}
+        mode="inline"
+        items={items}
+      />
+    </>
+  );
+};
+
+export default App;
+
+```
+
+### 子菜单主题
+
+#### zh-CN
+
+你可以通过 `theme` 属性来设置 SubMenu 的主题从而达到不同目录树下不同主题色的效果。该例子默认为根目录深色，子目录浅色效果。
+
+#### en-US
+
+You can config SubMenu theme with `theme` prop to enable different theme color effect. This sample is dark for root and light for SubMenu.
+
+```typescript
+import React, { useState } from 'react';
+import { MailOutlined } from '@ant-design/icons';
+import type { MenuProps, MenuTheme } from 'antd';
+import { Menu, Switch } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const App: React.FC = () => {
+  const [menuTheme, setMenuTheme] = useState<MenuTheme>('light');
+  const [current, setCurrent] = useState('1');
+
+  const changeTheme = (value: boolean) => {
+    setMenuTheme(value ? 'dark' : 'light');
+  };
+
+  const onClick: MenuProps['onClick'] = (e) => {
+    setCurrent(e.key);
+  };
+
+  const items: MenuItem[] = [
+    {
+      key: 'sub1',
+      icon: <MailOutlined />,
+      label: 'Navigation One',
+      theme: menuTheme,
+      children: [
+        { key: '1', label: 'Option 1' },
+        { key: '2', label: 'Option 2' },
+        { key: '3', label: 'Option 3' },
+      ],
+    },
+    { key: '5', label: 'Option 5' },
+    { key: '6', label: 'Option 6' },
+  ];
+
+  return (
+    <>
+      <Switch
+        checked={menuTheme === 'dark'}
+        onChange={changeTheme}
+        checkedChildren="Dark"
+        unCheckedChildren="Light"
+      />
+      <br />
+      <br />
+      <Menu
+        onClick={onClick}
+        style={{ width: 256 }}
+        openKeys={['sub1']}
+        selectedKeys={[current]}
+        mode="vertical"
+        theme="dark"
+        items={items}
+        getPopupContainer={(node) => node.parentNode as HTMLElement}
+      />
+    </>
+  );
+};
+
+export default App;
+
+```
+
+### 切换菜单类型
+
+#### zh-CN
+
+展示动态切换模式。
+
+#### en-US
+
+Show the dynamic switching mode (between `inline` and `vertical`).
+
+```typescript
+import React, { useState } from 'react';
+import {
+  AppstoreOutlined,
+  CalendarOutlined,
+  LinkOutlined,
+  MailOutlined,
+  SettingOutlined,
+} from '@ant-design/icons';
+import { Divider, Menu, Switch } from 'antd';
+import type { GetProp, MenuProps } from 'antd';
+
+type MenuTheme = GetProp<MenuProps, 'theme'>;
+
+type MenuItem = GetProp<MenuProps, 'items'>[number];
+
+const items: MenuItem[] = [
+  {
+    key: '1',
+    icon: <MailOutlined />,
+    label: 'Navigation One',
+  },
+  {
+    key: '2',
+    icon: <CalendarOutlined />,
+    label: 'Navigation Two',
+  },
+  {
+    key: 'sub1',
+    label: 'Navigation Two',
+    icon: <AppstoreOutlined />,
+    children: [
+      { key: '3', label: 'Option 3' },
+      { key: '4', label: 'Option 4' },
+      {
+        key: 'sub1-2',
+        label: 'Submenu',
+        children: [
+          { key: '5', label: 'Option 5' },
+          { key: '6', label: 'Option 6' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Navigation Three',
+    icon: <SettingOutlined />,
+    children: [
+      { key: '7', label: 'Option 7' },
+      { key: '8', label: 'Option 8' },
+      { key: '9', label: 'Option 9' },
+      { key: '10', label: 'Option 10' },
+    ],
+  },
+  {
+    key: 'link',
+    icon: <LinkOutlined />,
+    label: (
+      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+        Ant Design
+      </a>
+    ),
+  },
+];
+
+const App: React.FC = () => {
+  const [mode, setMode] = useState<'vertical' | 'inline'>('inline');
+  const [theme, setTheme] = useState<MenuTheme>('light');
+
+  const changeMode = (value: boolean) => {
+    setMode(value ? 'vertical' : 'inline');
+  };
+
+  const changeTheme = (value: boolean) => {
+    setTheme(value ? 'dark' : 'light');
+  };
+
+  return (
+    <>
+      <Switch onChange={changeMode} /> Change Mode
+      <Divider type="vertical" />
+      <Switch onChange={changeTheme} /> Change Style
+      <br />
+      <br />
+      <Menu
+        style={{ width: 256 }}
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['sub1']}
+        mode={mode}
+        theme={theme}
+        items={items}
+      />
+    </>
+  );
+};
+
+export default App;
+
+```
+
+### Style debug
+
+#### zh-CN
+
+buggy!
+
+#### en-US
+
+buggy!
+
+```typescript
+import React, { useState } from 'react';
+import { AppstoreOutlined, MailOutlined } from '@ant-design/icons';
+import type { MenuProps, MenuTheme } from 'antd';
+import { Menu, Switch } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    key: 'sub1',
+    label: 'Navigation One Long Long Long Long',
+    icon: <MailOutlined />,
+    children: [
+      { key: '1', label: 'Option 1' },
+      { key: '2', label: 'Option 2' },
+      { key: '3', label: 'Option 3' },
+      { key: '4', label: 'Option 4' },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Navigation Two',
+    icon: <AppstoreOutlined />,
+    children: [
+      { key: '5', label: 'Option 5' },
+      { key: '6', label: 'Option 6' },
+      {
+        key: 'sub3',
+        label: 'Submenu',
+        children: [
+          { key: '7', label: 'Option 7' },
+          { key: '8', label: 'Option 8' },
+        ],
+      },
+    ],
+  },
+  { key: '11', label: 'Option 11' },
+  { key: '12', label: 'Option 12' },
+];
+
+const App: React.FC = () => {
+  const [menuTheme, setMenuTheme] = useState<MenuTheme>('dark');
+  const [current, setCurrent] = useState('1');
+
+  const changeTheme = (value: boolean) => {
+    setMenuTheme(value ? 'dark' : 'light');
+  };
+
+  const onClick: MenuProps['onClick'] = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
+
+  return (
+    <>
+      <Switch
+        checked={menuTheme === 'dark'}
+        onChange={changeTheme}
+        checkedChildren="Dark"
+        unCheckedChildren="Light"
+      />
+      <br />
+      <br />
+      <Menu
+        theme={menuTheme}
+        onClick={onClick}
+        selectedKeys={[current]}
+        mode="inline"
+        items={items}
+        inlineCollapsed
+        // Test only. Remove in future.
+        _internalRenderMenuItem={(node) =>
+          React.cloneElement<any>(node, {
+            style: {
+              ...(node as any).props.style,
+              textDecoration: 'underline',
+            },
+          })
+        }
+        // Test only. Remove in future.
+        _internalRenderSubMenuItem={(node) =>
+          React.cloneElement<any>(node, {
+            style: {
+              ...(node as any).props.style,
+              background: 'rgba(255, 255, 255, 0.3)',
+            },
+          })
+        }
+        // Test only. Remove in future.
+        _internalDisableMenuItemTitleTooltip
+      />
+    </>
+  );
+};
+
+export default App;
+
+```
+
+### v4 版本 Menu
+
+#### zh-CN
+
+V4 样式的 Menu 组件。
+
+#### en-US
+
+Menu with v4 style.
+
+```typescript
+import React, { useState } from 'react';
+import {
+  AppstoreOutlined,
+  CalendarOutlined,
+  LinkOutlined,
+  MailOutlined,
+  SettingOutlined,
+} from '@ant-design/icons';
+import { ConfigProvider, Menu, Switch, Typography } from 'antd';
+import type { MenuProps } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    key: '1',
+    icon: <MailOutlined />,
+    label: 'Navigation One',
+  },
+  {
+    key: '2',
+    icon: <CalendarOutlined />,
+    label: 'Navigation Two',
+  },
+  {
+    key: 'sub1',
+    icon: <AppstoreOutlined />,
+    label: 'Navigation Two',
+    children: [
+      {
+        key: '3',
+        label: (
+          <Typography.Text ellipsis>
+            Ant Design, a design language for background applications, is refined by Ant UED Team
+          </Typography.Text>
+        ),
+      },
+      {
+        key: '4',
+        label: 'Option 4',
+      },
+      {
+        key: 'sub1-2',
+        label: 'Submenu',
+        children: [
+          { key: '5', label: 'Option 5' },
+          { key: '6', label: 'Option 6' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Navigation Three',
+    icon: <SettingOutlined />,
+    children: [
+      { label: 'Option 7', key: '7' },
+      { label: 'Option 8', key: '8' },
+      { label: 'Option 9', key: '9' },
+      { label: 'Option 10', key: '10' },
+    ],
+  },
+  {
+    key: 'link',
+    icon: <LinkOutlined />,
+    label: (
+      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+        Ant Design
+      </a>
+    ),
+  },
+];
+
+const App: React.FC = () => {
+  const [mode, setMode] = useState<'vertical' | 'inline'>('inline');
+
+  const changeMode = (value: boolean) => {
+    setMode(value ? 'vertical' : 'inline');
+  };
+
+  return (
+    <>
+      <Switch onChange={changeMode} /> Change Mode
+      <br />
+      <br />
+      <ConfigProvider
+        theme={{
+          components: {
+            Menu: {
+              itemBorderRadius: 0,
+              subMenuItemBorderRadius: 0,
+              itemHoverColor: '#1890ff',
+              itemSelectedColor: '#1890ff',
+              itemSelectedBg: '#e6f7ff',
+              activeBarWidth: 3,
+              itemMarginInline: 0,
+              itemHoverBg: 'transparent',
+            },
+          },
+        }}
+      >
+        <Menu
+          style={{ width: 256 }}
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1']}
+          mode={mode}
+          items={items}
+        />
+      </ConfigProvider>
+    </>
+  );
+};
+
+export default App;
+
+```
+
+### 组件 Token
+
+#### zh-CN
+
+组件 Token debug。
+
+#### en-US
+
+Debug Component Token.
+
+```typescript
+import React, { useState } from 'react';
+import {
+  AppstoreOutlined,
+  ContainerOutlined,
+  DesktopOutlined,
+  MailOutlined,
+  PieChartOutlined,
+  SettingOutlined,
+} from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { ConfigProvider, Menu, Space, theme } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items: MenuItem[] = [
+  {
+    label: 'Navigation One',
+    key: 'mail',
+    icon: <MailOutlined />,
+  },
+  {
+    label: 'Navigation Two',
+    key: 'app',
+    icon: <AppstoreOutlined />,
+    disabled: true,
+  },
+  {
+    label: 'Navigation Three - Submenu',
+    key: 'SubMenu',
+    icon: <SettingOutlined />,
+    children: [
+      {
+        type: 'group',
+        label: 'Item 1',
+        children: [
+          { label: 'Option 1', key: 'setting:1' },
+          { label: 'Option 2', key: 'setting:2' },
+        ],
+      },
+      {
+        type: 'group',
+        label: 'Item 2',
+        children: [
+          { label: 'Option 3', key: 'setting:3' },
+          { label: 'Option 4', key: 'setting:4' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'alipay',
+    label: (
+      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+        Navigation Four - Link
+      </a>
+    ),
+  },
+];
+
+const items2: MenuItem[] = [
+  {
+    key: '1',
+    icon: <PieChartOutlined />,
+    label: 'Option 1',
+  },
+  {
+    key: '2',
+    icon: <DesktopOutlined />,
+    label: 'Option 2',
+  },
+  {
+    key: '3',
+    icon: <ContainerOutlined />,
+    label: 'Option 3',
+  },
+  {
+    key: 'sub1',
+    label: 'Navigation One',
+    icon: <MailOutlined />,
+    children: [
+      { key: '5', label: 'Option 5' },
+      { key: '6', label: 'Option 6' },
+      { key: '7', label: 'Option 7' },
+      { key: '8', label: 'Option 8' },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Navigation Two',
+    icon: <AppstoreOutlined />,
+    children: [
+      { key: '9', label: 'Option 9' },
+      { key: '10', label: 'Option 10' },
+      {
+        key: 'sub3',
+        label: 'Submenu',
+        children: [
+          { key: '11', label: 'Option 11' },
+          { key: '12', label: 'Option 12' },
+        ],
+      },
+    ],
+  },
+];
+
+const App: React.FC = () => {
+  const [current, setCurrent] = useState('mail');
+
+  const onClick: MenuProps['onClick'] = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
+
+  return (
+    <Space direction="vertical">
+      <ConfigProvider
+        theme={{
+          algorithm: [theme.darkAlgorithm],
+          components: {
+            Menu: {
+              popupBg: 'yellow',
+              darkPopupBg: 'red',
+            },
+          },
+        }}
+      >
+        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+        <Menu
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1']}
+          mode="inline"
+          theme="dark"
+          inlineCollapsed
+          items={items2}
+          style={{
+            width: 56,
+          }}
+        />
+      </ConfigProvider>
+      <ConfigProvider
+        theme={{
+          components: {
+            Menu: {
+              horizontalItemBorderRadius: 6,
+              popupBg: 'red',
+              horizontalItemHoverBg: '#f5f5f5',
+            },
+          },
+        }}
+      >
+        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+      </ConfigProvider>
+      <ConfigProvider
+        theme={{
+          components: {
+            Menu: {
+              darkItemColor: '#91daff',
+              darkItemBg: '#d48806',
+              darkSubMenuItemBg: '#faad14',
+              darkItemSelectedColor: '#ffccc7',
+              darkItemSelectedBg: '#52c41a',
+            },
+          },
+        }}
+      >
+        <Menu
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1']}
+          mode="inline"
+          theme="dark"
+          items={items2}
+          style={{
+            width: 256,
+          }}
+        />
+      </ConfigProvider>
+    </Space>
+  );
+};
+
+export default App;
+
+```
+
+### Extra Style debug
+
+#### zh-CN
+
+调试使用
+
+#### en-US
+
+Debug usage
+
+```typescript
+import React from 'react';
+import { DownOutlined, MailOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Flex, Menu, Space } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+const items1: MenuItem[] = [
+  {
+    key: 'sub1',
+    icon: <MailOutlined />,
+    label: 'Navigation One',
+    children: [
+      {
+        key: '1',
+        label: (
+          <Flex justify="space-between">
+            <span>Option 1</span>
+            <DownOutlined />
+          </Flex>
+        ),
+      },
+      {
+        key: '2',
+        label: 'Option 2',
+        extra: '⌘P',
+      },
+      {
+        key: '3',
+        label: <a href="https://www.baidu.com">Link Option</a>,
+        disabled: true,
+      },
+    ],
+  },
+];
+
+const items2: MenuItem[] = [
+  { key: '1', label: 'Users', extra: '⌘U' },
+  { key: '2', label: 'Profile', extra: '⌘P' },
+];
+
+const App: React.FC = () => (
+  <Space direction="vertical">
+    <Menu
+      mode="inline"
+      defaultOpenKeys={['sub1']}
+      defaultSelectedKeys={['1']}
+      style={{ width: 256 }}
+      items={items1}
+    />
+    <Menu theme="dark" style={{ width: 256 }} items={items2} />
+  </Space>
+);
+
+export default App;
+
+```
+
