@@ -2,11 +2,11 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { getComponentDocumentation } from "../utils/components";
 
-// Tool: list-component-examples
-export const registryTool = (server: McpServer) => {
+/** 获取组件文档 */
+const registryTool = (server: McpServer) => {
   server.tool(
     "get-component-docs",
-    "Gets detailed documentation for a specific component",
+    "获取 Ant Design 特定组件的详细文档",
     { componentName: z.string() },
     async ({ componentName }) => {
       const documentation = await getComponentDocumentation(componentName);
@@ -22,3 +22,4 @@ export const registryTool = (server: McpServer) => {
   );
 }
 
+export default registryTool;

@@ -2,9 +2,9 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 import { loadComponentsList } from "../utils/components";
 
-// Tool: list-component-examples
-export const registryTool = (server: McpServer) => {
-  server.tool("list-components", "Lists all available Ant Design components", async () => {
+/** 列出所有可用的 Ant Design 组件 */
+const registryTool = (server: McpServer) => {
+  server.tool("list-components", "列出所有的 Ant Design 组件", async () => {
     const components = await loadComponentsList();
     return {
       content: [
@@ -17,3 +17,4 @@ export const registryTool = (server: McpServer) => {
   });
 }
 
+export default registryTool;

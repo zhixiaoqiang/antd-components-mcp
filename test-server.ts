@@ -18,7 +18,7 @@ const rootDir = resolve(__dirname, "..");
 // Set up the MCP client to communicate with our server
 const transport = new StdioClientTransport({
   command: "node",
-  args: [resolve(rootDir, "index.mjs")],
+  args: [resolve(rootDir, "dist/server.js")],
 });
 
 const client = new Client({
@@ -46,7 +46,7 @@ try {
   const docs = await client.callTool({
     name: "get-component-docs",
     arguments: {
-      componentName: "Button", // Using PascalCase
+      componentName: "Affix", // Using PascalCase
     },
   });
   console.log(docs.content[0].text);
@@ -56,7 +56,7 @@ try {
   const props = await client.callTool({
     name: "get-component-props",
     arguments: {
-      componentName: "Button", // Using PascalCase
+      componentName: "Affix", // Using PascalCase
     },
   });
   console.log(props.content[0].text);
@@ -66,31 +66,20 @@ try {
   const examples = await client.callTool({
     name: "list-component-examples",
     arguments: {
-      componentName: "Button", // Using PascalCase
+      componentName: "Affix", // Using PascalCase
     },
   });
   console.log(examples.content[0].text);
 
-  // Get component example
-  console.log("\n--- GET COMPONENT EXAMPLE ---");
-  const example = await client.callTool({
-    name: "get-component-example",
+  // Get components changelog
+  console.log("\n--- GET COMPONENTS CHANGELOG ---");
+  const changelog = await client.callTool({
+    name: "get-component-changelog",
     arguments: {
-      componentName: "Button", // Using PascalCase
-      exampleName: "basic",
+      componentName: "Affix", // Using PascalCase
     },
   });
-  console.log(example.content[0].text);
-
-  // Search components
-  console.log("\n--- SEARCH COMPONENTS ---");
-  const searchResults = await client.callTool({
-    name: "search-components",
-    arguments: {
-      pattern: "Button|Input", // Using PascalCase
-    },
-  });
-  console.log(searchResults.content[0].text);
+  console.log(changelog.content[0].text);
 } catch (error) {
   console.error("Error during testing:", error);
 } finally {

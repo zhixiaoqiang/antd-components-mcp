@@ -14,12 +14,13 @@ import { existsSync } from "node:fs";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 
-import { EXTRACT_COMPONENTS_DATA_DIR, EXTRACT_COMPONENTS_LIST_PATH, EXTRACT_DATA_DIR, EXTRACT_METADATA_PATH } from "../constants/path.ts";
-import { removeFrontmatter, toPascalCase, writeJsonFile } from "./utils.ts";
+import { EXTRACT_COMPONENTS_DATA_DIR, EXTRACT_COMPONENTS_LIST_PATH, EXTRACT_DATA_DIR, EXTRACT_METADATA_PATH } from "../constants/path";
+import { extractSection, removeFrontmatter, toPascalCase, writeJsonFile } from "./utils";
 
-
-
-interface ExamplesInfo {
+/**
+ * 组件示例信息
+ */
+export interface ExamplesInfo {
   /** 例子名称 */
   name: string;
   /** 例子标题 */
@@ -29,8 +30,10 @@ interface ExamplesInfo {
   /** 例子代码 */
   code?: string;
 }
-
-interface ComponentData {
+/**
+ * 组件数据
+ */
+export interface ComponentData {
   /** 组件名称 */
   name: string;
   /** 组件目录 */
@@ -49,36 +52,8 @@ interface ComponentData {
   examplesInfo?: ExamplesInfo[];
 }
 
-
-// ==================================
-// 工具函数
-// ==================================
-
-// 从 Markdown 中提取指定部分
-const extractSection = (markdown, startMatch, endMatch = /\n## [^#]/) => {
-  // 查找指定部分的起始位置
-  const whenToUseIndex = markdown.indexOf(startMatch);
-
-  if (whenToUseIndex !== -1) {
-    // 查找同级别的下一个标题（以 ## 开头但不是 ###）
-    const startPos = whenToUseIndex + 1; // 跳过 [startMatch] 前的换行符
-    let endPos = markdown.length;
-
-    // 查找下一个 ## 标题（但不是 ###+ 标题）
-    const nextHeadingMatch = markdown.slice(startPos).match(endMatch);
-    if (nextHeadingMatch) {
-      endPos = startPos + nextHeadingMatch.index;
-    }
-
-    // 提取完整的指定部分
-    return markdown.slice(startPos, endPos).trim();
-  }
-
-  return null;
-};
-
 // 从 Markdown 内容中提取示例及其描述
-const extractExamples = (markdown) => {
+const extractExamples = (markdown: string) => {
   // 查找引用演示文件的代码片段及其描述
   const codeRefs = [
     ...markdown.matchAll(/<code src="\.\/demo\/([^"]+)\.tsx"(?:\s+[^>]*)?>(.*?)<\/code>/g),
@@ -98,12 +73,14 @@ const extractExamples = (markdown) => {
   return [];
 };
 
-// ==================================
-// 主要提取函数
-// ==================================
-let a = 0
-// 处理组件的文档和示例
-async function processComponent(componentsPath, dirName) {
+/**
+ * 处理组件数据
+ * 
+ * @param componentsPath 
+ * @param dirName 
+ * @returns 
+ */
+async function processComponent(componentsPath: string, dirName: string) {
   const componentPath = join(componentsPath, dirName);
   const indexMdPath = join(componentPath, "index.zh-CN.md");
   const demoPath = join(componentPath, "demo");
@@ -154,7 +131,7 @@ async function processComponent(componentsPath, dirName) {
         try {
           exampleInfo.code = await readFile(`${examplePath}.tsx`, "utf-8");
         } catch (error) {
-          console.error(`  ❌ 读取示例 ${exampleInfo.name} 时出错:`, error.message);
+          console.error(`  ❌ 读取示例 ${exampleInfo.name} 时出错:`, (error as Error).message);
         }
       }
 
@@ -163,13 +140,13 @@ async function processComponent(componentsPath, dirName) {
 
     return componentData;
   } catch (error) {
-    console.error(`  ❌ 处理 ${componentName} 时出错:`, error.message);
+    console.error(`  ❌ 处理 ${componentName} 时出错:`, (error as Error).message);
     return null;
   }
 }
 
 // 处理所有组件并导出数据的主函数
-async function extractAllData(antdRepoPath) {
+async function extractAllData(antdRepoPath: string) {
   // 确保数据目录存在，如果不存在则创建它及其所有目录
   await mkdir(EXTRACT_DATA_DIR, { recursive: true });
 

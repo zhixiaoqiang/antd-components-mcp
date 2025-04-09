@@ -4,9 +4,17 @@ import { Cache } from "./cache";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
 
-const componentCache = new Cache()
+import type { ComponentData } from './../scripts/extract-docs';
 
-// Load components index from the extracted data
+
+interface CacheData {
+  componentsList: ComponentData[]
+  componentsChangelog: string
+}
+
+const componentCache = new Cache<CacheData>()
+
+// 加载组件列表
 export async function loadComponentsList() {
   try {
     const cacheComponentList = componentCache.get('componentsList')
@@ -15,20 +23,19 @@ export async function loadComponentsList() {
     }
 
     const componentList = await readFile(EXTRACT_COMPONENTS_LIST_PATH, "utf-8");
-    const componentListJson = JSON.parse(componentList)
+    const componentListJson = JSON.parse(componentList) as ComponentData[]
     
     componentCache.set('componentsList', componentListJson)
     
     return componentListJson
   } catch (error) {
-    console.error(`Error loading components index: ${error.message}`);
+    console.error(`加载组件列表错误: ${(error as Error).message}`);
     return [];
   }
 }
 
-
-// Find a component by name (case-insensitive)
-export async function findComponentByName(componentName) {
+/** 根据组件名称查找组件 */
+export async function findComponentByName(componentName: string) {
   const components = await loadComponentsList();
   return components.find(
     (c) =>
@@ -37,20 +44,12 @@ export async function findComponentByName(componentName) {
   );
 }
 
-// Find components matching a pattern
-export async function findComponentsByPattern(pattern) {
-  const components = await loadComponentsList();
-  const regexPattern = new RegExp(pattern, "i");
-
-  return components.filter((c) => regexPattern.test(c.name) || regexPattern.test(c.dirName));
-}
-
-// Get component markdown documentation
-export const getComponentDocumentation = async (componentName) => {
+/** 获取 Ant Design 特定组件文档 */
+export const getComponentDocumentation = async (componentName: string) => {
   const component = await findComponentByName(componentName);
 
   if (!component) {
-    return `Documentation for component "${componentName}" not found`;
+    return ` "${componentName}" 组件文档不存在`;
   }
 
   const docPath = join(EXTRACT_COMPONENTS_DATA_DIR, component.dirName, "docs.md");
@@ -59,21 +58,21 @@ export const getComponentDocumentation = async (componentName) => {
     if (existsSync(docPath)) {
       return await readFile(docPath, "utf-8");
     } else {
-      return `Documentation for ${component.name} not found`;
+      return `${component.name} 组件文档不存在`;
     }
   } catch (error) {
-    console.error(`Error reading documentation for ${component.name}: ${error.message}`);
-    return `Error reading documentation: ${error.message}`;
+    console.error(`获取 ${component.name} 组件文档错误: ${(error as Error).message}`);
+    return `获取 ${component.name} 组件文档错误: ${(error as Error).message}`;
   }
 };
 
 
-// Get component API documentation
-export const getComponentProps = async (componentName) => {
+/** 获取 Ant Design 特定组件 API 文档 */
+export const getComponentProps = async (componentName: string) => {
   const component = await findComponentByName(componentName);
 
   if (!component) {
-    return `API documentation for component "${componentName}" not found`;
+    return `${componentName} API 文档不存在`;
   }
 
   try {
@@ -82,37 +81,36 @@ export const getComponentProps = async (componentName) => {
     if (existsSync(apiPath)) {
       return await readFile(apiPath, "utf-8");
     }
-    return `API documentation for ${component.name} not found`;
+    return `${componentName} API 文档不存在`;
   } catch (error) {
-    console.error(`Error reading API for ${component.name}: ${error.message}`);
-    return `Error reading API documentation: ${error.message}`;
+    console.error(`获取 ${component.name} API文档错误: ${(error as Error).message}`);
+    return `获取 ${component.name} API文档错误: ${(error as Error).message}`;
   }
 };
 
-// List component examples
-export const listComponentExamples = async (componentName) => {
+/** 获取 Ant Design 特定组件示例 */
+export const listComponentExamples = async (componentName: string) => {
   const component = await findComponentByName(componentName);
 
   if (!component) {
     return "当前组件不存在";
   }
 
-  // First, check if we have examples.md with descriptions
   const examplesMdPath = join(EXTRACT_COMPONENTS_DATA_DIR, component.dirName, "examples.md");
 
   if (!existsSync(examplesMdPath)) {
-    return `No examples found for ${component.name}`;
+    return `${component.name} 的示例代码不存在`;
   }
   try {
     return await readFile(examplesMdPath, "utf-8");
   } catch (error) {
-    console.error(`Error reading examples markdown for ${component.name}: ${error.message}`);
-    return `No examples found for ${component.name}`;
+    console.error(`${component.name} 的示例代码不存在: ${(error as Error).message}`);
+    return `${component.name} 的示例代码不存在`;
   }
 };
 
 // 获取组件更新记录
-export const getComponentsChangelog = async (componentName) => {
+export const getComponentsChangelog = async (componentName: string) => {
   const component = await findComponentByName(componentName);
 
   if (!component) {
@@ -131,7 +129,7 @@ export const getComponentsChangelog = async (componentName) => {
     return componentChangelogJson
 
   } catch (error) {
-    console.error(`Error reading examples markdown for ${component.name}: ${error.message}`);
+    console.error(`获取组件更新记录错误 ${component.name}: ${(error as Error).message}`);
     return `未找到 ${component.name} 更新日志`;
   }
 };
