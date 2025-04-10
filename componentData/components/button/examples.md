@@ -6,9 +6,7 @@
 
 通过 `type` 语法糖，使用预设的按钮样式：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。推荐主按钮在同一个操作区域最多出现一次。
 
-#### en-US
 
-Through the `type` syntactic sugar, use the preset button styles: `primary` buttons, `default` buttons, `dashed` buttons, `text` buttons, and `link` buttons.
 
 ```typescript
 import React from 'react';
@@ -34,9 +32,7 @@ export default App;
 
 同时设置 `color` 和 `variant` 属性，可以衍生出更多的变体按钮。
 
-#### en-US
 
-You can set the `color` and `variant` attributes at the same time can derive more variant buttons.
 
 ```typescript
 import React from 'react';
@@ -184,9 +180,7 @@ export default App;
 
 可以通过 `icon`属性添加图标。
 
-#### en-US
 
-You can add an icon using the `icon` property.
 
 ```typescript
 import React from 'react';
@@ -236,9 +230,7 @@ export default App;
 
 通过设置 `iconPosition` 为 `start` 或 `end` 分别设置按钮图标的位置。
 
-#### en-US
 
-You can set the position of a button's icon by setting the `iconPosition` to `start` or `end` respectively.
 
 ```typescript
 import React, { useState } from 'react';
@@ -317,11 +309,7 @@ export default App;
 
 通过设置 `size` 为 `large` `small` 分别把按钮设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
 
-#### en-US
 
-Ant Design supports three sizes of buttons: small, default and large.
-
-If a large or small button is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a button with the default size.
 
 ```typescript
 import React, { useState } from 'react';
@@ -382,9 +370,7 @@ export default App;
 
 添加 `disabled` 属性即可让按钮处于不可用状态，同时按钮样式也会改变。
 
-#### en-US
 
-To mark a button as disabled, add the `disabled` property to the `Button`.
 
 ```typescript
 import React from 'react';
@@ -469,9 +455,7 @@ export default App;
 
 添加 `loading` 属性即可让按钮处于加载状态，`loading.icon` 可以自定义加载图标，最后三个按钮演示点击后进入加载状态。
 
-#### en-US
 
-A loading indicator can be added to a button by setting the `loading` property on the `Button`. The `loading.icon` can be used to customize the loading icon.
 
 ```typescript
 import React, { useState } from 'react';
@@ -560,9 +544,7 @@ export default App;
 
 按钮组合使用时，推荐使用 1 个主操作 + n 个次操作，3 个以上操作时把更多操作放到 [Dropdown.Button](/components/dropdown-cn/##dropdown-demo-dropdown-button) 中组合使用。
 
-#### en-US
 
-If you need several buttons, we recommend that you use 1 primary button + n secondary buttons. If there are more than three operations, you can group some of them into a [Dropdown.Button](/components/dropdown/##dropdown-demo-dropdown-button).
 
 ```typescript
 import React from 'react';
@@ -606,9 +588,7 @@ export default App;
 
 幽灵按钮将按钮的内容反色，背景变为透明，常用在有色背景上。
 
-#### en-US
 
-The `ghost` property will make a button's background transparent, this is commonly used in colored background.
 
 ```typescript
 import React from 'react';
@@ -639,9 +619,7 @@ export default App;
 
 在 4.0 之后，危险成为一种按钮属性而不是按钮类型。
 
-#### en-US
 
-The `danger` is a property of buttons after antd 4.0.
 
 ```typescript
 import React from 'react';
@@ -675,9 +653,7 @@ export default App;
 
 `block` 属性将使按钮适合其父宽度。
 
-#### en-US
 
-The `block` property will make a button fit to its parent width.
 
 ```typescript
 import React from 'react';
@@ -714,9 +690,7 @@ export default App;
 
 Debug usage
 
-#### en-US
 
-Debug usage
 
 ```typescript
 import React from 'react';
@@ -759,9 +733,7 @@ export default App;
 
 https://github.com/ant-design/ant-design/issues/36165
 
-#### en-US
 
-https://github.com/ant-design/ant-design/issues/36165
 
 ```typescript
 import React from 'react';
@@ -806,9 +778,7 @@ export default App;
 
 组件 Token，模仿 MUI 风格的 Button
 
-#### en-US
 
-Component Token. Button with MUI style.
 
 ```typescript
 import React from 'react';
@@ -903,9 +873,7 @@ export default App;
 
 自定义为渐变背景按钮。
 
-#### en-US
 
-Buttons with a gradient background.
 
 ```typescript
 import React from 'react';
@@ -966,9 +934,7 @@ export default App;
 
 我们默认在两个汉字之间添加空格，可以通过设置 `autoInsertSpace` 为 `false` 关闭。
 
-#### en-US
 
-We add a space between two Chinese characters by default, which can be removed by setting `autoInsertSpace` to `false`.
 
 ```typescript
 import React from 'react';

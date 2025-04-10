@@ -6,9 +6,7 @@
 
 基本的表单数据域控制展示，包含布局、初始化、验证、提交。
 
-#### en-US
 
-Basic Form data control. Includes layout, initial values, validation and submit.
 
 ```typescript
 import React from 'react';
@@ -80,11 +78,7 @@ export default App;
 
 > 注意 `useForm` 是 [React Hooks](https://reactjs.org/docs/hooks-intro.html) 的实现，只能用于函数组件。如果是在 Class Component 下，你也可以通过 `ref` 获取数据域：https://codesandbox.io/p/sandbox/ngtjtm
 
-#### en-US
 
-Call form method with `Form.useForm`.
-
-> Note that `useForm` is a [React Hooks](https://reactjs.org/docs/hooks-intro.html) that only works in functional component. You can also use `ref` to get the form instance in class component: https://codesandbox.io/p/sandbox-ngtjtm
 
 ```typescript
 import React from 'react';
@@ -192,9 +186,7 @@ export default App;
 
 表单有三种布局。
 
-#### en-US
 
-There are three layout for form: `horizontal`, `vertical`, `inline`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -248,9 +240,7 @@ export default App;
 
 在 `Form.Item` 上单独定义 `layout`，可以做到一个表单多种布局。
 
-#### en-US
 
-Defining a separate `layout` on `Form.Item` can achieve multiple layouts for a single form.
 
 ```typescript
 import React from 'react';
@@ -310,9 +300,7 @@ export default App;
 
 设置表单组件禁用，仅对 antd 组件有效。
 
-#### en-US
 
-Set component to disabled, only works for antd components.
 
 ```typescript
 import React, { useState } from 'react';
@@ -456,9 +444,7 @@ export default () => <FormDisabledDemo />;
 
 改变表单内所有组件的变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Change the variant of all components in the form, options include: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -590,9 +576,7 @@ export default App;
 
 通过 `requiredMark` 切换必选与可选样式。
 
-#### en-US
 
-Switch required or optional style with `requiredMark`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -658,9 +642,7 @@ export default App;
 
 设置表单组件尺寸，仅对 antd 组件有效。
 
-#### en-US
 
-Set component size, only works for antd components.
 
 ```typescript
 import React, { useState } from 'react';
@@ -755,9 +737,7 @@ export default App;
 
 使用 `labelWrap` 可以开启 `label` 换行。
 
-#### en-US
 
-Turn on `labelWrap` to wrap label if text is long.
 
 ```typescript
 import React from 'react';
@@ -799,9 +779,7 @@ export default App;
 
 `rule` 添加 `warningOnly` 后校验不再阻塞表单提交。
 
-#### en-US
 
-`rule` with `warningOnly` will not block form submit.
 
 ```typescript
 import React from 'react';
@@ -863,9 +841,7 @@ export default App;
 
 `useWatch` 允许你监听字段变化，同时仅当该字段变化时重新渲染。API 文档请[查阅此处](##formusewatch)。
 
-#### en-US
 
-`useWatch` helps watch the field change and only re-render for the value change. [API Ref](##formusewatch).
 
 ```typescript
 import React from 'react';
@@ -906,9 +882,7 @@ export default Demo;
 
 对于有异步校验的场景，过于频繁的校验会导致后端压力。可以通过 `validateTrigger` 改变校验时机，或者 `validateDebounce` 改变校验频率，或者 `validateFirst` 设置校验短路。
 
-#### en-US
 
-For the async validation scenario, high frequency of verification will cause backend pressure. You can change the verification timing through `validateTrigger`, or change the verification frequency through `validateDebounce`, or set the verification short circuit through `validateFirst`.
 
 ```typescript
 import React from 'react';
@@ -960,9 +934,7 @@ export default App;
 
 通过 `validateFields` 的 `validateOnly` 可以动态调整提交按钮的 `disabled` 状态。
 
-#### en-US
 
-Dynamic adjust submit button's `disabled` status by `validateOnly` of `validateFields`.
 
 ```typescript
 import React from 'react';
@@ -1023,9 +995,7 @@ export default App;
 
 在某些场景，你希望统一设置一些字段的前缀。你可以通过 HOC 实现该效果。
 
-#### en-US
 
-In some scenarios, you may want to set a prefix for some fields consistently. You can achieve this effect with HOC.
 
 ```typescript
 import React from 'react';
@@ -1098,28 +1068,7 @@ export default App;
 
 动态增加、减少表单项。`add` 方法参数可用于设置初始值。
 
-#### en-US
 
-Add or remove form items dynamically. `add` function support config initial value.
-
-```css
-.dynamic-delete-button {
-  position: relative;
-  top: 4px;
-  margin: 0 8px;
-  color: ##999;
-  font-size: 24px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.dynamic-delete-button:hover {
-  color: ##777;
-}
-.dynamic-delete-button[disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-```
 
 ```typescript
 import React from 'react';
@@ -1242,9 +1191,7 @@ export default App;
 
 嵌套表单字段需要对 `field` 进行拓展，将 `field.name` 应用于控制字段。
 
-#### en-US
 
-Nest dynamic field need extends `field`. Pass `field.name` to nest item.
 
 ```typescript
 import React from 'react';
@@ -1310,9 +1257,7 @@ export default App;
 
 嵌套 `noStyle` 字段的动态表单示例。
 
-#### en-US
 
-Nest with `noStyle` field dynamic form.
 
 ```typescript
 import React from 'react';
@@ -1376,9 +1321,7 @@ export default App;
 
 多个 Form.List 嵌套的使用场景。
 
-#### en-US
 
-Multiple Form.List nested usage scenarios.
 
 ```typescript
 import React from 'react';
@@ -1476,9 +1419,7 @@ export default App;
 
 `name` 属性支持嵌套数据结构。通过 `validateMessages` 或 `message` 自定义校验信息模板，模板内容可参考[此处](https://github.com/react-component/field-form/blob/master/src/utils/messages.ts)。
 
-#### en-US
 
-`name` prop support nest data structure. Customize validate message template with `validateMessages` or `message`. Ref [here](https://github.com/react-component/field-form/blob/master/src/utils/messages.ts) about message template.
 
 ```typescript
 import React from 'react';
@@ -1565,29 +1506,7 @@ export default App;
 
 更复杂的封装复用方式可以参考下面的 `自定义表单控件` 演示。
 
-#### en-US
 
-This demo shows how to use `Form.Item` with multiple controls. `<Form.Item name="field" />` will only bind the control(Input/Select) which is the only children of it. Imagine this case: you added some text description after the Input, then you have to wrap the Input by an extra `<Form.Item name="field">`. `style` property of `Form.Item` could be useful to modify the nested form item layout, or use `<Form.Item noStyle />` to turn it into a pure form-binded component(like `getFieldDecorator` in 3.x).
-
-```diff
-- <Form.Item label="Field" name="field">
--   <Input />
-- </Form.Item>
-+ <Form.Item label="Field">
-+   <Form.Item name="field" noStyle><Input /></Form.Item> // that will bind input
-+   <span>description</span>
-+ </Form.Item>
-```
-
-This demo shows three typical usages:
-
-- `Username`: extra elements after control, using `<Form.Item name="field" noStyle />` inside `Form.Item` to bind Input.
-- `Address`: two controls in one line, using two `<Form.Item name="field" noStyle />` to bind each control.
-- `BirthDate`：two controls in one line with independent error message, using two `<Form.Item name="field" noStyle />` to bind each control, make layout inline by customizing `style` property.
-
-> Note that, in this case, no more `name` property should be left in Form.Item with label.
-
-See the `Customized Form Controls` demo below for more advanced usage.
 
 ```typescript
 import React from 'react';
@@ -1680,13 +1599,7 @@ export default App;
 > - 提供 `onChange` 事件或 [`trigger`](##formitem) 的值同名的事件。
 > - 转发 ref 或者传递 id 属性到 dom 以支持 `scrollToField` 方法。
 
-#### en-US
 
-Customized or third-party form controls can be used in Form, too. Controls must follow these conventions:
-
-> - It has a controlled property `value` or other name which is equal to the value of [`valuePropName`](##formitem).
-> - It has event `onChange` or an event which name is equal to the value of [`trigger`](##formitem).
-> - Forward the ref or pass the id property to dom to support the `scrollToField` method.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1802,11 +1715,7 @@ export default App;
 
 **注意：** 将表单数据存储于外部容器[并非好的实践](https://github.com/reduxjs/redux/issues/1287##issuecomment-175351978)，如无必要请避免使用。
 
-#### en-US
 
-We can store form data into upper component or [Redux](https://github.com/reactjs/redux) or [dva](https://github.com/dvajs/dva) by using `onFieldsChange` and `fields`, see more at this [rc-field-form demo](https://rc-field-form.react-component.now.sh/?selectedKind=rc-field-form&selectedStory=StateForm-redux&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel).
-
-**Note:** Save Form data globally [is not a good practice](https://github.com/reduxjs/redux/issues/1287##issuecomment-175351978). You should avoid this if not necessary.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1874,9 +1783,7 @@ export default App;
 
 通过 `Form.Provider` 在表单间处理数据。本例子中，Modal 的确认按钮在 Form 之外，通过 `form.submit` 方法调用表单提交功能。反之，则推荐使用 `<Button htmlType="submit" />` 调用 web 原生提交逻辑。
 
-#### en-US
 
-Use `Form.Provider` to process data between forms. In this case, submit button is in the Modal which is out of Form. You can use `form.submit` to submit form. Besides, we recommend native `<Button htmlType="submit" />` to submit a form.
 
 ```typescript
 import React, { useEffect, useRef, useState } from 'react';
@@ -2027,9 +1934,7 @@ export default App;
 
 内联登录栏，常用在顶部导航栏中。
 
-#### en-US
 
-Inline login form is often used in navigation bar.
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -2094,9 +1999,7 @@ export default App;
 
 > 🛎️ 想要 3 分钟实现登录表单？试试 [Pro Components](https://procomponents.ant.design/components/login-form)！
 
-#### en-US
 
-Normal login form which can contain more elements.
 
 ```typescript
 import React from 'react';
@@ -2156,9 +2059,7 @@ export default App;
 
 用户填写必须的信息以注册新用户。
 
-#### en-US
 
-Fill in this form to create a new account for you.
 
 ```typescript
 import React, { useState } from 'react';
@@ -2467,11 +2368,7 @@ export default App;
 
 > 🛎️ 想要 3 分钟实现？ 试试 ProForm 的[查询表单](https://procomponents.ant.design/components/form##%E6%9F%A5%E8%AF%A2%E7%AD%9B%E9%80%89)！
 
-#### en-US
 
-Three columns layout is often used for advanced searching of data table.
-
-Because the width of label is not fixed, you may need to adjust it by customizing its style.
 
 ```typescript
 import React, { useState } from 'react';
@@ -2601,9 +2498,7 @@ export default App;
 
 > 🛎️ 想要 3 分钟实现？试试 ProForm 的 [Modal 表单](https://procomponents.ant.design/components/form##modal-%E8%A1%A8%E5%8D%95)！
 
-#### en-US
 
-When user visit a page with a list of items, and want to create a new item. The page can popup a form in Modal, then let user fill in the form to create an item.
 
 ```typescript
 import React, { useState } from 'react';
@@ -2684,9 +2579,7 @@ export default App;
 
 时间类组件的 `value` 类型为 `dayjs` 对象，所以在提交服务器前需要预处理。
 
-#### en-US
 
-The `value` of time-related components is a `dayjs` object, which we need to pre-process it before we submit to server.
 
 ```typescript
 import React from 'react';
@@ -2775,9 +2668,7 @@ export default App;
 
 `Form` 具有自动收集数据并校验的功能，但如果您不需要这个功能，或者默认的行为无法满足业务需求，可以选择自行处理数据。
 
-#### en-US
 
-`Form` will collect and validate form data automatically. But if you don't need this feature or the default behavior cannot satisfy your business, you can handle form data manually.
 
 ```typescript
 import React, { useState } from 'react';
@@ -2854,13 +2745,7 @@ export default App;
 2. `hasFeedback`：用于给输入框添加反馈图标。
 3. `help`：设置校验文案。
 
-#### en-US
 
-We provide properties like `validateStatus` `help` `hasFeedback` to customize your own validate status and message, without using Form.
-
-1. `validateStatus`: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
-2. `hasFeedback`: display feed icon of input control
-3. `help`: display validate message.
 
 ```typescript
 import React from 'react';
@@ -3032,9 +2917,7 @@ export default App;
 
 根据不同情况执行不同的校验规则。
 
-#### en-US
 
-Perform different check rules according to different situations.
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -3113,9 +2996,7 @@ export default App;
 
 Form.Item 可以通过 `dependencies` 属性，设置关联字段。当关联字段的值发生变化时，会触发校验与更新。
 
-#### en-US
 
-Form.Item can set the associated field through the `dependencies` property. When the value of the associated field changes, the validation and update will be triggered.
 
 ```typescript
 import React from 'react';
@@ -3184,9 +3065,7 @@ export default App;
 
 校验失败时/手动滚动到错误字段。
 
-#### en-US
 
-When validation fails or manually scroll to the error field.
 
 ```typescript
 import React from 'react';
@@ -3253,9 +3132,7 @@ export default App;
 
 以上演示没有出现的表单控件对应的校验演示。
 
-#### en-US
 
-Demonstration of validation configuration for form controls which are not shown in the demos above.
 
 ```typescript
 import React from 'react';
@@ -3474,9 +3351,7 @@ export default App;
 
 配合 `getValueProps` 和 `normalize`，可以转换 `value` 的格式，如将时间戳转成 `dayjs` 对象再传给 `DatePicker`。
 
-#### en-US
 
-By combining `getValueProps` and `normalize`, it is possible to convert the format of `value`, such as converting the timestamp into a `dayjs` object and then passing it to the `DatePicker`.
 
 ```typescript
 import React from 'react';
@@ -3532,9 +3407,7 @@ export default App;
 
 Test disabled Input with validate state
 
-#### en-US
 
-Test disabled Input with validate state.
 
 ```typescript
 import React from 'react';
@@ -3591,9 +3464,7 @@ export default App;
 
 `label` 中使用 `<Typography.Text ellipsis>` 时应该显示 `...`。
 
-#### en-US
 
-Use `<Typography.Text ellipsis>` in label should show `...`.
 
 ```typescript
 import React from 'react';
@@ -3640,9 +3511,7 @@ export default App;
 
 See issue [##32980](https://github.com/ant-design/ant-design/issues/32980).
 
-#### en-US
 
-See issue [##32980](https://github.com/ant-design/ant-design/issues/32980).
 
 ```typescript
 import React from 'react';
@@ -3775,9 +3644,7 @@ export default App;
 
 请优先使用 `ref`！
 
-#### en-US
 
-Use `ref` first!
 
 ```typescript
 import React from 'react';
@@ -3833,9 +3700,7 @@ export default App;
 
 自定义反馈图标可以通过 `hasFeedback={{ icons: ... }}` 或 `<Form FeedbackIcons={icons}>` 传递（`Form.Item` 必须具有 `hasFeedback` 属性）。
 
-#### en-US
 
-Custom feedback icons can be passed by `hasFeedback={{ icons: ... }}` or `<Form feedbackIcons={icons}>` (`Form.Item` must has `hasFeedback` attribute).
 
 ```typescript
 import React from 'react';
@@ -3923,9 +3788,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

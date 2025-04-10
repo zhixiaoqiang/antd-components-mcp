@@ -6,9 +6,7 @@
 
 典型的页面布局。
 
-#### en-US
 
-Classic page layouts.
 
 ```typescript
 import React from 'react';
@@ -108,13 +106,7 @@ export default App;
 
 一般主导航放置于页面的顶端，从左自右依次为：logo、一级导航项、辅助菜单（用户、设置、通知等）。通常将内容放在固定尺寸（例如：1200px）内，整个页面排版稳定，不受用户终端显示器影响；上下级的结构符合用户上下浏览的习惯，也是较为经典的网站导航模式。页面上下切分的方式提高了主工作区域的信息展示效率，但在纵向空间上会有一些牺牲。此外，由于导航栏水平空间的限制，不适合那些一级导航项很多的信息结构。
 
-#### en-US
 
-The most basic "header-content-footer" layout.
-
-Generally, the mainnav is placed at the top of the page, and includes the logo, the first level navigation, and the secondary menu (users, settings, notifications) from left to right in it. We always put contents in a fixed size navigation (eg: `1200px`), the layout of the whole page is stable, it's not affected by the viewing area.
-
-Top-bottom structure is conformed with the top-bottom viewing habit, it's a classical navigation pattern of websites. This pattern demonstrates efficiency in the main workarea, while using some vertical space. And because the horizontal space of the navigation is limited, this pattern is not suitable for cases when the first level navigation contains many elements or links.
 
 ```typescript
 import React from 'react';
@@ -178,9 +170,7 @@ export default App;
 
 拥有顶部导航及侧边栏的页面，多用于展示类网站。
 
-#### en-US
 
-Both the top navigation and the sidebar, commonly used in documentation site.
 
 ```typescript
 import React from 'react';
@@ -269,9 +259,7 @@ export default App;
 
 同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。
 
-#### en-US
 
-Both the top navigation and the sidebar, commonly used in application site.
 
 ```typescript
 import React from 'react';
@@ -368,13 +356,7 @@ export default App;
 
 > 🛎️ 想要 3 分钟实现？试试 [ProLayout](https://procomponents.ant.design/components/layout)！
 
-#### en-US
 
-Two-columns layout. The sider menu can be collapsed when horizontal space is limited.
-
-Generally, the mainnav is placed on the left side of the page, and the secondary menu is placed on the top of the working area. Contents will adapt the layout to the viewing area to improve the horizontal space usage, while the layout of the whole page is not stable.
-
-The level of the aside navigation is scalable. The first, second, and third level navigations could be present more fluently and relevantly, and aside navigation can be fixed, allowing the user to quickly switch and spot the current position, improving the user experience. However, this navigation occupies some horizontal space of the contents.
 
 ```typescript
 import React, { useState } from 'react';
@@ -466,9 +448,7 @@ export default App;
 
 要使用自定义触发器，可以设置 `trigger={null}` 来隐藏默认设定。
 
-#### en-US
 
-If you want to use a customized trigger, you can hide the default one by setting `trigger={null}`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -557,11 +537,7 @@ Layout.Sider 支持响应式布局。
 
 > 说明：配置 `breakpoint` 属性即生效，视窗宽度小于 `breakpoint` 时 Sider 缩小为 `collapsedWidth` 宽度，若将 `collapsedWidth` 设置为 0，会出现特殊 trigger。
 
-#### en-US
 
-Layout.Sider supports responsive layout.
-
-> Note: You can get a responsive layout by setting `breakpoint`, the Sider will collapse to the width of `collapsedWidth` when window width is below the `breakpoint`. And a special trigger will appear if the `collapsedWidth` is set to 0.
 
 ```typescript
 import React from 'react';
@@ -630,9 +606,7 @@ export default App;
 
 一般用于固定顶部导航，方便页面切换。
 
-#### en-US
 
-Sticky Header is generally used to fix the top navigation to facilitate page switching.
 
 ```typescript
 import React from 'react';
@@ -705,9 +679,7 @@ export default App;
 
 当内容较长时，使用固定侧边栏可以提供更好的体验。
 
-#### en-US
 
-When dealing with long content, a sticky sider can provide a better user experience.
 
 ```typescript
 import React from 'react';
@@ -928,9 +900,7 @@ export default App;
 
 组件 Token
 
-#### en-US
 
-Component Token
 
 ```typescript
 import React from 'react';

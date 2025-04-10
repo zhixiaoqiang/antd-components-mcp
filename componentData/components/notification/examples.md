@@ -6,9 +6,7 @@
 
 通过 `notification.useNotification` 创建支持读取 context 的 `contextHolder`。请注意，我们推荐通过顶层注册的方式代替 `notification` 静态方法，因为静态方法无法消费上下文，因而 ConfigProvider 的数据也不会生效。
 
-#### en-US
 
-Use `notification.useNotification` to get `contextHolder` with context accessible issue. Please note that, we recommend to use top level registration instead of `notification` static method, because static method cannot consume context, and ConfigProvider data will not work.
 
 ```typescript
 import React, { useMemo } from 'react';
@@ -88,9 +86,7 @@ export default App;
 
 自定义通知框自动关闭的延时，默认 `4.5s`，取消自动关闭只要将该值设为 `0` 即可。
 
-#### en-US
 
-`Duration` can be used to specify how long the notification stays open. After the duration time elapses, the notification closes automatically. If not specified, default value is 4.5 seconds. If you set the value to 0, the notification box will never close automatically.
 
 ```typescript
 import React from 'react';
@@ -128,9 +124,7 @@ export default App;
 
 通知提醒框左侧有图标。
 
-#### en-US
 
-A notification box with a icon at the left side.
 
 ```typescript
 import React from 'react';
@@ -172,9 +166,7 @@ export default App;
 
 自定义关闭按钮的样式和文字。
 
-#### en-US
 
-To customize the style or font of the close button.
 
 ```typescript
 import React from 'react';
@@ -231,9 +223,7 @@ export default App;
 
 图标可以被自定义。
 
-#### en-US
 
-The icon can be customized to any react node.
 
 ```typescript
 import React from 'react';
@@ -272,9 +262,7 @@ export default App;
 
 使用 `placement` 可以配置通知从上面、下面、左上角、右上角、左下角、右下角弹出。
 
-#### en-US
 
-A notification box can appear from the `top` `bottom` `topLeft` `topRight` `bottomLeft` or `bottomRight` of the viewport via `placement`.
 
 ```typescript
 import React from 'react';
@@ -366,9 +354,7 @@ export default App;
 
 使用 style 和 className 来定义样式。
 
-#### en-US
 
-The style and className are available to customize Notification.
 
 ```typescript
 import React from 'react';
@@ -408,9 +394,7 @@ export default App;
 
 可以通过唯一的 key 来更新内容。
 
-#### en-US
 
-Update content with unique key.
 
 ```typescript
 import React from 'react';
@@ -456,9 +440,7 @@ export default App;
 
 堆叠配置，默认开启。超过 3 个以上的消息会被自动收起，可以通过 `threshold` 来设置不会被收起的最大数量。
 
-#### en-US
 
-Stack configuration, enabled by default. More than 3 notifications will be automatically stacked, and could be changed by `threshold`.
 
 ```typescript
 import React, { useMemo } from 'react';
@@ -530,9 +512,7 @@ export default App;
 
 显示自动关闭通知框的进度条。
 
-#### en-US
 
-Show progress bar for auto-closing notification.
 
 ```typescript
 import React from 'react';
@@ -576,9 +556,7 @@ export default App;
 
 静态方法无法消费 Context，推荐优先使用 Hooks 版本。
 
-#### en-US
 
-Static methods cannot consume Context. Please use hooks first.
 
 ```typescript
 import React from 'react';
@@ -610,9 +588,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';

@@ -6,9 +6,7 @@
 
 成功的结果。
 
-#### en-US
 
-Show successful results.
 
 ```typescript
 import React from 'react';
@@ -38,9 +36,7 @@ export default App;
 
 展示处理结果。
 
-#### en-US
 
-Show processing results.
 
 ```typescript
 import React from 'react';
@@ -67,9 +63,7 @@ export default App;
 
 警告类型的结果。
 
-#### en-US
 
-The result of the warning.
 
 ```typescript
 import React from 'react';
@@ -97,9 +91,7 @@ export default App;
 
 你没有此页面的访问权限。
 
-#### en-US
 
-you are not authorized to access this page.
 
 ```typescript
 import React from 'react';
@@ -124,9 +116,7 @@ export default App;
 
 此页面未找到。
 
-#### en-US
 
-The page you visited does not exist.
 
 ```typescript
 import React from 'react';
@@ -151,9 +141,7 @@ export default App;
 
 服务器发生了错误。
 
-#### en-US
 
-Something went wrong on server.
 
 ```typescript
 import React from 'react';
@@ -178,15 +166,7 @@ export default App;
 
 复杂的错误反馈。
 
-#### en-US
 
-Complex error feedback.
-
-```css
-.site-result-demo-error-icon {
-  color: red;
-}
-```
 
 ```typescript
 import React from 'react';
@@ -240,9 +220,7 @@ export default App;
 
 自定义 icon。
 
-#### en-US
 
-Custom icon.
 
 ```typescript
 import React from 'react';
@@ -267,9 +245,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

@@ -6,9 +6,7 @@
 
 头像有三种尺寸，两种形状可选。
 
-#### en-US
 
-Three sizes and two shapes are available.
 
 ```typescript
 import React from 'react';
@@ -44,9 +42,7 @@ export default App;
 
 支持三种类型：图片、Icon 以及字符，其中 Icon 和字符型可以自定义图标颜色及背景色。
 
-#### en-US
 
-Image, Icon and letter are supported, and the latter two kinds of avatar can have custom colors and background colors.
 
 ```typescript
 import React from 'react';
@@ -77,9 +73,7 @@ export default App;
 
 对于字符型的头像，当字符串较长时，字体大小可以根据头像宽度自动调整。也可使用 `gap` 来设置字符距离左右两侧边界单位像素。
 
-#### en-US
 
-For letter type Avatar, when the letters are too long to display, the font size can be automatically adjusted according to the width of the Avatar. You can also use `gap` to set the unit distance between left and right sides.
 
 ```typescript
 import React, { useState } from 'react';
@@ -134,9 +128,7 @@ export default App;
 
 通常用于消息提示。
 
-#### en-US
 
-Usually used for reminders and notifications.
 
 ```typescript
 import React from 'react';
@@ -164,9 +156,7 @@ export default App;
 
 头像组合展现。
 
-#### en-US
 
-Avatar group display.
 
 ```typescript
 import React from 'react';
@@ -250,9 +240,7 @@ export default App;
 
 切换 Avatar 显示的时候，文本样式应该居中并正确调整字体大小。
 
-#### en-US
 
-Text inside Avatar should be set a proper font size when toggle it's visibility.
 
 ```typescript
 import React, { useState } from 'react';
@@ -323,9 +311,7 @@ export default App;
 
 头像大小可以根据屏幕大小自动调整。
 
-#### en-US
 
-Avatar size can be automatically adjusted based on the screen size.
 
 ```typescript
 import React from 'react';
@@ -349,9 +335,7 @@ export default App;
 
 图片不存在时，如果 `src` 本身是个 ReactElement，会尝试回退到 `src`，否则尝试回退到 `icon`，最后回退到显示 `children`。
 
-#### en-US
 
-When the image does not exist, if `src` is a ReactElement, it will try to fall back to `src`, otherwise it will try to fall back to `icon`, and finally fall back to displaying `children`.
 
 ```typescript
 import React from 'react';
@@ -378,9 +362,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug
 
 ```typescript
 import React from 'react';

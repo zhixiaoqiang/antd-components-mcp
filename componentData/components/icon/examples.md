@@ -6,9 +6,7 @@
 
 通过 `@ant-design/icons` 引用 Icon 组件，不同主题的 Icon 组件名为图标名加主题做为后缀，也可以通过设置 `spin` 属性来实现动画旋转效果。
 
-#### en-US
 
-Import icons from `@ant-design/icons`, component name of icons with different theme is the icon name suffixed by the theme name. Specify the `spin` property to show the spinning animation.
 
 ```typescript
 import React from 'react';
@@ -42,9 +40,7 @@ export default App;
 
 双色图标可以通过 `twoToneColor` 属性设置主题色。
 
-#### en-US
 
-You can set the `twoToneColor` prop to a specific primary color for two-tone icons.
 
 ```typescript
 import React from 'react';
@@ -69,9 +65,7 @@ export default App;
 
 利用 `Icon` 组件封装一个可复用的自定义图标。可以通过 `component` 属性传入一个组件来渲染最终的图标，以满足特定的需求。
 
-#### en-US
 
-Create a reusable React component by using `<Icon component={...} />`. The property `component` takes a React component that renders to a `svg` element.
 
 ```typescript
 import React from 'react';
@@ -153,9 +147,7 @@ export default App;
 
 对于使用 [iconfont.cn](http://iconfont.cn/) 的用户，通过设置 `createFromIconfontCN` 方法参数对象中的 `scriptUrl` 字段， 即可轻松地使用已有项目中的图标。
 
-#### en-US
 
-If you are using [iconfont.cn](http://iconfont.cn/), you can use the icons in your project gracefully.
 
 ```typescript
 import React from 'react';
@@ -184,9 +176,7 @@ export default App;
 
 `@ant-design/icons@4.1.0` 以后，`scriptUrl` 可引用多个资源，用户可灵活的管理 [iconfont.cn](http://iconfont.cn/) 图标。如果资源的图标出现重名，会按照数组顺序进行覆盖。
 
-#### en-US
 
-You can use `scriptUrl` as an array after `@ant-design/icons@4.1.0`, to manage icons in one `<Icon />` from multiple [iconfont.cn](http://iconfont.cn/) resources. If an icon with a duplicate name is in resources, it will be overridden in array order.
 
 ```typescript
 import React from 'react';

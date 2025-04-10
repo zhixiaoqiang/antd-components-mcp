@@ -6,9 +6,7 @@
 
 数字输入框。
 
-#### en-US
 
-Numeric-only input box.
 
 ```typescript
 import React from 'react';
@@ -31,9 +29,7 @@ export default App;
 
 三种大小的数字输入框，当 size 分别为 `large` 和 `small` 时，输入框高度为 `40px` 和 `24px` ，默认高度为 `32px`。
 
-#### en-US
 
-There are three sizes available to a numeric input box. By default, the size is `32px`. The two additional sizes are `large` and `small` which means `40px` and `24px`, respectively.
 
 ```typescript
 import React from 'react';
@@ -62,9 +58,7 @@ export default App;
 
 用于配置一些固定组合。
 
-#### en-US
 
-Using pre & post tabs example.
 
 ```typescript
 import React from 'react';
@@ -125,9 +119,7 @@ export default App;
 
 点击按钮切换可用状态。
 
-#### en-US
 
-Click the button to toggle between available and disabled states.
 
 ```typescript
 import React, { useState } from 'react';
@@ -162,9 +154,7 @@ export default App;
 
 通过 `stringMode` 开启高精度小数支持，`onChange` 事件将返回 string 类型。对于旧版浏览器，你需要 BigInt polyfill。
 
-#### en-US
 
-Use `stringMode` to support high precision decimals support. `onChange` will return string value instead. You need polyfill of BigInt if browser not support.
 
 ```typescript
 import React from 'react';
@@ -199,11 +189,7 @@ export default App;
 
 > 这里有一个更复杂的货币格式化输入框：[https://codesandbox.io/s/currency-wrapper-antd-input-3ynzo](https://codesandbox.io/s/currency-wrapper-antd-input-3ynzo)
 
-#### en-US
 
-Display value within it's situation with `formatter`, and we usually use `parser` at the same time.
-
-> Here is a Intl.NumberFormat InputNumber implementation: [https://codesandbox.io/s/currency-wrapper-antd-input-3ynzo](https://codesandbox.io/s/currency-wrapper-antd-input-3ynzo)
 
 ```typescript
 import React from 'react';
@@ -243,9 +229,7 @@ export default App;
 
 使用 `keyboard` 属性可以控制键盘行为。
 
-#### en-US
 
-Control keyboard behavior by `keyboard`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -279,9 +263,7 @@ export default App;
 
 启用鼠标滚轮控制。
 
-#### en-US
 
-Control with mouse wheel.
 
 ```typescript
 import React from 'react';
@@ -306,9 +288,7 @@ export default App;
 
 InputNumber 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Variants of InputNumber, there are four variants: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -333,9 +313,7 @@ export default App;
 
 Filled Debug.
 
-#### en-US
 
-Filled Debug.
 
 ```typescript
 import React from 'react';
@@ -393,9 +371,7 @@ export default App;
 
 当通过受控将 `value` 超出边界时，提供警告样式。
 
-#### en-US
 
-Show warning style when `value` is out of range by control.
 
 ```typescript
 import React, { useState } from 'react';
@@ -429,9 +405,7 @@ export default App;
 
 在输入框上添加前缀或后缀图标。
 
-#### en-US
 
-Add a prefix or suffix inside input.
 
 ```typescript
 import React from 'react';
@@ -463,9 +437,7 @@ export default App;
 
 使用 `status` 为 InputNumber 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to InputNumber with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React from 'react';
@@ -491,9 +463,7 @@ export default App;
 
 聚焦额外配置属性。
 
-#### en-US
 
-Focus with additional option.
 
 ```typescript
 import React, { useRef } from 'react';
@@ -558,9 +528,7 @@ export default App;
 
 可以扩展 `controls` 属性用以设置自定义图标。
 
-#### en-US
 
-When you need to use a custom `Icon`, you can set the `Icon` component as the property value of `upIcon` and `downIcon`.
 
 ```typescript
 import React from 'react';
@@ -581,9 +549,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';

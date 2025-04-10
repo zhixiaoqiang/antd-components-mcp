@@ -1,22 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 常用于引导用户了解产品功能。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/non-modal.tsx">非模态</code>
-<code src="./demo/placement.tsx">位置</code>
-<code src="./demo/mask.tsx">自定义遮罩样式</code>
-<code src="./demo/indicator.tsx">自定义指示器</code>
-<code src="./demo/gap.tsx">自定义高亮区域的样式</code>
-<code src="./demo/render-panel.tsx" debug>\_InternalPanelDoNotUseOrYouWillBeFired</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Tour
 

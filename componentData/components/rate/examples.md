@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The simplest usage.
 
 ```typescript
 import React from 'react';
@@ -26,9 +24,7 @@ export default App;
 
 支持选中半星。
 
-#### en-US
 
-Support select half star.
 
 ```typescript
 import React from 'react';
@@ -46,9 +42,7 @@ export default App;
 
 给评分组件加上文案展示。
 
-#### en-US
 
-Add copywriting in rate components.
 
 ```typescript
 import React, { useState } from 'react';
@@ -76,9 +70,7 @@ export default App;
 
 只读，无法进行鼠标交互。
 
-#### en-US
 
-Read only, can't use mouse to interact.
 
 ```typescript
 import React from 'react';
@@ -96,9 +88,7 @@ export default App;
 
 支持允许或者禁用清除。
 
-#### en-US
 
-Support set allow to clear star when click again.
 
 ```typescript
 import React from 'react';
@@ -127,9 +117,7 @@ export default App;
 
 可以将星星替换为其他字符，比如字母，数字，字体图标甚至中文。
 
-#### en-US
 
-Replace the default star to other character like alphabet, digit, iconfont or even Chinese word.
 
 ```typescript
 import React from 'react';
@@ -154,9 +142,7 @@ export default App;
 
 可以使用 `(RateProps) => ReactNode` 的方式自定义每一个字符。
 
-#### en-US
 
-Can customize each character using `(RateProps) => ReactNode`.
 
 ```typescript
 import React from 'react';
@@ -188,9 +174,7 @@ export default App;
 
 调试使用。
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

@@ -1,25 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 当需要将文本转换成为二维码时使用。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/base.tsx">基本使用</code>
-<code src="./demo/icon.tsx">带 Icon 的例子</code>
-<code src="./demo/status.tsx">不同的状态</code>
-<code src="./demo/customStatusRender.tsx" version="5.20.0">自定义状态渲染器</code>
-<code src="./demo/type.tsx">自定义渲染类型</code>
-<code src="./demo/customSize.tsx">自定义尺寸</code>
-<code src="./demo/customColor.tsx">自定义颜色</code>
-<code src="./demo/download.tsx">下载二维码</code>
-<code src="./demo/errorlevel.tsx">纠错比例</code>
-<code src="./demo/Popover.tsx">高级用法</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 > 自 `antd@5.1.0` 版本开始提供该组件。
 

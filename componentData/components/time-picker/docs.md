@@ -1,33 +1,13 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 当用户需要输入一个时间，可以点击标准输入框，弹出时间面板进行选择。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/value.tsx">受控组件</code>
-<code src="./demo/size.tsx">三种大小</code>
-<code src="./demo/need-confirm.tsx" version="5.14.0">选择确认</code>
-<code src="./demo/disabled.tsx">禁用</code>
-<code src="./demo/hide-column.tsx">选择时分</code>
-<code src="./demo/interval-options.tsx">步长选项</code>
-<code src="./demo/addon.tsx">附加内容</code>
-<code src="./demo/12hours.tsx">12 小时制</code>
-<code src="./demo/change-on-scroll.tsx" version="5.14.0">滚动即改变</code>
-<code src="./demo/colored-popup.tsx" debug>色付きポップアップ</code>
-<code src="./demo/range-picker.tsx">范围选择器</code>
-<code src="./demo/variant.tsx" version="5.13.0">形态变体</code>
-<code src="./demo/status.tsx">自定义状态</code>
-<code src="./demo/suffix.tsx">前后缀</code>
-<code src="./demo/render-panel.tsx" debug>_InternalPanelDoNotUseOrYouWillBeFired</code>
 
 ## API
 
 ---
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ```jsx
 import dayjs from 'dayjs';

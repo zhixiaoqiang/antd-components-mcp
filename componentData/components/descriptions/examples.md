@@ -6,9 +6,7 @@
 
 简单的展示。
 
-#### en-US
 
-Simplest Usage.
 
 ```typescript
 import React from 'react';
@@ -55,9 +53,7 @@ export default App;
 
 带边框和背景颜色列表。
 
-#### en-US
 
-Descriptions with border and background color.
 
 ```typescript
 import React from 'react';
@@ -146,9 +142,7 @@ export default App;
 
 复杂文本的情况。
 
-#### en-US
 
-The situation of complex text.
 
 ```typescript
 import React from 'react';
@@ -289,9 +283,7 @@ export default App;
 
 间距
 
-#### en-US
 
-padding
 
 ```typescript
 import React from 'react';
@@ -347,9 +339,7 @@ export default App;
 
 自定义尺寸，适应在各种容器中展示。
 
-#### en-US
 
-Custom sizes to fit in a variety of containers.
 
 ```typescript
 import React, { useState } from 'react';
@@ -488,9 +478,7 @@ export default App;
 
 通过响应式的配置可以实现在小屏幕设备上的完美呈现。
 
-#### en-US
 
-Responsive configuration enables perfect presentation on small screen devices.
 
 ```typescript
 import React from 'react';
@@ -573,9 +561,7 @@ export default App;
 
 垂直的列表。
 
-#### en-US
 
-Simplest Usage.
 
 ```typescript
 import React from 'react';
@@ -623,9 +609,7 @@ export default App;
 
 垂直带边框和背景颜色的列表。
 
-#### en-US
 
-Descriptions with border and background color.
 
 ```typescript
 import React from 'react';
@@ -716,9 +700,7 @@ export default App;
 
 自定义 label & wrapper 样式
 
-#### en-US
 
-Customize label & wrapper style
 
 ```typescript
 import React, { useState } from 'react';
@@ -818,9 +800,7 @@ export default App;
 
 JSX 风格演示。
 
-#### en-US
 
-JSX Style Demo.
 
 ```typescript
 import React from 'react';
@@ -848,9 +828,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1006,9 +984,7 @@ export default App;
 
 整行的展示。
 
-#### en-US
 
-Display of the entire line.
 
 ```typescript
 import React from 'react';

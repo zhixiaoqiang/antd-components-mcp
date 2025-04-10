@@ -6,9 +6,7 @@
 
 此处列出 Ant Design 中需要国际化支持的组件，你可以在演示里切换语言。
 
-#### en-US
 
-Components which need localization support are listed here, you can toggle the language in the demo.
 
 ```typescript
 import React, { useState } from 'react';
@@ -277,40 +275,7 @@ export default App;
 
 这里列出了支持 `rtl` 方向的组件，您可以在演示中切换方向。
 
-#### en-US
 
-Components which support rtl direction are listed here, you can toggle the direction in the demo.
-
-```css
-.button-demo .ant-btn,
-.button-demo .ant-btn-group {
-  margin-inline-end: 8px;
-  margin-bottom: 12px;
-}
-.button-demo .ant-btn-group > .ant-btn,
-.button-demo .ant-btn-group > span > .ant-btn {
-  margin-inline-end: 0;
-  margin-inline-start: 0;
-}
-
-.head-example {
-  display: inline-block;
-  width: 42px;
-  height: 42px;
-  vertical-align: middle;
-  background: ##eee;
-  border-radius: 4px;
-}
-
-.ant-badge:not(.ant-badge-not-a-wrapper) {
-  margin-inline-end: 20px;
-}
-
-.ant-badge-rtl:not(.ant-badge-not-a-wrapper) {
-  margin-inline-end: 0;
-  margin-inline-start: 20px;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -843,9 +808,7 @@ export default App;
 
 修改默认组件尺寸。
 
-#### en-US
 
-Config component default size.
 
 ```typescript
 import React, { useState } from 'react';
@@ -940,9 +903,7 @@ export default App;
 
 通过 `theme` 修改主题。
 
-#### en-US
 
-Modify theme by `theme` prop.
 
 ```typescript
 import React from 'react';
@@ -1057,9 +1018,7 @@ export default () => {
 
 波纹效果带来了灵动性，可以通过 `component` 判断来自哪个组件。你也可以使用 [`@ant-design/happy-work-theme`](https://github.com/ant-design/happy-work-theme) 提供的 HappyProvider 实现动态波纹效果。
 
-#### en-US
 
-Wave effect brings dynamic. Use `component` to determine which component use it. You can also use HappyProvider from [`@ant-design/happy-work-theme`](https://github.com/ant-design/happy-work-theme) to implement dynamic wave effect.
 
 ```typescript
 import React from 'react';
@@ -1198,9 +1157,7 @@ export default App;
 
 使用 `holderRender` 给 `message` 、`modal` 、`notification` 静态方法设置 `Provider`
 
-#### en-US
 
-Use `holderRender` to set the `Provider` for the static methods `message` 、`modal` 、`notification`.
 
 ```typescript
 import React, { useContext, useLayoutEffect } from 'react';
@@ -1274,9 +1231,7 @@ export default Demo;
 
 修改组件和图标前缀。
 
-#### en-US
 
-Config component and icon prefixCls.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1319,9 +1274,7 @@ export default App;
 
 获取父级 `Provider` 的值。如 `DisabledContextProvider`、`SizeContextProvider`。
 
-#### en-US
 
-Get the value of the parent `Provider`. Such as `DisabledContextProvider`, `SizeContextProvider`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1388,9 +1341,7 @@ export default App;
 
 调整 warning 策略。
 
-#### en-US
 
-Adjust warning strategy.
 
 ```typescript
 import React from 'react';

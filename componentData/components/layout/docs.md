@@ -47,20 +47,7 @@
 
 > 注意：采用 flex 布局实现，请注意[浏览器兼容性](http://caniuse.com/#search=flex)问题。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本结构</code>
-<code src="./demo/top.tsx" compact background="grey">上中下布局</code>
-<code src="./demo/top-side.tsx" compact background="grey">顶部-侧边布局</code>
-<code src="./demo/top-side-2.tsx" compact background="grey">顶部-侧边布局-通栏</code>
-<code src="./demo/side.tsx" iframe="360">侧边布局</code>
-<code src="./demo/custom-trigger.tsx" compact background="grey">自定义触发器</code>
-<code src="./demo/responsive.tsx" compact background="grey">响应式布局</code>
-<code src="./demo/fixed.tsx" iframe="360">固定头部</code>
-<code src="./demo/fixed-sider.tsx" iframe="360">固定侧边栏</code>
-<code src="./demo/custom-trigger-debug.tsx" compact background="grey" debug>自定义触发器 Debug</code>
-<code src="./demo/component-token.tsx" compact background="grey" debug>组件 Token</code>
 
 ## API
 
@@ -77,8 +64,6 @@
 ```
 
 ### Layout
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 布局容器。
 

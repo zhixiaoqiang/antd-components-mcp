@@ -6,9 +6,7 @@
 
 简单的表格，最后一列是各种操作。
 
-#### en-US
 
-Simple table with actions.
 
 ```typescript
 import React from 'react';
@@ -110,11 +108,7 @@ export default App;
 
 > 这个只是一个描述 `columns` 的语法糖，所以你不能用其他组件去包裹 `Column` 和 `ColumnGroup`。
 
-#### en-US
 
-Using JSX style API (introduced in 2.5.0)
-
-> Since this is just a syntax sugar for the prop `columns`, you can't compose `Column` and `ColumnGroup` with other Components.
 
 ```typescript
 import React from 'react';
@@ -211,11 +205,7 @@ export default App;
 
 > 默认点击 checkbox 触发选择行为，需要点击行触发可以参考例子：<https://codesandbox.io/s/000vqw38rl>
 
-#### en-US
 
-Rows can be selectable by making first column as a selectable column. You can use `rowSelection.type` to set selection type. Default is `checkbox`.
-
-> selection happens when clicking checkbox by default. You can see <https://codesandbox.io/s/000vqw38rl> if you need row-click selection behavior.
 
 ```typescript
 import React, { useState } from 'react';
@@ -312,9 +302,7 @@ export default App;
 
 选择后进行操作，完成后清空选择，通过 `rowSelection.selectedRowKeys` 来控制选中项。
 
-#### en-US
 
-To perform operations and clear selections after selecting some rows, use `rowSelection.selectedRowKeys` to control selected rows.
 
 ```typescript
 import React, { useState } from 'react';
@@ -391,9 +379,7 @@ export default App;
 
 通过 `rowSelection.selections` 自定义选择项，默认不显示下拉选项，设为 `true` 时显示默认选择项。
 
-#### en-US
 
-Use `rowSelection.selections` custom selections, default no select dropdown, show default selections via setting to `true`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -490,9 +476,7 @@ export default App;
 
 高损耗 `render` 性能调试。
 
-#### en-US
 
-High cost `render` performance debugging.
 
 ```typescript
 import React, { useState } from 'react';
@@ -601,19 +585,7 @@ export default App;
 
 如果 `sortOrder` 或者 `defaultSortOrder` 的值为 `ascend` 或者 `descend`，则可以通过 `sorter` 的函数第三个参数获取当前排序的状态。该函数可以是 `function(a, b, sortOrder) { ... }` 的形式。
 
-#### en-US
 
-Use `filters` to generate filter menu in columns, `onFilter` to determine filtered result, and `filterMultiple` to indicate whether it's multiple or single selection, `filterOnClose` to specify whether to trigger filter when the filter menu closes.
-
-Use `defaultFilteredValue` to make a column filtered by default.
-
-Use `sorter` to make a column sortable. `sorter` can be a function of the type `sorter: function(rowA, rowB) { ... }` for sorting data locally.
-
-`sortDirections: ['ascend', 'descend']` defines available sort methods for each columns, effective for all columns when set on table props. You can set as `['ascend', 'descend', 'ascend']` to prevent sorter back to default status.
-
-Use `defaultSortOrder` to make a column sorted by default.
-
-If a `sortOrder` or `defaultSortOrder` is specified with the value `ascend` or `descend`, you can access this value from within the function passed to the `sorter` as explained above. Such a function can take the form: `function(a, b, sortOrder) { ... }`.
 
 ```typescript
 import React from 'react';
@@ -735,11 +707,7 @@ export default App;
 
 可以使用 `filterMode` 来修改筛选菜单的 UI，可选值有 `menu`（默认）和 `tree`。
 
-#### en-US
 
-You can use `filterMode` to change default filter interface, options: `menu`(default) and `tree`.
-
-> `filterSearch` is used for making filter dropdown items searchable.
 
 ```typescript
 import React from 'react';
@@ -865,9 +833,7 @@ export default App;
 
 `filterSearch` 用于开启筛选项的搜索，通过 `filterSearch:(input, record) => boolean` 设置自定义筛选方法
 
-#### en-US
 
-`filterSearch` is used to enable search of filter items, and you can set a custom filter method through `filterSearch:(input, record) => boolean`.
 
 ```typescript
 import React from 'react';
@@ -973,9 +939,7 @@ export default App;
 
 `column.sorter` 支持 `multiple` 字段以配置多列排序优先级。通过 `sorter.compare` 配置排序逻辑，你可以通过不设置该函数只启动多列排序的交互形式。
 
-#### en-US
 
-`column.sorter` support `multiple` to config the priority of sort columns. Though `sorter.compare` to customize compare function. You can also leave it empty to use the interactive only.
 
 ```typescript
 import React from 'react';
@@ -1074,13 +1038,7 @@ export default App;
 > 2. 只支持同时对一列进行排序，请保证只有一列的 sortOrder 属性是生效的。
 > 3. 务必指定 `column.key`。
 
-#### en-US
 
-Control filters and sorters by `filteredValue` and `sortOrder`.
-
-> 1. Defining `filteredValue` or `sortOrder` means that it is in the controlled mode.
-> 2. Make sure `sortOrder` is assigned for only one column.
-> 3. `column.key` is required.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1216,11 +1174,7 @@ export default App;
 
 给函数 `clearFilters` 添加 `boolean` 类型参数 `closeDropdown`，是否关闭筛选菜单，默认为 `true`。添加 `boolean` 类型参数 `confirm`，清除筛选时是否提交已选项，默认 `true`。
 
-#### en-US
 
-Implement a customized column search example via `filterDropdown`.
-
-Add the `boolean` type parameter `closeDropdown` to the function `clearFilters`. Whether to close the filter menu is `true` by default. Add the `boolean` type parameter `confirm` to clear whether to submit the option during filtering. The default is `true`.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -1411,13 +1365,7 @@ export default App;
 
 > 🛎️ 想要 3 分钟实现？试试 [ProTable](https://procomponents.ant.design/components/table)！
 
-#### en-US
 
-This example shows how to fetch and present data from a remote server, and how to implement filtering and sorting in server side by sending related parameters to server.
-
-Setting `rowSelection.preserveSelectedRowKeys` to keep the `key` when enable selection.
-
-**Note, this example use [Mock API](https://randomuser.me) that you can look up in Network Console.**
 
 ```typescript
 /* eslint-disable compat/compat */
@@ -1561,11 +1509,7 @@ export default App;
 
 两种紧凑型的列表，小型列表只用于对话框内。
 
-#### en-US
 
-There are two compacted table sizes: `middle` and `small`. The `small` size is used in Modals only.
-
-<style>##table-demo-size h4 { margin-bottom: 16px; }</style>
 
 ```typescript
 import React from 'react';
@@ -1634,9 +1578,7 @@ export default App;
 
 两种紧凑型的列表，小型列表只用于对话框内。
 
-#### en-US
 
-There are two compacted table sizes: `middle` and `small`. The `small` size is used in Modals only.
 
 ```typescript
 import React from 'react';
@@ -1693,9 +1635,7 @@ export default App;
 
 添加表格边框线，页头和页脚。
 
-#### en-US
 
-Add border, title and footer for table.
 
 ```typescript
 import React from 'react';
@@ -1768,9 +1708,7 @@ export default App;
 
 当表格内容较多不能一次性完全展示时。
 
-#### en-US
 
-When there's too much information to show and the table can't display all at once.
 
 ```typescript
 import React from 'react';
@@ -1849,9 +1787,7 @@ export default App;
 
 你可以通过 `Table.EXPAND_COLUMN` 和 `Table.SELECTION_COLUMN` 来控制选择和展开列的顺序。
 
-#### en-US
 
-You can control the order of the expand and select columns by using `Table.EXPAND_COLUMN` and `Table.SELECTION_COLUMN`.
 
 ```typescript
 import React from 'react';
@@ -1928,11 +1864,7 @@ export default App;
 
 表格支持行/列合并，当 `onCell` 里的单元格属性 `colSpan` 或者 `rowSpan` 设值为 0 时，设置的表格不会渲染。
 
-#### en-US
 
-Table column title supports `colSpan` that set in `column`.
-
-Table cell supports `colSpan` and `rowSpan` that set in onCell return object. When each of them is set to `0`, the cell will not be rendered.
 
 ```typescript
 import React from 'react';
@@ -2066,11 +1998,7 @@ export default App;
 
 可以通过设置 `indentSize` 以控制每一层的缩进宽度。
 
-#### en-US
 
-Display tree structure data in Table when there is field key `children` in dataSource, try to customize `childrenColumnName` property to avoid tree table structure.
-
-You can control the indent width by setting `indentSize`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -2212,9 +2140,7 @@ export default App;
 
 https://github.com/ant-design/ant-design/issues/36583
 
-#### en-US
 
-https://github.com/ant-design/ant-design/issues/36583
 
 ```typescript
 import React, { useState } from 'react';
@@ -2346,11 +2272,7 @@ treeData Table 使用 CheckStrictly: false & preserveSelectedRowKeys: true 的�
 
 https://github.com/ant-design/ant-design/issues/50621
 
-#### en-US
 
-treeData Table using CheckStrictly: false & preserveSelectedRowKeys: true example
-
-https://github.com/ant-design/ant-design/issues/50621
 
 ```typescript
 import React, { useState } from 'react';
@@ -2454,11 +2376,7 @@ export default App;
 
 需要指定 column 的 `width` 属性，否则列头和内容可能不对齐。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241)。
 
-#### en-US
 
-Display large amounts of data in scrollable view.
-
-> Specify width of columns if header and cell do not align properly. If specified width is not working or have gutter between columns, please try to leave one column at least without width to fit fluid layout, or make sure no [long word to break table layout](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241).
 
 ```typescript
 import React from 'react';
@@ -2544,15 +2462,7 @@ export default App;
 
 **注意：v4 版本固定列通过 sticky 实现，IE 11 会降级成横向滚动。**
 
-#### en-US
 
-To fix some columns and scroll inside other columns, and you must set `scroll.x` meanwhile.
-
-> Specify the width of columns if header and cell do not align properly. If specified width is not working or have gutter between columns, please try to leave one column at least without width to fit fluid layout, or make sure no [long word to break table layout](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241).
->
-> A fixed value which is greater than table width for `scroll.x` is recommended. The sum of unfixed columns should not greater than `scroll.x`.
-
-**Note: v4 using sticky to implement fixed effect. IE 11 will downgrade to horizontal scroll.**
 
 ```typescript
 import React from 'react';
@@ -2658,9 +2568,7 @@ export default App;
 
 混合固定列，滚动到一定距离进行堆叠，推荐配合 `bordered` 使用。
 
-#### en-US
 
-Fixed column only when scroll some distance, and scroll to stack other columns. Recommend use with `bordered`.
 
 ```typescript
 import React from 'react';
@@ -2777,13 +2685,7 @@ export default App;
 >
 > 建议指定 `scroll.x` 为大于表格宽度的固定值或百分比。注意，且非固定列宽度之和不要超过 `scroll.x`。
 
-#### en-US
 
-A Solution for displaying large amounts of data with long columns.
-
-> Specify the width of columns if header and cell do not align properly. If specified width is not working or have gutter between columns, please try to leave one column at least without width to fit fluid layout, or make sure no [long word to break table layout](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241).
->
-> A fixed value which is greater than table width for `scroll.x` is recommended. The sum of unfixed columns should not greater than `scroll.x`.
 
 ```typescript
 import React from 'react';
@@ -2924,9 +2826,7 @@ export default App;
 
 使用 `hidden` 隐藏列。
 
-#### en-US
 
-Hide columns with `hidden`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -3006,9 +2906,7 @@ export default App;
 
 `columns[n]` 可以内嵌 `children`，以渲染分组表头。
 
-#### en-US
 
-Group table head with `columns[n].children`.
 
 ```typescript
 import React from 'react';
@@ -3166,26 +3064,7 @@ export default App;
 
 带单元格编辑功能的表格。当配合 `shouldCellUpdate` 使用时请注意[闭包问题](https://github.com/ant-design/ant-design/issues/29243)。
 
-#### en-US
 
-Table with editable cells. When work with `shouldCellUpdate`, please take care of [closure](https://github.com/ant-design/ant-design/issues/29243).
-
-```css
-.editable-cell {
-  position: relative;
-}
-
-.editable-cell-value-wrap {
-  padding: 5px 12px;
-  cursor: pointer;
-}
-
-.editable-row:hover .editable-cell-value-wrap {
-  padding: 4px 11px;
-  border: 1px solid ##d9d9d9;
-  border-radius: 2px;
-}
-```
 
 ```typescript
 import React, { useContext, useEffect, useRef, useState } from 'react';
@@ -3418,17 +3297,7 @@ export default App;
 
 > 🛎️ 想要 3 分钟实现？试试 [ProTable 的可编辑表格](https://procomponents.ant.design/components/editable-table)！
 
-#### en-US
 
-Table with editable rows.
-
-```css
-.editable-row .ant-form-item-explain {
-  position: absolute;
-  top: 100%;
-  font-size: 12px;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -3616,9 +3485,7 @@ export default App;
 
 展示每行数据更详细的信息。
 
-#### en-US
 
-Showing more detailed info of every row.
 
 ```typescript
 import React from 'react';
@@ -3741,9 +3608,7 @@ export default App;
 
 使用自定义元素，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现拖拽排序。
 
-#### en-US
 
-By using `components`, we can integrate table with [dnd-kit](https://github.com/clauderic/dnd-kit) to implement drag sorting function.
 
 ```typescript
 import React, { useState } from 'react';
@@ -3874,9 +3739,7 @@ export default App;
 
 使用自定义元素，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现列拖拽排序。
 
-#### en-US
 
-By using `components`, we can integrate table with [dnd-kit](https://github.com/clauderic/dnd-kit) to implement column drag sorting function.
 
 ```typescript
 import React, { createContext, useContext, useState } from 'react';
@@ -4083,9 +3946,7 @@ export default App;
 
 使用 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现一个拖拽操作列。
 
-#### en-US
 
-Alternatively you can implement drag sorting with handler using [dnd-kit](https://github.com/clauderic/dnd-kit).
 
 ```typescript
 import React, { useContext, useMemo } from 'react';
@@ -4216,26 +4077,7 @@ export default App;
 
 集成 [react-resizable](https://github.com/STRML/react-resizable) 来实现可伸缩列。如果有排序需要，可以通过[额外标记](https://codesandbox.io/s/zrj8xvyzxx)阻止触发排序。
 
-#### en-US
 
-Implement resizable column by integrate with [react-resizable](https://github.com/STRML/react-resizable). When sort needed, you can use [additional mark](https://codesandbox.io/s/zrj8xvyzxx) to prevent resize trigger sort.
-
-```css
-##table-demo-resizable-column .react-resizable {
-  position: relative;
-  background-clip: padding-box;
-}
-
-##table-demo-resizable-column .react-resizable-handle {
-  position: absolute;
-  inset-inline-end: -5px;
-  bottom: 0;
-  z-index: 1;
-  width: 10px;
-  height: 100%;
-  cursor: col-resize;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -4372,11 +4214,7 @@ export default App;
 
 > 列头缩略暂不支持和排序筛选一起使用。
 
-#### en-US
 
-Ellipsis cell content via setting `column.ellipsis`.
-
-> Cannot ellipsis table header with sorters and filters for now.
 
 ```typescript
 import React from 'react';
@@ -4466,9 +4304,7 @@ export default App;
 
 设置 `column.ellipsis.showTitle` 关闭单元格内容自动省略后默认的 `title` 提示, 使用 `Tooltip` 替代。
 
-#### en-US
 
-Ellipsis cell content via setting `column.ellipsis.showTitle`, use `Tooltip` instead of the html title attribute.
 
 ```typescript
 import React from 'react';
@@ -4583,9 +4419,7 @@ export default App;
 
 自定义空状态。
 
-#### en-US
 
-Custom empty status.
 
 ```typescript
 import React, { useState } from 'react';
@@ -4674,9 +4508,7 @@ export default App;
 
 通过 `summary` 设置总结栏。使用 `Table.Summary.Cell` 同步 Column 的固定状态。你可以通过配置 `Table.Summary` 的 `fixed` 属性使其固定(`4.16.0` 支持)。
 
-#### en-US
 
-Set summary content by `summary` prop. Sync column fixed status with `Table.Summary.Cell`. You can fixed it by set `Table.Summary` `fixed` prop(since `4.16.0`).
 
 ```typescript
 import React from 'react';
@@ -4846,9 +4678,7 @@ export default App;
 
 通过 `virtual` 开启虚拟滚动，此时 `scroll.x` 与 `scroll.y` 必须设置且为 `number` 类型。
 
-#### en-US
 
-Set `virtual` to enable virtual scroll, and `scroll.x` and `scroll.y` must be set at the same time with `number` type.
 
 ```typescript
 import React from 'react';
@@ -5063,9 +4893,7 @@ export default App;
 
 响应式配置列的展示。
 
-#### en-US
 
-Responsive columns.
 
 ```typescript
 import React from 'react';
@@ -5121,9 +4949,7 @@ export default App;
 
 看看边框的样式是不是影响到别的表格。
 
-#### en-US
 
-To see if bordered style applied to other tables.
 
 ```typescript
 import React, { useState } from 'react';
@@ -5256,9 +5082,7 @@ export default App;
 
 表格的分页设置。
 
-#### en-US
 
-Table pagination settings.
 
 ```typescript
 import React, { useState } from 'react';
@@ -5408,9 +5232,7 @@ export default App;
 
 自定义选项分组。
 
-#### en-US
 
-Customize selection group.
 
 ```typescript
 import React from 'react';
@@ -5461,9 +5283,7 @@ export default App;
 
 对于长表格，需要滚动才能查看表头和滚动条，那么现在可以设置跟随页面固定表头和滚动条。
 
-#### en-US
 
-For long table，need to scroll to view the header and scroll bar，then you can now set the fixed header and scroll bar to follow the page.
 
 ```typescript
 import React, { useState } from 'react';
@@ -5594,16 +5414,7 @@ export default App;
 
 选择不同配置组合查看效果。
 
-#### en-US
 
-Select different settings to see the result.
-
-<style>
-.table-demo-control-bar .ant-form-item {
-  margin-inline-end: 16px !important;
-  margin-bottom: 8px !important;
-}
-</style>
 
 ```typescript
 import React, { useState } from 'react';
@@ -5871,9 +5682,7 @@ export default App;
 
 调试使用。
 
-#### en-US
 
-debug use.
 
 ```typescript
 import React from 'react';
@@ -5942,9 +5751,7 @@ export default App;
 
 组件 Token
 
-#### en-US
 
-Component Token
 
 ```typescript
 import React, { useState } from 'react';

@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 抽屉从父窗体边缘滑入，覆盖住部分父窗体内容。用户在抽屉内操作时不必离开当前任务，操作完成后，可以平滑地回到原任务。
 
@@ -10,28 +10,9 @@
 >
 > 自 `5.17.0` 版本，我们提供了 `loading` 属性，内置 Spin 组件作为加载状态，但是自 `5.18.0` 版本开始，我们修复了设计失误，将内置的 Spin 组件替换成了 Skeleton 组件，同时收窄了 `loading` api 的类型范围，只能接收 boolean 类型。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic-right.tsx">基础抽屉</code>
-<code src="./demo/placement.tsx">自定义位置</code>
-<code src="./demo/loading.tsx" version="5.17.0">加载中</code>
-<code src="./demo/extra.tsx">额外操作</code>
-<code src="./demo/render-in-current.tsx">渲染在当前 DOM</code>
-<code src="./demo/form-in-drawer.tsx">抽屉表单</code>
-<code src="./demo/user-profile.tsx">信息预览抽屉</code>
-<code src="./demo/multi-level-drawer.tsx">多层抽屉</code>
-<code src="./demo/size.tsx">预设宽度</code>
-<code src="./demo/classNames.tsx">自定义内部样式</code>
-<code src="./demo/config-provider.tsx" debug>ConfigProvider</code>
-<code src="./demo/no-mask.tsx" debug>无遮罩</code>
-<code src="./demo/render-panel.tsx" debug>_InternalPanelDoNotUseOrYouWillBeFired</code>
-<code src="./demo/scroll-debug.tsx" debug>滚动锁定调试</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 <!-- prettier-ignore -->
 :::warning{title=注意}

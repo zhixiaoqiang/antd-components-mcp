@@ -8,11 +8,7 @@
 
 > `description` 在 `5.1.0` 版本中支持。
 
-#### en-US
 
-The basic example supports the title and description props of confirmation.
-
-> `description` is supported in version `5.1.0`.
 
 ```typescript
 import React from 'react';
@@ -52,9 +48,7 @@ export default App;
 
 使用 `okText` 和 `cancelText` 自定义按钮文字。
 
-#### en-US
 
-Set `okText` and `cancelText` props to customize the button's labels.
 
 ```typescript
 import React from 'react';
@@ -81,9 +75,7 @@ export default App;
 
 位置有十二个方向。如需箭头指向目标元素中心，可以设置 `arrow: { pointAtCenter: true }`。
 
-#### en-US
 
-There are 12 `placement` options available. Use `arrow: { pointAtCenter: true }` if you want the arrow to point at the center of target.
 
 ```typescript
 import React from 'react';
@@ -228,9 +220,7 @@ export default App;
 
 当 Popconfirm 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
 
-#### en-US
 
-Auto adjust Popup and arrow position when Popconfirm is close to the edge of the screen. Will be out of screen when exceed limitation.
 
 ```typescript
 import React from 'react';
@@ -268,9 +258,7 @@ export default App;
 
 可以判断是否需要弹出。
 
-#### en-US
 
-Make it pop up under some conditions.
 
 ```typescript
 import React, { useState } from 'react';
@@ -340,9 +328,7 @@ export default App;
 
 自定义提示 `icon`。
 
-#### en-US
 
-Set `icon` props to customize the icon.
 
 ```typescript
 import React from 'react';
@@ -369,9 +355,7 @@ export default App;
 
 点击确定后异步关闭气泡确认框，例如提交表单。
 
-#### en-US
 
-Asynchronously close a popconfirm when a the OK button is pressed. For example, you can use this pattern when you submit a form.
 
 ```typescript
 import React, { useState } from 'react';
@@ -425,9 +409,7 @@ export default App;
 
 点击确定后异步关闭 Popconfirm，例如提交表单。
 
-#### en-US
 
-Asynchronously close a popconfirm when the OK button is pressed. For example, you can use this pattern when you submit a form.
 
 ```typescript
 import React from 'react';
@@ -461,9 +443,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -495,9 +475,7 @@ export default App;
 
 线框风格。
 
-#### en-US
 
-Wireframe style.
 
 ```typescript
 import React from 'react';

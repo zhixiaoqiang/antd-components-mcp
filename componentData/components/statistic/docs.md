@@ -1,22 +1,12 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 当需要突出某个或某组数字时。
 - 当需要展示带描述的统计类数据时使用。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/unit.tsx">单位</code>
-<code src="./demo/animated.tsx">动画效果</code>
-<code src="./demo/card.tsx" background="grey">在卡片中使用</code>
-<code src="./demo/countdown.tsx">倒计时</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 #### Statistic
 

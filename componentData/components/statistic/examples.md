@@ -6,9 +6,7 @@
 
 简单的展示。
 
-#### en-US
 
-Simplest Usage.
 
 ```typescript
 import React from 'react';
@@ -41,9 +39,7 @@ export default App;
 
 通过前缀和后缀添加单位。
 
-#### en-US
 
-Add unit through `prefix` and `suffix`.
 
 ```typescript
 import React from 'react';
@@ -71,9 +67,7 @@ export default App;
 
 给数值添加动画进入效果，需要配合 [react-countup](https://www.npmjs.com/package/react-countup)。
 
-#### en-US
 
-Animated number with [react-countup](https://www.npmjs.com/package/react-countup).
 
 ```typescript
 import React from 'react';
@@ -106,9 +100,7 @@ export default App;
 
 在卡片中展示统计数值。
 
-#### en-US
 
-Display statistic data in Card.
 
 ```typescript
 import React from 'react';
@@ -154,9 +146,7 @@ export default App;
 
 倒计时组件。
 
-#### en-US
 
-Countdown component.
 
 ```typescript
 import React from 'react';
@@ -204,9 +194,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

@@ -6,9 +6,7 @@
 
 基本使用。
 
-#### en-US
 
-Basic usage.
 
 ```typescript
 import React from 'react';
@@ -58,9 +56,7 @@ export default App;
 
 Mentions 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Variants of Mentions, there are four variants: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -85,17 +81,7 @@ export default App;
 
 匹配内容列表为异步返回时。
 
-#### en-US
 
-async.
-
-<style>
-.antd-demo-dynamic-option img {
-  width: 20px;
-  height: 20px;
-  margin-inline-end: 8px;
-}
-</style>
 
 ```typescript
 import React, { useCallback, useRef, useState } from 'react';
@@ -164,9 +150,7 @@ export default App;
 
 受控模式，例如配合 Form 使用。
 
-#### en-US
 
-Controlled mode, for example, to work with `Form`.
 
 ```typescript
 import React from 'react';
@@ -275,9 +259,7 @@ export default App;
 
 通过 `prefix` 属性自定义触发字符。默认为 `@`, 可以定义为数组。
 
-#### en-US
 
-Customize Trigger Token by `prefix` props. Default to `@`, `Array<string>` also supported.
 
 ```typescript
 import React, { useState } from 'react';
@@ -323,9 +305,7 @@ export default App;
 
 通过 `disabled` 属性设置是否生效。通过 `readOnly` 属性设置是否只读。
 
-#### en-US
 
-Configure `disabled` and `readOnly`.
 
 ```typescript
 import React from 'react';
@@ -366,9 +346,7 @@ export default App;
 
 向上展开建议。
 
-#### en-US
 
-Change the suggestions placement.
 
 ```typescript
 import React from 'react';
@@ -405,9 +383,7 @@ export default App;
 
 自定义清除按钮。
 
-#### en-US
 
-Customize clear button.
 
 ```typescript
 import React, { useState } from 'react';
@@ -443,9 +419,7 @@ export default App;
 
 自适应内容高度。
 
-#### en-US
 
-Height autoSize.
 
 ```typescript
 import React from 'react';
@@ -482,9 +456,7 @@ export default App;
 
 使用 `status` 为 Mentions 添加状态。可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to Mentions with `status`, which could be `error` or `warning`。
 
 ```typescript
 import React from 'react';
@@ -547,9 +519,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -582,9 +552,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

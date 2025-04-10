@@ -1,28 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 类似 Select 的选择控件，可选择的数据结构是一个树形结构时，可以使用 TreeSelect，例如公司层级、学科系统、分类目录等等。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/multiple.tsx">多选</code>
-<code src="./demo/treeData.tsx">从数据直接生成</code>
-<code src="./demo/checkable.tsx">可勾选</code>
-<code src="./demo/async.tsx">异步加载</code>
-<code src="./demo/treeLine.tsx">线性样式</code>
-<code src="./demo/placement.tsx">弹出位置</code>
-<code src="./demo/variant.tsx" version="5.13.0">形态变体</code>
-<code src="./demo/status.tsx">自定义状态</code>
-<code src="./demo/maxCount.tsx" version="5.23.0">最大选中数量</code>
-<code src="./demo/suffix.tsx" version="5.22.0">前后缀</code>
-<code src="./demo/render-panel.tsx" debug>\_InternalPanelDoNotUseOrYouWillBeFired</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Tree props
 

@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 对复杂区域进行分组和隐藏，保持页面的整洁。
 - `手风琴` 是一种特殊的折叠面板，只允许单个内容区域展开。
@@ -47,24 +47,9 @@ const items: CollapseProps['items'] = [
 </Collapse>;
 ```
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">折叠面板</code>
-<code src="./demo/size.tsx">面板尺寸</code>
-<code src="./demo/accordion.tsx">手风琴</code>
-<code src="./demo/mix.tsx">面板嵌套</code>
-<code src="./demo/borderless.tsx">简洁风格</code>
-<code src="./demo/custom.tsx">自定义面板</code>
-<code src="./demo/noarrow.tsx">隐藏箭头</code>
-<code src="./demo/extra.tsx">额外节点</code>
-<code src="./demo/ghost.tsx">幽灵折叠面板</code>
-<code src="./demo/collapsible.tsx">可折叠触发区域</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Collapse
 

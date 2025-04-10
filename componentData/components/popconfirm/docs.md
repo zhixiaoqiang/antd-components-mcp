@@ -1,27 +1,13 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 目标元素的操作需要用户进一步的确认时，在目标元素附近弹出浮层提示，询问用户。
 
 和 `confirm` 弹出的全屏居中模态对话框相比，交互形式更轻量。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/locale.tsx">国际化</code>
-<code src="./demo/placement.tsx">位置</code>
-<code src="./demo/shift.tsx" iframe="300">贴边偏移</code>
-<code src="./demo/dynamic-trigger.tsx">条件触发</code>
-<code src="./demo/icon.tsx">自定义 Icon 图标</code>
-<code src="./demo/async.tsx">异步关闭</code>
-<code src="./demo/promise.tsx">基于 Promise 的异步关闭</code>
-<code src="./demo/render-panel.tsx" debug>_InternalPanelDoNotUseOrYouWillBeFired</code>
-<code src="./demo/wireframe.tsx" debug>线框风格</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |

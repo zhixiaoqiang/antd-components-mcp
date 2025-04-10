@@ -6,9 +6,7 @@
 
 基本使用。
 
-#### en-US
 
-Basic usage example.
 
 ```typescript
 import React from 'react';
@@ -26,9 +24,7 @@ export default App;
 
 我们为 `<Input />` 输入框定义了三种尺寸（大、默认、小），高度分别为 `40px`、`32px` 和 `24px`。
 
-#### en-US
 
-There are three sizes of an Input box: `large` (40px), `default` (32px) and `small` (24px).
 
 ```typescript
 import React from 'react';
@@ -57,9 +53,7 @@ export default App;
 
 Input 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Variants of Input, there are four variants: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -84,9 +78,7 @@ export default App;
 
 Filled Debug.
 
-#### en-US
 
-Filled Debug.
 
 ```typescript
 import React from 'react';
@@ -170,9 +162,7 @@ export default App;
 
 用于配置一些固定组合。
 
-#### en-US
 
-Using pre & post tabs example.
 
 ```typescript
 import React from 'react';
@@ -219,9 +209,7 @@ export default App;
 
 使用 `Space.Compact` 创建紧凑模式，更多请查看 [Space.Compact](/components/space-cn##spacecompact) 文档。
 
-#### en-US
 
-Use `Space.Compact` create compact style, See the [Space.Compact](/components/space##spacecompact) documentation for more.
 
 ```typescript
 import React from 'react';
@@ -278,33 +266,7 @@ export default App;
 
 `Input.Group` 已废弃，可以使用 [Space.Compact](/components/space-cn##spacecompact) 替代 `Input.Group`。
 
-#### en-US
 
-`Input.Group` is deprecated. Can use [Space.Compact](/components/space##spacecompact) substitute for `Input.Group`.
-
-```css
-.site-input-group-wrapper .site-input-split {
-  background-color: ##fff !important;
-}
-
-.site-input-group-wrapper .site-input-right {
-  border-left-width: 0;
-}
-
-.site-input-group-wrapper .site-input-right:hover,
-.site-input-group-wrapper .site-input-right:focus {
-  border-left-width: 1px;
-}
-
-.site-input-group-wrapper .ant-input-rtl.site-input-right {
-  border-right-width: 0;
-}
-
-.site-input-group-wrapper .ant-input-rtl.site-input-right:hover,
-.site-input-group-wrapper .ant-input-rtl.site-input-right:focus {
-  border-right-width: 1px;
-}
-```
 
 ```typescript
 import React from 'react';
@@ -494,9 +456,7 @@ export default App;
 
 带有搜索按钮的输入框。
 
-#### en-US
 
-Example of creating a search box by grouping a standard input with a search button.
 
 ```typescript
 import React from 'react';
@@ -558,9 +518,7 @@ export default App;
 
 用于 `onSearch` 的时候展示 `loading`。
 
-#### en-US
 
-Search loading when onSearch.
 
 ```typescript
 import React from 'react';
@@ -590,9 +548,7 @@ export default App;
 
 用于多行输入。
 
-#### en-US
 
-For multi-line input.
 
 ```typescript
 import React from 'react';
@@ -619,9 +575,7 @@ export default App;
 
 `autoSize` 属性适用于 `textarea` 节点，并且只有高度会自动变化。另外 `autoSize` 可以设定为一个对象，指定最小行数和最大行数。
 
-#### en-US
 
-`autoSize` prop for a `textarea` type of `Input` makes the height to automatically adjust based on the content. An option object can be provided to `autoSize` to specify the minimum and maximum number of lines the textarea will automatically adjust.
 
 ```typescript
 import React, { useState } from 'react';
@@ -661,9 +615,7 @@ export default App;
 
 一次性密码输入框。
 
-#### en-US
 
-One time password input.
 
 ```typescript
 import React from 'react';
@@ -721,22 +673,7 @@ export default App;
 
 结合 [Tooltip](/components/tooltip-cn) 组件，实现一个数值输入框，方便内容超长时的全量展现。
 
-#### en-US
 
-You can use the Input in conjunction with [Tooltip](/components/tooltip) component to create a Numeric Input, which can provide a good experience for extra-long content display.
-
-```css
-/* to prevent the arrow overflow the popup container,
-or the height is not enough when content is empty */
-.numeric-input .ant-tooltip-inner {
-  min-width: 32px;
-  min-height: 37px;
-}
-
-.numeric-input .numeric-input-title {
-  font-size: 14px;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -810,9 +747,7 @@ export default App;
 
 在输入框上添加前缀或后缀图标。
 
-#### en-US
 
-Add a prefix or suffix icons inside input.
 
 ```typescript
 import React from 'react';
@@ -849,9 +784,7 @@ export default App;
 
 密码框。
 
-#### en-US
 
-Input type of password.
 
 ```typescript
 import React from 'react';
@@ -892,9 +825,7 @@ export default App;
 
 带移除图标的输入框，点击图标删除所有内容。
 
-#### en-US
 
-Input box with the remove icon, click the icon to delete everything.
 
 ```typescript
 import React from 'react';
@@ -925,9 +856,7 @@ export default App;
 
 展示字数提示。
 
-#### en-US
 
-Show character counting.
 
 ```typescript
 import React from 'react';
@@ -963,9 +892,7 @@ export default App;
 
 在某些场景下，需要定制计数能力（例如 emoji 长度以 1 计算），可以通过 `count` 属性来实现。在该模式下，通过 `count.max` 属性来超出原生 `maxLength` 的限制。
 
-#### en-US
 
-It is necessary to customize the counting ability in some scenarios (such as emoji length is counted as 1), which can be achieved through the `count` attribute. Use `count.max` attribute exceeds the limit of the native `maxLength`.
 
 ```typescript
 import React from 'react';
@@ -1021,9 +948,7 @@ export default App;
 
 使用 `status` 为 Input 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to Input with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React from 'react';
@@ -1049,9 +974,7 @@ export default App;
 
 聚焦额外配置属性。
 
-#### en-US
 
-Focus with additional option.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -1132,9 +1055,7 @@ export default App;
 
 Buggy! 测试一些踩过的样式坑。
 
-#### en-US
 
-Buggy!
 
 ```typescript
 import React from 'react';
@@ -1171,9 +1092,7 @@ export default App;
 
 默认对齐效果。
 
-#### en-US
 
-Align without Space.
 
 ```typescript
 import React from 'react';
@@ -1281,9 +1200,7 @@ export default App;
 
 用于多行输入。
 
-#### en-US
 
-For multi-line input.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1325,9 +1242,7 @@ export default App;
 
 token debug
 
-#### en-US
 
-token debug
 
 ```typescript
 import React from 'react';

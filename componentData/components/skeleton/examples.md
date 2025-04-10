@@ -6,9 +6,7 @@
 
 最简单的占位效果。
 
-#### en-US
 
-Simplest Skeleton usage.
 
 ```typescript
 import React from 'react';
@@ -26,9 +24,7 @@ export default App;
 
 更复杂的组合。
 
-#### en-US
 
-Complex combination with avatar and multiple paragraphs.
 
 ```typescript
 import React from 'react';
@@ -46,9 +42,7 @@ export default App;
 
 显示动画效果。
 
-#### en-US
 
-Display active animation.
 
 ```typescript
 import React from 'react';
@@ -66,9 +60,7 @@ export default App;
 
 骨架按钮、头像、输入框、图像和自定义节点。
 
-#### en-US
 
-Skeleton Button, Avatar, Input, Image and Node.
 
 ```typescript
 import React, { useState } from 'react';
@@ -169,9 +161,7 @@ export default App;
 
 加载占位图包含子组件。
 
-#### en-US
 
-Skeleton contains sub component.
 
 ```typescript
 import React, { useState } from 'react';
@@ -214,9 +204,7 @@ export default App;
 
 在列表组件中使用加载占位符。
 
-#### en-US
 
-Use skeleton in list component.
 
 ```typescript
 import React, { useState } from 'react';
@@ -307,9 +295,7 @@ export default App;
 
 自定义组件 Token。
 
-#### en-US
 
-Custom component token.
 
 ```typescript
 import React from 'react';

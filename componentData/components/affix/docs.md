@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 当内容区域比较长，需要滚动页面时，这部分内容对应的操作或者导航需要在滚动范围内始终展现。常用于侧边菜单和按钮组合。
 
@@ -9,17 +9,9 @@
 >
 > 自 `5.10.0` 起，由于 Affix 组件由 class 重构为 FC，之前获取 `ref` 并调用内部实例方法的写法都会失效。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/on-change.tsx">固定状态改变的回调</code>
-<code src="./demo/target.tsx">滚动容器</code>
-<code src="./demo/debug.tsx" debug>调整浏览器大小，观察 Affix 容器是否发生变化。跟随变化为正常。#17678</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

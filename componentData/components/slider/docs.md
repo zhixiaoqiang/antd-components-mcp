@@ -1,28 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 当用户需要在数值区间/自定义区间内进行选择时，可为连续或离散值。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/input-number.tsx">带输入框的滑块</code>
-<code src="./demo/icon-slider.tsx">带 icon 的滑块</code>
-<code src="./demo/tip-formatter.tsx">自定义提示</code>
-<code src="./demo/event.tsx">事件</code>
-<code src="./demo/mark.tsx">带标签的滑块</code>
-<code src="./demo/vertical.tsx">垂直</code>
-<code src="./demo/show-tooltip.tsx">控制 ToolTip 的显示</code>
-<code src="./demo/reverse.tsx">反向</code>
-<code src="./demo/draggableTrack.tsx">范围可拖拽</code>
-<code src="./demo/multiple.tsx">多点组合</code>
-<code src="./demo/editable.tsx" version="5.20.0">动态增减节点</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |

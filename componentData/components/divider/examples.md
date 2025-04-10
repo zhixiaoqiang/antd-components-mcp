@@ -6,9 +6,7 @@
 
 默认为水平分割线，可在中间加入文字。
 
-#### en-US
 
-A Divider is `horizontal` by default. You can add text within Divider.
 
 ```typescript
 import React from 'react';
@@ -43,9 +41,7 @@ export default App;
 
 分割线中带有文字，可以用 `orientation` 指定文字位置。
 
-#### en-US
 
-Divider with inner title, set `orientation="left/right"` to align it.
 
 ```typescript
 import React from 'react';
@@ -99,9 +95,7 @@ export default App;
 
 使用 `plain` 可以设置为更轻量的分割文字样式。
 
-#### en-US
 
-You can use non-heading style of divider text by setting the `plain` property.
 
 ```typescript
 import React from 'react';
@@ -145,9 +139,7 @@ export default App;
 
 使用 `type="vertical"` 设置为行内的垂直分割线。
 
-#### en-US
 
-Use `type="vertical"` to make the divider vertical.
 
 ```typescript
 import React from 'react';
@@ -173,9 +165,7 @@ export default App;
 
 测试一些 `style` 修改样式的行为。
 
-#### en-US
 
-Use `style` to change default style.
 
 ```typescript
 import React from 'react';
@@ -209,9 +199,7 @@ export default App;
 
 组件 Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';
@@ -281,9 +269,7 @@ export default App;
 
 分隔线默认为 `solid`（实线）变体。您可以将其更改为 `dashed`（虚线）或 `dotted`（点线）。
 
-#### en-US
 
-Divider is of `solid` variant by default. You can change that to either `dashed` or `dotted`.
 
 ```typescript
 import React from 'react';

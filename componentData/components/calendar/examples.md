@@ -6,9 +6,7 @@
 
 一个通用的日历面板，支持年/月切换。
 
-#### en-US
 
-A basic calendar component with Year/Month switch.
 
 ```typescript
 import React from 'react';
@@ -34,31 +32,7 @@ export default App;
 
 一个复杂的应用示例，用 `dateCellRender` 和 `monthCellRender` 函数来自定义需要渲染的数据。
 
-#### en-US
 
-This component can be rendered by using `dateCellRender` and `monthCellRender` with the data you need.
-
-```css
-.events {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.events .ant-badge-status {
-  width: 100%;
-  overflow: hidden;
-  font-size: 12px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.notes-month {
-  font-size: 28px;
-  text-align: center;
-}
-.notes-month section {
-  font-size: 28px;
-}
-```
 
 ```typescript
 import React from 'react';
@@ -146,9 +120,7 @@ export default App;
 
 用于嵌套在空间有限的容器中。
 
-#### en-US
 
-Nested inside a container element for rendering in limited space.
 
 ```typescript
 import React from 'react';
@@ -186,9 +158,7 @@ export default App;
 
 一个通用的日历面板，支持年/月切换。
 
-#### en-US
 
-A basic calendar component with Year/Month switch.
 
 ```typescript
 import React, { useState } from 'react';
@@ -227,9 +197,7 @@ export default App;
 
 展示农历、节气等信息。
 
-#### en-US
 
-Display lunar calendar, solar terms and other information.
 
 ```typescript
 import React from 'react';
@@ -497,9 +465,7 @@ export default App;
 
 通过将 `showWeek` 属性设置为 `true`，在全屏日历中显示周数。
 
-#### en-US
 
-Show week number in fullscreen calendar by setting `showWeek` prop to `true`.
 
 ```typescript
 import React from 'react';
@@ -523,9 +489,7 @@ export default App;
 
 自定义日历头部内容。
 
-#### en-US
 
-Customize Calendar header content.
 
 ```typescript
 import React from 'react';
@@ -649,9 +613,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

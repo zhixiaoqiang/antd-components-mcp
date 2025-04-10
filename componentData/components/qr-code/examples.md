@@ -6,9 +6,7 @@
 
 基本用法。
 
-#### en-US
 
-Basic Usage.
 
 ```typescript
 import React from 'react';
@@ -40,9 +38,7 @@ export default App;
 
 带 Icon 的二维码。
 
-#### en-US
 
-QRCode with Icon.
 
 ```typescript
 import React from 'react';
@@ -66,9 +62,7 @@ export default App;
 
 可以通过 `status` 的值控制二维码的状态，提供了 `active`、`expired`、`loading`、`scanned` 四个值。
 
-#### en-US
 
-The status can be controlled by the value `status`, four values ​​of `active`, `expired`, `loading`, `scanned` are provided.
 
 ```typescript
 import React from 'react';
@@ -94,9 +88,7 @@ export default App;
 
 可以通过 `statusRender` 的值控制二维码不同状态的渲染逻辑。
 
-#### en-US
 
-You can control the rendering logic of the QR code in different states through the value of `statusRender`.
 
 ```typescript
 import React from 'react';
@@ -160,9 +152,7 @@ export default App;
 
 通过设置 `type` 自定义渲染结果，提供 `canvas` 和 `svg` 两个选项。
 
-#### en-US
 
-Customize the rendering results by `type`, provide options `canvas` and `svg`.
 
 ```typescript
 import React from 'react';
@@ -185,9 +175,7 @@ export default App;
 
 自定义尺寸
 
-#### en-US
 
-Custom Size.
 
 ```typescript
 import React, { useState } from 'react';
@@ -251,9 +239,7 @@ export default App;
 
 通过设置 `color` 自定义二维码颜色，通过设置 `bgColor` 自定义背景颜色。
 
-#### en-US
 
-Custom Color.
 
 ```typescript
 import React from 'react';
@@ -285,9 +271,7 @@ export default App;
 
 下载二维码的简单实现。
 
-#### en-US
 
-A way to download QRCode.
 
 ```typescript
 import React from 'react';
@@ -354,9 +338,7 @@ export default App;
 
 通过设置 errorLevel 调整不同的容错等级。
 
-#### en-US
 
-set Error Level.
 
 ```typescript
 import React, { useState } from 'react';
@@ -387,9 +369,7 @@ export default App;
 
 带气泡卡片的例子。
 
-#### en-US
 
-With Popover.
 
 ```typescript
 import React from 'react';

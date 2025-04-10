@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 提供平级的区域将大块内容进行收纳和展现，保持界面整洁。
 
@@ -9,31 +9,9 @@ Ant Design 依次提供了三级选项卡，分别用于不同的场景。
 - 既可用于容器顶部，也可用于容器内部，是最通用的 Tabs。
 - [Radio.Button](/components/radio-cn/#radio-demo-radiobutton) 可作为更次级的页签来使用。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/disabled.tsx">禁用</code>
-<code src="./demo/centered.tsx">居中</code>
-<code src="./demo/icon.tsx">图标</code>
-<code src="./demo/custom-indicator.tsx">指示条</code>
-<code src="./demo/slide.tsx">滑动</code>
-<code src="./demo/extra.tsx">附加内容</code>
-<code src="./demo/size.tsx">大小</code>
-<code src="./demo/position.tsx">位置</code>
-<code src="./demo/card.tsx">卡片式页签</code>
-<code src="./demo/editable-card.tsx">新增和关闭页签</code>
-<code src="./demo/card-top.tsx" compact background="grey" debug>卡片式页签容器</code>
-<code src="./demo/custom-add-trigger.tsx">自定义新增页签触发器</code>
-<code src="./demo/custom-tab-bar.tsx">自定义页签头</code>
-<code src="./demo/custom-tab-bar-node.tsx">可拖拽标签</code>
-<code src="./demo/animated.tsx" debug>动画</code>
-<code src="./demo/nest.tsx" debug>嵌套</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Tabs
 

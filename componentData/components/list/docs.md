@@ -1,26 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/simple.tsx">简单列表</code>
-<code src="./demo/basic.tsx">基础列表</code>
-<code src="./demo/loadmore.tsx">加载更多</code>
-<code src="./demo/vertical.tsx">竖排列表样式</code>
-<code src="./demo/pagination.tsx">分页设置</code>
-<code src="./demo/grid.tsx">栅格列表</code>
-<code src="./demo/grid-test.tsx" debug>测试栅格列表</code>
-<code src="./demo/responsive.tsx">响应式的栅格列表</code>
-<code src="./demo/infinite-load.tsx">滚动加载</code>
-<code src="./demo/virtual-list.tsx">滚动加载无限长列表</code>
-<code src="./demo/component-token.tsx" debug>自定义组件 token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 另外我们封装了 [ProList](https://procomponents.ant.design/components/list)，在 `antd` List 之上扩展了更多便捷易用的功能，比如多选，展开等功能，使用体验贴近 Table，欢迎尝试使用。
 

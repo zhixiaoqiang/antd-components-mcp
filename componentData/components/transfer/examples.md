@@ -6,9 +6,7 @@
 
 最基本的用法，展示了 `dataSource`、`targetKeys`、每行的渲染函数 `render` 以及回调函数 `onChange` `onSelectChange` `onScroll` 的用法。
 
-#### en-US
 
-The most basic usage of `Transfer` involves providing the source data and target keys arrays, plus the rendering and some callback functions.
 
 ```typescript
 import React, { useState } from 'react';
@@ -78,9 +76,7 @@ export default App;
 
 通过 `oneWay` 将 Transfer 转为单向样式。
 
-#### en-US
 
-Use `oneWay` to make Transfer the one way style.
 
 ```typescript
 import React, { useState } from 'react';
@@ -170,9 +166,7 @@ export default App;
 
 带搜索框的穿梭框，可以自定义搜索函数。
 
-#### en-US
 
-Transfer with a search box.
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -247,11 +241,7 @@ export default App;
 
 穿梭框高级用法，可配置操作文案，可定制宽高，可对底部进行自定义渲染。
 
-#### en-US
 
-Advanced Usage of Transfer.
-
-You can customize the labels of the transfer buttons, the width and height of the columns, and what should be displayed in the footer.
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -346,9 +336,7 @@ export default App;
 
 自定义渲染每一个 Transfer Item，可用于渲染复杂数据。
 
-#### en-US
 
-Customize each Transfer Item, allowing you to render a complex datasource.
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -431,9 +419,7 @@ export default App;
 
 大数据下使用分页。
 
-#### en-US
 
-Store a large amount of items with pagination.
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -508,9 +494,7 @@ export default App;
 
 使用 Table 组件作为自定义渲染列表。
 
-#### en-US
 
-Customize the render list with a Table component.
 
 ```typescript
 import React, { useState } from 'react';
@@ -655,16 +639,7 @@ export default App;
 
 使用 Tree 组件作为自定义渲染列表。
 
-#### en-US
 
-Customize the render list with a Tree component.
-
-<style>
-.tree-transfer .ant-transfer-list:first-child {
-  flex: none;
-  width: 50%;
-}
-</style>
 
 ```typescript
 import React, { useState } from 'react';
@@ -778,9 +753,7 @@ export default App;
 
 使用 `status` 为 Transfer 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to Transfer with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React from 'react';
@@ -803,9 +776,7 @@ export default App;
 
 自定义穿梭框全选按钮的文字。
 
-#### en-US
 
-Custom the labels for select all checkboxes.
 
 ```typescript
 import React, { useState } from 'react';
@@ -854,9 +825,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React, { useState } from 'react';

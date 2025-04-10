@@ -3,22 +3,9 @@
 
 安装 [Kitchen Sketch 插件 💎](https://kitchen.alipay.com)，一键填充高逼格头像和文本。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/type.tsx">类型</code>
-<code src="./demo/dynamic.tsx">自动调整字符大小</code>
-<code src="./demo/badge.tsx">带徽标的头像</code>
-<code src="./demo/group.tsx">Avatar.Group</code>
-<code src="./demo/toggle-debug.tsx" debug>隐藏情况下计算字符对齐</code>
-<code src="./demo/responsive.tsx">响应式尺寸</code>
-<code src="./demo/fallback.tsx" debug>图片不存在时</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Avatar
 

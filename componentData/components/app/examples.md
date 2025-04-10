@@ -6,9 +6,7 @@
 
 获取 `message`、`notification`、`modal` 实例。
 
-#### en-US
 
-Get instance for `message`, `notification`, `modal`.
 
 ```typescript
 import React from 'react';
@@ -67,9 +65,7 @@ export default () => (
 
 对 `message`、`notification` 进行配置。
 
-#### en-US
 
-Config for `message`, `notification`.
 
 ```typescript
 import React from 'react';

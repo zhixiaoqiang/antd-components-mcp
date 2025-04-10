@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 需要展现当前页面上可供跳转的锚点链接，以及快速在锚点之间跳转。
 
@@ -7,23 +7,9 @@
 >
 > 自 `4.24.0` 起，由于组件从 class 重构成 FC，之前一些获取 `ref` 并调用内部实例方法的写法都会失效
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx" iframe="200">基本</code>
-<code src="./demo/horizontal.tsx" iframe="200">横向 Anchor</code>
-<code src="./demo/static.tsx">静态位置</code>
-<code src="./demo/onClick.tsx">自定义 onClick 事件</code>
-<code src="./demo/customizeHighlight.tsx">自定义锚点高亮</code>
-<code src="./demo/targetOffset.tsx" iframe="200">设置锚点滚动偏移量</code>
-<code src="./demo/onChange.tsx">监听锚点链接改变</code>
-<code src="./demo/replace.tsx" iframe="200">替换历史中的 href</code>
-<code src="./demo/legacy-anchor.tsx" debug>废弃的 JSX 示例</code>
-<code src="./demo/component-token.tsx" iframe="800" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Anchor Props
 

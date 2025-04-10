@@ -1,25 +1,12 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 在一组可选项中进行多项选择时；
 - 单独使用可以表示两种状态之间的切换，和 `switch` 类似。区别在于切换 `switch` 会直接触发状态改变，而 `checkbox` 一般用于状态标记，需要和提交操作配合。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本用法</code>
-<code src="./demo/disabled.tsx">不可用</code>
-<code src="./demo/controller.tsx">受控的 Checkbox</code>
-<code src="./demo/group.tsx">Checkbox 组</code>
-<code src="./demo/check-all.tsx">全选</code>
-<code src="./demo/layout.tsx">布局</code>
-<code src="./demo/debug-line.tsx" debug>同行布局</code>
-<code src="./demo/debug-disable-popover.tsx" debug>禁用下的 Tooltip</code>
-<code src="./demo/custom-line-width.tsx" debug>自定义 lineWidth</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 #### Checkbox
 

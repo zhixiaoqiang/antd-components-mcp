@@ -6,9 +6,7 @@
 
 可以同时展开多个面板，这个例子默认展开了第一个。
 
-#### en-US
 
-By default, any number of panels can be expanded at a time. The first panel is expanded in this example.
 
 ```typescript
 import React from 'react';
@@ -59,11 +57,7 @@ export default App;
 
 通过设置 `size` 为 `large` `small` 分别把折叠面板设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
 
-#### en-US
 
-Ant Design supports a default collapse size as well as a large and small size.
-
-If a large or small collapse is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a collapse with the default size.
 
 ```typescript
 import React from 'react';
@@ -104,9 +98,7 @@ export default App;
 
 手风琴模式，始终只有一个面板处在激活状态。
 
-#### en-US
 
-In accordion mode, only one panel can be expanded at a time.
 
 ```typescript
 import React from 'react';
@@ -149,9 +141,7 @@ export default App;
 
 嵌套折叠面板。
 
-#### en-US
 
-`Collapse` is nested inside the `Collapse`.
 
 ```typescript
 import React from 'react';
@@ -208,9 +198,7 @@ export default App;
 
 一套没有边框的简洁样式。
 
-#### en-US
 
-A borderless style of Collapse.
 
 ```typescript
 import React from 'react';
@@ -254,9 +242,7 @@ export default App;
 
 自定义各个面板的背景色、圆角、边距和图标。
 
-#### en-US
 
-Customize the background, border, margin styles and icon for each panel.
 
 ```typescript
 import type { CSSProperties } from 'react';
@@ -323,9 +309,7 @@ export default App;
 
 你可以通过 `showArrow={false}` 隐藏 `CollapsePanel` 组件的箭头图标。
 
-#### en-US
 
-You can hide the arrow icon by passing `showArrow={false}` to `CollapsePanel` component.
 
 ```typescript
 import React from 'react';
@@ -370,9 +354,7 @@ export default App;
 
 自定义渲染每个面板右上角的内容。
 
-#### en-US
 
-Render extra element in the top-right corner of each panel.
 
 ```typescript
 import React, { useState } from 'react';
@@ -459,9 +441,7 @@ export default App;
 
 将折叠面板的背景变成透明。
 
-#### en-US
 
-Making collapse's background to transparent.
 
 ```typescript
 import React from 'react';
@@ -504,15 +484,7 @@ export default App;
 
 通过 `collapsible` 属性，可以设置面板的可折叠触发区域。
 
-#### en-US
 
-Specify the trigger area of collapsible by `collapsible`.
-
-<style>
-##collapse-demo-collapsible .ant-space {
-  width: 100%;
-}
-</style>
 
 ```typescript
 import React from 'react';
@@ -571,9 +543,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug
 
 ```typescript
 import React from 'react';

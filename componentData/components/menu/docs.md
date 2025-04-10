@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 导航菜单是一个网站的灵魂，用户依赖导航在各个页面中进行跳转。一般分为顶部导航和侧边导航，顶部导航提供全局性的类目和功能，侧边导航提供多级结构来收纳和排列网站架构。
 
@@ -10,26 +10,9 @@
 - Menu 元素为 `ul`，因而仅支持 [`li` 以及 `script-supporting` 子元素](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element)。因而你的子节点元素应该都在 `Menu.Item` 内使用。
 - Menu 需要计算节点结构，因而其子元素仅支持 `Menu.*` 以及对此进行封装的 HOC 组件。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/horizontal.tsx">顶部导航</code>
-<code src="./demo/horizontal-dark.tsx" debug>顶部导航（dark）</code>
-<code src="./demo/inline.tsx">内嵌菜单</code>
-<code src="./demo/inline-collapsed.tsx">缩起内嵌菜单</code>
-<code src="./demo/sider-current.tsx">只展开当前父级菜单</code>
-<code src="./demo/vertical.tsx">垂直菜单</code>
-<code src="./demo/theme.tsx">主题</code>
-<code src="./demo/submenu-theme.tsx">子菜单主题</code>
-<code src="./demo/switch-mode.tsx">切换菜单类型</code>
-<code src="./demo/style-debug.tsx" debug>Style debug</code>
-<code src="./demo/menu-v4.tsx" debug>v4 版本 Menu</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
-<code src="./demo/extra-style.tsx" debug>Extra Style debug</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Menu
 

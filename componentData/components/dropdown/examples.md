@@ -6,9 +6,7 @@
 
 最简单的下拉菜单。
 
-#### en-US
 
-The most basic dropdown menu.
 
 ```typescript
 import React from 'react';
@@ -72,9 +70,7 @@ export default App;
 
 带有快捷方式的下拉菜单。
 
-#### en-US
 
-The dropdown menu with shortcut.
 
 ```typescript
 import React from 'react';
@@ -130,9 +126,7 @@ export default App;
 
 支持 6 个弹出位置。
 
-#### en-US
 
-Support 6 placements.
 
 ```typescript
 import React from 'react';
@@ -203,9 +197,7 @@ export default App;
 
 可以展示一个箭头。
 
-#### en-US
 
-You could display an arrow.
 
 ```typescript
 import React from 'react';
@@ -276,9 +268,7 @@ export default App;
 
 分割线和不可用菜单项。
 
-#### en-US
 
-Divider and disabled menu item.
 
 ```typescript
 import React from 'react';
@@ -334,9 +324,7 @@ export default App;
 
 设置 `arrow` 为 `{ pointAtCenter: true }` 后，箭头将指向目标元素的中心。
 
-#### en-US
 
-By specifying `arrow` prop with `{ pointAtCenter: true }`, the arrow will point to the center of the target element.
 
 ```typescript
 import React from 'react';
@@ -407,9 +395,7 @@ export default App;
 
 默认是移入触发菜单，可以点击触发。
 
-#### en-US
 
-The default trigger mode is `hover`, you can change it to `click`.
 
 ```typescript
 import React from 'react';
@@ -464,9 +450,7 @@ export default App;
 
 点击菜单项后会触发事件，用户可以通过相应的菜单项 key 进行不同的操作。
 
-#### en-US
 
-An event will be triggered when you click menu items, in which you can make different operations according to item's key.
 
 ```typescript
 import React from 'react';
@@ -514,9 +498,7 @@ export default App;
 
 左边是按钮，右边是额外的相关功能菜单。可设置 `icon` 属性来修改右边的图标。
 
-#### en-US
 
-A button is on the left, and a related functional menu is on the right. You can set the icon property to modify the icon of right.
 
 ```typescript
 import React from 'react';
@@ -611,9 +593,7 @@ export default App;
 
 使用 `dropdownRender` 对下拉菜单进行自由扩展。如果你并不需要 Menu 内容，请直接使用 Popover 组件。
 
-#### en-US
 
-Customize the dropdown menu via `dropdownRender`. If you don't need the Menu content, use the Popover component directly.
 
 ```typescript
 import React from 'react';
@@ -703,9 +683,7 @@ export default App;
 
 传入的菜单里有多个层级。
 
-#### en-US
 
-The menu has multiple levels.
 
 ```typescript
 import React from 'react';
@@ -781,9 +759,7 @@ export default App;
 
 传入的菜单里有多个层级。
 
-#### en-US
 
-The menu has multiple levels.
 
 ```typescript
 import React from 'react';
@@ -861,9 +837,7 @@ export default App;
 
 默认是点击关闭菜单，可以关闭此功能。
 
-#### en-US
 
-The default is to close the menu when you click on menu items, this feature can be turned off.
 
 ```typescript
 import React, { useState } from 'react';
@@ -930,9 +904,7 @@ export default App;
 
 默认是移入触发菜单，可以点击鼠标右键触发。弹出菜单位置会跟随右键点击位置变动。
 
-#### en-US
 
-The default trigger mode is `hover`, you can change it to `contextMenu`. The pop-up menu position will follow the right-click position.
 
 ```typescript
 import React from 'react';
@@ -986,9 +958,7 @@ export default App;
 
 添加 `loading` 属性即可让按钮处于加载状态，最后两个按钮演示点击后进入加载状态。
 
-#### en-US
 
-A loading indicator can be added to a button by setting the `loading` property on the `Dropdown.Button`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1060,9 +1030,7 @@ export default App;
 
 添加 `menu` 中的 `selectable` 属性可以开启选择能力。
 
-#### en-US
 
-Configure the `selectable` property in `menu` to enable selectable ability.
 
 ```typescript
 import React from 'react';
@@ -1114,11 +1082,7 @@ export default App;
 
 [##19150](https://github.com/ant-design/ant-design/pull/19150)
 
-#### en-US
 
-This demo was created for debugging Menu styles inside Dropdown.
-
-[##19150](https://github.com/ant-design/ant-design/pull/19150)
 
 ```typescript
 import React from 'react';
@@ -1198,9 +1162,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -1256,9 +1218,7 @@ export default App;
 
 特殊处理 Down icon。
 
-#### en-US
 
-Specially handle Down icon.
 
 ```typescript
 import React from 'react';

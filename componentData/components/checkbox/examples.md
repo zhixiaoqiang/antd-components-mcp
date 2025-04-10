@@ -6,9 +6,7 @@
 
 简单的 checkbox。
 
-#### en-US
 
-Basic usage of checkbox.
 
 ```typescript
 import React from 'react';
@@ -31,9 +29,7 @@ export default App;
 
 checkbox 不可用。
 
-#### en-US
 
-Disabled checkbox.
 
 ```typescript
 import React from 'react';
@@ -59,9 +55,7 @@ export default App;
 
 联动 checkbox。
 
-#### en-US
 
-Communicated with other components.
 
 ```typescript
 import React, { useState } from 'react';
@@ -116,9 +110,7 @@ export default App;
 
 方便的从数组生成 Checkbox 组。
 
-#### en-US
 
-Generate a group of checkboxes from an array.
 
 ```typescript
 import React from 'react';
@@ -170,9 +162,7 @@ export default App;
 
 在实现全选效果时，你可能会用到 `indeterminate` 属性。
 
-#### en-US
 
-The `indeterminate` property can help you to achieve a 'check all' effect.
 
 ```typescript
 import React, { useState } from 'react';
@@ -219,9 +209,7 @@ export default App;
 
 Checkbox.Group 内嵌 Checkbox 并与 Grid 组件一起使用，可以实现灵活的布局。
 
-#### en-US
 
-We can use Checkbox and Grid in Checkbox.Group, to implement complex layout.
 
 ```typescript
 import React from 'react';
@@ -264,9 +252,7 @@ export default App;
 
 测试自定义 lineWidth 的情况：https://github.com/ant-design/ant-design/issues/46307
 
-#### en-US
 
-测试自定义 lineWidth 的情况：https://github.com/ant-design/ant-design/issues/46307
 
 ```typescript
 import React from 'react';

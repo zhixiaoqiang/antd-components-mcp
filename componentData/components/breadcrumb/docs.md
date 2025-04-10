@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 当系统拥有超过两级以上的层级结构时；
 - 当需要告知用户『你在哪里』时；
@@ -21,21 +21,9 @@ return (
 return <Breadcrumb routes={[{ breadcrumbName: 'sample' }]} />;
 ```
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/withIcon.tsx">带有图标的</code>
-<code src="./demo/withParams.tsx">带有参数的</code>
-<code src="./demo/separator.tsx">分隔符</code>
-<code src="./demo/overlay.tsx">带下拉菜单的面包屑</code>
-<code src="./demo/separator-component.tsx">独立的分隔符</code>
-<code src="./demo/debug-routes.tsx">Debug Routes</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Breadcrumb
 

@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 用于在多个备选项中选中单个状态。
 - 和 Select 的区别是，Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。
@@ -27,28 +27,9 @@ return (
 );
 ```
 
-## 代码演示
 
-<!-- prettier-ignore-start -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/disabled.tsx">不可用</code>
-<code src="./demo/radiogroup.tsx">单选组合</code>
-<code src="./demo/radiogroup-more.tsx">Radio.Group 垂直</code>
-<code src="./demo/radiogroup-block.tsx" version="5.21.0">Block 单选组合</code>
-<code src="./demo/radiogroup-options.tsx">Radio.Group 组合 - 配置方式</code>
-<code src="./demo/radiobutton.tsx">按钮样式</code>
-<code src="./demo/radiogroup-with-name.tsx">单选组合 - 配合 name 使用</code>
-<code src="./demo/size.tsx">大小</code>
-<code src="./demo/radiobutton-solid.tsx">填底的按钮样式</code>
-<code src="./demo/badge.tsx" debug>测试 Badge 的样式</code>
-<code src="./demo/wireframe.tsx" debug>线框风格</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
-<code src="./demo/debug-upload.tsx" debug>Upload Debug</code>
-<!-- prettier-ignore-end -->
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Radio/Radio.Button
 

@@ -6,9 +6,7 @@
 
 点击 TimePicker，然后可以在浮层中选择或者输入某一时间。
 
-#### en-US
 
-Click `TimePicker`, and then we could select or input a time in panel.
 
 ```typescript
 import React from 'react';
@@ -37,9 +35,7 @@ export default App;
 
 value 和 onChange 需要配合使用。
 
-#### en-US
 
-`value` and `onChange` should be used together,
 
 ```typescript
 import React, { useState } from 'react';
@@ -66,9 +62,7 @@ export default App;
 
 三种大小的输入框，大的用在表单中，中的为默认。
 
-#### en-US
 
-The input box comes in three sizes: large, middle and small. Large is used in the form, while the medium size is the default.
 
 ```typescript
 import React from 'react';
@@ -93,9 +87,7 @@ export default App;
 
 TimePicker 默认会根据 `picker` 的交互行为，自动选择是否需要确认按钮。你也可以通过 `needConfirm` 属性来手动设置是否需要确认按钮。当有 `needConfirm` 时，用户始终需要点击确认按钮才能完成选择。反之，则会在选择或者失去焦点时提交。
 
-#### en-US
 
-TimePicker will automatically determine whether to show a confirm button according to the `picker` property. You can also set the `needConfirm` property to determine whether to show a confirm button. When `needConfirm` is set, the user must click the confirm button to complete the selection. Otherwise, the selection will be submitted when the picker loses focus or select a time.
 
 ```typescript
 import React from 'react';
@@ -118,9 +110,7 @@ export default App;
 
 禁用时间选择。
 
-#### en-US
 
-A disabled state of the `TimePicker`.
 
 ```typescript
 import React from 'react';
@@ -142,9 +132,7 @@ export default App;
 
 TimePicker 浮层中的列会随着 `format` 变化，当略去 `format` 中的某部分时，浮层中对应的列也会消失。
 
-#### en-US
 
-While part of `format` is omitted, the corresponding column in panel will disappear, too.
 
 ```typescript
 import React from 'react';
@@ -165,9 +153,7 @@ export default App;
 
 可以使用 `hourStep` `minuteStep` `secondStep` 按步长展示可选的时分秒。
 
-#### en-US
 
-Show stepped options by `hourStep` `minuteStep` `secondStep`.
 
 ```typescript
 import React from 'react';
@@ -185,9 +171,7 @@ export default App;
 
 在 TimePicker 选择框底部显示自定义的内容。
 
-#### en-US
 
-Render addon contents to time picker panel's bottom.
 
 ```typescript
 import React, { useState } from 'react';
@@ -219,9 +203,7 @@ export default App;
 
 12 小时制的时间选择器，默认的 format 为 `h:mm:ss a`。
 
-#### en-US
 
-TimePicker of 12 hours format, with default format `h:mm:ss a`.
 
 ```typescript
 import React from 'react';
@@ -250,9 +232,7 @@ export default App;
 
 通过 `changeOnScroll` 与 `needConfirm` 使其滚动时改变数值。
 
-#### en-US
 
-Use `changeOnScroll` and `needConfirm` to change the value when scrolling.
 
 ```typescript
 import React from 'react';
@@ -279,9 +259,7 @@ export default App;
 
 将自定义 class 传给 `TimePicker` 弹框。
 
-#### en-US
 
-Passing custom class to `TimePicker` popup.
 
 ```typescript
 import React from 'react';
@@ -314,9 +292,7 @@ export default App;
 
 通过 `TimePicker.RangePicker` 使用时间范围选择器。
 
-#### en-US
 
-Use time range picker with `TimePicker.RangePicker`.
 
 ```typescript
 import React from 'react';
@@ -342,9 +318,7 @@ export default App;
 
 TimePicker 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Variants of TimePicker, there are four variants: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -383,9 +357,7 @@ export default App;
 
 使用 `status` 为 TimePicker 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to TimePicker with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React from 'react';
@@ -410,9 +382,7 @@ export default App;
 
 自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
 
-#### en-US
 
-Custom `prefix` and `suffixIcon`.
 
 ```typescript
 import React from 'react';
@@ -450,9 +420,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';

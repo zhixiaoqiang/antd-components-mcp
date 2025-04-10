@@ -6,9 +6,7 @@
 
 简单的展示。
 
-#### en-US
 
-Simplest Usage.
 
 ```typescript
 import React from 'react';
@@ -26,9 +24,7 @@ export default App;
 
 可以通过设置 `image` 为 `Empty.PRESENTED_IMAGE_SIMPLE` 选择另一种风格的图片。
 
-#### en-US
 
-You can choose another style of `image` by setting image to `Empty.PRESENTED_IMAGE_SIMPLE`.
 
 ```typescript
 import React from 'react';
@@ -46,9 +42,7 @@ export default App;
 
 自定义图片链接、图片大小、描述、附属内容。
 
-#### en-US
 
-Customize image source, image size, description and extra content.
 
 ```typescript
 import React from 'react';
@@ -78,9 +72,7 @@ export default App;
 
 自定义全局组件的 Empty 样式。
 
-#### en-US
 
-Use ConfigProvider set global Empty style.
 
 ```typescript
 import React, { useState } from 'react';
@@ -154,9 +146,7 @@ export default App;
 
 无描述展示。
 
-#### en-US
 
-Simplest Usage with no description.
 
 ```typescript
 import React from 'react';

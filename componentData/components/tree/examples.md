@@ -6,9 +6,7 @@
 
 最简单的用法，展示可勾选，可选中，禁用，默认展开等功能。
 
-#### en-US
 
-The most basic usage, tell you how to use checkable, selectable, disabled, defaultExpandKeys, and etc.
 
 ```typescript
 import React from 'react';
@@ -77,9 +75,7 @@ export default App;
 
 受控操作示例
 
-#### en-US
 
-Controlled mode lets parent nodes reflect the status of child nodes more intelligently.
 
 ```typescript
 import React, { useState } from 'react';
@@ -179,9 +175,7 @@ export default App;
 
 将节点拖拽到其他节点内部或前后。
 
-#### en-US
 
-Drag treeNode to insert after the other treeNode or insert into the other parent TreeNode.
 
 ```typescript
 import React, { useState } from 'react';
@@ -304,9 +298,7 @@ export default App;
 
 点击展开节点，动态加载数据。
 
-#### en-US
 
-To load data asynchronously when click to expand a treeNode.
 
 ```typescript
 import React, { useState } from 'react';
@@ -377,15 +369,7 @@ export default App;
 
 可搜索的树。
 
-#### en-US
 
-Searchable Tree.
-
-```css
-.site-tree-search-value {
-  color: ##f50;
-}
-```
 
 ```typescript
 import React, { useMemo, useState } from 'react';
@@ -528,9 +512,7 @@ export default App;
 
 节点之间带连接线的树，常用于文件目录结构展示。使用 `showLine` 开启，可以用 `switcherIcon` 修改默认图标。
 
-#### en-US
 
-Tree with connected line between nodes, turn on by `showLine`, customize the preset icon by `switcherIcon`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -661,9 +643,7 @@ export default App;
 
 可以针对不同的节点定制图标。
 
-#### en-US
 
-You can customize icons for different nodes.
 
 ```typescript
 import React from 'react';
@@ -717,9 +697,7 @@ export default App;
 
 内置的目录树，`multiple` 模式支持 `ctrl(Windows)` / `command(Mac)` 复选。
 
-#### en-US
 
-Built-in directory tree. `multiple` support `ctrl(Windows)` / `command(Mac)` selection.
 
 ```typescript
 import React from 'react';
@@ -780,9 +758,7 @@ export default App;
 
 调试 [##51210](https://github.com/ant-design/ant-design/pull/51210), [##51448](https://github.com/ant-design/ant-design/pull/51448##issuecomment-2449144872)
 
-#### en-US
 
-Debugging [##51210](https://github.com/ant-design/ant-design/pull/51210), [##51448](https://github.com/ant-design/ant-design/pull/51448##issuecomment-2449144872)
 
 ```typescript
 import React from 'react';
@@ -861,9 +837,7 @@ export default App;
 
 自定义展开/折叠图标。
 
-#### en-US
 
-customize collapse/expand icon of tree node
 
 ```typescript
 import React from 'react';
@@ -948,9 +922,7 @@ export default App;
 
 使用 `height` 属性则切换为虚拟滚动。
 
-#### en-US
 
-Use virtual list through `height` prop.
 
 ```typescript
 import React from 'react';
@@ -1161,9 +1133,7 @@ export default App;
 
 大数据展示。
 
-#### en-US
 
-Plenty of tree nodes.
 
 ```typescript
 import React from 'react';
@@ -1236,9 +1206,7 @@ export default App;
 
 组件 Token
 
-#### en-US
 
-Component Token
 
 ```typescript
 import React from 'react';
@@ -1321,9 +1289,7 @@ export default App;
 
 多行树节点。
 
-#### en-US
 
-Multiple line tree node.
 
 ```typescript
 import React from 'react';

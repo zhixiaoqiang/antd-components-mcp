@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。
 - 当选项少时（少于 5 项），建议直接将选项平铺，使用 [Radio](/components/radio-cn/) 是更好的选择。
@@ -25,45 +25,9 @@ return (
 );
 ```
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本使用</code>
-<code src="./demo/search.tsx">带搜索框</code>
-<code src="./demo/search-filter-option.tsx">自定义搜索</code>
-<code src="./demo/multiple.tsx">多选</code>
-<code src="./demo/size.tsx">三种大小</code>
-<code src="./demo/option-render.tsx">自定义下拉选项</code>
-<code src="./demo/search-sort.tsx">带排序的搜索</code>
-<code src="./demo/tags.tsx">标签</code>
-<code src="./demo/optgroup.tsx">分组</code>
-<code src="./demo/coordinate.tsx">联动</code>
-<code src="./demo/search-box.tsx">搜索框</code>
-<code src="./demo/label-in-value.tsx">获得选项的文本</code>
-<code src="./demo/automatic-tokenization.tsx">自动分词</code>
-<code src="./demo/select-users.tsx">搜索用户</code>
-<code src="./demo/suffix.tsx" version="5.22.0">前后缀</code>
-<code src="./demo/custom-dropdown-menu.tsx">扩展菜单</code>
-<code src="./demo/hide-selected.tsx">隐藏已选择选项</code>
-<code src="./demo/variant.tsx" version="5.13.0">形态变体</code>
-<code src="./demo/filled-debug.tsx" debug>Filled debug</code>
-<code src="./demo/custom-tag-render.tsx">自定义选择标签</code>
-<code src="./demo/custom-label-render.tsx">自定义选中 label</code>
-<code src="./demo/responsive.tsx">响应式 maxTagCount</code>
-<code src="./demo/big-data.tsx">大数据</code>
-<code src="./demo/status.tsx">自定义状态</code>
-<code src="./demo/placement.tsx">弹出位置</code>
-<code src="./demo/placement-debug.tsx" debug>动态高度</code>
-<code src="./demo/debug.tsx" debug>4.0 Debug</code>
-<code src="./demo/render-panel.tsx" debug>\_InternalPanelDoNotUseOrYouWillBeFired</code>
-<code src="./demo/option-label-center.tsx" debug>选项文本居中</code>
-<code src="./demo/debug-flip-shift.tsx" iframe="200" debug>翻转+偏移</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
-<code src="./demo/maxCount.tsx" version="5.13.0">最大选中数量</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Select props
 

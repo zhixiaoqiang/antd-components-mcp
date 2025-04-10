@@ -1,29 +1,12 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 当加载/渲染所有数据将花费很多时间时；
 - 可切换页码浏览数据。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/align.tsx" version="5.19.0">方向</code>
-<code src="./demo/more.tsx">更多</code>
-<code src="./demo/changer.tsx">改变</code>
-<code src="./demo/jump.tsx">跳转</code>
-<code src="./demo/mini.tsx">迷你</code>
-<code src="./demo/simple.tsx">简洁</code>
-<code src="./demo/controlled.tsx">受控</code>
-<code src="./demo/total.tsx">总数</code>
-<code src="./demo/all.tsx">全部展示</code>
-<code src="./demo/itemRender.tsx">上一步和下一步</code>
-<code src="./demo/wireframe.tsx" debug>线框风格</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ```jsx
 <Pagination onChange={onChange} total={50} />

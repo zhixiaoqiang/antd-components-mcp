@@ -6,9 +6,7 @@
 
 包含标题、内容、操作区域。
 
-#### en-US
 
-A basic card containing a title, content and an extra corner content. Supports two sizes: `default` and `small`.
 
 ```typescript
 import React from 'react';
@@ -39,9 +37,7 @@ export default App;
 
 在灰色背景上使用无边框的卡片。
 
-#### en-US
 
-A borderless card on a gray background.
 
 ```typescript
 import React from 'react';
@@ -65,9 +61,7 @@ export default App;
 
 只包含内容区域。
 
-#### en-US
 
-A simple card only containing a content area.
 
 ```typescript
 import React from 'react';
@@ -91,9 +85,7 @@ export default App;
 
 可以利用 `Card.Meta` 支持更灵活的内容。
 
-#### en-US
 
-You can use `Card.Meta` to support more flexible content.
 
 ```typescript
 import React from 'react';
@@ -121,9 +113,7 @@ export default App;
 
 在系统概览页面常常和栅格进行配合。
 
-#### en-US
 
-Cards usually cooperate with grid column layout in overview page.
 
 ```typescript
 import React from 'react';
@@ -159,9 +149,7 @@ export default App;
 
 数据读入前会有文本块样式。
 
-#### en-US
 
-Shows a loading indicator while the contents of the card is being fetched.
 
 ```typescript
 import React, { useState } from 'react';
@@ -217,9 +205,7 @@ export default App;
 
 一种常见的卡片内容区隔模式。
 
-#### en-US
 
-Grid style card content.
 
 ```typescript
 import React from 'react';
@@ -254,9 +240,7 @@ export default App;
 
 可以放在普通卡片内部，展示多层级结构的信息。
 
-#### en-US
 
-It can be placed inside the ordinary card to display the information of the multilevel structure.
 
 ```typescript
 import React from 'react';
@@ -288,9 +272,7 @@ export default App;
 
 可承载更多内容。
 
-#### en-US
 
-More content can be hosted.
 
 ```typescript
 import React, { useState } from 'react';
@@ -384,9 +366,7 @@ export default App;
 
 一种支持封面、头像、标题和描述信息的卡片。
 
-#### en-US
 
-A Card that supports `cover`, `avatar`, `title` and `description`.
 
 ```typescript
 import React from 'react';
@@ -428,9 +408,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

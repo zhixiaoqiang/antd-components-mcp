@@ -6,9 +6,7 @@
 
 简单的步骤条。
 
-#### en-US
 
-The most basic step bar.
 
 ```typescript
 import React from 'react';
@@ -46,9 +44,7 @@ export default App;
 
 迷你版的步骤条，通过设置 `<Steps size="small">` 启用.
 
-#### en-US
 
-By setting like this: `<Steps size="small">`, you can get a mini version.
 
 ```typescript
 import React from 'react';
@@ -82,9 +78,7 @@ export default App;
 
 通过设置 `items` 的 `icon` 属性，可以启用自定义图标。
 
-#### en-US
 
-You can use your own custom icons by setting the property `icon` for `items`.
 
 ```typescript
 import React from 'react';
@@ -128,9 +122,7 @@ export default App;
 
 通常配合内容及按钮使用，表示一个流程的处理进度。
 
-#### en-US
 
-Cooperate with the content and buttons, to represent the progress of a process.
 
 ```typescript
 import React, { useState } from 'react';
@@ -210,9 +202,7 @@ export default App;
 
 简单的竖直方向的步骤条。
 
-#### en-US
 
-A simple step bar in the vertical direction.
 
 ```typescript
 import React from 'react';
@@ -250,9 +240,7 @@ export default App;
 
 简单的竖直方向的小型步骤条。
 
-#### en-US
 
-A simple mini version step bar in the vertical direction.
 
 ```typescript
 import React from 'react';
@@ -288,9 +276,7 @@ export default App;
 
 使用 Steps 的 `status` 属性来指定当前步骤的状态。
 
-#### en-US
 
-By using `status` of `Steps`, you can specify the state for current step.
 
 ```typescript
 import React from 'react';
@@ -328,9 +314,7 @@ export default App;
 
 包含步骤点的进度条。
 
-#### en-US
 
-Steps with progress dot style.
 
 ```typescript
 import React from 'react';
@@ -397,9 +381,7 @@ export default App;
 
 为点状步骤条增加自定义展示。
 
-#### en-US
 
-You can customize the display for Steps with progress dot style.
 
 ```typescript
 import React from 'react';
@@ -453,9 +435,7 @@ export default App;
 
 包含步骤点的进度条。
 
-#### en-US
 
-Steps with progress dot style.
 
 ```typescript
 import React from 'react';
@@ -524,9 +504,7 @@ export default App;
 
 设置 `onChange` 后，Steps 变为可点击状态。
 
-#### en-US
 
-Setting `onChange` makes Steps clickable.
 
 ```typescript
 import React, { useState } from 'react';
@@ -597,9 +575,7 @@ export default App;
 
 导航类型的步骤条。
 
-#### en-US
 
-Navigation steps.
 
 ```typescript
 import React, { useState } from 'react';
@@ -706,9 +682,7 @@ export default App;
 
 带有进度的步骤。
 
-#### en-US
 
-Steps with progress.
 
 ```typescript
 import React from 'react';
@@ -747,9 +721,7 @@ export default App;
 
 修改标签放置位置为 `vertical`。
 
-#### en-US
 
-Set labelPlacement to `vertical`.
 
 ```typescript
 import React from 'react';
@@ -790,9 +762,7 @@ export default App;
 
 Buggy!
 
-#### en-US
 
-Buggy!
 
 ```typescript
 import React, { useState } from 'react';
@@ -864,9 +834,7 @@ export default App;
 
 测试 Steps 嵌套 Steps 的样式。
 
-#### en-US
 
-Test style of Steps inside Steps.
 
 ```typescript
 import React, { useState } from 'react';
@@ -940,9 +908,7 @@ export default App;
 
 内联类型的步骤条，适用于列表内容场景中展示对象所在流程、当前状态的情况。
 
-#### en-US
 
-Inline type steps, suitable for displaying the process and current state of the object in the list content scene.
 
 ```typescript
 import React from 'react';
@@ -1019,9 +985,7 @@ export default App;
 
 线框风格。
 
-#### en-US
 
-Wireframe style.
 
 ```typescript
 import React from 'react';
@@ -1061,9 +1025,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

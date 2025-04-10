@@ -6,9 +6,7 @@
 
 基础弹框。
 
-#### en-US
 
-Basic modal.
 
 ```typescript
 import React, { useState } from 'react';
@@ -53,9 +51,7 @@ export default App;
 
 点击确定后异步关闭对话框，例如提交表单。
 
-#### en-US
 
-Asynchronously close a modal dialog when the OK button is pressed. For example, you can use this pattern when you submit a form.
 
 ```typescript
 import React, { useState } from 'react';
@@ -114,11 +110,7 @@ export default App;
 
 不需要默认确定取消按钮时，你可以把 `footer` 设为 `null`。
 
-#### en-US
 
-A more complex example which define a customized footer button bar. The dialog will change to loading state after clicking the submit button, and when the loading is done, the modal dialog will be closed.
-
-You could set `footer` to `null` if you don't need default footer buttons.
 
 ```typescript
 import React, { useState } from 'react';
@@ -193,9 +185,7 @@ export default App;
 
 设置对话框加载状态。
 
-#### en-US
 
-Set the loading status of Modal.
 
 ```typescript
 import React from 'react';
@@ -249,9 +239,7 @@ export default App;
 
 自定义页脚渲染函数，支持在原有基础上进行扩展。
 
-#### en-US
 
-Customize the footer rendering function to support extensions on top of the original.
 
 ```typescript
 import React, { useState } from 'react';
@@ -328,9 +316,7 @@ export default App;
 
 通过 `Modal.useModal` 创建支持读取 context 的 `contextHolder`。其中仅有 hooks 方法支持 Promise `await` 操作。
 
-#### en-US
 
-Use `Modal.useModal` to get `contextHolder` with context accessible issue. Only hooks method support Promise `await` operation.
 
 ```typescript
 import React, { createContext } from 'react';
@@ -405,9 +391,7 @@ export default App;
 
 设置 `okText` 与 `cancelText` 以自定义按钮文字。
 
-#### en-US
 
-To customize the text of the buttons, you need to set `okText` and `cancelText` props.
 
 ```typescript
 import React, { useState } from 'react';
@@ -480,9 +464,7 @@ export default App;
 
 通过返回的 instance 手动更新和关闭对话框。
 
-#### en-US
 
-Manually updating and destroying a modal through instance.
 
 ```typescript
 import React from 'react';
@@ -530,9 +512,7 @@ export default App;
 
 使用 `centered` 或类似 `style.top` 的样式来设置对话框位置。
 
-#### en-US
 
-You can use `centered`,`style.top` or other styles to set position of modal dialog.
 
 ```typescript
 import React, { useState } from 'react';
@@ -588,9 +568,7 @@ export default App;
 
 第一个对话框。
 
-#### en-US
 
-Basic modal.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1141,9 +1119,7 @@ export default Demo;
 
 传入 `okButtonProps` 和 `cancelButtonProps` 可分别自定义确定按钮和取消按钮的 props。
 
-#### en-US
 
-Passing `okButtonProps` and `cancelButtonProps` will customize the OK button and cancel button props.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1197,9 +1173,7 @@ export default App;
 
 自定义渲染对话框, 可通过 `react-draggable` 来实现拖拽。
 
-#### en-US
 
-Custom modal content render. use `react-draggable` implements draggable.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -1299,9 +1273,7 @@ export default App;
 
 使用 `width` 来设置模态对话框的宽度。
 
-#### en-US
 
-Use `width` to set the width of the modal dialog.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1367,9 +1339,7 @@ export default App;
 
 在绝大多数场景，都不需要静态方法。它无法消费 context，例如无法响应动态主题。请优先使用 hooks 版本或者 `App` 组件提供的 Modal 实例。
 
-#### en-US
 
-In most case, you do not need static method. It can not consume context like dynamic theme. Please use hooks version or `App` provided instance first.
 
 ```typescript
 import React from 'react';
@@ -1427,9 +1397,7 @@ export default App;
 
 使用 `confirm()` 可以快捷地弹出确认框。onCancel/onOk 返回 promise 可以延迟关闭。
 
-#### en-US
 
-Use `confirm()` to show a confirmation modal dialog. Let onCancel/onOk function return a promise object to delay closing the dialog.
 
 ```typescript
 import React from 'react';
@@ -1526,9 +1494,7 @@ export default App;
 
 通过 `classNames` 属性设置弹窗内部区域（header、body、footer、mask、wrapper）的 `className`。
 
-#### en-US
 
-Set the className of the build-in module (header, body, footer, mask, wrapper) of the modal through the classNames property.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1650,9 +1616,7 @@ export default App;
 
 使用 `Modal.destroyAll()` 可以销毁弹出的确认窗。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题。
 
-#### en-US
 
-`Modal.destroyAll()` will destroy all confirmation modal dialogs. Usually, you can use it in router change event to destroy confirm modal dialog automatically.
 
 ```typescript
 import React from 'react';
@@ -1694,9 +1658,7 @@ export default App;
 
 嵌套弹框
 
-#### en-US
 
-Nested modal.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1845,9 +1807,7 @@ export default Demo;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -1904,9 +1864,7 @@ export default () => (
 
 通过 `mousePosition` 控制弹框动画原点.
 
-#### en-US
 
-pass `mousePosition` to control modal's animation origin position
 
 ```typescript
 import React, { useState } from 'react';
@@ -1957,9 +1915,7 @@ export default App;
 
 线框风格。
 
-#### en-US
 
-Wireframe.
 
 ```typescript
 import React from 'react';
@@ -1992,9 +1948,7 @@ export default () => (
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

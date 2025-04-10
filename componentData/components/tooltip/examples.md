@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The simplest usage.
 
 ```typescript
 import React from 'react';
@@ -30,9 +28,7 @@ export default App;
 
 位置有 12 个方向。
 
-#### en-US
 
-There are 12 placement options available.
 
 ```typescript
 import React from 'react';
@@ -105,9 +101,7 @@ export default App;
 
 支持显示、隐藏以及将箭头保持居中定位。
 
-#### en-US
 
-Support show, hide or keep arrow in the center.
 
 ```typescript
 import React, { useMemo, useState } from 'react';
@@ -205,9 +199,7 @@ export default App;
 
 当 Tooltip 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
 
-#### en-US
 
-Auto adjust Popup and arrow position when Tooltip is close to the edge of the screen. Will be out of screen when exceed limitation.
 
 ```typescript
 import React from 'react';
@@ -245,9 +237,7 @@ export default App;
 
 气泡框不可见时自动调整位置。
 
-#### en-US
 
-Adjust placement automatically when tooltip is invisible.
 
 ```typescript
 import React from 'react';
@@ -313,9 +303,7 @@ export default App;
 
 通过 `destroyTooltipOnHide` 控制提示关闭时是否销毁 dom 节点。
 
-#### en-US
 
-Setting `destroyTooltipOnHide` to control whether destroy dom node of tooltip when hidden.
 
 ```typescript
 import React from 'react';
@@ -337,9 +325,7 @@ export default App;
 
 我们添加了多种预设色彩的文字提示样式，用作不同场景使用。
 
-#### en-US
 
-We preset a series of colorful Tooltip styles for use in different situations.
 
 ```typescript
 import React from 'react';
@@ -394,9 +380,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -422,9 +406,7 @@ export default App;
 
 Debug 用例。
 
-#### en-US
 
-Debug use.
 
 ```typescript
 import React from 'react';
@@ -462,9 +444,7 @@ export default App;
 
 通过设置 `title={null}` 或者 `title=""` 可以禁用 Tooltip。
 
-#### en-US
 
-The Tooltip can be disabled by setting `title={null}` or `title=""`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -490,9 +470,7 @@ export default App;
 
 Disabled 子元素。
 
-#### en-US
 
-Disabled wrapper.
 
 ```typescript
 import React from 'react';
@@ -532,9 +510,7 @@ export default App;
 
 与自定义组件一起使用.
 
-#### en-US
 
-Use with a custom component.
 
 ```typescript
 import { Tooltip } from 'antd';

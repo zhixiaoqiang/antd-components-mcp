@@ -6,9 +6,7 @@
 
 相邻组件水平间距。
 
-#### en-US
 
-Crowded components horizontal spacing.
 
 ```typescript
 import React from 'react';
@@ -38,9 +36,7 @@ export default App;
 
 相邻组件垂直间距。
 
-#### en-US
 
-Crowded components vertical spacing.
 
 ```typescript
 import React from 'react';
@@ -73,9 +69,7 @@ export default App;
 
 使用 `size` 设置元素之间的间距，预设了 `small`、`middle`、`large` 三种尺寸，也可以自定义间距，若不设置 `size`，则默认为 `small`。
 
-#### en-US
 
-Use `size` to set the spacing, Three sizes are preset: `small`, `middle`, `large`. You can also customize the spacing. If `size` is not set, the spacing is `small`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -124,28 +118,7 @@ export default App;
 
 设置对齐模式。
 
-#### en-US
 
-Config item align.
-
-```css
-.space-align-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-.space-align-block {
-  flex: none;
-  margin: 8px 4px;
-  padding: 4px;
-  border: 1px solid ##40a9ff;
-}
-.space-align-block .mock-block {
-  display: inline-block;
-  padding: 32px 8px 16px;
-  background: rgba(150, 150, 150, 0.2);
-}
-```
 
 ```typescript
 import React from 'react';
@@ -194,9 +167,7 @@ export default App;
 
 自动换行。
 
-#### en-US
 
-Auto wrap line.
 
 ```typescript
 import React from 'react';
@@ -221,9 +192,7 @@ export default App;
 
 相邻组件分隔符。
 
-#### en-US
 
-Crowded components split.
 
 ```typescript
 import React from 'react';
@@ -247,9 +216,7 @@ export default App;
 
 使用 Space.Compact 让表单组件之间紧凑连接且合并边框。
 
-#### en-US
 
-Compact Mode for form component.
 
 ```typescript
 import React from 'react';
@@ -473,9 +440,7 @@ export default App;
 
 Button 组件紧凑排列的示例。
 
-#### en-US
 
-Button component compact example.
 
 ```typescript
 import React from 'react';
@@ -601,9 +566,7 @@ export default App;
 
 垂直方向的紧凑布局，目前仅支持 Button 组合。
 
-#### en-US
 
-Vertical Mode for Space.Compact, support Button only.
 
 ```typescript
 import React from 'react';
@@ -639,19 +602,7 @@ export default App;
 
 调试 Input 前置/后置标签。
 
-#### en-US
 
-Input addon debug.
-
-```css
-.select-before {
-  width: 90px;
-}
-
-.select-after {
-  width: 80px;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -897,9 +848,7 @@ export default App;
 
 嵌套使用的紧凑布局。
 
-#### en-US
 
-Nested `Space.Compact`.
 
 ```typescript
 import React from 'react';
@@ -998,9 +947,7 @@ export default App;
 
 Debug usage
 
-#### en-US
 
-Debug usage
 
 ```typescript
 import React from 'react';
@@ -1038,9 +985,7 @@ export default App;
 
 Debug usage
 
-#### en-US
 
-Debug usage
 
 ```typescript
 import React, { useState } from 'react';

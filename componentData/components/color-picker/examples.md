@@ -6,9 +6,7 @@
 
 最简单的使用方法。
 
-#### en-US
 
-Basic Usage.
 
 ```typescript
 import React from 'react';
@@ -28,11 +26,7 @@ export default Demo;
 
 通过设置 `size` 为 `large` `small` 分别把触发器设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
 
-#### en-US
 
-Ant Design supports three trigger sizes: small, default and large.
-
-If a large or small trigger is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a trigger with the default size.
 
 ```typescript
 import React from 'react';
@@ -63,9 +57,7 @@ export default Demo;
 
 通过 `value` 和 `onChange` 设置组件为受控模式，如果通过 `onChangeComplete` 受控则会锁定展示颜色。
 
-#### en-US
 
-Set the component to controlled mode. Will lock the display color if controlled by `onChangeComplete`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -95,9 +87,7 @@ export default Demo;
 
 通过 `mode` 设置颜色为单一颜色还是渐变色。
 
-#### en-US
 
-Set the color to a single or a gradient color via `mode`.
 
 ```typescript
 import React from 'react';
@@ -147,9 +137,7 @@ export default Demo;
 
 渲染触发器的默认文本, `showText` 为 `true` 时生效。自定义文本时，可以使用 `showText` 为函数的方式，返回自定义的文本。
 
-#### en-US
 
-Renders the default text of the trigger, effective when `showText` is `true`. When customizing text, you can use `showText` as a function to return custom text.
 
 ```typescript
 import React, { useState } from 'react';
@@ -192,9 +180,7 @@ export default Demo;
 
 设置为禁用状态。
 
-#### en-US
 
-Set to disabled state.
 
 ```typescript
 import React from 'react';
@@ -210,9 +196,7 @@ export default () => <ColorPicker defaultValue="#1677ff" showText disabled />;
 
 禁用颜色透明度。
 
-#### en-US
 
-Disabled color alpha.
 
 ```typescript
 import React from 'react';
@@ -230,9 +214,7 @@ export default Demo;
 
 清除已选择的颜色。
 
-#### en-US
 
-Clear Color.
 
 ```typescript
 import React from 'react';
@@ -260,9 +242,7 @@ export default () => {
 
 自定义颜色面板的触发器。
 
-#### en-US
 
-Triggers for customizing color panels.
 
 ```typescript
 import React, { useMemo, useState } from 'react';
@@ -302,9 +282,7 @@ export default Demo;
 
 自定义颜色面板的触发事件，提供 `click` 和 `hover` 两个选项。
 
-#### en-US
 
-Triggers event for customizing color panels, provide options `click` and `hover`.
 
 ```typescript
 import React from 'react';
@@ -322,9 +300,7 @@ export default Demo;
 
 编码格式，支持`HEX`、`HSB`、`RGB`。
 
-#### en-US
 
-Encoding formats, support `HEX`, `HSB`, `RGB`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -418,9 +394,7 @@ export default Demo;
 
 设置颜色选择器的预设颜色。
 
-#### en-US
 
-Set the presets color of the color picker.
 
 ```typescript
 import React from 'react';
@@ -450,9 +424,7 @@ export default Demo;
 
 通过 `panelRender` 自由控制面板的渲染。
 
-#### en-US
 
-Rendering of the free control panel via `panelRender`.
 
 ```typescript
 import React from 'react';
@@ -543,9 +515,7 @@ export default () => (
 
 Pure Panel
 
-#### en-US
 
-Pure Panel
 
 ```typescript
 import React, { useState } from 'react';

@@ -1,33 +1,14 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 在操作需要较长时间才能完成时，为用户显示该操作的当前进度和状态。
 
 - 当一个操作会打断当前界面，或者需要在后台运行，且耗时可能超过 2 秒时；
 - 当需要显示一个操作完成的百分比时。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/line.tsx">进度条</code>
-<code src="./demo/circle.tsx">进度圈</code>
-<code src="./demo/line-mini.tsx">小型进度条</code>
-<code src="./demo/circle-micro.tsx">响应式进度圈</code>
-<code src="./demo/circle-mini.tsx">小型进度圈</code>
-<code src="./demo/dynamic.tsx">动态展示</code>
-<code src="./demo/format.tsx">自定义文字格式</code>
-<code src="./demo/dashboard.tsx">仪表盘</code>
-<code src="./demo/segment.tsx">分段进度条</code>
-<code src="./demo/linecap.tsx">边缘形状</code>
-<code src="./demo/gradient-line.tsx">自定义进度条渐变色</code>
-<code src="./demo/steps.tsx">步骤进度条</code>
-<code src="./demo/circle-steps.tsx" version="5.16.0">步骤进度圈</code>
-<code src="./demo/size.tsx">尺寸</code>
-<code src="./demo/info-position.tsx" version="5.18.0">改变进度数值位置</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 各类型共用的属性。
 

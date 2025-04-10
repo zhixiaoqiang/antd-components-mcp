@@ -10,13 +10,7 @@
 
 可通过设置 `header` 和 `footer`，来自定义列表头部和尾部。
 
-#### en-US
 
-Ant Design supports a default list size as well as a large and small size.
-
-If a large or small list is desired, set the size property to either large or small respectively. Omit the size property for a list with the default size.
-
-Customizing the header and footer of list by setting `header` and `footer` property.
 
 ```typescript
 import React from 'react';
@@ -75,9 +69,7 @@ export default App;
 
 基础列表。
 
-#### en-US
 
-Basic list.
 
 ```typescript
 import React from 'react';
@@ -124,15 +116,7 @@ export default App;
 
 可通过 `loadMore` 属性实现加载更多功能。
 
-#### en-US
 
-Load more list with `loadMore` property.
-
-```css
-.demo-loadmore-list {
-  min-height: 350px;
-}
-```
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -244,9 +228,7 @@ export default App;
 
 通过设置 `itemLayout` 属性为 `vertical` 可实现竖排列表样式。
 
-#### en-US
 
-Set the `itemLayout` property to `vertical` to create a vertical list.
 
 ```typescript
 import React from 'react';
@@ -323,9 +305,7 @@ export default App;
 
 可通过 `pagination` 属性使用列表分页，并进行设置。
 
-#### en-US
 
-List pagination can be used and set through the `pagination` property.
 
 ```typescript
 import React, { useState } from 'react';
@@ -421,9 +401,7 @@ export default App;
 
 可以通过设置 `List` 的 `grid` 属性来实现栅格列表，`column` 可设置期望显示的列数。
 
-#### en-US
 
-Create a grid layout by setting the `grid` property of List.
 
 ```typescript
 import React from 'react';
@@ -466,9 +444,7 @@ export default App;
 
 List `grid` 在各种情况下的样式表现，如 Fragment 和封装了 List.Item.
 
-#### en-US
 
-Test List `grid` for some edge cases.
 
 ```typescript
 import React from 'react';
@@ -536,9 +512,7 @@ export default App;
 
 响应式的栅格列表。尺寸与 [Layout Grid](/components/grid-cn/##col) 保持一致。
 
-#### en-US
 
-Responsive grid list. The size property the is as same as [Layout Grid](/components/grid/##col).
 
 ```typescript
 import React from 'react';
@@ -595,9 +569,7 @@ export default App;
 
 结合 [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component) 实现滚动自动加载列表。
 
-#### en-US
 
-The example of infinite load with [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component).
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -690,9 +662,7 @@ export default App;
 
 结合 [rc-virtual-list](https://github.com/react-component/virtual-list) 实现滚动加载无限长列表，能够提高数据量大时候长列表的性能。
 
-#### en-US
 
-An example of infinite & virtualized list via using [rc-virtual-list](https://github.com/react-component/virtual-list).
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -776,9 +746,7 @@ export default App;
 
 自定义组件 Token。
 
-#### en-US
 
-Custom component token.
 
 ```typescript
 import React from 'react';

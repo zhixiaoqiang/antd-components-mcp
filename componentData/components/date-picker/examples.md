@@ -6,9 +6,7 @@
 
 最简单的用法，在浮层中可以选择或者输入日期。
 
-#### en-US
 
-Basic use case. Users can select or input a date in a panel.
 
 ```typescript
 import React from 'react';
@@ -39,9 +37,7 @@ export default App;
 
 通过设置 `picker` 属性，指定范围选择器类型。
 
-#### en-US
 
-Set range picker type by `picker` prop.
 
 ```typescript
 import React from 'react';
@@ -82,9 +78,7 @@ export default App;
 
 多选，不支持 `showTime` 以及 `picker="time"`。
 
-#### en-US
 
-Multiple selections. Does not support `showTime` and `picker="time"`.
 
 ```typescript
 import React from 'react';
@@ -129,9 +123,7 @@ export default App;
 
 非响应式间距测试。
 
-#### en-US
 
-Non-responsive spacing test.
 
 ```typescript
 import React from 'react';
@@ -159,9 +151,7 @@ export default App;
 
 DatePicker 默认会根据 `picker` 的交互行为，自动选择是否需要确认按钮。你也可以通过 `needConfirm` 属性来手动设置是否需要确认按钮。当有 `needConfirm` 时，用户始终需要点击确认按钮才能完成选择。反之，则会在选择或者失去焦点时提交。
 
-#### en-US
 
-DatePicker will automatically determine whether to show a confirm button according to the `picker` property. You can also set the `needConfirm` property to determine whether to show a confirm button. When `needConfirm` is set, the user must click the confirm button to complete the selection. Otherwise, the selection will be submitted when the picker loses focus or selects a date.
 
 ```typescript
 import React from 'react';
@@ -185,9 +175,7 @@ export default App;
 
 提供选择器，自由切换不同类型的日期选择器，常用于日期筛选场合。
 
-#### en-US
 
-Switch in different types of pickers by Select.
 
 ```typescript
 import React, { useState } from 'react';
@@ -238,9 +226,7 @@ export default App;
 
 使用 `format` 属性，可以自定义日期显示格式。当 `format` 为数组时，选择器输入框可以输入数组中任意一个有效格式。
 
-#### en-US
 
-We can set the date format by `format`. When `format` is an array, the input box can be entered in any of the valid formats of the array.
 
 ```typescript
 import React from 'react';
@@ -292,9 +278,7 @@ export default App;
 
 增加选择时间功能，当 `showTime` 为一个对象时，其属性会传递给内建的 `TimePicker`。
 
-#### en-US
 
-This property provides an additional time selection. When `showTime` is an Object, its properties will be passed on to the built-in `TimePicker`.
 
 ```typescript
 import React from 'react';
@@ -341,9 +325,7 @@ export default App;
 
 输入格式对齐，通过键盘左右切换焦点。失去焦点时会尝试对齐到最后合法的日期。
 
-#### en-US
 
-Align the date format. Switch the selection by arrow keys. Will try to align the date to the last valid date when blur.
 
 ```typescript
 import React from 'react';
@@ -383,9 +365,7 @@ export default App;
 
 通过 `minDate` 和 `maxDate` 限定日期范围。
 
-#### en-US
 
-Limit the range of available dates by using `minDate` and `maxDate`.
 
 ```typescript
 import React from 'react';
@@ -415,9 +395,7 @@ export default App;
 
 选择框的不可用状态。你也可以通过数组单独禁用 RangePicker 的其中一项。
 
-#### en-US
 
-A disabled state of the `DatePicker`. You can also set as array to disable one of input.
 
 ```typescript
 import React from 'react';
@@ -461,9 +439,7 @@ export default App;
 
 可用 `disabledDate` 和 `disabledTime` 分别禁止选择部分日期和时间，其中 `disabledTime` 需要和 `showTime` 一起使用。
 
-#### en-US
 
-Disable specific dates and times by using `disabledDate` and `disabledTime` respectively, and `disabledTime` only works with `showTime`.
 
 ```typescript
 import React from 'react';
@@ -544,9 +520,7 @@ export default App;
 
 在范围选择时，可以允许留空。这对于需要保留“至今”日期项颇为有用。
 
-#### en-US
 
-Allow empty for the RangePicker. It's useful when you need to keep the "to date".
 
 ```typescript
 import React from 'react';
@@ -572,9 +546,7 @@ export default App;
 
 使用 `disabledDate` 的 `info.from` 来限制动态的日期区间选择。
 
-#### en-US
 
-Using `info.from` of `disabledDate` to limit the dynamic date range selection.
 
 ```typescript
 import React from 'react';
@@ -651,9 +623,7 @@ export default App;
 
 可以预设常用的日期范围以提高用户体验。自 `5.8.0` 开始，preset value 支持回调函数返回值方式。
 
-#### en-US
 
-We can set preset ranges to RangePicker to improve user experience. Since `5.8.0`, preset value supports callback function.
 
 ```typescript
 import React from 'react';
@@ -723,9 +693,7 @@ export default App;
 
 在浮层中加入额外的页脚，以满足某些定制信息的需求。
 
-#### en-US
 
-Render extra footer in panel for customized requirements.
 
 ```typescript
 import React from 'react';
@@ -753,9 +721,7 @@ export default App;
 
 三种大小的输入框，若不设置，则为 `middle`。
 
-#### en-US
 
-The input box comes in three sizes: small, middle and large. The `middle` size will be used if `size` is omitted.
 
 ```typescript
 import React, { useState } from 'react';
@@ -798,9 +764,7 @@ export default App;
 
 使用 `cellRender` 可以自定义单元格的内容和样式。
 
-#### en-US
 
-We can customize the rendering of the cells in the calendar by providing a `cellRender` function to `DatePicker`.
 
 ```typescript
 import React from 'react';
@@ -845,9 +809,7 @@ export default App;
 
 通过 `components` 替换对应面板。
 
-#### en-US
 
-Replace panel with `components`.
 
 ```typescript
 import React from 'react';
@@ -935,9 +897,7 @@ export default App;
 
 通过 `locale` 配置支持特殊的年历格式。
 
-#### en-US
 
-Use `locale` to support special calendar format.
 
 ```typescript
 import React from 'react';
@@ -1012,9 +972,7 @@ export default App;
 
 使用 `status` 为 DatePicker 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to DatePicker with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React from 'react';
@@ -1039,9 +997,7 @@ export default App;
 
 DatePicker 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Variants of DatePicker, there are four variants: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -1080,9 +1036,7 @@ export default App;
 
 Filled Debug
 
-#### en-US
 
-Filled Debug
 
 ```typescript
 import React from 'react';
@@ -1137,9 +1091,7 @@ export default App;
 
 可以通过 `placement` 手动指定弹出的位置。
 
-#### en-US
 
-You can manually specify the position of the popup via `placement`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1183,9 +1135,7 @@ export default App;
 
 通过组合 `mode` 与 `onPanelChange` 控制要展示的面板。
 
-#### en-US
 
-Determine which panel to show with `mode` and `onPanelChange`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1266,12 +1216,7 @@ export default App;
 > - 通过设置 `disabledDate` 方法，来约束开始和结束日期。
 > - 通过 `open` `onOpenChange` 来优化交互。
 
-#### en-US
 
-When `RangePicker` does not satisfied your requirements, try to implement similar functionality with two `DatePicker`.
-
-> - Use the `disabledDate` property to limit the start and end dates.
-> - Improve user experience with `open` and `onOpenChange`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1342,9 +1287,7 @@ export default App;
 
 自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
 
-#### en-US
 
-Custom `prefix` and `suffixIcon`.
 
 ```typescript
 import React from 'react';
@@ -1386,9 +1329,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -1408,9 +1349,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

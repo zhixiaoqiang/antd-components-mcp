@@ -6,9 +6,7 @@
 
 简单的徽章展示，当 `count` 为 `0` 时，默认不显示，但是可以使用 `showZero` 修改为显示。
 
-#### en-US
 
-Simplest Usage. Badge will be hidden when `count` is `0`, but we can use `showZero` to show it.
 
 ```typescript
 import React from 'react';
@@ -41,9 +39,7 @@ export default App;
 
 > 在右上角的 badge 则限定为红色。
 
-#### en-US
 
-Used in standalone when children is empty.
 
 ```typescript
 import React, { useState } from 'react';
@@ -78,9 +74,7 @@ export default App;
 
 超过 `overflowCount` 的会显示为 `${overflowCount}+`，默认的 `overflowCount` 为 `99`。
 
-#### en-US
 
-`${overflowCount}+` is displayed when count is larger than `overflowCount`. The default value of `overflowCount` is `99`.
 
 ```typescript
 import React from 'react';
@@ -113,9 +107,7 @@ export default App;
 
 没有具体的数字。
 
-#### en-US
 
-This will simply display a red badge, without a specific count. If count equals 0, it won't display the dot.
 
 ```typescript
 import React from 'react';
@@ -143,9 +135,7 @@ export default App;
 
 展示动态变化的效果。
 
-#### en-US
 
-The count will be animated as it changes.
 
 ```typescript
 import React, { useState } from 'react';
@@ -209,9 +199,7 @@ export default App;
 
 用 a 标签进行包裹即可。
 
-#### en-US
 
-The badge can be wrapped with `a` tag to make it linkable.
 
 ```typescript
 import React from 'react';
@@ -235,9 +223,7 @@ export default App;
 
 设置状态点的位置偏移，格式为 `[left, top]`，表示状态点距默认位置左侧、上方的偏移量。
 
-#### en-US
 
-Set offset of the badge dot, the format is `[left, top]`, which represents the offset of the status dot from the left and top of the default position.
 
 ```typescript
 import React from 'react';
@@ -259,9 +245,7 @@ export default App;
 
 可以设置有数字徽标的大小。
 
-#### en-US
 
-Set size of numeral Badge.
 
 ```typescript
 import React from 'react';
@@ -288,9 +272,7 @@ export default App;
 
 用于表示状态的小圆点。
 
-#### en-US
 
-Standalone badge with status.
 
 ```typescript
 import React from 'react';
@@ -326,9 +308,7 @@ export default App;
 
 我们添加了多种预设色彩的徽标样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。
 
-#### en-US
 
-We preset a series of colorful Badge styles for use in different situations. You can also set it to a hex color string for custom color.
 
 ```typescript
 import React from 'react';
@@ -378,9 +358,7 @@ export default App;
 
 使用缎带型的徽标。
 
-#### en-US
 
-Use ribbon badge.
 
 ```typescript
 import React from 'react';
@@ -441,9 +419,7 @@ export default App;
 
 Buggy!
 
-#### en-US
 
-Buggy!
 
 ```typescript
 import React from 'react';
@@ -479,9 +455,7 @@ export default App;
 
 测试 `count` `status` `color` `dot` 共用的情况。
 
-#### en-US
 
-Using `count/dot` with custom `status/color`.
 
 ```typescript
 import React from 'react';
@@ -543,9 +517,7 @@ export default App;
 
 设置鼠标放在状态点上时显示的文字。
 
-#### en-US
 
-The badge will display `title` when hovered over, instead of `count`.
 
 ```typescript
 import React from 'react';
@@ -572,9 +544,7 @@ export default App;
 
 在使用多彩徽标的同时，支持 count 属性显示
 
-#### en-US
 
-support `count` when use colorful badge
 
 ```typescript
 import React from 'react';
@@ -637,9 +607,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug
 
 ```typescript
 import React from 'react';

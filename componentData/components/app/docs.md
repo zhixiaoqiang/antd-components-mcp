@@ -1,14 +1,10 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 提供可消费 React context 的 `message.xxx`、`Modal.xxx`、`notification.xxx` 的静态方法，可以简化 useMessage 等方法需要手动植入 `contextHolder` 的问题。
 - 提供基于 `.ant-app` 的默认重置样式，解决原生元素没有 antd 规范样式的问题。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本用法</code>
-<code src="./demo/config.tsx">Hooks 配置</code>
 
 ## 如何使用
 
@@ -111,8 +107,6 @@ export default () => {
 ```
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 > 自 `antd@5.1.0` 版本开始提供该组件。
 

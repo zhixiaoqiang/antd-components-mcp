@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The most basic usage.
 
 ```typescript
 import React from 'react';
@@ -30,9 +28,7 @@ export default App;
 
 通过 `content` 设置 字符串数组 指定多行文字水印内容。
 
-#### en-US
 
-Use `content` to set a string array to specify multi-line text watermark content.
 
 ```typescript
 import React from 'react';
@@ -54,9 +50,7 @@ export default App;
 
 通过 `image` 指定图片地址。为保证图片高清且不被拉伸，请设置 width 和 height, 并上传至少两倍的宽高的 logo 图片地址。
 
-#### en-US
 
-Specify the image address via `image`. To ensure that the image is high definition and not stretched, set the width and height, and upload at least twice the width and height of the logo image address.
 
 ```typescript
 import React from 'react';
@@ -82,9 +76,7 @@ export default App;
 
 通过自定义参数配置预览水印效果。
 
-#### en-US
 
-Preview the watermark effect by configuring custom parameters.
 
 ```typescript
 import React, { useState } from 'react';
@@ -220,9 +212,7 @@ export default App;
 
 在 Modal 与 Drawer 中使用。
 
-#### en-US
 
-Use in Modal and Drawer.
 
 ```typescript
 import React from 'react';

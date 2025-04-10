@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
 
@@ -18,32 +18,9 @@
 - 🚫 禁用：行动点不可用的时候，一般需要文案解释。
 - 🔃 加载中：用于异步操作等待反馈的时候，也可以避免多次提交。
 
-## 代码演示 {#examples}
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">语法糖</code>
-<code src="./demo/color-variant.tsx" version="5.21.0">颜色与变体</code>
-<code src="./demo/debug-color-variant" debug>调试颜色与变体</code>
-<code src="./demo/icon.tsx">按钮图标</code>
-<code src="./demo/icon-position.tsx" version="5.17.0">按钮图标位置</code>
-<code src="./demo/debug-icon.tsx" debug>调试图标按钮</code>
-<code src="./demo/debug-block.tsx" debug>调试按钮block属性</code>
-<code src="./demo/size.tsx">按钮尺寸</code>
-<code src="./demo/disabled.tsx">不可用状态</code>
-<code src="./demo/loading.tsx">加载中状态</code>
-<code src="./demo/multiple.tsx">多个按钮组合</code>
-<code src="./demo/ghost.tsx">幽灵按钮</code>
-<code src="./demo/danger.tsx">危险按钮</code>
-<code src="./demo/block.tsx">Block 按钮</code>
-<code src="./demo/legacy-group.tsx" debug>废弃的 Block 组</code>
-<code src="./demo/chinese-chars-loading.tsx" debug>加载中状态 bug 还原</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
-<code src="./demo/linear-gradient.tsx">渐变按钮</code>
-<code src="./demo/chinese-space.tsx" version="5.17.0">移除两个汉字之间的空格</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：`type` -> `shape` -> `size` -> `loading` -> `disabled`。
 

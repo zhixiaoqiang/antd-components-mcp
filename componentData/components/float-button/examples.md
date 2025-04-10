@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The most basic usage.
 
 ```typescript
 import React from 'react';
@@ -26,9 +24,7 @@ export default App;
 
 通过 `type` 改变悬浮按钮的类型。
 
-#### en-US
 
-Change the type of the FloatButton with the `type` property.
 
 ```typescript
 import React from 'react';
@@ -52,9 +48,7 @@ export default App;
 
 通过 `shape` 设置不同的形状。
 
-#### en-US
 
-Change the shape of the FloatButton with the `shape` property.
 
 ```typescript
 import React from 'react';
@@ -90,11 +84,7 @@ export default App;
 
 > 仅当 `shape` 属性为 `square` 时支持。由于空间较小，推荐使用比较精简的双数文字。
 
-#### en-US
 
-Setting the `description` property allows you to show a FloatButton with a description.
-
-> supported only when `shape` is `square`. Due to narrow space for text, short sentence is recommended.
 
 ```typescript
 import React from 'react';
@@ -129,9 +119,7 @@ export default App;
 
 设置 tooltip 属性，即可开启气泡卡片。
 
-#### en-US
 
-Setting the `tooltip` property shows the FloatButton with a tooltip.
 
 ```typescript
 import React from 'react';
@@ -149,9 +137,7 @@ export default App;
 
 按钮组合使用时，推荐使用 `<FloatButton.Group />`，并通过设置 `shape` 属性改变悬浮按钮组的形状。悬浮按钮组的 `shape` 会覆盖内部 FloatButton 的 `shape` 属性。
 
-#### en-US
 
-When multiple buttons are used together, `<FloatButton.Group />` is recommended. By setting the `shape` property of FloatButton.Group, you can change the shape of group. The `shape` of the FloatButton.Group will override the `shape` of FloatButtons inside.
 
 ```typescript
 import React from 'react';
@@ -184,9 +170,7 @@ export default App;
 
 设置 `trigger` 属性即可开启菜单模式。提供 `hover` 和 `click` 两种触发方式。
 
-#### en-US
 
-Open menu mode with `trigger`, which could be `hover` or `click`.
 
 ```typescript
 import React from 'react';
@@ -226,9 +210,7 @@ export default App;
 
 通过 `open` 设置组件为受控模式，需要配合 `trigger` 一起使用。
 
-#### en-US
 
-Set the component to controlled mode through `open`, which need to be used together with `trigger`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -275,9 +257,7 @@ export default App;
 
 自定义弹出位置，提供了四个预设值：`top`、`right`、`bottom`、`left`，默认值为 `top`。
 
-#### en-US
 
-Customize animation placement, providing four preset placement: `top`, `right`, `bottom`, `left`, the `top` position by default.
 
 ```typescript
 import React from 'react';
@@ -363,9 +343,7 @@ export default App;
 
 返回页面顶部的操作按钮。
 
-#### en-US
 
-`BackTop` makes it easy to go back to the top of the page.
 
 ```typescript
 import React from 'react';
@@ -394,9 +372,7 @@ export default App;
 
 右上角附带圆形徽标数字的悬浮按钮。
 
-#### en-US
 
-FloatButton with Badge.
 
 ```typescript
 import React from 'react';
@@ -432,9 +408,7 @@ export default App;
 
 调试使用。
 
-#### en-US
 
-debug use.
 
 ```typescript
 import React, { useState } from 'react';
@@ -470,9 +444,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';

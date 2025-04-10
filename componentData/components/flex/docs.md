@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 适合设置元素之间的间距。
 - 适合设置各种水平、垂直对齐方式。
@@ -9,21 +9,11 @@
 - Space 为内联元素提供间距，其本身会为每一个子元素添加包裹元素用于内联对齐。适用于行、列中多个子元素的等距排列。
 - Flex 为块级元素提供间距，其本身不会添加包裹元素。适用于垂直或水平方向上的子元素布局，并提供了更多的灵活性和控制能力。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本布局</code>
-<code src="./demo/align.tsx">对齐方式</code>
-<code src="./demo/gap.tsx">设置间隙</code>
-<code src="./demo/wrap.tsx">自动换行</code>
-<code src="./demo/combination.tsx">组合使用</code>
-<code src="./demo/debug.tsx" debug>调试专用</code>
 
 ## API
 
 > 自 `antd@5.10.0` 版本开始提供该组件。Flex 组件默认行为在水平模式下，为向上对齐，在垂直模式下，为拉伸对齐，你可以通过属性进行调整。
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |

@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 避免组件紧贴在一起，拉开统一的空间。
 
@@ -12,26 +12,9 @@
 - Space 为内联元素提供间距，其本身会为每一个子元素添加包裹元素用于内联对齐。适用于行、列中多个子元素的等距排列。
 - Flex 为块级元素提供间距，其本身不会添加包裹元素。适用于垂直或水平方向上的子元素布局，并提供了更多的灵活性和控制能力。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/base.tsx">基本用法</code>
-<code src="./demo/vertical.tsx">垂直间距</code>
-<code src="./demo/size.tsx">间距大小</code>
-<code src="./demo/align.tsx">对齐</code>
-<code src="./demo/wrap.tsx">自动换行</code>
-<code src="./demo/split.tsx">分隔符</code>
-<code src="./demo/compact.tsx">紧凑布局组合</code>
-<code src="./demo/compact-buttons.tsx">Button 紧凑布局</code>
-<code src="./demo/compact-button-vertical.tsx">垂直方向紧凑布局</code>
-<code src="./demo/compact-debug.tsx" debug>调试 Input 前置/后置标签</code>
-<code src="./demo/compact-nested.tsx" debug>紧凑布局嵌套</code>
-<code src="./demo/debug.tsx" debug>多样的 Child</code>
-<code src="./demo/gap-in-line.tsx" debug>Flex gap 样式</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Space
 

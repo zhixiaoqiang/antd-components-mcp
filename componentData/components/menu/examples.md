@@ -6,9 +6,7 @@
 
 水平的顶部导航菜单。
 
-#### en-US
 
-Horizontal top navigation menu.
 
 ```typescript
 import React, { useState } from 'react';
@@ -84,9 +82,7 @@ export default App;
 
 水平的顶部导航菜单。
 
-#### en-US
 
-Horizontal top navigation menu.
 
 ```typescript
 import React, { useState } from 'react';
@@ -164,9 +160,7 @@ export default App;
 
 垂直菜单，子菜单内嵌在菜单区域。
 
-#### en-US
 
-Vertical menu with inline submenus.
 
 ```typescript
 import React from 'react';
@@ -273,11 +267,7 @@ export default App;
 
 你可以在 [Layout](/components/layout-cn/##layout-demo-side) 里查看侧边布局结合的完整示例。
 
-#### en-US
 
-Inline menu could be collapsed.
-
-Here is [a complete demo](/components/layout/##layout-demo-side) with sider layout.
 
 ```typescript
 import React, { useState } from 'react';
@@ -363,9 +353,7 @@ export default App;
 
 点击菜单，收起其他展开的所有菜单，保持菜单聚焦简洁。
 
-#### en-US
 
-Click the menu and you will see that all the other menus gets collapsed to keep the entire menu compact.
 
 ```typescript
 import React, { useState } from 'react';
@@ -496,9 +484,7 @@ export default App;
 
 子菜单是弹出的形式。
 
-#### en-US
 
-Submenus open as pop-ups.
 
 ```typescript
 import React from 'react';
@@ -582,9 +568,7 @@ export default App;
 
 内建了两套主题 `light` 和 `dark`，默认 `light`。
 
-#### en-US
 
-There are two built-in themes: `light` and `dark`. The default value is `light`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -682,9 +666,7 @@ export default App;
 
 你可以通过 `theme` 属性来设置 SubMenu 的主题从而达到不同目录树下不同主题色的效果。该例子默认为根目录深色，子目录浅色效果。
 
-#### en-US
 
-You can config SubMenu theme with `theme` prop to enable different theme color effect. This sample is dark for root and light for SubMenu.
 
 ```typescript
 import React, { useState } from 'react';
@@ -756,9 +738,7 @@ export default App;
 
 展示动态切换模式。
 
-#### en-US
 
-Show the dynamic switching mode (between `inline` and `vertical`).
 
 ```typescript
 import React, { useState } from 'react';
@@ -867,9 +847,7 @@ export default App;
 
 buggy!
 
-#### en-US
 
-buggy!
 
 ```typescript
 import React, { useState } from 'react';
@@ -977,9 +955,7 @@ export default App;
 
 V4 样式的 Menu 组件。
 
-#### en-US
 
-Menu with v4 style.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1105,9 +1081,7 @@ export default App;
 
 组件 Token debug。
 
-#### en-US
 
-Debug Component Token.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1300,9 +1274,7 @@ export default App;
 
 调试使用
 
-#### en-US
 
-Debug usage
 
 ```typescript
 import React from 'react';

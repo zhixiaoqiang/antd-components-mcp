@@ -1,28 +1,12 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 当需要展示标题、段落、列表内容时使用，如文章/博客/日志的文本样式。
 - 当需要一列基于文本的基础操作时，如拷贝/省略/可编辑。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/title.tsx">标题组件</code>
-<code src="./demo/paragraph-debug.tsx" debug>标题与段落</code>
-<code src="./demo/text.tsx">文本与超链接组件</code>
-<code src="./demo/editable.tsx">可编辑</code>
-<code src="./demo/copyable.tsx">可复制</code>
-<code src="./demo/ellipsis.tsx">省略号</code>
-<code src="./demo/ellipsis-controlled.tsx" version="5.16.0">受控省略展开/收起</code>
-<code src="./demo/ellipsis-middle.tsx">省略中间</code>
-<code src="./demo/ellipsis-debug.tsx" debug>省略号 Debug</code>
-<code src="./demo/suffix.tsx">后缀</code>
-<code src="./demo/componentToken-debug.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Typography.Text
 

@@ -1,44 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 当用户需要输入一个日期，可以点击标准输入框，弹出日期面板进行选择。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/range-picker.tsx">范围选择器</code>
-<code src="./demo/multiple.tsx" version="5.14.0">多选</code>
-<code src="./demo/multiple-debug.tsx" debug>多选 Debug</code>
-<code src="./demo/needConfirm.tsx" version="5.14.0">选择确认</code>
-<code src="./demo/switchable.tsx">切换不同的选择器</code>
-<code src="./demo/format.tsx">日期格式</code>
-<code src="./demo/time.tsx">日期时间选择</code>
-<code src="./demo/mask.tsx" version="5.14.0">格式对齐</code>
-<code src="./demo/date-range.tsx" version="5.14.0">日期限定范围</code>
-<code src="./demo/disabled.tsx">禁用</code>
-<code src="./demo/disabled-date.tsx">不可选择日期和时间</code>
-<code src="./demo/allow-empty.tsx">允许留空</code>
-<code src="./demo/select-in-range.tsx">选择不超过一定的范围</code>
-<code src="./demo/preset-ranges.tsx">预设范围</code>
-<code src="./demo/extra-footer.tsx">额外的页脚</code>
-<code src="./demo/size.tsx">三种大小</code>
-<code src="./demo/cell-render.tsx">定制单元格</code>
-<code src="./demo/components.tsx" version="5.14.0">定制面板</code>
-<code src="./demo/buddhist-era.tsx" version="5.14.0">佛历格式</code>
-<code src="./demo/status.tsx">自定义状态</code>
-<code src="./demo/variant.tsx" version="5.13.0">形态变体</code>
-<code src="./demo/filled-debug.tsx" debug>Filled Debug</code>
-<code src="./demo/placement.tsx">弹出位置</code>
-<code src="./demo/mode.tsx" debug>受控面板</code>
-<code src="./demo/start-end.tsx" debug>自定义日期范围选择</code>
-<code src="./demo/suffix.tsx">前后缀</code>
-<code src="./demo/render-panel.tsx" debug>\_InternalPanelDoNotUseOrYouWillBeFired</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 日期类组件包括以下五种形式。
 

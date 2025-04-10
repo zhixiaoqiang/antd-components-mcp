@@ -6,9 +6,7 @@
 
 基础分页。
 
-#### en-US
 
-Basic pagination.
 
 ```typescript
 import React from 'react';
@@ -47,9 +45,7 @@ export default App;
 
 更多分页。
 
-#### en-US
 
-More pages.
 
 ```typescript
 import React from 'react';
@@ -67,9 +63,7 @@ export default App;
 
 改变每页显示条目数。
 
-#### en-US
 
-Change `pageSize`.
 
 ```typescript
 import React from 'react';
@@ -109,9 +103,7 @@ export default App;
 
 快速跳转到某一页。
 
-#### en-US
 
-Jump to a page directly.
 
 ```typescript
 import React from 'react';
@@ -140,15 +132,7 @@ export default App;
 
 迷你版本。
 
-#### en-US
 
-Mini size pagination.
-
-<style>
-##pagination-demo-mini .ant-pagination:not(:last-child) {
-  margin-bottom: 24px;
-}
-</style>
 
 ```typescript
 import React from 'react';
@@ -183,9 +167,7 @@ export default App;
 
 简单的翻页。
 
-#### en-US
 
-Simple mode.
 
 ```typescript
 import React from 'react';
@@ -211,9 +193,7 @@ export default App;
 
 受控制的页码。
 
-#### en-US
 
-Controlled page number.
 
 ```typescript
 import React, { useState } from 'react';
@@ -241,9 +221,7 @@ export default App;
 
 通过设置 `showTotal` 展示总共有多少数据。
 
-#### en-US
 
-You can show the total number of data by setting `showTotal`.
 
 ```typescript
 import React from 'react';
@@ -277,9 +255,7 @@ export default App;
 
 展示所有配置选项。
 
-#### en-US
 
-Show all configured prop.
 
 ```typescript
 import React from 'react';
@@ -304,9 +280,7 @@ export default App;
 
 修改上一步和下一步为文字链接。
 
-#### en-US
 
-Use text link for prev and next button.
 
 ```typescript
 import React from 'react';
@@ -335,9 +309,7 @@ export default App;
 
 线框化样式。
 
-#### en-US
 
-Wireframe style.
 
 ```typescript
 import React from 'react';
@@ -365,9 +337,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

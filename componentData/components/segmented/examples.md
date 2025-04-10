@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The most basic usage.
 
 ```typescript
 import React from 'react';
@@ -33,9 +31,7 @@ export default Demo;
 
 垂直方向。
 
-#### en-US
 
-Make it vertical.
 
 ```typescript
 import React from 'react';
@@ -62,9 +58,7 @@ export default Demo;
 
 `block` 属性使其适合父元素宽度。
 
-#### en-US
 
-`block` property will make the `Segmented` fit to its parent width.
 
 ```typescript
 import React from 'react';
@@ -84,9 +78,7 @@ export default Demo;
 
 胶囊型的 Segmented。
 
-#### en-US
 
-Round shape of Segmented.
 
 ```typescript
 import React, { useState } from 'react';
@@ -125,9 +117,7 @@ export default Demo;
 
 Segmented 不可用。
 
-#### en-US
 
-Disabled Segmented.
 
 ```typescript
 import React from 'react';
@@ -158,9 +148,7 @@ export default App;
 
 受控的 Segmented。
 
-#### en-US
 
-Controlled Segmented.
 
 ```typescript
 import React, { useState } from 'react';
@@ -182,9 +170,7 @@ export default Demo;
 
 使用 ReactNode 自定义渲染每一个 Segmented Item。
 
-#### en-US
 
-Custom each Segmented Item by ReactNode.
 
 ```typescript
 import React from 'react';
@@ -277,9 +263,7 @@ export default App;
 
 动态加载数据。
 
-#### en-US
 
-Load `options` dynamically.
 
 ```typescript
 import React, { useState } from 'react';
@@ -314,9 +298,7 @@ export default Demo;
 
 我们为 `<Segmented />` 组件定义了三种尺寸（大、默认、小），高度分别为 `40px`、`32px` 和 `24px`。
 
-#### en-US
 
-There are three sizes of an Segmented: `large` (40px), `default` (32px) and `small` (24px).
 
 ```typescript
 import React from 'react';
@@ -340,9 +322,7 @@ export default App;
 
 给 Segmented Item 设置 Icon。
 
-#### en-US
 
-Set `icon` for Segmented Item.
 
 ```typescript
 import React from 'react';
@@ -368,9 +348,7 @@ export default Demo;
 
 在 Segmented Item 选项中只设置 Icon。
 
-#### en-US
 
-Set `icon` without `label` for Segmented Item.
 
 ```typescript
 import React from 'react';
@@ -396,9 +374,7 @@ export default Demo;
 
 可以为 Segmented 配置 `name` 参数，为组合内的 input 元素赋予相同的 `name` 属性，使浏览器把 Segmented 下的 input 真正看作是一组（例如可以通过方向键始终**在同一组内**更改选项）。
 
-#### en-US
 
-Passing the `name` property to all `input[type="radio"]` that are in the same Segmented. It is usually used to let the browser see your Segmented as a real "group" and keep the default behavior. For example, using left/right keyboard arrow to change your selection that in the same Segmented.
 
 ```typescript
 import React from 'react';
@@ -418,9 +394,7 @@ export default Demo;
 
 测试受控模式下两个 Segmented 同步 state。
 
-#### en-US
 
-Tests two Segmented synchronized states in controlled mode.
 
 ```typescript
 import React, { useState } from 'react';
@@ -447,9 +421,7 @@ export default Demo;
 
 与其他组件保持统一高度。
 
-#### en-US
 
-Keep consistent height with other components.
 
 ```typescript
 import React from 'react';
@@ -498,9 +470,7 @@ export default App;
 
 自定义组件 Token。
 
-#### en-US
 
-Custom component token.
 
 ```typescript
 import React from 'react';

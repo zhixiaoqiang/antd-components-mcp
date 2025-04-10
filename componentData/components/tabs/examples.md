@@ -6,9 +6,7 @@
 
 默认选中第一项。
 
-#### en-US
 
-Default activate first tab.
 
 ```typescript
 import React from 'react';
@@ -49,9 +47,7 @@ export default App;
 
 禁用某一项。
 
-#### en-US
 
-Disabled a tab.
 
 ```typescript
 import React from 'react';
@@ -91,9 +87,7 @@ export default App;
 
 标签居中展示。
 
-#### en-US
 
-Centered tabs.
 
 ```typescript
 import React from 'react';
@@ -124,9 +118,7 @@ export default App;
 
 有图标的标签。
 
-#### en-US
 
-The Tab with Icon.
 
 ```typescript
 import React from 'react';
@@ -158,9 +150,7 @@ export default App;
 
 设置 `indicator` 属性，自定义指示条宽度和对齐方式。
 
-#### en-US
 
-Set `indicator` prop to custom indicator size and align.
 
 ```typescript
 import React from 'react';
@@ -209,9 +199,7 @@ export default App;
 
 可以左右、上下滑动，容纳更多标签。
 
-#### en-US
 
-In order to fit in more tabs, they can slide left and right (or up and down).
 
 ```typescript
 import React, { useState } from 'react';
@@ -261,20 +249,7 @@ export default App;
 
 可以在页签两边添加附加操作。
 
-#### en-US
 
-You can add extra actions to the right or left or even both side of Tabs.
-
-```css
-.tabs-extra-demo-button {
-  margin-inline-end: 16px;
-}
-
-.ant-row-rtl .tabs-extra-demo-button {
-  margin-inline-end: 0;
-  margin-inline-start: 16px;
-}
-```
 
 ```typescript
 import React, { useMemo, useState } from 'react';
@@ -347,9 +322,7 @@ export default App;
 
 大号页签用在页头区域，小号用在弹出框等较狭窄的容器内。
 
-#### en-US
 
-Large size tabs are usually used in page header, and small size could be used in Modal.
 
 ```typescript
 import React, { useState } from 'react';
@@ -474,9 +447,7 @@ export default App;
 
 有四个位置，`tabPosition="left|right|top|bottom"`。在移动端下，`left|right` 会自动切换成 `top`。
 
-#### en-US
 
-Tab's position: left, right, top or bottom. Will auto switch to `top` in mobile.
 
 ```typescript
 import React, { useState } from 'react';
@@ -528,9 +499,7 @@ export default App;
 
 另一种样式的页签，不提供对应的垂直样式。
 
-#### en-US
 
-Another type of Tabs, which doesn't support vertical mode.
 
 ```typescript
 import React from 'react';
@@ -565,9 +534,7 @@ export default App;
 
 只有卡片样式的页签支持新增和关闭选项。使用 `closable={false}` 禁止关闭。
 
-#### en-US
 
-Only card type Tabs support adding & closable. +Use `closable={false}` to disable close.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -655,9 +622,7 @@ export default App;
 
 用于容器顶部，需要一点额外的样式覆盖。
 
-#### en-US
 
-Should be used at the top of container, needs to override styles.
 
 ```typescript
 import React from 'react';
@@ -730,9 +695,7 @@ export default App;
 
 隐藏默认的页签增加图标，给自定义触发器绑定事件。
 
-#### en-US
 
-Hide default plus icon, and bind event for customized trigger.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -805,9 +768,7 @@ export default App;
 
 使用 [react-sticky-box](https://www.npmjs.com/package/react-sticky-box) 和 `renderTabBar` 实现吸顶效果。
 
-#### en-US
 
-Use [react-sticky-box](https://www.npmjs.com/package/react-sticky-box) and `renderTabBar`.
 
 ```typescript
 import React from 'react';
@@ -847,16 +808,7 @@ export default App;
 
 使用 [dnd-kit](https://github.com/clauderic/dnd-kit) 实现标签可拖拽。
 
-#### en-US
 
-Use [dnd-kit](https://github.com/clauderic/dnd-kit) to make tabs draggable.
-
-```css
-/* set transition to none when type="editable-card" */
-.ant-tabs-editable > .ant-tabs-nav .ant-tabs-tab {
-  transition: none;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -948,9 +900,7 @@ export default App;
 
 动画切换。
 
-#### en-US
 
-Animated of Tab Pane.
 
 ```typescript
 import React from 'react';
@@ -1023,9 +973,7 @@ export default App;
 
 默认选中第一项。
 
-#### en-US
 
-Default activate first tab.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1136,9 +1084,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

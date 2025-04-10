@@ -1,26 +1,12 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 可提供成功、警告和错误等反馈信息。
 - 顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/hooks.tsx">Hooks 调用（推荐）</code>
-<code src="./demo/other.tsx">其他提示类型</code>
-<code src="./demo/duration.tsx">修改延时</code>
-<code src="./demo/loading.tsx">加载中</code>
-<code src="./demo/thenable.tsx">Promise 接口</code>
-<code src="./demo/custom-style.tsx">自定义样式</code>
-<code src="./demo/update.tsx">更新消息内容</code>
-<code src="./demo/info.tsx">静态方法（不推荐）</code>
-<code src="./demo/render-panel.tsx" debug>_InternalPanelDoNotUseOrYouWillBeFired</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 组件提供了一些静态方法，使用方式和参数如下：
 

@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-Basic usage.
 
 ```typescript
 import React from 'react';
@@ -56,9 +54,7 @@ export default App;
 
 位置有 4 个方向。
 
-#### en-US
 
-There are 4 position options available.
 
 ```typescript
 import React, { useState } from 'react';
@@ -118,9 +114,7 @@ export default App;
 
 定时切换下一张。
 
-#### en-US
 
-Timing of scrolling to the next card/picture.
 
 ```typescript
 import React from 'react';
@@ -161,9 +155,7 @@ export default App;
 
 切换效果为渐显。
 
-#### en-US
 
-Slides use fade for transition.
 
 ```typescript
 import React from 'react';
@@ -204,9 +196,7 @@ export default App;
 
 显示切换箭头。
 
-#### en-US
 
-Show the arrows for switching.
 
 ```typescript
 import React from 'react';
@@ -265,9 +255,7 @@ export default App;
 
 展示指示点的进度。
 
-#### en-US
 
-Show progress of dots.
 
 ```typescript
 import React from 'react';
@@ -308,9 +296,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

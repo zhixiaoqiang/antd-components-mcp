@@ -8,11 +8,7 @@
 
 使用单一的一组 `Row` 和 `Col` 栅格组件，就可以创建一个基本的栅格系统，所有列（Col）必须放在 `Row` 内。
 
-#### en-US
 
-From the stack to the horizontal arrangement.
-
-You can create a basic grid system by using a single set of `Row` and `Col` grid assembly, all of the columns (Col) must be placed in `Row`.
 
 ```typescript
 import React from 'react';
@@ -57,22 +53,7 @@ export default App;
 
 > 数组形式垂直间距在 `3.24.0` 之后支持。
 
-#### en-US
 
-You can use the `gutter` property of `Row` as grid spacing, we recommend set it to `(16 + 8n) px` (`n` stands for natural number).
-
-You can set it to a object like `{ xs: 8, sm: 16, md: 24, lg: 32 }` for responsive design.
-
-You can use an array to set vertical spacing, `[horizontal, vertical]` `[16, { xs: 8, sm: 16, md: 24, lg: 32 }]`.
-
-> vertical gutter was supported after `3.24.0`.
-
-```css
-.gutter-box {
-  padding: 8px 0;
-  background: ##00a0e9;
-}
-```
 
 ```typescript
 import React from 'react';
@@ -154,9 +135,7 @@ export default App;
 
 使用 `offset` 可以将列向右侧偏。例如，`offset={4}` 将元素向右侧偏移了 4 个列（column）的宽度。
 
-#### en-US
 
-`offset` can set the column to the right side. For example, using `offset = {4}` can set the element shifted to the right four columns width.
 
 ```typescript
 import React from 'react';
@@ -198,9 +177,7 @@ export default App;
 
 通过使用 `push` 和 `pull` 类就可以很容易的改变列（column）的顺序。
 
-#### en-US
 
-By using `push` and `pull` class you can easily change column order.
 
 ```typescript
 import React from 'react';
@@ -229,15 +206,7 @@ export default App;
 
 子元素根据不同的值 `start`、`center`、`end`、`space-between`、`space-around` 和 `space-evenly`，分别定义其在父节点里面的排版方式。
 
-#### en-US
 
-Child elements depending on the value of the `start`, `center`, `end`, `space-between`, `space-around` and `space-evenly`, which are defined in its parent node typesetting mode.
-
-```css
-##grid-demo-flex [class~='ant-row'] {
-  background: rgba(128, 128, 128, 0.08);
-}
-```
 
 ```typescript
 import React from 'react';
@@ -305,15 +274,7 @@ export default App;
 
 子元素垂直对齐。
 
-#### en-US
 
-Child elements vertically aligned.
-
-```css
-##grid-demo-flex-align [class~='ant-row'] {
-  background: rgba(128, 128, 128, 0.08);
-}
-```
 
 ```typescript
 import React from 'react';
@@ -385,15 +346,7 @@ export default App;
 
 通过 `order` 来改变元素的排序。
 
-#### en-US
 
-To change the element sort by `order`.
-
-```css
-##grid-demo-flex-order [class~='ant-row'] {
-  background: rgba(128, 128, 128, 0.08);
-}
-```
 
 ```typescript
 import React from 'react';
@@ -444,9 +397,7 @@ export default App;
 
 Col 提供 `flex` 属性以支持填充。
 
-#### en-US
 
-Col provides `flex` prop to support fill rest.
 
 ```typescript
 import React from 'react';
@@ -489,9 +440,7 @@ export default App;
 
 参照 Bootstrap 的 [响应式设计](http://getbootstrap.com/css/##grid-media-queries)，预设六个响应尺寸：`xs` `sm` `md` `lg` `xl` `xxl`。
 
-#### en-US
 
-Referring to the Bootstrap [responsive design](http://getbootstrap.com/css/##grid-media-queries), here preset six dimensions: `xs` `sm` `md` `lg` `xl` `xxl`.
 
 ```typescript
 import React from 'react';
@@ -521,9 +470,7 @@ export default App;
 
 支持更灵活的响应式下的任意 flex 比例，该功能需要浏览器支持 CSS Variables。
 
-#### en-US
 
-Support much more flexible responsive flex ratio, which requires CSS Variables supported by browser.
 
 ```typescript
 import React from 'react';
@@ -561,9 +508,7 @@ export default App;
 
 其中 `xs={6}` 相当于 `xs={{ span: 6 }}`。
 
-#### en-US
 
-`span` `pull` `push` `offset` `order` property can be embedded into `xs` `sm` `md` `lg` `xl` `xxl` properties to use, where `xs={6}` is equivalent to `xs={{span: 6}}`.
 
 ```typescript
 import React from 'react';
@@ -593,35 +538,7 @@ export default App;
 
 可以简单配置几种等分栅格和间距。
 
-#### en-US
 
-A simple playground for column count and gutter.
-
-```css
-##grid-demo-playground [class~='ant-col'] {
-  background: transparent;
-  border: 0;
-}
-##grid-demo-playground [class~='ant-col'] > div {
-  height: 120px;
-  font-size: 14px;
-  line-height: 120px;
-  background: ##0092ff;
-  border-radius: 4px;
-}
-##grid-demo-playground pre {
-  padding: 8px 16px;
-  font-size: 14px;
-  background: ##f9f9f9;
-  border-radius: 6px;
-}
-##grid-demo-playground pre.demo-code {
-  direction: ltr;
-}
-##grid-demo-playground .ant-col {
-  padding: 0;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -718,9 +635,7 @@ export default App;
 
 使用 `useBreakpoint` Hook 个性化布局，其中 `xs` 仅当满足最小宽度时生效。
 
-#### en-US
 
-Use `useBreakpoint` Hook provide personalized layout. `xs` only takes effect when the screen match the min width.
 
 ```typescript
 import React from 'react';

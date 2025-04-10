@@ -6,9 +6,7 @@
 
 基本滑动条。当 `range` 为 `true` 时，渲染为双滑块。当 `disabled` 为 `true` 时，滑块处于不可用状态。
 
-#### en-US
 
-Basic slider. When `range` is `true`, display as dual thumb mode. When `disable` is `true`, the slider will not be interactable.
 
 ```typescript
 import React, { useState } from 'react';
@@ -40,9 +38,7 @@ export default App;
 
 和 [数字输入框](/components/input-number-cn) 组件保持同步。
 
-#### en-US
 
-Synchronize with [InputNumber](/components/input-number/) component.
 
 ```typescript
 import React, { useState } from 'react';
@@ -131,38 +127,7 @@ export default App;
 
 滑块左右可以设置图标来表达业务含义。
 
-#### en-US
 
-You can add an icon beside the slider to make it meaningful.
-
-```css
-.icon-wrapper {
-  position: relative;
-  padding: 0 30px;
-}
-
-.icon-wrapper .anticon {
-  position: absolute;
-  top: -2px;
-  width: 16px;
-  height: 16px;
-  color: rgba(0, 0, 0, 0.25);
-  font-size: 16px;
-  line-height: 1;
-}
-
-.icon-wrapper .icon-wrapper-active {
-  color: rgba(0, 0, 0, 0.45);
-}
-
-.icon-wrapper .anticon:first-child {
-  inset-inline-start: 0;
-}
-
-.icon-wrapper .anticon:last-child {
-  inset-inline-end: 0;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -203,9 +168,7 @@ export default App;
 
 使用 `tooltip.formatter` 可以格式化 `Tooltip` 的内容，设置 `tooltip.formatter={null}`，则隐藏 `Tooltip`。
 
-#### en-US
 
-Use `tooltip.formatter` to format content of `Tooltip`. If `tooltip.formatter` is null, hide it.
 
 ```typescript
 import React from 'react';
@@ -231,9 +194,7 @@ export default App;
 
 当 Slider 的值发生改变时，会触发 `onChange` 事件，并把改变后的值作为参数传入。在 `mouseup` 或者 `keyup` 时，会触发 `onChangeComplete` 事件，并把当前值作为参数传入。
 
-#### en-US
 
-The `onChange` callback function will fire when the user changes the slider's value. The `onChangeComplete` callback function will fire when `mouseup` or `keyup` fired.
 
 ```typescript
 import React from 'react';
@@ -270,18 +231,7 @@ export default App;
 
 使用 `marks` 属性标注分段式滑块，使用 `value` / `defaultValue` 指定滑块位置。当 `included=false` 时，表明不同标记间为并列关系。当 `step=null` 时，Slider 的可选值仅有 `marks` 标出来的部分。
 
-#### en-US
 
-Using `marks` property to mark a graduated slider, use `value` or `defaultValue` to specify the position of thumb. When `included` is false, means that different thumbs are coordinative. when `step` is null, users can only slide the thumbs onto marks.
-
-<style>
-##slider-demo-mark h4 {
-  margin: 0 0 16px;
-}
-##slider-demo-mark .ant-slider-with-marks {
-  margin-bottom: 44px;
-}
-</style>
 
 ```typescript
 import React from 'react';
@@ -327,9 +277,7 @@ export default App;
 
 垂直方向的 Slider。
 
-#### en-US
 
-The vertical Slider.
 
 ```typescript
 import React from 'react';
@@ -376,9 +324,7 @@ export default App;
 
 当 `tooltip.open` 为 `true` 时，将始终显示 ToolTip；反之则始终不显示，即使在拖动、移入时也是如此。
 
-#### en-US
 
-When `tooltip.open` is `true`, ToolTip will always show, if set to `false` the ToolTip will not show, even if dragging or hovering.
 
 ```typescript
 import React from 'react';
@@ -396,9 +342,7 @@ export default App;
 
 设置 `reverse` 可以将滑动条置反。
 
-#### en-US
 
-Using `reverse` to render slider reversely.
 
 ```typescript
 import React, { useState } from 'react';
@@ -426,9 +370,7 @@ export default App;
 
 可以设置 `range.draggableTrack`，使得范围刻度整体可拖拽。
 
-#### en-US
 
-Make range track draggable by setting `range.draggableTrack`.
 
 ```typescript
 import React from 'react';
@@ -446,9 +388,7 @@ export default App;
 
 范围多个点组合。
 
-#### en-US
 
-Multiple handles combination.
 
 ```typescript
 import React from 'react';
@@ -502,9 +442,7 @@ export default App;
 
 点击添加节点，拖出或者按键删除节点。
 
-#### en-US
 
-Click to add a node, drag out or press the key to delete the node.
 
 ```typescript
 import React from 'react';
@@ -532,9 +470,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

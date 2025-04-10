@@ -6,9 +6,7 @@
 
 基本使用，通过 `options` 设置自动完成的数据源。
 
-#### en-US
 
-Basic Usage, set data source of autocomplete with `options` property.
 
 ```typescript
 import React, { useState } from 'react';
@@ -69,9 +67,7 @@ export default App;
 
 可以返回自定义的 `Option` label
 
-#### en-US
 
-You could set custom `Option` label
 
 ```typescript
 import React from 'react';
@@ -111,9 +107,7 @@ export default App;
 
 自定义输入组件。
 
-#### en-US
 
-Customize Input Component
 
 ```typescript
 import React, { useState } from 'react';
@@ -166,9 +160,7 @@ export default App;
 
 不区分大小写的 AutoComplete
 
-#### en-US
 
-A non-case-sensitive AutoComplete
 
 ```typescript
 import React from 'react';
@@ -201,33 +193,7 @@ export default App;
 
 [查询模式: 确定类目](https://ant.design/docs/spec/reaction##lookup-patterns) 示例。
 
-#### en-US
 
-Demonstration of [Lookup Patterns: Certain Category](https://ant.design/docs/spec/reaction##lookup-patterns). Basic Usage, set options of autocomplete with `options` property.
-
-```css
-.certain-category-search-dropdown .ant-select-dropdown-menu-item-group-title {
-  color: ##666;
-  font-weight: bold;
-}
-
-.certain-category-search-dropdown .ant-select-dropdown-menu-item-group {
-  border-bottom: 1px solid ##f6f6f6;
-}
-
-.certain-category-search-dropdown .ant-select-dropdown-menu-item {
-  padding-inline-start: 16px;
-}
-
-.certain-category-search-dropdown .ant-select-dropdown-menu-item.show-all {
-  text-align: center;
-  cursor: default;
-}
-
-.certain-category-search-dropdown .ant-select-dropdown-menu {
-  max-height: 300px;
-}
-```
 
 ```typescript
 import React from 'react';
@@ -292,9 +258,7 @@ export default App;
 
 [查询模式: 不确定类目](https://ant.design/docs/spec/reaction##lookup-patterns) 示例。
 
-#### en-US
 
-Demonstration of [Lookup Patterns: Uncertain Category](https://ant.design/docs/spec/reaction##lookup-patterns).
 
 ```typescript
 import React, { useState } from 'react';
@@ -369,9 +333,7 @@ export default App;
 
 使用 `status` 为 AutoComplete 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to AutoComplete with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -417,9 +379,7 @@ export default App;
 
 可选 `outlined` `filled` `borderless` 三种形态。
 
-#### en-US
 
-There are `outlined` `filled` and `borderless`, totally three variants to choose from.
 
 ```typescript
 import React, { useState } from 'react';
@@ -475,9 +435,7 @@ export default App;
 
 自定义清除按钮
 
-#### en-US
 
-Customize clear button
 
 ```typescript
 import React, { useState } from 'react';
@@ -600,9 +558,7 @@ export default App;
 
 debug demo
 
-#### en-US
 
-debug demo
 
 ```typescript
 import React from 'react';
@@ -637,9 +593,7 @@ export default AutoCompleteAndSelect;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';

@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 需要在多个可选项中进行多选时。
 - 比起 Select 和 TreeSelect，穿梭框占据更大的空间，可以展示可选项的更多信息。
@@ -10,24 +10,9 @@
 
 > 注意：穿梭框组件只支持受控使用，不支持非受控模式。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本用法</code>
-<code src="./demo/oneWay.tsx">单向样式</code>
-<code src="./demo/search.tsx">带搜索框</code>
-<code src="./demo/advanced.tsx">高级用法</code>
-<code src="./demo/custom-item.tsx">自定义渲染行数据</code>
-<code src="./demo/large-data.tsx">分页</code>
-<code src="./demo/table-transfer.tsx">表格穿梭框</code>
-<code src="./demo/tree-transfer.tsx">树穿梭框</code>
-<code src="./demo/status.tsx">自定义状态</code>
-<code src="./demo/custom-select-all-labels.tsx" debug>自定义全选文字</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Transfer
 

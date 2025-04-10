@@ -6,9 +6,7 @@
 
 省市区级联。
 
-#### en-US
 
-Cascade selection box for selecting province/city/district.
 
 ```typescript
 import React from 'react';
@@ -74,9 +72,7 @@ export default App;
 
 默认值通过数组的方式指定。
 
-#### en-US
 
-Specifies default value by an array.
 
 ```typescript
 import React from 'react';
@@ -142,9 +138,7 @@ export default App;
 
 切换按钮和结果分开。
 
-#### en-US
 
-Separate trigger button and result.
 
 ```typescript
 import React, { useState } from 'react';
@@ -208,9 +202,7 @@ export default App;
 
 通过移入展开下级菜单，点击完成选择。
 
-#### en-US
 
-Hover to expand sub menu, click to select option.
 
 ```typescript
 import React from 'react';
@@ -284,9 +276,7 @@ export default App;
 
 通过指定 options 里的 `disabled` 字段。
 
-#### en-US
 
-Disable option by specifying the `disabled` property in `options`.
 
 ```typescript
 import React from 'react';
@@ -352,9 +342,7 @@ export default App;
 
 这种交互允许只选中父级选项。
 
-#### en-US
 
-Allows the selection of only parent options.
 
 ```typescript
 import React from 'react';
@@ -418,9 +406,7 @@ export default App;
 
 一次性选择多个选项。通过添加 `disableCheckbox` 属性,选择具体某一个`checkbox`禁用 。可以通过类名修改禁用的样式。
 
-#### en-US
 
-Select multiple options. Disable the `checkbox` by adding the `disableCheckbox` property and selecting a specific item. The style of the disable can be modified by the className.
 
 ```typescript
 import React from 'react';
@@ -494,9 +480,7 @@ export default App;
 
 通过设置 `showCheckedStrategy` 选择回填方式。
 
-#### en-US
 
-Shows a selected item in a box using `showCheckedStrategy`.
 
 ```typescript
 import React from 'react';
@@ -588,9 +572,7 @@ export default App;
 
 不同大小的级联选择器。
 
-#### en-US
 
-Cascade selection box of different sizes.
 
 ```typescript
 import React from 'react';
@@ -666,9 +648,7 @@ export default App;
 
 例如给最后一项加上邮编链接。
 
-#### en-US
 
-For instance, add an external link after the selected value.
 
 ```typescript
 import React from 'react';
@@ -764,11 +744,7 @@ export default App;
 
 > `Cascader[showSearch]` 暂不支持服务端搜索，更多信息见 [##5547](https://github.com/ant-design/ant-design/issues/5547)
 
-#### en-US
 
-Search and select options directly.
-
-> Now, `Cascader[showSearch]` doesn't support search on server, more info [##5547](https://github.com/ant-design/ant-design/issues/5547)
 
 ```typescript
 import React from 'react';
@@ -855,11 +831,7 @@ export default App;
 
 > 注意：`loadData` 与 `showSearch` 无法一起使用。
 
-#### en-US
 
-Load options lazily with `loadData`.
-
-> Note: `loadData` cannot work with `showSearch`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -925,9 +897,7 @@ export default App;
 
 自定义字段名。
 
-#### en-US
 
-Custom field names.
 
 ```typescript
 import React from 'react';
@@ -998,9 +968,7 @@ export default App;
 
 通过 `prefix` 自定前缀，通过 `suffixIcon` 自定义选择框后缀图标，通过 `expandIcon` 自定义次级菜单展开图标。
 
-#### en-US
 
-Use `prefix` to customize the prefix content, use `suffixIcon` to customize the selection box suffix icon, and use `expandIcon` to customize the current item expand icon.
 
 ```typescript
 import React from 'react';
@@ -1096,9 +1064,7 @@ export default App;
 
 使用 `dropdownRender` 对下拉菜单进行自由扩展。
 
-#### en-US
 
-Customize the dropdown menu via `dropdownRender`.
 
 ```typescript
 import React from 'react';
@@ -1167,9 +1133,7 @@ export default App;
 
 可以通过 `placement` 手动指定弹出的位置。
 
-#### en-US
 
-You can manually specify the position of the popup via `placement`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1251,9 +1215,7 @@ export default App;
 
 Cascader 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Variants of Cascader, there are four variants: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -1278,9 +1240,7 @@ export default App;
 
 使用 `status` 为 Cascader 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to Cascader with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React from 'react';
@@ -1303,9 +1263,7 @@ export default App;
 
 适用于一些需要内嵌适用的场景。
 
-#### en-US
 
-Used for inline view case.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1390,9 +1348,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -1453,9 +1409,7 @@ export default App;
 
 组件 Token
 
-#### en-US
 
-Component Token
 
 ```typescript
 import React from 'react';

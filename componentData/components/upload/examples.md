@@ -6,9 +6,7 @@
 
 经典款式，用户点击按钮弹出文件选择框。
 
-#### en-US
 
-Classic mode. File selection dialog pops up when upload button is clicked.
 
 ```typescript
 import React from 'react';
@@ -52,11 +50,7 @@ export default App;
 
 > `beforeUpload` 的返回值可以是一个 Promise 以支持异步处理，如服务端校验等：[示例](https://upload-react-component.vercel.app/demo/before-upload##beforeupload)。
 
-#### en-US
 
-Click to upload user's avatar, and validate size and format of picture with `beforeUpload`.
-
-> The return value of function `beforeUpload` can be a Promise to check asynchronously. [demo](https://upload-react-component.vercel.app/demo/before-upload##beforeupload)
 
 ```typescript
 import React, { useState } from 'react';
@@ -147,9 +141,7 @@ export default App;
 
 使用 `defaultFileList` 设置已上传的内容。
 
-#### en-US
 
-Use `defaultFileList` for uploaded files when page init.
 
 ```typescript
 import React from 'react';
@@ -204,9 +196,7 @@ export default App;
 
 用户可以上传图片并在列表中显示缩略图。当上传照片数到达限制后，上传按钮消失。
 
-#### en-US
 
-After users upload picture, the thumbnail will be shown in list. The upload button will disappear when count meets limitation.
 
 ```typescript
 import React, { useState } from 'react';
@@ -320,9 +310,7 @@ export default App;
 
 图片卡的替代显示。
 
-#### en-US
 
-Alternative display for picture-card.
 
 ```typescript
 import React, { useState } from 'react';
@@ -422,13 +410,7 @@ export default App;
 
 2. 读取远程路径并显示链接。
 
-#### en-US
 
-You can gain full control over filelist by configuring `fileList`. You can accomplish all kinds of customized functions. The following shows two circumstances:
-
-1. limit the number of uploaded files.
-
-2. read from response and show file link.
 
 ```typescript
 import React, { useState } from 'react';
@@ -489,11 +471,7 @@ export default App;
 
 设置 `multiple` 后，在 `IE10+` 可以一次上传多个文件。
 
-#### en-US
 
-You can drag files to a specific area, to upload. Alternatively, you can also upload by selecting.
-
-We can upload several files at once in modern browsers by giving the input the `multiple` attribute.
 
 ```typescript
 import React from 'react';
@@ -546,9 +524,7 @@ export default App;
 
 支持上传一个文件夹里的所有文件。 [Safari 里仍然能选择文件?](##%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8A%E4%BC%A0%E5%9C%A8-safari-%E4%BB%8D%E7%84%B6%E5%8F%AF%E4%BB%A5%E9%80%89%E4%B8%AD%E6%96%87%E4%BB%B6)
 
-#### en-US
 
-You can select and upload a whole directory. [Can still select files when uploading a folder in Safari?](##can-still-select-files-when-uploading-a-folder-in-safari)
 
 ```typescript
 import React from 'react';
@@ -571,9 +547,7 @@ export default App;
 
 `beforeUpload` 返回 `false` 后，手动上传文件。
 
-#### en-US
 
-Upload files manually after `beforeUpload` returns `false`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -654,9 +628,7 @@ export default App;
 
 `beforeUpload` 返回 `false` 或 `Promise.reject` 时，只用于拦截上传行为，不会阻止文件进入上传列表（[原因](https://github.com/ant-design/ant-design/issues/15561##issuecomment-475108235)）。如果需要阻止列表展现，可以通过返回 `Upload.LIST_IGNORE` 实现。
 
-#### en-US
 
-`beforeUpload` only prevent upload behavior when return false or reject promise, the prevented file would still show in file list. Here is the example you can keep prevented files out of list by return `UPLOAD.LIST_IGNORE`.
 
 ```typescript
 import React from 'react';
@@ -693,9 +665,7 @@ export default App;
 
 上传文件为图片，可展示本地缩略图。`IE8/9` 不支持浏览器本地缩略图展示（[Ref](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL)），可以写 `thumbUrl` 属性来代替。
 
-#### en-US
 
-If uploaded file is a picture, the thumbnail can be shown. `IE8/9` do not support local thumbnail show. Please use `thumbUrl` instead.
 
 ```typescript
 import React from 'react';
@@ -746,9 +716,7 @@ export default App;
 
 自定义本地预览，用于处理非图片格式文件（例如视频文件）。
 
-#### en-US
 
-Customize local preview. Can handle with non-image format files such as video.
 
 ```typescript
 import React from 'react';
@@ -787,9 +755,7 @@ export default App;
 
 通过 `maxCount` 限制上传数量。当为 `1` 时，始终用最新上传的代替当前。
 
-#### en-US
 
-Limit files with `maxCount`. Will replace current one when `maxCount` is `1`.
 
 ```typescript
 import React from 'react';
@@ -826,9 +792,7 @@ export default App;
 
 使用 `beforeUpload` 转换上传的文件（例如添加水印）。
 
-#### en-US
 
-Use `beforeUpload` for transform file before request such as add a watermark.
 
 ```typescript
 import React from 'react';
@@ -879,9 +843,7 @@ export default App;
 
 使用阿里云 OSS 上传示例.
 
-#### en-US
 
-Use Aliyun OSS upload example.
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -1008,9 +970,7 @@ export default Demo;
 
 根据类型默认显示对应 icon
 
-#### en-US
 
-Displays the corresponding by default by type icon
 
 ```typescript
 import React, { useState } from 'react';
@@ -1151,9 +1111,7 @@ export default App;
 
 使用 `showUploadList` 设置列表交互图标和其他文件信息。
 
-#### en-US
 
-Use `showUploadList` for custom action icons and extra information of files.
 
 ```typescript
 import React from 'react';
@@ -1220,15 +1178,7 @@ export default App;
 
 使用 `itemRender` ，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现对上传列表拖拽排序。
 
-#### en-US
 
-By using `itemRender`, we can integrate upload with [dnd-kit](https://github.com/clauderic/dnd-kit) to implement drag sorting of uploadList.
-
-```css
-.is-dragging a {
-  pointer-events: none;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -1355,9 +1305,7 @@ export default App;
 
 配合 [antd-img-crop](https://github.com/nanxiaobei/antd-img-crop) 实现上传前裁切图片。
 
-#### en-US
 
-Use [antd-img-crop](https://github.com/nanxiaobei/antd-img-crop) to crop image before uploading.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1421,9 +1369,7 @@ export default App;
 
 使用 `progress` 属性自定义进度条样式。
 
-#### en-US
 
-Use `progress` for customize progress bar.
 
 ```typescript
 import React from 'react';
@@ -1473,9 +1419,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

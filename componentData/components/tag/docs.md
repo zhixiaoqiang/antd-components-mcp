@@ -1,29 +1,12 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 用于标记事物的属性和维度。
 - 进行分类。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/colorful.tsx">多彩标签</code>
-<code src="./demo/colorful-inverse.tsx" debug>反色多彩标签</code>
-<code src="./demo/control.tsx">动态添加和删除</code>
-<code src="./demo/checkable.tsx">可选择标签</code>
-<code src="./demo/animation.tsx">添加动画</code>
-<code src="./demo/icon.tsx">图标按钮</code>
-<code src="./demo/status.tsx">预设状态的标签</code>
-<code src="./demo/borderless.tsx">无边框</code>
-<code src="./demo/borderlessLayout.tsx" debug>深色背景中无边框</code>
-<code src="./demo/customize.tsx" debug>自定义关闭按钮</code>
-<code src="./demo/draggable.tsx">可拖拽标签</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Tag
 

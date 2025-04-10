@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The simplest use.
 
 ```typescript
 import React from 'react';
@@ -43,9 +41,7 @@ export default App;
 
 图标放在文字前面。
 
-#### en-US
 
-The icon should be placed in front of the text.
 
 ```typescript
 import React from 'react';
@@ -85,9 +81,7 @@ export default App;
 
 带有路由参数的。
 
-#### en-US
 
-With route params.
 
 ```typescript
 import React from 'react';
@@ -118,9 +112,7 @@ export default App;
 
 使用 `separator=">"` 可以自定义分隔符。
 
-#### en-US
 
-The separator can be customized by setting the separator property: `separator=">"`.
 
 ```typescript
 import React from 'react';
@@ -158,9 +150,7 @@ export default App;
 
 面包屑支持下拉菜单。
 
-#### en-US
 
-Breadcrumbs support drop down menu.
 
 ```typescript
 import React from 'react';
@@ -223,9 +213,7 @@ export default App;
 
 自定义单独的分隔符。
 
-#### en-US
 
-Customize separator for each other.
 
 ```typescript
 import React from 'react';
@@ -273,9 +261,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

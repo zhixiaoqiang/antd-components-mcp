@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The most basic usage.
 
 ```typescript
 import React from 'react';
@@ -30,9 +28,7 @@ export default App;
 
 Switch 失效状态。
 
-#### en-US
 
-Disabled state of `Switch`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -65,9 +61,7 @@ export default App;
 
 带有文字和图标。
 
-#### en-US
 
-With text and icon.
 
 ```typescript
 import React from 'react';
@@ -96,9 +90,7 @@ export default App;
 
 `size="small"` 表示小号开关。
 
-#### en-US
 
-`size="small"` represents a small sized switch.
 
 ```typescript
 import React from 'react';
@@ -122,9 +114,7 @@ export default App;
 
 标识开关操作仍在执行中。
 
-#### en-US
 
-Mark a pending state of switch.
 
 ```typescript
 import React from 'react';
@@ -148,9 +138,7 @@ export default App;
 
 自定义组件 Token。
 
-#### en-US
 
-Custom component token.
 
 ```typescript
 import React from 'react';

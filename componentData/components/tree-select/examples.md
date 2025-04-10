@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The most basic usage.
 
 ```typescript
 import React, { useState } from 'react';
@@ -100,9 +98,7 @@ export default App;
 
 多选的树选择。
 
-#### en-US
 
-Multiple selection usage.
 
 ```typescript
 import React, { useState } from 'react';
@@ -174,9 +170,7 @@ export default App;
 
 使用 `treeData` 把 JSON 数据直接生成树结构。
 
-#### en-US
 
-The tree structure can be populated using `treeData` property. This is a quick and easy way to provide the tree content.
 
 ```typescript
 import React, { useState } from 'react';
@@ -234,9 +228,7 @@ export default App;
 
 使用勾选框实现多选功能。
 
-#### en-US
 
-Multiple and checkable.
 
 ```typescript
 import React, { useState } from 'react';
@@ -314,9 +306,7 @@ export default App;
 
 异步加载树节点。
 
-#### en-US
 
-Asynchronous loading tree node.
 
 ```typescript
 import React, { useState } from 'react';
@@ -383,9 +373,7 @@ export default App;
 
 通过 `treeLine` 配置线性样式。
 
-#### en-US
 
-Use `treeLine` to show the line style.
 
 ```typescript
 import React, { useState } from 'react';
@@ -477,9 +465,7 @@ export default App;
 
 可以通过 `placement` 手动指定弹出的位置。
 
-#### en-US
 
-You can manually specify the position of the popup via `placement`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -562,9 +548,7 @@ export default App;
 
 TreeSelect 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Variants of TreeSelect, there are four variants: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -596,9 +580,7 @@ export default App;
 
 使用 `status` 为 TreeSelect 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to TreeSelect with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React from 'react';
@@ -626,9 +608,7 @@ export default App;
 
 你可以通过设置 `maxCount` 约束最多可选中的数量，当超出限制时会变成禁止选中状态。
 
-#### en-US
 
-You can set the `maxCount` prop to control the max number of items can be selected. When the limit is exceeded, the options will become disabled.
 
 ```typescript
 import React from 'react';
@@ -710,9 +690,7 @@ export default App;
 
 自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
 
-#### en-US
 
-Custom `prefix` and `suffixIcon`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -803,9 +781,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -848,9 +824,7 @@ export default App;
 
 组件 Token
 
-#### en-US
 
-Component Token
 
 ```typescript
 import React, { useState } from 'react';

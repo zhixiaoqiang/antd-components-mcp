@@ -1,23 +1,12 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 对不同章节的文本段落进行分割。
 - 对行内文字/链接进行分割，例如表格的操作列。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/horizontal.tsx">水平分割线</code>
-<code src="./demo/with-text.tsx">带文字的分割线</code>
-<code src="./demo/plain.tsx">分割文字使用正文样式</code>
-<code src="./demo/vertical.tsx">垂直分割线</code>
-<code src="./demo/customize-style.tsx" debug>样式自定义</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
-<code src="./demo/variant.tsx">变体</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |

@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 用于在输入中提及某人或某事，常用于发布、聊天或评论功能。
 
@@ -24,25 +24,9 @@ return (
 );
 ```
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本使用</code>
-<code src="./demo/variant.tsx" version="5.13.0">形态变体</code>
-<code src="./demo/async.tsx">异步加载</code>
-<code src="./demo/form.tsx">配合 Form 使用</code>
-<code src="./demo/prefix.tsx">自定义触发字符</code>
-<code src="./demo/readonly.tsx">无效或只读</code>
-<code src="./demo/placement.tsx">向上展开</code>
-<code src="./demo/allowClear.tsx">带移除图标</code>
-<code src="./demo/autoSize.tsx">自动大小</code>
-<code src="./demo/status.tsx">自定义状态</code>
-<code src="./demo/render-panel.tsx" debug>_InternalPanelDoNotUseOrYouWillBeFired</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Mentions
 

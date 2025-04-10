@@ -6,9 +6,7 @@
 
 最简单的用法，适用于简短的警告提示。
 
-#### en-US
 
-The simplest usage for short messages.
 
 ```typescript
 import React from 'react';
@@ -26,9 +24,7 @@ export default App;
 
 共有四种样式 `success`、`info`、`warning`、`error`。
 
-#### en-US
 
-There are 4 types of Alert: `success`, `info`, `warning`, `error`.
 
 ```typescript
 import React from 'react';
@@ -56,9 +52,7 @@ export default App;
 
 显示关闭按钮，点击可关闭警告提示。
 
-#### en-US
 
-To show close button.
 
 ```typescript
 import React from 'react';
@@ -109,9 +103,7 @@ export default App;
 
 含有辅助性文字介绍的警告提示。
 
-#### en-US
 
-Additional description for alert message.
 
 ```typescript
 import React from 'react';
@@ -155,9 +147,7 @@ export default App;
 
 可口的图标让信息类型更加醒目。
 
-#### en-US
 
-A relevant icon will make information clearer and more friendly.
 
 ```typescript
 import React from 'react';
@@ -214,9 +204,7 @@ export default App;
 
 页面顶部通告形式，默认有图标且 `type` 为 'warning'。
 
-#### en-US
 
-Display Alert as a banner at top of page.
 
 ```typescript
 import React from 'react';
@@ -248,9 +236,7 @@ export default App;
 
 配合 [react-text-loop-next](https://npmjs.com/package/react-text-loop-next) 或 [react-fast-marquee](https://npmjs.com/package/react-fast-marquee) 实现消息轮播通知栏。
 
-#### en-US
 
-Show a loop banner by using with [react-text-loop-next](https://npmjs.com/package/react-text-loop-next) or [react-fast-marquee](https://npmjs.com/package/react-fast-marquee).
 
 ```typescript
 import React from 'react';
@@ -278,9 +264,7 @@ export default App;
 
 平滑、自然的卸载提示。
 
-#### en-US
 
-Smoothly unmount Alert upon close.
 
 ```typescript
 import React, { useState } from 'react';
@@ -314,9 +298,7 @@ export default App;
 
 友好的 [React 错误处理](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html) 包裹组件。
 
-#### en-US
 
-ErrorBoundary Component for making error handling easier in [React](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html).
 
 ```typescript
 import React, { useState } from 'react';
@@ -355,9 +337,7 @@ export default App;
 
 可口的图标让信息类型更加醒目。
 
-#### en-US
 
-A relevant icon makes information clearer and more friendly.
 
 ```typescript
 import React from 'react';
@@ -422,9 +402,7 @@ export default App;
 
 可以在右上角自定义操作项。
 
-#### en-US
 
-Custom action.
 
 ```typescript
 import React from 'react';
@@ -498,9 +476,7 @@ export default App;
 
 自定义组件 Token。
 
-#### en-US
 
-Custom component token.
 
 ```typescript
 import React from 'react';

@@ -6,15 +6,7 @@
 
 最简单的用法，浮层的大小由内容区域决定。
 
-#### en-US
 
-The most basic example. The size of the floating layer depends on the contents region.
-
-<style>
-.ant-popover-content p {
-  margin: 0;
-}
-</style>
 
 ```typescript
 import React from 'react';
@@ -43,9 +35,7 @@ export default App;
 
 鼠标移入、聚集、点击。
 
-#### en-US
 
-Mouse to click, focus and move in.
 
 ```typescript
 import React from 'react';
@@ -82,9 +72,7 @@ export default App;
 
 位置有十二个方向。
 
-#### en-US
 
-There are 12 `placement` options available.
 
 ```typescript
 import React from 'react';
@@ -164,9 +152,7 @@ export default App;
 
 通过 `arrow` 属性隐藏箭头。
 
-#### en-US
 
-Hide arrow by `arrow`.
 
 ```typescript
 import React, { useMemo, useState } from 'react';
@@ -270,9 +256,7 @@ export default App;
 
 `arrow={{ pointAtCenter: true }}` 属性可以让箭头指向目标元素的中心。
 
-#### en-US
 
-`arrow={{ pointAtCenter: true }}` property can make the arrow point at the center of the target element.
 
 ```typescript
 import React from 'react';
@@ -370,9 +354,7 @@ export default App;
 
 当 Popover 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
 
-#### en-US
 
-Auto adjust Popup and arrow position when Popover is close to the edge of the screen. Will be out of screen when exceed limitation.
 
 ```typescript
 import React from 'react';
@@ -410,9 +392,7 @@ export default App;
 
 使用 `open` 属性控制浮层显示。
 
-#### en-US
 
-Use `open` prop to control the display of the card.
 
 ```typescript
 import React, { useState } from 'react';
@@ -452,9 +432,7 @@ export default App;
 
 以下示例显示如何创建可悬停和单击的弹出窗口。
 
-#### en-US
 
-The following example shows how to create a popover which can be hovered and clicked.
 
 ```typescript
 import React, { useState } from 'react';
@@ -518,9 +496,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -557,9 +533,7 @@ export default App;
 
 线框样式。
 
-#### en-US
 
-Wireframe style.
 
 ```typescript
 import React from 'react';
@@ -596,9 +570,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

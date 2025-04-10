@@ -1,21 +1,12 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 页面需要添加水印标识版权时使用。
 - 适用于防止信息盗用。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/multi-line.tsx">多行水印</code>
-<code src="./demo/image.tsx">图片水印</code>
-<code src="./demo/custom.tsx">自定义配置</code>
-<code src="./demo/portal.tsx">Modal 与 Drawer</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 > 自 `antd@5.1.0` 版本开始提供该组件。
 

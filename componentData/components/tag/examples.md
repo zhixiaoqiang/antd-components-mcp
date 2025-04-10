@@ -6,9 +6,7 @@
 
 基本标签的用法，可以通过设置 `closeIcon` 变为可关闭标签并自定义关闭按钮，设置为 `true` 时将使用默认关闭按钮。可关闭标签具有 `onClose` 事件。
 
-#### en-US
 
-Usage of basic Tag, and it could be closable and customize close button by set `closeIcon` property, will display default close button when `closeIcon` is setting to `true`. Closable Tag supports `onClose` events.
 
 ```typescript
 import React from 'react';
@@ -51,9 +49,7 @@ export default App;
 
 我们添加了多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。
 
-#### en-US
 
-We preset a series of colorful tag styles for use in different situations. You can also set it to a hex color string for custom color.
 
 ```typescript
 import React from 'react';
@@ -95,9 +91,7 @@ export default App;
 
 内部反色标签
 
-#### en-US
 
-Internal inverse color tag
 
 ```typescript
 import React from 'react';
@@ -129,9 +123,7 @@ export default App;
 
 用数组生成一组标签，可以动态添加和删除。
 
-#### en-US
 
-Generating a set of Tags by array, you can add and remove dynamically.
 
 ```typescript
 import React, { useEffect, useRef, useState } from 'react';
@@ -284,11 +276,7 @@ export default App;
 
 > 该组件为完全受控组件，不支持非受控用法。
 
-#### en-US
 
-`CheckableTag` works like Checkbox, click it to toggle checked state.
-
-> it is an absolute controlled component and has no uncontrolled mode.
 
 ```typescript
 import React from 'react';
@@ -332,9 +320,7 @@ export default App;
 
 使用 [rc-tween-one](https://github.com/react-component/tween-one) 给标签增加添加或删除动画。
 
-#### en-US
 
-Animating the Tag by using [rc-tween-one](https://github.com/react-component/tween-one).
 
 ```typescript
 import React, { useEffect, useRef, useState } from 'react';
@@ -447,11 +433,7 @@ export default App;
 
 如果想控制 `Icon` 具体的位置，只能直接使用 `Icon` 组件，而非 `icon` 属性。
 
-#### en-US
 
-`Tag` components can contain an `Icon`. This is done by setting the `icon` property or placing an `Icon` component within the `Tag`.
-
-If you want specific control over the positioning and placement of the `Icon`, then that should be done by placing the `Icon` component within the `Tag` rather than using the `icon` property.
 
 ```typescript
 import React from 'react';
@@ -490,9 +472,7 @@ export default App;
 
 预设五种状态颜色，可以通过设置 `color` 为 `success`、 `processing`、`error`、`default`、`warning` 来代表不同的状态。
 
-#### en-US
 
-We preset five different colors, you can set color property such as `success`,`processing`,`error`,`default` and `warning` to indicate specific status.
 
 ```typescript
 import React from 'react';
@@ -550,9 +530,7 @@ export default App;
 
 无边框模式。
 
-#### en-US
 
-borderless.
 
 ```typescript
 import React from 'react';
@@ -631,9 +609,7 @@ export default App;
 
 深色背景中的无边框模式。
 
-#### en-US
 
-borderless in layout background.
 
 ```typescript
 import React from 'react';
@@ -703,9 +679,7 @@ export default App;
 
 可用 `closeIcon` 自定义关闭按钮。
 
-#### en-US
 
-The close icon can be customized using `closeIcon`.
 
 ```typescript
 import React from 'react';
@@ -733,9 +707,7 @@ export default App;
 
 使用 [dnd kit](https://dndkit.com) 实现的可拖拽标签。
 
-#### en-US
 
-Draggable tags using [dnd kit](https://dndkit.com).
 
 ```typescript
 import React, { useState } from 'react';
@@ -828,9 +800,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

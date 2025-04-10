@@ -1,26 +1,13 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 可以水平或垂直地分隔区域。
 - 当需要自由拖拽调整各区域大小。
 - 当需要指定区域的最大最小宽高时。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/size.tsx">基本用法</code>
-<code src="./demo/control.tsx">受控模式</code>
-<code src="./demo/vertical.tsx">垂直方向</code>
-<code src="./demo/collapsible.tsx">可折叠</code>
-<code src="./demo/multiple.tsx">多面板</code>
-<code src="./demo/group.tsx">复杂组合</code>
-<code src="./demo/nested-in-tabs.tsx" debug>标签页中嵌套</code>
-<code src="./demo/lazy.tsx" version="5.23.0">延迟渲染模式</code>
-<code src="./demo/debug.tsx" debug>调试</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 > Splitter 组件需要通过子元素计算面板大小，因而其子元素仅支持 `Splitter.Panel`。
 

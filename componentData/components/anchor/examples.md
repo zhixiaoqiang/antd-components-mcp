@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The simplest usage.
 
 ```typescript
 import React from 'react';
@@ -55,9 +53,7 @@ export default App;
 
 横向 Anchor。
 
-#### en-US
 
-Horizontally aligned anchors
 
 ```typescript
 import React from 'react';
@@ -124,9 +120,7 @@ export default App;
 
 不浮动，状态不随页面滚动变化。
 
-#### en-US
 
-Do not change state when page is scrolling.
 
 ```typescript
 import React from 'react';
@@ -177,9 +171,7 @@ export default App;
 
 点击锚点不记录历史。
 
-#### en-US
 
-Clicking on an anchor does not record history.
 
 ```typescript
 import React from 'react';
@@ -242,9 +234,7 @@ export default App;
 
 自定义锚点高亮。
 
-#### en-US
 
-Customize the anchor highlight.
 
 ```typescript
 import React from 'react';
@@ -298,9 +288,7 @@ export default App;
 
 锚点目标滚动到屏幕正中间。
 
-#### en-US
 
-Anchor target scroll to screen center.
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -369,9 +357,7 @@ export default App;
 
 监听锚点链接改变
 
-#### en-US
 
-Listening for anchor link change.
 
 ```typescript
 import React from 'react';
@@ -427,9 +413,7 @@ export default App;
 
 替换浏览器历史记录中的路径，后退按钮将返回到上一页而不是上一个锚点。
 
-#### en-US
 
-Replace path in browser history, so back button returns to previous page instead of previous anchor item.
 
 ```typescript
 import React from 'react';
@@ -477,9 +461,7 @@ export default App;
 
 调试使用
 
-#### en-US
 
-Debug usage
 
 ```typescript
 import React from 'react';
@@ -508,9 +490,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug
 
 ```typescript
 import React from 'react';

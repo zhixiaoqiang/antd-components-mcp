@@ -6,9 +6,7 @@
 
 基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭。
 
-#### en-US
 
-Basic drawer.
 
 ```typescript
 import React, { useState } from 'react';
@@ -49,9 +47,7 @@ export default App;
 
 自定义位置，点击触发按钮抽屉从相应的位置滑出，点击遮罩区关闭。
 
-#### en-US
 
-The Drawer can appear from any edge of the screen.
 
 ```typescript
 import React, { useState } from 'react';
@@ -113,9 +109,7 @@ export default App;
 
 设置抽屉加载状态。
 
-#### en-US
 
-Set the loading status of Drawer.
 
 ```typescript
 import React from 'react';
@@ -170,9 +164,7 @@ export default App;
 
 在 Ant Design 规范中，操作按钮建议放在抽屉的右上角，可以使用 `extra` 属性来实现。
 
-#### en-US
 
-Extra actions should be placed at corner of drawer in Ant Design, you can use `extra` prop for that.
 
 ```typescript
 import React, { useState } from 'react';
@@ -245,13 +237,7 @@ export default App;
 
 > 当 `getContainer` 返回 DOM 节点时，需要手动设置 `rootStyle` 为 `{ position: 'absolute' }`，参考 [##41951](https://github.com/ant-design/ant-design/issues/41951##issuecomment-1521099152)。
 
-#### en-US
 
-Render in current dom. custom container, check `getContainer`.
-
-> Note: `style` and `className` props are moved to Drawer panel in v5 which is aligned with Modal component. Original `style` and `className` props are replaced by `rootStyle` and `rootClassName`.
-
-> When `getContainer` returns a DOM node, you need to manually set `rootStyle` to `{ position: 'absolute' }`, see [##41951](https://github.com/ant-design/ant-design/issues/41951##issuecomment-1521099152).
 
 ```typescript
 import React, { useState } from 'react';
@@ -311,22 +297,7 @@ export default App;
 
 在抽屉中使用表单。
 
-#### en-US
 
-Use a form in Drawer with a submit button.
-
-```css
-.site-form-in-drawer-wrapper {
-  position: absolute;
-  inset-inline-end: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 10px 16px;
-  text-align: right;
-  background: ##fff;
-  border-top: 1px solid ##e9e9e9;
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -480,32 +451,7 @@ export default App;
 
 需要快速预览对象概要时使用，点击遮罩区关闭。
 
-#### en-US
 
-Use Drawer to quickly preview details of an object, such as those in a list.
-
-```css
-.site-description-item-profile-wrapper {
-  margin-bottom: 7px;
-  color: rgba(0, 0, 0, 0.65);
-  font-size: 14px;
-  line-height: 1.5715;
-}
-
-.ant-drawer-body p.site-description-item-profile-p {
-  display: block;
-  margin-bottom: 16px;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 16px;
-  line-height: 1.5715;
-}
-
-.site-description-item-profile-p-label {
-  display: inline-block;
-  margin-inline-end: 8px;
-  color: rgba(0, 0, 0, 0.85);
-}
-```
 
 ```typescript
 import React, { useState } from 'react';
@@ -667,9 +613,7 @@ export default App;
 
 在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。
 
-#### en-US
 
-Open a new drawer on top of an existing drawer to handle multi branch tasks.
 
 ```typescript
 import React, { useState } from 'react';
@@ -728,9 +672,7 @@ export default App;
 
 抽屉的默认宽度为 `378px`，另外还提供一个大号抽屉 `736px`，可以用 `size` 属性来设置。
 
-#### en-US
 
-The default width (or height) of Drawer is `378px`, and there is a preset large size `736px`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -798,9 +740,7 @@ export default App;
 
 通过 `classNames` 属性设置抽屉内部区域（header、body、footer、mask、wrapper）的 `className`。
 
-#### en-US
 
-Set the `className` of the build-in module (header, body, footer, mask, wrapper) of the drawer through the `classNames`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -919,9 +859,7 @@ export default App;
 
 支持 ConfigProvider 配置。
 
-#### en-US
 
-config by ConfigProvider.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -971,9 +909,7 @@ export default App;
 
 通过 `mask={false}` 去掉遮罩。
 
-#### en-US
 
-Remove mask.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1029,9 +965,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -1056,9 +990,7 @@ export default () => (
 
 当 Modal 和 Drawer 共同作用时的滚动锁定调试。
 
-#### en-US
 
-Scroll lock debug with Modal & Drawer.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1127,9 +1059,7 @@ export default App;
 
 Component Token Debug.
 
-#### en-US
 
-Component Token Debug.
 
 ```typescript
 import React from 'react';

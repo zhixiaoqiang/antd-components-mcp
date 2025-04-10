@@ -6,9 +6,7 @@
 
 基本使用。
 
-#### en-US
 
-Basic Usage.
 
 ```typescript
 import React from 'react';
@@ -63,9 +61,7 @@ export default App;
 
 展开后可对选项进行搜索。
 
-#### en-US
 
-Search the options while expanded.
 
 ```typescript
 import React from 'react';
@@ -113,9 +109,7 @@ export default App;
 
 使用 `filterOption` 自定义搜索。
 
-#### en-US
 
-Customize search using `filterOption`.
 
 ```typescript
 import React from 'react';
@@ -146,9 +140,7 @@ export default App;
 
 多选，从已有条目中选择。
 
-#### en-US
 
-Multiple selection, selecting from existing items.
 
 ```typescript
 import React from 'react';
@@ -201,9 +193,7 @@ export default App;
 
 三种大小的选择框，当 size 分别为 `large` 和 `small` 时，输入框高度为 `40px` 和 `24px` ，默认高度为 `32px`。
 
-#### en-US
 
-The height of the input field for the select defaults to 32px. If size is set to large, the height will be 40px, and if set to small, 24px.
 
 ```typescript
 import React, { useState } from 'react';
@@ -282,9 +272,7 @@ export default App;
 
 使用 `optionRender` 自定义渲染下拉选项。
 
-#### en-US
 
-Use `optionRender` to customize the rendering dropdown options
 
 ```typescript
 import React from 'react';
@@ -350,9 +338,7 @@ export default App;
 
 在搜索模式下对过滤结果项进行排序。
 
-#### en-US
 
-Search the options with sorting.
 
 ```typescript
 import React from 'react';
@@ -406,9 +392,7 @@ export default App;
 
 标签形式的多选框，用户亦可自由输入。
 
-#### en-US
 
-Allow user to select tags from list or input custom tag.
 
 ```typescript
 import React from 'react';
@@ -448,9 +432,7 @@ export default App;
 
 用 `OptGroup` 进行选项分组。
 
-#### en-US
 
-Using `OptGroup` to group the options.
 
 ```typescript
 import React from 'react';
@@ -496,9 +478,7 @@ export default App;
 
 省市联动是典型的例子，联动场景我们更推荐使用 [Cascader](/components/cascader-cn/) 组件。
 
-#### en-US
 
-Coordinating the selection of provinces and cities is a common use case and demonstrates how selection can be coordinated. [Cascader](/components/cascader) component is strongly recommended in this case.
 
 ```typescript
 import React, { useState } from 'react';
@@ -554,9 +534,7 @@ export default App;
 
 搜索和远程数据结合。
 
-#### en-US
 
-Search with remote data.
 
 ```typescript
 /* eslint-disable compat/compat */
@@ -648,11 +626,7 @@ export default App;
 
 选中项的 `label` 会被包装到 `value` 中传递给 `onChange` 等函数，此时 `value` 是一个对象。
 
-#### en-US
 
-As a default behavior, the `onChange` callback can only get the `value` of the selected item. The `labelInValue` prop can be used to get the `label` property of the selected item.
-
-The `label` of the selected item will be packed as an object for passing to the `onChange` callback.
 
 ```typescript
 import React from 'react';
@@ -691,9 +665,7 @@ export default App;
 
 试下复制 `露西,杰克` 并粘贴到输入框里。只在 tags 和 multiple 模式下可用。
 
-#### en-US
 
-Try to copy `Lucy,Jack` and paste to the input. Only available in tags and multiple mode.
 
 ```typescript
 import React from 'react';
@@ -733,9 +705,7 @@ export default App;
 
 一个带有远程搜索，防抖控制，请求时序控制，加载状态的多选示例。
 
-#### en-US
 
-A complete multiple select sample with remote search, debounce fetch, ajax callback order flow, and loading state.
 
 ```typescript
 import React, { useMemo, useRef, useState } from 'react';
@@ -839,9 +809,7 @@ export default App;
 
 自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
 
-#### en-US
 
-Custom `prefix` and `suffixIcon`.
 
 ```typescript
 import React from 'react';
@@ -936,9 +904,7 @@ export default App;
 
 使用 `dropdownRender` 对下拉菜单进行自由扩展。如果希望点击自定义内容后关闭浮层，你需要使用受控模式自行控制（[codesandbox](https://codesandbox.io/s/ji-ben-shi-yong-antd-4-21-7-forked-gnp4cy?file=/demo.js)）。
 
-#### en-US
 
-Customize the dropdown menu via `dropdownRender`. If you want to close the dropdown after clicking the custom content, you need to control `open` prop, here is an [codesandbox](https://codesandbox.io/s/ji-ben-shi-yong-antd-4-21-7-forked-gnp4cy?file=/demo.js).
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -1003,9 +969,7 @@ export default App;
 
 隐藏下拉列表中已选择的选项。
 
-#### en-US
 
-Hide already selected options in the dropdown.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1043,9 +1007,7 @@ export default App;
 
 Select 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-#### en-US
 
-Variants of Select, there are four variants: `outlined` `filled` `borderless` and `underlined`.
 
 ```typescript
 import React from 'react';
@@ -1160,9 +1122,7 @@ export default App;
 
 可选 `outlined` `filled` `borderless` 三种形态。
 
-#### en-US
 
-There are `outlined` `filled` and `borderless`, totally three variants to choose from.
 
 ```typescript
 import React from 'react';
@@ -1263,9 +1223,7 @@ export default App;
 
 允许自定义选择标签的样式。
 
-#### en-US
 
-Allows for custom rendering of tags.
 
 ```typescript
 import React from 'react';
@@ -1320,9 +1278,7 @@ export default App;
 
 允许自定义渲染当前选中的 label, 可用于 value 回填但对应选项缺失而不想直接渲染 value 的场景。
 
-#### en-US
 
-Allows custom rendering of the currently selected label, which can be used for value backfill but the corresponding option is missing and does not want to directly render the value.
 
 ```typescript
 import React from 'react';
@@ -1361,9 +1317,7 @@ export default App;
 
 多选下通过响应式布局让选项自动收缩。该功能对性能有所消耗，不推荐在大表单场景下使用。
 
-#### en-US
 
-Auto collapse to tag with responsive case. Not recommend use in large form case since responsive calculation has a perf cost.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1431,9 +1385,7 @@ export default App;
 
 Select 默认针对大数据开启了[虚拟滚动](https://github.com/react-component/virtual-list)，因而获得了更好的性能，可以通过 `virtual={false}` 关闭。
 
-#### en-US
 
-Select use [virtual scroll](https://github.com/react-component/virtual-list) which get better performance, turn off it by setting `virtual={false}`.
 
 ```typescript
 import React from 'react';
@@ -1481,9 +1433,7 @@ export default App;
 
 使用 `status` 为 Select 添加状态，可选 `error` 或者 `warning`。
 
-#### en-US
 
-Add status to Select with `status`, which could be `error` or `warning`.
 
 ```typescript
 import React from 'react';
@@ -1506,9 +1456,7 @@ export default App;
 
 可以通过 `placement` 手动指定弹出的位置。
 
-#### en-US
 
-You can manually specify the position of the popup via `placement`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1568,9 +1516,7 @@ export default App;
 
 可以通过 `placement` 手动指定弹出的位置。
 
-#### en-US
 
-You can manually specify the position of the popup via `placement`.
 
 ```typescript
 import React, { useState } from 'react';
@@ -1649,9 +1595,7 @@ export default App;
 
 调试使用。
 
-#### en-US
 
-Debug Usage.
 
 ```typescript
 import React from 'react';
@@ -1715,9 +1659,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';
@@ -1757,9 +1699,7 @@ export default App;
 
 选项文本应该居中。
 
-#### en-US
 
-Options label Centered.
 
 ```typescript
 import React from 'react';
@@ -1960,9 +1900,7 @@ export default App;
 
 组件 Token
 
-#### en-US
 
-Component Token
 
 ```typescript
 import React from 'react';
@@ -2073,9 +2011,7 @@ export default App;
 
 你可以通过设置 `maxCount` 约束最多可选中的数量，当超出限制时会变成禁止选中状态。
 
-#### en-US
 
-You can set the `maxCount` prop to control the max number of items can be selected. When the limit is exceeded, the options will become disabled.
 
 ```typescript
 import React from 'react';

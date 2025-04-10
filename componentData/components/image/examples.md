@@ -6,9 +6,7 @@
 
 单击图像可以放大显示。
 
-#### en-US
 
-Click the image to zoom in.
 
 ```typescript
 import React from 'react';
@@ -31,9 +29,7 @@ export default App;
 
 加载失败显示图像占位符。
 
-#### en-US
 
-Load failed to display image placeholder.
 
 ```typescript
 import React from 'react';
@@ -58,9 +54,7 @@ export default App;
 
 大图使用 placeholder 渐进加载。
 
-#### en-US
 
-Progressive when large image loading.
 
 ```typescript
 import React, { useState } from 'react';
@@ -104,9 +98,7 @@ export default App;
 
 点击左右切换按钮可以预览多张图片。
 
-#### en-US
 
-Click the left and right switch buttons to preview multiple images.
 
 ```typescript
 import React from 'react';
@@ -136,9 +128,7 @@ export default App;
 
 从一张图片点开相册。
 
-#### en-US
 
-Preview a collection from one image.
 
 ```typescript
 import React from 'react';
@@ -169,9 +159,7 @@ export default App;
 
 可以设置不同的预览图片。
 
-#### en-US
 
-You can set different preview image.
 
 ```typescript
 import React from 'react';
@@ -197,9 +185,7 @@ export default App;
 
 可以使预览受控。
 
-#### en-US
 
-You can make preview controlled.
 
 ```typescript
 import React, { useState } from 'react';
@@ -252,33 +238,7 @@ export default App;
 
 可以自定义工具栏并添加下载原图或翻转旋转后图片的按钮。
 
-#### en-US
 
-You can customize the toolbar and add a button for downloading the original image or downloading the flipped and rotated image.
-
-```css
-.toolbar-wrapper {
-  padding: 0px 24px;
-  color: ##fff;
-  font-size: 20px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 100px;
-}
-
-.toolbar-wrapper .anticon {
-  padding: 12px;
-  cursor: pointer;
-}
-
-.toolbar-wrapper .anticon[disabled] {
-  cursor: not-allowed;
-  opacity: 0.3;
-}
-
-.toolbar-wrapper .anticon:hover {
-  opacity: 0.3;
-}
-```
 
 ```typescript
 import React from 'react';
@@ -380,9 +340,7 @@ export default App;
 
 可以自定义预览内容。
 
-#### en-US
 
-You can customize the preview content.
 
 ```typescript
 import React from 'react';
@@ -417,19 +375,7 @@ export default App;
 
 自定义预览文本。
 
-#### en-US
 
-Custom preview mask.
-
-```css
-.customize-mask {
-  font-size: 20px;
-  opacity: 1;
-}
-.customize-mask .anticon {
-  font-size: 32px;
-}
-```
 
 ```typescript
 import React from 'react';
@@ -462,9 +408,7 @@ export default App;
 
 嵌套在弹框当中使用
 
-#### en-US
 
-Nested in the modal
 
 ```typescript
 import React, { useState } from 'react';
@@ -564,9 +508,7 @@ export default App;
 
 多图预览时顶部展示进度, 支持自定义
 
-#### en-US
 
-The progress is displayed at the top of the multi-image preview, and customization is supported
 
 ```typescript
 import React from 'react';
@@ -598,9 +540,7 @@ export default App;
 
 自定义组件 Token。
 
-#### en-US
 
-Custom component token.
 
 ```typescript
 import React from 'react';
@@ -643,9 +583,7 @@ export default App;
 
 在渲染函数中获取图片的信息。
 
-#### en-US
 
-Gets image info in the render function.
 
 ```typescript
 import React from 'react';

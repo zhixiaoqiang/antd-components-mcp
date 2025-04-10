@@ -6,9 +6,7 @@
 
 标准的进度条。
 
-#### en-US
 
-A standard progress bar.
 
 ```typescript
 import React from 'react';
@@ -34,9 +32,7 @@ export default App;
 
 圈形的进度。
 
-#### en-US
 
-A circular progress bar.
 
 ```typescript
 import React from 'react';
@@ -60,9 +56,7 @@ export default App;
 
 适合放在较狭窄的区域内。
 
-#### en-US
 
-Appropriate for a narrow area.
 
 ```typescript
 import React from 'react';
@@ -87,9 +81,7 @@ export default App;
 
 响应式的圈形进度，当 `width` 小于等于 20 的时候，进度信息将不会显示在进度圈里面，而是以 Tooltip 的形式显示。
 
-#### en-US
 
-Responsive circular progress bar. When `width` is smaller than 20, progress information will be displayed in Tooltip.
 
 ```typescript
 import React from 'react';
@@ -119,9 +111,7 @@ export default App;
 
 小一号的圈形进度。
 
-#### en-US
 
-A smaller circular progress bar.
 
 ```typescript
 import React from 'react';
@@ -145,9 +135,7 @@ export default App;
 
 会动的进度条才是好进度条。
 
-#### en-US
 
-A dynamic progress bar is better.
 
 ```typescript
 import React, { useState } from 'react';
@@ -201,9 +189,7 @@ export default App;
 
 `format` 属性指定格式。
 
-#### en-US
 
-You can set a custom text by setting the `format` prop.
 
 ```typescript
 import React from 'react';
@@ -226,9 +212,7 @@ export default App;
 
 通过设置 `type=dashboard`，可以很方便地实现仪表盘样式的进度条。若想要修改缺口的角度，可以设置 `gapDegree` 为你想要的值。
 
-#### en-US
 
-By setting `type=dashboard`, you can get a dashboard style of progress easily. Modify `gapDegree` to set the degree of gap.
 
 ```typescript
 import React from 'react';
@@ -251,9 +235,7 @@ export default App;
 
 分段展示进度，可以用于细化进度语义。
 
-#### en-US
 
-Show several parts of progress with different status.
 
 ```typescript
 import React from 'react';
@@ -285,9 +267,7 @@ export default App;
 
 通过设定 `strokeLinecap="butt"` 可以将进度条边缘的形状从闭合的圆形的圆弧调整为断口，详见 [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap)。
 
-#### en-US
 
-By setting `strokeLinecap="butt"`, you can change the linecaps from `round` to `butt`, see [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap) for more information.
 
 ```typescript
 import React from 'react';
@@ -313,9 +293,7 @@ export default App;
 
 渐变色封装，`circle` 与 `dashboard` 设置渐变时 `strokeLinecap` 会被忽略。
 
-#### en-US
 
-Gradient encapsulation, `circle` and `dashboard` will ignore `strokeLinecap` when setting gradient.
 
 ```typescript
 import React from 'react';
@@ -360,9 +338,7 @@ export default App;
 
 带步骤的进度条。
 
-#### en-US
 
-A progress bar with steps.
 
 ```typescript
 import React from 'react';
@@ -388,9 +364,7 @@ export default App;
 
 步骤进度圈，支持颜色分段展示，默认间隔为 2px。
 
-#### en-US
 
-A circular progress bar that support steps and color segments, default gap is 2px.
 
 ```typescript
 import React from 'react';
@@ -435,9 +409,7 @@ export default App;
 
 进度条尺寸。
 
-#### en-US
 
-The size of progress.
 
 ```typescript
 import React from 'react';
@@ -479,9 +451,7 @@ export default App;
 
 改变进度数值位置，可使用 `percentPosition` 调整，使进度条数值在进度条内部、外部或底部。
 
-#### en-US
 
-Change the position of the progress value, you can use `percentPosition` to adjust it so that the progress bar value is inside, outside or at the bottom of the progress bar.
 
 ```typescript
 import React from 'react';

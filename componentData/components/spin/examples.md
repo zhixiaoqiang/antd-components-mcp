@@ -6,9 +6,7 @@
 
 一个简单的 loading 状态。
 
-#### en-US
 
-A simple loading status.
 
 ```typescript
 import React from 'react';
@@ -26,9 +24,7 @@ export default App;
 
 小的用于文本加载，默认用于卡片容器级加载，大的用于**页面级**加载。
 
-#### en-US
 
-A small `Spin` is used for loading text, default sized `Spin` for loading a card-level block, and large `Spin` used for loading a **page**.
 
 ```typescript
 import React from 'react';
@@ -52,9 +48,7 @@ export default App;
 
 可以直接把内容内嵌到 `Spin` 中，将现有容器变为加载状态。
 
-#### en-US
 
-Embedding content into `Spin` will set it into loading state.
 
 ```typescript
 import React from 'react';
@@ -89,9 +83,7 @@ export default App;
 
 自定义描述文案。
 
-#### en-US
 
-Customize the description text.
 
 ```typescript
 import React from 'react';
@@ -136,9 +128,7 @@ export default App;
 
 延迟显示 loading 效果。当 spinning 状态在 `delay` 时间内结束，则不显示 loading 状态。
 
-#### en-US
 
-Specifies a delay for loading state. If `spinning` ends during delay, loading status won't appear.
 
 ```typescript
 import React from 'react';
@@ -173,9 +163,7 @@ export default App;
 
 使用自定义指示符。
 
-#### en-US
 
-Use custom loading indicator.
 
 ```typescript
 import React from 'react';
@@ -201,9 +189,7 @@ export default App;
 
 展示进度，当设置 `percent="auto"` 时会预估一个永远不会停止的进度条。
 
-#### en-US
 
-Show the progress. When `percent="auto"` is set, an indeterminate progress will be displayed.
 
 ```typescript
 import React from 'react';
@@ -254,9 +240,7 @@ export default App;
 
 `fullscreen` 属性非常适合创建流畅的页面加载器。它添加了半透明覆盖层，并在其中心放置了一个旋转加载符号。
 
-#### en-US
 
-The `fullscreen` mode is perfect for creating page loaders. It adds a dimmed overlay with a centered spinner.
 
 ```typescript
 import React from 'react';

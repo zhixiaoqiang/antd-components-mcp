@@ -1,24 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 当有重要操作需告知用户处理结果，且反馈内容较为复杂时使用。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/success.tsx">Success</code>
-<code src="./demo/info.tsx">Info</code>
-<code src="./demo/warning.tsx">Warning</code>
-<code src="./demo/403.tsx">403</code>
-<code src="./demo/404.tsx">404</code>
-<code src="./demo/500.tsx">500</code>
-<code src="./demo/error.tsx">Error</code>
-<code src="./demo/customIcon.tsx">自定义 icon</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

@@ -1,5 +1,5 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 常见于详情页的信息展示。
 
@@ -49,25 +49,9 @@ const items: DescriptionsProps['items'] = [
 </Descriptions>;
 ```
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/border.tsx">带边框的</code>
-<code src="./demo/text.tsx" debug>复杂文本的情况</code>
-<code src="./demo/padding.tsx" debug>间距</code>
-<code src="./demo/size.tsx">自定义尺寸</code>
-<code src="./demo/responsive.tsx">响应式</code>
-<code src="./demo/vertical.tsx">垂直</code>
-<code src="./demo/vertical-border.tsx">垂直带边框的</code>
-<code src="./demo/style.tsx" debug>自定义 label & wrapper 样式</code>
-<code src="./demo/jsx.tsx" debug>JSX demo</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
-<code src="./demo/block.tsx">整行</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 ### Descriptions
 

@@ -1,23 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 当数据是日期或按照日期划分时，例如日程、课表、价格日历等，农历等。目前支持年/月切换。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx" clientOnly>基本</code>
-<code src="./demo/notice-calendar.tsx" clientOnly>通知事项日历</code>
-<code src="./demo/card.tsx" clientOnly>卡片模式</code>
-<code src="./demo/select.tsx" clientOnly>选择功能</code>
-<code src="./demo/lunar.tsx" clientOnly>农历日历</code>
-<code src="./demo/week.tsx" clientOnly version="5.23.0">周数</code>
-<code src="./demo/customize-header.tsx" clientOnly>自定义头部</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 **注意**：Calendar 部分 locale 是从 value 中读取，所以请先正确设置 dayjs 的 locale。
 

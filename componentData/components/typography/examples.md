@@ -6,9 +6,7 @@
 
 展示文档样例。
 
-#### en-US
 
-Display the document sample.
 
 ```typescript
 import React from 'react';
@@ -123,9 +121,7 @@ export default App;
 
 展示不同级别的标题。
 
-#### en-US
 
-Display title in different levels.
 
 ```typescript
 import React from 'react';
@@ -153,9 +149,7 @@ export default App;
 
 展示标题与段落的组合。
 
-#### en-US
 
-Display the title and paragraph.
 
 ```typescript
 import React from 'react';
@@ -268,9 +262,7 @@ export default App;
 
 内置不同样式的文本以及超链接组件。
 
-#### en-US
 
-Provides multiple types of text and a link.
 
 ```typescript
 import React from 'react';
@@ -309,9 +301,7 @@ export default App;
 
 提供可编辑的交互能力。
 
-#### en-US
 
-Makes Typography editable.
 
 ```typescript
 import React, { useMemo, useState } from 'react';
@@ -467,9 +457,7 @@ export default App;
 
 提供可复制的交互能力。
 
-#### en-US
 
-Makes Typography copyable with the click of a button.
 
 ```typescript
 import React from 'react';
@@ -517,9 +505,7 @@ export default App;
 
 多行文本省略。你可以通过 `tooltip` 属性配置省略展示内容，大量文本时推荐优先使用 `expandable`。
 
-#### en-US
 
-Multiple line ellipsis support. You can use `tooltip` to configure ellipsis tooltip. The `expandable` property is recommended when you have lots of content.
 
 ```typescript
 import React, { useState } from 'react';
@@ -585,9 +571,7 @@ export default App;
 
 受控多行文本省略。
 
-#### en-US
 
-Controlled multi line text omission.
 
 ```typescript
 import React, { useState } from 'react';
@@ -635,9 +619,7 @@ export default App;
 
 使用 `ellipsis={{ suffix: ... }}` 可以封装一个从中间省略内容的组件，适合于需要保留文本末位特征的内容。
 
-#### en-US
 
-You can ellipsis content from middle by customize `ellipsis={{ suffix: ... }}`.
 
 ```typescript
 import React from 'react';
@@ -676,9 +658,7 @@ export default App;
 
 多行文本省略。
 
-#### en-US
 
-Multiple line ellipsis support.
 
 ```typescript
 import React, { useState } from 'react';
@@ -805,9 +785,7 @@ export default App;
 
 添加后缀的省略。
 
-#### en-US
 
-Add suffix ellipsis support.
 
 ```typescript
 import React, { useState } from 'react';
@@ -851,9 +829,7 @@ export default App;
 
 自定义组件 Token。
 
-#### en-US
 
-Custom component token.
 
 ```typescript
 import React from 'react';

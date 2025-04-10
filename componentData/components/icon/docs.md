@@ -13,14 +13,7 @@
 
 <IconSearch></IconSearch>
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本用法</code>
-<code src="./demo/two-tone.tsx">多色图标</code>
-<code src="./demo/custom.tsx">自定义图标</code>
-<code src="./demo/iconfont.tsx">使用 iconfont.cn</code>
-<code src="./demo/scriptUrl.tsx">使用 iconfont.cn 的多个资源</code>
 
 ## API
 

@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The basic usage.
 
 ```typescript
 /* eslint-disable react/no-array-index-key */
@@ -47,9 +45,7 @@ export default App;
 
 设置对齐方式。
 
-#### en-US
 
-Set align.
 
 ```typescript
 import React from 'react';
@@ -103,9 +99,7 @@ export default App;
 
 使用 `gap` 设置元素之间的间距，预设了 `small`、`middle`、`large` 三种尺寸，也可以自定义间距。
 
-#### en-US
 
-Set the `gap` between elements, which has three preset sizes: `small`, `middle`, `large`, You can also customize the gap size.
 
 ```typescript
 import React from 'react';
@@ -147,9 +141,7 @@ export default App;
 
 自动换行。
 
-#### en-US
 
-Auto wrap line.
 
 ```typescript
 import React from 'react';
@@ -175,9 +167,7 @@ export default Demo;
 
 嵌套使用，可以实现更复杂的布局。
 
-#### en-US
 
-Nesting can achieve more complex layouts.
 
 ```typescript
 import React from 'react';
@@ -222,9 +212,7 @@ export default App;
 
 调试专用。
 
-#### en-US
 
-Use for debug.
 
 ```typescript
 /* eslint-disable react/no-array-index-key */

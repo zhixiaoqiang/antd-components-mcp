@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The most basic usage.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -74,9 +72,7 @@ export default App;
 
 使用 `mask={false}` 可以将引导变为非模态，同时为了强调引导本身，建议与 `type="primary"` 组合使用。
 
-#### en-US
 
-Use `mask={false}` to make Tour non-modal. At the meantime it is recommended to use with `type="primary"` to emphasize the guide itself.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -146,9 +142,7 @@ export default App;
 
 改变引导相对于目标的位置，共有 12 种位置可供选择。当 `target={null}` 时引导将会展示在正中央。
 
-#### en-US
 
-Change the placement of the guide relative to the target, there are 12 placements available. When `target={null}` the guide will show in the center.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -201,9 +195,7 @@ export default App;
 
 自定义遮罩样式。
 
-#### en-US
 
-Custom mask style.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -290,9 +282,7 @@ export default App;
 
 自定义指示器。
 
-#### en-US
 
-Custom indicator.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -364,11 +354,7 @@ export default App;
 
 - `5.9.0` 之前不支持单独设置两个方向上的边距和数组类型的 `offset` 参数。
 
-#### en-US
 
-Using `gap` to control the radius of highlight area and the offset between highlight area and the element.
-
-- Setting offset in two directions individually and `offset` with array type is not supported until `5.9.0`.
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -480,9 +466,7 @@ export default App;
 
 调试用组件，请勿直接使用。
 
-#### en-US
 
-Debug usage. Do not use in your production.
 
 ```typescript
 import React from 'react';

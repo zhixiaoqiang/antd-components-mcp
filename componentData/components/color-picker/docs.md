@@ -1,29 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 当用户需要自定义颜色选择的时候使用。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/base.tsx">基本使用</code>
-<code src="./demo/size.tsx">触发器尺寸大小</code>
-<code src="./demo/controlled.tsx">受控模式</code>
-<code src="./demo/line-gradient.tsx" version="5.20.0">渐变色</code>
-<code src="./demo/text-render.tsx">渲染触发器文本</code>
-<code src="./demo/disabled.tsx">禁用</code>
-<code src="./demo/disabled-alpha.tsx">禁用透明度</code>
-<code src="./demo/allowClear.tsx">清除颜色</code>
-<code src="./demo/trigger.tsx">自定义触发器</code>
-<code src="./demo/trigger-event.tsx">自定义触发事件</code>
-<code src="./demo/format.tsx">颜色编码</code>
-<code src="./demo/presets.tsx">预设颜色</code>
-<code src="./demo/panel-render.tsx">自定义面板</code>
-<code src="./demo/pure-panel.tsx" debug>Pure Render</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 > 自 `antd@5.5.0` 版本开始提供该组件。
 

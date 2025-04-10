@@ -6,9 +6,7 @@
 
 最简单的用法。
 
-#### en-US
 
-The simplest use.
 
 ```typescript
 import React from 'react';
@@ -26,9 +24,7 @@ export default App;
 
 Radio 不可用。
 
-#### en-US
 
-Radio unavailable.
 
 ```typescript
 import React, { useState } from 'react';
@@ -67,9 +63,7 @@ export default App;
 
 一组互斥的 Radio 配合使用。
 
-#### en-US
 
-A group of radio components.
 
 ```typescript
 import React, { useState } from 'react';
@@ -145,9 +139,7 @@ export default App;
 
 垂直的 Radio.Group，配合更多输入框选项。
 
-#### en-US
 
-Vertical Radio.Group, with more radios.
 
 ```typescript
 import React, { useState } from 'react';
@@ -206,9 +198,7 @@ export default App;
 
 `block` 属性将使 Radio.Group 撑满父容器。
 
-#### en-US
 
-The `block` property will make a Radio.Group fit to its parent width.
 
 ```typescript
 import React from 'react';
@@ -245,9 +235,7 @@ export default App;
 
 通过配置 `options` 参数来渲染单选框。也可通过 `optionType` 参数来设置 Radio 类型。
 
-#### en-US
 
-Render radios by configuring `options`. Radio type can also be set through the `optionType` parameter.
 
 ```typescript
 import React, { useState } from 'react';
@@ -326,9 +314,7 @@ export default App;
 
 按钮样式的单选组合。
 
-#### en-US
 
-The combination of radio button style.
 
 ```typescript
 import React from 'react';
@@ -374,9 +360,7 @@ export default App;
 
 可以为 Radio.Group 配置 `name` 参数，为组合内的 input 元素赋予相同的 `name` 属性，使浏览器把 Radio.Group 下的 Radio 真正看作是一组（例如可以通过方向键始终**在同一组内**更改选项）。
 
-#### en-US
 
-Passing the `name` property to all `input[type="radio"]` that are in the same Radio.Group. It is usually used to let the browser see your Radio.Group as a real "group" and keep the default behavior. For example, using left/right keyboard arrow to change your selection that in the same Radio.Group.
 
 ```typescript
 import React from 'react';
@@ -405,9 +389,7 @@ export default App;
 
 大中小三种组合，可以和表单输入框进行对应配合。
 
-#### en-US
 
-There are three sizes available: large, medium, and small. It can coordinate with input box.
 
 ```typescript
 import React from 'react';
@@ -446,9 +428,7 @@ export default App;
 
 实色填底的单选按钮样式。
 
-#### en-US
 
-Solid radio button style.
 
 ```typescript
 import React from 'react';
@@ -483,9 +463,7 @@ export default App;
 
 测试 Badge 的样式。
 
-#### en-US
 
-Test Badge style.
 
 ```typescript
 import React from 'react';
@@ -512,9 +490,7 @@ export default App;
 
 线框风格。
 
-#### en-US
 
-Wireframe style.
 
 ```typescript
 import React from 'react';
@@ -546,9 +522,7 @@ export default App;
 
 组件 token debug
 
-#### en-US
 
-Component Token debug.
 
 ```typescript
 import React from 'react';

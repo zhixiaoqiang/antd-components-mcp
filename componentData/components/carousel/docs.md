@@ -1,24 +1,13 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 - 当有一组平级的内容。
 - 当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
 - 常用于一组图片或卡片轮播。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本</code>
-<code src="./demo/position.tsx">位置</code>
-<code src="./demo/autoplay.tsx">自动切换</code>
-<code src="./demo/fade.tsx">渐显</code>
-<code src="./demo/arrows.tsx" version="5.17.0">切换箭头</code>
-<code src="./demo/dot-duration.tsx" version="5.24.0">进度条</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |

@@ -152,29 +152,37 @@ async function processComponent(componentsPath: string, dirName: string) {
     const mdMatter = await parseMDMatter(indexMdPath);
     componentData.version = mdMatter?.tag;
     componentData.description = mdMatter?.description;
-    componentData.documentation = removeSection(
-      removeSection(
-        removeSection(removeFrontmatter(docContent), "\n## Design Token"),
-        "\n## 主题变量"
-      ),
-      "\n## Semantic DOM"
-    );
+
+    const initHandleDoc = (doc: string) => {
+      const handleList = [
+        removeFrontmatter,
+        (doc: string) => doc.replace(' {#when-to-use}', '').replace("\n通用属性参考：[通用属性](/docs/react/common-props)\n", ""),
+        (doc: string) => removeSection(doc, "\n## Design Token"), 
+        (doc: string) => removeSection(doc, "\n## 主题变量"), 
+        (doc: string) => removeSection(doc, "\n## Semantic DOM"), 
+      ]
+      return handleList.reduce((acc, handle) => handle(acc), doc)
+    }
+
+    const handleDocResult = initHandleDoc(docContent)
 
     componentData.whenToUse = extractSection(
-      componentData.documentation,
+      handleDocResult,
       "\n## 何时使用"
     );
+
     componentData.apiContent = extractSection(
-      componentData.documentation,
+      handleDocResult,
       "\n## API"
     )
-      ?.replace(" {#when-to-use}", "")
-      .replace("\n通用属性参考：[通用属性](/docs/react/common-props)\n", "");
 
     // 从文档中提取示例及其描述
     componentData.exampleInfoList = extractExamples(
-      componentData.documentation
+      handleDocResult
     );
+
+    componentData.documentation = removeSection(handleDocResult, '\n## 代码演示')
+    
 
     // 从演示目录中读取示例文件
     if (existsSync(demoPath) && componentData.exampleInfoList) {
@@ -187,11 +195,11 @@ async function processComponent(componentsPath: string, dirName: string) {
           exampleInfo.description = await readFile(
             `${examplePath}.md`,
             "utf-8"
-          ).then((content) => content.replace(/#/g, "##"));
+          ).then((content) => removeSection(content, '\n## en-US').replace(/#/g, "##"));
         } catch (error) {}
 
         try {
-          exampleInfo.code = await readFile(`${examplePath}.tsx`, "utf-8");
+          exampleInfo.code = await readFile(`${examplePath}.tsx`, "utf-8")
         } catch (error) {
           console.error(
             `  ❌ 读取示例 ${exampleInfo.name} 时出错:`,

@@ -1,23 +1,11 @@
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。
 
-## 代码演示
 
-<!-- prettier-ignore -->
-<code src="./demo/basic.tsx">基本用法</code>
-<code src="./demo/size.tsx">各种大小</code>
-<code src="./demo/nested.tsx">卡片加载中</code>
-<code src="./demo/tip.tsx">自定义描述文案</code>
-<code src="./demo/delayAndDebounce.tsx">延迟</code>
-<code src="./demo/custom-indicator.tsx">自定义指示符</code>
-<code src="./demo/percent.tsx" version="5.18.0">进度</code>
-<code src="./demo/fullscreen.tsx">全屏</code>
 
 ## API
-
-通用属性参考：[通用属性](/docs/react/common-props)
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
