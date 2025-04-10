@@ -6,7 +6,13 @@ import { getComponentsChangelog } from "../utils/components";
 const registryTool = (server: McpServer) => {
   server.tool(
     "get-component-changelog",
-    "列出 Ant Design 特定组件的更新日志",
+    `
+列出 Ant Design 特定组件的更新日志
+
+适用场景：
+1. 用户询问特定组件的更新日志；
+2. 用户需要实现相关功能时协助判断在什么版本中才实现，来决定是否需要升级依赖；
+`,
     { componentName: z.string() },
     async ({ componentName }) => {
       const componentsChangelog = await getComponentsChangelog(componentName);
@@ -15,7 +21,9 @@ const registryTool = (server: McpServer) => {
         content: [
           {
             type: "text",
-            text: JSON.stringify(componentsChangelog[componentName]),
+            text: `
+以下是组件的更新日志：
+${JSON.stringify(componentsChangelog[componentName])}`,
           },
         ],
       };
