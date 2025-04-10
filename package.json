@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "tsup && tsx scripts/test-server.ts",
+    "test": "tsup && tsx test-server.ts",
     "extract": "tsx scripts/extract-docs.ts ../ant-design",
     "inspector": "pnpm build & npx @modelcontextprotocol/inspector node dist/server.js",
     "prepublishOnly": "pnpm build"

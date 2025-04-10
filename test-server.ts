@@ -1,24 +1,13 @@
 #!/usr/bin/env node
-/**
- * This script tests the MCP Ant Design Components server
- * using the official MCP SDK client. It runs through all the available tools
- * and displays sample output for each.
- *
- * Usage:
- *   node scripts/test-server.mjs
- */
+
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
-import { dirname, resolve } from "path";
-import { fileURLToPath } from "url";
+import { resolve } from "path";
+import { ROOT_DIR } from "./constants/path";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const rootDir = resolve(__dirname, "..");
-
-// Set up the MCP client to communicate with our server
 const transport = new StdioClientTransport({
   command: "node",
-  args: [resolve(rootDir, "dist/server.js")],
+  args: [resolve(ROOT_DIR, "dist/server.js")],
 });
 
 const client = new Client({
@@ -26,64 +15,63 @@ const client = new Client({
   version: "1.0.0",
 });
 
-// Connect to the server
-console.log("Connecting to MCP server...");
+console.log("正在连接 MCP 服务器...");
 await client.connect(transport);
-console.log("Connected to MCP server successfully!");
+console.log("成功连接到 MCP 服务器!");
 
-// Run example tool calls
+// 执行示例工具调用
 try {
-  // List components
-  console.log("\n--- LISTING COMPONENTS ---");
+  // 列出所有组件
+  console.log("\n--- 列出组件 ---");
   const components = await client.callTool({
     name: "list-components",
     arguments: {},
   });
-  console.log(components.content[0].text);
+  Array.isArray(components.content) && console.log(components.content[0].text);
 
-  // Get component documentation
-  console.log("\n--- GET COMPONENT DOCUMENTATION ---");
+  // 获取组件文档
+  console.log("\n--- 获取组件文档 ---");
   const docs = await client.callTool({
     name: "get-component-docs",
     arguments: {
-      componentName: "Affix", // Using PascalCase
+      componentName: "Affix",
     },
   });
-  console.log(docs.content[0].text);
+  Array.isArray(docs.content) && console.log(docs.content[0].text);
 
-  // Get component props
-  console.log("\n--- GET COMPONENT PROPS ---");
+  // 获取组件属性
+  console.log("\n--- 获取组件属性 ---");
   const props = await client.callTool({
     name: "get-component-props",
     arguments: {
-      componentName: "Affix", // Using PascalCase
+      componentName: "Affix",
     },
   });
-  console.log(props.content[0].text);
+  Array.isArray(props.content) && console.log(props.content[0].text);
 
-  // List component examples
-  console.log("\n--- LIST COMPONENT EXAMPLES ---");
+  // 列出组件示例
+  console.log("\n--- 列出组件示例 ---");
   const examples = await client.callTool({
     name: "list-component-examples",
     arguments: {
-      componentName: "Affix", // Using PascalCase
+      componentName: "Affix",
     },
   });
-  console.log(examples.content[0].text);
+  Array.isArray(examples.content) && console.log(examples.content[0].text);
 
-  // Get components changelog
-  console.log("\n--- GET COMPONENTS CHANGELOG ---");
+  // 获取组件变更日志
+  console.log("\n--- 获取组件变更日志 ---");
   const changelog = await client.callTool({
     name: "get-component-changelog",
     arguments: {
-      componentName: "Affix", // Using PascalCase
+      componentName: "Affix",
     },
   });
-  console.log(changelog.content[0].text);
+  Array.isArray(changelog.content) && console.log(changelog.content[0].text);
 } catch (error) {
-  console.error("Error during testing:", error);
+  console.error("测试过程中出错:", error);
 } finally {
-  // Close the connection
+  // 关闭连接
   await client.close();
-  console.log("\nTests completed, disconnected from server.");
+  console.log("\n测试完成，已断开与服务器的连接。");
 }
