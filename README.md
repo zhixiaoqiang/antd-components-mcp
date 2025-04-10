@@ -1,155 +1,115 @@
-# Ant Design Components Model Context Protocol Server
+# Ant Design 组件库 MCP 服务
 
-A Model Context Protocol (MCP) server that exposes Ant Design component documentation to Large Language Models (LLMs) like Claude. This server allows an LLM to explore and understand Ant Design components through a set of specialized tools.
+一个模型上下文协议(MCP)服务器，用于向 `Claude` 等大型语言模型(LLMs)提供 `Ant Design` 组件文档。该服务器允许 LLM 通过一组专用工具探索和理解 `Ant Design` 组件。
 
-## Features
+## 功能特性
 
-- Easy to use - no need to clone the entire Ant Design repository
-- Pre-extracted component documentation for faster startup
-- List all available Ant Design components
-- Get detailed component documentation including descriptions and usage
-- View component props and API definitions
-- Browse code examples for specific components
-- Search for components by name or functionality
+- 已预处理数据，开箱即用(预处理版本为 `Ant Design V5 2025-04-10`)
+  - 可以自行提取最新的/其他版本的组件文档
+- 列出所有可用的 `Ant Design` 组件
+  - 包含组件名称、描述、可用版本、何时使用当前组件信息
+- 查看特定组件文档(已过滤无意义内容，对上下文友好)
+- 查看特定组件属性和 API 定义
+- 查看特定组件组件的代码示例
+- 查看特定组件组件的更新日志
+- 做了大量的缓存，有效缓解 IO 压力
 
-## Initial Setup
+## 什么时候需要自行提取组件文档？
 
-Before using the MCP server for the first time, you need to extract the documentation from the Ant Design repository:
+1. 你想使用最新的组件文档
+2. 你想使用其他版本的组件文档
 
+### 组件文档
 ```bash
-# First, clone the Ant Design repository (can be temporary)
-git clone https://github.com/ant-design/ant-design.git
+# 克隆 Ant Design 仓库
+git clone https://github.com/ant-design/ant-design.git --depth 1 --branch master --single-branch --filter=blob:none
 
-# Extract documentation
-cd mcp-antd-components
-npm run extract   # Uses the default ./ant-design path
-# OR
-node scripts/extract-docs.mjs /path/to/ant-design  # For a custom path
-
-# After extraction is complete, the Ant Design repo can be deleted if desired
+# 在当前目录执行提取文档命令
+npx @jzone-mcp/antd-components-mcp extract [ant design repo path]  #默认提取路径为 ./ant-design
 ```
 
-This will create a `data` directory with all the extracted component documentation, which the MCP server will use.
+### 组件更新日志
 
-### Testing the Server
-
-To verify that everything is working correctly, you can run the test script:
+组件更新日志提取依赖于 `Ant Design` 的 `scripts/generate-component-changelog.ts` 脚本，需要按照依赖后生成：
 
 ```bash
-npm test
-# OR
-node scripts/test-server.mjs
+cd ant-design
+
+pnpm install
+
+# 生成组件更新日志 JSON
+pnpm lint:changelog
+
+# 提取组件信息
+npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 ```
 
-This will run the MCP server and test all available tools with sample queries.
+这将创建一个包含所有提取的组件文档的 data 目录，供 MCP 服务器使用。
 
-## Usage
+## Claude桌面版集成
 
-### Command Line
-
-Run the MCP server:
-
-```bash
-# Run server with pre-extracted data
-npm start
-# OR
-npx -y mcp-antd-components
-```
-
-### Claude Desktop Integration
-
-To use this MCP server with Claude Desktop, edit your `claude_desktop_config.json` configuration file:
+在Claude桌面版中使用此MCP服务器，编辑 `claude_desktop_config.json` 配置文件：
 
 ```json
 {
   "mcpServers": {
     "Ant Design Components": {
       "command": "npx",
-      "args": ["-y", "mcp-antd-components"]
+      "args": ["@jzone-mcp/antd-components-mcp"]
     }
   }
 }
 ```
 
-Location of the configuration file:
+配置文件位置：
 
 - macOS/Linux: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - Windows: `$env:AppData\Claude\claude_desktop_config.json`
 
-### Claude Code Integration
-
-To use this MCP server with Claude Code CLI, follow these steps:
-
-1. **Add the Ant Design Components MCP server to Claude Code**
-
-   ```bash
-   # Basic syntax
-   claude mcp add antd-components npx -y mcp-antd-components
-   ```
-
-2. **Verify the MCP server is registered**
-
-   ```bash
-   # List all configured servers
-   claude mcp list
-
-   # Get details for your Ant Design components server
-   claude mcp get antd-components
-   ```
-
-3. **Remove the server if needed**
-
-   ```bash
-   claude mcp remove antd-components
-   ```
-
-4. **Use the tool in Claude Code**
-
-   Once configured, you can invoke the tool in your Claude Code session by asking questions about Ant Design components.
-
-**Tips:**
-
-- Use the `-s` or `--scope` flag with `project` (default) or `global` to specify where the configuration is stored
-
 ## MCP Tools
 
-The server provides the following tools for LLMs to interact with Ant Design component documentation:
+服务器提供以下工具供LLM与Ant Design组件文档交互：
 
-- `list-components`: Lists all available Ant Design components in PascalCase format (e.g., Button, DatePicker)
-- `get-component-props`: Gets the props and API documentation for a specific component (use PascalCase names like "Button")
-- `get-component-docs`: Gets detailed documentation for a specific component (use PascalCase names like "DatePicker")
-- `list-component-examples`: Lists all examples available for a specific component (use PascalCase names like "Table")
-- `get-component-example`: Gets the code for a specific component example (component name in PascalCase)
-- `search-components`: Search for components by name pattern (works with PascalCase patterns)
+- `list-components`: 列出所有可用的 Ant Design 组件
+- `get-component-props`: 获取 Ant Design 特定组件的 API 文档
+- `get-component-docs`: 获取 Ant Design 特定组件的详细文档，不包含 API 及代码示例
+- `get-component-examples`: 获取 Ant Design 特定组件的代码示例
+- `get-component-changelog`: 列出 Ant Design 特定组件的更新日志
 
-## Examples
+## 查询示例
 
-Example queries to try:
+可尝试的示例查询：
 
+```text
+Ant Design 有哪些可用组件？
+
+上传图片示例后，使用 Ant Design 实现如图功能。
+
+显示 Button 组件的文档。
+
+Button 组件接受哪些属性？
+
+显示 Button 组件的代码示例。
+
+查看 Button 组件的基础用法。
+
+查看 Button 组件的更新记录
 ```
-What components are available in Ant Design?
-Show me the documentation for the Button component.
-What props does the Table component accept?
-Show me code examples for the Modal component.
-Get the example "basic" for the Form component.
-Find components related to Input or Form elements.
-```
 
-Note: Component names are provided in PascalCase (e.g., Button, DatePicker, Table) to match React component naming conventions, even though the internal directory structure uses kebab-case (e.g., button, date-picker, table).
+## 工作原理
 
-## How It Works
+`scripts/extract-docs.ts` 脚本从 `Ant Design` 仓库提取文档并保存到 `componentData` 目录，包括：
 
-The `scripts/extract-docs.mjs` script extracts documentation from the Ant Design repository and saves it to the `data` directory. This includes:
+- 组件文档(markdown格式)
+- API/属性文档
+- 示例代码
+- 全量的更新日志
 
-- Component documentation (markdown)
-- API/props documentation
-- Example code
-- Common props documentation
+这种方法有几个优点：
 
-This approach has several advantages:
-1. Users don't need to clone the entire Ant Design repository
-2. Faster startup time for the MCP server
-3. Smaller package size
-4. Easier to update when new versions are released
+1. 用户无需克隆整个Ant Design仓库
+2. MCP服务器启动更快
+3. 包体积更小
+4. 新版本发布时更容易更新
 
-To update the documentation for a new version of Ant Design, simply run the extraction script again with the updated repository.
+当你要更新 Ant Design 文档时，只需执行 `npx @jzone-mcp/antd-components-mcp extract [ant design repo path]` 命令即可。

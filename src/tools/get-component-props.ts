@@ -6,7 +6,7 @@ import { getComponentProps } from "../utils/components";
 const registryTool = (server: McpServer) => {
   server.tool(
     "get-component-props",
-    "获取 Ant Design 特定组件的 API Props 文档",
+    "获取 Ant Design 特定组件的 API 文档",
     { componentName: z.string() },
     async ({ componentName }) => {
       const propsSection = await getComponentProps(componentName);

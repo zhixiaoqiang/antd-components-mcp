@@ -6,7 +6,7 @@ import { getComponentDocumentation } from "../utils/components";
 const registryTool = (server: McpServer) => {
   server.tool(
     "get-component-docs",
-    "获取 Ant Design 特定组件的详细文档",
+    "获取 Ant Design 特定组件的详细文档，不包含 API 及代码示例",
     { componentName: z.string() },
     async ({ componentName }) => {
       const documentation = await getComponentDocumentation(componentName);
