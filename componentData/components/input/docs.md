@@ -149,19 +149,9 @@ interface CountConfig {
 | blur | 取消焦点 | - |  |
 | focus | 获取焦点 | (option?: { preventScroll?: boolean, cursor?: 'start' \| 'end' \| 'all' }) | option - 4.10.0 |
 
-## Semantic DOM
 
-### Input
 
-<code src="./demo/_semantic_input.tsx" simplify="true"></code>
 
-### Input.TextArea
-
-<code src="./demo/_semantic_textarea.tsx" simplify="true"></code>
-
-## 主题变量（Design Token）
-
-<ComponentTokenTable component="Input"></ComponentTokenTable>
 
 ## FAQ
 

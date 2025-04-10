@@ -20,11 +20,11 @@ interface CacheItem<Value> {
     value: Value
 }
 
-const DEFAULT_TTL = 1000 * 60 * 60 * 24;
+const DEFAULT_TTL = 1000 * 60 * 10;
 
 /**
  * 缓存工具类
- * 默认过期时间 24 小时
+ * 默认过期时间 10 分钟
  */
 export class Cache<CacheData extends Record<string, any>> {
     private cache: Map<keyof CacheData, CacheItem<CacheData[keyof CacheData]>> = new Map()

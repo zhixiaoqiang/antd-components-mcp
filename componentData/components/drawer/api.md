@@ -1,7 +1,5 @@
 ## API
 
-通用属性参考：[通用属性](/docs/react/common-props)
-
 <!-- prettier-ignore -->
 :::warning{title=注意}
 v5 使用 `rootClassName` 与 `rootStyle` 来配置最外层元素样式。原 v4 `className` 与 `style` 改至配置 Drawer 窗体样式以和 Modal 对齐。

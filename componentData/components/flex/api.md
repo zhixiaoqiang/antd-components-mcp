@@ -2,8 +2,6 @@
 
 > 自 `antd@5.10.0` 版本开始提供该组件。Flex 组件默认行为在水平模式下，为向上对齐，在垂直模式下，为拉伸对齐，你可以通过属性进行调整。
 
-通用属性参考：[通用属性](/docs/react/common-props)
-
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | vertical | flex 主轴的方向是否垂直，使用 `flex-direction: column` | boolean | `false` |

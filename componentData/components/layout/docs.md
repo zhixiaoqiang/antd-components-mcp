@@ -122,6 +122,4 @@
 }
 ```
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Layout"></ComponentTokenTable>

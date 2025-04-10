@@ -174,13 +174,9 @@ return <div>{contextHolder}</div>;
 const confirmed = await modal.confirm({ ... });
 ```
 
-## Semantic DOM
 
-<code src="./demo/_semantic.tsx" simplify="true"></code>
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Modal"></ComponentTokenTable>
 
 ## FAQ
 

@@ -336,9 +336,7 @@ export default Demo;
 
 TypeScript 里使用 Table 的 [CodeSandbox 实例](https://codesandbox.io/s/serene-platform-0jo5t)。
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Table"></ComponentTokenTable>
 
 ## 注意
 

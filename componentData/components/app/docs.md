@@ -124,9 +124,7 @@ export default () => {
 | message | App 内 Message 的全局配置 | [MessageConfig](/components/message-cn/#messageconfig) | - | 5.3.0 |
 | notification | App 内 Notification 的全局配置 | [NotificationConfig](/components/notification-cn/#notificationconfig) | - | 5.3.0 |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="App"></ComponentTokenTable>
 
 ## FAQ
 

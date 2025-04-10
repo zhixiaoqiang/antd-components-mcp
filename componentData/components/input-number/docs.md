@@ -67,9 +67,7 @@
 | focus() | 获取焦点 | (option?: { preventScroll?: boolean, cursor?: 'start' \| 'end' \| 'all' }) | cursor - 5.22.0 |
 | nativeElement | 获取原生 DOM 元素 | - | 5.17.3 |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="InputNumber"></ComponentTokenTable>
 
 ## FAQ
 

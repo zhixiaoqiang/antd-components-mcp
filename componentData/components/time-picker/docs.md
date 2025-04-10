@@ -119,9 +119,7 @@ type RangeDisabledTime = (
 };
 ```
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="DatePicker"></ComponentTokenTable>
 
 ## FAQ
 

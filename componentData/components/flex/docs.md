@@ -35,6 +35,4 @@
 | gap | 设置网格之间的间隙 | `small` \| `middle` \| `large` \| string \| number | - |  |
 | component | 自定义元素类型 | React.ComponentType | `div` |  |
 
-## Design Token
 
-<ComponentTokenTable component="Flex"></ComponentTokenTable>

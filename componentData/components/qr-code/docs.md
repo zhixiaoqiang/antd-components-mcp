@@ -48,9 +48,7 @@ type StatusRenderInfo = {
 };
 ```
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="QRCode"></ComponentTokenTable>
 
 ## FAQ
 

@@ -69,6 +69,4 @@
 | active | 是否展示动画效果 | boolean                         | false  |
 | size   | 设置输入框的大小 | `large` \| `small` \| `default` | -      |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Skeleton"></ComponentTokenTable>

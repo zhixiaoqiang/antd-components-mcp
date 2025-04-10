@@ -77,13 +77,9 @@
 
 > type PresetColors = 'blue' | 'purple' | 'cyan' | 'green' | 'magenta' | 'pink' | 'red' | 'orange' | 'yellow' | 'volcano' | 'geekblue' | 'lime' | 'gold';
 
-## Semantic DOM {#semantic-dom}
 
-<code src="./demo/_semantic.tsx" simplify="true"></code>
 
-## 主题变量（Design Token）{#design-token}
 
-<ComponentTokenTable component="Button"></ComponentTokenTable>
 
 ## FAQ
 

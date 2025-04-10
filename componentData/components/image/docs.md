@@ -170,6 +170,4 @@ type TransformAction =
 }
 ```
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Image"></ComponentTokenTable>

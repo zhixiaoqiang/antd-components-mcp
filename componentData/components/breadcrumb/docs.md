@@ -125,6 +125,4 @@ function itemRender(currentRoute, params, items, paths) {
 return <Breadcrumb itemRender={itemRender} items={items} />;
 ```
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Breadcrumb"></ComponentTokenTable>

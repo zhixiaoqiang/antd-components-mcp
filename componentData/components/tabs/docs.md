@@ -86,6 +86,4 @@ Ant Design 依次提供了三级选项卡，分别用于不同的场景。
 | icon                                         | 自定义折叠图标 | ReactNode | -      |      |
 | [DropdownProps](/components/dropdown-cn#api) |                |           |        |      |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Tabs"></ComponentTokenTable>

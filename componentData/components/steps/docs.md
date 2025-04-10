@@ -74,6 +74,4 @@
 | subTitle | 子标题 | ReactNode | - |  |
 | title | 标题 | ReactNode | - |  |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Steps"></ComponentTokenTable>

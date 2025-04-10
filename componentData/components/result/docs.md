@@ -28,6 +28,4 @@
 | subTitle | subTitle 文字 | ReactNode | - |
 | title | title 文字 | ReactNode | - |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Result"></ComponentTokenTable>

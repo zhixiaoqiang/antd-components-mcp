@@ -52,10 +52,6 @@
 | placement | 缎带的位置，`start` 和 `end` 随文字方向（RTL 或 LTR）变动 | `start` \| `end` | `end` |  |
 | text | 缎带中填入的内容 | ReactNode | - |  |
 
-## Semantic DOM
 
-<code src="./demo/_semantic.tsx" simplify="true"></code>
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Badge"></ComponentTokenTable>

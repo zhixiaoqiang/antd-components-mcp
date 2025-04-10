@@ -33,8 +33,7 @@
   {
     "name": "Avatar",
     "dirName": "avatar",
-    "description": "用来代表用户或事物，支持图片、图标或字符展示。",
-    "whenToUse": null
+    "description": "用来代表用户或事物，支持图片、图标或字符展示。"
   },
   {
     "name": "Badge",
@@ -100,8 +99,7 @@
   {
     "name": "ConfigProvider",
     "dirName": "config-provider",
-    "description": "为组件提供统一的全局化配置。",
-    "whenToUse": null
+    "description": "为组件提供统一的全局化配置。"
   },
   {
     "name": "DatePicker",
@@ -162,14 +160,12 @@
   {
     "name": "Grid",
     "dirName": "grid",
-    "description": "24 栅格系统。",
-    "whenToUse": null
+    "description": "24 栅格系统。"
   },
   {
     "name": "Icon",
     "dirName": "icon",
-    "description": "语义化的矢量图形。",
-    "whenToUse": null
+    "description": "语义化的矢量图形。"
   },
   {
     "name": "Image",
@@ -192,8 +188,7 @@
   {
     "name": "Layout",
     "dirName": "layout",
-    "description": "协助进行页面级整体布局。",
-    "whenToUse": null
+    "description": "协助进行页面级整体布局。"
   },
   {
     "name": "List",
@@ -233,8 +228,7 @@
   },
   {
     "name": "Overview",
-    "dirName": "overview",
-    "whenToUse": null
+    "dirName": "overview"
   },
   {
     "name": "Pagination",

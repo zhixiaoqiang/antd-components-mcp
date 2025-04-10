@@ -1,7 +1,5 @@
 ## API
 
-通用属性参考：[通用属性](/docs/react/common-props)
-
 > Splitter 组件需要通过子元素计算面板大小，因而其子元素仅支持 `Splitter.Panel`。
 
 ### Splitter

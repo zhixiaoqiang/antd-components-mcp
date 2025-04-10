@@ -71,10 +71,6 @@
 | direction | 指定排列方向 | `vertical` \| `horizontal` | `horizontal` | 4.24.0 |
 | size | 子组件大小 | `large` \| `middle` \| `small` | `middle` | 4.24.0 |
 
-## Semantic DOM
 
-<code src="./demo/_semantic.tsx" simplify="true"></code>
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Space"></ComponentTokenTable>

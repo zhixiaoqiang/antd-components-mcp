@@ -56,6 +56,4 @@
 | disabled  | 分段项的禁用状态 | boolean          | false  |      |
 | className | 自定义类名       | string           | -      |      |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Segmented"></ComponentTokenTable>

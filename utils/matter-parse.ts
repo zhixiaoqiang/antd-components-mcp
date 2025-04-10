@@ -22,7 +22,6 @@ export const parseMDMatter = async (filePath: string): Promise<AntdMDMatter | un
 
     return file.data.matter as AntdMDMatter;
   } catch (error) {
-    console.error(`解析组件 ${filePath} meta 信息失败`, error);
     return undefined
   }
 };

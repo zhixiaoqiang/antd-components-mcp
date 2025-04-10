@@ -65,9 +65,7 @@ interface Option {
 | focus()       | 获取焦点                  |        |
 | nativeElement | 返回 Checkbox 的 DOM 节点 | 5.17.3 |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Checkbox"></ComponentTokenTable>
 
 ## FAQ
 

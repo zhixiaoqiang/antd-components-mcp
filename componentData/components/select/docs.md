@@ -152,9 +152,7 @@ return (
 | className | Option 器类名           | string          | -      |      |
 | title     | 选项上的原生 title 提示 | string          | -      |      |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Select"></ComponentTokenTable>
 
 ## FAQ
 

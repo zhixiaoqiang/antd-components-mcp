@@ -43,13 +43,9 @@
 
 <embed src="../tooltip/shared/sharedProps.zh-CN.md"></embed>
 
-## Semantic DOM
 
-<code src="./demo/_semantic.tsx" simplify="true"></code>
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Popconfirm"></ComponentTokenTable>
 
 ## FAQ
 

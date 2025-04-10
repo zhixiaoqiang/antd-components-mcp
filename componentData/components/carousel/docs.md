@@ -48,9 +48,7 @@
 | next()                         | 切换到下一面板                                    |
 | prev()                         | 切换到上一面板                                    |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Carousel"></ComponentTokenTable>
 
 ## FAQ
 

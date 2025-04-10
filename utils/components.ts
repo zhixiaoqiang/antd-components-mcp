@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { COMPONENTS_DATA_CHANGELOG, EXTRACT_COMPONENTS_DATA_DIR, EXTRACT_COMPONENTS_LIST_PATH } from "../constants/path";
+import { API_FILE_NAME, COMPONENTS_DATA_CHANGELOG, DOC_FILE_NAME, EXAMPLE_FILE_NAME, EXTRACTED_COMPONENTS_DATA_DIR, EXTRACTED_COMPONENTS_LIST_PATH } from "../constants/path";
 import { Cache } from "./cache";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
@@ -22,7 +22,7 @@ export async function loadComponentsList() {
       return cacheComponentList
     }
 
-    const componentList = await readFile(EXTRACT_COMPONENTS_LIST_PATH, "utf-8");
+    const componentList = await readFile(EXTRACTED_COMPONENTS_LIST_PATH, "utf-8");
     const componentListJson = JSON.parse(componentList) as ComponentData[]
     
     componentCache.set('componentsList', componentListJson)
@@ -52,7 +52,7 @@ export const getComponentDocumentation = async (componentName: string) => {
     return ` "${componentName}" 组件文档不存在`;
   }
 
-  const docPath = join(EXTRACT_COMPONENTS_DATA_DIR, component.dirName, "docs.md");
+  const docPath = join(EXTRACTED_COMPONENTS_DATA_DIR, component.dirName, DOC_FILE_NAME);
 
   try {
     if (existsSync(docPath)) {
@@ -76,7 +76,7 @@ export const getComponentProps = async (componentName: string) => {
   }
 
   try {
-    const apiPath = join(EXTRACT_COMPONENTS_DATA_DIR, component.dirName, "api.md");
+    const apiPath = join(EXTRACTED_COMPONENTS_DATA_DIR, component.dirName, API_FILE_NAME);
 
     if (existsSync(apiPath)) {
       return await readFile(apiPath, "utf-8");
@@ -96,7 +96,7 @@ export const listComponentExamples = async (componentName: string) => {
     return "当前组件不存在";
   }
 
-  const examplesMdPath = join(EXTRACT_COMPONENTS_DATA_DIR, component.dirName, "examples.md");
+  const examplesMdPath = join(EXTRACTED_COMPONENTS_DATA_DIR, component.dirName, EXAMPLE_FILE_NAME);
 
   if (!existsSync(examplesMdPath)) {
     return `${component.name} 的示例代码不存在`;

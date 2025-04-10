@@ -45,6 +45,4 @@
 | collapsible | 快速折叠 | `boolean \| { start?: boolean; end?: boolean }` | `false` | - |
 | resizable | 是否开启拖拽伸缩 | `boolean` | `true` | - |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component='Splitter'></ComponentTokenTable>

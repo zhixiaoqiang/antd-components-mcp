@@ -54,17 +54,35 @@ export const extractSection = (markdown: string, startMatch: string, endMatch = 
   const startIndex = markdown.indexOf(startMatch);
 
   if (startIndex !== -1) {
+    let startPos = startIndex + 1
     let endPos = markdown.length;
 
     // 查找下一个 ## 标题（但不是 ###+ 标题）
-    const nextHeadingMatch = markdown.slice(startIndex).match(endMatch);
-    if (nextHeadingMatch?.index) {
-      endPos = startIndex + nextHeadingMatch.index;
+    const nextHeadingMatch = markdown.slice(startPos).match(endMatch);
+
+    if (nextHeadingMatch?.index && nextHeadingMatch?.index >= 0) {
+      endPos = startPos + nextHeadingMatch.index;
     }
 
     // 提取完整的指定部分
-    return markdown.slice(startIndex, endPos).trim();
+    return markdown.slice(startPos, endPos).trim();
   }
 
   return undefined;
 };
+
+/**
+ * 移除指定部分
+ * @param markdown 要提取的 Markdown 内容
+ * @param startMatch 要提取的部分的起始标记
+ * @param endMatch 要提取的部分的结束标记 默认是下一个 `/\n## [^#]/`
+ * @returns 移除后的内容
+ */
+export const removeSection = (markdown: string, startMatch: string, endMatch = /\n## [^#]/) => {
+  const section = extractSection(markdown, startMatch, endMatch);
+  
+  if (section) {
+    return markdown.replace(section, "");
+  }
+  return markdown;
+}

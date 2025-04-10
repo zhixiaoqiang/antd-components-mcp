@@ -163,9 +163,7 @@ interface EllipsisConfig {
 | onEllipsis | 触发省略时的回调 | function(ellipsis) | - | 4.2.0 |
 | onExpand | 点击展开或收起时的回调 | function(event, { expanded: boolean }) | - | `info`: 5.16.0 |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Typography"></ComponentTokenTable>
 
 ## FAQ
 

@@ -240,9 +240,7 @@ export type FormatType =
 
 注意：`type` 定义为 `5.14.0` 新增。
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="DatePicker"></ComponentTokenTable>
 
 ## FAQ
 

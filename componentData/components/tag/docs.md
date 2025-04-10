@@ -42,6 +42,4 @@
 | checked  | 设置标签的选中状态   | boolean           | false  |
 | onChange | 点击标签时触发的回调 | (checked) => void | -      |
 
-## 主题变量（Design Token）
 
-<ComponentTokenTable component="Tag"></ComponentTokenTable>
