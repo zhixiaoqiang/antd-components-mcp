@@ -14,8 +14,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "tsup && tsx test-server.ts",
-    "extract": "tsx scripts/extract-docs.ts ../ant-design",
+    "test": "tsup && tsx src/test-server.ts",
+    "extract": "tsx cli.js extract ../ant-design",
     "inspector": "pnpm build & npx @modelcontextprotocol/inspector node dist/server.js",
     "prepublishOnly": "pnpm build"
   },

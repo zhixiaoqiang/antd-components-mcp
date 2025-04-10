@@ -21,10 +21,10 @@
   - 编写解析 antd 文档的脚本，生成如组件列表、组件代码例子、组件更新日志等信息
 - 编写测试服务的代码
 - 支持 cache 避免重复的文件读取
-<!-- - 数据需要提取存储到数据库 -->
-<!-- 
+- 数据需要提取存储到数据库
+- 提取的组件信息应该设计成远程的服务，方便其他项目使用
+
 相关资料：
 - https://juejin.cn/post/7439660326700072986
 - https://juejin.cn/post/7409191765708947465#heading-12
-- https://www.zhihu.com/question/304174916/answer/825079036?share_code=1ikgytlCI2pkA&utm_psn=1892940782559802442
-- https://github1s.com/Tecvan-fe/vercel-ai-demo/blob/main/packages/mdc-mcp/src/services/component-service.ts -->
+- https://github1s.com/Tecvan-fe/vercel-ai-demo/blob/main/packages/mdc-mcp/src/services/component-service.ts

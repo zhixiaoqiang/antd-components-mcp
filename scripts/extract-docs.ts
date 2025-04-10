@@ -18,7 +18,9 @@ import {
   API_FILE_NAME,
   DOC_FILE_NAME,
   EXAMPLE_FILE_NAME,
-  EXTRACTED_COMPONENTS_DATA_DIR,
+  EXTRACT_COMPONENTS_CHANGELOG_PATH,
+  EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH,
+  EXTRACTED_COMPONENTS_DATA_PATH,
   EXTRACTED_COMPONENTS_LIST_PATH,
   EXTRACTED_DATA_DIR,
   EXTRACTED_METADATA_PATH,
@@ -87,8 +89,8 @@ interface MetaDataResult {
   extractedCount: number;
   /** 组件总数 */
   componentCount: number;
-  /** 数据版本 */
-  version: string;
+  /** 数据的 antd 版本 */
+  antdVersion: string;
 }
 
 /** 从 Markdown 内容中提取示例及其描述 */
@@ -228,6 +230,11 @@ async function extractAllData(antdRepoPath: string) {
   await mkdir(EXTRACTED_DATA_DIR, { recursive: true });
   /** 待提取数据的组件目录 */
   const componentsPath = join(antdRepoPath, "components");
+  /** 待提取数据的组件库 packageJson */
+  const antDPackageJsonPath = join(antdRepoPath, "package.json");
+  /** 待提取数据的组件库 changelog */
+  const antDChangelogPath = join(antdRepoPath, ".dumi", 'preset', 'components-changelog.zh-CN.json');
+
   console.log(`🔍 从 ${componentsPath} 抓取文档信息`);
 
   if (!existsSync(componentsPath)) {
@@ -235,6 +242,21 @@ async function extractAllData(antdRepoPath: string) {
       `❌ 错误: 未找到 ${componentsPath} 目录，请传入正确的 Ant Design 目录。`
     );
     process.exit(1);
+  }
+
+  if (!existsSync(antDPackageJsonPath)) {
+    console.error(
+      `❌ 提取 changelog 错误: 未找到 ${antDPackageJsonPath} 文件，请进入正确的 Ant Design 目录并执行 npm run lint:changelog 脚本`
+    );
+  } else {
+    try {
+      await writeJsonFile(EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH, await readFile(antDChangelogPath, "utf-8"))
+    } catch (error) {
+      console.error(
+        `  ❌ 写入 changelog 错误:`,
+        (error as Error).message
+      );
+    }
   }
 
   /** 获取所有组件目录 */
@@ -275,7 +297,7 @@ async function extractAllData(antdRepoPath: string) {
     extractedAt: new Date().toISOString(),
     extractedCount: processedCount,
     componentCount: componentDirs.length,
-    version: process.env.VERSION || "1.0.0",
+    antdVersion: (await import(antDPackageJsonPath).then(({ version }) => version).catch(() => undefined)) || "5.24.6",
   };
 
   /** 组件列表索引 */
@@ -294,13 +316,13 @@ async function extractAllData(antdRepoPath: string) {
   await writeJsonFile(EXTRACTED_METADATA_PATH, metaDataResult);
 
   // 创建组件目录
-  await mkdir(EXTRACTED_COMPONENTS_DATA_DIR, { recursive: true });
+  await mkdir(EXTRACTED_COMPONENTS_DATA_PATH, { recursive: true });
 
   // 将组件数据写入对应目录
   for (const componentData of Object.values(componentDataMap)) {
     /** 组件内容目录 */
     const componentDir = join(
-      EXTRACTED_COMPONENTS_DATA_DIR,
+      EXTRACTED_COMPONENTS_DATA_PATH,
       componentData.dirName
     );
     await mkdir(componentDir, { recursive: true });

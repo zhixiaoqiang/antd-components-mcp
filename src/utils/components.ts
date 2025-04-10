@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { API_FILE_NAME, COMPONENTS_DATA_CHANGELOG, DOC_FILE_NAME, EXAMPLE_FILE_NAME, EXTRACTED_COMPONENTS_DATA_DIR, EXTRACTED_COMPONENTS_LIST_PATH } from "../constants/path";
+import { API_FILE_NAME, EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH, DOC_FILE_NAME, EXAMPLE_FILE_NAME, EXTRACTED_COMPONENTS_DATA_PATH, EXTRACTED_COMPONENTS_LIST_PATH } from "../constants/path";
 import { Cache } from "./cache";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
@@ -54,7 +54,7 @@ export const getComponentDocumentation = async (componentName: string) => {
     return ` "${componentName}" 组件文档不存在`;
   }
 
-  const docPath = join(EXTRACTED_COMPONENTS_DATA_DIR, component.dirName, DOC_FILE_NAME);
+  const docPath = join(EXTRACTED_COMPONENTS_DATA_PATH, component.dirName, DOC_FILE_NAME);
 
   try {
     const cacheComponentDoc = componentCache.get('componentsDoc') || {}
@@ -88,7 +88,7 @@ export const getComponentProps = async (componentName: string) => {
   }
 
   try {
-    const apiPath = join(EXTRACTED_COMPONENTS_DATA_DIR, component.dirName, API_FILE_NAME);
+    const apiPath = join(EXTRACTED_COMPONENTS_DATA_PATH, component.dirName, API_FILE_NAME);
 
     const cacheComponentApi = componentCache.get('componentApi') || {}
     if (cacheComponentApi?.[component.name]) {
@@ -119,7 +119,7 @@ export const listComponentExamples = async (componentName: string) => {
     return "当前组件不存在";
   }
 
-  const examplesMdPath = join(EXTRACTED_COMPONENTS_DATA_DIR, component.dirName, EXAMPLE_FILE_NAME);
+  const examplesMdPath = join(EXTRACTED_COMPONENTS_DATA_PATH, component.dirName, EXAMPLE_FILE_NAME);
 
   if (!existsSync(examplesMdPath)) {
     return `${component.name} 的示例代码不存在`;
@@ -159,7 +159,7 @@ export const getComponentsChangelog = async (componentName: string) => {
     if (cacheComponentChangelog) {
       return cacheComponentChangelog
     }
-    const componentChangelog = await readFile(COMPONENTS_DATA_CHANGELOG, "utf-8");
+    const componentChangelog = await readFile(EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH, "utf-8");
     const componentChangelogJson = JSON.parse(componentChangelog)
     
     componentCache.set('componentsChangelog', componentChangelogJson)
