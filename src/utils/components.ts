@@ -4,17 +4,19 @@ import { Cache } from "./cache";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
 
-import type { ComponentData } from './../scripts/extract-docs';
-
+import type { ComponentData } from '../../scripts/extract-docs';
 
 interface CacheData {
   componentsList: ComponentData[]
-  componentsChangelog: string
+  componentsChangelog: Record<string, string>
+  componentsDoc: Record<string, string>
+  componentApi: Record<string, string>
+  componentExample: Record<string, string>
 }
 
 const componentCache = new Cache<CacheData>()
 
-// 加载组件列表
+/** 加载组件列表 */
 export async function loadComponentsList() {
   try {
     const cacheComponentList = componentCache.get('componentsList')
@@ -55,8 +57,18 @@ export const getComponentDocumentation = async (componentName: string) => {
   const docPath = join(EXTRACTED_COMPONENTS_DATA_DIR, component.dirName, DOC_FILE_NAME);
 
   try {
+    const cacheComponentDoc = componentCache.get('componentsDoc') || {}
+    if (cacheComponentDoc?.[component.name]) {
+      return cacheComponentDoc[component.name]
+    }
+
     if (existsSync(docPath)) {
-      return await readFile(docPath, "utf-8");
+      const docResult = await readFile(docPath, "utf-8");
+
+      cacheComponentDoc[component.name] = docResult
+      componentCache.set('componentsDoc', cacheComponentDoc)
+
+      return docResult
     } else {
       return `${component.name} 组件文档不存在`;
     }
@@ -78,9 +90,20 @@ export const getComponentProps = async (componentName: string) => {
   try {
     const apiPath = join(EXTRACTED_COMPONENTS_DATA_DIR, component.dirName, API_FILE_NAME);
 
-    if (existsSync(apiPath)) {
-      return await readFile(apiPath, "utf-8");
+    const cacheComponentApi = componentCache.get('componentApi') || {}
+    if (cacheComponentApi?.[component.name]) {
+      return cacheComponentApi[component.name]
     }
+
+    if (existsSync(apiPath)) {
+      const apiResult = await readFile(apiPath, "utf-8");
+
+      cacheComponentApi[component.name] = apiResult
+      componentCache.set('componentApi', cacheComponentApi)
+
+      return apiResult
+    }
+
     return `${componentName} API 文档不存在`;
   } catch (error) {
     console.error(`获取 ${component.name} API文档错误: ${(error as Error).message}`);
@@ -102,6 +125,20 @@ export const listComponentExamples = async (componentName: string) => {
     return `${component.name} 的示例代码不存在`;
   }
   try {
+    const cacheComponentExample = componentCache.get('componentExample') || {}
+    if (cacheComponentExample?.[component.name]) {
+      return cacheComponentExample[component.name]
+    }
+
+    if (existsSync(examplesMdPath)) {
+      const exampleResult = await readFile(examplesMdPath, "utf-8");
+
+      cacheComponentExample[component.name] = exampleResult
+      componentCache.set('componentExample', cacheComponentExample)
+
+      return exampleResult
+    }
+
     return await readFile(examplesMdPath, "utf-8");
   } catch (error) {
     console.error(`${component.name} 的示例代码不存在: ${(error as Error).message}`);
@@ -109,7 +146,7 @@ export const listComponentExamples = async (componentName: string) => {
   }
 };
 
-// 获取组件更新记录
+/** 获取组件更新记录 */
 export const getComponentsChangelog = async (componentName: string) => {
   const component = await findComponentByName(componentName);
 

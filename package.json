@@ -4,8 +4,15 @@
   "type": "module",
   "sideEffects": false,
   "main": "dist/server.js",
-  "description": "一个支持 Ant Design 组件库信息查询的 MCP 服务",
-  "bin": "dist/server.js",
+  "description": "一个 Ant Design 组件查询的 mcp 服务，包含 组件文档、API 文档、代码示例、组件更新日志查询",
+  "bin": "dist/cli.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhixiaoqiang/antd-components-mcp"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -21,7 +28,13 @@
     "model context protocol",
     "ui components"
   ],
-  "author": "",
+  "files": [
+    "dist",
+    "componentData",
+    "assets",
+    "README.md"
+  ],
+  "author": "zhixiaoqiang",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",

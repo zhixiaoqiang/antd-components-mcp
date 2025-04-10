@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { parseMDMatter } from "./../utils/matter-parse";
+import { parseMDMatter } from "./matter-parse";
 
 /**
  * 此脚本从 Ant Design 仓库中提取组件文档，
@@ -12,18 +12,17 @@ import { parseMDMatter } from "./../utils/matter-parse";
  */
 import { existsSync } from "node:fs";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { join } from "node:path";
 
 import {
   API_FILE_NAME,
-  DEFAULT_ANT_DESIGN_EXTRACT_PATH,
   DOC_FILE_NAME,
   EXAMPLE_FILE_NAME,
   EXTRACTED_COMPONENTS_DATA_DIR,
   EXTRACTED_COMPONENTS_LIST_PATH,
   EXTRACTED_DATA_DIR,
   EXTRACTED_METADATA_PATH,
-} from "../constants/path";
+} from "../src/constants/path";
 import {
   extractSection,
   removeFrontmatter,
@@ -156,33 +155,33 @@ async function processComponent(componentsPath: string, dirName: string) {
     const initHandleDoc = (doc: string) => {
       const handleList = [
         removeFrontmatter,
-        (doc: string) => doc.replace(' {#when-to-use}', '').replace("\n通用属性参考：[通用属性](/docs/react/common-props)\n", ""),
-        (doc: string) => removeSection(doc, "\n## Design Token"), 
-        (doc: string) => removeSection(doc, "\n## 主题变量"), 
-        (doc: string) => removeSection(doc, "\n## Semantic DOM"), 
-      ]
-      return handleList.reduce((acc, handle) => handle(acc), doc)
-    }
+        (doc: string) =>
+          doc
+            .replace(" {#when-to-use}", "")
+            .replace(
+              "\n通用属性参考：[通用属性](/docs/react/common-props)\n",
+              ""
+            ),
+        (doc: string) => removeSection(doc, "\n## Design Token"),
+        (doc: string) => removeSection(doc, "\n## 主题变量"),
+        (doc: string) => removeSection(doc, "\n## Semantic DOM"),
+      ];
+      return handleList.reduce((acc, handle) => handle(acc), doc);
+    };
 
-    const handleDocResult = initHandleDoc(docContent)
+    const handleDocResult = initHandleDoc(docContent);
 
-    componentData.whenToUse = extractSection(
-      handleDocResult,
-      "\n## 何时使用"
-    );
+    componentData.whenToUse = extractSection(handleDocResult, "\n## 何时使用");
 
-    componentData.apiContent = extractSection(
-      handleDocResult,
-      "\n## API"
-    )
+    componentData.apiContent = extractSection(handleDocResult, "\n## API");
 
     // 从文档中提取示例及其描述
-    componentData.exampleInfoList = extractExamples(
-      handleDocResult
-    );
+    componentData.exampleInfoList = extractExamples(handleDocResult);
 
-    componentData.documentation = removeSection(handleDocResult, '\n## 代码演示')
-    
+    componentData.documentation = removeSection(
+      handleDocResult,
+      "\n## 代码演示"
+    );
 
     // 从演示目录中读取示例文件
     if (existsSync(demoPath) && componentData.exampleInfoList) {
@@ -195,11 +194,13 @@ async function processComponent(componentsPath: string, dirName: string) {
           exampleInfo.description = await readFile(
             `${examplePath}.md`,
             "utf-8"
-          ).then((content) => removeSection(content, '\n## en-US').replace(/#/g, "##"));
+          ).then((content) =>
+            removeSection(content, "\n## en-US").replace(/#/g, "##")
+          );
         } catch (error) {}
 
         try {
-          exampleInfo.code = await readFile(`${examplePath}.tsx`, "utf-8")
+          exampleInfo.code = await readFile(`${examplePath}.tsx`, "utf-8");
         } catch (error) {
           console.error(
             `  ❌ 读取示例 ${exampleInfo.name} 时出错:`,
@@ -338,14 +339,4 @@ ${example.code}
   console.log(`🎉 文档提取完成！数据已保存到 ${EXTRACTED_DATA_DIR}`);
 }
 
-// 解析命令行参数，获取需要提取的 Ant Design 相对当前的路径
-const [antdRepoArg] = process.argv.slice(2);
-
-/** 如果未提供参数，默认使用 ./ant-design */
-const antdRepoPath = resolve(antdRepoArg ?? DEFAULT_ANT_DESIGN_EXTRACT_PATH);
-
-/** 运行提取过程 */
-extractAllData(antdRepoPath).catch((error) => {
-  console.error("❌ 致命错误:", error);
-  process.exit(1);
-});
+export default extractAllData
