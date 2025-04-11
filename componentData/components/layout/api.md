@@ -1,5 +1,4 @@
 ## API
-
 ```jsx
 <Layout>
   <Header>header</Header>
@@ -11,21 +10,15 @@
   <Footer>footer</Footer>
 </Layout>
 ```
-
 ### Layout
-
 布局容器。
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | className | 容器 className | string | - |
 | hasSider | 表示子元素里有 Sider，一般不用指定。可用于服务端渲染时避免样式闪动 | boolean | - |
 | style | 指定样式 | CSSProperties | - |
-
 ### Layout.Sider
-
 侧边栏。
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | breakpoint | 触发响应式布局的[断点](/components/grid-cn#col) | `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `xxl` | - |
@@ -42,9 +35,7 @@
 | zeroWidthTriggerStyle | 指定当 `collapsedWidth` 为 0 时出现的特殊 trigger 的样式 | object | - |
 | onBreakpoint | 触发响应式布局[断点](/components/grid-cn#api)时的回调 | (broken) => {} | - |
 | onCollapse | 展开-收起时的回调函数，有点击 trigger 以及响应式反馈两种方式可以触发 | (collapsed, type) => {} | - |
-
 #### breakpoint width
-
 ```js
 {
   xs: '480px',

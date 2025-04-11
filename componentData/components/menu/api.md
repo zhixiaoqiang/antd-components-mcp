@@ -1,7 +1,5 @@
 ## API
-
 ### Menu
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | defaultOpenKeys | 初始展开的 SubMenu 菜单项 key 数组 | string\[] | - |  |
@@ -26,15 +24,10 @@
 | onDeselect | 取消选中时调用，仅在 multiple 生效 | function({ item, key, keyPath, selectedKeys, domEvent }) | - |  |
 | onOpenChange | SubMenu 展开/关闭的回调 | function(openKeys: string\[]) | - |  |
 | onSelect | 被选中时调用 | function({ item, key, keyPath, selectedKeys, domEvent }) | -   |  |
-
 > 更多属性查看 [rc-menu](https://github.com/react-component/menu#api)
-
 ### ItemType
-
 > type ItemType = [MenuItemType](#menuitemtype) | [SubMenuType](#submenutype) | [MenuItemGroupType](#menuitemgrouptype) | [MenuDividerType](#menudividertype);
-
 #### MenuItemType
-
 | 参数     | 说明                     | 类型      | 默认值 | 版本   |
 | -------- | ------------------------ | --------- | ------ | ------ |
 | danger   | 展示错误状态样式         | boolean   | false  |        |
@@ -44,9 +37,7 @@
 | key      | item 的唯一标志          | string    | -      |        |
 | label    | 菜单项标题               | ReactNode | -      |        |
 | title    | 设置收缩时展示的悬浮标题 | string    | -      |        |
-
 #### SubMenuType
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | children | 子菜单的菜单项 | [ItemType\[\]](#itemtype) | - |  |
@@ -58,11 +49,8 @@
 | popupOffset | 子菜单偏移量，`mode="inline"` 时无效 | \[number, number] | - |  |
 | onTitleClick | 点击子菜单标题 | function({ key, domEvent }) | - |  |
 | theme | 设置子菜单的主题，默认从 Menu 上继承 | `light` \| `dark` | - |  |
-
 #### MenuItemGroupType
-
 定义类型为 `group` 时，会作为分组处理:
-
 ```ts
 const groupItem = {
   type: 'group', // Must have
@@ -70,22 +58,17 @@ const groupItem = {
   children: [],
 };
 ```
-
 | 参数     | 说明         | 类型                              | 默认值 | 版本 |
 | -------- | ------------ | --------------------------------- | ------ | ---- |
 | children | 分组的菜单项 | [MenuItemType\[\]](#menuitemtype) | -      |      |
 | label    | 分组标题     | ReactNode                         | -      |      |
-
 #### MenuDividerType
-
 菜单项分割线，只用在弹出菜单内，需要定义类型为 `divider`：
-
 ```ts
 const dividerItem = {
   type: 'divider', // Must have
 };
 ```
-
 | 参数   | 说明     | 类型    | 默认值 | 版本 |
 | ------ | -------- | ------- | ------ | ---- |
 | dashed | 是否虚线 | boolean | false  |      |

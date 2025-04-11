@@ -1,22 +1,15 @@
 ## Tabs 组件示例
-
 ### 基本
-
 #### zh-CN
-
 默认选中第一项。
-
-
 
 ```typescript
 import React from 'react';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
-
 const onChange = (key: string) => {
   console.log(key);
 };
-
 const items: TabsProps['items'] = [
   {
     key: '1',
@@ -34,25 +27,17 @@ const items: TabsProps['items'] = [
     children: 'Content of Tab Pane 3',
   },
 ];
-
 const App: React.FC = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
-
 export default App;
 
 ```
-
 ### 禁用
-
 #### zh-CN
-
 禁用某一项。
-
-
 
 ```typescript
 import React from 'react';
 import { Tabs } from 'antd';
-
 const App: React.FC = () => (
   <Tabs
     defaultActiveKey="1"
@@ -76,23 +61,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 居中
-
 #### zh-CN
-
 标签居中展示。
-
-
 
 ```typescript
 import React from 'react';
 import { Tabs } from 'antd';
-
 const App: React.FC = () => (
   <Tabs
     defaultActiveKey="1"
@@ -107,24 +85,17 @@ const App: React.FC = () => (
     })}
   />
 );
-
 export default App;
 
 ```
-
 ### 图标
-
 #### zh-CN
-
 有图标的标签。
-
-
 
 ```typescript
 import React from 'react';
 import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
-
 const App: React.FC = () => (
   <Tabs
     defaultActiveKey="2"
@@ -139,36 +110,26 @@ const App: React.FC = () => (
     })}
   />
 );
-
 export default App;
 
 ```
-
 ### 指示条
-
 #### zh-CN
-
 设置 `indicator` 属性，自定义指示条宽度和对齐方式。
-
-
 
 ```typescript
 import React from 'react';
 import { Segmented, Tabs } from 'antd';
 import type { TabsProps } from 'antd';
-
 const onChange = (key: string) => {
   console.log(key);
 };
-
 const items: TabsProps['items'] = [
   { key: '1', label: 'Tab 1', children: 'Content of Tab Pane 1' },
   { key: '2', label: 'Tab 2', children: 'Content of Tab Pane 2' },
   { key: '3', label: 'Tab 3', children: 'Content of Tab Pane 3' },
 ];
-
 type Align = 'start' | 'center' | 'end';
-
 const App: React.FC = () => {
   const [alignValue, setAlignValue] = React.useState<Align>('center');
   return (
@@ -188,33 +149,23 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 滑动
-
 #### zh-CN
-
 可以左右、上下滑动，容纳更多标签。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Radio, Tabs } from 'antd';
-
 type TabPosition = 'left' | 'right' | 'top' | 'bottom';
-
 const App: React.FC = () => {
   const [mode, setMode] = useState<TabPosition>('top');
-
   const handleModeChange = (e: RadioChangeEvent) => {
     setMode(e.target.value);
   };
-
   return (
     <div>
       <Radio.Group onChange={handleModeChange} value={mode} style={{ marginBottom: 8 }}>
@@ -238,36 +189,24 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 附加内容
-
 #### zh-CN
-
 可以在页签两边添加附加操作。
-
-
 
 ```typescript
 import React, { useMemo, useState } from 'react';
 import { Button, Checkbox, Divider, Tabs } from 'antd';
-
 const CheckboxGroup = Checkbox.Group;
-
 const operations = <Button>Extra Action</Button>;
-
 const OperationsSlot: Record<PositionType, React.ReactNode> = {
   left: <Button className="tabs-extra-demo-button">Left Extra Action</Button>,
   right: <Button>Right Extra Action</Button>,
 };
-
 const options = ['left', 'right'];
-
 type PositionType = 'left' | 'right';
-
 const items = Array.from({ length: 3 }).map((_, i) => {
   const id = String(i + 1);
   return {
@@ -276,10 +215,8 @@ const items = Array.from({ length: 3 }).map((_, i) => {
     children: `Content of tab ${id}`,
   };
 });
-
 const App: React.FC = () => {
   const [position, setPosition] = useState<PositionType[]>(['left', 'right']);
-
   const slot = useMemo(() => {
     if (position.length === 0) {
       return null;
@@ -289,7 +226,6 @@ const App: React.FC = () => {
       {},
     );
   }, [position]);
-
   return (
     <>
       <Tabs tabBarExtraContent={operations} items={items} />
@@ -311,26 +247,18 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 大小
-
 #### zh-CN
-
 大号页签用在页头区域，小号用在弹出框等较狭窄的容器内。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { RadioChangeEvent, TabsProps } from 'antd';
 import { Radio, Tabs } from 'antd';
-
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
-
 const App: React.FC = () => {
   const [size, setSize] = useState<'small' | 'middle' | 'large'>('small');
   const [activeKey, setActiveKey] = useState('1');
@@ -351,7 +279,6 @@ const App: React.FC = () => {
       children: 'Content of editable tab 3',
     },
   ]);
-
   const add = () => {
     const newKey = String((items || []).length + 1);
     setItems([
@@ -364,21 +291,17 @@ const App: React.FC = () => {
     ]);
     setActiveKey(newKey);
   };
-
   const remove = (targetKey: TargetKey) => {
     if (!items) return;
     const targetIndex = items.findIndex((item) => item.key === targetKey);
     const newItems = items.filter((item) => item.key !== targetKey);
-
     if (newItems.length && targetKey === activeKey) {
       const newActiveKey =
         newItems[targetIndex === newItems.length ? targetIndex - 1 : targetIndex].key;
       setActiveKey(newActiveKey);
     }
-
     setItems(newItems);
   };
-
   const onEdit = (targetKey: TargetKey, action: 'add' | 'remove') => {
     if (action === 'add') {
       add();
@@ -386,11 +309,9 @@ const App: React.FC = () => {
       remove(targetKey);
     }
   };
-
   const onChange = (e: RadioChangeEvent) => {
     setSize(e.target.value);
   };
-
   return (
     <div>
       <Radio.Group value={size} onChange={onChange} style={{ marginBottom: 16 }}>
@@ -436,33 +357,23 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 位置
-
 #### zh-CN
-
 有四个位置，`tabPosition="left|right|top|bottom"`。在移动端下，`left|right` 会自动切换成 `top`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Radio, Space, Tabs } from 'antd';
-
 type TabPosition = 'left' | 'right' | 'top' | 'bottom';
-
 const App: React.FC = () => {
   const [tabPosition, setTabPosition] = useState<TabPosition>('left');
-
   const changeTabPosition = (e: RadioChangeEvent) => {
     setTabPosition(e.target.value);
   };
-
   return (
     <>
       <Space style={{ marginBottom: 24 }}>
@@ -488,27 +399,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 卡片式页签
-
 #### zh-CN
-
 另一种样式的页签，不提供对应的垂直样式。
-
-
 
 ```typescript
 import React from 'react';
 import { Tabs } from 'antd';
-
 const onChange = (key: string) => {
   console.log(key);
 };
-
 const App: React.FC = () => (
   <Tabs
     onChange={onChange}
@@ -523,25 +426,17 @@ const App: React.FC = () => (
     })}
   />
 );
-
 export default App;
 
 ```
-
 ### 新增和关闭页签
-
 #### zh-CN
-
 只有卡片样式的页签支持新增和关闭选项。使用 `closable={false}` 禁止关闭。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { Tabs } from 'antd';
-
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
-
 const initialItems = [
   { label: 'Tab 1', children: 'Content of Tab 1', key: '1' },
   { label: 'Tab 2', children: 'Content of Tab 2', key: '2' },
@@ -552,16 +447,13 @@ const initialItems = [
     closable: false,
   },
 ];
-
 const App: React.FC = () => {
   const [activeKey, setActiveKey] = useState(initialItems[0].key);
   const [items, setItems] = useState(initialItems);
   const newTabIndex = useRef(0);
-
   const onChange = (newActiveKey: string) => {
     setActiveKey(newActiveKey);
   };
-
   const add = () => {
     const newActiveKey = `newTab${newTabIndex.current++}`;
     const newPanes = [...items];
@@ -569,7 +461,6 @@ const App: React.FC = () => {
     setItems(newPanes);
     setActiveKey(newActiveKey);
   };
-
   const remove = (targetKey: TargetKey) => {
     let newActiveKey = activeKey;
     let lastIndex = -1;
@@ -589,7 +480,6 @@ const App: React.FC = () => {
     setItems(newPanes);
     setActiveKey(newActiveKey);
   };
-
   const onEdit = (
     targetKey: React.MouseEvent | React.KeyboardEvent | string,
     action: 'add' | 'remove',
@@ -600,7 +490,6 @@ const App: React.FC = () => {
       remove(targetKey);
     }
   };
-
   return (
     <Tabs
       type="editable-card"
@@ -611,47 +500,35 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 卡片式页签容器
-
 #### zh-CN
-
 用于容器顶部，需要一点额外的样式覆盖。
-
-
 
 ```typescript
 import React from 'react';
 import { Tabs } from 'antd';
 import { createStyles } from 'antd-style';
-
 const useStyle = createStyles(({ token, css }) => {
   const antdTabsCls = '.ant-tabs';
-
   return css`
     ${antdTabsCls}${antdTabsCls}-card {
       ${antdTabsCls}-content {
         padding: ${token.padding}px;
         background: ${token.colorBgContainer};
       }
-
       ${antdTabsCls}-nav {
         margin: 0;
-
         ${antdTabsCls}-nav-wrap > ${antdTabsCls}-nav-list > ${antdTabsCls}-tab {
           background: transparent;
           border-color: transparent;
-
           &-active {
             border-color: ${token.colorBorderBg};
             background: ${token.colorBgContainer};
           }
         }
-
         &::before {
           display: none;
         }
@@ -659,7 +536,6 @@ const useStyle = createStyles(({ token, css }) => {
     }
   `;
 });
-
 const items = Array.from({ length: 3 }).map((_, i) => {
   const id = String(i + 1);
   return {
@@ -674,55 +550,41 @@ const items = Array.from({ length: 3 }).map((_, i) => {
     ),
   };
 });
-
 const App = () => {
   const { styles } = useStyle();
-
   return (
     <div className={styles}>
       <Tabs type="card" items={items} />
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义新增页签触发器
-
 #### zh-CN
-
 隐藏默认的页签增加图标，给自定义触发器绑定事件。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { Button, Tabs } from 'antd';
-
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
-
 const defaultPanes = Array.from({ length: 2 }).map((_, index) => {
   const id = String(index + 1);
   return { label: `Tab ${id}`, children: `Content of Tab Pane ${index + 1}`, key: id };
 });
-
 const App: React.FC = () => {
   const [activeKey, setActiveKey] = useState(defaultPanes[0].key);
   const [items, setItems] = useState(defaultPanes);
   const newTabIndex = useRef(0);
-
   const onChange = (key: string) => {
     setActiveKey(key);
   };
-
   const add = () => {
     const newActiveKey = `newTab${newTabIndex.current++}`;
     setItems([...items, { label: 'New Tab', children: 'New Tab Pane', key: newActiveKey }]);
     setActiveKey(newActiveKey);
   };
-
   const remove = (targetKey: TargetKey) => {
     const targetIndex = items.findIndex((pane) => pane.key === targetKey);
     const newPanes = items.filter((pane) => pane.key !== targetKey);
@@ -732,7 +594,6 @@ const App: React.FC = () => {
     }
     setItems(newPanes);
   };
-
   const onEdit = (targetKey: TargetKey, action: 'add' | 'remove') => {
     if (action === 'add') {
       add();
@@ -740,7 +601,6 @@ const App: React.FC = () => {
       remove(targetKey);
     }
   };
-
   return (
     <div>
       <div style={{ marginBottom: 16 }}>
@@ -757,25 +617,18 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义页签头
-
 #### zh-CN
-
 使用 [react-sticky-box](https://www.npmjs.com/package/react-sticky-box) 和 `renderTabBar` 实现吸顶效果。
-
-
 
 ```typescript
 import React from 'react';
 import type { TabsProps } from 'antd';
 import { Tabs, theme } from 'antd';
 import StickyBox from 'react-sticky-box';
-
 const items = Array.from({ length: 3 }).map((_, i) => {
   const id = String(i + 1);
   return {
@@ -785,7 +638,6 @@ const items = Array.from({ length: 3 }).map((_, i) => {
     style: i === 0 ? { height: 200 } : undefined,
   };
 });
-
 const App: React.FC = () => {
   const {
     token: { colorBgContainer },
@@ -797,18 +649,12 @@ const App: React.FC = () => {
   );
   return <Tabs defaultActiveKey="1" renderTabBar={renderTabBar} items={items} />;
 };
-
 export default App;
 
 ```
-
 ### 可拖拽标签
-
 #### zh-CN
-
 使用 [dnd-kit](https://github.com/clauderic/dnd-kit) 实现标签可拖拽。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -823,23 +669,19 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
-
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
   'data-node-key': string;
 }
-
 const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = ({ className, ...props }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: props['data-node-key'],
   });
-
   const style: React.CSSProperties = {
     ...props.style,
     transform: CSS.Translate.toString(transform),
     transition,
     cursor: 'move',
   };
-
   return React.cloneElement(props.children as React.ReactElement<any>, {
     ref: setNodeRef,
     style,
@@ -847,16 +689,13 @@ const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = ({ className
     ...listeners,
   });
 };
-
 const App: React.FC = () => {
   const [items, setItems] = useState<NonNullable<TabsProps['items']>>([
     { key: '1', label: 'Tab 1', children: 'Content of Tab Pane 1' },
     { key: '2', label: 'Tab 2', children: 'Content of Tab Pane 2' },
     { key: '3', label: 'Tab 3', children: 'Content of Tab Pane 3' },
   ]);
-
   const sensor = useSensor(PointerSensor, { activationConstraint: { distance: 10 } });
-
   const onDragEnd = ({ active, over }: DragEndEvent) => {
     if (active.id !== over?.id) {
       setItems((prev) => {
@@ -866,7 +705,6 @@ const App: React.FC = () => {
       });
     }
   };
-
   return (
     <Tabs
       items={items}
@@ -889,27 +727,19 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 动画
-
 #### zh-CN
-
 动画切换。
-
-
 
 ```typescript
 import React from 'react';
 import { Space, Switch, Tabs } from 'antd';
-
 const App: React.FC = () => {
   const [inkBar, setInkBar] = React.useState(true);
   const [tabPane, setTabPane] = React.useState(true);
-
   return (
     <>
       <Space>
@@ -926,7 +756,6 @@ const App: React.FC = () => {
           onChange={() => setTabPane(!tabPane)}
         />
       </Space>
-
       <Tabs
         animated={{ inkBar, tabPane }}
         items={[
@@ -962,33 +791,23 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 嵌套
-
 #### zh-CN
-
 默认选中第一项。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Select, Tabs } from 'antd';
-
 const { Option } = Select;
-
 const positionList = ['left', 'right', 'top', 'bottom'];
-
 const App: React.FC = () => {
   const [parentPos, setParentPos] = useState(undefined);
   const [childPos, setChildPos] = useState(undefined);
   const [parentType, setParentType] = useState(undefined);
   const [childType, setChildType] = useState(undefined);
-
   return (
     <div>
       <Select
@@ -1003,7 +822,6 @@ const App: React.FC = () => {
           </Option>
         ))}
       </Select>
-
       <Select
         style={{ width: 200 }}
         onChange={(val) => {
@@ -1016,7 +834,6 @@ const App: React.FC = () => {
           </Option>
         ))}
       </Select>
-
       <Select
         style={{ width: 200 }}
         onChange={(val) => {
@@ -1027,7 +844,6 @@ const App: React.FC = () => {
         <Option value="card">Parent - card</Option>
         <Option value="editable-card">Parent - card edit</Option>
       </Select>
-
       <Select
         style={{ width: 200 }}
         onChange={(val) => {
@@ -1073,23 +889,16 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { Button, ConfigProvider, Tabs } from 'antd';
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -1223,8 +1032,6 @@ const App: React.FC = () => (
     </div>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

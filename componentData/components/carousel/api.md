@@ -1,5 +1,4 @@
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | arrows | 是否显示箭头 | boolean | false | 5.17.0 |
@@ -17,5 +16,4 @@
 | afterChange | 切换面板的回调 | (current: number) => void | - |  |
 | beforeChange | 切换面板的回调 | (current: number, next: number) => void | - |  |
 | waitForAnimate | 是否等待切换动画 | boolean | false |  |
-
 更多 API 可参考：<https://react-slick.neostack.com/docs/api>

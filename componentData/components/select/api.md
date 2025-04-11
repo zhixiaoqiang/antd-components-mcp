@@ -1,7 +1,5 @@
 ## API
-
 ### Select props
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 自定义清除按钮 | boolean \| { clearIcon?: ReactNode } | false | 5.8.0: 支持对象类型 |
@@ -59,27 +57,20 @@
 | onPopupScroll | 下拉列表滚动时的回调 | (event: UIEvent) => void | - |  |
 | onSearch | 文本框值变化时回调 | function(value: string) | - |  |
 | onSelect | 被选中时调用，参数为选中项的 value (或 key) 值 | function(value: string \| number \| LabeledValue, option: Option) | - |  |
-
 > 注意，如果发现下拉菜单跟随页面滚动，或者需要在其他弹层中触发 Select，请尝试使用 `getPopupContainer={triggerNode => triggerNode.parentElement}` 将下拉弹层渲染节点固定在触发器的父元素中。
-
 ### Select Methods
-
 | 名称    | 说明     | 版本 |
 | ------- | -------- | ---- |
 | blur()  | 取消焦点 |      |
 | focus() | 获取焦点 |      |
-
 ### Option props
-
 | 参数      | 说明                     | 类型             | 默认值 | 版本 |
 | --------- | ------------------------ | ---------------- | ------ | ---- |
 | className | Option 器类名            | string           | -      |      |
 | disabled  | 是否禁用                 | boolean          | false  |      |
 | title     | 选项上的原生 title 提示  | string           | -      |      |
 | value     | 默认根据此属性值进行筛选 | string \| number | -      |      |
-
 ### OptGroup props
-
 | 参数      | 说明                    | 类型            | 默认值 | 版本 |
 | --------- | ----------------------- | --------------- | ------ | ---- |
 | key       | Key                     | string          | -      |      |

@@ -1,17 +1,10 @@
-
 ## 何时使用
-
 - 页面需要添加水印标识版权时使用。
 - 适用于防止信息盗用。
 
-
-
 ## API
-
 > 自 `antd@5.1.0` 版本开始提供该组件。
-
 ### Watermark
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | width | 水印的宽度，`content` 的默认值为自身的宽度 | number | 120 |  |
@@ -24,9 +17,7 @@
 | font | 文字样式 | [Font](#font) | [Font](#font) |  |
 | gap | 水印之间的间距 | \[number, number\] | \[100, 100\] |  |
 | offset | 水印距离容器左上角的偏移量，默认为 `gap/2` | \[number, number\] | \[gap\[0\]/2, gap\[1\]/2\] |  |
-
 ### Font
-
 <!-- prettier-ignore -->
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
@@ -37,14 +28,9 @@
 | fontStyle | 字体样式 | `none` \| `normal` \| `italic` \| `oblique` | normal |  |
 | textAlign | 指定文本对齐方向  | [CanvasTextAlign](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textAlign) | `center` | 5.10.0 |
 
-
-
 ## FAQ
-
 ### 处理异常图片水印
-
 当使用图片水印且图片加载异常时，可以同时添加 `content` 防止水印失效（自 5.2.3 开始支持）。
-
 ```typescript jsx
 <Watermark
   height={30}
@@ -55,11 +41,8 @@
   <div style={{ height: 500 }} />
 </Watermark>
 ```
-
 ### 从 5.18.0 版本后，为什么添加了 `overflow: hidden` 样式？
-
 在之前版本，用户可以通过开发者工具将容器高度设置为 0 来隐藏水印，为了避免这种情况，我们在容器上添加了 `overflow: hidden` 样式。当容器高度变化时，则内容也一同被隐藏。你可以通过覆盖样式来修改这个行为：
-
 ```tsx
 <Watermark style={{ overflow: 'visible' }} />
 ```

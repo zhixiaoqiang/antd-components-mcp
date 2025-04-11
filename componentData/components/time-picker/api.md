@@ -1,15 +1,11 @@
 ## API
-
 ---
-
 ```jsx
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-
 dayjs.extend(customParseFormat)
 <TimePicker defaultValue={dayjs('13:30:56', 'HH:mm:ss')} />;
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 自定义清除按钮 | boolean \| { clearIcon?: ReactNode } | true | 5.8.0: 支持对象类型 |
@@ -45,9 +41,7 @@ dayjs.extend(customParseFormat)
 | onCalendarChange | 待选日期发生变化的回调。`info` 参数自 4.4.0 添加 | function(dates: \[dayjs, dayjs], dateStrings: \[string, string], info: { range:`start`\|`end` }) | - |  |
 | onChange | 时间发生变化的回调 | function(time: dayjs, timeString: string): void | - |  |
 | onOpenChange | 面板打开/关闭时的回调 | (open: boolean) => void | - |  |
-
 #### DisabledTime
-
 ```typescript
 type DisabledTime = (now: Dayjs) => {
   disabledHours?: () => number[];
@@ -60,5 +54,4 @@ type DisabledTime = (now: Dayjs) => {
   ) => number[];
 };
 ```
-
 注意：`disabledMilliseconds` 为 `5.14.0` 新增。

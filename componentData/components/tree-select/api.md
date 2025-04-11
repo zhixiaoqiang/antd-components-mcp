@@ -1,7 +1,5 @@
 ## API
-
 ### Tree props
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 自定义清除按钮 | boolean \| { clearIcon?: ReactNode } | false | 5.8.0: 支持对象形式 |
@@ -60,18 +58,13 @@
 | onSelect | 被选中时调用 | function(value, node, extra) | - |  |
 | onTreeExpand | 展示节点时调用 | function(expandedKeys) | - |  |
 | onPopupScroll | 下拉列表滚动时的回调 | (event: UIEvent) => void | - | 5.17.0 |
-
 ### Tree 方法
-
 | 名称    | 描述     | 版本 |
 | ------- | -------- | ---- |
 | blur()  | 移除焦点 |      |
 | focus() | 获取焦点 |      |
-
 ### TreeNode props
-
 > 建议使用 treeData 来代替 TreeNode，免去手动构造的麻烦
-
 | 参数            | 说明                                               | 类型      | 默认值 | 版本 |
 | --------------- | -------------------------------------------------- | --------- | ------ | ---- |
 | checkable       | 当树为 Checkbox 时，设置独立节点是否展示 Checkbox  | boolean   | -      |      |

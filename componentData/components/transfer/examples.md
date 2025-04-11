@@ -1,43 +1,32 @@
 ## Transfer 组件示例
-
 ### 基本用法
-
 #### zh-CN
-
 最基本的用法，展示了 `dataSource`、`targetKeys`、每行的渲染函数 `render` 以及回调函数 `onChange` `onSelectChange` `onScroll` 的用法。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Transfer } from 'antd';
 import type { TransferProps } from 'antd';
-
 interface RecordType {
   key: string;
   title: string;
   description: string;
 }
-
 const mockData = Array.from({ length: 20 }).map<RecordType>((_, i) => ({
   key: i.toString(),
   title: `content${i + 1}`,
   description: `description of content${i + 1}`,
 }));
-
 const initialTargetKeys = mockData.filter((item) => Number(item.key) > 10).map((item) => item.key);
-
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState<TransferProps['targetKeys']>(initialTargetKeys);
   const [selectedKeys, setSelectedKeys] = useState<TransferProps['targetKeys']>([]);
-
   const onChange: TransferProps['onChange'] = (nextTargetKeys, direction, moveKeys) => {
     console.log('targetKeys:', nextTargetKeys);
     console.log('direction:', direction);
     console.log('moveKeys:', moveKeys);
     setTargetKeys(nextTargetKeys);
   };
-
   const onSelectChange: TransferProps['onSelectChange'] = (
     sourceSelectedKeys,
     targetSelectedKeys,
@@ -46,12 +35,10 @@ const App: React.FC = () => {
     console.log('targetSelectedKeys:', targetSelectedKeys);
     setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys]);
   };
-
   const onScroll: TransferProps['onScroll'] = (direction, e) => {
     console.log('direction:', direction);
     console.log('target:', e.target);
   };
-
   return (
     <Transfer
       dataSource={mockData}
@@ -65,72 +52,55 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 单向样式
-
 #### zh-CN
-
 通过 `oneWay` 将 Transfer 转为单向样式。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Switch, Transfer } from 'antd';
 import type { TransferProps } from 'antd';
-
 interface RecordType {
   key: string;
   title: string;
   description: string;
   disabled: boolean;
 }
-
 const mockData = Array.from({ length: 20 }).map<RecordType>((_, i) => ({
   key: i.toString(),
   title: `content${i + 1}`,
   description: `description of content${i + 1}`,
   disabled: i % 3 < 1,
 }));
-
 const oriTargetKeys = mockData.filter((item) => Number(item.key) % 3 > 1).map((item) => item.key);
-
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState<React.Key[]>(oriTargetKeys);
   const [selectedKeys, setSelectedKeys] = useState<React.Key[]>([]);
   const [disabled, setDisabled] = useState(false);
-
   const handleChange: TransferProps['onChange'] = (newTargetKeys, direction, moveKeys) => {
     setTargetKeys(newTargetKeys);
-
     console.log('targetKeys: ', newTargetKeys);
     console.log('direction: ', direction);
     console.log('moveKeys: ', moveKeys);
   };
-
   const handleSelectChange: TransferProps['onSelectChange'] = (
     sourceSelectedKeys,
     targetSelectedKeys,
   ) => {
     setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys]);
-
     console.log('sourceSelectedKeys: ', sourceSelectedKeys);
     console.log('targetSelectedKeys: ', targetSelectedKeys);
   };
-
   const handleScroll: TransferProps['onScroll'] = (direction, e) => {
     console.log('direction:', direction);
     console.log('target:', e.target);
   };
-
   const handleDisable = (checked: boolean) => {
     setDisabled(checked);
   };
-
   return (
     <>
       <Transfer
@@ -155,35 +125,26 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 带搜索框
-
 #### zh-CN
-
 带搜索框的穿梭框，可以自定义搜索函数。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Transfer } from 'antd';
 import type { TransferProps } from 'antd';
-
 interface RecordType {
   key: string;
   title: string;
   description: string;
   chosen: boolean;
 }
-
 const App: React.FC = () => {
   const [mockData, setMockData] = useState<RecordType[]>([]);
   const [targetKeys, setTargetKeys] = useState<TransferProps['targetKeys']>([]);
-
   const getMock = () => {
     const tempTargetKeys = [];
     const tempMockData = [];
@@ -202,22 +163,17 @@ const App: React.FC = () => {
     setMockData(tempMockData);
     setTargetKeys(tempTargetKeys);
   };
-
   useEffect(() => {
     getMock();
   }, []);
-
   const filterOption = (inputValue: string, option: RecordType) =>
     option.description.indexOf(inputValue) > -1;
-
   const handleChange: TransferProps['onChange'] = (newTargetKeys) => {
     setTargetKeys(newTargetKeys);
   };
-
   const handleSearch: TransferProps['onSearch'] = (dir, value) => {
     console.log('search:', dir, value);
   };
-
   return (
     <Transfer
       dataSource={mockData}
@@ -230,35 +186,26 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 高级用法
-
 #### zh-CN
-
 穿梭框高级用法，可配置操作文案，可定制宽高，可对底部进行自定义渲染。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Button, Transfer } from 'antd';
 import type { TransferProps } from 'antd';
-
 interface RecordType {
   key: string;
   title: string;
   description: string;
   chosen: boolean;
 }
-
 const App: React.FC = () => {
   const [mockData, setMockData] = useState<RecordType[]>([]);
   const [targetKeys, setTargetKeys] = useState<TransferProps['targetKeys']>([]);
-
   const getMock = () => {
     const tempTargetKeys = [];
     const tempMockData = [];
@@ -277,15 +224,12 @@ const App: React.FC = () => {
     setMockData(tempMockData);
     setTargetKeys(tempTargetKeys);
   };
-
   useEffect(() => {
     getMock();
   }, []);
-
   const handleChange: TransferProps['onChange'] = (newTargetKeys) => {
     setTargetKeys(newTargetKeys);
   };
-
   const renderFooter: TransferProps['footer'] = (_, info) => {
     if (info?.direction === 'left') {
       return (
@@ -308,7 +252,6 @@ const App: React.FC = () => {
       </Button>
     );
   };
-
   return (
     <Transfer
       dataSource={mockData}
@@ -325,35 +268,26 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义渲染行数据
-
 #### zh-CN
-
 自定义渲染每一个 Transfer Item，可用于渲染复杂数据。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Transfer } from 'antd';
 import type { TransferProps } from 'antd';
-
 interface RecordType {
   key: string;
   title: string;
   description: string;
   chosen: boolean;
 }
-
 const App: React.FC = () => {
   const [mockData, setMockData] = useState<RecordType[]>([]);
   const [targetKeys, setTargetKeys] = useState<React.Key[]>([]);
-
   const getMock = () => {
     const tempTargetKeys = [];
     const tempMockData = [];
@@ -372,29 +306,24 @@ const App: React.FC = () => {
     setMockData(tempMockData);
     setTargetKeys(tempTargetKeys);
   };
-
   useEffect(() => {
     getMock();
   }, []);
-
   const handleChange: TransferProps['onChange'] = (newTargetKeys, direction, moveKeys) => {
     console.log(newTargetKeys, direction, moveKeys);
     setTargetKeys(newTargetKeys);
   };
-
   const renderItem = (item: RecordType) => {
     const customLabel = (
       <span className="custom-item">
         {item.title} - {item.description}
       </span>
     );
-
     return {
       label: customLabel, // for displayed item
       value: item.title, // for title and filter matching
     };
   };
-
   return (
     <Transfer
       dataSource={mockData}
@@ -408,36 +337,27 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 分页
-
 #### zh-CN
-
 大数据下使用分页。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Switch, Transfer } from 'antd';
 import type { TransferProps } from 'antd';
-
 interface RecordType {
   key: string;
   title: string;
   description: string;
   chosen: boolean;
 }
-
 const App: React.FC = () => {
   const [oneWay, setOneWay] = useState(false);
   const [mockData, setMockData] = useState<RecordType[]>([]);
   const [targetKeys, setTargetKeys] = useState<React.Key[]>([]);
-
   useEffect(() => {
     const newTargetKeys = [];
     const newMockData = [];
@@ -453,16 +373,13 @@ const App: React.FC = () => {
       }
       newMockData.push(data);
     }
-
     setTargetKeys(newTargetKeys);
     setMockData(newMockData);
   }, []);
-
   const onChange: TransferProps['onChange'] = (newTargetKeys, direction, moveKeys) => {
     console.log(newTargetKeys, direction, moveKeys);
     setTargetKeys(newTargetKeys);
   };
-
   return (
     <>
       <Transfer
@@ -483,40 +400,30 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 表格穿梭框
-
 #### zh-CN
-
 使用 Table 组件作为自定义渲染列表。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Flex, Switch, Table, Tag, Transfer } from 'antd';
 import type { GetProp, TableColumnsType, TableProps, TransferProps } from 'antd';
-
 type TransferItem = GetProp<TransferProps, 'dataSource'>[number];
 type TableRowSelection<T extends object> = TableProps<T>['rowSelection'];
-
 interface DataType {
   key: string;
   title: string;
   description: string;
   tag: string;
 }
-
 interface TableTransferProps extends TransferProps<TransferItem> {
   dataSource: DataType[];
   leftColumns: TableColumnsType<DataType>;
   rightColumns: TableColumnsType<DataType>;
 }
-
 // Customize Table Transfer
 const TableTransfer: React.FC<TableTransferProps> = (props) => {
   const { leftColumns, rightColumns, ...restProps } = props;
@@ -539,7 +446,6 @@ const TableTransfer: React.FC<TableTransferProps> = (props) => {
           selectedRowKeys: listSelectedKeys,
           selections: [Table.SELECTION_ALL, Table.SELECTION_INVERT, Table.SELECTION_NONE],
         };
-
         return (
           <Table
             rowSelection={rowSelection}
@@ -561,16 +467,13 @@ const TableTransfer: React.FC<TableTransferProps> = (props) => {
     </Transfer>
   );
 };
-
 const mockTags = ['cat', 'dog', 'bird'];
-
 const mockData = Array.from({ length: 20 }).map<DataType>((_, i) => ({
   key: i.toString(),
   title: `content${i + 1}`,
   description: `description of content${i + 1}`,
   tag: mockTags[i % 3],
 }));
-
 const columns: TableColumnsType<DataType> = [
   {
     dataIndex: 'title',
@@ -590,22 +493,17 @@ const columns: TableColumnsType<DataType> = [
     title: 'Description',
   },
 ];
-
 const filterOption = (input: string, item: DataType) =>
   item.title?.includes(input) || item.tag?.includes(input);
-
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState<TransferProps['targetKeys']>([]);
   const [disabled, setDisabled] = useState(false);
-
   const onChange: TableTransferProps['onChange'] = (nextTargetKeys) => {
     setTargetKeys(nextTargetKeys);
   };
-
   const toggleDisabled = (checked: boolean) => {
     setDisabled(checked);
   };
-
   return (
     <Flex align="start" gap="middle" vertical>
       <TableTransfer
@@ -628,36 +526,26 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 树穿梭框
-
 #### zh-CN
-
 使用 Tree 组件作为自定义渲染列表。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { theme, Transfer, Tree } from 'antd';
 import type { GetProp, TransferProps, TreeDataNode } from 'antd';
-
 type TransferItem = GetProp<TransferProps, 'dataSource'>[number];
-
 interface TreeTransferProps {
   dataSource: TreeDataNode[];
   targetKeys: TransferProps['targetKeys'];
   onChange: TransferProps['onChange'];
 }
-
 // Customize Table Transfer
 const isChecked = (selectedKeys: React.Key[], eventKey: React.Key) =>
   selectedKeys.includes(eventKey);
-
 const generateTree = (
   treeNodes: TreeDataNode[] = [],
   checkedKeys: TreeTransferProps['targetKeys'] = [],
@@ -667,14 +555,12 @@ const generateTree = (
     disabled: checkedKeys.includes(props.key as string),
     children: generateTree(children, checkedKeys),
   }));
-
 const TreeTransfer: React.FC<TreeTransferProps> = ({
   dataSource,
   targetKeys = [],
   ...restProps
 }) => {
   const { token } = theme.useToken();
-
   const transferDataSource: TransferItem[] = [];
   function flatten(list: TreeDataNode[] = []) {
     list.forEach((item) => {
@@ -683,7 +569,6 @@ const TreeTransfer: React.FC<TreeTransferProps> = ({
     });
   }
   flatten(dataSource);
-
   return (
     <Transfer
       {...restProps}
@@ -719,7 +604,6 @@ const TreeTransfer: React.FC<TreeTransferProps> = ({
     </Transfer>
   );
 };
-
 const treeData: TreeDataNode[] = [
   { key: '0-0', title: '0-0' },
   {
@@ -734,7 +618,6 @@ const treeData: TreeDataNode[] = [
   { key: '0-3', title: '0-3' },
   { key: '0-4', title: '0-4' },
 ];
-
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState<TreeTransferProps['targetKeys']>([]);
   const onChange: TreeTransferProps['onChange'] = (keys) => {
@@ -742,66 +625,48 @@ const App: React.FC = () => {
   };
   return <TreeTransfer dataSource={treeData} targetKeys={targetKeys} onChange={onChange} />;
 };
-
 export default App;
 
 ```
-
 ### 自定义状态
-
 #### zh-CN
-
 使用 `status` 为 Transfer 添加状态，可选 `error` 或者 `warning`。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Transfer } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="middle" vertical>
     <Transfer status="error" />
     <Transfer status="warning" showSearch />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 自定义全选文字
-
 #### zh-CN
-
 自定义穿梭框全选按钮的文字。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Transfer } from 'antd';
 import type { TransferProps } from 'antd';
-
 interface RecordType {
   key: string;
   title: string;
   description: string;
 }
-
 const mockData = Array.from({ length: 10 }).map<RecordType>((_, i) => ({
   key: i.toString(),
   title: `content${i + 1}`,
   description: `description of content${i + 1}`,
 }));
-
 const oriTargetKeys = mockData.filter((item) => Number(item.key) % 3 > 1).map((item) => item.key);
-
 const selectAllLabels: TransferProps['selectAllLabels'] = [
   'Select All',
   ({ selectedCount, totalCount }) => `${selectedCount}/${totalCount}`,
 ];
-
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState<React.Key[]>(oriTargetKeys);
   return (
@@ -814,29 +679,20 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { ConfigProvider, Space, Switch, Table, Tag, Transfer } from 'antd';
 import type { GetProp, TableColumnsType, TableProps, TransferProps } from 'antd';
 import difference from 'lodash/difference';
-
 type TableRowSelection<T> = TableProps<T>['rowSelection'];
-
 type TransferItem = GetProp<TransferProps, 'dataSource'>[number];
-
 interface RecordType {
   key: string;
   title: string;
@@ -844,7 +700,6 @@ interface RecordType {
   disabled: boolean;
   tag: string;
 }
-
 interface DataType {
   key: string;
   title: string;
@@ -852,13 +707,11 @@ interface DataType {
   disabled: boolean;
   tag: string;
 }
-
 interface TableTransferProps extends TransferProps<TransferItem> {
   dataSource: DataType[];
   leftColumns: TableColumnsType<DataType>;
   rightColumns: TableColumnsType<DataType>;
 }
-
 // Customize Table Transfer
 const TableTransfer = ({ leftColumns, rightColumns, ...restProps }: TableTransferProps) => (
   <Transfer {...restProps}>
@@ -871,7 +724,6 @@ const TableTransfer = ({ leftColumns, rightColumns, ...restProps }: TableTransfe
       disabled: listDisabled,
     }) => {
       const columns = direction === 'left' ? leftColumns : rightColumns;
-
       const rowSelection: TableRowSelection<TransferItem> = {
         getCheckboxProps: (item) => ({ disabled: listDisabled || item.disabled }),
         onSelectAll(selected, selectedRows) {
@@ -888,7 +740,6 @@ const TableTransfer = ({ leftColumns, rightColumns, ...restProps }: TableTransfe
         },
         selectedRowKeys: listSelectedKeys,
       };
-
       return (
         <Table
           rowSelection={rowSelection}
@@ -909,9 +760,7 @@ const TableTransfer = ({ leftColumns, rightColumns, ...restProps }: TableTransfe
     }}
   </Transfer>
 );
-
 const mockTags = ['cat', 'dog', 'bird'];
-
 const mockData = Array.from({ length: 20 }).map<RecordType>((_, i) => ({
   key: i.toString(),
   title: `content${i + 1}`,
@@ -919,7 +768,6 @@ const mockData = Array.from({ length: 20 }).map<RecordType>((_, i) => ({
   disabled: i % 4 === 0,
   tag: mockTags[i % 3],
 }));
-
 const leftTableColumns: TableColumnsType<DataType> = [
   {
     dataIndex: 'title',
@@ -935,27 +783,22 @@ const leftTableColumns: TableColumnsType<DataType> = [
     title: 'Description',
   },
 ];
-
 const rightTableColumns: TableColumnsType<DataType> = [
   {
     dataIndex: 'title',
     title: 'Name',
   },
 ];
-
 const initialTargetKeys = mockData.filter((item) => Number(item.key) > 10).map((item) => item.key);
-
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState<React.Key[]>(initialTargetKeys);
   const [selectedKeys, setSelectedKeys] = useState<React.Key[]>([]);
-
   const onChange: TransferProps['onChange'] = (nextTargetKeys, direction, moveKeys) => {
     console.log('targetKeys:', nextTargetKeys);
     console.log('direction:', direction);
     console.log('moveKeys:', moveKeys);
     setTargetKeys(nextTargetKeys);
   };
-
   const onSelectChange: TransferProps['onSelectChange'] = (
     sourceSelectedKeys,
     targetSelectedKeys,
@@ -964,27 +807,21 @@ const App: React.FC = () => {
     console.log('targetSelectedKeys:', targetSelectedKeys);
     setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys]);
   };
-
   const onScroll: TransferProps['onScroll'] = (direction, e) => {
     console.log('direction:', direction);
     console.log('target:', e.target);
   };
-
   const [disabled, setDisabled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-
   const secondOnChange: TransferProps['onChange'] = (nextTargetKeys) => {
     setTargetKeys(nextTargetKeys);
   };
-
   const triggerDisable = (checked: boolean) => {
     setDisabled(checked);
   };
-
   const triggerShowSearch = (checked: boolean) => {
     setShowSearch(checked);
   };
-
   return (
     <ConfigProvider
       theme={{
@@ -1041,8 +878,6 @@ const App: React.FC = () => {
     </ConfigProvider>
   );
 };
-
 export default App;
 
 ```
-

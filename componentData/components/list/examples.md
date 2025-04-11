@@ -1,21 +1,13 @@
 ## List 组件示例
-
 ### 简单列表
-
 #### zh-CN
-
 列表拥有大、中、小三种尺寸。
-
 通过设置 `size` 为 `large` `small` 分别把按钮设为大、小尺寸。若不设置 `size`，则尺寸为中。
-
 可通过设置 `header` 和 `footer`，来自定义列表头部和尾部。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, List, Typography } from 'antd';
-
 const data = [
   'Racing car sprays burning fuel into crowd.',
   'Japanese princess to wed commoner.',
@@ -23,7 +15,6 @@ const data = [
   'Man charged over missing wedding girl.',
   'Los Angeles battles huge wildfires.',
 ];
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Default Size</Divider>
@@ -58,23 +49,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 基础列表
-
 #### zh-CN
-
 基础列表。
-
-
 
 ```typescript
 import React from 'react';
 import { Avatar, List } from 'antd';
-
 const data = [
   {
     title: 'Ant Design Title 1',
@@ -89,7 +73,6 @@ const data = [
     title: 'Ant Design Title 4',
   },
 ];
-
 const App: React.FC = () => (
   <List
     itemLayout="horizontal"
@@ -105,23 +88,16 @@ const App: React.FC = () => (
     )}
   />
 );
-
 export default App;
 
 ```
-
 ### 加载更多
-
 #### zh-CN
-
 可通过 `loadMore` 属性实现加载更多功能。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Avatar, Button, List, Skeleton } from 'antd';
-
 interface DataType {
   gender?: string;
   name: {
@@ -138,16 +114,13 @@ interface DataType {
   nat?: string;
   loading: boolean;
 }
-
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
-
 const App: React.FC = () => {
   const [initLoading, setInitLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<DataType[]>([]);
   const [list, setList] = useState<DataType[]>([]);
-
   useEffect(() => {
     fetch(fakeDataUrl)
       .then((res) => res.json())
@@ -157,7 +130,6 @@ const App: React.FC = () => {
         setList(res.results);
       });
   }, []);
-
   const onLoadMore = () => {
     setLoading(true);
     setList(
@@ -178,7 +150,6 @@ const App: React.FC = () => {
         window.dispatchEvent(new Event('resize'));
       });
   };
-
   const loadMore =
     !initLoading && !loading ? (
       <div
@@ -192,7 +163,6 @@ const App: React.FC = () => {
         <Button onClick={onLoadMore}>loading more</Button>
       </div>
     ) : null;
-
   return (
     <List
       className="demo-loadmore-list"
@@ -217,24 +187,17 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 竖排列表样式
-
 #### zh-CN
-
 通过设置 `itemLayout` 属性为 `vertical` 可实现竖排列表样式。
-
-
 
 ```typescript
 import React from 'react';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import { Avatar, List, Space } from 'antd';
-
 const data = Array.from({ length: 23 }).map((_, i) => ({
   href: 'https://ant.design',
   title: `ant design part ${i}`,
@@ -244,14 +207,12 @@ const data = Array.from({ length: 23 }).map((_, i) => ({
   content:
     'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
 }));
-
 const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
   <Space>
     {React.createElement(icon)}
     {text}
   </Space>
 );
-
 const App: React.FC = () => (
   <List
     itemLayout="vertical"
@@ -294,27 +255,18 @@ const App: React.FC = () => (
     )}
   />
 );
-
 export default App;
 
 ```
-
 ### 分页设置
-
 #### zh-CN
-
 可通过 `pagination` 属性使用列表分页，并进行设置。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Avatar, List, Radio, Space } from 'antd';
-
 type PaginationPosition = 'top' | 'bottom' | 'both';
-
 type PaginationAlign = 'start' | 'center' | 'end';
-
 const data = [
   {
     title: 'Ant Design Title 1',
@@ -329,15 +281,11 @@ const data = [
     title: 'Ant Design Title 4',
   },
 ];
-
 const positionOptions = ['top', 'bottom', 'both'];
-
 const alignOptions = ['start', 'center', 'end'];
-
 const App: React.FC = () => {
   const [position, setPosition] = useState<PaginationPosition>('bottom');
   const [align, setAlign] = useState<PaginationAlign>('center');
-
   return (
     <>
       <Space direction="vertical" style={{ marginBottom: '20px' }} size="middle">
@@ -390,23 +338,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 栅格列表
-
 #### zh-CN
-
 可以通过设置 `List` 的 `grid` 属性来实现栅格列表，`column` 可设置期望显示的列数。
-
-
 
 ```typescript
 import React from 'react';
 import { Card, List } from 'antd';
-
 const data = [
   {
     title: 'Title 1',
@@ -421,7 +362,6 @@ const data = [
     title: 'Title 4',
   },
 ];
-
 const App: React.FC = () => (
   <List
     grid={{ gutter: 16, column: 4 }}
@@ -433,23 +373,16 @@ const App: React.FC = () => (
     )}
   />
 );
-
 export default App;
 
 ```
-
 ### 测试栅格列表
-
 #### zh-CN
-
 List `grid` 在各种情况下的样式表现，如 Fragment 和封装了 List.Item.
-
-
 
 ```typescript
 import React from 'react';
 import { Card, List } from 'antd';
-
 const data = [
   {
     title: 'Title 1',
@@ -470,13 +403,11 @@ const data = [
     title: 'Title 6',
   },
 ];
-
 const ListItem = () => (
   <List.Item>
     <Card title="title">Card content</Card>
   </List.Item>
 );
-
 const App: React.FC = () => (
   <>
     <List
@@ -501,23 +432,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 响应式的栅格列表
-
 #### zh-CN
-
 响应式的栅格列表。尺寸与 [Layout Grid](/components/grid-cn/##col) 保持一致。
-
-
 
 ```typescript
 import React from 'react';
 import { Card, List } from 'antd';
-
 const data = [
   {
     title: 'Title 1',
@@ -538,7 +462,6 @@ const data = [
     title: 'Title 6',
   },
 ];
-
 const App: React.FC = () => (
   <List
     grid={{
@@ -558,24 +481,17 @@ const App: React.FC = () => (
     )}
   />
 );
-
 export default App;
 
 ```
-
 ### 滚动加载
-
 #### zh-CN
-
 结合 [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component) 实现滚动自动加载列表。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Avatar, Divider, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
-
 interface DataType {
   gender: string;
   name: {
@@ -591,11 +507,9 @@ interface DataType {
   };
   nat: string;
 }
-
 const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<DataType[]>([]);
-
   const loadMoreData = () => {
     if (loading) {
       return;
@@ -611,11 +525,9 @@ const App: React.FC = () => {
         setLoading(false);
       });
   };
-
   useEffect(() => {
     loadMoreData();
   }, []);
-
   return (
     <div
       id="scrollableDiv"
@@ -651,24 +563,17 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 滚动加载无限长列表
-
 #### zh-CN
-
 结合 [rc-virtual-list](https://github.com/react-component/virtual-list) 实现滚动加载无限长列表，能够提高数据量大时候长列表的性能。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Avatar, List, message } from 'antd';
 import VirtualList from 'rc-virtual-list';
-
 interface UserItem {
   email: string;
   gender: string;
@@ -684,14 +589,11 @@ interface UserItem {
     thumbnail: string;
   };
 }
-
 const fakeDataUrl =
   'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
 const ContainerHeight = 400;
-
 const App: React.FC = () => {
   const [data, setData] = useState<UserItem[]>([]);
-
   const appendData = (showMessage = true) => {
     fetch(fakeDataUrl)
       .then((res) => res.json())
@@ -700,18 +602,15 @@ const App: React.FC = () => {
         showMessage && message.success(`${body.results.length} more items loaded!`);
       });
   };
-
   useEffect(() => {
     appendData(false);
   }, []);
-
   const onScroll = (e: React.UIEvent<HTMLElement, UIEvent>) => {
     // Refer to: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#problems_and_solutions
     if (Math.abs(e.currentTarget.scrollHeight - e.currentTarget.scrollTop - ContainerHeight) <= 1) {
       appendData();
     }
   };
-
   return (
     <List>
       <VirtualList
@@ -735,23 +634,16 @@ const App: React.FC = () => {
     </List>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义组件 token
-
 #### zh-CN
-
 自定义组件 Token。
-
-
 
 ```typescript
 import React from 'react';
 import { Avatar, ConfigProvider, Divider, List, Typography } from 'antd';
-
 const data = [
   'Racing car sprays burning fuel into crowd.',
   'Japanese princess to wed commoner.',
@@ -759,7 +651,6 @@ const data = [
   'Man charged over missing wedding girl.',
   'Los Angeles battles huge wildfires.',
 ];
-
 const data1 = [
   {
     title: 'Ant Design Title 1',
@@ -774,7 +665,6 @@ const data1 = [
     title: 'Ant Design Title 4',
   },
 ];
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -856,8 +746,6 @@ const App: React.FC = () => (
     <List />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

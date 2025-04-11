@@ -15,8 +15,9 @@
     "start": "tsx cli.js",
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "tsup && tsx src/test-server.ts",
-    "extract": "tsx cli.js extract ../ant-design",
+    "pretest": "tsup",
+    "test": "tsx src/test-server.ts",
+    "extract": "tsx cli.ts extract ../ant-design",
     "inspector": "pnpm build & npx @modelcontextprotocol/inspector node dist/server.js",
     "prepublishOnly": "pnpm build"
   },

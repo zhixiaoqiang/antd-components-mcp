@@ -1,5 +1,4 @@
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | componentDisabled | 设置 antd 组件禁用状态 | boolean | - | 4.21.0 |
@@ -18,11 +17,8 @@
 | variant | 设置全局输入组件形态变体 | `outlined` \| `filled` \| `borderless` | - | 5.19.0 |
 | virtual | 设置 `false` 时关闭虚拟滚动 | boolean | - | 4.3.0 |
 | warning | 设置警告等级，`strict` 为 `false` 时会将废弃相关信息聚合为单条信息 | { strict: boolean } | - | 5.10.0 |
-
 ### ConfigProvider.config()
-
 设置 `Modal`、`Message`、`Notification` 静态方法配置，只会对非 hooks 的静态方法调用生效。
-
 ```tsx
 ConfigProvider.config({
   // 5.13.0+
@@ -37,26 +33,20 @@ ConfigProvider.config({
   ),
 });
 ```
-
 ### ConfigProvider.useConfig() `5.3.0+`
-
 `5.2.0` 版本后可用。获取父级 `Provider` 的值。如 `DisabledContextProvider`、`SizeContextProvider`。
-
 ```jsx
 const {
   componentDisabled, // 5.3.0+
   componentSize, // 5.3.0+
 } = ConfigProvider.useConfig();
 ```
-
 <!-- prettier-ignore -->
 | 返回值 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | componentDisabled | antd 组件禁用状态 | boolean | - | 5.3.0 |
 | componentSize | antd 组件大小状态 | `small` \| `middle` \| `large` | - | 5.3.0 |
-
 ### 组件配置
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | alert | 设置 Alert 组件的通用属性 | { className?: string, style?: React.CSSProperties, closeIcon?: React.ReactNode } | - | 5.7.0, `closeIcon`: 5.14.0 |

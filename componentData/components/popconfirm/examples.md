@@ -1,30 +1,21 @@
 ## Popconfirm 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法，支持确认标题和描述。
-
 > `description` 在 `5.1.0` 版本中支持。
-
-
 
 ```typescript
 import React from 'react';
 import type { PopconfirmProps } from 'antd';
 import { Button, message, Popconfirm } from 'antd';
-
 const confirm: PopconfirmProps['onConfirm'] = (e) => {
   console.log(e);
   message.success('Click on Yes');
 };
-
 const cancel: PopconfirmProps['onCancel'] = (e) => {
   console.log(e);
   message.error('Click on No');
 };
-
 const App: React.FC = () => (
   <Popconfirm
     title="Delete the task"
@@ -37,23 +28,16 @@ const App: React.FC = () => (
     <Button danger>Delete</Button>
   </Popconfirm>
 );
-
 export default App;
 
 ```
-
 ### 国际化
-
 #### zh-CN
-
 使用 `okText` 和 `cancelText` 自定义按钮文字。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Popconfirm } from 'antd';
-
 const App: React.FC = () => (
   <Popconfirm
     title="Delete the task"
@@ -64,27 +48,19 @@ const App: React.FC = () => (
     <Button danger>Delete</Button>
   </Popconfirm>
 );
-
 export default App;
 
 ```
-
 ### 位置
-
 #### zh-CN
-
 位置有十二个方向。如需箭头指向目标元素中心，可以设置 `arrow: { pointAtCenter: true }`。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, ConfigProvider, Flex, Popconfirm } from 'antd';
-
 const text = 'Are you sure to delete this task?';
 const description = 'Delete the task';
 const buttonWidth = 80;
-
 const App: React.FC = () => (
   <ConfigProvider button={{ style: { width: buttonWidth, margin: 4 } }}>
     <Flex vertical justify="center" align="center" className="demo">
@@ -209,23 +185,16 @@ const App: React.FC = () => (
     </Flex>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-
 ### 贴边偏移
-
 #### zh-CN
-
 当 Popconfirm 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Popconfirm } from 'antd';
-
 const style: React.CSSProperties = {
   width: '300vw',
   height: '300vh',
@@ -233,7 +202,6 @@ const style: React.CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
 };
-
 const App: React.FC = () => {
   React.useEffect(() => {
     document.documentElement.scrollTop = document.documentElement.clientHeight;
@@ -247,41 +215,30 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 条件触发
-
 #### zh-CN
-
 可以判断是否需要弹出。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, message, Popconfirm, Switch } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [condition, setCondition] = useState(true);
-
   const changeCondition = (checked: boolean) => {
     setCondition(checked);
   };
-
   const confirm = () => {
     setOpen(false);
     message.success('Next step.');
   };
-
   const cancel = () => {
     setOpen(false);
     message.error('Click on cancel.');
   };
-
   const handleOpenChange = (newOpen: boolean) => {
     if (!newOpen) {
       setOpen(newOpen);
@@ -295,7 +252,6 @@ const App: React.FC = () => {
       setOpen(newOpen);
     }
   };
-
   return (
     <div>
       <Popconfirm
@@ -317,24 +273,17 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义 Icon 图标
-
 #### zh-CN
-
 自定义提示 `icon`。
-
-
 
 ```typescript
 import React from 'react';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Button, Popconfirm } from 'antd';
-
 const App: React.FC = () => (
   <Popconfirm
     title="Delete the task"
@@ -344,45 +293,33 @@ const App: React.FC = () => (
     <Button danger>Delete</Button>
   </Popconfirm>
 );
-
 export default App;
 
 ```
-
 ### 异步关闭
-
 #### zh-CN
-
 点击确定后异步关闭气泡确认框，例如提交表单。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Popconfirm } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-
   const showPopconfirm = () => {
     setOpen(true);
   };
-
   const handleOk = () => {
     setConfirmLoading(true);
-
     setTimeout(() => {
       setOpen(false);
       setConfirmLoading(false);
     }, 2000);
   };
-
   const handleCancel = () => {
     console.log('Clicked cancel button');
     setOpen(false);
   };
-
   return (
     <Popconfirm
       title="Title"
@@ -398,29 +335,21 @@ const App: React.FC = () => {
     </Popconfirm>
   );
 };
-
 export default App;
 
 ```
-
 ### 基于 Promise 的异步关闭
-
 #### zh-CN
-
 点击确定后异步关闭 Popconfirm，例如提交表单。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Popconfirm } from 'antd';
-
 const App: React.FC = () => {
   const confirm = () =>
     new Promise((resolve) => {
       setTimeout(() => resolve(null), 3000);
     });
-
   return (
     <Popconfirm
       title="Title"
@@ -432,25 +361,17 @@ const App: React.FC = () => {
     </Popconfirm>
   );
 };
-
 export default App;
 
 ```
-
 ### _InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Popconfirm } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopconfirm } = Popconfirm;
-
 const App: React.FC = () => (
   <>
     <InternalPopconfirm title="Are you OK?" description="Does this look good?" />
@@ -464,33 +385,23 @@ const App: React.FC = () => (
     <InternalPopconfirm icon={null} title="Are you OK?" description="Does this look good?" />
   </>
 );
-
 export default App;
 
 ```
-
 ### 线框风格
-
 #### zh-CN
-
 线框风格。
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Popconfirm } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopconfirm } = Popconfirm;
-
 const App: React.FC = () => (
   <ConfigProvider theme={{ token: { wireframe: true } }}>
     <InternalPopconfirm title="Are you OK?" />
     <InternalPopconfirm title="Are you OK?" placement="bottomRight" style={{ width: 250 }} />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

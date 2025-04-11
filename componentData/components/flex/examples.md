@@ -1,23 +1,16 @@
 ## Flex 组件示例
-
 ### 基本布局
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Flex, Radio } from 'antd';
-
 const baseStyle: React.CSSProperties = {
   width: '25%',
   height: 54,
 };
-
 const App: React.FC = () => {
   const [value, setValue] = React.useState<string>('horizontal');
   return (
@@ -34,31 +27,23 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 对齐方式
-
 #### zh-CN
-
 设置对齐方式。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Flex, Segmented } from 'antd';
 import type { FlexProps } from 'antd';
-
 const boxStyle: React.CSSProperties = {
   width: '100%',
   height: 120,
   borderRadius: 6,
   border: '1px solid #40a9ff',
 };
-
 const justifyOptions = [
   'flex-start',
   'center',
@@ -67,9 +52,7 @@ const justifyOptions = [
   'space-around',
   'space-evenly',
 ];
-
 const alignOptions = ['flex-start', 'center', 'flex-end'];
-
 const App: React.FC = () => {
   const [justify, setJustify] = React.useState<FlexProps['justify']>(justifyOptions[0]);
   const [alignItems, setAlignItems] = React.useState<FlexProps['align']>(alignOptions[0]);
@@ -88,26 +71,18 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 设置间隙
-
 #### zh-CN
-
 使用 `gap` 设置元素之间的间距，预设了 `small`、`middle`、`large` 三种尺寸，也可以自定义间距。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Flex, Radio, Slider } from 'antd';
 import type { ConfigProviderProps } from 'antd';
-
 type SizeType = ConfigProviderProps['componentSize'];
-
 const App: React.FC = () => {
   const [gapSize, setGapSize] = React.useState<SizeType | 'customize'>('small');
   const [customGapSize, setCustomGapSize] = React.useState<number>(0);
@@ -130,23 +105,16 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 自动换行
-
 #### zh-CN
-
 自动换行。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Flex } from 'antd';
-
 const Demo: React.FC = () => (
   <Flex wrap gap="small">
     {Array.from({ length: 24 }, (_, i) => (
@@ -156,32 +124,23 @@ const Demo: React.FC = () => (
     ))}
   </Flex>
 );
-
 export default Demo;
 
 ```
-
 ### 组合使用
-
 #### zh-CN
-
 嵌套使用，可以实现更复杂的布局。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Card, Flex, Typography } from 'antd';
-
 const cardStyle: React.CSSProperties = {
   width: 620,
 };
-
 const imgStyle: React.CSSProperties = {
   display: 'block',
   width: 273,
 };
-
 const App: React.FC = () => (
   <Card hoverable style={cardStyle} styles={{ body: { padding: 0, overflow: 'hidden' } }}>
     <Flex justify="space-between">
@@ -201,24 +160,17 @@ const App: React.FC = () => (
     </Flex>
   </Card>
 );
-
 export default App;
 
 ```
-
 ### 调试专用
-
 #### zh-CN
-
 调试专用。
-
-
 
 ```typescript
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Flex } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Flex vertical>
@@ -246,8 +198,6 @@ const App: React.FC = () => (
     </Flex>
   </>
 );
-
 export default App;
 
 ```
-

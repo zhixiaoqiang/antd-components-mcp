@@ -1,15 +1,9 @@
-
 ## 何时使用
-
 - 需要展示图片时使用。
 - 加载显示大图或加载失败时容错处理。
 
-
-
 ## API
-
 ### Image
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | alt | 图像描述 | string | - | 4.6.0 |
@@ -20,11 +14,8 @@
 | src | 图片地址 | string | - | 4.6.0 |
 | width | 图像宽度 | string \| number | - | 4.6.0 |
 | onError | 加载错误回调 | (event: Event) => void | - | 4.12.0 |
-
 其他属性见 [&lt;img>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#Attributes)
-
 ### PreviewType
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | visible | 是否显示 | boolean | - | - |
@@ -44,17 +35,13 @@
 | destroyOnClose | 关闭预览时销毁子元素 | boolean | false |  |
 | onTransform | 预览图 transform 变化的回调 | { transform: [TransformType](#transformtype), action: [TransformAction](#transformaction) } | - | 5.7.0 |
 | onVisibleChange | 当 `visible` 发生改变时的回调 | (visible: boolean, prevVisible: boolean) => void | - | - |
-
 ## PreviewGroup
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | preview | 预览参数，为 `false` 时禁用 | boolean \| [PreviewGroupType](#previewgrouptype) | true | 4.6.0 [PreviewGroupType](#previewgrouptype):4.7.0 |
 | items | 预览数组 | string[] \| { src: string, crossOrigin: string, ... }[] | - | 5.7.0 |
 | fallback | 加载失败容错地址 | string | - | 5.7.0 |
-
 ### PreviewGroupType
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | visible | 是否显示 | boolean | - | - |
@@ -75,11 +62,8 @@
 | onTransform | 预览图 transform 变化的回调 | { transform: [TransformType](#transformtype), action: [TransformAction](#transformaction) } | - | 5.7.0 |
 | onChange | 切换预览图的回调 | (current: number, prevCurrent: number) => void | - | 5.3.0 |
 | onVisibleChange | 当 `visible` 发生改变时的回调 | (visible: boolean, prevVisible: boolean, current: number) => void | - | current 参数 5.3.0 |
-
 ## Interface
-
 ### TransformType
-
 ```typescript
 {
   x: number;
@@ -90,9 +74,7 @@
   flipY: boolean;
 }
 ```
-
 ### TransformAction
-
 ```typescript
 type TransformAction =
   | 'flipY'
@@ -110,9 +92,7 @@ type TransformAction =
   | 'dragRebound'
   | 'reset';
 ```
-
 ### ToolbarRenderInfoType
-
 ```typescript
 {
   icons: {
@@ -140,9 +120,7 @@ type TransformAction =
   image: ImgInfo
 }
 ```
-
 ### ImgInfo
-
 ```typescript
 {
   url: string;
@@ -151,5 +129,4 @@ type TransformAction =
   height: string | number;
 }
 ```
-
 

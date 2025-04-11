@@ -1,20 +1,12 @@
-
 ## 何时使用
-
 - 适合设置元素之间的间距。
 - 适合设置各种水平、垂直对齐方式。
-
 ### 与 Space 组件的区别
-
 - Space 为内联元素提供间距，其本身会为每一个子元素添加包裹元素用于内联对齐。适用于行、列中多个子元素的等距排列。
 - Flex 为块级元素提供间距，其本身不会添加包裹元素。适用于垂直或水平方向上的子元素布局，并提供了更多的灵活性和控制能力。
 
-
-
 ## API
-
 > 自 `antd@5.10.0` 版本开始提供该组件。Flex 组件默认行为在水平模式下，为向上对齐，在垂直模式下，为拉伸对齐，你可以通过属性进行调整。
-
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | vertical | flex 主轴的方向是否垂直，使用 `flex-direction: column` | boolean | `false` |
@@ -24,5 +16,4 @@
 | flex | flex CSS 简写属性 | [flex](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex) | normal |  |
 | gap | 设置网格之间的间隙 | `small` \| `middle` \| `large` \| string \| number | - |  |
 | component | 自定义元素类型 | React.ComponentType | `div` |  |
-
 

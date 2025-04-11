@@ -1,18 +1,12 @@
 ## Table 组件示例
-
 ### 基本用法
-
 #### zh-CN
-
 简单的表格，最后一列是各种操作。
-
-
 
 ```typescript
 import React from 'react';
 import { Space, Table, Tag } from 'antd';
 import type { TableProps } from 'antd';
-
 interface DataType {
   key: string;
   name: string;
@@ -20,7 +14,6 @@ interface DataType {
   address: string;
   tags: string[];
 }
-
 const columns: TableProps<DataType>['columns'] = [
   {
     title: 'Name',
@@ -69,7 +62,6 @@ const columns: TableProps<DataType>['columns'] = [
     ),
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -93,29 +85,19 @@ const data: DataType[] = [
     tags: ['cool', 'teacher'],
   },
 ];
-
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
-
 export default App;
 
 ```
-
 ### JSX 风格的 API
-
 #### zh-CN
-
 使用 JSX 风格的 API（2.5.0 以后引入）
-
 > 这个只是一个描述 `columns` 的语法糖，所以你不能用其他组件去包裹 `Column` 和 `ColumnGroup`。
-
-
 
 ```typescript
 import React from 'react';
 import { Space, Table, Tag } from 'antd';
-
 const { Column, ColumnGroup } = Table;
-
 interface DataType {
   key: React.Key;
   firstName: string;
@@ -124,7 +106,6 @@ interface DataType {
   address: string;
   tags: string[];
 }
-
 const data: DataType[] = [
   {
     key: '1',
@@ -151,7 +132,6 @@ const data: DataType[] = [
     tags: ['cool', 'teacher'],
   },
 ];
-
 const App: React.FC = () => (
   <Table<DataType> dataSource={data}>
     <ColumnGroup title="Name">
@@ -192,33 +172,24 @@ const App: React.FC = () => (
     />
   </Table>
 );
-
 export default App;
 
 ```
-
 ### 可选择
-
 #### zh-CN
-
 第一列是联动的选择框。可以通过 `rowSelection.type` 属性指定选择类型，默认为 `checkbox`。
-
 > 默认点击 checkbox 触发选择行为，需要点击行触发可以参考例子：<https://codesandbox.io/s/000vqw38rl>
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Divider, Radio, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -234,7 +205,6 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: 'address',
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -261,7 +231,6 @@ const data: DataType[] = [
     address: 'Sydney No. 1 Lake Park',
   },
 ];
-
 // rowSelection object indicates the need for row selection
 const rowSelection: TableProps<DataType>['rowSelection'] = {
   onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
@@ -272,10 +241,8 @@ const rowSelection: TableProps<DataType>['rowSelection'] = {
     name: record.name,
   }),
 };
-
 const App: React.FC = () => {
   const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
-
   return (
     <div>
       <Radio.Group onChange={(e) => setSelectionType(e.target.value)} value={selectionType}>
@@ -291,50 +258,38 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 选择和操作
-
 #### zh-CN
-
 选择后进行操作，完成后清空选择，通过 `rowSelection.selectedRowKeys` 来控制选中项。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Flex, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 type TableRowSelection<T extends object = object> = TableProps<T>['rowSelection'];
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   { title: 'Name', dataIndex: 'name' },
   { title: 'Age', dataIndex: 'age' },
   { title: 'Address', dataIndex: 'address' },
 ];
-
 const dataSource = Array.from<DataType>({ length: 46 }).map<DataType>((_, i) => ({
   key: i,
   name: `Edward King ${i}`,
   age: 32,
   address: `London, Park Lane no. ${i}`,
 }));
-
 const App: React.FC = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [loading, setLoading] = useState(false);
-
   const start = () => {
     setLoading(true);
     // ajax request after empty completing
@@ -343,19 +298,15 @@ const App: React.FC = () => {
       setLoading(false);
     }, 1000);
   };
-
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
-
   const rowSelection: TableRowSelection<DataType> = {
     selectedRowKeys,
     onChange: onSelectChange,
   };
-
   const hasSelected = selectedRowKeys.length > 0;
-
   return (
     <Flex gap="middle" vertical>
       <Flex align="center" gap="middle">
@@ -368,33 +319,24 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义选择项
-
 #### zh-CN
-
 通过 `rowSelection.selections` 自定义选择项，默认不显示下拉选项，设为 `true` 时显示默认选择项。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 type TableRowSelection<T extends object = object> = TableProps<T>['rowSelection'];
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -409,22 +351,18 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: 'address',
   },
 ];
-
 const dataSource = Array.from({ length: 46 }).map<DataType>((_, i) => ({
   key: i,
   name: `Edward King ${i}`,
   age: 32,
   address: `London, Park Lane no. ${i}`,
 }));
-
 const App: React.FC = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
-
   const rowSelection: TableRowSelection<DataType> = {
     selectedRowKeys,
     onChange: onSelectChange,
@@ -462,44 +400,32 @@ const App: React.FC = () => {
       },
     ],
   };
-
   return <Table<DataType> rowSelection={rowSelection} columns={columns} dataSource={dataSource} />;
 };
-
 export default App;
 
 ```
-
 ### 选择性能
-
 #### zh-CN
-
 高损耗 `render` 性能调试。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { InputNumber, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 type TableRowSelection<T extends object = object> = TableProps<T>['rowSelection'];
-
 const RenderTimes: React.FC = () => {
   const timesRef = React.useRef(0);
   timesRef.current += 1;
   return <span>{timesRef.current}</span>;
 };
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const shouldCellUpdate = (record: DataType, prevRecord: DataType) => record !== prevRecord;
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -523,7 +449,6 @@ const columns: TableColumnsType<DataType> = [
     ),
   },
 ];
-
 function genData(length: number) {
   return Array.from({ length }).map<DataType>((_, i) => ({
     key: i,
@@ -532,21 +457,17 @@ function genData(length: number) {
     address: `London, Park Lane no. ${i}`,
   }));
 }
-
 const App: React.FC = () => {
   const [data, setData] = useState<DataType[]>(genData(50));
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
-
   const rowSelection: TableRowSelection<DataType> = {
     selectedRowKeys,
     onChange: onSelectChange,
   };
-
   return (
     <>
       <InputNumber
@@ -564,41 +485,28 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 筛选和排序
-
 #### zh-CN
-
 对某一列数据进行筛选，使用列的 `filters` 属性来指定需要筛选菜单的列，`onFilter` 用于筛选当前数据，`filterMultiple` 用于指定多选和单选，`filterOnClose` 用于指定是否在筛选菜单关闭时触发筛选。
-
 使用 `defaultFilteredValue` 属性，设置列的默认筛选项。
-
 对某一列数据进行排序，通过指定列的 `sorter` 函数即可启动排序按钮。`sorter: function(rowA, rowB) { ... }`， rowA、rowB 为比较的两个行数据。
-
 `sortDirections: ['ascend', 'descend']` 改变每列可用的排序方式，切换排序时按数组内容依次切换，设置在 table props 上时对所有列生效。你可以通过设置 `['ascend', 'descend', 'ascend']` 禁止排序恢复到默认状态。
-
 使用 `defaultSortOrder` 属性，设置列的默认排序顺序。
-
 如果 `sortOrder` 或者 `defaultSortOrder` 的值为 `ascend` 或者 `descend`，则可以通过 `sorter` 的函数第三个参数获取当前排序的状态。该函数可以是 `function(a, b, sortOrder) { ... }` 的形式。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -656,7 +564,6 @@ const columns: TableColumnsType<DataType> = [
     onFilter: (value, record) => record.address.indexOf(value as string) === 0,
   },
 ];
-
 const data = [
   {
     key: '1',
@@ -683,11 +590,9 @@ const data = [
     address: 'London No. 2 Lake Park',
   },
 ];
-
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
-
 const App: React.FC = () => (
   <Table<DataType>
     columns={columns}
@@ -696,31 +601,23 @@ const App: React.FC = () => (
     showSorterTooltip={{ target: 'sorter-icon' }}
   />
 );
-
 export default App;
 
 ```
-
 ### 树型筛选菜单
-
 #### zh-CN
-
 可以使用 `filterMode` 来修改筛选菜单的 UI，可选值有 `menu`（默认）和 `tree`。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -787,7 +684,6 @@ const columns: TableColumnsType<DataType> = [
     width: '40%',
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -814,39 +710,29 @@ const data: DataType[] = [
     address: 'London No. 2 Lake Park',
   },
 ];
-
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
-
 const App: React.FC = () => (
   <Table<DataType> columns={columns} dataSource={data} onChange={onChange} />
 );
-
 export default App;
 
 ```
-
 ### 自定义筛选的搜索
-
 #### zh-CN
-
 `filterSearch` 用于开启筛选项的搜索，通过 `filterSearch:(input, record) => boolean` 设置自定义筛选方法
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -893,7 +779,6 @@ const columns: TableColumnsType<DataType> = [
     width: '40%',
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -920,32 +805,23 @@ const data: DataType[] = [
     address: 'London No. 2 Lake Park',
   },
 ];
-
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
-
 const App: React.FC = () => (
   <Table<DataType> columns={columns} dataSource={data} onChange={onChange} />
 );
-
 export default App;
 
 ```
-
 ### 多列排序
-
 #### zh-CN
-
 `column.sorter` 支持 `multiple` 字段以配置多列排序优先级。通过 `sorter.compare` 配置排序逻辑，你可以通过不设置该函数只启动多列排序的交互形式。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
@@ -953,7 +829,6 @@ interface DataType {
   math: number;
   english: number;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -984,7 +859,6 @@ const columns: TableColumnsType<DataType> = [
     },
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -1015,49 +889,36 @@ const data: DataType[] = [
     english: 89,
   },
 ];
-
 const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
-
 const App: React.FC = () => (
   <Table<DataType> columns={columns} dataSource={data} onChange={onChange} />
 );
-
 export default App;
 
 ```
-
 ### 可控的筛选和排序
-
 #### zh-CN
-
 使用受控属性对筛选和排序状态进行控制。
-
 > 1. columns 中定义了 filteredValue 和 sortOrder 属性即视为受控模式。
 > 2. 只支持同时对一列进行排序，请保证只有一列的 sortOrder 属性是生效的。
 > 3. 务必指定 `column.key`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { TableColumnsType, TableProps } from 'antd';
 import { Button, Space, Table } from 'antd';
-
 type OnChange = NonNullable<TableProps<DataType>['onChange']>;
 type Filters = Parameters<OnChange>[1];
-
 type GetSingle<T> = T extends (infer U)[] ? U : never;
 type Sorts = GetSingle<Parameters<OnChange>[2]>;
-
 interface DataType {
   key: string;
   name: string;
   age: number;
   address: string;
 }
-
 const data: DataType[] = [
   {
     key: '1',
@@ -1084,33 +945,27 @@ const data: DataType[] = [
     address: 'London No. 2 Lake Park',
   },
 ];
-
 const App: React.FC = () => {
   const [filteredInfo, setFilteredInfo] = useState<Filters>({});
   const [sortedInfo, setSortedInfo] = useState<Sorts>({});
-
   const handleChange: OnChange = (pagination, filters, sorter) => {
     console.log('Various parameters', pagination, filters, sorter);
     setFilteredInfo(filters);
     setSortedInfo(sorter as Sorts);
   };
-
   const clearFilters = () => {
     setFilteredInfo({});
   };
-
   const clearAll = () => {
     setFilteredInfo({});
     setSortedInfo({});
   };
-
   const setAgeSort = () => {
     setSortedInfo({
       order: 'descend',
       columnKey: 'age',
     });
   };
-
   const columns: TableColumnsType<DataType> = [
     {
       title: 'Name',
@@ -1149,7 +1004,6 @@ const App: React.FC = () => {
       ellipsis: true,
     },
   ];
-
   return (
     <>
       <Space style={{ marginBottom: 16 }}>
@@ -1161,20 +1015,13 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义筛选菜单
-
 #### zh-CN
-
 通过 `filterDropdown` 自定义的列筛选功能，并实现一个搜索列的示例。
-
 给函数 `clearFilters` 添加 `boolean` 类型参数 `closeDropdown`，是否关闭筛选菜单，默认为 `true`。添加 `boolean` 类型参数 `confirm`，清除筛选时是否提交已选项，默认 `true`。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -1183,16 +1030,13 @@ import type { InputRef, TableColumnsType, TableColumnType } from 'antd';
 import { Button, Input, Space, Table } from 'antd';
 import type { FilterDropdownProps } from 'antd/es/table/interface';
 import Highlighter from 'react-highlight-words';
-
 interface DataType {
   key: string;
   name: string;
   age: number;
   address: string;
 }
-
 type DataIndex = keyof DataType;
-
 const data: DataType[] = [
   {
     key: '1',
@@ -1219,12 +1063,10 @@ const data: DataType[] = [
     address: 'London No. 2 Lake Park',
   },
 ];
-
 const App: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef<InputRef>(null);
-
   const handleSearch = (
     selectedKeys: string[],
     confirm: FilterDropdownProps['confirm'],
@@ -1234,12 +1076,10 @@ const App: React.FC = () => {
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
   };
-
   const handleReset = (clearFilters: () => void) => {
     clearFilters();
     setSearchText('');
   };
-
   const getColumnSearchProps = (dataIndex: DataIndex): TableColumnType<DataType> => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
       <div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
@@ -1318,7 +1158,6 @@ const App: React.FC = () => {
         text
       ),
   });
-
   const columns: TableColumnsType<DataType> = [
     {
       title: 'Name',
@@ -1343,29 +1182,18 @@ const App: React.FC = () => {
       sortDirections: ['descend', 'ascend'],
     },
   ];
-
   return <Table<DataType> columns={columns} dataSource={data} />;
 };
-
 export default App;
 
 ```
-
 ### 远程加载数据
-
 #### zh-CN
-
 这个例子通过简单的 ajax 读取方式，演示了如何从服务端读取并展现数据，具有筛选、排序等功能以及页面 loading 效果。开发者可以自行接入其他数据处理方式。
-
 另外，本例也展示了筛选排序功能如何交给服务端实现，列不需要指定具体的 `onFilter` 和 `sorter` 函数，而是在把筛选和排序的参数发到服务端来处理。
-
 当使用 `rowSelection` 时，请设置 `rowSelection.preserveSelectedRowKeys` 属性以保留 `key`。
-
 **注意，此示例使用 [模拟接口](https://randomuser.me)，展示数据可能不准确，请打开网络面板查看请求。**
-
 > 🛎️ 想要 3 分钟实现？试试 [ProTable](https://procomponents.ant.design/components/table)！
-
-
 
 ```typescript
 /* eslint-disable compat/compat */
@@ -1374,10 +1202,8 @@ import type { GetProp, TableProps } from 'antd';
 import { Table } from 'antd';
 import type { AnyObject } from 'antd/es/_util/type';
 import type { SorterResult } from 'antd/es/table/interface';
-
 type ColumnsType<T extends object = object> = TableProps<T>['columns'];
 type TablePaginationConfig = Exclude<GetProp<TableProps, 'pagination'>, boolean>;
-
 interface DataType {
   name: {
     first: string;
@@ -1389,14 +1215,12 @@ interface DataType {
     uuid: string;
   };
 }
-
 interface TableParams {
   pagination?: TablePaginationConfig;
   sortField?: SorterResult<any>['field'];
   sortOrder?: SorterResult<any>['order'];
   filters?: Parameters<GetProp<TableProps, 'onChange'>>[1];
 }
-
 const columns: ColumnsType<DataType> = [
   {
     title: 'Name',
@@ -1419,7 +1243,6 @@ const columns: ColumnsType<DataType> = [
     dataIndex: 'email',
   },
 ];
-
 const toURLSearchParams = <T extends AnyObject>(record: T) => {
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(record)) {
@@ -1427,13 +1250,11 @@ const toURLSearchParams = <T extends AnyObject>(record: T) => {
   }
   return params;
 };
-
 const getRandomuserParams = (params: TableParams) => ({
   results: params.pagination?.pageSize,
   page: params.pagination?.current,
   ...params,
 });
-
 const App: React.FC = () => {
   const [data, setData] = useState<DataType[]>();
   const [loading, setLoading] = useState(false);
@@ -1443,9 +1264,7 @@ const App: React.FC = () => {
       pageSize: 10,
     },
   });
-
   const params = toURLSearchParams(getRandomuserParams(tableParams));
-
   const fetchData = () => {
     setLoading(true);
     fetch(`https://randomuser.me/api?${params.toString()}`)
@@ -1464,7 +1283,6 @@ const App: React.FC = () => {
         });
       });
   };
-
   useEffect(fetchData, [
     tableParams.pagination?.current,
     tableParams.pagination?.pageSize,
@@ -1472,7 +1290,6 @@ const App: React.FC = () => {
     tableParams?.sortField,
     JSON.stringify(tableParams.filters),
   ]);
-
   const handleTableChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter) => {
     setTableParams({
       pagination,
@@ -1480,13 +1297,11 @@ const App: React.FC = () => {
       sortOrder: Array.isArray(sorter) ? undefined : sorter.order,
       sortField: Array.isArray(sorter) ? undefined : sorter.field,
     });
-
     // `dataSource` is useless since `pageSize` changed
     if (pagination.pageSize !== tableParams.pagination?.pageSize) {
       setData([]);
     }
   };
-
   return (
     <Table<DataType>
       columns={columns}
@@ -1498,31 +1313,23 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 紧凑型
-
 #### zh-CN
-
 两种紧凑型的列表，小型列表只用于对话框内。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -1537,7 +1344,6 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: 'address',
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -1558,7 +1364,6 @@ const data: DataType[] = [
     address: 'Sydney No. 1 Lake Park',
   },
 ];
-
 const App: React.FC = () => (
   <>
     <Divider>Middle size table</Divider>
@@ -1567,31 +1372,23 @@ const App: React.FC = () => (
     <Table<DataType> columns={columns} dataSource={data} size="small" />
   </>
 );
-
 export default App;
 
 ```
-
 ### 紧凑型
-
 #### zh-CN
-
 两种紧凑型的列表，小型列表只用于对话框内。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -1606,14 +1403,12 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: 'address',
   },
 ];
-
 const dataSource = Array.from({ length: 200 }).map<DataType>((_, key) => ({
   key,
   name: 'Sample Name',
   age: 30 + (key % 5),
   address: `Sample Address ${key}`,
 }));
-
 const App: React.FC = () => (
   <div style={{ width: 300 }}>
     <Table<DataType>
@@ -1624,31 +1419,23 @@ const App: React.FC = () => (
     />
   </div>
 );
-
 export default App;
 
 ```
-
 ### 带边框
-
 #### zh-CN
-
 添加表格边框线，页头和页脚。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableProps } from 'antd';
-
 interface DataType {
   key: string;
   name: string;
   money: string;
   address: string;
 }
-
 const columns: TableProps<DataType>['columns'] = [
   {
     title: 'Name',
@@ -1666,7 +1453,6 @@ const columns: TableProps<DataType>['columns'] = [
     dataIndex: 'address',
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -1687,7 +1473,6 @@ const data: DataType[] = [
     address: 'Sydney No. 1 Lake Park',
   },
 ];
-
 const App: React.FC = () => (
   <Table<DataType>
     columns={columns}
@@ -1697,24 +1482,17 @@ const App: React.FC = () => (
     footer={() => 'Footer'}
   />
 );
-
 export default App;
 
 ```
-
 ### 可展开
-
 #### zh-CN
-
 当表格内容较多不能一次性完全展示时。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
@@ -1722,7 +1500,6 @@ interface DataType {
   address: string;
   description: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Age', dataIndex: 'age', key: 'age' },
@@ -1734,7 +1511,6 @@ const columns: TableColumnsType<DataType> = [
     render: () => <a>Delete</a>,
   },
 ];
-
 const data: DataType[] = [
   {
     key: 1,
@@ -1765,7 +1541,6 @@ const data: DataType[] = [
     description: 'My name is Joe Black, I am 32 years old, living in Sydney No. 1 Lake Park.',
   },
 ];
-
 const App: React.FC = () => (
   <Table<DataType>
     columns={columns}
@@ -1776,24 +1551,17 @@ const App: React.FC = () => (
     dataSource={data}
   />
 );
-
 export default App;
 
 ```
-
 ### 特殊列排序
-
 #### zh-CN
-
 你可以通过 `Table.EXPAND_COLUMN` 和 `Table.SELECTION_COLUMN` 来控制选择和展开列的顺序。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
@@ -1801,7 +1569,6 @@ interface DataType {
   address: string;
   description: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   Table.EXPAND_COLUMN,
@@ -1809,7 +1576,6 @@ const columns: TableColumnsType<DataType> = [
   Table.SELECTION_COLUMN,
   { title: 'Address', dataIndex: 'address', key: 'address' },
 ];
-
 const data: DataType[] = [
   {
     key: 1,
@@ -1840,7 +1606,6 @@ const data: DataType[] = [
     description: 'My name is Joe Black, I am 32 years old, living in Sydney No. 1 Lake Park.',
   },
 ];
-
 const App: React.FC = () => (
   <Table<DataType>
     columns={columns}
@@ -1851,26 +1616,18 @@ const App: React.FC = () => (
     dataSource={data}
   />
 );
-
 export default App;
 
 ```
-
 ### 表格行/列合并
-
 #### zh-CN
-
 表头只支持列合并，使用 column 里的 colSpan 进行设置。
-
 表格支持行/列合并，当 `onCell` 里的单元格属性 `colSpan` 或者 `rowSpan` 设值为 0 时，设置的表格不会渲染。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableProps } from 'antd';
-
 interface DataType {
   key: string;
   name: string;
@@ -1879,17 +1636,14 @@ interface DataType {
   phone: number;
   address: string;
 }
-
 // In the fifth row, other columns are merged into first column
 // by setting it's colSpan to be 0
 const sharedOnCell = (_: DataType, index?: number) => {
   if (index === 1) {
     return { colSpan: 0 };
   }
-
   return {};
 };
-
 const columns: TableProps<DataType>['columns'] = [
   {
     title: 'RowHead',
@@ -1924,7 +1678,6 @@ const columns: TableProps<DataType>['columns'] = [
       if (index === 1) {
         return { colSpan: 0 };
       }
-
       return {};
     },
   },
@@ -1940,7 +1693,6 @@ const columns: TableProps<DataType>['columns'] = [
     onCell: sharedOnCell,
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -1983,30 +1735,20 @@ const data: DataType[] = [
     address: 'Dublin No. 2 Lake Park',
   },
 ];
-
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} bordered />;
-
 export default App;
 
 ```
-
 ### 树形数据展示
-
 #### zh-CN
-
 表格支持树形数据的展示，当数据中有 `children` 字段时会自动展示为树形表格，如果不需要或配置为其他字段可以用 `childrenColumnName` 进行配置。
-
 可以通过设置 `indentSize` 以控制每一层的缩进宽度。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Space, Switch, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 type TableRowSelection<T extends object = object> = TableProps<T>['rowSelection'];
-
 interface DataType {
   key: React.ReactNode;
   name: string;
@@ -2014,7 +1756,6 @@ interface DataType {
   address: string;
   children?: DataType[];
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -2034,7 +1775,6 @@ const columns: TableColumnsType<DataType> = [
     key: 'address',
   },
 ];
-
 const data: DataType[] = [
   {
     key: 1,
@@ -2099,7 +1839,6 @@ const data: DataType[] = [
     address: 'Sydney No. 1 Lake Park',
   },
 ];
-
 // rowSelection objects indicates the need for row selection
 const rowSelection: TableRowSelection<DataType> = {
   onChange: (selectedRowKeys, selectedRows) => {
@@ -2112,10 +1851,8 @@ const rowSelection: TableRowSelection<DataType> = {
     console.log(selected, selectedRows, changeRows);
   },
 };
-
 const App: React.FC = () => {
   const [checkStrictly, setCheckStrictly] = useState(false);
-
   return (
     <>
       <Space align="center" style={{ marginBottom: 16 }}>
@@ -2129,24 +1866,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 树形数据省略情况测试
-
 #### zh-CN
-
 https://github.com/ant-design/ant-design/issues/36583
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Space, Switch, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.ReactNode;
   name: string;
@@ -2154,7 +1884,6 @@ interface DataType {
   address: string;
   children?: DataType[];
 }
-
 const data: DataType[] = [
   {
     key: 1,
@@ -2219,10 +1948,8 @@ const data: DataType[] = [
     address: 'Sydney No. 1 Lake Park',
   },
 ];
-
 const App: React.FC = () => {
   const [fixed, setFixed] = useState(true);
-
   const columns: TableColumnsType<DataType> = [
     {
       title: 'Name',
@@ -2244,7 +1971,6 @@ const App: React.FC = () => {
       key: 'address',
     },
   ];
-
   return (
     <>
       <Space align="center" style={{ marginBottom: 16 }}>
@@ -2259,28 +1985,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 树形数据保留key测试
-
 #### zh-CN
-
 treeData Table 使用 CheckStrictly: false & preserveSelectedRowKeys: true 的示例
-
 https://github.com/ant-design/ant-design/issues/50621
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Space, Switch, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 type TableRowSelection<T extends object = object> = TableProps<T>['rowSelection'];
-
 interface DataType {
   key: React.ReactNode;
   name: string;
@@ -2288,7 +2005,6 @@ interface DataType {
   address: string;
   children?: DataType[];
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -2308,7 +2024,6 @@ const columns: TableColumnsType<DataType> = [
     key: 'address',
   },
 ];
-
 const dataSource = Array.from({ length: 15 }).map<DataType>((_, i) => ({
   key: `key${i}`,
   name: `Edward ${i}`,
@@ -2329,7 +2044,6 @@ const dataSource = Array.from({ length: 15 }).map<DataType>((_, i) => ({
     },
   ],
 }));
-
 // rowSelection objects indicates the need for row selection
 const rowSelection: TableRowSelection<DataType> = {
   onChange: (selectedRowKeys, selectedRows) => {
@@ -2342,11 +2056,9 @@ const rowSelection: TableRowSelection<DataType> = {
     console.log(selected, selectedRows, changeRows);
   },
 };
-
 const App: React.FC = () => {
   const [checkStrictly, setCheckStrictly] = useState(false);
   const [preserveSelectedRowKeys, setPreserveSelectedRowKeys] = useState(true);
-
   return (
     <>
       <Space align="center" style={{ marginBottom: 16 }}>
@@ -2363,27 +2075,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 固定表头
-
 #### zh-CN
-
 方便一页内展示大量数据。
-
 需要指定 column 的 `width` 属性，否则列头和内容可能不对齐。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241)。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { createStyles } from 'antd-style';
-
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -2401,14 +2105,12 @@ const useStyle = createStyles(({ css, token }) => {
     `,
   };
 });
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -2425,14 +2127,12 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: 'address',
   },
 ];
-
 const dataSource = Array.from({ length: 100 }).map<DataType>((_, i) => ({
   key: i,
   name: `Edward King ${i}`,
   age: 32,
   address: `London, Park Lane no. ${i}`,
 }));
-
 const App: React.FC = () => {
   const { styles } = useStyle();
   return (
@@ -2445,31 +2145,22 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 固定列
-
 #### zh-CN
-
 对于列数很多的数据，可以固定前后的列，横向滚动查看其它数据，需要和 `scroll.x` 配合使用。
-
 > 若列头与内容不对齐或出现列重复，请指定**固定列**的宽度 `width`。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241)。
 >
 > 建议指定 `scroll.x` 为大于表格宽度的固定值或百分比。注意，且非固定列宽度之和不要超过 `scroll.x`。
-
 **注意：v4 版本固定列通过 sticky 实现，IE 11 会降级成横向滚动。**
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { createStyles } from 'antd-style';
-
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -2487,14 +2178,12 @@ const useStyle = createStyles(({ css, token }) => {
     `,
   };
 });
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Full Name',
@@ -2539,12 +2228,10 @@ const columns: TableColumnsType<DataType> = [
     render: () => <a>action</a>,
   },
 ];
-
 const dataSource: DataType[] = [
   { key: '1', name: 'Olivia', age: 32, address: 'New York Park' },
   { key: '2', name: 'Ethan', age: 40, address: 'London Park' },
 ];
-
 const App: React.FC = () => {
   const { styles } = useStyle();
   return (
@@ -2557,25 +2244,18 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 堆叠固定列
-
 #### zh-CN
-
 混合固定列，滚动到一定距离进行堆叠，推荐配合 `bordered` 使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { createStyles } from 'antd-style';
-
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -2593,14 +2273,12 @@ const useStyle = createStyles(({ css, token }) => {
     `,
   };
 });
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Full Name',
@@ -2651,12 +2329,10 @@ const columns: TableColumnsType<DataType> = [
     render: () => <a>action</a>,
   },
 ];
-
 const dataSource: DataType[] = [
   { key: '1', name: 'Olivia', age: 32, address: 'New York Park' },
   { key: '2', name: 'Ethan', age: 40, address: 'London Park' },
 ];
-
 const App: React.FC = () => {
   const { styles } = useStyle();
   return (
@@ -2670,29 +2346,21 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 固定头和列
-
 #### zh-CN
-
 适合同时展示有大量数据和数据列。
-
 > 若列头与内容不对齐或出现列重复，请指定**固定列**的宽度 `width`。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241)。
 >
 > 建议指定 `scroll.x` 为大于表格宽度的固定值或百分比。注意，且非固定列宽度之和不要超过 `scroll.x`。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { createStyles } from 'antd-style';
-
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -2710,14 +2378,12 @@ const useStyle = createStyles(({ css, token }) => {
     `,
   };
 });
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Full Name',
@@ -2796,14 +2462,12 @@ const columns: TableColumnsType<DataType> = [
     render: () => <a>action</a>,
   },
 ];
-
 const dataSource = Array.from({ length: 100 }).map<DataType>((_, i) => ({
   key: i,
   name: `Edward King ${i}`,
   age: 32,
   address: `London, Park Lane no. ${i}`,
 }));
-
 const App: React.FC = () => {
   const { styles } = useStyle();
   return (
@@ -2815,31 +2479,23 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 隐藏列
-
 #### zh-CN
-
 使用 `hidden` 隐藏列。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Checkbox, Divider, Table } from 'antd';
 import type { CheckboxOptionType, TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   { title: 'Column 1', dataIndex: 'address', key: '1' },
   { title: 'Column 2', dataIndex: 'address', key: '2' },
@@ -2850,7 +2506,6 @@ const columns: TableColumnsType<DataType> = [
   { title: 'Column 7', dataIndex: 'address', key: '7' },
   { title: 'Column 8', dataIndex: 'address', key: '8' },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -2865,22 +2520,17 @@ const data: DataType[] = [
     address: 'London Park',
   },
 ];
-
 const defaultCheckedList = columns.map((item) => item.key);
-
 const App: React.FC = () => {
   const [checkedList, setCheckedList] = useState(defaultCheckedList);
-
   const options = columns.map(({ key, title }) => ({
     label: title,
     value: key,
   }));
-
   const newColumns = columns.map((item) => ({
     ...item,
     hidden: !checkedList.includes(item.key as string),
   }));
-
   return (
     <>
       <Divider>Columns displayed</Divider>
@@ -2895,25 +2545,18 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 表头分组
-
 #### zh-CN
-
 `columns[n]` 可以内嵌 `children`，以渲染分组表头。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { createStyles } from 'antd-style';
-
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -2931,7 +2574,6 @@ const useStyle = createStyles(({ css, token }) => {
     `,
   };
 });
-
 interface DataType {
   key: React.Key;
   name: string;
@@ -2943,7 +2585,6 @@ interface DataType {
   companyName: string;
   gender: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -3027,7 +2668,6 @@ const columns: TableColumnsType<DataType> = [
     fixed: 'right',
   },
 ];
-
 const dataSource = Array.from({ length: 100 }).map<DataType>((_, i) => ({
   key: i,
   name: 'John Brown',
@@ -3039,7 +2679,6 @@ const dataSource = Array.from({ length: 100 }).map<DataType>((_, i) => ({
   companyName: 'SoftLake Co',
   gender: 'M',
 }));
-
 const App: React.FC = () => {
   const { styles } = useStyle();
   return (
@@ -3053,39 +2692,28 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 可编辑单元格
-
 #### zh-CN
-
 带单元格编辑功能的表格。当配合 `shouldCellUpdate` 使用时请注意[闭包问题](https://github.com/ant-design/ant-design/issues/29243)。
-
-
 
 ```typescript
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import type { GetRef, InputRef, TableProps } from 'antd';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
-
 type FormInstance<T> = GetRef<typeof Form<T>>;
-
 const EditableContext = React.createContext<FormInstance<any> | null>(null);
-
 interface Item {
   key: string;
   name: string;
   age: string;
   address: string;
 }
-
 interface EditableRowProps {
   index: number;
 }
-
 const EditableRow: React.FC<EditableRowProps> = ({ index, ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -3096,7 +2724,6 @@ const EditableRow: React.FC<EditableRowProps> = ({ index, ...props }) => {
     </Form>
   );
 };
-
 interface EditableCellProps {
   title: React.ReactNode;
   editable: boolean;
@@ -3104,7 +2731,6 @@ interface EditableCellProps {
   record: Item;
   handleSave: (record: Item) => void;
 }
-
 const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
   title,
   editable,
@@ -3117,31 +2743,25 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
   const [editing, setEditing] = useState(false);
   const inputRef = useRef<InputRef>(null);
   const form = useContext(EditableContext)!;
-
   useEffect(() => {
     if (editing) {
       inputRef.current?.focus();
     }
   }, [editing]);
-
   const toggleEdit = () => {
     setEditing(!editing);
     form.setFieldsValue({ [dataIndex]: record[dataIndex] });
   };
-
   const save = async () => {
     try {
       const values = await form.validateFields();
-
       toggleEdit();
       handleSave({ ...record, ...values });
     } catch (errInfo) {
       console.log('Save failed:', errInfo);
     }
   };
-
   let childNode = children;
-
   if (editable) {
     childNode = editing ? (
       <Form.Item
@@ -3161,19 +2781,15 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
       </div>
     );
   }
-
   return <td {...restProps}>{childNode}</td>;
 };
-
 interface DataType {
   key: React.Key;
   name: string;
   age: string;
   address: string;
 }
-
 type ColumnTypes = Exclude<TableProps<DataType>['columns'], undefined>;
-
 const App: React.FC = () => {
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
@@ -3189,14 +2805,11 @@ const App: React.FC = () => {
       address: 'London, Park Lane no. 1',
     },
   ]);
-
   const [count, setCount] = useState(2);
-
   const handleDelete = (key: React.Key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
   };
-
   const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = [
     {
       title: 'name',
@@ -3223,7 +2836,6 @@ const App: React.FC = () => {
         ) : null,
     },
   ];
-
   const handleAdd = () => {
     const newData: DataType = {
       key: count,
@@ -3234,7 +2846,6 @@ const App: React.FC = () => {
     setDataSource([...dataSource, newData]);
     setCount(count + 1);
   };
-
   const handleSave = (row: DataType) => {
     const newData = [...dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
@@ -3245,14 +2856,12 @@ const App: React.FC = () => {
     });
     setDataSource(newData);
   };
-
   const components = {
     body: {
       row: EditableRow,
       cell: EditableCell,
     },
   };
-
   const columns = defaultColumns.map((col) => {
     if (!col.editable) {
       return col;
@@ -3268,7 +2877,6 @@ const App: React.FC = () => {
       }),
     };
   });
-
   return (
     <div>
       <Button onClick={handleAdd} type="primary" style={{ marginBottom: 16 }}>
@@ -3284,40 +2892,30 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 可编辑行
-
 #### zh-CN
-
 带行编辑功能的表格。
-
 > 🛎️ 想要 3 分钟实现？试试 [ProTable 的可编辑表格](https://procomponents.ant.design/components/editable-table)！
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { TableProps } from 'antd';
 import { Form, Input, InputNumber, Popconfirm, Table, Typography } from 'antd';
-
 interface DataType {
   key: string;
   name: string;
   age: number;
   address: string;
 }
-
 const originData = Array.from({ length: 100 }).map<DataType>((_, i) => ({
   key: i.toString(),
   name: `Edward ${i}`,
   age: 32,
   address: `London Park no. ${i}`,
 }));
-
 interface EditableCellProps extends React.HTMLAttributes<HTMLElement> {
   editing: boolean;
   dataIndex: string;
@@ -3326,7 +2924,6 @@ interface EditableCellProps extends React.HTMLAttributes<HTMLElement> {
   record: DataType;
   index: number;
 }
-
 const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
   editing,
   dataIndex,
@@ -3338,7 +2935,6 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
   ...restProps
 }) => {
   const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
-
   return (
     <td {...restProps}>
       {editing ? (
@@ -3360,27 +2956,21 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
     </td>
   );
 };
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState<DataType[]>(originData);
   const [editingKey, setEditingKey] = useState('');
-
   const isEditing = (record: DataType) => record.key === editingKey;
-
   const edit = (record: Partial<DataType> & { key: React.Key }) => {
     form.setFieldsValue({ name: '', age: '', address: '', ...record });
     setEditingKey(record.key);
   };
-
   const cancel = () => {
     setEditingKey('');
   };
-
   const save = async (key: React.Key) => {
     try {
       const row = (await form.validateFields()) as DataType;
-
       const newData = [...data];
       const index = newData.findIndex((item) => key === item.key);
       if (index > -1) {
@@ -3400,7 +2990,6 @@ const App: React.FC = () => {
       console.log('Validate Failed:', errInfo);
     }
   };
-
   const columns = [
     {
       title: 'name',
@@ -3442,7 +3031,6 @@ const App: React.FC = () => {
       },
     },
   ];
-
   const mergedColumns: TableProps<DataType>['columns'] = columns.map((col) => {
     if (!col.editable) {
       return col;
@@ -3458,7 +3046,6 @@ const App: React.FC = () => {
       }),
     };
   });
-
   return (
     <Form form={form} component={false}>
       <Table<DataType>
@@ -3474,32 +3061,24 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 嵌套子表格
-
 #### zh-CN
-
 展示每行数据更详细的信息。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { TableColumnsType } from 'antd';
 import { Badge, Dropdown, Space, Table } from 'antd';
-
 interface ExpandedDataType {
   key: React.Key;
   date: string;
   name: string;
   upgradeNum: string;
 }
-
 interface DataType {
   key: React.Key;
   name: string;
@@ -3509,19 +3088,16 @@ interface DataType {
   creator: string;
   createdAt: string;
 }
-
 const items = [
   { key: '1', label: 'Action 1' },
   { key: '2', label: 'Action 2' },
 ];
-
 const expandDataSource = Array.from({ length: 3 }).map<ExpandedDataType>((_, i) => ({
   key: i.toString(),
   date: '2014-12-24 23:12:00',
   name: 'This is production name',
   upgradeNum: 'Upgraded: 56',
 }));
-
 const dataSource = Array.from({ length: 3 }).map<DataType>((_, i) => ({
   key: i.toString(),
   name: 'Screen',
@@ -3531,7 +3107,6 @@ const dataSource = Array.from({ length: 3 }).map<DataType>((_, i) => ({
   creator: 'Jack',
   createdAt: '2014-12-24 23:12:00',
 }));
-
 const expandColumns: TableColumnsType<ExpandedDataType> = [
   { title: 'Date', dataIndex: 'date', key: 'date' },
   { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -3557,7 +3132,6 @@ const expandColumns: TableColumnsType<ExpandedDataType> = [
     ),
   },
 ];
-
 const columns: TableColumnsType<DataType> = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Platform', dataIndex: 'platform', key: 'platform' },
@@ -3567,7 +3141,6 @@ const columns: TableColumnsType<DataType> = [
   { title: 'Date', dataIndex: 'createdAt', key: 'createdAt' },
   { title: 'Action', key: 'operation', render: () => <a>Publish</a> },
 ];
-
 const expandedRowRender = () => (
   <Table<ExpandedDataType>
     columns={expandColumns}
@@ -3575,7 +3148,6 @@ const expandedRowRender = () => (
     pagination={false}
   />
 );
-
 const App: React.FC = () => (
   <>
     <Table<DataType>
@@ -3597,18 +3169,12 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 拖拽排序
-
 #### zh-CN
-
 使用自定义元素，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现拖拽排序。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -3624,14 +3190,12 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: string;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -3646,16 +3210,13 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: 'address',
   },
 ];
-
 interface RowProps extends React.HTMLAttributes<HTMLTableRowElement> {
   'data-row-key': string;
 }
-
 const Row: React.FC<Readonly<RowProps>> = (props) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: props['data-row-key'],
   });
-
   const style: React.CSSProperties = {
     ...props.style,
     transform: CSS.Translate.toString(transform),
@@ -3663,10 +3224,8 @@ const Row: React.FC<Readonly<RowProps>> = (props) => {
     cursor: 'move',
     ...(isDragging ? { position: 'relative', zIndex: 9999 } : {}),
   };
-
   return <tr {...props} ref={setNodeRef} style={style} {...attributes} {...listeners} />;
 };
-
 const App: React.FC = () => {
   const [dataSource, setDataSource] = useState([
     {
@@ -3689,7 +3248,6 @@ const App: React.FC = () => {
       address: 'Sidney No. 1 Lake Park',
     },
   ]);
-
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -3698,7 +3256,6 @@ const App: React.FC = () => {
       },
     }),
   );
-
   const onDragEnd = ({ active, over }: DragEndEvent) => {
     if (active.id !== over?.id) {
       setDataSource((prev) => {
@@ -3708,7 +3265,6 @@ const App: React.FC = () => {
       });
     }
   };
-
   return (
     <DndContext sensors={sensors} modifiers={[restrictToVerticalAxis]} onDragEnd={onDragEnd}>
       <SortableContext
@@ -3728,18 +3284,12 @@ const App: React.FC = () => {
     </DndContext>
   );
 };
-
 export default App;
 
 ```
-
 ### 列拖拽排序
-
 #### zh-CN
-
 使用自定义元素，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现列拖拽排序。
-
-
 
 ```typescript
 import React, { createContext, useContext, useState } from 'react';
@@ -3761,7 +3311,6 @@ import {
 } from '@dnd-kit/sortable';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: string;
   name: string;
@@ -3770,23 +3319,18 @@ interface DataType {
   email: string;
   address: string;
 }
-
 interface HeaderCellProps extends React.HTMLAttributes<HTMLTableCellElement> {
   id: string;
 }
-
 interface BodyCellProps extends React.HTMLAttributes<HTMLTableCellElement> {
   id: string;
 }
-
 interface DragIndexState {
   active: UniqueIdentifier;
   over: UniqueIdentifier | undefined;
   direction?: 'left' | 'right';
 }
-
 const DragIndexContext = createContext<DragIndexState>({ active: -1, over: -1 });
-
 const dragActiveStyle = (dragState: DragIndexState, id: string) => {
   const { active, over, direction } = dragState;
   // drag active style
@@ -3803,12 +3347,10 @@ const dragActiveStyle = (dragState: DragIndexState, id: string) => {
   }
   return style;
 };
-
 const TableBodyCell: React.FC<BodyCellProps> = (props) => {
   const dragState = useContext<DragIndexState>(DragIndexContext);
   return <td {...props} style={{ ...props.style, ...dragActiveStyle(dragState, props.id) }} />;
 };
-
 const TableHeaderCell: React.FC<HeaderCellProps> = (props) => {
   const dragState = useContext(DragIndexContext);
   const { attributes, listeners, setNodeRef, isDragging } = useSortable({ id: props.id });
@@ -3820,7 +3362,6 @@ const TableHeaderCell: React.FC<HeaderCellProps> = (props) => {
   };
   return <th {...props} ref={setNodeRef} style={style} {...attributes} {...listeners} />;
 };
-
 const dataSource: DataType[] = [
   {
     key: '1',
@@ -3855,7 +3396,6 @@ const dataSource: DataType[] = [
     address: 'Sidney No. 1 Lake Park',
   },
 ];
-
 const baseColumns: TableColumnsType<DataType> = [
   { title: 'Name', dataIndex: 'name' },
   { title: 'Gender', dataIndex: 'gender' },
@@ -3863,10 +3403,8 @@ const baseColumns: TableColumnsType<DataType> = [
   { title: 'Email', dataIndex: 'email' },
   { title: 'Address', dataIndex: 'address' },
 ];
-
 const App: React.FC = () => {
   const [dragIndex, setDragIndex] = useState<DragIndexState>({ active: -1, over: -1 });
-
   const [columns, setColumns] = useState(() =>
     baseColumns.map((column, i) => ({
       ...column,
@@ -3875,7 +3413,6 @@ const App: React.FC = () => {
       onCell: () => ({ id: `${i}` }),
     })),
   );
-
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -3884,7 +3421,6 @@ const App: React.FC = () => {
       },
     }),
   );
-
   const onDragEnd = ({ active, over }: DragEndEvent) => {
     if (active.id !== over?.id) {
       setColumns((prevState) => {
@@ -3895,7 +3431,6 @@ const App: React.FC = () => {
     }
     setDragIndex({ active: -1, over: -1 });
   };
-
   const onDragOver = ({ active, over }: DragOverEvent) => {
     const activeIndex = columns.findIndex((i) => i.key === active.id);
     const overIndex = columns.findIndex((i) => i.key === over?.id);
@@ -3905,7 +3440,6 @@ const App: React.FC = () => {
       direction: overIndex > activeIndex ? 'right' : 'left',
     });
   };
-
   return (
     <DndContext
       sensors={sensors}
@@ -3935,18 +3469,12 @@ const App: React.FC = () => {
     </DndContext>
   );
 };
-
 export default App;
 
 ```
-
 ### 拖拽手柄列
-
 #### zh-CN
-
 使用 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现一个拖拽操作列。
-
-
 
 ```typescript
 import React, { useContext, useMemo } from 'react';
@@ -3964,21 +3492,17 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Button, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: string;
   name: string;
   age: number;
   address: string;
 }
-
 interface RowContextProps {
   setActivatorNodeRef?: (element: HTMLElement | null) => void;
   listeners?: SyntheticListenerMap;
 }
-
 const RowContext = React.createContext<RowContextProps>({});
-
 const DragHandle: React.FC = () => {
   const { setActivatorNodeRef, listeners } = useContext(RowContext);
   return (
@@ -3992,24 +3516,20 @@ const DragHandle: React.FC = () => {
     />
   );
 };
-
 const columns: TableColumnsType<DataType> = [
   { key: 'sort', align: 'center', width: 80, render: () => <DragHandle /> },
   { title: 'Name', dataIndex: 'name' },
   { title: 'Age', dataIndex: 'age' },
   { title: 'Address', dataIndex: 'address' },
 ];
-
 const initialData: DataType[] = [
   { key: '1', name: 'John Brown', age: 32, address: 'Long text Long' },
   { key: '2', name: 'Jim Green', age: 42, address: 'London No. 1 Lake Park' },
   { key: '3', name: 'Joe Black', age: 32, address: 'Sidney No. 1 Lake Park' },
 ];
-
 interface RowProps extends React.HTMLAttributes<HTMLTableRowElement> {
   'data-row-key': string;
 }
-
 const Row: React.FC<RowProps> = (props) => {
   const {
     attributes,
@@ -4020,29 +3540,24 @@ const Row: React.FC<RowProps> = (props) => {
     transition,
     isDragging,
   } = useSortable({ id: props['data-row-key'] });
-
   const style: React.CSSProperties = {
     ...props.style,
     transform: CSS.Translate.toString(transform),
     transition,
     ...(isDragging ? { position: 'relative', zIndex: 9999 } : {}),
   };
-
   const contextValue = useMemo<RowContextProps>(
     () => ({ setActivatorNodeRef, listeners }),
     [setActivatorNodeRef, listeners],
   );
-
   return (
     <RowContext.Provider value={contextValue}>
       <tr {...props} ref={setNodeRef} style={style} {...attributes} />
     </RowContext.Provider>
   );
 };
-
 const App: React.FC = () => {
   const [dataSource, setDataSource] = React.useState<DataType[]>(initialData);
-
   const onDragEnd = ({ active, over }: DragEndEvent) => {
     if (active.id !== over?.id) {
       setDataSource((prevState) => {
@@ -4052,7 +3567,6 @@ const App: React.FC = () => {
       });
     }
   };
-
   return (
     <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={onDragEnd}>
       <SortableContext items={dataSource.map((i) => i.key)} strategy={verticalListSortingStrategy}>
@@ -4066,18 +3580,12 @@ const App: React.FC = () => {
     </DndContext>
   );
 };
-
 export default App;
 
 ```
-
 ### 可伸缩列
-
 #### zh-CN
-
 集成 [react-resizable](https://github.com/STRML/react-resizable) 来实现可伸缩列。如果有排序需要，可以通过[额外标记](https://codesandbox.io/s/zrj8xvyzxx)阻止触发排序。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -4085,7 +3593,6 @@ import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
 import type { ResizeCallbackData } from 'react-resizable';
 import { Resizable } from 'react-resizable';
-
 interface DataType {
   key: React.Key;
   date: string;
@@ -4093,19 +3600,15 @@ interface DataType {
   type: string;
   note: string;
 }
-
 interface TitlePropsType {
   width: number;
   onResize: (e: React.SyntheticEvent<Element>, data: ResizeCallbackData) => void;
 }
-
 const ResizableTitle: React.FC<Readonly<React.HTMLAttributes<any> & TitlePropsType>> = (props) => {
   const { onResize, width, ...restProps } = props;
-
   if (!width) {
     return <th {...restProps} />;
   }
-
   return (
     <Resizable
       width={width}
@@ -4118,7 +3621,6 @@ const ResizableTitle: React.FC<Readonly<React.HTMLAttributes<any> & TitlePropsTy
     </Resizable>
   );
 };
-
 const data: DataType[] = [
   {
     key: 0,
@@ -4142,7 +3644,6 @@ const data: DataType[] = [
     note: 'transfer',
   },
 ];
-
 const App: React.FC = () => {
   const [columns, setColumns] = useState<TableColumnsType<DataType>>([
     {
@@ -4172,7 +3673,6 @@ const App: React.FC = () => {
       render: () => <a>Delete</a>,
     },
   ]);
-
   const handleResize =
     (index: number) =>
     (_: React.SyntheticEvent<Element>, { size }: ResizeCallbackData) => {
@@ -4183,7 +3683,6 @@ const App: React.FC = () => {
       };
       setColumns(newColumns);
     };
-
   const mergedColumns = columns.map<TableColumnsType<DataType>[number]>((col, index) => ({
     ...col,
     onHeaderCell: (column: TableColumnsType<DataType>[number]) => ({
@@ -4191,7 +3690,6 @@ const App: React.FC = () => {
       onResize: handleResize(index) as React.ReactEventHandler<any>,
     }),
   }));
-
   return (
     <Table<DataType>
       bordered
@@ -4201,33 +3699,24 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 单元格自动省略
-
 #### zh-CN
-
 设置 `column.ellipsis` 可以让单元格内容根据宽度自动省略。
-
 > 列头缩略暂不支持和排序筛选一起使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -4267,7 +3756,6 @@ const columns: TableColumnsType<DataType> = [
     ellipsis: true,
   },
 ];
-
 const data = [
   {
     key: '1',
@@ -4291,33 +3779,24 @@ const data = [
     tags: ['cool', 'teacher'],
   },
 ];
-
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
-
 export default App;
 
 ```
-
 ### 自定义单元格省略提示
-
 #### zh-CN
-
 设置 `column.ellipsis.showTitle` 关闭单元格内容自动省略后默认的 `title` 提示, 使用 `Tooltip` 替代。
-
-
 
 ```typescript
 import React from 'react';
 import { Table, Tooltip } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -4385,7 +3864,6 @@ const columns: TableColumnsType<DataType> = [
     ),
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -4406,33 +3884,24 @@ const data: DataType[] = [
     address: 'Sydney No. 1 Lake Park, Sydney No. 1 Lake Park',
   },
 ];
-
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
-
 export default App;
 
 ```
-
 ### 自定义空状态
-
 #### zh-CN
-
 自定义空状态。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { GetProp } from 'antd';
 import { Button, ConfigProvider, Empty, Table } from 'antd';
-
 interface DataType {
   key: number;
   name: string;
   age: number;
   address: string;
 }
-
 const genFakeData = (count = 5) =>
   Array.from({ length: count }).map<DataType>((_, index) => ({
     key: index,
@@ -4440,20 +3909,16 @@ const genFakeData = (count = 5) =>
     age: 32 + index,
     address: `London, Park Lane no. ${index}`,
   }));
-
 const renderEmpty: GetProp<typeof ConfigProvider, 'renderEmpty'> = (componentName) => {
   if (componentName === 'Table.filter' /** 👈 5.20.0+ */) {
     return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No Filter(Custom)" />;
   }
 };
-
 function App() {
   const [dataSource, setDataSource] = useState<DataType[]>(genFakeData);
-
   const handleToggle = () => {
     setDataSource(dataSource.length ? [] : genFakeData(Math.floor(Math.random() * 10)));
   };
-
   const columns: GetProp<typeof Table<DataType>, 'columns'> = [
     {
       title: 'Name',
@@ -4477,13 +3942,11 @@ function App() {
       key: 'address',
     },
   ];
-
   const toggleButton = (
     <Button type="primary" onClick={handleToggle}>
       Toggle Data
     </Button>
   );
-
   return (
     <ConfigProvider renderEmpty={renderEmpty}>
       {dataSource.length ? toggleButton : null}
@@ -4497,25 +3960,18 @@ function App() {
     </ConfigProvider>
   );
 }
-
 export default App;
 
 ```
-
 ### 总结栏
-
 #### zh-CN
-
 通过 `summary` 设置总结栏。使用 `Table.Summary.Cell` 同步 Column 的固定状态。你可以通过配置 `Table.Summary` 的 `fixed` 属性使其固定(`4.16.0` 支持)。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Table, Typography } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { createStyles } from 'antd-style';
-
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -4533,22 +3989,18 @@ const useStyle = createStyles(({ css, token }) => {
     `,
   };
 });
-
 const { Text } = Typography;
-
 interface DataType {
   key: string;
   name: string;
   borrow: number;
   repayment: number;
 }
-
 interface FixedDataType {
   key: React.Key;
   name: string;
   description: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -4563,7 +4015,6 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: 'repayment',
   },
 ];
-
 const dataSource: DataType[] = [
   {
     key: '1',
@@ -4590,7 +4041,6 @@ const dataSource: DataType[] = [
     repayment: 45,
   },
 ];
-
 const fixedColumns: TableColumnsType<FixedDataType> = [
   {
     title: 'Name',
@@ -4603,13 +4053,11 @@ const fixedColumns: TableColumnsType<FixedDataType> = [
     dataIndex: 'description',
   },
 ];
-
 const fixedDataSource = Array.from({ length: 20 }).map<FixedDataType>((_, i) => ({
   key: i,
   name: ['Light', 'Bamboo', 'Little'][i % 3],
   description: 'Everything that has a beginning, has an end.',
 }));
-
 const App: React.FC = () => {
   const { styles } = useStyle();
   return (
@@ -4667,24 +4115,17 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 虚拟列表
-
 #### zh-CN
-
 通过 `virtual` 开启虚拟滚动，此时 `scroll.x` 与 `scroll.y` 必须设置且为 `number` 类型。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Segmented, Space, Switch, Table, Typography } from 'antd';
 import type { TableProps } from 'antd';
-
 interface RecordType {
   id: number;
   firstName: string;
@@ -4694,7 +4135,6 @@ interface RecordType {
   address2: string;
   address3: string;
 }
-
 const fixedColumns: TableProps<RecordType>['columns'] = [
   {
     title: 'ID',
@@ -4757,7 +4197,6 @@ const fixedColumns: TableProps<RecordType>['columns'] = [
     ),
   },
 ];
-
 const columns: TableProps<RecordType>['columns'] = [
   {
     title: 'ID',
@@ -4774,7 +4213,6 @@ const columns: TableProps<RecordType>['columns'] = [
     dataIndex: 'lastName',
   },
 ];
-
 const getData = (length: number) =>
   Array.from({ length }).map<RecordType>((_, index) => ({
     id: index,
@@ -4785,42 +4223,33 @@ const getData = (length: number) =>
     address2: `London No. ${index} Lake Park`,
     address3: `Sydney No. ${index} Lake Park`,
   }));
-
 const App: React.FC = () => {
   const [fixed, setFixed] = React.useState(true);
   const [bordered, setBordered] = React.useState(true);
   const [expanded, setExpanded] = React.useState(false);
   const [empty, setEmpty] = React.useState(false);
   const [count, setCount] = React.useState(10000);
-
   const tblRef: Parameters<typeof Table>[0]['ref'] = React.useRef(null);
-
   const data = React.useMemo<RecordType[]>(() => getData(count), [count]);
-
   const mergedColumns = React.useMemo<typeof fixedColumns>(() => {
     if (!fixed) {
       return columns;
     }
-
     if (!expanded) {
       return fixedColumns;
     }
-
     return fixedColumns.map((col) => ({ ...col, onCell: undefined }));
   }, [expanded, fixed]);
-
   const expandableProps = React.useMemo<TableProps<RecordType>['expandable']>(() => {
     if (!expanded) {
       return undefined;
     }
-
     return {
       columnWidth: 48,
       expandedRowRender: (record) => <p style={{ margin: 0 }}>🎉 Expanded {record.address1}</p>,
       rowExpandable: (record) => record.id % 2 === 0,
     };
   }, [expanded]);
-
   return (
     <div style={{ padding: 64 }}>
       <Space direction="vertical" style={{ width: '100%' }}>
@@ -4858,14 +4287,12 @@ const App: React.FC = () => {
               { label: 'Lot', value: 10000 },
             ]}
           />
-
           {data.length >= 999 && (
             <Button onClick={() => tblRef.current?.scrollTo({ index: 999 })}>
               Scroll To index 999
             </Button>
           )}
         </Space>
-
         <Table<RecordType>
           bordered={bordered}
           virtual
@@ -4882,31 +4309,23 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 响应式
-
 #### zh-CN
-
 响应式配置列的展示。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name (all screens)',
@@ -4927,7 +4346,6 @@ const columns: TableColumnsType<DataType> = [
     responsive: ['lg'],
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -4936,27 +4354,19 @@ const data: DataType[] = [
     address: 'New York No. 1 Lake Park',
   },
 ];
-
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
-
 export default App;
 
 ```
-
 ### 嵌套带边框的表格 Debug
-
 #### zh-CN
-
 看看边框的样式是不是影响到别的表格。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { TableColumnsType, TableProps } from 'antd';
 import { Badge, Dropdown, Form, Space, Switch, Table } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
@@ -4966,19 +4376,16 @@ interface DataType {
   creator: string;
   createdAt: string;
 }
-
 interface ExpandedDataType {
   key: React.Key;
   date: string;
   name: string;
   upgradeNum: string;
 }
-
 const items = [
   { key: '1', label: 'Action 1' },
   { key: '2', label: 'Action 2' },
 ];
-
 const expandedColumns: TableProps<ExpandedDataType>['columns'] = [
   { title: 'Date', dataIndex: 'date', key: 'date' },
   { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -5010,14 +4417,12 @@ const expandedColumns: TableProps<ExpandedDataType>['columns'] = [
     ),
   },
 ];
-
 const expandedDataSource = Array.from({ length: 3 }).map<ExpandedDataType>((_, i) => ({
   key: i,
   date: '2014-12-24 23:12:00',
   name: 'This is production name',
   upgradeNum: 'Upgraded: 56',
 }));
-
 const createExpandedRowRender = (bordered: boolean) => () => (
   <Table<ExpandedDataType>
     columns={expandedColumns}
@@ -5026,7 +4431,6 @@ const createExpandedRowRender = (bordered: boolean) => () => (
     bordered={bordered}
   />
 );
-
 const columns: TableColumnsType<DataType> = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Platform', dataIndex: 'platform', key: 'platform' },
@@ -5036,7 +4440,6 @@ const columns: TableColumnsType<DataType> = [
   { title: 'Date', dataIndex: 'createdAt', key: 'createdAt' },
   { title: 'Action', key: 'operation', render: () => <a>Publish</a> },
 ];
-
 const dataSource = Array.from({ length: 3 }).map<DataType>((_, i) => ({
   key: i,
   name: 'Screem',
@@ -5046,7 +4449,6 @@ const dataSource = Array.from({ length: 3 }).map<DataType>((_, i) => ({
   creator: 'Jack',
   createdAt: '2014-12-24 23:12:00',
 }));
-
 const App: React.FC = () => {
   const [rootTableBordered, setRootTableBordered] = useState(true);
   const [childTableBordered, setChildTableBordered] = useState(true);
@@ -5071,30 +4473,22 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 分页设置
-
 #### zh-CN
-
 表格的分页设置。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Radio, Space, Table, Tag } from 'antd';
 import type { TableProps } from 'antd';
-
 type ColumnsType<T extends object> = TableProps<T>['columns'];
 type TablePagination<T extends object> = NonNullable<Exclude<TableProps<T>['pagination'], boolean>>;
 type TablePaginationPosition<T extends object> = NonNullable<
   TablePagination<T>['position']
 >[number];
-
 interface DataType {
   key: string;
   name: string;
@@ -5102,21 +4496,18 @@ interface DataType {
   address: string;
   tags: string[];
 }
-
 const topOptions = [
   { label: 'topLeft', value: 'topLeft' },
   { label: 'topCenter', value: 'topCenter' },
   { label: 'topRight', value: 'topRight' },
   { label: 'none', value: 'none' },
 ];
-
 const bottomOptions = [
   { label: 'bottomLeft', value: 'bottomLeft' },
   { label: 'bottomCenter', value: 'bottomCenter' },
   { label: 'bottomRight', value: 'bottomRight' },
   { label: 'none', value: 'none' },
 ];
-
 const columns: ColumnsType<DataType> = [
   {
     title: 'Name',
@@ -5165,7 +4556,6 @@ const columns: ColumnsType<DataType> = [
     ),
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -5189,7 +4579,6 @@ const data: DataType[] = [
     tags: ['cool', 'teacher'],
   },
 ];
-
 const App: React.FC = () => {
   const [top, setTop] = useState<TablePaginationPosition<DataType>>('topLeft');
   const [bottom, setBottom] = useState<TablePaginationPosition<DataType>>('bottomRight');
@@ -5221,43 +4610,32 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义选择项组
-
 #### zh-CN
-
 自定义选项分组。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
-
 type TableRowSelection<T extends object = object> = TableProps<T>['rowSelection'];
-
 interface DataType {
   key: React.Key;
   name: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
     dataIndex: 'name',
   },
 ];
-
 const dataSource = Array.from({ length: 46 }).map<DataType>((_, i) => ({
   key: i,
   name: i % 2 === 0 ? `Edward King ${i}` : 'Another Row',
 }));
-
 const rowSelection: TableRowSelection<DataType> = {
   renderCell: (checked, _record, index, node) => ({
     props: { rowSpan: index % 2 === 0 ? 2 : 0 },
@@ -5268,35 +4646,26 @@ const rowSelection: TableRowSelection<DataType> = {
     ),
   }),
 };
-
 const App: React.FC = () => (
   <Table<DataType> rowSelection={rowSelection} columns={columns} dataSource={dataSource} />
 );
-
 export default App;
 
 ```
-
 ### 随页面滚动的固定表头和滚动条
-
 #### zh-CN
-
 对于长表格，需要滚动才能查看表头和滚动条，那么现在可以设置跟随页面固定表头和滚动条。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Switch, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Full Name',
@@ -5363,14 +4732,12 @@ const columns: TableColumnsType<DataType> = [
     render: () => <a>action</a>,
   },
 ];
-
 const dataSource = Array.from({ length: 100 }).map<DataType>((_, i) => ({
   key: i,
   name: `Edward ${i}`,
   age: 32,
   address: `London Park no. ${i}`,
 }));
-
 const App: React.FC = () => {
   const [fixedTop, setFixedTop] = useState(false);
   return (
@@ -5403,32 +4770,24 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 动态控制表格属性
-
 #### zh-CN
-
 选择不同配置组合查看效果。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { GetProp, RadioChangeEvent, TableProps } from 'antd';
 import { Form, Radio, Space, Switch, Table } from 'antd';
-
 type SizeType = TableProps['size'];
 type ColumnsType<T extends object> = GetProp<TableProps<T>, 'columns'>;
 type TablePagination<T extends object> = NonNullable<Exclude<TableProps<T>['pagination'], boolean>>;
 type TablePaginationPosition = NonNullable<TablePagination<any>['position']>[number];
 type ExpandableConfig<T extends object> = TableProps<T>['expandable'];
 type TableRowSelection<T extends object> = TableProps<T>['rowSelection'];
-
 interface DataType {
   key: number;
   name: string;
@@ -5436,7 +4795,6 @@ interface DataType {
   address: string;
   description: string;
 }
-
 const columns: ColumnsType<DataType> = [
   {
     title: 'Name',
@@ -5479,7 +4837,6 @@ const columns: ColumnsType<DataType> = [
     ),
   },
 ];
-
 const data = Array.from({ length: 10 }).map<DataType>((_, i) => ({
   key: i,
   name: 'John Brown',
@@ -5487,14 +4844,11 @@ const data = Array.from({ length: 10 }).map<DataType>((_, i) => ({
   address: `New York No. ${i} Lake Park`,
   description: `My name is John Brown, I am ${i}2 years old, living in New York No. ${i} Lake Park.`,
 }));
-
 const defaultExpandable: ExpandableConfig<DataType> = {
   expandedRowRender: (record: DataType) => <p>{record.description}</p>,
 };
-
 const defaultTitle = () => 'Here is title';
 const defaultFooter = () => 'Here is footer';
-
 const App: React.FC = () => {
   const [bordered, setBordered] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -5511,59 +4865,45 @@ const App: React.FC = () => {
   const [ellipsis, setEllipsis] = useState(false);
   const [yScroll, setYScroll] = useState(false);
   const [xScroll, setXScroll] = useState<string>('unset');
-
   const handleBorderChange = (enable: boolean) => {
     setBordered(enable);
   };
-
   const handleLoadingChange = (enable: boolean) => {
     setLoading(enable);
   };
-
   const handleSizeChange = (e: RadioChangeEvent) => {
     setSize(e.target.value);
   };
-
   const handleTableLayoutChange = (e: RadioChangeEvent) => {
     setTableLayout(e.target.value);
   };
-
   const handleExpandChange = (enable: boolean) => {
     setExpandable(enable ? defaultExpandable : undefined);
   };
-
   const handleEllipsisChange = (enable: boolean) => {
     setEllipsis(enable);
   };
-
   const handleTitleChange = (enable: boolean) => {
     setShowTitle(enable);
   };
-
   const handleHeaderChange = (enable: boolean) => {
     setShowHeader(enable);
   };
-
   const handleFooterChange = (enable: boolean) => {
     setShowFooter(enable);
   };
-
   const handleRowSelectionChange = (enable: boolean) => {
     setRowSelection(enable ? {} : undefined);
   };
-
   const handleYScrollChange = (enable: boolean) => {
     setYScroll(enable);
   };
-
   const handleXScrollChange = (e: RadioChangeEvent) => {
     setXScroll(e.target.value);
   };
-
   const handleDataChange = (newHasData: boolean) => {
     setHasData(newHasData);
   };
-
   const scroll: { x?: number | string; y?: number | string } = {};
   if (yScroll) {
     scroll.y = 240;
@@ -5571,13 +4911,11 @@ const App: React.FC = () => {
   if (xScroll !== 'unset') {
     scroll.x = '100vw';
   }
-
   const tableColumns = columns.map((item) => ({ ...item, ellipsis }));
   if (xScroll === 'fixed') {
     tableColumns[0].fixed = true;
     tableColumns[tableColumns.length - 1].fixed = 'right';
   }
-
   const tableProps: TableProps<DataType> = {
     bordered,
     loading,
@@ -5590,7 +4928,6 @@ const App: React.FC = () => {
     scroll,
     tableLayout: tableLayout === 'unset' ? undefined : (tableLayout as TableProps['tableLayout']),
   };
-
   return (
     <>
       <Form layout="inline" className="table-demo-control-bar" style={{ marginBottom: 16 }}>
@@ -5671,31 +5008,23 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 带下拉箭头的表头
-
 #### zh-CN
-
 调试使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const columns: TableColumnsType<DataType> = [
   {
     title: 'Name',
@@ -5710,7 +5039,6 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: 'address',
   },
 ];
-
 const data: DataType[] = [
   {
     key: '1',
@@ -5731,7 +5059,6 @@ const data: DataType[] = [
     address: 'Sydney No. 1 Lake Park',
   },
 ];
-
 const App: React.FC = () => (
   <Table<DataType>
     bordered
@@ -5740,32 +5067,24 @@ const App: React.FC = () => (
     dataSource={data}
   />
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 组件 Token
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { ConfigProviderProps, GetProp, RadioChangeEvent, TableProps } from 'antd';
 import { ConfigProvider, Form, Radio, Space, Switch, Table } from 'antd';
-
 type SizeType = ConfigProviderProps['componentSize'];
 type ColumnsType<T extends object> = GetProp<TableProps<T>, 'columns'>;
 type TablePagination = Exclude<GetProp<TableProps, 'pagination'>, boolean>;
 type TablePaginationPosition = NonNullable<TablePagination['position']>[number];
 type ExpandableConfig<T extends object> = GetProp<TableProps<T>, 'expandable'>;
 type TableRowSelection<T extends object> = GetProp<TableProps<T>, 'rowSelection'>;
-
 interface DataType {
   key: number;
   name: string;
@@ -5773,7 +5092,6 @@ interface DataType {
   address: string;
   description: string;
 }
-
 const columns: ColumnsType<DataType> = [
   {
     title: 'Name',
@@ -5816,7 +5134,6 @@ const columns: ColumnsType<DataType> = [
     ),
   },
 ];
-
 const dataSource = Array.from({ length: 10 }).map<DataType>((_, i) => ({
   key: i,
   name: 'John Brown',
@@ -5824,14 +5141,11 @@ const dataSource = Array.from({ length: 10 }).map<DataType>((_, i) => ({
   address: `New York No. ${i} Lake Park`,
   description: `My name is John Brown, I am ${i}2 years old, living in New York No. ${i} Lake Park.`,
 }));
-
 const defaultExpandable: ExpandableConfig<DataType> = {
   expandedRowRender: (record: DataType) => <p>{record.description}</p>,
 };
-
 const defaultTitle = () => 'Here is title';
 const defaultFooter = () => 'Here is footer';
-
 const App: React.FC = () => {
   const [bordered, setBordered] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -5850,59 +5164,45 @@ const App: React.FC = () => {
   const [ellipsis, setEllipsis] = useState(false);
   const [yScroll, setYScroll] = useState(false);
   const [xScroll, setXScroll] = useState<string>('unset');
-
   const handleBorderChange = (enable: boolean) => {
     setBordered(enable);
   };
-
   const handleLoadingChange = (enable: boolean) => {
     setLoading(enable);
   };
-
   const handleSizeChange = (e: RadioChangeEvent) => {
     setSize(e.target.value);
   };
-
   const handleTableLayoutChange = (e: RadioChangeEvent) => {
     setTableLayout(e.target.value);
   };
-
   const handleExpandChange = (enable: boolean) => {
     setExpandable(enable ? defaultExpandable : undefined);
   };
-
   const handleEllipsisChange = (enable: boolean) => {
     setEllipsis(enable);
   };
-
   const handleTitleChange = (enable: boolean) => {
     setShowTitle(enable);
   };
-
   const handleHeaderChange = (enable: boolean) => {
     setShowHeader(enable);
   };
-
   const handleFooterChange = (enable: boolean) => {
     setShowFooter(enable);
   };
-
   const handleRowSelectionChange = (enable: boolean) => {
     setRowSelection(enable ? {} : undefined);
   };
-
   const handleYScrollChange = (enable: boolean) => {
     setYScroll(enable);
   };
-
   const handleXScrollChange = (e: RadioChangeEvent) => {
     setXScroll(e.target.value);
   };
-
   const handleDataChange = (newHasData: boolean) => {
     setHasData(newHasData);
   };
-
   const scroll: { x?: number | string; y?: number | string } = {};
   if (yScroll) {
     scroll.y = 240;
@@ -5910,13 +5210,11 @@ const App: React.FC = () => {
   if (xScroll !== 'unset') {
     scroll.x = '100vw';
   }
-
   const tableColumns = columns.map((item) => ({ ...item, ellipsis }));
   if (xScroll === 'fixed') {
     tableColumns[0].fixed = true;
     tableColumns[tableColumns.length - 1].fixed = 'right';
   }
-
   const tableProps: TableProps<DataType> = {
     bordered,
     loading,
@@ -5929,7 +5227,6 @@ const App: React.FC = () => {
     scroll,
     tableLayout: tableLayout === 'unset' ? undefined : (tableLayout as TableProps['tableLayout']),
   };
-
   return (
     <>
       <Form layout="inline" className="table-demo-control-bar" style={{ marginBottom: 16 }}>
@@ -6047,8 +5344,6 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-

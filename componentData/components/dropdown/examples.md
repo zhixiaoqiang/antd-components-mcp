@@ -1,19 +1,13 @@
 ## Dropdown 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的下拉菜单。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -48,7 +42,6 @@ const items: MenuProps['items'] = [
     label: 'a danger item',
   },
 ];
-
 const App: React.FC = () => (
   <Dropdown menu={{ items }}>
     <a onClick={(e) => e.preventDefault()}>
@@ -59,25 +52,18 @@ const App: React.FC = () => (
     </a>
   </Dropdown>
 );
-
 export default App;
 
 ```
-
 ### 额外节点
-
 #### zh-CN
-
 带有快捷方式的下拉菜单。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -104,7 +90,6 @@ const items: MenuProps['items'] = [
     extra: '⌘S',
   },
 ];
-
 const App: React.FC = () => (
   <Dropdown menu={{ items }}>
     <a onClick={(e) => e.preventDefault()}>
@@ -115,24 +100,17 @@ const App: React.FC = () => (
     </a>
   </Dropdown>
 );
-
 export default App;
 
 ```
-
 ### 弹出位置
-
 #### zh-CN
-
 支持 6 个弹出位置。
-
-
 
 ```typescript
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -159,7 +137,6 @@ const items: MenuProps['items'] = [
     ),
   },
 ];
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <Space wrap>
@@ -186,24 +163,17 @@ const App: React.FC = () => (
     </Space>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 箭头
-
 #### zh-CN
-
 可以展示一个箭头。
-
-
 
 ```typescript
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -230,7 +200,6 @@ const items: MenuProps['items'] = [
     ),
   },
 ];
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <Space wrap>
@@ -257,25 +226,18 @@ const App: React.FC = () => (
     </Space>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 其他元素
-
 #### zh-CN
-
 分割线和不可用菜单项。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     label: (
@@ -302,7 +264,6 @@ const items: MenuProps['items'] = [
     disabled: true,
   },
 ];
-
 const App: React.FC = () => (
   <Dropdown menu={{ items }}>
     <a onClick={(e) => e.preventDefault()}>
@@ -313,24 +274,17 @@ const App: React.FC = () => (
     </a>
   </Dropdown>
 );
-
 export default App;
 
 ```
-
 ### 箭头指向
-
 #### zh-CN
-
 设置 `arrow` 为 `{ pointAtCenter: true }` 后，箭头将指向目标元素的中心。
-
-
 
 ```typescript
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -357,7 +311,6 @@ const items: MenuProps['items'] = [
     ),
   },
 ];
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <Space wrap>
@@ -384,25 +337,18 @@ const App: React.FC = () => (
     </Space>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 触发方式
-
 #### zh-CN
-
 默认是移入触发菜单，可以点击触发。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     label: (
@@ -428,7 +374,6 @@ const items: MenuProps['items'] = [
     key: '3',
   },
 ];
-
 const App: React.FC = () => (
   <Dropdown menu={{ items }} trigger={['click']}>
     <a onClick={(e) => e.preventDefault()}>
@@ -439,29 +384,21 @@ const App: React.FC = () => (
     </a>
   </Dropdown>
 );
-
 export default App;
 
 ```
-
 ### 触发事件
-
 #### zh-CN
-
 点击菜单项后会触发事件，用户可以通过相应的菜单项 key 进行不同的操作。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, message, Space } from 'antd';
-
 const onClick: MenuProps['onClick'] = ({ key }) => {
   message.info(`Click on item ${key}`);
 };
-
 const items: MenuProps['items'] = [
   {
     label: '1st menu item',
@@ -476,7 +413,6 @@ const items: MenuProps['items'] = [
     key: '3',
   },
 ];
-
 const App: React.FC = () => (
   <Dropdown menu={{ items, onClick }}>
     <a onClick={(e) => e.preventDefault()}>
@@ -487,35 +423,26 @@ const App: React.FC = () => (
     </a>
   </Dropdown>
 );
-
 export default App;
 
 ```
-
 ### 带下拉框的按钮
-
 #### zh-CN
-
 左边是按钮，右边是额外的相关功能菜单。可设置 `icon` 属性来修改右边的图标。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, message, Space, Tooltip } from 'antd';
-
 const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
   message.info('Click on left button.');
   console.log('click left button', e);
 };
-
 const handleMenuClick: MenuProps['onClick'] = (e) => {
   message.info('Click on menu item.');
   console.log('click', e);
 };
-
 const items: MenuProps['items'] = [
   {
     label: '1st menu item',
@@ -541,12 +468,10 @@ const items: MenuProps['items'] = [
     disabled: true,
   },
 ];
-
 const menuProps = {
   items,
   onClick: handleMenuClick,
 };
-
 const App: React.FC = () => (
   <Space wrap>
     <Dropdown.Button menu={menuProps} onClick={handleButtonClick}>
@@ -582,27 +507,19 @@ const App: React.FC = () => (
     </Dropdown.Button>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 扩展菜单
-
 #### zh-CN
-
 使用 `dropdownRender` 对下拉菜单进行自由扩展。如果你并不需要 Menu 内容，请直接使用 Popover 组件。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Button, Divider, Dropdown, Space, theme } from 'antd';
 import type { MenuProps } from 'antd';
-
 const { useToken } = theme;
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -631,20 +548,16 @@ const items: MenuProps['items'] = [
     disabled: true,
   },
 ];
-
 const App: React.FC = () => {
   const { token } = useToken();
-
   const contentStyle: React.CSSProperties = {
     backgroundColor: token.colorBgElevated,
     borderRadius: token.borderRadiusLG,
     boxShadow: token.boxShadowSecondary,
   };
-
   const menuStyle: React.CSSProperties = {
     boxShadow: 'none',
   };
-
   return (
     <Dropdown
       menu={{ items }}
@@ -672,25 +585,18 @@ const App: React.FC = () => {
     </Dropdown>
   );
 };
-
 export default App;
 
 ```
-
 ### 多级菜单
-
 #### zh-CN
-
 传入的菜单里有多个层级。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -737,7 +643,6 @@ const items: MenuProps['items'] = [
     ],
   },
 ];
-
 const App: React.FC = () => (
   <Dropdown menu={{ items }}>
     <a onClick={(e) => e.preventDefault()}>
@@ -748,25 +653,18 @@ const App: React.FC = () => (
     </a>
   </Dropdown>
 );
-
 export default App;
 
 ```
-
 ### 多级菜单
-
 #### zh-CN
-
 传入的菜单里有多个层级。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -813,7 +711,6 @@ const items: MenuProps['items'] = [
     ],
   },
 ];
-
 const App: React.FC = () => (
   <div style={{ height: 200 }}>
     <Dropdown menu={{ items, openKeys: ['2'] }} open autoAdjustOverflow={false}>
@@ -826,40 +723,30 @@ const App: React.FC = () => (
     </Dropdown>
   </div>
 );
-
 export default App;
 
 ```
-
 ### 菜单隐藏方式
-
 #### zh-CN
-
 默认是点击关闭菜单，可以关闭此功能。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { DropdownProps, MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
-
   const handleMenuClick: MenuProps['onClick'] = (e) => {
     if (e.key === '3') {
       setOpen(false);
     }
   };
-
   const handleOpenChange: DropdownProps['onOpenChange'] = (nextOpen, info) => {
     if (info.source === 'trigger' || nextOpen) {
       setOpen(nextOpen);
     }
   };
-
   const items: MenuProps['items'] = [
     {
       label: 'Clicking me will not close the menu.',
@@ -874,7 +761,6 @@ const App: React.FC = () => {
       key: '3',
     },
   ];
-
   return (
     <Dropdown
       menu={{
@@ -893,24 +779,17 @@ const App: React.FC = () => {
     </Dropdown>
   );
 };
-
 export default App;
 
 ```
-
 ### 右键菜单
-
 #### zh-CN
-
 默认是移入触发菜单，可以点击鼠标右键触发。弹出菜单位置会跟随右键点击位置变动。
-
-
 
 ```typescript
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { Dropdown, theme } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     label: '1st menu item',
@@ -925,12 +804,10 @@ const items: MenuProps['items'] = [
     key: '3',
   },
 ];
-
 const App: React.FC = () => {
   const {
     token: { colorBgLayout, colorTextTertiary },
   } = theme.useToken();
-
   return (
     <Dropdown menu={{ items }} trigger={['contextMenu']}>
       <div
@@ -947,42 +824,32 @@ const App: React.FC = () => {
     </Dropdown>
   );
 };
-
 export default App;
 
 ```
-
 ### 加载中状态
-
 #### zh-CN
-
 添加 `loading` 属性即可让按钮处于加载状态，最后两个按钮演示点击后进入加载状态。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     label: 'Submit and continue',
     key: '1',
   },
 ];
-
 const App: React.FC = () => {
   const [loadings, setLoadings] = useState<boolean[]>([]);
-
   const enterLoading = (index: number) => {
     setLoadings((state) => {
       const newLoadings = [...state];
       newLoadings[index] = true;
       return newLoadings;
     });
-
     setTimeout(() => {
       setLoadings((state) => {
         const newLoadings = [...state];
@@ -991,7 +858,6 @@ const App: React.FC = () => {
       });
     }, 6000);
   };
-
   return (
     <Space direction="vertical">
       <Dropdown.Button type="primary" loading menu={{ items }}>
@@ -1019,25 +885,18 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 菜单可选选择
-
 #### zh-CN
-
 添加 `menu` 中的 `selectable` 属性可以开启选择能力。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space, Typography } from 'antd';
-
 const items: MenuProps['items'] = [
   {
     key: '1',
@@ -1052,7 +911,6 @@ const items: MenuProps['items'] = [
     label: 'Item 3',
   },
 ];
-
 const App: React.FC = () => (
   <Dropdown
     menu={{
@@ -1069,29 +927,20 @@ const App: React.FC = () => (
     </Typography.Link>
   </Dropdown>
 );
-
 export default App;
 
 ```
-
 ### Menu 完整样式
-
 #### zh-CN
-
 此演示需要注意去掉 Reset 样式后查看 Dropdown 内 Menu 的样式是否正常。
-
 [##19150](https://github.com/ant-design/ant-design/pull/19150)
-
-
 
 ```typescript
 import React from 'react';
 import { AppstoreOutlined, DownOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 function getItem(
   label: React.ReactNode,
   key: React.Key,
@@ -1107,7 +956,6 @@ function getItem(
     type,
   } as MenuItem;
 }
-
 const items: MenuItem[] = [
   getItem(
     'Item Group',
@@ -1134,7 +982,6 @@ const items: MenuItem[] = [
   // Not crash
   null as any,
 ];
-
 const App: React.FC = () => (
   <Dropdown
     menu={{
@@ -1151,26 +998,18 @@ const App: React.FC = () => (
     </a>
   </Dropdown>
 );
-
 export default App;
 
 ```
-
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalDropdown } = Dropdown;
-
 const menu = [
   {
     key: '1',
@@ -1205,26 +1044,18 @@ const menu = [
     label: 'a danger item',
   },
 ];
-
 const App: React.FC = () => <InternalDropdown menu={{ items: menu }} />;
-
 export default App;
 
 ```
-
 ### Icon debug
-
 #### zh-CN
-
 特殊处理 Down icon。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space>
     <Dropdown.Button icon={<DownOutlined />} menu={{ items: [] }}>
@@ -1232,8 +1063,6 @@ const App: React.FC = () => (
     </Dropdown.Button>
   </Space>
 );
-
 export default App;
 
 ```
-

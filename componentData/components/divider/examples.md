@@ -1,17 +1,11 @@
 ## Divider 组件示例
-
 ### 水平分割线
-
 #### zh-CN
-
 默认为水平分割线，可在中间加入文字。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider } from 'antd';
-
 const App: React.FC = () => (
   <>
     <p>
@@ -30,23 +24,16 @@ const App: React.FC = () => (
     </p>
   </>
 );
-
 export default App;
 
 ```
-
 ### 带文字的分割线
-
 #### zh-CN
-
 分割线中带有文字，可以用 `orientation` 指定文字位置。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider } from 'antd';
-
 const App: React.FC = () => (
   <>
     <p>
@@ -84,23 +71,16 @@ const App: React.FC = () => (
     </p>
   </>
 );
-
 export default App;
 
 ```
-
 ### 分割文字使用正文样式
-
 #### zh-CN
-
 使用 `plain` 可以设置为更轻量的分割文字样式。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider } from 'antd';
-
 const App: React.FC = () => (
   <>
     <p>
@@ -128,23 +108,16 @@ const App: React.FC = () => (
     </p>
   </>
 );
-
 export default App;
 
 ```
-
 ### 垂直分割线
-
 #### zh-CN
-
 使用 `type="vertical"` 设置为行内的垂直分割线。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider } from 'antd';
-
 const App: React.FC = () => (
   <>
     Text
@@ -154,23 +127,16 @@ const App: React.FC = () => (
     <a href="#">Link</a>
   </>
 );
-
 export default App;
 
 ```
-
 ### 样式自定义
-
 #### zh-CN
-
 测试一些 `style` 修改样式的行为。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Divider style={{ borderWidth: 2, borderColor: '#7cb305' }} />
@@ -180,7 +146,6 @@ const App: React.FC = () => (
     </Divider>
     <Divider type="vertical" style={{ height: 60, borderColor: '#7cb305' }} />
     <Divider type="vertical" style={{ height: 60, borderColor: '#7cb305' }} dashed />
-
     <div style={{ display: 'flex', flexDirection: 'column', height: 50, boxShadow: '0 0 1px red' }}>
       <Divider style={{ background: 'rgba(0,255,0,0.05)' }} orientation="left">
         Text
@@ -188,23 +153,16 @@ const App: React.FC = () => (
     </div>
   </>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 组件 Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Divider } from 'antd';
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -258,23 +216,16 @@ const App: React.FC = () => (
     </p>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-
 ### 变体
-
 #### zh-CN
-
 分隔线默认为 `solid`（实线）变体。您可以将其更改为 `dashed`（虚线）或 `dotted`（点线）。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider } from 'antd';
-
 const App: React.FC = () => (
   <>
     <p>
@@ -302,8 +253,6 @@ const App: React.FC = () => (
     </p>
   </>
 );
-
 export default App;
 
 ```
-

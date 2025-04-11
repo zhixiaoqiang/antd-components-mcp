@@ -1,7 +1,5 @@
 ## API
-
 ### Mentions
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 可以点击清除图标删除内容 | boolean \| { clearIcon?: ReactNode } | false | 5.13.0 |
@@ -27,16 +25,12 @@
 | onSelect | 选择选项时触发 | (option: OptionProps, prefix: string) => void | - |  |
 | onPopupScroll | 滚动时触发 | (event: Event) => void | - | 5.23.0 |
 | options | 选项配置 | [Options](#option) | [] | 5.1.0 |
-
 ### Mentions 方法
-
 | 名称    | 描述     |
 | ------- | -------- |
 | blur()  | 移除焦点 |
 | focus() | 获取焦点 |
-
 ### Option
-
 | 参数      | 说明           | 类型                | 默认值 |
 | --------- | -------------- | ------------------- | ------ |
 | value     | 选择时填充的值 | string              | -      |

@@ -1,9 +1,6 @@
-
 ## 何时使用
-
 - 对复杂区域进行分组和隐藏，保持页面的整洁。
 - `手风琴` 是一种特殊的折叠面板，只允许单个内容区域展开。
-
 ```tsx | pure
 // >= 5.6.0 可用，推荐的写法 ✅
 const text = `
@@ -11,7 +8,6 @@ const text = `
   Known for its loyalty and faithfulness,
   it can be found as a welcome guest in many households across the world.
 `;
-
 const items: CollapseProps['items'] = [
   {
     key: '1',
@@ -29,11 +25,8 @@ const items: CollapseProps['items'] = [
     children: <p>{text}</p>,
   },
 ];
-
 <Collapse items={items} defaultActiveKey={['1']} />;
-
 // <5.6.0 可用，>=5.6.0 时不推荐 🙅🏻‍♀️
-
 <Collapse defaultActiveKey={['1']} onChange={onChange}>
   <Panel header="This is panel header 1" key="1">
     <p>{text}</p>
@@ -47,12 +40,8 @@ const items: CollapseProps['items'] = [
 </Collapse>;
 ```
 
-
-
 ## API
-
 ### Collapse
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | accordion | 手风琴模式 | boolean | false |  |
@@ -67,9 +56,7 @@ const items: CollapseProps['items'] = [
 | size | 设置折叠面板大小 | `large` \| `middle` \| `small` | `middle` | 5.2.0 |
 | onChange | 切换面板的回调 | function | - |  |
 | items | 折叠项目内容 | [ItemType](#itemtype) | - | 5.6.0 |
-
 ### ItemType
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | classNames | 语义化结构 className | [`Record<header \| body, string>`](#semantic-dom) | - | 5.21.0 |
@@ -81,14 +68,11 @@ const items: CollapseProps['items'] = [
 | label | 面板标题 | ReactNode | - | - |
 | showArrow | 是否展示当前面板上的箭头（为 false 时，collapsible 不能设为 icon） | boolean | true |  |
 | styles | 语义化结构 style | [`Record<header \| body, CSSProperties>`](#semantic-dom) | - | 5.21.0 |
-
 ### Collapse.Panel
-
 <!-- prettier-ignore -->
 :::warning{title=已废弃}
 版本 >= 5.6.0 时请使用 items 方式配置面板。
 :::
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | collapsible | 是否可折叠或指定可折叠触发区域 | `header` \| `icon` \| `disabled` | - | 4.9.0 (icon: 4.24.0) |
@@ -97,7 +81,5 @@ const items: CollapseProps['items'] = [
 | header | 面板标题 | ReactNode | - |  |
 | key | 对应 activeKey | string \| number | - |  |
 | showArrow | 是否展示当前面板上的箭头（为 false 时，collapsible 不能设为 icon） | boolean | true |  |
-
-
 
 

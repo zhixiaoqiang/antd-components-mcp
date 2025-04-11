@@ -1,19 +1,13 @@
 ## Upload 组件示例
-
 ### 点击上传
-
 #### zh-CN
-
 经典款式，用户点击按钮弹出文件选择框。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
-
 const props: UploadProps = {
   name: 'file',
   action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
@@ -31,41 +25,30 @@ const props: UploadProps = {
     }
   },
 };
-
 const App: React.FC = () => (
   <Upload {...props}>
     <Button icon={<UploadOutlined />}>Click to Upload</Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 用户头像
-
 #### zh-CN
-
 点击上传用户头像，并使用 `beforeUpload` 限制用户上传的图片格式和大小。
-
 > `beforeUpload` 的返回值可以是一个 Promise 以支持异步处理，如服务端校验等：[示例](https://upload-react-component.vercel.app/demo/before-upload##beforeupload)。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Flex, message, Upload } from 'antd';
 import type { GetProp, UploadProps } from 'antd';
-
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
-
 const getBase64 = (img: FileType, callback: (url: string) => void) => {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result as string));
   reader.readAsDataURL(img);
 };
-
 const beforeUpload = (file: FileType) => {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
   if (!isJpgOrPng) {
@@ -77,11 +60,9 @@ const beforeUpload = (file: FileType) => {
   }
   return isJpgOrPng && isLt2M;
 };
-
 const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
-
   const handleChange: UploadProps['onChange'] = (info) => {
     if (info.file.status === 'uploading') {
       setLoading(true);
@@ -95,14 +76,12 @@ const App: React.FC = () => {
       });
     }
   };
-
   const uploadButton = (
     <button style={{ border: 0, background: 'none' }} type="button">
       {loading ? <LoadingOutlined /> : <PlusOutlined />}
       <div style={{ marginTop: 8 }}>Upload</div>
     </button>
   );
-
   return (
     <Flex gap="middle" wrap>
       <Upload
@@ -130,25 +109,18 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 已上传的文件列表
-
 #### zh-CN
-
 使用 `defaultFileList` 设置已上传的内容。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, Upload } from 'antd';
-
 const props: UploadProps = {
   action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
   onChange({ file, fileList }) {
@@ -179,33 +151,24 @@ const props: UploadProps = {
     },
   ],
 };
-
 const App: React.FC = () => (
   <Upload {...props}>
     <Button icon={<UploadOutlined />}>Upload</Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 照片墙
-
 #### zh-CN
-
 用户可以上传图片并在列表中显示缩略图。当上传照片数到达限制后，上传按钮消失。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Image, Upload } from 'antd';
 import type { GetProp, UploadFile, UploadProps } from 'antd';
-
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
-
 const getBase64 = (file: FileType): Promise<string> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -213,7 +176,6 @@ const getBase64 = (file: FileType): Promise<string> =>
     reader.onload = () => resolve(reader.result as string);
     reader.onerror = (error) => reject(error);
   });
-
 const App: React.FC = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
@@ -255,19 +217,15 @@ const App: React.FC = () => {
       status: 'error',
     },
   ]);
-
   const handlePreview = async (file: UploadFile) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj as FileType);
     }
-
     setPreviewImage(file.url || (file.preview as string));
     setPreviewOpen(true);
   };
-
   const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) =>
     setFileList(newFileList);
-
   const uploadButton = (
     <button style={{ border: 0, background: 'none' }} type="button">
       <PlusOutlined />
@@ -299,27 +257,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 圆形照片墙
-
 #### zh-CN
-
 图片卡的替代显示。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Image, Upload } from 'antd';
 import type { GetProp, UploadFile, UploadProps } from 'antd';
-
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
-
 const getBase64 = (file: FileType): Promise<string> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -327,7 +277,6 @@ const getBase64 = (file: FileType): Promise<string> =>
     reader.onload = () => resolve(reader.result as string);
     reader.onerror = (error) => reject(error);
   });
-
 const App: React.FC = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
@@ -351,19 +300,15 @@ const App: React.FC = () => {
       status: 'error',
     },
   ]);
-
   const handlePreview = async (file: UploadFile) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj as FileType);
     }
-
     setPreviewImage(file.url || (file.preview as string));
     setPreviewOpen(true);
   };
-
   const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) =>
     setFileList(newFileList);
-
   const uploadButton = (
     <button style={{ border: 0, background: 'none' }} type="button">
       <PlusOutlined />
@@ -395,29 +340,20 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 完全控制的上传列表
-
 #### zh-CN
-
 使用 `fileList` 对列表进行完全控制，可以实现各种自定义功能，以下演示二种情况：
-
 1. 上传列表数量的限制。
-
 2. 读取远程路径并显示链接。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadFile, UploadProps } from 'antd';
 import { Button, Upload } from 'antd';
-
 const App: React.FC = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([
     {
@@ -427,14 +363,11 @@ const App: React.FC = () => {
       url: 'http://www.baidu.com/xxx.png',
     },
   ]);
-
   const handleChange: UploadProps['onChange'] = (info) => {
     let newFileList = [...info.fileList];
-
     // 1. Limit the number of uploaded files
     // Only to show two recent uploaded files, and old ones will be replaced by the new
     newFileList = newFileList.slice(-2);
-
     // 2. Read from response and show file link
     newFileList = newFileList.map((file) => {
       if (file.response) {
@@ -443,10 +376,8 @@ const App: React.FC = () => {
       }
       return file;
     });
-
     setFileList(newFileList);
   };
-
   const props = {
     action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
     onChange: handleChange,
@@ -458,29 +389,20 @@ const App: React.FC = () => {
     </Upload>
   );
 };
-
 export default App;
 
 ```
-
 ### 拖拽上传
-
 #### zh-CN
-
 把文件拖入指定区域，完成上传，同样支持点击上传。
-
 设置 `multiple` 后，在 `IE10+` 可以一次上传多个文件。
-
-
 
 ```typescript
 import React from 'react';
 import { InboxOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { message, Upload } from 'antd';
-
 const { Dragger } = Upload;
-
 const props: UploadProps = {
   name: 'file',
   multiple: true,
@@ -500,7 +422,6 @@ const props: UploadProps = {
     console.log('Dropped files', e.dataTransfer.files);
   },
 };
-
 const App: React.FC = () => (
   <Dragger {...props}>
     <p className="ant-upload-drag-icon">
@@ -513,54 +434,38 @@ const App: React.FC = () => (
     </p>
   </Dragger>
 );
-
 export default App;
 
 ```
-
 ### 文件夹上传
-
 #### zh-CN
-
 支持上传一个文件夹里的所有文件。 [Safari 里仍然能选择文件?](##%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8A%E4%BC%A0%E5%9C%A8-safari-%E4%BB%8D%E7%84%B6%E5%8F%AF%E4%BB%A5%E9%80%89%E4%B8%AD%E6%96%87%E4%BB%B6)
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
-
 const App: React.FC = () => (
   <Upload action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload" directory>
     <Button icon={<UploadOutlined />}>Upload Directory</Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 手动上传
-
 #### zh-CN
-
 `beforeUpload` 返回 `false` 后，手动上传文件。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
 import type { GetProp, UploadFile, UploadProps } from 'antd';
-
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
-
 const App: React.FC = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [uploading, setUploading] = useState(false);
-
   const handleUpload = () => {
     const formData = new FormData();
     fileList.forEach((file) => {
@@ -584,7 +489,6 @@ const App: React.FC = () => {
         setUploading(false);
       });
   };
-
   const props: UploadProps = {
     onRemove: (file) => {
       const index = fileList.indexOf(file);
@@ -594,12 +498,10 @@ const App: React.FC = () => {
     },
     beforeUpload: (file) => {
       setFileList([...fileList, file]);
-
       return false;
     },
     fileList,
   };
-
   return (
     <>
       <Upload {...props}>
@@ -617,25 +519,18 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 只上传 png 图片
-
 #### zh-CN
-
 `beforeUpload` 返回 `false` 或 `Promise.reject` 时，只用于拦截上传行为，不会阻止文件进入上传列表（[原因](https://github.com/ant-design/ant-design/issues/15561##issuecomment-475108235)）。如果需要阻止列表展现，可以通过返回 `Upload.LIST_IGNORE` 实现。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
-
 const props: UploadProps = {
   beforeUpload: (file) => {
     const isPNG = file.type === 'image/png';
@@ -648,31 +543,23 @@ const props: UploadProps = {
     console.log(info.fileList);
   },
 };
-
 const App: React.FC = () => (
   <Upload {...props}>
     <Button icon={<UploadOutlined />}>Upload png only</Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 图片列表样式
-
 #### zh-CN
-
 上传文件为图片，可展示本地缩略图。`IE8/9` 不支持浏览器本地缩略图展示（[Ref](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL)），可以写 `thumbUrl` 属性来代替。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import type { UploadFile } from 'antd';
-
 const fileList: UploadFile[] = [
   {
     uid: '0',
@@ -693,7 +580,6 @@ const fileList: UploadFile[] = [
     status: 'error',
   },
 ];
-
 const App: React.FC = () => (
   <Upload
     action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
@@ -705,25 +591,18 @@ const App: React.FC = () => (
     </Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 自定义预览
-
 #### zh-CN
-
 自定义本地预览，用于处理非图片格式文件（例如视频文件）。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, Upload } from 'antd';
-
 const props: UploadProps = {
   action: '//jsonplaceholder.typicode.com/posts/',
   listType: 'picture',
@@ -738,30 +617,22 @@ const props: UploadProps = {
       .then(({ thumbnail }) => thumbnail);
   },
 };
-
 const App: React.FC = () => (
   <Upload {...props}>
     <Button icon={<UploadOutlined />}>Upload</Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 限制数量
-
 #### zh-CN
-
 通过 `maxCount` 限制上传数量。当为 `1` 时，始终用最新上传的代替当前。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Space, Upload } from 'antd';
-
 const App: React.FC = () => (
   <Space direction="vertical" style={{ width: '100%' }} size="large">
     <Upload
@@ -781,25 +652,18 @@ const App: React.FC = () => (
     </Upload>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 上传前转换文件
-
 #### zh-CN
-
 使用 `beforeUpload` 转换上传的文件（例如添加水印）。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, Upload } from 'antd';
-
 const props: UploadProps = {
   action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
   listType: 'picture',
@@ -826,31 +690,23 @@ const props: UploadProps = {
     });
   },
 };
-
 const App: React.FC = () => (
   <Upload {...props}>
     <Button icon={<UploadOutlined />}>Upload</Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 阿里云 OSS
-
 #### zh-CN
-
 使用阿里云 OSS 上传示例.
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadFile, UploadProps } from 'antd';
 import { App, Button, Form, Upload } from 'antd';
-
 interface OSSDataType {
   dir: string;
   expire: string;
@@ -859,12 +715,10 @@ interface OSSDataType {
   policy: string;
   signature: string;
 }
-
 interface AliyunOSSUploadProps {
   value?: UploadFile[];
   onChange?: (fileList: UploadFile[]) => void;
 }
-
 // Mock get OSS api
 // https://help.aliyun.com/document_detail/31988.html
 const mockOSSData = () => {
@@ -878,12 +732,9 @@ const mockOSSData = () => {
   };
   return Promise.resolve(mockData);
 };
-
 const AliyunOSSUpload: React.FC<Readonly<AliyunOSSUploadProps>> = ({ value, onChange }) => {
   const { message } = App.useApp();
-
   const [OSSData, setOSSData] = useState<OSSDataType>();
-
   const init = async () => {
     try {
       const result = await mockOSSData();
@@ -894,47 +745,37 @@ const AliyunOSSUpload: React.FC<Readonly<AliyunOSSUploadProps>> = ({ value, onCh
       }
     }
   };
-
   useEffect(() => {
     init();
   }, []);
-
   const handleChange: UploadProps['onChange'] = ({ fileList }) => {
     console.log('Aliyun OSS:', fileList);
     onChange?.([...fileList]);
   };
-
   const onRemove = (file: UploadFile) => {
     const files = (value || []).filter((v) => v.url !== file.url);
     onChange?.(files);
   };
-
   const getExtraData: UploadProps['data'] = (file) => ({
     key: file.url,
     OSSAccessKeyId: OSSData?.accessId,
     policy: OSSData?.policy,
     Signature: OSSData?.signature,
   });
-
   const beforeUpload: UploadProps['beforeUpload'] = async (file) => {
     if (!OSSData) {
       return false;
     }
-
     const expire = Number(OSSData.expire) * 1000;
-
     if (expire < Date.now()) {
       await init();
     }
-
     const suffix = file.name.slice(file.name.lastIndexOf('.'));
     const filename = Date.now() + suffix;
     // @ts-ignore
     file.url = OSSData.dir + filename;
-
     return file;
   };
-
   const uploadProps: UploadProps = {
     name: 'file',
     fileList: value,
@@ -944,14 +785,12 @@ const AliyunOSSUpload: React.FC<Readonly<AliyunOSSUploadProps>> = ({ value, onCh
     data: getExtraData,
     beforeUpload,
   };
-
   return (
     <Upload {...uploadProps}>
       <Button icon={<UploadOutlined />}>Click to Upload</Button>
     </Upload>
   );
 };
-
 const Demo: React.FC = () => (
   <Form labelCol={{ span: 4 }}>
     <Form.Item label="Photos" name="photos">
@@ -959,18 +798,12 @@ const Demo: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default Demo;
 
 ```
-
 ### 自定义显示 icon
-
 #### zh-CN
-
 根据类型默认显示对应 icon
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -985,9 +818,7 @@ import {
 } from '@ant-design/icons';
 import { Image, Upload } from 'antd';
 import type { GetProp, UploadFile, UploadProps } from 'antd';
-
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
-
 const getBase64 = (file: FileType): Promise<string> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -995,7 +826,6 @@ const getBase64 = (file: FileType): Promise<string> =>
     reader.onload = () => resolve(reader.result as string);
     reader.onerror = (error) => reject(error);
   });
-
 const App: React.FC = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
@@ -1028,19 +858,15 @@ const App: React.FC = () => {
       status: 'error',
     },
   ]);
-
   const handlePreview = async (file: UploadFile) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj as FileType);
     }
-
     setPreviewOpen(true);
     setPreviewImage(file.url || (file.preview as string));
   };
-
   const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) =>
     setFileList(newFileList);
-
   const handleIconRender: UploadProps['iconRender'] = (file, listType) => {
     const fileSufIconList = [
       { type: <FilePdfTwoTone />, suf: ['.pdf'] },
@@ -1066,14 +892,12 @@ const App: React.FC = () => {
     }
     return icon;
   };
-
   const uploadButton = (
     <button style={{ border: 0, background: 'none' }} type="button">
       <PlusOutlined />
       <div style={{ marginTop: 8 }}>Upload</div>
     </button>
   );
-
   return (
     <>
       <Upload
@@ -1100,25 +924,18 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义交互图标和文件信息
-
 #### zh-CN
-
 使用 `showUploadList` 设置列表交互图标和其他文件信息。
-
-
 
 ```typescript
 import React from 'react';
 import { StarOutlined, UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, Upload } from 'antd';
-
 const props: UploadProps = {
   action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
   onChange({ file, fileList }) {
@@ -1161,24 +978,17 @@ const props: UploadProps = {
     removeIcon: <StarOutlined onClick={(e) => console.log(e, 'custom removeIcon event')} />,
   },
 };
-
 const App: React.FC = () => (
   <Upload {...props}>
     <Button icon={<UploadOutlined />}>Upload</Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 上传列表拖拽排序
-
 #### zh-CN
-
 使用 `itemRender` ，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现对上传列表拖拽排序。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -1194,23 +1004,19 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Button, Upload } from 'antd';
 import type { UploadFile, UploadProps } from 'antd';
-
 interface DraggableUploadListItemProps {
   originNode: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   file: UploadFile<any>;
 }
-
 const DraggableUploadListItem = ({ originNode, file }: DraggableUploadListItemProps) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: file.uid,
   });
-
   const style: React.CSSProperties = {
     transform: CSS.Translate.toString(transform),
     transition,
     cursor: 'move',
   };
-
   return (
     <div
       ref={setNodeRef}
@@ -1225,7 +1031,6 @@ const DraggableUploadListItem = ({ originNode, file }: DraggableUploadListItemPr
     </div>
   );
 };
-
 const App: React.FC = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([
     {
@@ -1258,11 +1063,9 @@ const App: React.FC = () => {
       status: 'error',
     },
   ]);
-
   const sensor = useSensor(PointerSensor, {
     activationConstraint: { distance: 10 },
   });
-
   const onDragEnd = ({ active, over }: DragEndEvent) => {
     if (active.id !== over?.id) {
       setFileList((prev) => {
@@ -1272,11 +1075,9 @@ const App: React.FC = () => {
       });
     }
   };
-
   const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
-
   return (
     <DndContext sensors={[sensor]} onDragEnd={onDragEnd}>
       <SortableContext items={fileList.map((i) => i.uid)} strategy={verticalListSortingStrategy}>
@@ -1294,27 +1095,19 @@ const App: React.FC = () => {
     </DndContext>
   );
 };
-
 export default App;
 
 ```
-
 ### 上传前裁切图片
-
 #### zh-CN
-
 配合 [antd-img-crop](https://github.com/nanxiaobei/antd-img-crop) 实现上传前裁切图片。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Upload } from 'antd';
 import type { GetProp, UploadFile, UploadProps } from 'antd';
 import ImgCrop from 'antd-img-crop';
-
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
-
 const App: React.FC = () => {
   const [fileList, setFileList] = useState<UploadFile[]>([
     {
@@ -1324,11 +1117,9 @@ const App: React.FC = () => {
       url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
     },
   ]);
-
   const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
-
   const onPreview = async (file: UploadFile) => {
     let src = file.url as string;
     if (!src) {
@@ -1343,7 +1134,6 @@ const App: React.FC = () => {
     const imgWindow = window.open(src);
     imgWindow?.document.write(image.outerHTML);
   };
-
   return (
     <ImgCrop rotationSlider>
       <Upload
@@ -1358,25 +1148,18 @@ const App: React.FC = () => {
     </ImgCrop>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义进度条样式
-
 #### zh-CN
-
 使用 `progress` 属性自定义进度条样式。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
-
 const props: UploadProps = {
   name: 'file',
   action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
@@ -1402,31 +1185,23 @@ const props: UploadProps = {
     format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
   },
 };
-
 const App: React.FC = () => (
   <Upload {...props}>
     <Button icon={<UploadOutlined />}>Click to Upload</Button>
   </Upload>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, ConfigProvider, Upload } from 'antd';
-
 const props: UploadProps = {
   action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
   onChange({ file, fileList }) {
@@ -1457,7 +1232,6 @@ const props: UploadProps = {
     },
   ],
 };
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -1473,8 +1247,6 @@ const App: React.FC = () => (
     </Upload>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

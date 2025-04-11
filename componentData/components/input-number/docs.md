@@ -1,12 +1,7 @@
-
 ## 何时使用
-
 当需要获取标准数值时。
 
-
-
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | addonAfter | 带标签的 input，设置后置标签 | ReactNode | - | 4.17.0 |
@@ -37,33 +32,20 @@
 | onChange | 变化回调 | function(value: number \| string \| null) | - | - |
 | onPressEnter | 按下回车的回调 | function(e) | - | - |
 | onStep | 点击上下箭头的回调 | (value: number, info: { offset: number, type: 'up' \| 'down' }) => void | - | 4.7.0 |
-
 ## Ref
-
 | 名称 | 说明 | 参数 | 版本 |
 | --- | --- | --- | --- |
 | blur() | 移除焦点 | - |  |
 | focus() | 获取焦点 | (option?: { preventScroll?: boolean, cursor?: 'start' \| 'end' \| 'all' }) | cursor - 5.22.0 |
 | nativeElement | 获取原生 DOM 元素 | - | 5.17.3 |
 
-
-
 ## FAQ
-
 ### 为何受控模式下，`value` 可以超出 `min` 和 `max` 范围？
-
 在受控模式下，开发者可能自行存储相关数据。如果组件将数据约束回范围内，会导致展示数据与实际存储数据不一致的情况。这使得一些如表单场景存在潜在的数据问题。
-
 ### 为何动态修改 `min` 和 `max` 让 `value` 超出范围不会触发 `onChange` 事件？
-
 `onChange` 事件为用户触发事件，自行触发会导致表单库误以为变更来自用户操作。我们以错误样式展示超出范围的数值。
-
 ### 为何 `onBlur` 等事件获取不到正确的 value？
-
 InputNumber 的值由内部逻辑封装而成，通过 `onBlur` 等事件获取的 `event.target.value` 仅为 DOM 元素的 `value` 而非 InputNumber 的实际值。例如通过 `formatter` 或者 `decimalSeparator` 更改展示格式，DOM 中得到的就是格式化后的字符串。你总是应该通过 `onChange` 获取当前值。
-
 ### 为何 `changeOnWheel` 无法控制鼠标滚轮是否改变数值？
-
 > 不建议使用 `type` 属性
-
 InputNumber 组件允许你使用 input 元素的所有属性最终透传至 input 元素，当你传入 `type="number"` 时 input 元素也会添加这个属性，这会使 input 元素触发原生特性（允许鼠标滚轮改变数值），从而导致 `changeOnWheel` 无法控制鼠标滚轮是否改变数值。

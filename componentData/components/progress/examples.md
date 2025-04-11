@@ -1,17 +1,11 @@
 ## Progress 组件示例
-
 ### 进度条
-
 #### zh-CN
-
 标准的进度条。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="small" vertical>
     <Progress percent={30} />
@@ -21,23 +15,16 @@ const App: React.FC = () => (
     <Progress percent={50} showInfo={false} />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 进度圈
-
 #### zh-CN
-
 圈形的进度。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="small" wrap>
     <Progress type="circle" percent={75} />
@@ -45,23 +32,16 @@ const App: React.FC = () => (
     <Progress type="circle" percent={100} />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 小型进度条
-
 #### zh-CN
-
 适合放在较狭窄的区域内。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex vertical gap="small" style={{ width: 180 }}>
     <Progress percent={30} size="small" />
@@ -70,23 +50,16 @@ const App: React.FC = () => (
     <Progress percent={100} size="small" />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 响应式进度圈
-
 #### zh-CN
-
 响应式的圈形进度，当 `width` 小于等于 20 的时候，进度信息将不会显示在进度圈里面，而是以 Tooltip 的形式显示。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex align="center" gap="small">
     <Progress
@@ -100,23 +73,16 @@ const App: React.FC = () => (
     <span>代码发布</span>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 小型进度圈
-
 #### zh-CN
-
 小一号的圈形进度。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex wrap gap="small">
     <Progress type="circle" percent={30} size={80} />
@@ -124,27 +90,19 @@ const App: React.FC = () => (
     <Progress type="circle" percent={100} size={80} />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 动态展示
-
 #### zh-CN
-
 会动的进度条才是好进度条。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Flex, Progress, Space } from 'antd';
-
 const App: React.FC = () => {
   const [percent, setPercent] = useState<number>(0);
-
   const increase = () => {
     setPercent((prevPercent) => {
       const newPercent = prevPercent + 10;
@@ -154,7 +112,6 @@ const App: React.FC = () => {
       return newPercent;
     });
   };
-
   const decline = () => {
     setPercent((prevPercent) => {
       const newPercent = prevPercent - 10;
@@ -164,7 +121,6 @@ const App: React.FC = () => {
       return newPercent;
     });
   };
-
   return (
     <Flex vertical gap="small">
       <Flex vertical gap="small">
@@ -178,69 +134,48 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义文字格式
-
 #### zh-CN
-
 `format` 属性指定格式。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="small" wrap>
     <Progress type="circle" percent={75} format={(percent) => `${percent} Days`} />
     <Progress type="circle" percent={100} format={() => 'Done'} />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 仪表盘
-
 #### zh-CN
-
 通过设置 `type=dashboard`，可以很方便地实现仪表盘样式的进度条。若想要修改缺口的角度，可以设置 `gapDegree` 为你想要的值。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="small" wrap>
     <Progress type="dashboard" percent={75} />
     <Progress type="dashboard" percent={75} gapDegree={30} />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 分段进度条
-
 #### zh-CN
-
 分段展示进度，可以用于细化进度语义。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress, Tooltip } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="small" vertical>
     <Tooltip title="3 done / 3 in progress / 4 to do">
@@ -256,23 +191,16 @@ const App: React.FC = () => (
     </Flex>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 边缘形状
-
 #### zh-CN
-
 通过设定 `strokeLinecap="butt"` 可以将进度条边缘的形状从闭合的圆形的圆弧调整为断口，详见 [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap)。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex vertical gap="small">
     <Progress strokeLinecap="butt" percent={75} />
@@ -282,35 +210,26 @@ const App: React.FC = () => (
     </Flex>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 自定义进度条渐变色
-
 #### zh-CN
-
 渐变色封装，`circle` 与 `dashboard` 设置渐变时 `strokeLinecap` 会被忽略。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
 import type { ProgressProps } from 'antd';
-
 const twoColors: ProgressProps['strokeColor'] = {
   '0%': '#108ee9',
   '100%': '#87d068',
 };
-
 const conicColors: ProgressProps['strokeColor'] = {
   '0%': '#87d068',
   '50%': '#ffe58f',
   '100%': '#ffccc7',
 };
-
 const App: React.FC = () => (
   <Flex vertical gap="middle">
     <Progress percent={99.9} strokeColor={twoColors} />
@@ -327,24 +246,17 @@ const App: React.FC = () => (
     </Flex>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 步骤进度条
-
 #### zh-CN
-
 带步骤的进度条。
-
-
 
 ```typescript
 import React from 'react';
 import { green, red } from '@ant-design/colors';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="small" vertical>
     <Progress percent={50} steps={3} />
@@ -353,23 +265,16 @@ const App: React.FC = () => (
     <Progress percent={60} steps={5} strokeColor={[green[6], green[6], red[5]]} />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 步骤进度圈
-
 #### zh-CN
-
 步骤进度圈，支持颜色分段展示，默认间隔为 2px。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress, Slider, Typography } from 'antd';
-
 const App: React.FC = () => {
   const [stepsCount, setStepsCount] = React.useState<number>(5);
   const [stepsGap, setStepsGap] = React.useState<number>(7);
@@ -398,23 +303,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 尺寸
-
 #### zh-CN
-
 进度条尺寸。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex vertical gap="middle">
     <Flex vertical gap="small" style={{ width: 300 }}>
@@ -440,23 +338,16 @@ const App: React.FC = () => (
     </Flex>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 改变进度数值位置
-
 #### zh-CN
-
 改变进度数值位置，可使用 `percentPosition` 调整，使进度条数值在进度条内部、外部或底部。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Progress } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="small" vertical>
     <Progress
@@ -485,8 +376,6 @@ const App: React.FC = () => (
     <Progress percent={100} percentPosition={{ align: 'center', type: 'outer' }} />
   </Flex>
 );
-
 export default App;
 
 ```
-

@@ -1,37 +1,27 @@
 ## API
-
 组件提供了一些静态方法，使用方式和参数如下：
-
 - `message.success(content, [duration], onClose)`
 - `message.error(content, [duration], onClose)`
 - `message.info(content, [duration], onClose)`
 - `message.warning(content, [duration], onClose)`
 - `message.loading(content, [duration], onClose)`
-
 | 参数     | 说明                                        | 类型                | 默认值 |
 | -------- | ------------------------------------------- | ------------------- | ------ |
 | content  | 提示内容                                    | ReactNode \| config | -      |
 | duration | 自动关闭的延时，单位秒。设为 0 时不自动关闭 | number              | 3      |
 | onClose  | 关闭时触发的回调函数                        | function            | -      |
-
 组件同时提供 promise 接口。
-
 - `message[level](content, [duration]).then(afterClose)`
 - `message[level](content, [duration], onClose).then(afterClose)`
-
 其中 `message[level]` 是组件已经提供的静态方法。`then` 接口返回值是 Promise。
-
 也可以对象的形式传递参数：
-
 - `message.open(config)`
 - `message.success(config)`
 - `message.error(config)`
 - `message.info(config)`
 - `message.warning(config)`
 - `message.loading(config)`
-
 `config` 对象属性如下：
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | className | 自定义 CSS class | string | - |
@@ -42,22 +32,15 @@
 | style | 自定义内联样式 | [CSSProperties](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/e434515761b36830c3e58a970abf5186f005adac/types/react/index.d.ts#L794) | - |
 | onClick | 点击 message 时触发的回调函数 | function | - |
 | onClose | 关闭时触发的回调函数 | function | - |
-
 ### 全局方法
-
 还提供了全局配置和全局销毁方法：
-
 - `message.config(options)`
 - `message.destroy()`
-
 > 也可通过 `message.destroy(key)` 来关闭一条消息。
-
 #### message.config
-
 > 当你使用 `ConfigProvider` 进行全局化配置时，系统会默认自动开启 RTL 模式。(4.3.0+)
 >
 > 当你想单独使用，可通过如下设置开启 RTL 模式。
-
 ```js
 message.config({
   top: 100,
@@ -67,7 +50,6 @@ message.config({
   prefixCls: 'my-message',
 });
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | duration | 默认自动关闭延时，单位秒 | number | 3 |  |

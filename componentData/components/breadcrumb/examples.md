@@ -1,17 +1,11 @@
 ## Breadcrumb 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Breadcrumb } from 'antd';
-
 const App: React.FC = () => (
   <Breadcrumb
     items={[
@@ -30,24 +24,17 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 带有图标的
-
 #### zh-CN
-
 图标放在文字前面。
-
-
 
 ```typescript
 import React from 'react';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb } from 'antd';
-
 const App: React.FC = () => (
   <Breadcrumb
     items={[
@@ -70,23 +57,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 带有参数的
-
 #### zh-CN
-
 带有路由参数的。
-
-
 
 ```typescript
 import React from 'react';
 import { Breadcrumb } from 'antd';
-
 const App: React.FC = () => (
   <Breadcrumb
     items={[
@@ -101,23 +81,16 @@ const App: React.FC = () => (
     params={{ id: 1 }}
   />
 );
-
 export default App;
 
 ```
-
 ### 分隔符
-
 #### zh-CN
-
 使用 `separator=">"` 可以自定义分隔符。
-
-
 
 ```typescript
 import React from 'react';
 import { Breadcrumb } from 'antd';
-
 const App: React.FC = () => (
   <Breadcrumb
     separator=">"
@@ -139,23 +112,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 带下拉菜单的面包屑
-
 #### zh-CN
-
 面包屑支持下拉菜单。
-
-
 
 ```typescript
 import React from 'react';
 import { Breadcrumb } from 'antd';
-
 const menuItems = [
   {
     key: '1',
@@ -182,7 +148,6 @@ const menuItems = [
     ),
   },
 ];
-
 const App: React.FC = () => (
   <Breadcrumb
     items={[
@@ -202,23 +167,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 独立的分隔符
-
 #### zh-CN
-
 自定义单独的分隔符。
-
-
 
 ```typescript
 import React from 'react';
 import { Breadcrumb } from 'antd';
-
 const App: React.FC = () => (
   <Breadcrumb
     separator=""
@@ -250,24 +208,17 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, ConfigProvider } from 'antd';
-
 const menuItems = [
   {
     key: '1',
@@ -346,4 +297,3 @@ export default () => (
 );
 
 ```
-

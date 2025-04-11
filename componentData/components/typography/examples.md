@@ -1,32 +1,22 @@
 ## Typography 组件示例
-
 ### 基本
-
 #### zh-CN
-
 展示文档样例。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, Typography } from 'antd';
-
 const { Title, Paragraph, Text, Link } = Typography;
-
 const blockContent = `AntV 是蚂蚁集团全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、不限可能的数据可视化最佳实践。得益于丰富的业务场景和用户需求挑战，AntV 经历多年积累与不断打磨，已支撑整个阿里集团内外 20000+ 业务系统，通过了日均千万级 UV 产品的严苛考验。
 我们正在基础图表，图分析，图编辑，地理空间可视化，智能可视化等各个可视化的领域耕耘，欢迎同路人一起前行。`;
-
 const App: React.FC = () => (
   <Typography>
     <Title>Introduction</Title>
-
     <Paragraph>
       In the process of internal desktop applications development, many different design specs and
       implementations would be involved, which might cause designers and developers difficulties and
       duplication and reduce the efficiency of development.
     </Paragraph>
-
     <Paragraph>
       After massive project practice and summaries, Ant Design, a design language for background
       applications, is refined by Ant UED Team, which aims to{' '}
@@ -37,15 +27,12 @@ const App: React.FC = () => (
       </Text>
       .
     </Paragraph>
-
     <Title level={2}>Guidelines and Resources</Title>
-
     <Paragraph>
       We supply a series of design principles, practical patterns and high quality design resources
       (<Text code>Sketch</Text> and <Text code>Axure</Text>), to help people create their product
       prototypes beautifully and efficiently.
     </Paragraph>
-
     <Paragraph>
       <ul>
         <li>
@@ -59,33 +46,25 @@ const App: React.FC = () => (
         </li>
       </ul>
     </Paragraph>
-
     <Paragraph>
       Press <Text keyboard>Esc</Text> to exit...
     </Paragraph>
-
     <Divider />
-
     <Title>介绍</Title>
-
     <Paragraph>
       蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。
     </Paragraph>
-
     <Paragraph>
       随着商业化的趋势，越来越多的企业级产品对更好的用户体验有了进一步的要求。带着这样的一个终极目标，我们（蚂蚁集团体验技术部）经过大量的项目实践和总结，逐步打磨出一个服务于企业级产品的设计体系
       Ant Design。基于<Text mark>『确定』和『自然』</Text>
       的设计价值观，通过模块化的解决方案，降低冗余的生产成本，让设计者专注于
       <Text strong>更好的用户体验</Text>。
     </Paragraph>
-
     <Title level={2}>设计资源</Title>
-
     <Paragraph>
       我们提供完善的设计原则、最佳实践和设计资源文件（<Text code>Sketch</Text> 和
       <Text code>Axure</Text>），来帮助业务快速设计出高质量的产品原型。
     </Paragraph>
-
     <Paragraph>
       <ul>
         <li>
@@ -99,36 +78,26 @@ const App: React.FC = () => (
         </li>
       </ul>
     </Paragraph>
-
     <Paragraph>
       <blockquote>{blockContent}</blockquote>
       <pre>{blockContent}</pre>
     </Paragraph>
-
     <Paragraph>
       按<Text keyboard>Esc</Text>键退出阅读……
     </Paragraph>
   </Typography>
 );
-
 export default App;
 
 ```
-
 ### 标题组件
-
 #### zh-CN
-
 展示不同级别的标题。
-
-
 
 ```typescript
 import React from 'react';
 import { Typography } from 'antd';
-
 const { Title } = Typography;
-
 const App: React.FC = () => (
   <>
     <Title>h1. Ant Design</Title>
@@ -138,25 +107,17 @@ const App: React.FC = () => (
     <Title level={5}>h5. Ant Design</Title>
   </>
 );
-
 export default App;
 
 ```
-
 ### 标题与段落
-
 #### zh-CN
-
 展示标题与段落的组合。
-
-
 
 ```typescript
 import React from 'react';
 import { Typography } from 'antd';
-
 const { Title, Paragraph, Text } = Typography;
-
 const App: React.FC = () => (
   <>
     <Title>Introduction</Title>
@@ -181,7 +142,6 @@ const App: React.FC = () => (
       (<Text code>Sketch</Text> and <Text code>Axure</Text>), to help people create their product
       prototypes beautifully and efficiently.
     </Paragraph>
-
     <Paragraph>
       <ul>
         <li>
@@ -195,7 +155,6 @@ const App: React.FC = () => (
         </li>
       </ul>
     </Paragraph>
-
     <Title id="intro">介绍</Title>
     <Paragraph>
       蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。
@@ -211,7 +170,6 @@ const App: React.FC = () => (
       我们提供完善的设计原则、最佳实践和设计资源文件（<Text code>Sketch</Text> 和
       <Text code>Axure</Text>），来帮助业务快速设计出高质量的产品原型。
     </Paragraph>
-
     <Paragraph>
       <ul>
         <li>
@@ -225,7 +183,6 @@ const App: React.FC = () => (
         </li>
       </ul>
     </Paragraph>
-
     <Paragraph>
       <ul>
         <li>I am an unordered item</li>
@@ -251,25 +208,17 @@ const App: React.FC = () => (
     </Paragraph>
   </>
 );
-
 export default App;
 
 ```
-
 ### 文本与超链接组件
-
 #### zh-CN
-
 内置不同样式的文本以及超链接组件。
-
-
 
 ```typescript
 import React from 'react';
 import { Space, Typography } from 'antd';
-
 const { Text, Link } = Typography;
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <Text>Ant Design (default)</Text>
@@ -290,26 +239,18 @@ const App: React.FC = () => (
     </Link>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 可编辑
-
 #### zh-CN
-
 提供可编辑的交互能力。
-
-
 
 ```typescript
 import React, { useMemo, useState } from 'react';
 import { CheckOutlined, HighlightOutlined } from '@ant-design/icons';
 import { Radio, Typography } from 'antd';
-
 const { Paragraph } = Typography;
-
 const App: React.FC = () => {
   const [editableStr, setEditableStr] = useState('This is an editable text.');
   const [editableStrWithSuffix, setEditableStrWithSuffix] = useState(
@@ -334,7 +275,6 @@ const App: React.FC = () => {
   const [lengthLimitedStr, setLengthLimitedStr] = useState(
     'This is an editable text with limited length.',
   );
-
   const radioToState = (input: string): ('icon' | 'text')[] => {
     switch (input) {
       case 'text':
@@ -347,14 +287,12 @@ const App: React.FC = () => {
         return ['icon'];
     }
   };
-
   const stateToRadio = useMemo<string>(() => {
     if (chooseTrigger.includes('text')) {
       return chooseTrigger.includes('icon') ? 'both' : 'text';
     }
     return 'icon';
   }, [chooseTrigger]);
-
   return (
     <>
       <Paragraph editable={{ onChange: setEditableStr }}>{editableStr}</Paragraph>
@@ -446,26 +384,18 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 可复制
-
 #### zh-CN
-
 提供可复制的交互能力。
-
-
 
 ```typescript
 import React from 'react';
 import { SmileFilled, SmileOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
-
 const { Paragraph, Text } = Typography;
-
 const App: React.FC = () => (
   <>
     <Paragraph copyable>This is a copyable text.</Paragraph>
@@ -494,28 +424,19 @@ const App: React.FC = () => (
     <Text copyable={{ text: 'text to be copied' }} />
   </>
 );
-
 export default App;
 
 ```
-
 ### 省略号
-
 #### zh-CN
-
 多行文本省略。你可以通过 `tooltip` 属性配置省略展示内容，大量文本时推荐优先使用 `expandable`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Switch, Typography } from 'antd';
-
 const { Paragraph, Text } = Typography;
-
 const App: React.FC = () => {
   const [ellipsis, setEllipsis] = useState(true);
-
   return (
     <>
       <Switch
@@ -524,7 +445,6 @@ const App: React.FC = () => {
           setEllipsis(!ellipsis);
         }}
       />
-
       <Paragraph ellipsis={ellipsis}>
         Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
         Design, a design language for background applications, is refined by Ant UED Team. Ant
@@ -533,7 +453,6 @@ const App: React.FC = () => {
         Design, a design language for background applications, is refined by Ant UED Team. Ant
         Design, a design language for background applications, is refined by Ant UED Team.
       </Paragraph>
-
       <Paragraph ellipsis={ellipsis ? { rows: 2, expandable: true, symbol: 'more' } : false}>
         Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
         Design, a design language for background applications, is refined by Ant UED Team. Ant
@@ -542,14 +461,12 @@ const App: React.FC = () => {
         Design, a design language for background applications, is refined by Ant UED Team. Ant
         Design, a design language for background applications, is refined by Ant UED Team.
       </Paragraph>
-
       <Text
         style={ellipsis ? { width: 200 } : undefined}
         ellipsis={ellipsis ? { tooltip: 'I am ellipsis now!' } : false}
       >
         Ant Design, a design language for background applications, is refined by Ant UED Team.
       </Text>
-
       <Text
         code
         style={ellipsis ? { width: 200 } : undefined}
@@ -560,27 +477,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 受控省略展开/收起
-
 #### zh-CN
-
 受控多行文本省略。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Flex, Slider, Switch, Typography } from 'antd';
-
 const App = () => {
   const [rows, setRows] = useState(2);
   const [expanded, setExpanded] = useState(false);
-
   return (
     <Flex gap={16} vertical>
       <Flex gap={16} align="center">
@@ -591,7 +500,6 @@ const App = () => {
         />
         <Slider min={1} max={20} value={rows} onChange={setRows} style={{ flex: 'auto' }} />
       </Flex>
-
       <Typography.Paragraph
         ellipsis={{
           rows,
@@ -608,25 +516,17 @@ const App = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 省略中间
-
 #### zh-CN
-
 使用 `ellipsis={{ suffix: ... }}` 可以封装一个从中间省略内容的组件，适合于需要保留文本末位特征的内容。
-
-
 
 ```typescript
 import React from 'react';
 import { Typography } from 'antd';
-
 const { Text } = Typography;
-
 const EllipsisMiddle: React.FC<{ suffixCount: number; children: string }> = ({
   suffixCount,
   children,
@@ -639,7 +539,6 @@ const EllipsisMiddle: React.FC<{ suffixCount: number; children: string }> = ({
     </Text>
   );
 };
-
 const App: React.FC = () => (
   <EllipsisMiddle suffixCount={12}>
     In the process of internal desktop applications development, many different design specs and
@@ -647,28 +546,19 @@ const App: React.FC = () => (
     duplication and reduce the efficiency of development.
   </EllipsisMiddle>
 );
-
 export default App;
 
 ```
-
 ### 省略号 Debug
-
 #### zh-CN
-
 多行文本省略。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Slider, Switch, Typography } from 'antd';
-
 const { Text, Paragraph } = Typography;
-
 const templateStr =
   'In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development.';
-
 const text = `this is a multiline
   text that has many
   lines and 
@@ -676,7 +566,6 @@ const text = `this is a multiline
     - and this
     
   and that`;
-
 const App: React.FC = () => {
   const [rows, setRows] = useState(1);
   const [longText, setLongText] = useState(true);
@@ -684,13 +573,11 @@ const App: React.FC = () => {
   const [editable, setEditable] = useState(false);
   const [expandable, setExpandable] = useState(false);
   const [display, setDisplay] = useState('none');
-
   React.useEffect(() => {
     setTimeout(() => {
       setDisplay('block');
     }, 100);
   }, []);
-
   return (
     <>
       <Switch checked={longText} checkedChildren="Long Text" onChange={setLongText} />
@@ -716,39 +603,29 @@ const App: React.FC = () => {
           Hello World
         </Paragraph>
       )}
-
       <Text style={{ maxWidth: 400, fontSize: 24 }} copyable ellipsis>
         {templateStr}
       </Text>
-
       <br />
-
       <Text style={{ maxWidth: 400, fontSize: 12 }} copyable ellipsis>
         {templateStr}
       </Text>
-
       <br />
-
       <Text style={{ width: 400, fontSize: 24 }} copyable ellipsis>
         {templateStr}
       </Text>
-
       <br />
-
       <Text style={{ width: 100 }} ellipsis copyable>
         Ant Design is a design language for background applications, is refined by Ant UED Team.
       </Text>
-
       <p>
         [Before]<Text ellipsis>not ellipsis</Text>[After]
       </p>
-
       <div style={{ display }}>
         <Text style={{ width: 100 }} ellipsis={{ tooltip: 'I am ellipsis now!' }}>
           默认display none 样式的超长文字， 悬停tooltip失效了
         </Text>
       </div>
-
       <Typography.Paragraph
         style={{ width: 300 }}
         ellipsis={{
@@ -761,44 +638,31 @@ const App: React.FC = () => {
         <span style={{ fontSize: '5em' }}>ANTD</span>
         {templateStr.slice(60)}
       </Typography.Paragraph>
-
       <pre>
         <Typography.Paragraph ellipsis={{ rows: 2, expandable: true }}>{text}</Typography.Paragraph>
       </pre>
-
       <br />
-
       <Text style={{ width: 100, whiteSpace: 'nowrap' }} ellipsis copyable>
         {templateStr}
       </Text>
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 后缀
-
 #### zh-CN
-
 添加后缀的省略。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Slider, Typography } from 'antd';
-
 const { Paragraph } = Typography;
-
 const App: React.FC = () => {
   const [rows, setRows] = useState(1);
-
   const article =
     "To be, or not to be, that is the question: Whether it is nobler in the mind to suffer. The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them? To die: to sleep; No more; and by a sleep to say we end The heart-ache and the thousand natural shocks That flesh is heir to, 'tis a consummation Devoutly to be wish'd. To die, to sleep To sleep- perchance to dream: ay, there's the rub! For in that sleep of death what dreams may come When we have shuffled off this mortal coil, Must give us pause. There 's the respect That makes calamity of so long life";
-
   return (
     <>
       <Slider value={rows} min={1} max={10} onChange={setRows} />
@@ -818,28 +682,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 自定义组件 Token。
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Divider, Typography } from 'antd';
-
 const { Title, Paragraph, Text, Link } = Typography;
-
 const blockContent = `AntV 是蚂蚁集团全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、不限可能的数据可视化最佳实践。得益于丰富的业务场景和用户需求挑战，AntV 经历多年积累与不断打磨，已支撑整个阿里集团内外 20000+ 业务系统，通过了日均千万级 UV 产品的严苛考验。
 我们正在基础图表，图分析，图编辑，地理空间可视化，智能可视化等各个可视化的领域耕耘，欢迎同路人一起前行。`;
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -873,7 +728,6 @@ const App: React.FC = () => (
         resources (<Text code>Sketch</Text> and <Text code>Axure</Text>), to help people create
         their product prototypes beautifully and efficiently.
       </Paragraph>
-
       <Paragraph>
         <ul>
           <li>
@@ -887,13 +741,10 @@ const App: React.FC = () => (
           </li>
         </ul>
       </Paragraph>
-
       <Paragraph>
         Press <Text keyboard>Esc</Text> to exit...
       </Paragraph>
-
       <Divider />
-
       <Title>介绍</Title>
       <Paragraph>
         随着商业化的趋势，越来越多的企业级产品对更好的用户体验有了进一步的要求。带着这样的一个终极目标，我们（蚂蚁集团体验技术部）经过大量的项目实践和总结，逐步打磨出一个服务于企业级产品的设计体系
@@ -906,7 +757,6 @@ const App: React.FC = () => (
         我们提供完善的设计原则、最佳实践和设计资源文件（<Text code>Sketch</Text> 和
         <Text code>Axure</Text>），来帮助业务快速设计出高质量的产品原型。
       </Paragraph>
-
       <Paragraph>
         <ul>
           <li>
@@ -920,24 +770,19 @@ const App: React.FC = () => (
           </li>
         </ul>
       </Paragraph>
-
       <Paragraph>
         <blockquote>{blockContent}</blockquote>
         <pre>{blockContent}</pre>
       </Paragraph>
-
       <Paragraph>
         按<Text keyboard>Esc</Text>键退出阅读……
       </Paragraph>
     </Typography>
-
     <Typography.Text type="success">Success but red</Typography.Text>
     <Typography.Text type="warning">Warning but green</Typography.Text>
     <Typography.Text type="danger">Danger but blue</Typography.Text>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

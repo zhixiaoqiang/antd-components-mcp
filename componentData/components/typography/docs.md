@@ -1,15 +1,9 @@
-
 ## 何时使用
-
 - 当需要展示标题、段落、列表内容时使用，如文章/博客/日志的文本样式。
 - 当需要一列基于文本的基础操作时，如拷贝/省略/可编辑。
 
-
-
 ## API
-
 ### Typography.Text
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | code | 添加代码样式 | boolean | false |  |
@@ -25,9 +19,7 @@
 | italic | 是否斜体 | boolean | false | 4.16.0 |
 | type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
 | underline | 添加下划线样式 | boolean | false |  |
-
 ### Typography.Title
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | code | 添加代码样式 | boolean | false |  |
@@ -42,9 +34,7 @@
 | italic | 是否斜体 | boolean | false | 4.16.0 |
 | type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
 | underline | 添加下划线样式 | boolean | false |  |
-
 ### Typography.Paragraph
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | code | 添加代码样式 | boolean | false |  |
@@ -59,9 +49,7 @@
 | italic | 是否斜体 | boolean | false | 4.16.0 |
 | type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
 | underline | 添加下划线样式 | boolean | false |  |
-
 ### copyable
-
     {
       text: string | (() => string | Promise<string>),
       onCopy: function(event),
@@ -70,7 +58,6 @@
       format: 'text/plain' | 'text/html',
       tabIndex: number,
     }
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | format | 剪切板数据的 Mime Type | 'text/plain' \| 'text/html' | - | 4.21.0 |
@@ -79,9 +66,7 @@
 | tooltips | 自定义提示文案，为 false 时隐藏文案 | \[ReactNode, ReactNode] | \[`复制`, `复制成功`] | 4.4.0 |
 | onCopy | 拷贝成功的回调函数 | function | - |  |
 | tabIndex | 自定义复制按钮的 tabIndex | number | 0 | 5.17.0 |
-
 ### editable
-
     {
       icon: ReactNode,
       tooltip: ReactNode,
@@ -97,7 +82,6 @@
       enterIcon: ReactNode,
       tabIndex: number,
     }
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | autoSize | 自动 resize 文本域 | boolean \| { minRows: number, maxRows: number } | - | 4.4.0 |
@@ -113,9 +97,7 @@
 | triggerType | 编辑模式触发器类型，图标、文本或者两者都设置（不设置图标作为触发器时它会隐藏） | Array&lt;`icon`\|`text`> | \[`icon`] |  |
 | enterIcon | 在编辑段中自定义“enter”图标（传递“null”将删除图标） | ReactNode | `<EnterOutlined />` | 4.17.0 |
 | tabIndex | 自定义编辑按钮的 tabIndex | number | 0 | 5.17.0 |
-
 ### ellipsis
-
 ```tsx
 interface EllipsisConfig {
   rows: number;
@@ -134,7 +116,6 @@ interface EllipsisConfig {
   onEllipsis: (ellipsis: boolean) => void;
 }
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | expandable | 是否可展开 | boolean \| 'collapsible' | - | `collapsible`: 5.16.0 |
@@ -147,16 +128,10 @@ interface EllipsisConfig {
 | onEllipsis | 触发省略时的回调 | function(ellipsis) | - | 4.2.0 |
 | onExpand | 点击展开或收起时的回调 | function(event, { expanded: boolean }) | - | `info`: 5.16.0 |
 
-
-
 ## FAQ
-
 ### Typography.Link 如何与 react-router 库集成？
-
 `react-router` 支持[自定义](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md#component-reactcomponent)渲染组件：
-
 ```tsx
 <Link to="/" component={Typography.Link} />
 ```
-
 **注意：** 这并不是和 react-router 的 Link 的执行逻辑等价 [参考](https://github.com/ant-design/ant-design/pull/26737/files#r488769888)

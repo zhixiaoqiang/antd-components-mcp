@@ -1,17 +1,11 @@
 ## Steps 组件示例
-
 ### 基本用法
-
 #### zh-CN
-
 简单的步骤条。
-
-
 
 ```typescript
 import React from 'react';
 import { Steps } from 'antd';
-
 const description = 'This is a description.';
 const App: React.FC = () => (
   <Steps
@@ -33,23 +27,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 迷你版
-
 #### zh-CN
-
 迷你版的步骤条，通过设置 `<Steps size="small">` 启用.
-
-
 
 ```typescript
 import React from 'react';
 import { Steps } from 'antd';
-
 const App: React.FC = () => (
   <Steps
     size="small"
@@ -67,24 +54,17 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 带图标的步骤条
-
 #### zh-CN
-
 通过设置 `items` 的 `icon` 属性，可以启用自定义图标。
-
-
 
 ```typescript
 import React from 'react';
 import { LoadingOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import { Steps } from 'antd';
-
 const App: React.FC = () => (
   <Steps
     items={[
@@ -111,23 +91,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 步骤切换
-
 #### zh-CN
-
 通常配合内容及按钮使用，表示一个流程的处理进度。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, message, Steps, theme } from 'antd';
-
 const steps = [
   {
     title: 'First',
@@ -142,21 +115,16 @@ const steps = [
     content: 'Last-content',
   },
 ];
-
 const App: React.FC = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-
   const next = () => {
     setCurrent(current + 1);
   };
-
   const prev = () => {
     setCurrent(current - 1);
   };
-
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
-
   const contentStyle: React.CSSProperties = {
     lineHeight: '260px',
     textAlign: 'center',
@@ -166,7 +134,6 @@ const App: React.FC = () => {
     border: `1px dashed ${token.colorBorder}`,
     marginTop: 16,
   };
-
   return (
     <>
       <Steps current={current} items={items} />
@@ -191,23 +158,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 竖直方向的步骤条
-
 #### zh-CN
-
 简单的竖直方向的步骤条。
-
-
 
 ```typescript
 import React from 'react';
 import { Steps } from 'antd';
-
 const description = 'This is a description.';
 const App: React.FC = () => (
   <Steps
@@ -229,23 +189,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 竖直方向的小型步骤条
-
 #### zh-CN
-
 简单的竖直方向的小型步骤条。
-
-
 
 ```typescript
 import React from 'react';
 import { Steps } from 'antd';
-
 const description = 'This is a description.';
 const App: React.FC = () => (
   <Steps
@@ -265,23 +218,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 步骤运行错误
-
 #### zh-CN
-
 使用 Steps 的 `status` 属性来指定当前步骤的状态。
-
-
 
 ```typescript
 import React from 'react';
 import { Steps } from 'antd';
-
 const description = 'This is a description';
 const App: React.FC = () => (
   <Steps
@@ -303,23 +249,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 点状步骤条
-
 #### zh-CN
-
 包含步骤点的进度条。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, Steps } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Steps
@@ -370,24 +309,17 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 自定义点状步骤条
-
 #### zh-CN
-
 为点状步骤条增加自定义展示。
-
-
 
 ```typescript
 import React from 'react';
 import type { StepsProps } from 'antd';
 import { Popover, Steps } from 'antd';
-
 const customDot: StepsProps['progressDot'] = (dot, { status, index }) => (
   <Popover
     content={
@@ -424,23 +356,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 迷你版点状步骤条
-
 #### zh-CN
-
 包含步骤点的进度条。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, Steps } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Steps
@@ -493,32 +418,23 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 可点击
-
 #### zh-CN
-
 设置 `onChange` 后，Steps 变为可点击状态。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Divider, Steps } from 'antd';
-
 const App: React.FC = () => {
   const [current, setCurrent] = useState(0);
-
   const onChange = (value: number) => {
     console.log('onChange:', value);
     setCurrent(value);
   };
   const description = 'This is a description.';
-
   return (
     <>
       <Steps
@@ -539,9 +455,7 @@ const App: React.FC = () => {
           },
         ]}
       />
-
       <Divider />
-
       <Steps
         current={current}
         onChange={onChange}
@@ -564,31 +478,22 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 导航步骤
-
 #### zh-CN
-
 导航类型的步骤条。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Steps } from 'antd';
-
 const App: React.FC = () => {
   const [current, setCurrent] = useState(0);
-
   const onChange = (value: number) => {
     console.log('onChange:', value);
     setCurrent(value);
   };
-
   return (
     <>
       <Steps
@@ -671,23 +576,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 带有进度的步骤
-
 #### zh-CN
-
 带有进度的步骤。
-
-
 
 ```typescript
 import React from 'react';
 import { Steps } from 'antd';
-
 const description = 'This is a description.';
 const App: React.FC = () => (
   <Steps
@@ -710,23 +608,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 标签放置位置
-
 #### zh-CN
-
 修改标签放置位置为 `vertical`。
-
-
 
 ```typescript
 import React from 'react';
 import { Steps } from 'antd';
-
 const description = 'This is a description.';
 const items = [
   {
@@ -751,24 +642,17 @@ const App: React.FC = () => (
     <Steps current={1} percent={80} size="small" labelPlacement="vertical" items={items} />
   </>
 );
-
 export default App;
 
 ```
-
 ### Progress Debug
-
 #### zh-CN
-
 Buggy!
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { StepsProps } from 'antd';
 import { Button, Space, Steps } from 'antd';
-
 const App: React.FC = () => {
   const [percent, setPercentage] = useState<number | undefined>(0);
   const [current, setCurrent] = useState(1);
@@ -823,24 +707,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### Steps 嵌套 Steps
-
 #### zh-CN
-
 测试 Steps 嵌套 Steps 的样式。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { StepsProps } from 'antd';
 import { Card, Radio, Steps } from 'antd';
-
 const App: React.FC = () => {
   const [size, setSize] = useState<StepsProps['size']>('default');
   const description = 'This is a description.';
@@ -865,7 +742,6 @@ const App: React.FC = () => {
       />
     </Card>
   );
-
   return (
     <>
       <Radio.Group
@@ -897,24 +773,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 内联步骤
-
 #### zh-CN
-
 内联类型的步骤条，适用于列表内容场景中展示对象所在流程、当前状态的情况。
-
-
 
 ```typescript
 import React from 'react';
 import type { StepsProps } from 'antd';
 import { Avatar, List, Steps } from 'antd';
-
 const data = [
   {
     title: 'Ant Design Title 1',
@@ -934,7 +803,6 @@ const data = [
     current: 1,
   },
 ];
-
 const items = [
   {
     title: 'Step 1',
@@ -949,7 +817,6 @@ const items = [
     description: 'This is a Step 3.',
   },
 ];
-
 const App: React.FC = () => (
   <div>
     <List
@@ -974,23 +841,16 @@ const App: React.FC = () => (
     />
   </div>
 );
-
 export default App;
 
 ```
-
 ### 线框风格
-
 #### zh-CN
-
 线框风格。
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Steps } from 'antd';
-
 const description = 'This is a description.';
 const App: React.FC = () => (
   <ConfigProvider theme={{ token: { wireframe: true } }}>
@@ -1014,24 +874,17 @@ const App: React.FC = () => (
     />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { LoadingOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import { ConfigProvider, Steps } from 'antd';
-
 const description = 'This is a description.';
 const App: React.FC = () => (
   <ConfigProvider
@@ -1160,8 +1013,6 @@ const App: React.FC = () => (
     />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

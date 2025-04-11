@@ -1,17 +1,11 @@
 ## Anchor 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor, Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <Row>
     <Col span={16}>
@@ -42,23 +36,16 @@ const App: React.FC = () => (
     </Col>
   </Row>
 );
-
 export default App;
 
 ```
-
 ### 横向 Anchor
-
 #### zh-CN
-
 横向 Anchor。
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor } from 'antd';
-
 const App: React.FC = () => (
   <>
     <div style={{ padding: '20px' }}>
@@ -109,23 +96,16 @@ const App: React.FC = () => (
     </div>
   </>
 );
-
 export default App;
 
 ```
-
 ### 静态位置
-
 #### zh-CN
-
 不浮动，状态不随页面滚动变化。
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor } from 'antd';
-
 const App: React.FC = () => (
   <Anchor
     affix={false}
@@ -160,23 +140,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 自定义 onClick 事件
-
 #### zh-CN
-
 点击锚点不记录历史。
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor } from 'antd';
-
 const handleClick = (
   e: React.MouseEvent<HTMLElement>,
   link: {
@@ -187,7 +160,6 @@ const handleClick = (
   e.preventDefault();
   console.log(link);
 };
-
 const App: React.FC = () => (
   <Anchor
     affix={false}
@@ -223,25 +195,17 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 自定义锚点高亮
-
 #### zh-CN
-
 自定义锚点高亮。
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor } from 'antd';
-
 const getCurrentAnchor = () => '#anchor-demo-static';
-
 const App: React.FC = () => (
   <Anchor
     affix={false}
@@ -277,23 +241,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 设置锚点滚动偏移量
-
 #### zh-CN
-
 锚点目标滚动到屏幕正中间。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Anchor, Col, Row } from 'antd';
-
 const style: React.CSSProperties = {
   height: '30vh',
   backgroundColor: 'rgba(0, 0, 0, 0.85)',
@@ -303,15 +260,12 @@ const style: React.CSSProperties = {
   width: '75%',
   color: '#fff',
 };
-
 const App: React.FC = () => {
   const topRef = React.useRef<HTMLDivElement>(null);
   const [targetOffset, setTargetOffset] = useState<number>();
-
   useEffect(() => {
     setTargetOffset(topRef.current?.clientHeight);
   }, []);
-
   return (
     <div>
       <Row>
@@ -346,27 +300,19 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 监听锚点链接改变
-
 #### zh-CN
-
 监听锚点链接改变
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor } from 'antd';
-
 const onChange = (link: string) => {
   console.log('Anchor:OnChange', link);
 };
-
 const App: React.FC = () => (
   <Anchor
     affix={false}
@@ -402,23 +348,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 替换历史中的 href
-
 #### zh-CN
-
 替换浏览器历史记录中的路径，后退按钮将返回到上一页而不是上一个锚点。
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor, Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <Row>
     <Col span={16}>
@@ -450,25 +389,17 @@ const App: React.FC = () => (
     </Col>
   </Row>
 );
-
 export default App;
 
 ```
-
 ### 废弃的 JSX 示例
-
 #### zh-CN
-
 调试使用
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor } from 'antd';
-
 const { Link } = Anchor;
-
 const App: React.FC = () => (
   <Anchor affix={false}>
     <Link href="#anchor-demo-basic" title="Basic demo" />
@@ -479,25 +410,17 @@ const App: React.FC = () => (
     </Link>
   </Anchor>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { Anchor, Col, ConfigProvider, Row } from 'antd';
-
 /** Test usage. Do not use in your production. */
-
 export default () => (
   <ConfigProvider
     theme={{
@@ -541,4 +464,3 @@ export default () => (
 );
 
 ```
-

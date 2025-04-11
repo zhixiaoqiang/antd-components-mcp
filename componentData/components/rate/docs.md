@@ -1,13 +1,8 @@
-
 ## 何时使用
-
 - 对评价进行展示。
 - 对事物进行快速的评级操作。
 
-
-
 ## API
-
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 是否允许再次点击后清除 | boolean | true |  |
@@ -27,12 +22,9 @@
 | onFocus | 获取焦点时的回调 | function() | - |  |
 | onHoverChange | 鼠标经过时数值变化的回调 | function(value: number) | - |  |
 | onKeyDown | 按键回调 | function(event) | - |  |
-
 ## 方法
-
 | 名称    | 描述     |
 | ------- | -------- |
 | blur()  | 移除焦点 |
 | focus() | 获取焦点 |
-
 

@@ -1,9 +1,7 @@
 ## API
-
 ```jsx
 <Card title="卡片标题">卡片内容</Card>
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | actions | 卡片操作组，位置在卡片底部 | Array&lt;ReactNode> | - |  |
@@ -24,17 +22,13 @@
 | classNames | 配置卡片内置模块的 className | [Record<SemanticDOM, string>](#semantic-dom) | - | 5.14.0 |
 | styles | 配置卡片内置模块的 style | [Record<SemanticDOM, CSSProperties>](#semantic-dom) | - | 5.14.0 |
 | onTabChange | 页签切换的回调 | (key) => void | - |  |
-
 ### Card.Grid
-
 | 参数      | 说明                   | 类型          | 默认值 | 版本 |
 | --------- | ---------------------- | ------------- | ------ | ---- |
 | className | 网格容器类名           | string        | -      |      |
 | hoverable | 鼠标移过时可浮起       | boolean       | true   |      |
 | style     | 定义网格容器类名的样式 | CSSProperties | -      |      |
-
 ### Card.Meta
-
 | 参数        | 说明               | 类型          | 默认值 | 版本 |
 | ----------- | ------------------ | ------------- | ------ | ---- |
 | avatar      | 头像/图标          | ReactNode     | -      |      |

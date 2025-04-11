@@ -1,11 +1,9 @@
 ## API
-
 ```jsx
 <Empty>
   <Button>创建</Button>
 </Empty>
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | description | 自定义描述内容 | ReactNode | - |  |

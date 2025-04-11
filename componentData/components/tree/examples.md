@@ -1,18 +1,12 @@
 ## Tree 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法，展示可勾选，可选中，禁用，默认展开等功能。
-
-
 
 ```typescript
 import React from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent 1',
@@ -42,16 +36,13 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const onSelect: TreeProps['onSelect'] = (selectedKeys, info) => {
     console.log('selected', selectedKeys, info);
   };
-
   const onCheck: TreeProps['onCheck'] = (checkedKeys, info) => {
     console.log('onCheck', checkedKeys, info);
   };
-
   return (
     <Tree
       checkable
@@ -64,24 +55,17 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 受控操作示例
-
 #### zh-CN
-
 受控操作示例
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
-
 const treeData: TreeDataNode[] = [
   {
     title: '0-0',
@@ -125,13 +109,11 @@ const treeData: TreeDataNode[] = [
     key: '0-2',
   },
 ];
-
 const App: React.FC = () => {
   const [expandedKeys, setExpandedKeys] = useState<React.Key[]>(['0-0-0', '0-0-1']);
   const [checkedKeys, setCheckedKeys] = useState<React.Key[]>(['0-0-0']);
   const [selectedKeys, setSelectedKeys] = useState<React.Key[]>([]);
   const [autoExpandParent, setAutoExpandParent] = useState<boolean>(true);
-
   const onExpand: TreeProps['onExpand'] = (expandedKeysValue) => {
     console.log('onExpand', expandedKeysValue);
     // if not set autoExpandParent to false, if children expanded, parent can not collapse.
@@ -139,17 +121,14 @@ const App: React.FC = () => {
     setExpandedKeys(expandedKeysValue);
     setAutoExpandParent(false);
   };
-
   const onCheck: TreeProps['onCheck'] = (checkedKeysValue) => {
     console.log('onCheck', checkedKeysValue);
     setCheckedKeys(checkedKeysValue as React.Key[]);
   };
-
   const onSelect: TreeProps['onSelect'] = (selectedKeysValue, info) => {
     console.log('onSelect', info);
     setSelectedKeys(selectedKeysValue);
   };
-
   return (
     <Tree
       checkable
@@ -164,33 +143,24 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 拖动示例
-
 #### zh-CN
-
 将节点拖拽到其他节点内部或前后。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
-
 const x = 3;
 const y = 2;
 const z = 1;
 const defaultData: TreeDataNode[] = [];
-
 const generateData = (_level: number, _preKey?: React.Key, _tns?: TreeDataNode[]) => {
   const preKey = _preKey || '0';
   const tns = _tns || defaultData;
-
   const children: React.Key[] = [];
   for (let i = 0; i < x; i++) {
     const key = `${preKey}-${i}`;
@@ -209,24 +179,20 @@ const generateData = (_level: number, _preKey?: React.Key, _tns?: TreeDataNode[]
   });
 };
 generateData(z);
-
 const App: React.FC = () => {
   const [gData, setGData] = useState(defaultData);
   const [expandedKeys] = useState(['0-0', '0-0-0', '0-0-0-0']);
-
   const onDragEnter: TreeProps['onDragEnter'] = (info) => {
     console.log(info);
     // expandedKeys, set it when controlled is needed
     // setExpandedKeys(info.expandedKeys)
   };
-
   const onDrop: TreeProps['onDrop'] = (info) => {
     console.log(info);
     const dropKey = info.node.key;
     const dragKey = info.dragNode.key;
     const dropPos = info.node.pos.split('-');
     const dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1]); // the drop position relative to the drop node, inside 0, top -1, bottom 1
-
     const loop = (
       data: TreeDataNode[],
       key: React.Key,
@@ -242,14 +208,12 @@ const App: React.FC = () => {
       }
     };
     const data = [...gData];
-
     // Find dragObject
     let dragObj: TreeDataNode;
     loop(data, dragKey, (item, index, arr) => {
       arr.splice(index, 1);
       dragObj = item;
     });
-
     if (!info.dropToGap) {
       // Drop on the content
       loop(data, dropKey, (item) => {
@@ -274,7 +238,6 @@ const App: React.FC = () => {
     }
     setGData(data);
   };
-
   return (
     <Tree
       className="draggable-tree"
@@ -287,36 +250,27 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 异步数据加载
-
 #### zh-CN
-
 点击展开节点，动态加载数据。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Tree } from 'antd';
-
 interface DataNode {
   title: string;
   key: string;
   isLeaf?: boolean;
   children?: DataNode[];
 }
-
 const initTreeData: DataNode[] = [
   { title: 'Expand to load', key: '0' },
   { title: 'Expand to load', key: '1' },
   { title: 'Tree Node', key: '2', isLeaf: true },
 ];
-
 // It's just a simple demo. You can use tree map to optimize update perf.
 const updateTreeData = (list: DataNode[], key: React.Key, children: DataNode[]): DataNode[] =>
   list.map((node) => {
@@ -334,10 +288,8 @@ const updateTreeData = (list: DataNode[], key: React.Key, children: DataNode[]):
     }
     return node;
   });
-
 const App: React.FC = () => {
   const [treeData, setTreeData] = useState(initTreeData);
-
   const onLoadData = ({ key, children }: any) =>
     new Promise<void>((resolve) => {
       if (children) {
@@ -351,42 +303,30 @@ const App: React.FC = () => {
             { title: 'Child Node', key: `${key}-1` },
           ]),
         );
-
         resolve();
       }, 1000);
     });
-
   return <Tree loadData={onLoadData} treeData={treeData} />;
 };
-
 export default App;
 
 ```
-
 ### 可搜索
-
 #### zh-CN
-
 可搜索的树。
-
-
 
 ```typescript
 import React, { useMemo, useState } from 'react';
 import { Input, Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
-
 const { Search } = Input;
-
 const x = 3;
 const y = 2;
 const z = 1;
 const defaultData: TreeDataNode[] = [];
-
 const generateData = (_level: number, _preKey?: React.Key, _tns?: TreeDataNode[]) => {
   const preKey = _preKey || '0';
   const tns = _tns || defaultData;
-
   const children: React.Key[] = [];
   for (let i = 0; i < x; i++) {
     const key = `${preKey}-${i}`;
@@ -405,7 +345,6 @@ const generateData = (_level: number, _preKey?: React.Key, _tns?: TreeDataNode[]
   });
 };
 generateData(z);
-
 const dataList: { key: React.Key; title: string }[] = [];
 const generateList = (data: TreeDataNode[]) => {
   for (let i = 0; i < data.length; i++) {
@@ -418,7 +357,6 @@ const generateList = (data: TreeDataNode[]) => {
   }
 };
 generateList(defaultData);
-
 const getParentKey = (key: React.Key, tree: TreeDataNode[]): React.Key => {
   let parentKey: React.Key;
   for (let i = 0; i < tree.length; i++) {
@@ -433,17 +371,14 @@ const getParentKey = (key: React.Key, tree: TreeDataNode[]): React.Key => {
   }
   return parentKey!;
 };
-
 const App: React.FC = () => {
   const [expandedKeys, setExpandedKeys] = useState<React.Key[]>([]);
   const [searchValue, setSearchValue] = useState('');
   const [autoExpandParent, setAutoExpandParent] = useState(true);
-
   const onExpand = (newExpandedKeys: React.Key[]) => {
     setExpandedKeys(newExpandedKeys);
     setAutoExpandParent(false);
   };
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const newExpandedKeys = dataList
@@ -458,7 +393,6 @@ const App: React.FC = () => {
     setSearchValue(value);
     setAutoExpandParent(true);
   };
-
   const treeData = useMemo(() => {
     const loop = (data: TreeDataNode[]): TreeDataNode[] =>
       data.map((item) => {
@@ -479,16 +413,13 @@ const App: React.FC = () => {
         if (item.children) {
           return { title, key: item.key, children: loop(item.children) };
         }
-
         return {
           title,
           key: item.key,
         };
       });
-
     return loop(defaultData);
   }, [searchValue]);
-
   return (
     <div>
       <Search style={{ marginBottom: 8 }} placeholder="Search" onChange={onChange} />
@@ -501,25 +432,18 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 连接线
-
 #### zh-CN
-
 节点之间带连接线的树，常用于文件目录结构展示。使用 `showLine` 开启，可以用 `switcherIcon` 修改默认图标。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { CarryOutOutlined, CheckOutlined, FormOutlined } from '@ant-design/icons';
 import { Select, Switch, Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent 1',
@@ -584,28 +508,22 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const [showLine, setShowLine] = useState<boolean>(true);
   const [showIcon, setShowIcon] = useState<boolean>(false);
   const [showLeafIcon, setShowLeafIcon] = useState<React.ReactNode>(true);
-
   const onSelect = (selectedKeys: React.Key[], info: any) => {
     console.log('selected', selectedKeys, info);
   };
-
   const handleLeafIconChange = (value: 'true' | 'false' | 'custom') => {
     if (value === 'custom') {
       return setShowLeafIcon(<CheckOutlined />);
     }
-
     if (value === 'true') {
       return setShowLeafIcon(true);
     }
-
     return setShowLeafIcon(false);
   };
-
   return (
     <div>
       <div style={{ marginBottom: 16 }}>
@@ -632,18 +550,12 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义图标
-
 #### zh-CN
-
 可以针对不同的节点定制图标。
-
-
 
 ```typescript
 import React from 'react';
@@ -656,7 +568,6 @@ import {
 } from '@ant-design/icons';
 import { Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent 1',
@@ -676,7 +587,6 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const App: React.FC = () => (
   <Tree
     showIcon
@@ -686,28 +596,19 @@ const App: React.FC = () => (
     treeData={treeData}
   />
 );
-
 export default App;
 
 ```
-
 ### 目录
-
 #### zh-CN
-
 内置的目录树，`multiple` 模式支持 `ctrl(Windows)` / `command(Mac)` 复选。
-
-
 
 ```typescript
 import React from 'react';
 import { Tree } from 'antd';
 import type { GetProps, TreeDataNode } from 'antd';
-
 type DirectoryTreeProps = GetProps<typeof Tree.DirectoryTree>;
-
 const { DirectoryTree } = Tree;
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent 0',
@@ -726,16 +627,13 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
     console.log('Trigger Select', keys, info);
   };
-
   const onExpand: DirectoryTreeProps['onExpand'] = (keys, info) => {
     console.log('Trigger Expand', keys, info);
   };
-
   return (
     <DirectoryTree
       multiple
@@ -747,26 +645,18 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 目录 Debug
-
 #### zh-CN
-
 调试 [##51210](https://github.com/ant-design/ant-design/pull/51210), [##51448](https://github.com/ant-design/ant-design/pull/51448##issuecomment-2449144872)
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Tree } from 'antd';
 import type { GetProps, TreeDataNode } from 'antd';
-
 const { DirectoryTree } = Tree;
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent 0',
@@ -785,7 +675,6 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const sharedProps: GetProps<typeof DirectoryTree> = {
   treeData,
   defaultExpandAll: true,
@@ -796,25 +685,17 @@ const sharedProps: GetProps<typeof DirectoryTree> = {
     console.log('Trigger Expand', keys, info);
   },
 };
-
 const DemoOne = () => <DirectoryTree draggable defaultSelectedKeys={['0-0-0']} />;
-
 const DemoTwo = () => <DirectoryTree {...sharedProps} checkable defaultSelectedKeys={['0-1-0']} />;
-
 const DemoThree = () => (
   <DirectoryTree {...sharedProps} draggable checkable defaultSelectedKeys={['0-1']} />
 );
-
 const BasicDemo = () => <DirectoryTree {...sharedProps} multiple treeData={treeData} />;
-
 const NormalDemo = () => <Tree {...sharedProps} defaultSelectedKeys={['0-1']} />;
-
 const NormalCheckDemo = () => (
   <Tree {...sharedProps} checkable defaultSelectedKeys={['0-1', '0-0-0', '0-0-1', '0-1-1']} />
 );
-
 const NormalDragDemo = () => <Tree {...sharedProps} draggable defaultSelectedKeys={['0-1-0']} />;
-
 const App = () => (
   <Flex wrap gap="large">
     <DemoOne />
@@ -826,25 +707,18 @@ const App = () => (
     <NormalDragDemo />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 自定义展开/折叠图标
-
 #### zh-CN
-
 自定义展开/折叠图标。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent 1',
@@ -895,12 +769,10 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const onSelect: TreeProps['onSelect'] = (selectedKeys, info) => {
     console.log('selected', selectedKeys, info);
   };
-
   return (
     <Tree
       showLine
@@ -911,24 +783,17 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 虚拟滚动
-
 #### zh-CN
-
 使用 `height` 属性则切换为虚拟滚动。
-
-
 
 ```typescript
 import React from 'react';
 import { Tooltip, Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
-
 const dig = (path = '0', level = 3) => {
   const list = [];
   for (let i = 0; i < 10; i += 1) {
@@ -937,20 +802,15 @@ const dig = (path = '0', level = 3) => {
       title: key,
       key,
     };
-
     if (level > 0) {
       treeNode.children = dig(key, level - 1);
     }
-
     list.push(treeNode);
   }
   return list;
 };
-
 const treeData = dig();
-
 const MemoTooltip = Tooltip || React.memo(Tooltip);
-
 const App: React.FC = () => (
   <Tree
     treeData={treeData}
@@ -962,13 +822,10 @@ const App: React.FC = () => (
     }}
   />
 );
-
 export default App;
 
 ```
-
 ### Drag Debug
-
 undefined
 
 ```typescript
@@ -976,12 +833,10 @@ import React from 'react';
 import { CarryOutOutlined } from '@ant-design/icons';
 import type { TreeDataNode, TreeProps } from 'antd';
 import { Switch, Tree } from 'antd';
-
 const x = 3;
 const y = 2;
 const z = 1;
 const data: TreeDataNode[] = [];
-
 const generateData = (_level: number, preKey = '0', tns = data): TreeDataNode[] | undefined => {
   const children: string[] = [];
   for (let i = 0; i < x; i++) {
@@ -1000,29 +855,24 @@ const generateData = (_level: number, preKey = '0', tns = data): TreeDataNode[] 
     return generateData(level, key, tns[index].children);
   });
 };
-
 generateData(z);
-
 const App: React.FC = () => {
   const [gData, setGData] = React.useState<TreeDataNode[]>(data);
   const [showLine, setShowLine] = React.useState<any>(true);
   const [showIcon, setShowIcon] = React.useState<boolean>(true);
   const [showLeafIcon, setShowLeafIcon] = React.useState<boolean>(true);
   const [expandedKeys, setExpandedKeys] = React.useState<React.Key[]>(['0-0', '0-0-0', '0-0-0-0']);
-
   const onDragEnter: TreeProps['onDragEnter'] = (info) => {
     console.log(info);
     // expandedKeys, set it when controlled is needed
     setExpandedKeys(info.expandedKeys);
   };
-
   const onDrop: TreeProps['onDrop'] = (info) => {
     console.log(info);
     const dropKey = info.node.key as number;
     const dragKey = info.dragNode.key as number;
     const dropPos = info.node.pos.split('-');
     const dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1]);
-
     const loop = (
       data: TreeDataNode[],
       key: number,
@@ -1037,16 +887,13 @@ const App: React.FC = () => {
         }
       }
     };
-
     const data = [...gData];
-
     // Find dragObject
     let dragObj: TreeDataNode;
     loop(data, dragKey, (item, index, arr) => {
       arr.splice(index, 1);
       dragObj = item;
     });
-
     if (!info.dropToGap) {
       // Drop on the content
       loop(data, dropKey, (item) => {
@@ -1079,7 +926,6 @@ const App: React.FC = () => {
     }
     setGData(data);
   };
-
   const innerSetShowLine = (showLine: boolean) => {
     if (showLine) {
       if (showLeafIcon) {
@@ -1091,12 +937,10 @@ const App: React.FC = () => {
       setShowLine(false);
     }
   };
-
   const innerSetShowLeafIcon = (showLeafIcon: boolean) => {
     setShowLeafIcon(showLeafIcon);
     setShowLine({ showLeafIcon });
   };
-
   return (
     <>
       <div style={{ marginBottom: 16 }}>
@@ -1122,57 +966,42 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 大数据
-
 #### zh-CN
-
 大数据展示。
-
-
 
 ```typescript
 import React from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
-
 const treeData: TreeDataNode[] = [];
-
 for (let i = 0; i < 100; i += 1) {
   const children: TreeDataNode[] = [];
-
   for (let j = 0; j < 100; j += 1) {
     children.push({
       title: `child ${i}-${j}`,
       key: `l-${i}-${j}`,
     });
   }
-
   treeData.push({
     title: `parent ${i}`,
     key: `l-${i}`,
     children,
   });
 }
-
 const App: React.FC = () => <Tree defaultExpandAll height={400} treeData={treeData} />;
-
 export default App;
 
 ```
-
 ### 占据整行
-
 
 ```typescript
 import React from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent',
@@ -1191,28 +1020,20 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const App: React.FC = () => (
   <Tree checkable defaultSelectedKeys={['0-1']} defaultExpandAll treeData={treeData} blockNode />
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 组件 Token
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent 1',
@@ -1242,16 +1063,13 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const onSelect: TreeProps['onSelect'] = (selectedKeys, info) => {
     console.log('selected', selectedKeys, info);
   };
-
   const onCheck: TreeProps['onCheck'] = (checkedKeys, info) => {
     console.log('onCheck', checkedKeys, info);
   };
-
   return (
     <ConfigProvider
       theme={{
@@ -1278,24 +1096,17 @@ const App: React.FC = () => {
     </ConfigProvider>
   );
 };
-
 export default App;
 
 ```
-
 ### 多行
-
 #### zh-CN
-
 多行树节点。
-
-
 
 ```typescript
 import React from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
-
 const treeData: TreeDataNode[] = [
   {
     title: 'parent 1',
@@ -1325,16 +1136,13 @@ const treeData: TreeDataNode[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const onSelect: TreeProps['onSelect'] = (selectedKeys, info) => {
     console.log('selected', selectedKeys, info);
   };
-
   const onCheck: TreeProps['onCheck'] = (checkedKeys, info) => {
     console.log('onCheck', checkedKeys, info);
   };
-
   return (
     <Tree
       checkable
@@ -1348,8 +1156,6 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-

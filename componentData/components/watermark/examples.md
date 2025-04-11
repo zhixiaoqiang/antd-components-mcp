@@ -1,61 +1,41 @@
 ## Watermark 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Watermark } from 'antd';
-
 const App: React.FC = () => (
   <Watermark content="Ant Design">
     <div style={{ height: 500 }} />
   </Watermark>
 );
-
 export default App;
 
 ```
-
 ### 多行水印
-
 #### zh-CN
-
 通过 `content` 设置 字符串数组 指定多行文字水印内容。
-
-
 
 ```typescript
 import React from 'react';
 import { Watermark } from 'antd';
-
 const App: React.FC = () => (
   <Watermark content={['Ant Design', 'Happy Working']}>
     <div style={{ height: 500 }} />
   </Watermark>
 );
-
 export default App;
 
 ```
-
 ### 图片水印
-
 #### zh-CN
-
 通过 `image` 指定图片地址。为保证图片高清且不被拉伸，请设置 width 和 height, 并上传至少两倍的宽高的 logo 图片地址。
-
-
 
 ```typescript
 import React from 'react';
 import { Watermark } from 'antd';
-
 const App: React.FC = () => (
   <Watermark
     height={30}
@@ -65,28 +45,19 @@ const App: React.FC = () => (
     <div style={{ height: 500 }} />
   </Watermark>
 );
-
 export default App;
 
 ```
-
 ### 自定义配置
-
 #### zh-CN
-
 通过自定义参数配置预览水印效果。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { ColorPicker, Flex, Form, Input, InputNumber, Slider, Typography, Watermark } from 'antd';
 import type { ColorPickerProps, GetProp, WatermarkProps } from 'antd';
-
 type Color = Extract<GetProp<ColorPickerProps, 'value'>, string | { cleared: any }>;
-
 const { Paragraph } = Typography;
-
 interface WatermarkConfig {
   content: string;
   color: string | Color;
@@ -96,7 +67,6 @@ interface WatermarkConfig {
   gap: [number, number];
   offset?: [number, number];
 }
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [config, setConfig] = useState<WatermarkConfig>({
@@ -109,7 +79,6 @@ const App: React.FC = () => {
     offset: undefined,
   });
   const { content, color, fontSize, zIndex, rotate, gap, offset } = config;
-
   const watermarkProps: WatermarkProps = {
     content,
     zIndex,
@@ -118,7 +87,6 @@ const App: React.FC = () => {
     offset,
     font: { color: typeof color === 'string' ? color : color.toRgbString(), fontSize },
   };
-
   return (
     <Flex gap="middle">
       <Watermark {...watermarkProps}>
@@ -201,23 +169,16 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### Modal 与 Drawer
-
 #### zh-CN
-
 在 Modal 与 Drawer 中使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Drawer, Flex, Modal, Watermark } from 'antd';
-
 const style: React.CSSProperties = {
   height: 300,
   display: 'flex',
@@ -225,18 +186,14 @@ const style: React.CSSProperties = {
   alignItems: 'center',
   backgroundColor: 'rgba(150, 150, 150, 0.2)',
 };
-
 const placeholder = <div style={style}>A mock height</div>;
-
 const App: React.FC = () => {
   const [showModal, setShowModal] = React.useState(false);
   const [showDrawer, setShowDrawer] = React.useState(false);
   const [showDrawer2, setShowDrawer2] = React.useState(false);
-
   const closeModal = () => setShowModal(false);
   const closeDrawer = () => setShowDrawer(false);
   const closeDrawer2 = () => setShowDrawer2(false);
-
   return (
     <>
       <Flex gap="middle">
@@ -272,8 +229,6 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-

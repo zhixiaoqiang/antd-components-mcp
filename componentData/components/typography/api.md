@@ -1,7 +1,5 @@
 ## API
-
 ### Typography.Text
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | code | 添加代码样式 | boolean | false |  |
@@ -17,9 +15,7 @@
 | italic | 是否斜体 | boolean | false | 4.16.0 |
 | type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
 | underline | 添加下划线样式 | boolean | false |  |
-
 ### Typography.Title
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | code | 添加代码样式 | boolean | false |  |
@@ -34,9 +30,7 @@
 | italic | 是否斜体 | boolean | false | 4.16.0 |
 | type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
 | underline | 添加下划线样式 | boolean | false |  |
-
 ### Typography.Paragraph
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | code | 添加代码样式 | boolean | false |  |
@@ -51,9 +45,7 @@
 | italic | 是否斜体 | boolean | false | 4.16.0 |
 | type | 文本类型 | `secondary` \| `success` \| `warning` \| `danger` | - | success: 4.6.0 |
 | underline | 添加下划线样式 | boolean | false |  |
-
 ### copyable
-
     {
       text: string | (() => string | Promise<string>),
       onCopy: function(event),
@@ -62,7 +54,6 @@
       format: 'text/plain' | 'text/html',
       tabIndex: number,
     }
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | format | 剪切板数据的 Mime Type | 'text/plain' \| 'text/html' | - | 4.21.0 |
@@ -71,9 +62,7 @@
 | tooltips | 自定义提示文案，为 false 时隐藏文案 | \[ReactNode, ReactNode] | \[`复制`, `复制成功`] | 4.4.0 |
 | onCopy | 拷贝成功的回调函数 | function | - |  |
 | tabIndex | 自定义复制按钮的 tabIndex | number | 0 | 5.17.0 |
-
 ### editable
-
     {
       icon: ReactNode,
       tooltip: ReactNode,
@@ -89,7 +78,6 @@
       enterIcon: ReactNode,
       tabIndex: number,
     }
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | autoSize | 自动 resize 文本域 | boolean \| { minRows: number, maxRows: number } | - | 4.4.0 |
@@ -105,9 +93,7 @@
 | triggerType | 编辑模式触发器类型，图标、文本或者两者都设置（不设置图标作为触发器时它会隐藏） | Array&lt;`icon`\|`text`> | \[`icon`] |  |
 | enterIcon | 在编辑段中自定义“enter”图标（传递“null”将删除图标） | ReactNode | `<EnterOutlined />` | 4.17.0 |
 | tabIndex | 自定义编辑按钮的 tabIndex | number | 0 | 5.17.0 |
-
 ### ellipsis
-
 ```tsx
 interface EllipsisConfig {
   rows: number;
@@ -126,7 +112,6 @@ interface EllipsisConfig {
   onEllipsis: (ellipsis: boolean) => void;
 }
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | expandable | 是否可展开 | boolean \| 'collapsible' | - | `collapsible`: 5.16.0 |

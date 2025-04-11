@@ -32,9 +32,8 @@ export const toPascalCase = (str: string) => {
  * ```
  *  */
 export const removeFrontmatter = (content: string) => {
-  return content.replace(/^---\n([\s\S]*?)\n---\n/, "");
+  return content.replace(/^---\n([\s\S]*?)\n---\n+/, "");
 };
-
 
 /** 
  * 从 Markdown 中提取指定部分

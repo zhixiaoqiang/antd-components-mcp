@@ -1,5 +1,4 @@
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | accept | 接受上传的文件类型，详见 [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) | string | - |  |
@@ -30,11 +29,8 @@
 | onDownload | 点击下载文件时的回调，如果没有指定，则默认跳转到文件 url 对应的标签页 | function(file): void | (跳转新标签页) |  |
 | onPreview | 点击文件链接或预览图标时的回调 | function(file) | - |  |
 | onRemove   | 点击移除文件时的回调，返回值为 false 时不移除。支持返回一个 Promise 对象，Promise 对象 resolve(false) 或 reject 时不移除               | function(file): boolean \| Promise | -   |  |
-
 ### UploadFile
-
 继承自 File，附带额外属性用于渲染。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | crossOrigin | CORS 属性设置 | `'anonymous'` \| `'use-credentials'` \| `''` | - | 4.20.0 |
@@ -44,13 +40,9 @@
 | thumbUrl | 缩略图地址 | string | - | - |
 | uid | 唯一标识符，不设置时会自动生成 | string | - | - |
 | url | 下载地址 | string | - | - |
-
 ### onChange
-
 > 💡 上传中、完成、失败都会调用这个函数。
-
 文件状态改变的回调，返回为：
-
 ```jsx
 {
   file: { /* ... */ },
@@ -58,9 +50,7 @@
   event: { /* ... */ },
 }
 ```
-
 1. `file` 当前操作的文件对象。
-
    ```jsx
    {
       uid: 'uid',      // 文件唯一标识，建议设置为负数，防止和内部产生的 id 冲突
@@ -70,7 +60,5 @@
       linkProps: '{"download": "image"}', // 下载链接额外的 HTML 属性
    }
    ```
-
 2. `fileList` 当前的文件列表。
-
 3. `event` 上传中的服务端响应内容，包含了上传进度等信息，高级浏览器支持。

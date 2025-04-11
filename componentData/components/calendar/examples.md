@@ -1,45 +1,31 @@
 ## Calendar 组件示例
-
 ### 基本
-
 #### zh-CN
-
 一个通用的日历面板，支持年/月切换。
-
-
 
 ```typescript
 import React from 'react';
 import { Calendar } from 'antd';
 import type { CalendarProps } from 'antd';
 import type { Dayjs } from 'dayjs';
-
 const App: React.FC = () => {
   const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
     console.log(value.format('YYYY-MM-DD'), mode);
   };
-
   return <Calendar onPanelChange={onPanelChange} />;
 };
-
 export default App;
 
 ```
-
 ### 通知事项日历
-
 #### zh-CN
-
 一个复杂的应用示例，用 `dateCellRender` 和 `monthCellRender` 函数来自定义需要渲染的数据。
-
-
 
 ```typescript
 import React from 'react';
 import type { BadgeProps, CalendarProps } from 'antd';
 import { Badge, Calendar } from 'antd';
 import type { Dayjs } from 'dayjs';
-
 const getListData = (value: Dayjs) => {
   let listData: { type: string; content: string }[] = []; // Specify the type of listData
   switch (value.date()) {
@@ -70,13 +56,11 @@ const getListData = (value: Dayjs) => {
   }
   return listData || [];
 };
-
 const getMonthData = (value: Dayjs) => {
   if (value.month() === 8) {
     return 1394;
   }
 };
-
 const App: React.FC = () => {
   const monthCellRender = (value: Dayjs) => {
     const num = getMonthData(value);
@@ -87,7 +71,6 @@ const App: React.FC = () => {
       </div>
     ) : null;
   };
-
   const dateCellRender = (value: Dayjs) => {
     const listData = getListData(value);
     return (
@@ -100,85 +83,63 @@ const App: React.FC = () => {
       </ul>
     );
   };
-
   const cellRender: CalendarProps<Dayjs>['cellRender'] = (current, info) => {
     if (info.type === 'date') return dateCellRender(current);
     if (info.type === 'month') return monthCellRender(current);
     return info.originNode;
   };
-
   return <Calendar cellRender={cellRender} />;
 };
-
 export default App;
 
 ```
-
 ### 卡片模式
-
 #### zh-CN
-
 用于嵌套在空间有限的容器中。
-
-
 
 ```typescript
 import React from 'react';
 import { Calendar, theme } from 'antd';
 import type { CalendarProps } from 'antd';
 import type { Dayjs } from 'dayjs';
-
 const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
   console.log(value.format('YYYY-MM-DD'), mode);
 };
-
 const App: React.FC = () => {
   const { token } = theme.useToken();
-
   const wrapperStyle: React.CSSProperties = {
     width: 300,
     border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: token.borderRadiusLG,
   };
-
   return (
     <div style={wrapperStyle}>
       <Calendar fullscreen={false} onPanelChange={onPanelChange} />
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 选择功能
-
 #### zh-CN
-
 一个通用的日历面板，支持年/月切换。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Alert, Calendar } from 'antd';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
-
 const App: React.FC = () => {
   const [value, setValue] = useState(() => dayjs('2017-01-25'));
   const [selectedValue, setSelectedValue] = useState(() => dayjs('2017-01-25'));
-
   const onSelect = (newValue: Dayjs) => {
     setValue(newValue);
     setSelectedValue(newValue);
   };
-
   const onPanelChange = (newValue: Dayjs) => {
     setValue(newValue);
   };
-
   return (
     <>
       <Alert message={`You selected date: ${selectedValue?.format('YYYY-MM-DD')}`} />
@@ -186,18 +147,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 农历日历
-
 #### zh-CN
-
 展示农历、节气等信息。
-
-
 
 ```typescript
 import React from 'react';
@@ -208,7 +163,6 @@ import classNames from 'classnames';
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
 import { HolidayUtil, Lunar } from 'lunar-typescript';
-
 const useStyle = createStyles(({ token, css, cx }) => {
   const lunar = css`
     color: ${token.colorTextTertiary};
@@ -296,24 +250,19 @@ const useStyle = createStyles(({ token, css, cx }) => {
     weekend,
   };
 });
-
 const App: React.FC = () => {
   const { styles } = useStyle({ test: true });
-
   const [selectDate, setSelectDate] = React.useState<Dayjs>(dayjs());
   const [panelDateDate, setPanelDate] = React.useState<Dayjs>(dayjs());
-
   const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
     console.log(value.format('YYYY-MM-DD'), mode);
     setPanelDate(value);
   };
-
   const onDateChange: CalendarProps<Dayjs>['onSelect'] = (value, selectInfo) => {
     if (selectInfo.source === 'date') {
       setSelectDate(value);
     }
   };
-
   const cellRender: CalendarProps<Dayjs>['fullCellRender'] = (date, info) => {
     const d = Lunar.fromDate(date.toDate());
     const lunar = d.getDayInChinese();
@@ -345,7 +294,6 @@ const App: React.FC = () => {
         ),
       });
     }
-
     if (info.type === 'month') {
       // Due to the fact that a solar month is part of the lunar month X and part of the lunar month X+1,
       // when rendering a month, always take X as the lunar month of the month
@@ -362,18 +310,15 @@ const App: React.FC = () => {
       );
     }
   };
-
   const getYearLabel = (year: number) => {
     const d = Lunar.fromDate(new Date(year + 1, 0));
     return `${d.getYearInChinese()}年（${d.getYearInGanZhi()}${d.getYearShengXiao()}年）`;
   };
-
   const getMonthLabel = (month: number, value: Dayjs) => {
     const d = Lunar.fromDate(new Date(value.year(), month));
     const lunar = d.getMonthInChinese();
     return `${month + 1}月（${lunar}月）`;
   };
-
   return (
     <div className={styles.wrapper}>
       <Calendar
@@ -385,7 +330,6 @@ const App: React.FC = () => {
           const start = 0;
           const end = 12;
           const monthOptions = [];
-
           let current = value.clone();
           const localeData = value.localeData();
           const months = [];
@@ -393,14 +337,12 @@ const App: React.FC = () => {
             current = current.month(i);
             months.push(localeData.monthsShort(current));
           }
-
           for (let i = start; i < end; i++) {
             monthOptions.push({
               label: getMonthLabel(i, value),
               value: i,
             });
           }
-
           const year = value.year();
           const month = value.month();
           const options = [];
@@ -454,23 +396,16 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 周数
-
 #### zh-CN
-
 通过将 `showWeek` 属性设置为 `true`，在全屏日历中显示周数。
-
-
 
 ```typescript
 import React from 'react';
 import { Calendar } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Calendar fullscreen showWeek />
@@ -478,45 +413,32 @@ const App: React.FC = () => (
     <Calendar fullscreen={false} showWeek />
   </>
 );
-
 export default App;
 
 ```
-
 ### 自定义头部
-
 #### zh-CN
-
 自定义日历头部内容。
-
-
 
 ```typescript
 import React from 'react';
 import dayjs from 'dayjs';
-
 import 'dayjs/locale/zh-cn';
-
 import { Calendar, Col, Radio, Row, Select, theme, Typography } from 'antd';
 import type { CalendarProps } from 'antd';
 import type { Dayjs } from 'dayjs';
 import dayLocaleData from 'dayjs/plugin/localeData';
-
 dayjs.extend(dayLocaleData);
-
 const App: React.FC = () => {
   const { token } = theme.useToken();
-
   const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
     console.log(value.format('YYYY-MM-DD'), mode);
   };
-
   const wrapperStyle: React.CSSProperties = {
     width: 300,
     border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: token.borderRadiusLG,
   };
-
   return (
     <div style={wrapperStyle}>
       <Calendar
@@ -525,7 +447,6 @@ const App: React.FC = () => {
           const start = 0;
           const end = 12;
           const monthOptions = [];
-
           let current = value.clone();
           const localeData = value.localeData();
           const months = [];
@@ -533,7 +454,6 @@ const App: React.FC = () => {
             current = current.month(i);
             months.push(localeData.monthsShort(current));
           }
-
           for (let i = start; i < end; i++) {
             monthOptions.push(
               <Select.Option key={i} value={i} className="month-item">
@@ -541,7 +461,6 @@ const App: React.FC = () => {
               </Select.Option>,
             );
           }
-
           const year = value.year();
           const month = value.month();
           const options = [];
@@ -602,31 +521,23 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { Calendar, ConfigProvider } from 'antd';
 import type { CalendarProps } from 'antd';
 import type { Dayjs } from 'dayjs';
-
 /** Test usage. Do not use in your production. */
 export default () => {
   const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
     console.log(value.format('YYYY-MM-DD'), mode);
   };
-
   return (
     <ConfigProvider
       theme={{
@@ -647,4 +558,3 @@ export default () => {
 };
 
 ```
-

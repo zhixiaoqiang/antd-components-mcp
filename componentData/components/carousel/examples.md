@@ -1,17 +1,11 @@
 ## Carousel 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Carousel } from 'antd';
-
 const contentStyle: React.CSSProperties = {
   margin: 0,
   height: '160px',
@@ -20,12 +14,10 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   background: '#364d79',
 };
-
 const App: React.FC = () => {
   const onChange = (currentSlide: number) => {
     console.log(currentSlide);
   };
-
   return (
     <Carousel afterChange={onChange}>
       <div>
@@ -43,26 +35,18 @@ const App: React.FC = () => {
     </Carousel>
   );
 };
-
 export default App;
 
 ```
-
 ### 位置
-
 #### zh-CN
-
 位置有 4 个方向。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { CarouselProps, RadioChangeEvent } from 'antd';
 import { Carousel, Radio } from 'antd';
-
 type DotPosition = CarouselProps['dotPosition'];
-
 const contentStyle: React.CSSProperties = {
   height: '160px',
   color: '#fff',
@@ -70,14 +54,11 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   background: '#364d79',
 };
-
 const App: React.FC = () => {
   const [dotPosition, setDotPosition] = useState<DotPosition>('top');
-
   const handlePositionChange = ({ target: { value } }: RadioChangeEvent) => {
     setDotPosition(value);
   };
-
   return (
     <>
       <Radio.Group onChange={handlePositionChange} value={dotPosition} style={{ marginBottom: 8 }}>
@@ -103,23 +84,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自动切换
-
 #### zh-CN
-
 定时切换下一张。
-
-
 
 ```typescript
 import React from 'react';
 import { Carousel } from 'antd';
-
 const contentStyle: React.CSSProperties = {
   height: '160px',
   color: '#fff',
@@ -127,7 +101,6 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   background: '#364d79',
 };
-
 const App: React.FC = () => (
   <Carousel autoplay>
     <div>
@@ -144,23 +117,16 @@ const App: React.FC = () => (
     </div>
   </Carousel>
 );
-
 export default App;
 
 ```
-
 ### 渐显
-
 #### zh-CN
-
 切换效果为渐显。
-
-
 
 ```typescript
 import React from 'react';
 import { Carousel } from 'antd';
-
 const contentStyle: React.CSSProperties = {
   height: '160px',
   color: '#fff',
@@ -168,7 +134,6 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   background: '#364d79',
 };
-
 const App: React.FC = () => (
   <Carousel effect="fade">
     <div>
@@ -185,23 +150,16 @@ const App: React.FC = () => (
     </div>
   </Carousel>
 );
-
 export default App;
 
 ```
-
 ### 切换箭头
-
 #### zh-CN
-
 显示切换箭头。
-
-
 
 ```typescript
 import React from 'react';
 import { Carousel } from 'antd';
-
 const contentStyle: React.CSSProperties = {
   margin: 0,
   height: '160px',
@@ -210,7 +168,6 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   background: '#364d79',
 };
-
 const App: React.FC = () => (
   <>
     <Carousel arrows infinite={false}>
@@ -244,23 +201,16 @@ const App: React.FC = () => (
     </Carousel>
   </>
 );
-
 export default App;
 
 ```
-
 ### 进度条
-
 #### zh-CN
-
 展示指示点的进度。
-
-
 
 ```typescript
 import React from 'react';
 import { Carousel } from 'antd';
-
 const contentStyle: React.CSSProperties = {
   height: '160px',
   color: '#fff',
@@ -268,7 +218,6 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   background: '#364d79',
 };
-
 const App: React.FC = () => (
   <Carousel autoplay={{ dotDuration: true }} autoplaySpeed={5000}>
     <div>
@@ -285,23 +234,16 @@ const App: React.FC = () => (
     </div>
   </Carousel>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { Carousel, ConfigProvider } from 'antd';
-
 /** Test usage. Do not use in your production. */
 const contentStyle: React.CSSProperties = {
   margin: 0,
@@ -311,7 +253,6 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   background: '#364d79',
 };
-
 export default () => (
   <ConfigProvider
     theme={{
@@ -342,4 +283,3 @@ export default () => (
 );
 
 ```
-

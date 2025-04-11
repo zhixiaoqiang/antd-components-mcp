@@ -1,25 +1,17 @@
-
 ## 何时使用
-
 在系统四个角显示通知提醒信息。经常用于以下情况：
-
 - 较为复杂的通知内容。
 - 带有交互的通知，给出用户下一步的行动点。
 - 系统主动推送。
 
-
-
 ## API
-
 - `notification.success(config)`
 - `notification.error(config)`
 - `notification.info(config)`
 - `notification.warning(config)`
 - `notification.open(config)`
 - `notification.destroy(key?: String)`
-
 config 参数如下：
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | actions | 自定义按钮组 | ReactNode | - | 5.24.0 |
@@ -39,11 +31,8 @@ config 参数如下：
 | onClick | 点击通知时触发的回调函数 | function | - | - |
 | onClose | 当通知关闭时触发 | function | - | - |
 | props | 透传至通知 `div` 上的 props 对象，支持传入 `data-*` `aria-*` 或 `role` 作为对象的属性。需要注意的是，虽然在 TypeScript 类型中声明的类型支持传入 `data-*` 作为对象的属性，但目前只允许传入 `data-testid` 作为对象的属性。 详见 https://github.com/microsoft/TypeScript/issues/28960 | Object | - | - |
-
 - `notification.useNotification(config)`
-
 config 参数如下：
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | bottom | 消息从底部弹出时，距离底部的位置，单位像素 | number | 24 |  |
@@ -56,17 +45,12 @@ config 参数如下：
 | stack | 堆叠模式，超过阈值时会将所有消息收起 | boolean \| `{ threshold: number }` | `{ threshold: 3 }` | 5.10.0 |
 | top | 消息从顶部弹出时，距离顶部的位置，单位像素 | number | 24 |  |
 | maxCount | 最大显示数，超过限制时，最早的消息会被自动关闭 | number | - | 4.17.0 |
-
 ### 全局配置
-
 还提供了一个全局配置方法，在调用前提前配置，全局一次生效。
-
 `notification.config(options)`
-
 > 当你使用 `ConfigProvider` 进行全局化配置时，系统会默认自动开启 RTL 模式。(4.3.0+)
 >
 > 当你想单独使用，可通过如下设置开启 RTL 模式。
-
 ```js
 notification.config({
   placement: 'bottomRight',
@@ -75,9 +59,7 @@ notification.config({
   rtl: true,
 });
 ```
-
 #### notification.config
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | bottom | 消息从底部弹出时，距离底部的位置，单位像素 | number | 24 |  |
@@ -91,19 +73,12 @@ notification.config({
 | top | 消息从顶部弹出时，距离顶部的位置，单位像素 | number | 24 |  |
 | maxCount | 最大显示数，超过限制时，最早的消息会被自动关闭 | number | - | 4.17.0 |
 
-
-
 ## FAQ
-
 ### 为什么 notification 不能获取 context、redux 的内容和 ConfigProvider 的 `locale/prefixCls/theme` 等配置？
-
 直接调用 notification 方法，antd 会通过 `ReactDOM.render` 动态创建新的 React 实体。其 context 与当前代码所在 context 并不相同，因而无法获取 context 信息。
-
 当你需要 context 信息（例如 ConfigProvider 配置的内容）时，可以通过 `notification.useNotification` 方法会返回 `api` 实体以及 `contextHolder` 节点。将其插入到你需要获取 context 位置即可：
-
 ```tsx
 const [api, contextHolder] = notification.useNotification();
-
 return (
   <Context1.Provider value="Ant">
     {/* contextHolder 在 Context1 内，它可以获得 Context1 的 context */}
@@ -114,11 +89,7 @@ return (
   </Context1.Provider>
 );
 ```
-
 **异同**：通过 hooks 创建的 `contextHolder` 必须插入到子元素节点中才会生效，当你不需要上下文信息时请直接调用。
-
 > 可通过 [App 包裹组件](/components/app-cn) 简化 `useNotification` 等方法需要手动植入 contextHolder 的问题。
-
 ### 静态方法如何设置 prefixCls ？
-
 你可以通过 [`ConfigProvider.config`](/components/config-provider-cn#configproviderconfig-4130) 进行设置。

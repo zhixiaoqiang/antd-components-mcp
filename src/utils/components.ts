@@ -4,7 +4,7 @@ import { Cache } from "./cache";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
 
-import type { ComponentData } from '../../scripts/extract-docs';
+import type { ComponentData } from '../scripts/extract-docs';
 
 interface CacheData {
   componentsList: ComponentData[]

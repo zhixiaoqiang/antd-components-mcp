@@ -1,12 +1,7 @@
 ## ConfigProvider 组件示例
-
 ### 国际化
-
 #### zh-CN
-
 此处列出 Ant Design 中需要国际化支持的组件，你可以在演示里切换语言。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -45,16 +40,11 @@ import {
 import enUS from 'antd/locale/en_US';
 import zhCN from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
-
 import 'dayjs/locale/zh-cn';
-
 type Locale = ConfigProviderProps['locale'];
-
 dayjs.locale('en');
-
 const { Option } = Select;
 const { RangePicker } = DatePicker;
-
 const columns: TableProps['columns'] = [
   {
     title: 'Name',
@@ -66,36 +56,29 @@ const columns: TableProps['columns'] = [
     dataIndex: 'age',
   },
 ];
-
 const Page: React.FC = () => {
   const { token } = theme.useToken();
-
   const [open, setOpen] = useState(false);
   const [tourOpen, setTourOpen] = useState(false);
   const tourRefs = React.useRef<HTMLElement[]>([]);
-
   const showModal = () => {
     setOpen(true);
   };
-
   const hideModal = () => {
     setOpen(false);
   };
-
   const info = () => {
     Modal.info({
       title: 'some info',
       content: 'some info',
     });
   };
-
   const confirm = () => {
     Modal.confirm({
       title: 'some info',
       content: 'some info',
     });
   };
-
   const steps: TourProps['steps'] = [
     {
       title: 'Upload File',
@@ -113,7 +96,6 @@ const Page: React.FC = () => {
       target: () => tourRefs.current[2],
     },
   ];
-
   const fileList: UploadFile[] = [
     {
       uid: '-1',
@@ -134,7 +116,6 @@ const Page: React.FC = () => {
       status: 'error',
     },
   ];
-
   return (
     <Space
       direction="vertical"
@@ -231,10 +212,8 @@ const Page: React.FC = () => {
     </Space>
   );
 };
-
 const App: React.FC = () => {
   const [locale, setLocal] = useState<Locale>(enUS);
-
   const changeLocale = (e: RadioChangeEvent) => {
     const localeValue = e.target.value;
     setLocal(localeValue);
@@ -244,7 +223,6 @@ const App: React.FC = () => {
       dayjs.locale('zh-cn');
     }
   };
-
   return (
     <>
       <div style={{ marginBottom: 16 }}>
@@ -264,18 +242,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 方向
-
 #### zh-CN
-
 这里列出了支持 `rtl` 方向的组件，您可以在演示中切换方向。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -310,16 +282,12 @@ import {
   Tree,
   TreeSelect,
 } from 'antd';
-
 type DirectionType = ConfigProviderProps['direction'];
-
 const InputGroup = Input.Group;
 const ButtonGroup = Button.Group;
-
 const { Option } = Select;
 const { TreeNode } = Tree;
 const { Search } = Input;
-
 const cascaderOptions = [
   {
     value: 'tehran',
@@ -370,22 +338,18 @@ const cascaderOptions = [
     ],
   },
 ];
-
 type Placement = 'bottomLeft' | 'bottomRight' | 'topLeft' | 'topRight';
-
 const Page: React.FC<{ placement: Placement }> = ({ placement }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [badgeCount, setBadgeCount] = useState(5);
   const [showBadge, setShowBadge] = useState(true);
-
   const selectBefore = (
     <Select defaultValue="Http://" style={{ width: 90 }}>
       <Option value="Http://">Http://</Option>
       <Option value="Https://">Https://</Option>
     </Select>
   );
-
   const selectAfter = (
     <Select defaultValue=".com" style={{ width: 80 }}>
       <Option value=".com">.com</Option>
@@ -394,51 +358,41 @@ const Page: React.FC<{ placement: Placement }> = ({ placement }) => {
       <Option value=".org">.org</Option>
     </Select>
   );
-
   // ==== Cascader ====
   const cascaderFilter = (inputValue: string, path: { label: string }[]) =>
     path.some((option) => option.label.toLowerCase().includes(inputValue.toLowerCase()));
-
   const onCascaderChange = (value: any) => {
     console.log(value);
   };
   // ==== End Cascader ====
-
   // ==== Modal ====
   const showModal = () => {
     setModalOpen(true);
   };
-
   const handleOk = (e: React.MouseEvent<HTMLElement>) => {
     console.log(e);
     setModalOpen(false);
   };
-
   const handleCancel = (e: React.MouseEvent<HTMLElement>) => {
     console.log(e);
     setModalOpen(false);
   };
-
   // ==== End Modal ====
   const onStepsChange = (newCurrentStep: number) => {
     console.log('onChange:', newCurrentStep);
     setCurrentStep(newCurrentStep);
   };
-
   // ==== Badge ====
   const increaseBadge = () => {
     setBadgeCount(badgeCount + 1);
   };
-
   const declineBadge = () => {
     setBadgeCount((prev) => (prev - 1 < 0 ? 0 : prev - 1));
   };
-
   const onChangeBadge = (checked: boolean) => {
     setShowBadge(checked);
   };
   // ==== End Badge ====
-
   return (
     <div className="direction-components">
       <Row>
@@ -767,17 +721,14 @@ const Page: React.FC<{ placement: Placement }> = ({ placement }) => {
     </div>
   );
 };
-
 const App: React.FC = () => {
   const [direction, setDirection] = useState<DirectionType>('ltr');
   const [placement, setPlacement] = useState<Placement>('bottomLeft');
-
   const changeDirection = (e: RadioChangeEvent) => {
     const directionValue = e.target.value;
     setDirection(directionValue);
     setPlacement(directionValue === 'rtl' ? 'bottomRight' : 'bottomLeft');
   };
-
   return (
     <>
       <div style={{ marginBottom: 16 }}>
@@ -797,18 +748,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 组件尺寸
-
 #### zh-CN
-
 修改默认组件尺寸。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -826,12 +771,9 @@ import {
   Tabs,
 } from 'antd';
 import type { ConfigProviderProps } from 'antd';
-
 type SizeType = ConfigProviderProps['componentSize'];
-
 const App: React.FC = () => {
   const [componentSize, setComponentSize] = useState<SizeType>('small');
-
   return (
     <>
       <Radio.Group
@@ -892,18 +834,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 主题
-
 #### zh-CN
-
 通过 `theme` 修改主题。
-
-
 
 ```typescript
 import React from 'react';
@@ -919,9 +855,7 @@ import {
   Switch,
 } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
-
 type Color = Extract<GetProp<ColorPickerProps, 'value'>, { cleared: any }>;
-
 type ThemeData = {
   borderRadius: number;
   colorPrimary: string;
@@ -930,7 +864,6 @@ type ThemeData = {
     algorithm?: boolean;
   };
 };
-
 const defaultData: ThemeData = {
   borderRadius: 6,
   colorPrimary: '#1677ff',
@@ -938,12 +871,9 @@ const defaultData: ThemeData = {
     colorPrimary: '#00B96B',
   },
 };
-
 export default () => {
   const [form] = Form.useForm();
-
   const [data, setData] = React.useState<ThemeData>(defaultData);
-
   return (
     <div>
       <ConfigProvider
@@ -1011,28 +941,20 @@ export default () => {
 };
 
 ```
-
 ### 自定义波纹
-
 #### zh-CN
-
 波纹效果带来了灵动性，可以通过 `component` 判断来自哪个组件。你也可以使用 [`@ant-design/happy-work-theme`](https://github.com/ant-design/happy-work-theme) 提供的 HappyProvider 实现动态波纹效果。
-
-
 
 ```typescript
 import React from 'react';
 import { HappyProvider } from '@ant-design/happy-work-theme';
 import { Button, ConfigProvider, Space } from 'antd';
 import type { ConfigProviderProps, GetProp } from 'antd';
-
 type WaveConfig = GetProp<ConfigProviderProps, 'wave'>;
-
 // Prepare effect holder
 const createHolder = (node: HTMLElement) => {
   const { borderWidth } = getComputedStyle(node);
   const borderWidthNum = parseInt(borderWidth, 10);
-
   const div = document.createElement('div');
   div.style.position = 'absolute';
   div.style.inset = `-${borderWidthNum}px`;
@@ -1042,10 +964,8 @@ const createHolder = (node: HTMLElement) => {
   div.style.pointerEvents = 'none';
   div.style.overflow = 'hidden';
   node.appendChild(div);
-
   return div;
 };
-
 const createDot = (holder: HTMLElement, color: string, left: number, top: number, size = 0) => {
   const dot = document.createElement('div');
   dot.style.position = 'absolute';
@@ -1058,83 +978,63 @@ const createDot = (holder: HTMLElement, color: string, left: number, top: number
   dot.style.transform = 'translate(-50%, -50%)';
   dot.style.transition = 'all 1s ease-out';
   holder.appendChild(dot);
-
   return dot;
 };
-
 // Inset Effect
 const showInsetEffect: WaveConfig['showEffect'] = (node, { event, component }) => {
   if (component !== 'Button') {
     return;
   }
-
   const holder = createHolder(node);
-
   const rect = holder.getBoundingClientRect();
-
   const left = event.clientX - rect.left;
   const top = event.clientY - rect.top;
-
   const dot = createDot(holder, 'rgba(255, 255, 255, 0.65)', left, top);
-
   // Motion
   requestAnimationFrame(() => {
     dot.ontransitionend = () => {
       holder.remove();
     };
-
     dot.style.width = '200px';
     dot.style.height = '200px';
     dot.style.opacity = '0';
   });
 };
-
 // Shake Effect
 const showShakeEffect: WaveConfig['showEffect'] = (node, { component }) => {
   if (component !== 'Button') {
     return;
   }
-
   const seq = [0, -15, 15, -5, 5, 0];
   const itv = 10;
-
   let steps = 0;
-
   function loop() {
     cancelAnimationFrame((node as any).effectTimeout);
-
     (node as any).effectTimeout = requestAnimationFrame(() => {
       const currentStep = Math.floor(steps / itv);
       const current = seq[currentStep];
       const next = seq[currentStep + 1];
-
       if (!next) {
         node.style.transform = '';
         node.style.transition = '';
         return;
       }
-
       // Trans from current to next by itv
       const angle = current + ((next - current) / itv) * (steps % itv);
-
       node.style.transform = `rotate(${angle}deg)`;
       node.style.transition = 'none';
-
       steps += 1;
       loop();
     });
   }
-
   loop();
 };
-
 // Component
 const Wrapper = ({ name, ...wave }: WaveConfig & { name: string }) => (
   <ConfigProvider wave={wave}>
     <Button type="primary">{name}</Button>
   </ConfigProvider>
 );
-
 const App = () => (
   <Space style={{ padding: 24 }} size="large">
     <Wrapper name="Disabled" disabled />
@@ -1146,25 +1046,18 @@ const App = () => (
     </HappyProvider>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 静态方法
-
 #### zh-CN
-
 使用 `holderRender` 给 `message` 、`modal` 、`notification` 静态方法设置 `Provider`
-
-
 
 ```typescript
 import React, { useContext, useLayoutEffect } from 'react';
 import { StyleProvider } from '@ant-design/cssinjs';
 import { ExclamationCircleFilled } from '@ant-design/icons';
 import { App, Button, ConfigProvider, message, Modal, notification, Space } from 'antd';
-
 const Demo: React.FC = () => {
   const { locale, theme } = useContext(ConfigProvider.ConfigContext);
   useLayoutEffect(() => {
@@ -1180,7 +1073,6 @@ const Demo: React.FC = () => {
       ),
     });
   }, [locale, theme]);
-
   return (
     <div>
       <Space>
@@ -1220,24 +1112,17 @@ const Demo: React.FC = () => {
     </div>
   );
 };
-
 export default Demo;
 
 ```
-
 ### 前缀
-
 #### zh-CN
-
 修改组件和图标前缀。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Button, Checkbox, ConfigProvider, Radio, Select } from 'antd';
-
 // Ant Design site use `es` module for view
 // but do not replace related lib `lib` with `es`
 // which do not show correct in site.
@@ -1263,29 +1148,20 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 获取配置
-
 #### zh-CN
-
 获取父级 `Provider` 的值。如 `DisabledContextProvider`、`SizeContextProvider`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Checkbox, ConfigProvider, Divider, Form, Input, Radio, Space } from 'antd';
 import type { ConfigProviderProps } from 'antd';
-
 type SizeType = ConfigProviderProps['componentSize'];
-
 const ConfigDisplay = () => {
   const { componentDisabled, componentSize } = ConfigProvider.useConfig();
-
   return (
     <>
       <Form.Item label="componentSize value">
@@ -1297,11 +1173,9 @@ const ConfigDisplay = () => {
     </>
   );
 };
-
 const App: React.FC = () => {
   const [componentSize, setComponentSize] = useState<SizeType>('small');
   const [disabled, setDisabled] = useState<boolean>(true);
-
   return (
     <div>
       <Space>
@@ -1330,23 +1204,16 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 警告
-
 #### zh-CN
-
 调整 warning 策略。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert, ConfigProvider, Input, Typography } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Typography.Title level={4}>Open single page to check the console</Typography.Title>
@@ -1356,8 +1223,6 @@ const App: React.FC = () => (
     </ConfigProvider>
   </>
 );
-
 export default App;
 
 ```
-

@@ -1,7 +1,5 @@
 ## API
-
 ### Tabs
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | activeKey | 当前激活 tab 面板的 key | string | - |  |
@@ -27,11 +25,8 @@
 | onEdit | 新增和删除页签的回调，在 `type="editable-card"` 时有效 | (action === 'add' ? event : targetKey, action) => void | - |  |
 | onTabClick | tab 被点击的回调 | (key: string, event: MouseEvent) => void | - |  |
 | onTabScroll | tab 滚动时触发 | ({ direction: `left` \| `right` \| `top` \| `bottom` }) => void | - | 4.3.0 |
-
 > 更多属性查看 [rc-tabs tabs](https://github.com/react-component/tabs#tabs)
-
 ### TabItemType
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | closeIcon | 自定义关闭图标，在 `type="editable-card"` 时有效。5.7.0：设置为 `null` 或 `false` 时隐藏关闭按钮 | ReactNode | - |  |
@@ -43,9 +38,7 @@
 | icon | 选项卡头显示图标 | ReactNode | - | 5.12.0 |
 | children | 选项卡头显示内容 | ReactNode | - |  |
 | closable | 是否显示选项卡的关闭按钮，在 `type="editable-card"` 时有效 | boolean | true |  |
-
 ### MoreProps
-
 | 参数                                         | 说明           | 类型      | 默认值 | 版本 |
 | -------------------------------------------- | -------------- | --------- | ------ | ---- |
 | icon                                         | 自定义折叠图标 | ReactNode | -      |      |

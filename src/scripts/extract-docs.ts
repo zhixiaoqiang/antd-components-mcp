@@ -19,6 +19,8 @@ import {
   EXTRACTED_COMPONENTS_LIST_PATH,
   EXTRACTED_DATA_DIR,
   EXTRACTED_METADATA_PATH,
+  README_MATCH_FIELD,
+  README_PATH,
 } from "../constants/path";
 import {
   extractSection,
@@ -115,6 +117,11 @@ const extractExamples = (markdown: string) => {
   return [];
 };
 
+// 清除掉不需要的内容，减少上下文
+const DOC_CLEANUP_REGEX =
+  / {#when-to-use}|\n通用属性参考：\[通用属性\]\(\/docs\/react\/common-props\)\n|/g;
+const DOC_CLEANUP_EMPTY_LINE = /\n+/g;
+
 /**
  * 处理组件数据
  *
@@ -156,11 +163,8 @@ async function processComponent(componentsPath: string, dirName: string) {
         removeFrontmatter,
         (doc: string) =>
           doc
-            .replace(" {#when-to-use}", "")
-            .replace(
-              "\n通用属性参考：[通用属性](/docs/react/common-props)\n",
-              ""
-            ),
+            .replace(DOC_CLEANUP_REGEX, "")
+            .replace(DOC_CLEANUP_EMPTY_LINE, "\n"),
         (doc: string) => removeSection(doc, "\n## Design Token"),
         (doc: string) => removeSection(doc, "\n## 主题变量"),
         (doc: string) => removeSection(doc, "\n## Semantic DOM"),
@@ -194,12 +198,16 @@ async function processComponent(componentsPath: string, dirName: string) {
             `${examplePath}.md`,
             "utf-8"
           ).then((content) =>
-            removeSection(content, "\n## en-US").replace(/#/g, "##")
+            removeSection(content, "\n## en-US")
+              .replace(DOC_CLEANUP_EMPTY_LINE, "\n")
+              .replace(/#/g, "##")
           );
         } catch (error) {}
 
         try {
-          exampleInfo.code = await readFile(`${examplePath}.tsx`, "utf-8");
+          exampleInfo.code = (
+            await readFile(`${examplePath}.tsx`, "utf-8")
+          ).replace(DOC_CLEANUP_EMPTY_LINE, "\n");
         } catch (error) {
           console.error(
             `  ❌ 读取示例 ${exampleInfo.name} 时出错:`,
@@ -324,6 +332,20 @@ async function extractAllData(antdRepoPath: string) {
 
   await writeJsonFile(EXTRACTED_METADATA_PATH, metaDataResult);
 
+  await writeFile(
+    README_PATH,
+    await readFile(README_PATH, "utf-8").then((content) =>
+      content.replace(
+        README_MATCH_FIELD,
+        `\`Ant Design V${metaDataResult.antdVersion} ${new Date(
+          metaDataResult.extractedAt
+        ).toLocaleDateString()}\``
+      )
+    )
+  );
+
+  console.log(`✅ README.md 中预处理版本信息已更新`);
+
   // 创建组件目录
   await mkdir(EXTRACTED_COMPONENTS_DATA_PATH, { recursive: true });
 
@@ -352,15 +374,14 @@ async function extractAllData(antdRepoPath: string) {
 
     // 写入示例
     // 创建带有示例描述的markdown文件
-    let examplesMarkdown = `## ${componentData.name} 组件示例\n\n`;
+    let examplesMarkdown = `## ${componentData.name} 组件示例\n`;
 
     componentData.exampleInfoList?.forEach((example) => {
       examplesMarkdown += `### ${example.title}
-
 ${example.description}
 \`\`\`typescript
 ${example.code}
-\`\`\`\n
+\`\`\`
 `;
     });
 

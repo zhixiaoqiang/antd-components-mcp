@@ -1,9 +1,6 @@
 ## API
-
 > 自 `antd@5.0.0` 版本开始提供该组件。
-
 ### 共同的 API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | icon | 自定义图标 | ReactNode | - |  |
@@ -16,9 +13,7 @@
 | target | 相当于 a 标签的 target 属性，href 存在时生效 | string | - |  |
 | htmlType | 设置 `button` 原生的 `type` 值，可选值请参考 [HTML 标准](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button#type) | `submit` \| `reset` \| `button` | `button` | 5.21.0 |
 | badge | 带徽标数字的悬浮按钮（不支持 `status` 以及相关属性） | [BadgeProps](/components/badge-cn#api) | - | 5.4.0 |
-
 ### FloatButton.Group
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | shape | 设置包含的 FloatButton 按钮形状 | `circle` \| `square` | `circle` |  |
@@ -28,9 +23,7 @@
 | placement | 自定义菜单弹出位置 | `top` \| `left` \| `right` \| `bottom` | `top` | 5.21.0 |
 | onOpenChange | 展开收起时的回调，需配合 trigger 一起使用 | (open: boolean) => void | - |  |
 | onClick | 点击按钮时的回调（仅在菜单模式中有效） | (event) => void | - | 5.3.0 |
-
 ### FloatButton.BackTop
-
 | 参数             | 说明                               | 类型              | 默认值       | 版本 |
 | ---------------- | ---------------------------------- | ----------------- | ------------ | ---- |
 | duration         | 回到顶部所需时间（ms）             | number            | 450          |      |

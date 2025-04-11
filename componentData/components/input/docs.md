@@ -1,15 +1,9 @@
-
 ## 何时使用
-
 - 需要用户输入表单域内容时。
 - 提供组合型输入框，带搜索的输入框，还可以进行大小选择。
 
-
-
 ## API
-
 ### Input
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | addonAfter | 带标签的 input，设置后置标签 | ReactNode | - |  |
@@ -34,13 +28,9 @@
 | onChange | 输入框内容变化时的回调 | function(e) | - |  |
 | onPressEnter | 按下回车的回调 | function(e) | - |  |
 | onClear | 按下清除按钮的回调 | () => void | - | 5.20.0 |
-
 > 如果 `Input` 在 `Form.Item` 内，并且 `Form.Item` 设置了 `id` 属性，则 `value` `defaultValue` 和 `id` 属性会被自动设置。
-
 Input 的其他属性和 React 自带的 [input](https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes) 一致。
-
 #### CountConfig
-
 ```tsx
 interface CountConfig {
   // 最大字符数，不同于原生 `maxLength`，超出后标红但不会截断
@@ -53,44 +43,31 @@ interface CountConfig {
   exceedFormatter?: (value: string, config: { max: number }) => string;
 }
 ```
-
 ### Input.TextArea
-
 同 Input 属性，外加：
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | autoSize | 自适应内容高度，可设置为 true \| false 或对象：{ minRows: 2, maxRows: 6 } | boolean \| object | false |  |
 | classNames | 语义化结构 class | Record<[SemanticDOM](#inputtextarea-1), string> | - | 5.4.0 |
 | styles | 语义化结构 style | Record<[SemanticDOM](#inputtextarea-1), CSSProperties> | - | 5.4.0 |
-
 `Input.TextArea` 的其他属性和浏览器自带的 [textarea](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) 一致。
-
 ### Input.Search
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | enterButton | 是否有确认按钮，可设为按钮文字。该属性会与 `addonAfter` 冲突。 | ReactNode | false |
 | loading | 搜索 loading | boolean | false |
 | onSearch | 点击搜索图标、清除图标，或按下回车键时的回调 | function(value, event, { source: "input" \| "clear" }) | - |
-
 其余属性和 Input 一致。
-
 ### Input.Password
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | iconRender | 自定义切换按钮 | (visible) => ReactNode | (visible) => (visible ? &lt;EyeOutlined /> : &lt;EyeInvisibleOutlined />) | 4.3.0 |
 | visibilityToggle | 是否显示切换按钮或者控制密码显隐 | boolean \| [VisibilityToggle](#visibilitytoggle) | true |  |
-
 ### Input.OTP
-
 `5.16.0` 新增。
-
 > 开发者注意事项：
 >
 > 当 `mask` 属性的类型为 string 时，我们强烈推荐接收单个字符或单个 emoji，如果传入多个字符或多个 emoji，则会在控制台抛出警告。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | defaultValue | 默认值 | string | - |  |
@@ -105,37 +82,24 @@ interface CountConfig {
 | value | 输入框内容 | string | - |  |
 | onChange | 当输入框内容全部填充时触发回调 | (value: string) => void | - |  |
 | onInput | 输入值变化时触发的回调 | (value: string[]) => void | - | `5.22.0` |
-
 #### VisibilityToggle
-
 | Property        | Description          | Type              | Default | Version |
 | --------------- | -------------------- | ----------------- | ------- | ------- |
 | visible         | 用于手动控制密码显隐 | boolean           | false   | 4.24    |
 | onVisibleChange | 显隐密码的回调       | (visible) => void | -       | 4.24    |
-
 #### Input Methods
-
 | 名称 | 说明 | 参数 | 版本 |
 | --- | --- | --- | --- |
 | blur | 取消焦点 | - |  |
 | focus | 获取焦点 | (option?: { preventScroll?: boolean, cursor?: 'start' \| 'end' \| 'all' }) | option - 4.10.0 |
 
 
-
-
-
 ## FAQ
-
 ### 为什么我动态改变 `prefix/suffix/showCount` 时，Input 会失去焦点？
-
 当 Input 动态添加或者删除 `prefix/suffix/showCount` 时，React 会重新创建 DOM 结构而新的 input 是没有焦点的。你可以预设一个空的 `<span />` 来保持 DOM 结构不变：
-
 ```jsx
 const suffix = condition ? <Icon type="smile" /> : <span />;
-
 <Input suffix={suffix} />;
 ```
-
 ### 为何 TextArea 受控时，`value` 可以超过 `maxLength`？
-
 受控时，组件应该按照受控内容展示。以防止在表单组件内使用时显示值和提交值不同的问题。

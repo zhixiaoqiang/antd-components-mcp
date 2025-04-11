@@ -1,5 +1,4 @@
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | afterClose | Modal 完全关闭后的回调 | function | - |  |
@@ -33,25 +32,18 @@
 | onCancel | 点击遮罩层或右上角叉或取消按钮的回调 | function(e) | - |  |
 | onOk | 点击确定回调 | function(e) | - |  |
 | afterOpenChange | 打开和关闭 Modal 时动画结束后的回调 | (open: boolean) => void | - | 5.4.0 |
-
 #### 注意
-
 - `<Modal />` 默认关闭后状态不会自动清空，如果希望每次打开都是新内容，请设置 `destroyOnClose`。
 - `<Modal />` 和 Form 一起配合使用时，设置 `destroyOnClose` 也不会在 Modal 关闭时销毁表单字段数据，需要设置 `<Form preserve={false} />`。
 - `Modal.method()` RTL 模式仅支持 hooks 用法。
-
 ### Modal.method()
-
 包括：
-
 - `Modal.info`
 - `Modal.success`
 - `Modal.error`
 - `Modal.warning`
 - `Modal.confirm`
-
 以上均为一个函数，参数为 object，具体属性如下：
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | afterClose | Modal 完全关闭后的回调 | function | - | 4.9.0 |
@@ -79,61 +71,44 @@
 | zIndex | 设置 Modal 的 `z-index` | number | 1000 |  |
 | onCancel | 点击取消回调，参数为关闭函数，若返回 promise 时 resolve 为正常关闭, reject 为不关闭 | function(close) | - |  |
 | onOk | 点击确定回调，参数为关闭函数，若返回 promise 时 resolve 为正常关闭, reject 为不关闭 | function(close) | - |  |
-
 以上函数调用后，会返回一个引用，可以通过该引用更新和关闭弹窗。
-
 ```jsx
 const modal = Modal.info();
-
 modal.update({
   title: '修改的标题',
   content: '修改的内容',
 });
-
 // 在 4.8.0 或更高版本中，可以通过传入函数的方式更新弹窗
 modal.update((prevConfig) => ({
   ...prevConfig,
   title: `${prevConfig.title}（新）`,
 }));
-
 modal.destroy();
 ```
-
 - `Modal.destroyAll`
-
 使用 `Modal.destroyAll()` 可以销毁弹出的确认窗（即上述的 `Modal.info`、`Modal.success`、`Modal.error`、`Modal.warning`、`Modal.confirm`）。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题，而不用各处去使用实例的返回值进行关闭（`modal.destroy()` 适用于主动关闭，而不是路由这样被动关闭）
-
 ```jsx
 import { browserHistory } from 'react-router';
-
 // router change
 browserHistory.listen(() => {
   Modal.destroyAll();
 });
 ```
-
 ### Modal.useModal()
-
 当你需要使用 Context 时，可以通过 `Modal.useModal` 创建一个 `contextHolder` 插入子节点中。通过 hooks 创建的临时 Modal 将会得到 `contextHolder` 所在位置的所有上下文。创建的 `modal` 对象拥有与 [`Modal.method`](#modalmethod) 相同的创建通知方法。
-
 ```jsx
 const [modal, contextHolder] = Modal.useModal();
-
 React.useEffect(() => {
   modal.confirm({
     // ...
   });
 }, []);
-
 return <div>{contextHolder}</div>;
 ```
-
 `modal.confirm` 返回方法：
-
 - `destroy`：销毁当前窗口
 - `update`：更新当前窗口
 - `then`：Promise 链式调用，支持 `await` 操作。该方法为 Hooks 仅有
-
 ```tsx
 //点击 `onOk` 时返回 `true`，点击 `onCancel` 时返回 `false`
 const confirmed = await modal.confirm({ ... });

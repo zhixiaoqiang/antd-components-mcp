@@ -1,9 +1,6 @@
 ## API
-
 ### Steps
-
 整体步骤条。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | className | 步骤条类名 | string | - |  |
@@ -19,9 +16,7 @@
 | type | 步骤条类型，可选 `default` `navigation` `inline` | string | `default` | inline: 5.0 |
 | onChange | 点击切换步骤时触发 | (current) => void | - |  |
 | items | 配置选项卡内容 | [StepItem](#stepitem) | [] | 4.24.0 |
-
 ### `type="inline"`
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | className | 步骤条类名 | string | - |  |
@@ -30,11 +25,8 @@
 | status | 指定当前步骤的状态，可选 `wait` `process` `finish` `error` | string | `process` |  |
 | onChange | 点击切换步骤时触发 | (current) => void | - |  |
 | items | 配置选项卡内容，不支持 `icon` `subtitle` | [StepItem](#stepitem) | [] | 4.24.0 |
-
 ### StepItem
-
 步骤条内的每一个步骤。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | description | 步骤的详情描述，可选 | ReactNode | - |  |

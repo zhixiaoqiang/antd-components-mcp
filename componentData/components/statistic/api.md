@@ -1,7 +1,5 @@
 ## API
-
 #### Statistic
-
 | 参数             | 说明               | 类型                 | 默认值 | 版本  |
 | ---------------- | ------------------ | -------------------- | ------ | ----- |
 | decimalSeparator | 设置小数点         | string               | `.`    |       |
@@ -14,9 +12,7 @@
 | title            | 数值的标题         | ReactNode            | -      |       |
 | value            | 数值内容           | string \| number     | -      |       |
 | valueStyle       | 设置数值区域的样式 | CSSProperties        | -      |       |
-
 #### Statistic.Countdown
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | format | 格式化倒计时展示，参考 [dayjs](https://day.js.org/) | string | `HH:mm:ss` |  |

@@ -1,32 +1,23 @@
 ## Form 组件示例
-
 ### 基本使用
-
 #### zh-CN
-
 基本的表单数据域控制展示，包含布局、初始化、验证、提交。
-
-
 
 ```typescript
 import React from 'react';
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input } from 'antd';
-
 type FieldType = {
   username?: string;
   password?: string;
   remember?: string;
 };
-
 const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
   console.log('Success:', values);
 };
-
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
-
 const App: React.FC = () => (
   <Form
     name="basic"
@@ -45,7 +36,6 @@ const App: React.FC = () => (
     >
       <Input />
     </Form.Item>
-
     <Form.Item<FieldType>
       label="Password"
       name="password"
@@ -53,11 +43,9 @@ const App: React.FC = () => (
     >
       <Input.Password />
     </Form.Item>
-
     <Form.Item<FieldType> name="remember" valuePropName="checked" label={null}>
       <Checkbox>Remember me</Checkbox>
     </Form.Item>
-
     <Form.Item label={null}>
       <Button type="primary" htmlType="submit">
         Submit
@@ -65,39 +53,27 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 表单方法调用
-
 #### zh-CN
-
 通过 `Form.useForm` 对表单数据域进行交互。
-
 > 注意 `useForm` 是 [React Hooks](https://reactjs.org/docs/hooks-intro.html) 的实现，只能用于函数组件。如果是在 Class Component 下，你也可以通过 `ref` 获取数据域：https://codesandbox.io/p/sandbox/ngtjtm
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Form, Input, Select, Space } from 'antd';
-
 const { Option } = Select;
-
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
-
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
-
   const onGenderChange = (value: string) => {
     switch (value) {
       case 'male':
@@ -112,19 +88,15 @@ const App: React.FC = () => {
       default:
     }
   };
-
   const onFinish = (values: any) => {
     console.log(values);
   };
-
   const onReset = () => {
     form.resetFields();
   };
-
   const onFill = () => {
     form.setFieldsValue({ note: 'Hello world!', gender: 'male' });
   };
-
   return (
     <Form
       {...layout}
@@ -175,33 +147,23 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 表单布局
-
 #### zh-CN
-
 表单有三种布局。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Form, Input, Radio } from 'antd';
-
 type LayoutType = Parameters<typeof Form>[0]['layout'];
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
-
   const onFormLayoutChange = ({ layout }: { layout: LayoutType }) => {
     setFormLayout(layout);
   };
-
   return (
     <Form
       layout={formLayout}
@@ -229,23 +191,16 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 表单混合布局
-
 #### zh-CN
-
 在 `Form.Item` 上单独定义 `layout`，可以做到一个表单多种布局。
-
-
 
 ```typescript
 import React from 'react';
 import { Form, Input } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Form
@@ -289,18 +244,12 @@ const App: React.FC = () => (
     </Form>
   </>
 );
-
 export default App;
 
 ```
-
 ### 表单禁用
-
 #### zh-CN
-
 设置表单组件禁用，仅对 antd 组件有效。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -322,20 +271,16 @@ import {
   TreeSelect,
   Upload,
 } from 'antd';
-
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
-
 const normFile = (e: any) => {
   if (Array.isArray(e)) {
     return e;
   }
   return e?.fileList;
 };
-
 const FormDisabledDemo: React.FC = () => {
   const [componentDisabled, setComponentDisabled] = useState<boolean>(true);
-
   return (
     <>
       <Checkbox
@@ -433,18 +378,12 @@ const FormDisabledDemo: React.FC = () => {
     </>
   );
 };
-
 export default () => <FormDisabledDemo />;
 
 ```
-
 ### 表单变体
-
 #### zh-CN
-
 改变表单内所有组件的变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
-
-
 
 ```typescript
 import React from 'react';
@@ -460,9 +399,7 @@ import {
   Select,
   TreeSelect,
 } from 'antd';
-
 const { RangePicker } = DatePicker;
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -473,7 +410,6 @@ const formItemLayout = {
     sm: { span: 14 },
   },
 };
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const variant = Form.useWatch('variant', form);
@@ -488,11 +424,9 @@ const App: React.FC = () => {
       <Form.Item label="Form variant" name="variant">
         <Segmented options={['outlined', 'filled', 'borderless', 'underlined']} />
       </Form.Item>
-
       <Form.Item label="Input" name="Input" rules={[{ required: true, message: 'Please input!' }]}>
         <Input />
       </Form.Item>
-
       <Form.Item
         label="InputNumber"
         name="InputNumber"
@@ -500,7 +434,6 @@ const App: React.FC = () => {
       >
         <InputNumber style={{ width: '100%' }} />
       </Form.Item>
-
       <Form.Item
         label="TextArea"
         name="TextArea"
@@ -508,7 +441,6 @@ const App: React.FC = () => {
       >
         <Input.TextArea />
       </Form.Item>
-
       <Form.Item
         label="Mentions"
         name="Mentions"
@@ -516,7 +448,6 @@ const App: React.FC = () => {
       >
         <Mentions />
       </Form.Item>
-
       <Form.Item
         label="Select"
         name="Select"
@@ -524,7 +455,6 @@ const App: React.FC = () => {
       >
         <Select />
       </Form.Item>
-
       <Form.Item
         label="Cascader"
         name="Cascader"
@@ -532,7 +462,6 @@ const App: React.FC = () => {
       >
         <Cascader />
       </Form.Item>
-
       <Form.Item
         label="TreeSelect"
         name="TreeSelect"
@@ -540,7 +469,6 @@ const App: React.FC = () => {
       >
         <TreeSelect />
       </Form.Item>
-
       <Form.Item
         label="DatePicker"
         name="DatePicker"
@@ -548,7 +476,6 @@ const App: React.FC = () => {
       >
         <DatePicker />
       </Form.Item>
-
       <Form.Item
         label="RangePicker"
         name="RangePicker"
@@ -556,7 +483,6 @@ const App: React.FC = () => {
       >
         <RangePicker />
       </Form.Item>
-
       <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
         <Button type="primary" htmlType="submit">
           Submit
@@ -565,41 +491,30 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 必选样式
-
 #### zh-CN
-
 通过 `requiredMark` 切换必选与可选样式。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Radio, Tag } from 'antd';
-
 type RequiredMark = boolean | 'optional' | 'customize';
-
 const customizeRequiredMark = (label: React.ReactNode, { required }: { required: boolean }) => (
   <>
     {required ? <Tag color="error">Required</Tag> : <Tag color="warning">optional</Tag>}
     {label}
   </>
 );
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [requiredMark, setRequiredMarkType] = useState<RequiredMark>('optional');
-
   const onRequiredTypeChange = ({ requiredMarkValue }: { requiredMarkValue: RequiredMark }) => {
     setRequiredMarkType(requiredMarkValue);
   };
-
   return (
     <Form
       form={form}
@@ -631,18 +546,12 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 表单尺寸
-
 #### zh-CN
-
 设置表单组件尺寸，仅对 antd 组件有效。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -658,16 +567,12 @@ import {
   Switch,
   TreeSelect,
 } from 'antd';
-
 type SizeType = Parameters<typeof Form>[0]['size'];
-
 const App: React.FC = () => {
   const [componentSize, setComponentSize] = useState<SizeType | 'default'>('default');
-
   const onFormLayoutChange = ({ size }: { size: SizeType }) => {
     setComponentSize(size);
   };
-
   return (
     <Form
       labelCol={{ span: 4 }}
@@ -726,23 +631,16 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 表单标签可换行
-
 #### zh-CN
-
 使用 `labelWrap` 可以开启 `label` 换行。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Form, Input } from 'antd';
-
 const App: React.FC = () => (
   <Form
     name="wrap"
@@ -756,11 +654,9 @@ const App: React.FC = () => (
     <Form.Item label="Normal label" name="username" rules={[{ required: true }]}>
       <Input />
     </Form.Item>
-
     <Form.Item label="A super long label text" name="password" rules={[{ required: true }]}>
       <Input />
     </Form.Item>
-
     <Form.Item label=" ">
       <Button type="primary" htmlType="submit">
         Submit
@@ -768,40 +664,29 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 非阻塞校验
-
 #### zh-CN
-
 `rule` 添加 `warningOnly` 后校验不再阻塞表单提交。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Form, Input, message, Space } from 'antd';
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
-
   const onFinish = () => {
     message.success('Submit success!');
   };
-
   const onFinishFailed = () => {
     message.error('Submit failed!');
   };
-
   const onFill = () => {
     form.setFieldsValue({
       url: 'https://taobao.com/',
     });
   };
-
   return (
     <Form
       form={form}
@@ -830,29 +715,21 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 字段监听 Hooks
-
 #### zh-CN
-
 `useWatch` 允许你监听字段变化，同时仅当该字段变化时重新渲染。API 文档请[查阅此处](##formusewatch)。
-
-
 
 ```typescript
 import React from 'react';
 import { Form, Input, InputNumber, Typography } from 'antd';
-
 const Demo: React.FC = () => {
   const [form] = Form.useForm<{ name: string; age: number }>();
   const nameValue = Form.useWatch('name', form);
   // The selector is static and does not support closures.
   const customValue = Form.useWatch((values) => `name: ${values.name || ''}`, form);
-
   return (
     <>
       <Form form={form} layout="vertical" autoComplete="off">
@@ -863,7 +740,6 @@ const Demo: React.FC = () => {
           <InputNumber />
         </Form.Item>
       </Form>
-
       <Typography>
         <pre>Name Value: {nameValue}</pre>
         <pre>Custom Value: {customValue}</pre>
@@ -871,27 +747,19 @@ const Demo: React.FC = () => {
     </>
   );
 };
-
 export default Demo;
 
 ```
-
 ### 校验时机
-
 #### zh-CN
-
 对于有异步校验的场景，过于频繁的校验会导致后端压力。可以通过 `validateTrigger` 改变校验时机，或者 `validateDebounce` 改变校验频率，或者 `validateFirst` 设置校验短路。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert, Form, Input } from 'antd';
-
 const App: React.FC = () => (
   <Form name="trigger" style={{ maxWidth: 600 }} layout="vertical" autoComplete="off">
     <Alert message="Use 'max' rule, continue type chars to see it" />
-
     <Form.Item
       hasFeedback
       label="Field A"
@@ -901,7 +769,6 @@ const App: React.FC = () => (
     >
       <Input placeholder="Validate required onBlur" />
     </Form.Item>
-
     <Form.Item
       hasFeedback
       label="Field B"
@@ -911,7 +778,6 @@ const App: React.FC = () => (
     >
       <Input placeholder="Validate required debounce after 1s" />
     </Form.Item>
-
     <Form.Item
       hasFeedback
       label="Field C"
@@ -923,48 +789,36 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 仅校验
-
 #### zh-CN
-
 通过 `validateFields` 的 `validateOnly` 可以动态调整提交按钮的 `disabled` 状态。
-
-
 
 ```typescript
 import React from 'react';
 import type { FormInstance } from 'antd';
 import { Button, Form, Input, Space } from 'antd';
-
 interface SubmitButtonProps {
   form: FormInstance;
 }
-
 const SubmitButton: React.FC<React.PropsWithChildren<SubmitButtonProps>> = ({ form, children }) => {
   const [submittable, setSubmittable] = React.useState<boolean>(false);
-
   // Watch all values
   const values = Form.useWatch([], form);
-
   React.useEffect(() => {
     form
       .validateFields({ validateOnly: true })
       .then(() => setSubmittable(true))
       .catch(() => setSubmittable(false));
   }, [form, values]);
-
   return (
     <Button type="primary" htmlType="submit" disabled={!submittable}>
       {children}
     </Button>
   );
 };
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   return (
@@ -984,56 +838,41 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 字段路径前缀
-
 #### zh-CN
-
 在某些场景，你希望统一设置一些字段的前缀。你可以通过 HOC 实现该效果。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Form, Input } from 'antd';
 import type { FormItemProps } from 'antd';
-
 const MyFormItemContext = React.createContext<(string | number)[]>([]);
-
 interface MyFormItemGroupProps {
   prefix: string | number | (string | number)[];
 }
-
 function toArr(str: string | number | (string | number)[]): (string | number)[] {
   return Array.isArray(str) ? str : [str];
 }
-
 const MyFormItemGroup: React.FC<React.PropsWithChildren<MyFormItemGroupProps>> = ({
   prefix,
   children,
 }) => {
   const prefixPath = React.useContext(MyFormItemContext);
   const concatPath = React.useMemo(() => [...prefixPath, ...toArr(prefix)], [prefixPath, prefix]);
-
   return <MyFormItemContext.Provider value={concatPath}>{children}</MyFormItemContext.Provider>;
 };
-
 const MyFormItem = ({ name, ...props }: FormItemProps) => {
   const prefixPath = React.useContext(MyFormItemContext);
   const concatName = name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
-
   return <Form.Item name={concatName} {...props} />;
 };
-
 const App: React.FC = () => {
   const onFinish = (value: object) => {
     console.log(value);
   };
-
   return (
     <Form name="form_item_path" layout="vertical" onFinish={onFinish}>
       <MyFormItemGroup prefix={['user']}>
@@ -1045,36 +884,27 @@ const App: React.FC = () => {
             <Input />
           </MyFormItem>
         </MyFormItemGroup>
-
         <MyFormItem name="age" label="Age">
           <Input />
         </MyFormItem>
       </MyFormItemGroup>
-
       <Button type="primary" htmlType="submit">
         Submit
       </Button>
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 动态增减表单项
-
 #### zh-CN
-
 动态增加、减少表单项。`add` 方法参数可用于设置初始值。
-
-
 
 ```typescript
 import React from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -1085,19 +915,16 @@ const formItemLayout = {
     sm: { span: 20 },
   },
 };
-
 const formItemLayoutWithOutLabel = {
   wrapperCol: {
     xs: { span: 24, offset: 0 },
     sm: { span: 20, offset: 4 },
   },
 };
-
 const App: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Received values of form:', values);
   };
-
   return (
     <Form
       name="dynamic_form_item"
@@ -1180,28 +1007,20 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 动态增减嵌套字段
-
 #### zh-CN
-
 嵌套表单字段需要对 `field` 进行拓展，将 `field.name` 应用于控制字段。
-
-
 
 ```typescript
 import React from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
-
 const onFinish = (values: any) => {
   console.log('Received values of form:', values);
 };
-
 const App: React.FC = () => (
   <Form
     name="dynamic_form_nest_item"
@@ -1246,28 +1065,20 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 动态增减嵌套纯字段
-
 #### zh-CN
-
 嵌套 `noStyle` 字段的动态表单示例。
-
-
 
 ```typescript
 import React from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
-
 const onFinish = (values: any) => {
   console.log('Received values of form:', values);
 };
-
 const App: React.FC = () => (
   <Form
     name="dynamic_form_no_style"
@@ -1310,27 +1121,19 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 复杂的动态增减表单项
-
 #### zh-CN
-
 多个 Form.List 嵌套的使用场景。
-
-
 
 ```typescript
 import React from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { Button, Card, Form, Input, Space, Typography } from 'antd';
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
-
   return (
     <Form
       labelCol={{ span: 6 }}
@@ -1360,7 +1163,6 @@ const App: React.FC = () => {
                 <Form.Item label="Name" name={[field.name, 'name']}>
                   <Input />
                 </Form.Item>
-
                 {/* Nest Form.List */}
                 <Form.Item label="List">
                   <Form.List name={[field.name, 'list']}>
@@ -1390,14 +1192,12 @@ const App: React.FC = () => {
                 </Form.Item>
               </Card>
             ))}
-
             <Button type="dashed" onClick={() => add()} block>
               + Add Item
             </Button>
           </div>
         )}
       </Form.List>
-
       <Form.Item noStyle shouldUpdate>
         {() => (
           <Typography>
@@ -1408,28 +1208,20 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 嵌套结构与校验信息
-
 #### zh-CN
-
 `name` 属性支持嵌套数据结构。通过 `validateMessages` 或 `message` 自定义校验信息模板，模板内容可参考[此处](https://github.com/react-component/field-form/blob/master/src/utils/messages.ts)。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Form, Input, InputNumber } from 'antd';
-
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
-
 const validateMessages = {
   required: '${label} is required!',
   types: {
@@ -1440,11 +1232,9 @@ const validateMessages = {
     range: '${label} must be between ${min} and ${max}',
   },
 };
-
 const onFinish = (values: any) => {
   console.log(values);
 };
-
 const App: React.FC = () => (
   <Form
     {...layout}
@@ -1475,17 +1265,12 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 复杂一点的控件
-
 #### zh-CN
-
 这里演示 `Form.Item` 内有多个元素的使用方式。`<Form.Item name="field" />` 只会对它的直接子元素绑定表单功能，例如直接包裹了 Input/Select。如果控件前后还有一些文案或样式装点，或者一个表单项内有多个控件，你可以使用内嵌的 `Form.Item` 完成。你可以给 `Form.Item` 自定义 `style` 进行内联布局，或者添加 `noStyle` 作为纯粹的无样式绑定组件（类似 3.x 中的 `getFieldDecorator`）。
-
 ```diff
 - <Form.Item label="Field" name="field">
 -   <Input />
@@ -1495,29 +1280,20 @@ export default App;
 +   <span>description</span>
 + </Form.Item>
 ```
-
 这里展示了三种典型场景：
-
 - `Username`：输入框后面有描述文案或其他组件，在 `Form.Item` 内使用 `<Form.Item name="field" noStyle />` 去绑定对应子控件。
 - `Address`：有两个控件，在 `Form.Item` 内使用两个 `<Form.Item name="field" noStyle />` 分别绑定对应控件。
 - `BirthDate`：有两个内联控件，错误信息展示各自控件下，使用两个 `<Form.Item name="field" />` 分别绑定对应控件，并修改 `style` 使其内联布局。
-
 > 注意，在 label 对应的 Form.Item 上不要在指定 `name` 属性，这个 Item 只作为布局作用。
-
 更复杂的封装复用方式可以参考下面的 `自定义表单控件` 演示。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Form, Input, Select, Space, Tooltip, Typography } from 'antd';
-
 const { Option } = Select;
-
 const onFinish = (values: any) => {
   console.log('Received values of form: ', values);
 };
-
 const App: React.FC = () => (
   <Form
     name="complex-form"
@@ -1584,51 +1360,37 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 自定义表单控件
-
 #### zh-CN
-
 自定义或第三方的表单控件，也可以与 Form 组件一起使用。只要该组件遵循以下的约定：
-
 > - 提供受控属性 `value` 或其它与 [`valuePropName`](##formitem) 的值同名的属性。
 > - 提供 `onChange` 事件或 [`trigger`](##formitem) 的值同名的事件。
 > - 转发 ref 或者传递 id 属性到 dom 以支持 `scrollToField` 方法。
 
-
-
 ```typescript
 import React, { useState } from 'react';
 import { Button, Form, Input, Select } from 'antd';
-
 const { Option } = Select;
-
 type Currency = 'rmb' | 'dollar';
-
 interface PriceValue {
   number?: number;
   currency?: Currency;
 }
-
 interface PriceInputProps {
   id?: string;
   value?: PriceValue;
   onChange?: (value: PriceValue) => void;
 }
-
 const PriceInput: React.FC<PriceInputProps> = (props) => {
   const { id, value = {}, onChange } = props;
   const [number, setNumber] = useState(0);
   const [currency, setCurrency] = useState<Currency>('rmb');
-
   const triggerChange = (changedValue: { number?: number; currency?: Currency }) => {
     onChange?.({ number, currency, ...value, ...changedValue });
   };
-
   const onNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newNumber = parseInt(e.target.value || '0', 10);
     if (Number.isNaN(number)) {
@@ -1639,14 +1401,12 @@ const PriceInput: React.FC<PriceInputProps> = (props) => {
     }
     triggerChange({ number: newNumber });
   };
-
   const onCurrencyChange = (newCurrency: Currency) => {
     if (!('currency' in value)) {
       setCurrency(newCurrency);
     }
     triggerChange({ currency: newCurrency });
   };
-
   return (
     <span id={id}>
       <Input
@@ -1666,19 +1426,16 @@ const PriceInput: React.FC<PriceInputProps> = (props) => {
     </span>
   );
 };
-
 const App: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Received values from form: ', values);
   };
-
   const checkPrice = (_: any, value: { number: number }) => {
     if (value.number > 0) {
       return Promise.resolve();
     }
     return Promise.reject(new Error('Price must be greater than zero!'));
   };
-
   return (
     <Form
       name="customized_form_controls"
@@ -1702,27 +1459,18 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 表单数据存储于上层组件
-
 #### zh-CN
-
 通过 `onFieldsChange` 和 `fields`，可以把表单的数据存储到上层组件或者 [Redux](https://github.com/reactjs/redux)、[dva](https://github.com/dvajs/dva) 中，更多可参考 [rc-field-form 示例](https://rc-field-form.react-component.now.sh/?selectedKind=rc-field-form&selectedStory=StateForm-redux&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel)。
-
 **注意：** 将表单数据存储于外部容器[并非好的实践](https://github.com/reduxjs/redux/issues/1287##issuecomment-175351978)，如无必要请避免使用。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Form, Input, Typography } from 'antd';
-
 const { Paragraph } = Typography;
-
 interface FieldData {
   name: string | number | (string | number)[];
   value?: any;
@@ -1730,12 +1478,10 @@ interface FieldData {
   validating?: boolean;
   errors?: string[];
 }
-
 interface CustomizedFormProps {
   onChange: (fields: FieldData[]) => void;
   fields: FieldData[];
 }
-
 const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields }) => (
   <Form
     name="global_state"
@@ -1754,10 +1500,8 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields }) => 
     </Form.Item>
   </Form>
 );
-
 const App: React.FC = () => {
   const [fields, setFields] = useState<FieldData[]>([{ name: ['username'], value: 'Ant Design' }]);
-
   return (
     <>
       <CustomizedForm
@@ -1772,46 +1516,34 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 多表单联动
-
 #### zh-CN
-
 通过 `Form.Provider` 在表单间处理数据。本例子中，Modal 的确认按钮在 Form 之外，通过 `form.submit` 方法调用表单提交功能。反之，则推荐使用 `<Button htmlType="submit" />` 调用 web 原生提交逻辑。
-
-
 
 ```typescript
 import React, { useEffect, useRef, useState } from 'react';
 import { SmileOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Button, Flex, Form, Input, InputNumber, Modal, Space, Typography } from 'antd';
 import type { GetRef } from 'antd';
-
 type FormInstance = GetRef<typeof Form>;
-
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
-
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
-
 interface UserType {
   name: string;
   age: string;
 }
-
 interface ModalFormProps {
   open: boolean;
   onCancel: () => void;
 }
-
 // reset form fields when modal is form, closed
 const useResetFormOnCloseModal = ({ form, open }: { form: FormInstance; open: boolean }) => {
   const prevOpenRef = useRef<boolean>(null);
@@ -1819,26 +1551,21 @@ const useResetFormOnCloseModal = ({ form, open }: { form: FormInstance; open: bo
     prevOpenRef.current = open;
   }, [open]);
   const prevOpen = prevOpenRef.current;
-
   useEffect(() => {
     if (!open && prevOpen) {
       form.resetFields();
     }
   }, [form, prevOpen, open]);
 };
-
 const ModalForm: React.FC<ModalFormProps> = ({ open, onCancel }) => {
   const [form] = Form.useForm();
-
   useResetFormOnCloseModal({
     form,
     open,
   });
-
   const onOk = () => {
     form.submit();
   };
-
   return (
     <Modal title="Basic Drawer" open={open} onOk={onOk} onCancel={onCancel}>
       <Form form={form} layout="vertical" name="userForm">
@@ -1852,22 +1579,17 @@ const ModalForm: React.FC<ModalFormProps> = ({ open, onCancel }) => {
     </Modal>
   );
 };
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
-
   const showUserModal = () => {
     setOpen(true);
   };
-
   const hideUserModal = () => {
     setOpen(false);
   };
-
   const onFinish = (values: any) => {
     console.log('Finish:', values);
   };
-
   return (
     <Form.Provider
       onFormFinish={(name, { values, forms }) => {
@@ -1883,10 +1605,8 @@ const App: React.FC = () => {
         <Form.Item name="group" label="Group Name" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-
         {/* Create a hidden field to make Form instance record this */}
         <Form.Item name="users" noStyle />
-
         <Form.Item
           label="User List"
           shouldUpdate={(prevValues, curValues) => prevValues.users !== curValues.users}
@@ -1918,42 +1638,31 @@ const App: React.FC = () => {
           </Button>
         </Form.Item>
       </Form>
-
       <ModalForm open={open} onCancel={hideUserModal} />
     </Form.Provider>
   );
 };
-
 export default App;
 
 ```
-
 ### 内联登录栏
-
 #### zh-CN
-
 内联登录栏，常用在顶部导航栏中。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [clientReady, setClientReady] = useState<boolean>(false);
-
   // To disable submit button at the beginning.
   useEffect(() => {
     setClientReady(true);
   }, []);
-
   const onFinish = (values: any) => {
     console.log('Finish:', values);
   };
-
   return (
     <Form form={form} name="horizontal_login" layout="inline" onFinish={onFinish}>
       <Form.Item
@@ -1986,31 +1695,22 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 登录框
-
 #### zh-CN
-
 普通的登录框，可以容纳更多的元素。
-
 > 🛎️ 想要 3 分钟实现登录表单？试试 [Pro Components](https://procomponents.ant.design/components/login-form)！
-
-
 
 ```typescript
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex } from 'antd';
-
 const App: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
-
   return (
     <Form
       name="login"
@@ -2038,7 +1738,6 @@ const App: React.FC = () => {
           <a href="">Forgot password</a>
         </Flex>
       </Form.Item>
-
       <Form.Item>
         <Button block type="primary" htmlType="submit">
           Log in
@@ -2048,18 +1747,12 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 注册新用户
-
 #### zh-CN
-
 用户填写必须的信息以注册新用户。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -2076,15 +1769,12 @@ import {
   Row,
   Select,
 } from 'antd';
-
 const { Option } = Select;
-
 interface DataNodeType {
   value: string;
   label: string;
   children?: DataNodeType[];
 }
-
 const residences: CascaderProps<DataNodeType>['options'] = [
   {
     value: 'zhejiang',
@@ -2119,7 +1809,6 @@ const residences: CascaderProps<DataNodeType>['options'] = [
     ],
   },
 ];
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -2130,7 +1819,6 @@ const formItemLayout = {
     sm: { span: 16 },
   },
 };
-
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
@@ -2143,14 +1831,11 @@ const tailFormItemLayout = {
     },
   },
 };
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
-
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
-
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select style={{ width: 70 }}>
@@ -2159,7 +1844,6 @@ const App: React.FC = () => {
       </Select>
     </Form.Item>
   );
-
   const suffixSelector = (
     <Form.Item name="suffix" noStyle>
       <Select style={{ width: 70 }}>
@@ -2168,9 +1852,7 @@ const App: React.FC = () => {
       </Select>
     </Form.Item>
   );
-
   const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
-
   const onWebsiteChange = (value: string) => {
     if (!value) {
       setAutoCompleteResult([]);
@@ -2178,12 +1860,10 @@ const App: React.FC = () => {
       setAutoCompleteResult(['.com', '.org', '.net'].map((domain) => `${value}${domain}`));
     }
   };
-
   const websiteOptions = autoCompleteResult.map((website) => ({
     label: website,
     value: website,
   }));
-
   return (
     <Form
       {...formItemLayout}
@@ -2210,7 +1890,6 @@ const App: React.FC = () => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         name="password"
         label="Password"
@@ -2224,7 +1903,6 @@ const App: React.FC = () => {
       >
         <Input.Password />
       </Form.Item>
-
       <Form.Item
         name="confirm"
         label="Confirm Password"
@@ -2247,7 +1925,6 @@ const App: React.FC = () => {
       >
         <Input.Password />
       </Form.Item>
-
       <Form.Item
         name="nickname"
         label="Nickname"
@@ -2256,7 +1933,6 @@ const App: React.FC = () => {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         name="residence"
         label="Habitual Residence"
@@ -2266,7 +1942,6 @@ const App: React.FC = () => {
       >
         <Cascader options={residences} />
       </Form.Item>
-
       <Form.Item
         name="phone"
         label="Phone Number"
@@ -2274,7 +1949,6 @@ const App: React.FC = () => {
       >
         <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
       </Form.Item>
-
       <Form.Item
         name="donation"
         label="Donation"
@@ -2282,7 +1956,6 @@ const App: React.FC = () => {
       >
         <InputNumber addonAfter={suffixSelector} style={{ width: '100%' }} />
       </Form.Item>
-
       <Form.Item
         name="website"
         label="Website"
@@ -2292,7 +1965,6 @@ const App: React.FC = () => {
           <Input />
         </AutoComplete>
       </Form.Item>
-
       <Form.Item
         name="intro"
         label="Intro"
@@ -2300,7 +1972,6 @@ const App: React.FC = () => {
       >
         <Input.TextArea showCount maxLength={100} />
       </Form.Item>
-
       <Form.Item
         name="gender"
         label="Gender"
@@ -2312,7 +1983,6 @@ const App: React.FC = () => {
           <Option value="other">Other</Option>
         </Select>
       </Form.Item>
-
       <Form.Item label="Captcha" extra="We must make sure that your are a human.">
         <Row gutter={8}>
           <Col span={12}>
@@ -2329,7 +1999,6 @@ const App: React.FC = () => {
           </Col>
         </Row>
       </Form.Item>
-
       <Form.Item
         name="agreement"
         valuePropName="checked"
@@ -2353,42 +2022,30 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 高级搜索
-
 #### zh-CN
-
 三列栅格式的表单排列方式，常用于数据表格的高级搜索。
-
 有部分定制的样式代码，由于输入标签长度不确定，需要根据具体情况自行调整。
-
 > 🛎️ 想要 3 分钟实现？ 试试 ProForm 的[查询表单](https://procomponents.ant.design/components/form##%E6%9F%A5%E8%AF%A2%E7%AD%9B%E9%80%89)！
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Row, Select, Space, theme } from 'antd';
-
 const { Option } = Select;
-
 const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
   const [form] = Form.useForm();
   const [expand, setExpand] = useState(false);
-
   const formStyle: React.CSSProperties = {
     maxWidth: 'none',
     background: token.colorFillAlter,
     borderRadius: token.borderRadiusLG,
     padding: 24,
   };
-
   const getFields = () => {
     const count = expand ? 10 : 6;
     const children = [];
@@ -2433,11 +2090,9 @@ const AdvancedSearchForm = () => {
     }
     return children;
   };
-
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
-
   return (
     <Form form={form} name="advanced_search" style={formStyle} onFinish={onFinish}>
       <Row gutter={24}>{getFields()}</Row>
@@ -2466,10 +2121,8 @@ const AdvancedSearchForm = () => {
     </Form>
   );
 };
-
 const App: React.FC = () => {
   const { token } = theme.useToken();
-
   const listStyle: React.CSSProperties = {
     lineHeight: '200px',
     textAlign: 'center',
@@ -2477,7 +2130,6 @@ const App: React.FC = () => {
     borderRadius: token.borderRadiusLG,
     marginTop: 16,
   };
-
   return (
     <>
       <AdvancedSearchForm />
@@ -2485,42 +2137,31 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 弹出层中的新建表单
-
 #### zh-CN
-
 当用户访问一个展示了某个列表的页面，想新建一项但又不想跳转页面时，可以用 Modal 弹出一个表单，用户填写必要信息后创建新的项。
-
 > 🛎️ 想要 3 分钟实现？试试 ProForm 的 [Modal 表单](https://procomponents.ant.design/components/form##modal-%E8%A1%A8%E5%8D%95)！
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Form, Input, Modal, Radio } from 'antd';
-
 interface Values {
   title?: string;
   description?: string;
   modifier?: string;
 }
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [formValues, setFormValues] = useState<Values>();
   const [open, setOpen] = useState(false);
-
   const onCreate = (values: Values) => {
     console.log('Received values of form: ', values);
     setFormValues(values);
     setOpen(false);
   };
-
   return (
     <>
       <Button type="primary" onClick={() => setOpen(true)}>
@@ -2568,25 +2209,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 时间类控件
-
 #### zh-CN
-
 时间类组件的 `value` 类型为 `dayjs` 对象，所以在提交服务器前需要预处理。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, DatePicker, Form, TimePicker } from 'antd';
-
 const { RangePicker } = DatePicker;
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -2597,15 +2230,12 @@ const formItemLayout = {
     sm: { span: 16 },
   },
 };
-
 const config = {
   rules: [{ type: 'object' as const, required: true, message: 'Please select time!' }],
 };
-
 const rangeConfig = {
   rules: [{ type: 'array' as const, required: true, message: 'Please select time!' }],
 };
-
 const onFinish = (fieldsValue: any) => {
   // Should format date value before submit.
   const rangeValue = fieldsValue['range-picker'];
@@ -2624,7 +2254,6 @@ const onFinish = (fieldsValue: any) => {
   };
   console.log('Received values of form: ', values);
 };
-
 const App: React.FC = () => (
   <Form
     name="time_related_controls"
@@ -2657,26 +2286,18 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 自行处理表单数据
-
 #### zh-CN
-
 `Form` 具有自动收集数据并校验的功能，但如果您不需要这个功能，或者默认的行为无法满足业务需求，可以选择自行处理数据。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { InputNumberProps } from 'antd';
 import { Form, InputNumber } from 'antd';
-
 type ValidateStatus = Parameters<typeof Form.Item>[0]['validateStatus'];
-
 const validatePrimeNumber = (
   number: number,
 ): {
@@ -2694,29 +2315,24 @@ const validatePrimeNumber = (
     errorMsg: 'The prime between 8 and 12 is 11!',
   };
 };
-
 const formItemLayout = {
   labelCol: { span: 7 },
   wrapperCol: { span: 12 },
 };
-
 const tips =
   'A prime is a natural number greater than 1 that has no positive divisors other than 1 and itself.';
-
 const App: React.FC = () => {
   const [number, setNumber] = useState<{
     value: number;
     validateStatus?: ValidateStatus;
     errorMsg?: string | null;
   }>({ value: 11 });
-
   const onNumberChange: InputNumberProps['onChange'] = (value) => {
     setNumber({
       ...validatePrimeNumber(value as number),
       value: value as number,
     });
   };
-
   return (
     <Form style={{ maxWidth: 600 }}>
       <Form.Item
@@ -2730,22 +2346,15 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义校验
-
 #### zh-CN
-
 我们提供了 `validateStatus` `help` `hasFeedback` 等属性，你可以不通过 Form 自己定义校验的时机和内容。
-
 1. `validateStatus`: 校验状态，可选 'success', 'warning', 'error', 'validating'。
 2. `hasFeedback`：用于给输入框添加反馈图标。
 3. `help`：设置校验文案。
-
-
 
 ```typescript
 import React from 'react';
@@ -2761,9 +2370,7 @@ import {
   TimePicker,
   TreeSelect,
 } from 'antd';
-
 const { Option } = Select;
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -2774,7 +2381,6 @@ const formItemLayout = {
     sm: { span: 14 },
   },
 };
-
 const App: React.FC = () => (
   <Form {...formItemLayout} style={{ maxWidth: 600 }}>
     <Form.Item
@@ -2784,11 +2390,9 @@ const App: React.FC = () => (
     >
       <Input placeholder="unavailable choice" id="error" />
     </Form.Item>
-
     <Form.Item label="Warning" validateStatus="warning">
       <Input placeholder="Warning" id="warning" prefix={<SmileOutlined />} />
     </Form.Item>
-
     <Form.Item
       label="Validating"
       hasFeedback
@@ -2797,15 +2401,12 @@ const App: React.FC = () => (
     >
       <Input placeholder="I'm the content is being validated" id="validating" />
     </Form.Item>
-
     <Form.Item label="Success" hasFeedback validateStatus="success">
       <Input placeholder="I'm the content" id="success" />
     </Form.Item>
-
     <Form.Item label="Warning" hasFeedback validateStatus="warning">
       <Input placeholder="Warning" id="warning2" />
     </Form.Item>
-
     <Form.Item
       label="Fail"
       hasFeedback
@@ -2814,19 +2415,15 @@ const App: React.FC = () => (
     >
       <Input placeholder="unavailable choice" id="error2" />
     </Form.Item>
-
     <Form.Item label="Success" hasFeedback validateStatus="success">
       <DatePicker style={{ width: '100%' }} />
     </Form.Item>
-
     <Form.Item label="Warning" hasFeedback validateStatus="warning">
       <TimePicker style={{ width: '100%' }} />
     </Form.Item>
-
     <Form.Item label="Error" hasFeedback validateStatus="error">
       <DatePicker.RangePicker style={{ width: '100%' }} />
     </Form.Item>
-
     <Form.Item label="Error" hasFeedback validateStatus="error">
       <Select placeholder="I'm Select" allowClear>
         <Option value="1">Option 1</Option>
@@ -2834,7 +2431,6 @@ const App: React.FC = () => (
         <Option value="3">Option 3</Option>
       </Select>
     </Form.Item>
-
     <Form.Item
       label="Validating"
       hasFeedback
@@ -2843,7 +2439,6 @@ const App: React.FC = () => (
     >
       <Cascader placeholder="I'm Cascader" options={[{ value: 'xx', label: 'xx' }]} allowClear />
     </Form.Item>
-
     <Form.Item label="Warning" hasFeedback validateStatus="warning" help="Need to be checked">
       <TreeSelect
         placeholder="I'm TreeSelect"
@@ -2851,7 +2446,6 @@ const App: React.FC = () => (
         allowClear
       />
     </Form.Item>
-
     <Form.Item label="inline" style={{ marginBottom: 0 }}>
       <Form.Item
         validateStatus="error"
@@ -2869,82 +2463,62 @@ const App: React.FC = () => (
         <DatePicker />
       </Form.Item>
     </Form.Item>
-
     <Form.Item label="Success" hasFeedback validateStatus="success">
       <InputNumber style={{ width: '100%' }} />
     </Form.Item>
-
     <Form.Item label="Success" hasFeedback validateStatus="success">
       <Input allowClear placeholder="with allowClear" />
     </Form.Item>
-
     <Form.Item label="Warning" hasFeedback validateStatus="warning">
       <Input.Password placeholder="with input password" />
     </Form.Item>
-
     <Form.Item label="Error" hasFeedback validateStatus="error">
       <Input.Password allowClear placeholder="with input password and allowClear" />
     </Form.Item>
-
     <Form.Item label="Success" hasFeedback validateStatus="success">
       <Input.OTP />
     </Form.Item>
     <Form.Item label="Warning" hasFeedback validateStatus="warning">
       <Input.OTP />
     </Form.Item>
-
     <Form.Item label="Error" hasFeedback validateStatus="error">
       <Input.OTP />
     </Form.Item>
-
     <Form.Item label="Fail" validateStatus="error" hasFeedback>
       <Mentions />
     </Form.Item>
-
     <Form.Item label="Fail" validateStatus="error" hasFeedback help="Should have something">
       <Input.TextArea allowClear showCount />
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 动态校验规则
-
 #### zh-CN
-
 根据不同情况执行不同的校验规则。
-
-
 
 ```typescript
 import React, { useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
-
 const formItemLayout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 8 },
 };
-
 const formTailLayout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 8, offset: 4 },
 };
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [checkNick, setCheckNick] = useState(false);
-
   useEffect(() => {
     form.validateFields(['nickname']);
   }, [checkNick, form]);
-
   const onCheckboxChange = (e: { target: { checked: boolean } }) => {
     setCheckNick(e.target.checked);
   };
-
   const onCheck = async () => {
     try {
       const values = await form.validateFields();
@@ -2953,7 +2527,6 @@ const App: React.FC = () => {
       console.log('Failed:', errorInfo);
     }
   };
-
   return (
     <Form form={form} name="dynamic_rule" style={{ maxWidth: 600 }}>
       <Form.Item
@@ -2985,23 +2558,16 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 校验与更新依赖
-
 #### zh-CN
-
 Form.Item 可以通过 `dependencies` 属性，设置关联字段。当关联字段的值发生变化时，会触发校验与更新。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert, Form, Input, Typography } from 'antd';
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   return (
@@ -3013,11 +2579,9 @@ const App: React.FC = () => {
       layout="vertical"
     >
       <Alert message=" Try modify `Password2` and then modify `Password`" type="info" showIcon />
-
       <Form.Item label="Password" name="password" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-
       {/* Field */}
       <Form.Item
         label="Confirm Password"
@@ -3039,7 +2603,6 @@ const App: React.FC = () => {
       >
         <Input />
       </Form.Item>
-
       {/* Render Props */}
       <Form.Item noStyle dependencies={['password2']}>
         {() => (
@@ -3054,26 +2617,18 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 滑动到错误字段
-
 #### zh-CN
-
 校验失败时/手动滚动到错误字段。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Flex, Form, Input, Select } from 'antd';
-
 const App = () => {
   const [form] = Form.useForm();
-
   return (
     <Form
       form={form}
@@ -3085,11 +2640,9 @@ const App = () => {
       <Form.Item wrapperCol={{ offset: 6 }}>
         <Button onClick={() => form.scrollToField('bio')}>Scroll to Bio</Button>
       </Form.Item>
-
       <Form.Item name="username" label="UserName" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-
       <Form.Item label="Occupation" name="occupation">
         <Select
           options={[
@@ -3099,15 +2652,12 @@ const App = () => {
           ]}
         />
       </Form.Item>
-
       <Form.Item name="motto" label="Motto">
         <Input.TextArea rows={4} />
       </Form.Item>
-
       <Form.Item name="bio" label="Bio" rules={[{ required: true }]}>
         <Input.TextArea rows={6} />
       </Form.Item>
-
       <Form.Item wrapperCol={{ offset: 6 }}>
         <Flex gap="small">
           <Button type="primary" htmlType="submit">
@@ -3121,18 +2671,12 @@ const App = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 校验其他组件
-
 #### zh-CN
-
 以上演示没有出现的表单控件对应的校验演示。
-
-
 
 ```typescript
 import React from 'react';
@@ -3153,14 +2697,11 @@ import {
   Switch,
   Upload,
 } from 'antd';
-
 const { Option } = Select;
-
 const formItemLayout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 14 },
 };
-
 const normFile = (e: any) => {
   console.log('Upload event:', e);
   if (Array.isArray(e)) {
@@ -3168,11 +2709,9 @@ const normFile = (e: any) => {
   }
   return e?.fileList;
 };
-
 const onFinish = (values: any) => {
   console.log('Received values of form: ', values);
 };
-
 const App: React.FC = () => (
   <Form
     name="validate_other"
@@ -3200,7 +2739,6 @@ const App: React.FC = () => (
         <Option value="usa">U.S.A</Option>
       </Select>
     </Form.Item>
-
     <Form.Item
       name="select-multiple"
       label="Select[multiple]"
@@ -3212,7 +2750,6 @@ const App: React.FC = () => (
         <Option value="blue">Blue</Option>
       </Select>
     </Form.Item>
-
     <Form.Item label="InputNumber">
       <Form.Item name="input-number" noStyle>
         <InputNumber min={1} max={10} />
@@ -3221,11 +2758,9 @@ const App: React.FC = () => (
         machines
       </span>
     </Form.Item>
-
     <Form.Item name="switch" label="Switch" valuePropName="checked">
       <Switch />
     </Form.Item>
-
     <Form.Item name="slider" label="Slider">
       <Slider
         marks={{
@@ -3238,7 +2773,6 @@ const App: React.FC = () => (
         }}
       />
     </Form.Item>
-
     <Form.Item name="radio-group" label="Radio.Group">
       <Radio.Group>
         <Radio value="a">item 1</Radio>
@@ -3246,7 +2780,6 @@ const App: React.FC = () => (
         <Radio value="c">item 3</Radio>
       </Radio.Group>
     </Form.Item>
-
     <Form.Item
       name="radio-button"
       label="Radio.Button"
@@ -3258,7 +2791,6 @@ const App: React.FC = () => (
         <Radio.Button value="c">item 3</Radio.Button>
       </Radio.Group>
     </Form.Item>
-
     <Form.Item name="checkbox-group" label="Checkbox.Group">
       <Checkbox.Group>
         <Row>
@@ -3295,11 +2827,9 @@ const App: React.FC = () => (
         </Row>
       </Checkbox.Group>
     </Form.Item>
-
     <Form.Item name="rate" label="Rate">
       <Rate />
     </Form.Item>
-
     <Form.Item
       name="upload"
       label="Upload"
@@ -3329,7 +2859,6 @@ const App: React.FC = () => (
     >
       <ColorPicker />
     </Form.Item>
-
     <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
       <Space>
         <Button type="primary" htmlType="submit">
@@ -3340,35 +2869,25 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### getValueProps + normalize
-
 #### zh-CN
-
 配合 `getValueProps` 和 `normalize`，可以转换 `value` 的格式，如将时间戳转成 `dayjs` 对象再传给 `DatePicker`。
-
-
 
 ```typescript
 import React from 'react';
 import type { FormProps } from 'antd';
 import { Button, DatePicker, Form } from 'antd';
 import dayjs from 'dayjs';
-
 const dateTimestamp = dayjs('2024-01-01').valueOf();
-
 type FieldType = {
   date?: string;
 };
-
 const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
   console.log('Success:', values);
 };
-
 const App: React.FC = () => (
   <Form
     name="getValueProps"
@@ -3388,7 +2907,6 @@ const App: React.FC = () => (
     >
       <DatePicker />
     </Form.Item>
-
     <Form.Item label={null}>
       <Button type="primary" htmlType="submit">
         Submit
@@ -3396,23 +2914,16 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### Disabled Input Debug
-
 #### zh-CN
-
 Test disabled Input with validate state
-
-
 
 ```typescript
 import React from 'react';
 import { Form, Input } from 'antd';
-
 const App: React.FC = () => (
   <Form style={{ maxWidth: 600 }}>
     <Form.Item label="Normal0">
@@ -3453,23 +2964,16 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 测试 label 省略
-
 #### zh-CN
-
 `label` 中使用 `<Typography.Text ellipsis>` 时应该显示 `...`。
-
-
 
 ```typescript
 import React from 'react';
 import { Form, Input, Typography } from 'antd';
-
 const App: React.FC = () => (
   <Form
     name="label-ellipsis"
@@ -3487,7 +2991,6 @@ const App: React.FC = () => (
     >
       <Input />
     </Form.Item>
-
     <Form.Item
       label={
         <Typography.Text ellipsis>
@@ -3500,23 +3003,16 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### 测试特殊 col 24 用法
-
 #### zh-CN
-
 See issue [##32980](https://github.com/ant-design/ant-design/issues/32980).
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Divider, Form, Input, Select } from 'antd';
-
 const sharedItem = (
   <Form.Item
     label={
@@ -3543,16 +3039,13 @@ const sharedItem = (
     />
   </Form.Item>
 );
-
 const App: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Success:', values);
   };
-
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
-
   return (
     <>
       <Form
@@ -3572,7 +3065,6 @@ const App: React.FC = () => {
         >
           <Input />
         </Form.Item>
-
         <Form.Item
           label="Password"
           name="password"
@@ -3580,9 +3072,7 @@ const App: React.FC = () => {
         >
           <Input.Password />
         </Form.Item>
-
         {sharedItem}
-
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit
@@ -3605,7 +3095,6 @@ const App: React.FC = () => {
         >
           <Input />
         </Form.Item>
-
         <Form.Item
           label="Password"
           name="password"
@@ -3613,19 +3102,15 @@ const App: React.FC = () => {
         >
           <Input.Password />
         </Form.Item>
-
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
       </Form>
-
       <Divider />
-
       <Form layout="vertical">
         {sharedItem}
-
         <Form.Item label="col12" name="col12" labelCol={{ span: 12 }} wrapperCol={{ span: 12 }}>
           <Input />
         </Form.Item>
@@ -3633,34 +3118,25 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 引用字段
-
 #### zh-CN
-
 请优先使用 `ref`！
-
-
 
 ```typescript
 import React from 'react';
 import type { InputRef } from 'antd';
 import { Button, Form, Input } from 'antd';
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const ref = React.useRef<InputRef>(null);
-
   return (
     <Form form={form} initialValues={{ list: ['light'] }} style={{ maxWidth: 600 }}>
       <Form.Item name="test" label="test">
         <Input ref={ref} />
       </Form.Item>
-
       <Form.List name="list">
         {(fields) =>
           fields.map((field) => (
@@ -3670,7 +3146,6 @@ const App: React.FC = () => {
           ))
         }
       </Form.List>
-
       <Button
         htmlType="button"
         onClick={() => {
@@ -3689,18 +3164,12 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### Custom feedback icons
-
 #### zh-CN
-
 自定义反馈图标可以通过 `hasFeedback={{ icons: ... }}` 或 `<Form FeedbackIcons={icons}>` 传递（`Form.Item` 必须具有 `hasFeedback` 属性）。
-
-
 
 ```typescript
 import React from 'react';
@@ -3708,7 +3177,6 @@ import { AlertFilled, CloseSquareFilled } from '@ant-design/icons';
 import { Button, Form, Input, Tooltip } from 'antd';
 import { createStyles, css } from 'antd-style';
 import uniqueId from 'lodash/uniqueId';
-
 const useStyle = createStyles(() => ({
   'custom-feedback-icons': css`
     .ant-form-item-feedback-icon {
@@ -3716,11 +3184,9 @@ const useStyle = createStyles(() => ({
     }
   `,
 }));
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const { styles } = useStyle();
-
   return (
     <Form
       name="custom-feedback-icons"
@@ -3777,23 +3243,16 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Form, Input } from 'antd';
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -3826,7 +3285,6 @@ const App: React.FC = () => (
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="Password"
         name="password"
@@ -3837,8 +3295,6 @@ const App: React.FC = () => (
     </Form>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

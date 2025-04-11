@@ -1,7 +1,5 @@
 ## API
-
 ### Radio/Radio.Button
-
 <!-- prettier-ignore -->
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -10,11 +8,8 @@
 | defaultChecked | 初始是否选中 | boolean | false |
 | disabled | 禁用 Radio | boolean | false |
 | value | 根据 value 进行比较，判断是否选中 | any | - |
-
 ### Radio.Group
-
 单选框组合，用于包裹一组 `Radio`。
-
 <!-- prettier-ignore -->
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
@@ -28,9 +23,7 @@
 | value | 用于设置当前选中的值 | any | - |  |  |
 | block | 将 RadioGroup 宽度调整为其父宽度的选项 | boolean | false | 5.21.0 |  |
 | onChange | 选项变化时的回调函数 | function(e:Event) | - |  |  |
-
 ### CheckboxOptionType
-
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | label | 用于作为 Radio 选项展示的文本 | `string` | - | 4.4.0 |

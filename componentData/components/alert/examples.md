@@ -1,35 +1,22 @@
 ## Alert 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法，适用于简短的警告提示。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert } from 'antd';
-
 const App: React.FC = () => <Alert message="Success Text" type="success" />;
-
 export default App;
 
 ```
-
 ### 四种样式
-
 #### zh-CN
-
 共有四种样式 `success`、`info`、`warning`、`error`。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Alert message="Success Text" type="success" />
@@ -41,28 +28,20 @@ const App: React.FC = () => (
     <Alert message="Error Text" type="error" />
   </>
 );
-
 export default App;
 
 ```
-
 ### 可关闭的警告提示
-
 #### zh-CN
-
 显示关闭按钮，点击可关闭警告提示。
-
-
 
 ```typescript
 import React from 'react';
 import { CloseSquareOutlined } from '@ant-design/icons';
 import { Alert } from 'antd';
-
 const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
   console.log(e, 'I was closed.');
 };
-
 const App: React.FC = () => (
   <>
     <Alert
@@ -92,23 +71,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 含有辅助性文字介绍
-
 #### zh-CN
-
 含有辅助性文字介绍的警告提示。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Alert
@@ -136,23 +108,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 图标
-
 #### zh-CN
-
 可口的图标让信息类型更加醒目。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Alert message="Success Tips" type="success" showIcon />
@@ -193,23 +158,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 顶部公告
-
 #### zh-CN
-
 页面顶部通告形式，默认有图标且 `type` 为 'warning'。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Alert message="Warning text" banner />
@@ -225,24 +183,17 @@ const App: React.FC = () => (
     <Alert type="error" message="Error text" banner />
   </>
 );
-
 export default App;
 
 ```
-
 ### 轮播的公告
-
 #### zh-CN
-
 配合 [react-text-loop-next](https://npmjs.com/package/react-text-loop-next) 或 [react-fast-marquee](https://npmjs.com/package/react-fast-marquee) 实现消息轮播通知栏。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert } from 'antd';
 import Marquee from 'react-fast-marquee';
-
 const App: React.FC = () => (
   <Alert
     banner
@@ -253,30 +204,21 @@ const App: React.FC = () => (
     }
   />
 );
-
 export default App;
 
 ```
-
 ### 平滑地卸载
-
 #### zh-CN
-
 平滑、自然的卸载提示。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Alert, Switch } from 'antd';
-
 const App: React.FC = () => {
   const [visible, setVisible] = useState(true);
-
   const handleClose = () => {
     setVisible(false);
   };
-
   return (
     <>
       {visible && (
@@ -287,30 +229,22 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### React 错误处理
-
 #### zh-CN
-
 友好的 [React 错误处理](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html) 包裹组件。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Alert, Button } from 'antd';
-
 const { ErrorBoundary } = Alert;
 const ThrowError: React.FC = () => {
   const [error, setError] = useState<Error>();
   const onClick = () => {
     setError(new Error('An Uncaught Error'));
   };
-
   if (error) {
     throw error;
   }
@@ -320,32 +254,23 @@ const ThrowError: React.FC = () => {
     </Button>
   );
 };
-
 const App: React.FC = () => (
   <ErrorBoundary>
     <ThrowError />
   </ErrorBoundary>
 );
-
 export default App;
 
 ```
-
 ### 自定义图标
-
 #### zh-CN
-
 可口的图标让信息类型更加醒目。
-
-
 
 ```typescript
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Alert } from 'antd';
-
 const icon = <SmileOutlined />;
-
 const App: React.FC = () => (
   <>
     <Alert icon={icon} message="showIcon = false" type="success" />
@@ -391,23 +316,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 操作
-
 #### zh-CN
-
 可以在右上角自定义操作项。
-
-
 
 ```typescript
 import React from 'react';
 import { Alert, Button, Space } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Alert
@@ -465,26 +383,18 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 自定义组件 Token。
-
-
 
 ```typescript
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Alert, ConfigProvider } from 'antd';
-
 const icon = <SmileOutlined />;
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -505,8 +415,6 @@ const App: React.FC = () => (
     />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

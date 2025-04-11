@@ -1,7 +1,5 @@
 ## API
-
 ### Space
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | align | 对齐方式 | `start` \| `end` \|`center` \|`baseline` | - | 4.2.0 |
@@ -11,17 +9,11 @@
 | split | 设置分隔符 | ReactNode | - | 4.7.0 |
 | styles | 语义化 style | [Record<SemanticDOM, CSSProperties>](#semantic-dom) | - |  |
 | wrap | 是否自动换行，仅在 `horizontal` 时有效 | boolean | false | 4.9.0 |
-
 ### Size
-
 `'small' | 'middle' | 'large' | number`
-
 ### Space.Compact
-
 > 自 antd@4.24.0 版本开始提供该组件。
-
 需要表单组件之间紧凑连接且合并边框时，使用 Space.Compact。支持的组件有：
-
 - Button
 - AutoComplete
 - Cascader
@@ -31,7 +23,6 @@
 - Select
 - TimePicker
 - TreeSelect
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | block | 将宽度调整为父元素宽度的选项 | boolean | false | 4.24.0 |

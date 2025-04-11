@@ -1,18 +1,12 @@
 ## Avatar 组件示例
-
 ### 基本
-
 #### zh-CN
-
 头像有三种尺寸，两种形状可选。
-
-
 
 ```typescript
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space direction="vertical" size={16}>
     <Space wrap size={16}>
@@ -31,26 +25,18 @@ const App: React.FC = () => (
     </Space>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 类型
-
 #### zh-CN
-
 支持三种类型：图片、Icon 以及字符，其中 Icon 和字符型可以自定义图标颜色及背景色。
-
-
 
 ```typescript
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Space } from 'antd';
-
 const url = 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';
-
 const App: React.FC = () => (
   <Space size={16} wrap>
     <Avatar icon={<UserOutlined />} />
@@ -62,43 +48,32 @@ const App: React.FC = () => (
     <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 自动调整字符大小
-
 #### zh-CN
-
 对于字符型的头像，当字符串较长时，字体大小可以根据头像宽度自动调整。也可使用 `gap` 来设置字符距离左右两侧边界单位像素。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Avatar, Button } from 'antd';
-
 const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
 const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
 const GapList = [4, 3, 2, 1];
-
 const App: React.FC = () => {
   const [user, setUser] = useState(UserList[0]);
   const [color, setColor] = useState(ColorList[0]);
   const [gap, setGap] = useState(GapList[0]);
-
   const changeUser = () => {
     const index = UserList.indexOf(user);
     setUser(index < UserList.length - 1 ? UserList[index + 1] : UserList[0]);
     setColor(index < ColorList.length - 1 ? ColorList[index + 1] : ColorList[0]);
   };
-
   const changeGap = () => {
     const index = GapList.indexOf(gap);
     setGap(index < GapList.length - 1 ? GapList[index + 1] : GapList[0]);
   };
-
   return (
     <>
       <Avatar style={{ backgroundColor: color, verticalAlign: 'middle' }} size="large" gap={gap}>
@@ -117,24 +92,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 带徽标的头像
-
 #### zh-CN
-
 通常用于消息提示。
-
-
 
 ```typescript
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space size={24}>
     <Badge count={1}>
@@ -145,24 +113,17 @@ const App: React.FC = () => (
     </Badge>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### Avatar.Group
-
 #### zh-CN
-
 头像组合展现。
-
-
 
 ```typescript
 import React from 'react';
 import { AntDesignOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Divider, Tooltip } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Avatar.Group>
@@ -229,34 +190,24 @@ const App: React.FC = () => (
     </Avatar.Group>
   </>
 );
-
 export default App;
 
 ```
-
 ### 隐藏情况下计算字符对齐
-
 #### zh-CN
-
 切换 Avatar 显示的时候，文本样式应该居中并正确调整字体大小。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Avatar, Button, Space } from 'antd';
-
 type SizeType = 'large' | 'small' | 'default' | number;
-
 const App: React.FC = () => {
   const [hide, setHide] = useState(true);
   const [size, setSize] = useState<SizeType>('large');
   const [scale, setScale] = useState(1);
-
   const toggle = () => {
     setHide(!hide);
   };
-
   const toggleSize = () => {
     const sizes = ['small', 'default', 'large'] as SizeType[];
     let current = sizes.indexOf(size) + 1;
@@ -265,11 +216,9 @@ const App: React.FC = () => {
     }
     setSize(sizes[current]);
   };
-
   const changeScale = () => {
     setScale(scale === 1 ? 2 : 1);
   };
-
   return (
     <>
       <Space wrap>
@@ -300,47 +249,33 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 响应式尺寸
-
 #### zh-CN
-
 头像大小可以根据屏幕大小自动调整。
-
-
 
 ```typescript
 import React from 'react';
 import { AntDesignOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
-
 const App: React.FC = () => (
   <Avatar
     size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
     icon={<AntDesignOutlined />}
   />
 );
-
 export default App;
 
 ```
-
 ### 图片不存在时
-
 #### zh-CN
-
 图片不存在时，如果 `src` 本身是个 ReactElement，会尝试回退到 `src`，否则尝试回退到 `icon`，最后回退到显示 `children`。
-
-
 
 ```typescript
 import React from 'react';
 import { Avatar, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space>
     <Avatar shape="circle" src="http://abc.com/not-exist.jpg">
@@ -351,24 +286,17 @@ const App: React.FC = () => (
     </Avatar>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { AntDesignOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Badge, ConfigProvider, Space, Tooltip } from 'antd';
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -377,11 +305,9 @@ const App: React.FC = () => (
           containerSize: 60,
           containerSizeLG: 30,
           containerSizeSM: 16,
-
           textFontSize: 18,
           textFontSizeLG: 28,
           textFontSizeSM: 12,
-
           borderRadius: 10,
           groupOverlapping: -10,
           groupBorderColor: '#eee',
@@ -419,8 +345,6 @@ const App: React.FC = () => (
     </Space>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

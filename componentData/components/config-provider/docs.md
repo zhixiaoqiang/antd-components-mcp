@@ -1,36 +1,25 @@
-
 ## 使用
-
 ConfigProvider 使用 React 的 [context](https://facebook.github.io/react/docs/context.html) 特性，只需在应用外围包裹一次即可全局生效。
-
 ```tsx
 import React from 'react';
 import { ConfigProvider } from 'antd';
-
 // ...
 const Demo: React.FC = () => (
   <ConfigProvider direction="rtl">
     <App />
   </ConfigProvider>
 );
-
 export default Demo;
 ```
-
 ### Content Security Policy
-
 部分组件为了支持波纹效果，使用了动态样式。如果开启了 Content Security Policy (CSP)，你可以通过 `csp` 属性来进行配置：
-
 ```tsx
 <ConfigProvider csp={{ nonce: 'YourNonceCode' }}>
   <Button>My Button</Button>
 </ConfigProvider>
 ```
 
-
-
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | componentDisabled | 设置 antd 组件禁用状态 | boolean | - | 4.21.0 |
@@ -49,11 +38,8 @@ export default Demo;
 | variant | 设置全局输入组件形态变体 | `outlined` \| `filled` \| `borderless` | - | 5.19.0 |
 | virtual | 设置 `false` 时关闭虚拟滚动 | boolean | - | 4.3.0 |
 | warning | 设置警告等级，`strict` 为 `false` 时会将废弃相关信息聚合为单条信息 | { strict: boolean } | - | 5.10.0 |
-
 ### ConfigProvider.config()
-
 设置 `Modal`、`Message`、`Notification` 静态方法配置，只会对非 hooks 的静态方法调用生效。
-
 ```tsx
 ConfigProvider.config({
   // 5.13.0+
@@ -68,26 +54,20 @@ ConfigProvider.config({
   ),
 });
 ```
-
 ### ConfigProvider.useConfig() `5.3.0+`
-
 `5.2.0` 版本后可用。获取父级 `Provider` 的值。如 `DisabledContextProvider`、`SizeContextProvider`。
-
 ```jsx
 const {
   componentDisabled, // 5.3.0+
   componentSize, // 5.3.0+
 } = ConfigProvider.useConfig();
 ```
-
 <!-- prettier-ignore -->
 | 返回值 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | componentDisabled | antd 组件禁用状态 | boolean | - | 5.3.0 |
 | componentSize | antd 组件大小状态 | `small` \| `middle` \| `large` | - | 5.3.0 |
-
 ### 组件配置
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | alert | 设置 Alert 组件的通用属性 | { className?: string, style?: React.CSSProperties, closeIcon?: React.ReactNode } | - | 5.7.0, `closeIcon`: 5.14.0 |
@@ -152,23 +132,14 @@ const {
 | typography | 设置 Typography 组件的通用属性 | { className?: string, style?: React.CSSProperties } | - | 5.7.0 |
 | upload | 设置 Upload 组件的通用属性 | { className?: string, style?: React.CSSProperties } | - | 5.7.0 |
 | wave | 设置水波纹特效 | { disabled?: boolean, showEffect?: (node: HTMLElement, info: { className, token, component }) => void } | - | 5.8.0 |
-
 ## FAQ
-
 #### 如何增加一个新的语言包？
-
 参考[《增加语言包》](/docs/react/i18n#%E5%A2%9E%E5%8A%A0%E8%AF%AD%E8%A8%80%E5%8C%85)。
-
 #### 为什么时间类组件的国际化 locale 设置不生效？
-
 参考 FAQ [为什么时间类组件的国际化 locale 设置不生效？](/docs/react/faq#为什么时间类组件的国际化-locale-设置不生效)。
-
 #### 配置 `getPopupContainer` 导致 Modal 报错？
-
 相关 issue：<https://github.com/ant-design/ant-design/issues/19974>
-
 当如下全局设置 `getPopupContainer` 为触发节点的 parentNode 时，由于 Modal 的用法不存在 `triggerNode`，这样会导致 `triggerNode is undefined` 的报错，需要增加一个[判断条件](https://github.com/afc163/feedback-antd/commit/3e4d1ad1bc1a38460dc3bf3c56517f737fe7d44a)。
-
 ```diff
  <ConfigProvider
 -  getPopupContainer={triggerNode => triggerNode.parentNode}
@@ -182,19 +153,12 @@ const {
    <App />
  </ConfigProvider>
 ```
-
 #### 为什么 message.info、notification.open 或 Modal.confirm 等方法内的 ReactNode 无法继承 ConfigProvider 的属性？比如 `prefixCls` 和 `theme`。
-
 静态方法是使用 ReactDOM.render 重新渲染一个 React 根节点上，和主应用的 React 节点是脱离的。我们建议使用 useMessage、useNotification 和 useModal 来使用相关方法。原先的静态方法在 5.0 中已被废弃。
-
 #### Vite 生产模式打包后国际化 locale 设置不生效？
-
 相关 issue：[#39045](https://github.com/ant-design/ant-design/issues/39045)
-
 由于 Vite 生产模式下打包与开发模式不同，cjs 格式的文件会多一层，需要 `zhCN.default` 来获取。推荐 Vite 用户直接从 `antd/es/locale` 目录下引入 esm 格式的 locale 文件。
-
 #### prefixCls 优先级(前者被后者覆盖)
-
 1. `ConfigProvider.config({ prefixCls: 'prefix-1' })`
 2. `ConfigProvider.config({ holderRender: (children) => <ConfigProvider prefixCls="prefix-2">{children}</ConfigProvider> })`
 3. `message.config({ prefixCls: 'prefix-3' })`

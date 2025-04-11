@@ -1,7 +1,5 @@
 ## API
-
 > 自 `antd@5.5.0` 版本开始提供该组件。
-
 <!-- prettier-ignore -->
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | :-- | :-- | :-- | :-- | :-- |
@@ -29,9 +27,7 @@
 | onFormatChange | 颜色格式变化的回调 | `(format: 'hex' \| 'rgb' \| 'hsb') => void` | - | |
 | onOpenChange | 当 `open` 被改变时的回调 | `(open: boolean) => void` | - | |
 | onClear | 清除的回调 | `() => void` | - | 5.6.0 |
-
 ### Color
-
 <!-- prettier-ignore -->
 | 参数 | 说明 | 类型 | 版本 |
 | :-- | :-- | :-- | :-- |

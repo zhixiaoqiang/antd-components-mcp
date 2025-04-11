@@ -1,5 +1,4 @@
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | delay | 延迟显示加载效果的时间（防止闪烁） | number (毫秒) | - |
@@ -10,9 +9,6 @@
 | spinning | 是否为加载中状态 | boolean | true |  |
 | tip | 当作为包裹元素时，可以自定义描述文案 | ReactNode | - |
 | wrapperClassName | 包装器的类属性 | string | - |
-
 ### 静态方法
-
 - `Spin.setDefaultIndicator(indicator: ReactNode)`
-
   你可以自定义全局默认 Spin 的元素。

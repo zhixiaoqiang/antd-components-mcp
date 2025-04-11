@@ -1,32 +1,23 @@
 ## App 组件示例
-
 ### 基本用法
-
 #### zh-CN
-
 获取 `message`、`notification`、`modal` 实例。
-
-
 
 ```typescript
 import React from 'react';
 import { App, Button, Space } from 'antd';
-
 // Sub page
 const MyPage = () => {
   const { message, modal, notification } = App.useApp();
-
   const showMessage = () => {
     message.success('Success!');
   };
-
   const showModal = () => {
     modal.warning({
       title: 'This is a warning message',
       content: 'some messages...some messages...',
     });
   };
-
   const showNotification = () => {
     notification.info({
       message: 'Notification topLeft',
@@ -34,7 +25,6 @@ const MyPage = () => {
       placement: 'topLeft',
     });
   };
-
   return (
     <Space wrap>
       <Button type="primary" onClick={showMessage}>
@@ -49,7 +39,6 @@ const MyPage = () => {
     </Space>
   );
 };
-
 // Entry component
 export default () => (
   <App>
@@ -58,34 +47,25 @@ export default () => (
 );
 
 ```
-
 ### Hooks 配置
-
 #### zh-CN
-
 对 `message`、`notification` 进行配置。
-
-
 
 ```typescript
 import React from 'react';
 import { App, Button, Space } from 'antd';
-
 // Sub page
 const MyPage = () => {
   const { message, notification } = App.useApp();
-
   const showMessage = () => {
     message.success('Success!');
   };
-
   const showNotification = () => {
     notification.info({
       message: 'Notification',
       description: 'Hello, Ant Design!!',
     });
   };
-
   return (
     <Space wrap>
       <Button type="primary" onClick={showMessage}>
@@ -97,7 +77,6 @@ const MyPage = () => {
     </Space>
   );
 };
-
 // Entry component
 export default () => (
   <App message={{ maxCount: 1 }} notification={{ placement: 'bottomLeft' }}>
@@ -106,4 +85,3 @@ export default () => (
 );
 
 ```
-

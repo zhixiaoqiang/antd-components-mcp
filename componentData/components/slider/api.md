@@ -1,5 +1,4 @@
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | autoFocus | 自动获取焦点 | boolean | false |  |
@@ -21,18 +20,14 @@
 | vertical | 值为 true 时，Slider 为垂直方向 | boolean | false |  |
 | onChangeComplete | 与 `mouseup` 和 `keyup` 触发时机一致，把当前值作为参数传入 | (value) => void | - |  |
 | onChange | 当 Slider 的值发生改变时，会触发 onChange 事件，并把改变后的值作为参数传入 | (value) => void | - |  |
-
 ### range
-
 | 参数           | 说明                                               | 类型    | 默认值 | 版本   |
 | -------------- | -------------------------------------------------- | ------- | ------ | ------ |
 | draggableTrack | 范围刻度是否可被拖拽                               | boolean | false  |        |
 | editable       | 启动动态增减节点，不能和 `draggableTrack` 一同使用 | boolean | false  | 5.20.0 |
 | minCount       | 配置 `editable` 时，最小节点数量                   | number  | 0      | 5.20.0 |
 | maxCount       | 配置 `editable` 时，最大节点数量                   | number  | -      | 5.20.0 |
-
 ### tooltip
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | autoAdjustOverflow | 是否自动调整弹出位置 | boolean | true | 5.8.0 |

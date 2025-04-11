@@ -1,42 +1,27 @@
 ## Radio 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Radio } from 'antd';
-
 const App: React.FC = () => <Radio>Radio</Radio>;
-
 export default App;
 
 ```
-
 ### 不可用
-
 #### zh-CN
-
 Radio 不可用。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Radio } from 'antd';
-
 const App: React.FC = () => {
   const [disabled, setDisabled] = useState(true);
-
   const toggleDisabled = () => {
     setDisabled(!disabled);
   };
-
   return (
     <>
       <Radio defaultChecked={false} disabled={disabled}>
@@ -52,18 +37,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 单选组合
-
 #### zh-CN
-
 一组互斥的 Radio 配合使用。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -75,14 +54,11 @@ import {
 } from '@ant-design/icons';
 import type { RadioChangeEvent } from 'antd';
 import { Flex, Radio } from 'antd';
-
 const App: React.FC = () => {
   const [value, setValue] = useState(1);
-
   const onChange = (e: RadioChangeEvent) => {
     setValue(e.target.value);
   };
-
   return (
     <Radio.Group
       onChange={onChange}
@@ -128,37 +104,27 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### Radio.Group 垂直
-
 #### zh-CN
-
 垂直的 Radio.Group，配合更多输入框选项。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Input, Radio } from 'antd';
-
 const style: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   gap: 8,
 };
-
 const App: React.FC = () => {
   const [value, setValue] = useState(1);
-
   const onChange = (e: RadioChangeEvent) => {
     setValue(e.target.value);
   };
-
   return (
     <Radio.Group
       style={style}
@@ -187,30 +153,22 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### Block 单选组合
-
 #### zh-CN
-
 `block` 属性将使 Radio.Group 撑满父容器。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Radio } from 'antd';
 import type { CheckboxGroupProps } from 'antd/es/checkbox';
-
 const options: CheckboxGroupProps<string>['options'] = [
   { label: 'Apple', value: 'Apple' },
   { label: 'Pear', value: 'Pear' },
   { label: 'Orange', value: 'Orange' },
 ];
-
 const App: React.FC = () => (
   <Flex vertical gap="middle">
     <Radio.Group block options={options} defaultValue="Apple" />
@@ -224,65 +182,50 @@ const App: React.FC = () => (
     <Radio.Group block options={options} defaultValue="Pear" optionType="button" />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### Radio.Group 组合 - 配置方式
-
 #### zh-CN
-
 通过配置 `options` 参数来渲染单选框。也可通过 `optionType` 参数来设置 Radio 类型。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Radio } from 'antd';
 import type { CheckboxGroupProps } from 'antd/es/checkbox';
-
 const plainOptions: CheckboxGroupProps<string>['options'] = ['Apple', 'Pear', 'Orange'];
-
 const options: CheckboxGroupProps<string>['options'] = [
   { label: 'Apple', value: 'Apple' },
   { label: 'Pear', value: 'Pear' },
   { label: 'Orange', value: 'Orange', title: 'Orange' },
 ];
-
 const optionsWithDisabled: CheckboxGroupProps<string>['options'] = [
   { label: 'Apple', value: 'Apple' },
   { label: 'Pear', value: 'Pear' },
   { label: 'Orange', value: 'Orange', disabled: true },
 ];
-
 const App: React.FC = () => {
   const [value1, setValue1] = useState('Apple');
   const [value2, setValue2] = useState('Apple');
   const [value3, setValue3] = useState('Apple');
   const [value4, setValue4] = useState('Apple');
-
   const onChange1 = ({ target: { value } }: RadioChangeEvent) => {
     console.log('radio1 checked', value);
     setValue1(value);
   };
-
   const onChange2 = ({ target: { value } }: RadioChangeEvent) => {
     console.log('radio2 checked', value);
     setValue2(value);
   };
-
   const onChange3 = ({ target: { value } }: RadioChangeEvent) => {
     console.log('radio3 checked', value);
     setValue3(value);
   };
-
   const onChange4 = ({ target: { value } }: RadioChangeEvent) => {
     console.log('radio4 checked', value);
     setValue4(value);
   };
-
   return (
     <>
       <Radio.Group options={plainOptions} onChange={onChange1} value={value1} />
@@ -303,28 +246,20 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 按钮样式
-
 #### zh-CN
-
 按钮样式的单选组合。
-
-
 
 ```typescript
 import React from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Flex, Radio } from 'antd';
-
 const onChange = (e: RadioChangeEvent) => {
   console.log(`radio checked:${e.target.value}`);
 };
-
 const App: React.FC = () => (
   <Flex vertical gap="middle">
     <Radio.Group onChange={onChange} defaultValue="a">
@@ -349,23 +284,16 @@ const App: React.FC = () => (
     </Radio.Group>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 单选组合 - 配合 name 使用
-
 #### zh-CN
-
 可以为 Radio.Group 配置 `name` 参数，为组合内的 input 元素赋予相同的 `name` 属性，使浏览器把 Radio.Group 下的 Radio 真正看作是一组（例如可以通过方向键始终**在同一组内**更改选项）。
-
-
 
 ```typescript
 import React from 'react';
 import { Radio } from 'antd';
-
 const App: React.FC = () => (
   <Radio.Group
     name="radiogroup"
@@ -378,23 +306,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 大小
-
 #### zh-CN
-
 大中小三种组合，可以和表单输入框进行对应配合。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Radio } from 'antd';
-
 const App: React.FC = () => (
   <Flex vertical gap="middle">
     <Radio.Group defaultValue="a" size="large">
@@ -417,23 +338,16 @@ const App: React.FC = () => (
     </Radio.Group>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 填底的按钮样式
-
 #### zh-CN
-
 实色填底的单选按钮样式。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Radio } from 'antd';
-
 const App: React.FC = () => (
   <Flex vertical gap="middle">
     <Radio.Group defaultValue="a" buttonStyle="solid">
@@ -452,23 +366,16 @@ const App: React.FC = () => (
     </Radio.Group>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 测试 Badge 的样式
-
 #### zh-CN
-
 测试 Badge 的样式。
-
-
 
 ```typescript
 import React from 'react';
 import { Badge, Radio } from 'antd';
-
 const App: React.FC = () => (
   <Radio.Group buttonStyle="solid">
     <Badge count={1}>
@@ -479,31 +386,23 @@ const App: React.FC = () => (
     </Badge>
   </Radio.Group>
 );
-
 export default App;
 
 ```
-
 ### 线框风格
-
 #### zh-CN
-
 线框风格。
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Radio } from 'antd';
 import type { CheckboxGroupProps } from 'antd/es/checkbox';
-
 const options: CheckboxGroupProps<string | number>['options'] = [
   { value: 1, label: 'A' },
   { value: 2, label: 'B' },
   { value: 3, label: 'C' },
   { value: 4, label: 'D' },
 ];
-
 const App: React.FC = () => (
   <ConfigProvider theme={{ token: { wireframe: true } }}>
     <Radio.Group value={1} options={options} />
@@ -511,23 +410,16 @@ const App: React.FC = () => (
     <Radio.Group value={1} options={options} disabled />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 组件 token debug
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Radio, Space } from 'antd';
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -574,8 +466,6 @@ const App: React.FC = () => (
     </Space>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

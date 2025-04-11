@@ -1,20 +1,13 @@
 ## QrCode 组件示例
-
 ### 基本使用
-
 #### zh-CN
-
 基本用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Input, QRCode, Space } from 'antd';
-
 const App: React.FC = () => {
   const [text, setText] = React.useState('https://ant.design/');
-
   return (
     <Space direction="vertical" align="center">
       <QRCode value={text || '-'} />
@@ -27,23 +20,16 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 带 Icon 的例子
-
 #### zh-CN
-
 带 Icon 的二维码。
-
-
 
 ```typescript
 import React from 'react';
 import { QRCode } from 'antd';
-
 const App: React.FC = () => (
   <QRCode
     errorLevel="H"
@@ -51,25 +37,17 @@ const App: React.FC = () => (
     icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
   />
 );
-
 export default App;
 
 ```
-
 ### 不同的状态
-
 #### zh-CN
-
 可以通过 `status` 的值控制二维码的状态，提供了 `active`、`expired`、`loading`、`scanned` 四个值。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, QRCode } from 'antd';
-
 const value = 'https://ant.design';
-
 const App: React.FC = () => (
   <Flex gap="middle" wrap>
     <QRCode value={value} status="loading" />
@@ -77,27 +55,19 @@ const App: React.FC = () => (
     <QRCode value={value} status="scanned" />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 自定义状态渲染器
-
 #### zh-CN
-
 可以通过 `statusRender` 的值控制二维码不同状态的渲染逻辑。
-
-
 
 ```typescript
 import React from 'react';
 import { CheckCircleFilled, CloseCircleFilled, ReloadOutlined } from '@ant-design/icons';
 import type { QRCodeProps } from 'antd';
 import { Button, Flex, QRCode, Space, Spin } from 'antd';
-
 const value = 'https://ant.design';
-
 const customStatusRender: QRCodeProps['statusRender'] = (info) => {
   switch (info.status) {
     case 'expired':
@@ -128,7 +98,6 @@ const customStatusRender: QRCodeProps['statusRender'] = (info) => {
       return null;
   }
 };
-
 const App: React.FC = () => (
   <Flex gap="middle" wrap>
     <QRCode value={value} status="loading" statusRender={customStatusRender} />
@@ -141,53 +110,37 @@ const App: React.FC = () => (
     <QRCode value={value} status="scanned" statusRender={customStatusRender} />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 自定义渲染类型
-
 #### zh-CN
-
 通过设置 `type` 自定义渲染结果，提供 `canvas` 和 `svg` 两个选项。
-
-
 
 ```typescript
 import React from 'react';
 import { QRCode, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space>
     <QRCode type="canvas" value="https://ant.design/" />
     <QRCode type="svg" value="https://ant.design/" />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 自定义尺寸
-
 #### zh-CN
-
 自定义尺寸
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, QRCode, Space } from 'antd';
-
 const MIN_SIZE = 48;
 const MAX_SIZE = 300;
-
 const App: React.FC = () => {
   const [size, setSize] = useState<number>(160);
-
   const increase = () => {
     setSize((prevSize) => {
       const newSize = prevSize + 10;
@@ -197,7 +150,6 @@ const App: React.FC = () => {
       return newSize;
     });
   };
-
   const decline = () => {
     setSize((prevSize) => {
       const newSize = prevSize - 10;
@@ -207,7 +159,6 @@ const App: React.FC = () => {
       return newSize;
     });
   };
-
   return (
     <>
       <Space.Compact style={{ marginBottom: 16 }}>
@@ -228,25 +179,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义颜色
-
 #### zh-CN
-
 通过设置 `color` 自定义二维码颜色，通过设置 `bgColor` 自定义背景颜色。
-
-
 
 ```typescript
 import React from 'react';
 import { QRCode, Space, theme } from 'antd';
-
 const { useToken } = theme;
-
 const App: React.FC = () => {
   const { token } = useToken();
   return (
@@ -260,24 +203,17 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 下载二维码
-
 #### zh-CN
-
 下载二维码的简单实现。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, QRCode, Segmented, Space } from 'antd';
 import type { QRCodeProps } from 'antd';
-
 function doDownload(url: string, fileName: string) {
   const a = document.createElement('a');
   a.download = fileName;
@@ -286,7 +222,6 @@ function doDownload(url: string, fileName: string) {
   a.click();
   document.body.removeChild(a);
 }
-
 const downloadCanvasQRCode = () => {
   const canvas = document.getElementById('myqrcode')?.querySelector<HTMLCanvasElement>('canvas');
   if (canvas) {
@@ -294,16 +229,13 @@ const downloadCanvasQRCode = () => {
     doDownload(url, 'QRCode.png');
   }
 };
-
 const downloadSvgQRCode = () => {
   const svg = document.getElementById('myqrcode')?.querySelector<SVGElement>('svg');
   const svgData = new XMLSerializer().serializeToString(svg!);
   const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
   const url = URL.createObjectURL(blob);
-
   doDownload(url, 'QRCode.svg');
 };
-
 const App: React.FC = () => {
   const [renderType, setRenderType] = React.useState<QRCodeProps['type']>('canvas');
   return (
@@ -327,24 +259,17 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 纠错比例
-
 #### zh-CN
-
 通过设置 errorLevel 调整不同的容错等级。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { QRCodeProps } from 'antd';
 import { QRCode, Segmented } from 'antd';
-
 const App: React.FC = () => {
   const [level, setLevel] = useState<QRCodeProps['errorLevel']>('L');
   return (
@@ -358,30 +283,21 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 高级用法
-
 #### zh-CN
-
 带气泡卡片的例子。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Popover, QRCode } from 'antd';
-
 const App: React.FC = () => (
   <Popover content={<QRCode value="https://ant.design" bordered={false} />}>
     <Button type="primary">Hover me</Button>
   </Popover>
 );
-
 export default App;
 
 ```
-

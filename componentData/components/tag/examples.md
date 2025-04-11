@@ -1,23 +1,16 @@
 ## Tag 组件示例
-
 ### 基本
-
 #### zh-CN
-
 基本标签的用法，可以通过设置 `closeIcon` 变为可关闭标签并自定义关闭按钮，设置为 `true` 时将使用默认关闭按钮。可关闭标签具有 `onClose` 事件。
-
-
 
 ```typescript
 import React from 'react';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { Tag } from 'antd';
-
 const preventDefault = (e: React.MouseEvent<HTMLElement>) => {
   e.preventDefault();
   console.log('Clicked! But prevent default.');
 };
-
 const App: React.FC = () => (
   <>
     <Tag>Tag 1</Tag>
@@ -38,23 +31,16 @@ const App: React.FC = () => (
     </Tag>
   </>
 );
-
 export default App;
 
 ```
-
 ### 多彩标签
-
 #### zh-CN
-
 我们添加了多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, Flex, Tag } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Presets</Divider>
@@ -80,23 +66,16 @@ const App: React.FC = () => (
     </Flex>
   </>
 );
-
 export default App;
 
 ```
-
 ### 反色多彩标签
-
 #### zh-CN
-
 内部反色标签
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Tag } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="4px 0" wrap>
     <Tag color="magenta-inverse">magenta</Tag>
@@ -112,32 +91,24 @@ const App: React.FC = () => (
     <Tag color="purple-inverse">purple</Tag>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 动态添加和删除
-
 #### zh-CN
-
 用数组生成一组标签，可以动态添加和删除。
-
-
 
 ```typescript
 import React, { useEffect, useRef, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import type { InputRef } from 'antd';
 import { Flex, Input, Tag, theme, Tooltip } from 'antd';
-
 const tagInputStyle: React.CSSProperties = {
   width: 64,
   height: 22,
   marginInlineEnd: 8,
   verticalAlign: 'top',
 };
-
 const App: React.FC = () => {
   const { token } = theme.useToken();
   const [tags, setTags] = useState<string[]>(['Unremovable', 'Tag 2', 'Tag 3']);
@@ -147,31 +118,25 @@ const App: React.FC = () => {
   const [editInputValue, setEditInputValue] = useState('');
   const inputRef = useRef<InputRef>(null);
   const editInputRef = useRef<InputRef>(null);
-
   useEffect(() => {
     if (inputVisible) {
       inputRef.current?.focus();
     }
   }, [inputVisible]);
-
   useEffect(() => {
     editInputRef.current?.focus();
   }, [editInputValue]);
-
   const handleClose = (removedTag: string) => {
     const newTags = tags.filter((tag) => tag !== removedTag);
     console.log(newTags);
     setTags(newTags);
   };
-
   const showInput = () => {
     setInputVisible(true);
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
-
   const handleInputConfirm = () => {
     if (inputValue && !tags.includes(inputValue)) {
       setTags([...tags, inputValue]);
@@ -179,11 +144,9 @@ const App: React.FC = () => {
     setInputVisible(false);
     setInputValue('');
   };
-
   const handleEditInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditInputValue(e.target.value);
   };
-
   const handleEditInputConfirm = () => {
     const newTags = [...tags];
     newTags[editInputIndex] = editInputValue;
@@ -191,13 +154,11 @@ const App: React.FC = () => {
     setEditInputIndex(-1);
     setEditInputValue('');
   };
-
   const tagPlusStyle: React.CSSProperties = {
     height: 22,
     background: token.colorBgContainer,
     borderStyle: 'dashed',
   };
-
   return (
     <Flex gap="4px 0" wrap>
       {tags.map<React.ReactNode>((tag, index) => {
@@ -263,27 +224,18 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 可选择标签
-
 #### zh-CN
-
 可通过 `CheckableTag` 实现类似 Checkbox 的效果，点击切换选中效果。
-
 > 该组件为完全受控组件，不支持非受控用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Tag } from 'antd';
-
 const tagsData = ['Movies', 'Books', 'Music', 'Sports'];
-
 const App: React.FC = () => {
   const [selectedTags, setSelectedTags] = React.useState<string[]>(['Movies']);
   const handleChange = (tag: string, checked: boolean) => {
@@ -293,7 +245,6 @@ const App: React.FC = () => {
     console.log('You are interested in: ', nextSelectedTags);
     setSelectedTags(nextSelectedTags);
   };
-
   return (
     <Flex gap={4} wrap align="center">
       <span>Categories:</span>
@@ -309,18 +260,12 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 添加动画
-
 #### zh-CN
-
 使用 [rc-tween-one](https://github.com/react-component/tween-one) 给标签增加添加或删除动画。
-
-
 
 ```typescript
 import React, { useEffect, useRef, useState } from 'react';
@@ -328,34 +273,28 @@ import { PlusOutlined } from '@ant-design/icons';
 import type { InputRef } from 'antd';
 import { Input, Tag, theme } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
-
 const App: React.FC = () => {
   const { token } = theme.useToken();
   const [tags, setTags] = useState(['Tag 1', 'Tag 2', 'Tag 3']);
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<InputRef>(null);
-
   useEffect(() => {
     if (inputVisible) {
       inputRef.current?.focus();
     }
   }, [inputVisible]);
-
   const handleClose = (removedTag: string) => {
     const newTags = tags.filter((tag) => tag !== removedTag);
     console.log(newTags);
     setTags(newTags);
   };
-
   const showInput = () => {
     setInputVisible(true);
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
-
   const handleInputConfirm = () => {
     if (inputValue && tags.indexOf(inputValue) === -1) {
       setTags([...tags, inputValue]);
@@ -363,7 +302,6 @@ const App: React.FC = () => {
     setInputVisible(false);
     setInputValue('');
   };
-
   const forMap = (tag: string) => (
     <span key={tag} style={{ display: 'inline-block' }}>
       <Tag
@@ -377,14 +315,11 @@ const App: React.FC = () => {
       </Tag>
     </span>
   );
-
   const tagChild = tags.map(forMap);
-
   const tagPlusStyle: React.CSSProperties = {
     background: token.colorBgContainer,
     borderStyle: 'dashed',
   };
-
   return (
     <>
       <div style={{ marginBottom: 16 }}>
@@ -420,20 +355,13 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 图标按钮
-
 #### zh-CN
-
 当需要在 `Tag` 内嵌入 `Icon` 时，可以设置 `icon` 属性，或者直接在 `Tag` 内使用 `Icon` 组件。
-
 如果想控制 `Icon` 具体的位置，只能直接使用 `Icon` 组件，而非 `icon` 属性。
-
-
 
 ```typescript
 import React from 'react';
@@ -444,7 +372,6 @@ import {
   YoutubeOutlined,
 } from '@ant-design/icons';
 import { Flex, Tag } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="4px 0" wrap>
     <Tag icon={<TwitterOutlined />} color="#55acee">
@@ -461,18 +388,12 @@ const App: React.FC = () => (
     </Tag>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 预设状态的标签
-
 #### zh-CN
-
 预设五种状态颜色，可以通过设置 `color` 为 `success`、 `processing`、`error`、`default`、`warning` 来代表不同的状态。
-
-
 
 ```typescript
 import React from 'react';
@@ -485,7 +406,6 @@ import {
   SyncOutlined,
 } from '@ant-design/icons';
 import { Divider, Flex, Tag } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Without icon</Divider>
@@ -519,23 +439,16 @@ const App: React.FC = () => (
     </Flex>
   </>
 );
-
 export default App;
 
 ```
-
 ### 无边框
-
 #### zh-CN
-
 无边框模式。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, Flex, Tag } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Flex gap="4px 0" wrap>
@@ -598,23 +511,16 @@ const App: React.FC = () => (
     </Flex>
   </>
 );
-
 export default App;
 
 ```
-
 ### 深色背景中无边框
-
 #### zh-CN
-
 深色背景中的无边框模式。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, Flex, Tag, theme } from 'antd';
-
 const App: React.FC = () => {
   const { token } = theme.useToken();
   return (
@@ -668,24 +574,17 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义关闭按钮
-
 #### zh-CN
-
 可用 `closeIcon` 自定义关闭按钮。
-
-
 
 ```typescript
 import React from 'react';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { Flex, Tag } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap="4px 0" wrap>
     <Tag closable closeIcon="关 闭">
@@ -696,18 +595,12 @@ const App: React.FC = () => (
     </Tag>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 可拖拽标签
-
 #### zh-CN
-
 使用 [dnd kit](https://dndkit.com) 实现的可拖拽标签。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -720,25 +613,20 @@ import {
   useSortable,
 } from '@dnd-kit/sortable';
 import { Flex, Tag } from 'antd';
-
 interface Item {
   id: number;
   text: string;
 }
-
 interface DraggableTagProps {
   tag: Item;
 }
-
 const commonStyle: React.CSSProperties = {
   cursor: 'move',
   transition: 'unset', // Prevent element from shaking after drag
 };
-
 const DraggableTag: React.FC<DraggableTagProps> = (props) => {
   const { tag } = props;
   const { listeners, transform, transition, isDragging, setNodeRef } = useSortable({ id: tag.id });
-
   const style = transform
     ? {
         ...commonStyle,
@@ -746,23 +634,19 @@ const DraggableTag: React.FC<DraggableTagProps> = (props) => {
         transition: isDragging ? 'unset' : transition, // Improve performance/visual effect when dragging
       }
     : commonStyle;
-
   return (
     <Tag style={style} ref={setNodeRef} {...listeners}>
       {tag.text}
     </Tag>
   );
 };
-
 const App: React.FC = () => {
   const [items, setItems] = useState<Item[]>([
     { id: 1, text: 'Tag 1' },
     { id: 2, text: 'Tag 2' },
     { id: 3, text: 'Tag 3' },
   ]);
-
   const sensors = useSensors(useSensor(PointerSensor));
-
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over) {
@@ -776,7 +660,6 @@ const App: React.FC = () => {
       });
     }
   };
-
   return (
     <DndContext sensors={sensors} onDragEnd={handleDragEnd} collisionDetection={closestCenter}>
       <SortableContext items={items} strategy={horizontalListSortingStrategy}>
@@ -789,24 +672,17 @@ const App: React.FC = () => {
     </DndContext>
   );
 };
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { CloseCircleOutlined, SyncOutlined } from '@ant-design/icons';
 import { ConfigProvider, Flex, Tag } from 'antd';
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{ components: { Tag: { defaultBg: '#f9f0ff', defaultColor: '#4b34d3' } } }}
@@ -846,8 +722,6 @@ const App: React.FC = () => (
     </Flex>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

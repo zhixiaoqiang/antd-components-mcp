@@ -1,28 +1,19 @@
 ## Mentions 组件示例
-
 ### 基本使用
-
 #### zh-CN
-
 基本使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Mentions } from 'antd';
 import type { GetProp, MentionProps } from 'antd';
-
 type MentionsOptionProps = GetProp<MentionProps, 'options'>[number];
-
 const onChange = (value: string) => {
   console.log('Change:', value);
 };
-
 const onSelect = (option: MentionsOptionProps) => {
   console.log('select', option);
 };
-
 const App: React.FC = () => (
   <Mentions
     style={{ width: '100%' }}
@@ -45,23 +36,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 形态变体
-
 #### zh-CN
-
 Mentions 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Mentions } from 'antd';
-
 const App: React.FC = () => (
   <Flex vertical gap={12}>
     <Mentions placeholder="Outlined" />
@@ -70,56 +54,42 @@ const App: React.FC = () => (
     <Mentions placeholder="Underlined" variant="underlined" />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 异步加载
-
 #### zh-CN
-
 匹配内容列表为异步返回时。
-
-
 
 ```typescript
 import React, { useCallback, useRef, useState } from 'react';
 import { Mentions } from 'antd';
 import debounce from 'lodash/debounce';
-
 const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState<{ login: string; avatar_url: string }[]>([]);
   const ref = useRef<string>(null);
-
   const loadGithubUsers = (key: string) => {
     if (!key) {
       setUsers([]);
       return;
     }
-
     fetch(`https://api.github.com/search/users?q=${key}`)
       .then((res) => res.json())
       .then(({ items = [] }) => {
         if (ref.current !== key) return;
-
         setLoading(false);
         setUsers(items.slice(0, 10));
       });
   };
-
   const debounceLoadGithubUsers = useCallback(debounce(loadGithubUsers, 800), []);
-
   const onSearch = (search: string) => {
     console.log('Search:', search);
     ref.current = search;
     setLoading(!!search);
     setUsers([]);
-
     debounceLoadGithubUsers(search);
   };
-
   return (
     <Mentions
       style={{ width: '100%' }}
@@ -139,32 +109,22 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 配合 Form 使用
-
 #### zh-CN
-
 受控模式，例如配合 Form 使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Form, Mentions, Space } from 'antd';
-
 const { getMentions } = Mentions;
-
 const App: React.FC = () => {
   const [form] = Form.useForm();
-
   const onReset = () => {
     form.resetFields();
   };
-
   const onFinish = async () => {
     try {
       const values = await form.validateFields();
@@ -173,15 +133,12 @@ const App: React.FC = () => {
       console.log('Error:', errInfo);
     }
   };
-
   const checkMention = async (_: any, value: string) => {
     const mentions = getMentions(value);
-
     if (mentions.length < 2) {
       throw new Error('More than one must be selected!');
     }
   };
-
   return (
     <Form form={form} layout="horizontal" onFinish={onFinish}>
       <Form.Item
@@ -248,38 +205,27 @@ const App: React.FC = () => {
     </Form>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义触发字符
-
 #### zh-CN
-
 通过 `prefix` 属性自定义触发字符。默认为 `@`, 可以定义为数组。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Mentions } from 'antd';
 import type { MentionsProps } from 'antd';
-
 const MOCK_DATA = {
   '@': ['afc163', 'zombiej', 'yesmeck'],
   '#': ['1.0', '2.0', '3.0'],
 };
-
 type PrefixType = keyof typeof MOCK_DATA;
-
 const App: React.FC = () => {
   const [prefix, setPrefix] = useState<PrefixType>('@');
-
   const onSearch: MentionsProps['onSearch'] = (_, newPrefix) => {
     setPrefix(newPrefix as PrefixType);
   };
-
   return (
     <Mentions
       style={{ width: '100%' }}
@@ -294,29 +240,21 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 无效或只读
-
 #### zh-CN
-
 通过 `disabled` 属性设置是否生效。通过 `readOnly` 属性设置是否只读。
-
-
 
 ```typescript
 import React from 'react';
 import { Mentions } from 'antd';
-
 const options = ['afc163', 'zombiej', 'yesmeck'].map((value) => ({
   value,
   key: value,
   label: value,
 }));
-
 const App: React.FC = () => (
   <>
     <div style={{ marginBottom: 10 }}>
@@ -335,23 +273,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 向上展开
-
 #### zh-CN
-
 向上展开建议。
-
-
 
 ```typescript
 import React from 'react';
 import { Mentions } from 'antd';
-
 const App: React.FC = () => (
   <Mentions
     style={{ width: '100%' }}
@@ -372,24 +303,17 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 带移除图标
-
 #### zh-CN
-
 自定义清除按钮。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { CloseSquareFilled } from '@ant-design/icons';
 import { Mentions } from 'antd';
-
 const App: React.FC = () => {
   const [value, setValue] = useState('hello world');
   return (
@@ -408,23 +332,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自动大小
-
 #### zh-CN
-
 自适应内容高度。
-
-
 
 ```typescript
 import React from 'react';
 import { Mentions } from 'antd';
-
 const App: React.FC = () => (
   <Mentions
     autoSize
@@ -445,34 +362,24 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 自定义状态
-
 #### zh-CN
-
 使用 `status` 为 Mentions 添加状态。可选 `error` 或者 `warning`。
-
-
 
 ```typescript
 import React from 'react';
 import { Mentions, Space } from 'antd';
 import type { GetProp, MentionProps } from 'antd';
-
 type MentionsOptionProps = GetProp<MentionProps, 'options'>[number];
-
 const onChange = (value: string) => {
   console.log('Change:', value);
 };
-
 const onSelect = (option: MentionsOptionProps) => {
   console.log('select', option);
 };
-
 const App: React.FC = () => {
   const options = [
     {
@@ -488,7 +395,6 @@ const App: React.FC = () => {
       label: 'yesmeck',
     },
   ];
-
   return (
     <Space direction="vertical">
       <Mentions
@@ -508,25 +414,17 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### _InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Mentions } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalMentions } = Mentions;
-
 const options = [
   {
     value: 'afc163',
@@ -537,29 +435,20 @@ const options = [
     label: 'zombieJ',
   },
 ];
-
 const App: React.FC = () => (
   <InternalMentions style={{ width: '100%' }} value="@" options={options} />
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Mentions } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalMentions } = Mentions;
-
 const options = [
   {
     value: 'afc163',
@@ -570,7 +459,6 @@ const options = [
     label: 'zombieJ',
   },
 ];
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -580,8 +468,6 @@ const App: React.FC = () => (
     <InternalMentions style={{ width: '100%' }} value="@" options={options} />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

@@ -1,14 +1,8 @@
-
 ## 何时使用
-
 类似 Select 的选择控件，可选择的数据结构是一个树形结构时，可以使用 TreeSelect，例如公司层级、学科系统、分类目录等等。
 
-
-
 ## API
-
 ### Tree props
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 自定义清除按钮 | boolean \| { clearIcon?: ReactNode } | false | 5.8.0: 支持对象形式 |
@@ -67,18 +61,13 @@
 | onSelect | 被选中时调用 | function(value, node, extra) | - |  |
 | onTreeExpand | 展示节点时调用 | function(expandedKeys) | - |  |
 | onPopupScroll | 下拉列表滚动时的回调 | (event: UIEvent) => void | - | 5.17.0 |
-
 ### Tree 方法
-
 | 名称    | 描述     | 版本 |
 | ------- | -------- | ---- |
 | blur()  | 移除焦点 |      |
 | focus() | 获取焦点 |      |
-
 ### TreeNode props
-
 > 建议使用 treeData 来代替 TreeNode，免去手动构造的麻烦
-
 | 参数            | 说明                                               | 类型      | 默认值 | 版本 |
 | --------------- | -------------------------------------------------- | --------- | ------ | ---- |
 | checkable       | 当树为 Checkbox 时，设置独立节点是否展示 Checkbox  | boolean   | -      |      |
@@ -90,36 +79,23 @@
 | title           | 树节点显示的内容                                   | ReactNode | `---`  |      |
 | value           | 默认根据此属性值进行筛选（其值在整个树范围内唯一） | string    | -      |      |
 
-
-
 ## FAQ
-
 ### onChange 时如何获得父节点信息？
-
 从性能角度考虑，我们默认不透出父节点信息。你可以这样获得：<https://codesandbox.io/s/get-parent-node-in-onchange-eb1608>
-
 ### 自定义 Option 样式导致滚动异常怎么办？
-
 请参考 Select 的 [FAQ](/components/select-cn)。
-
 ### 为何在搜索时 `loadData` 不会触发展开？
-
 在 v4 alpha 版本中，默认在搜索时亦会进行搜索。但是经反馈，在输入时会快速阻塞网络。因而改为搜索不触发 `loadData`。但是你仍然可以通过 `filterTreeNode` 处理异步加载逻辑：
-
 ```tsx
 <TreeSelect
   filterTreeNode={(input, treeNode) => {
     const match = YOUR_LOGIC_HERE;
-
     if (match && !treeNode.isLeaf && !treeNode.children) {
       // Do some loading logic
     }
-
     return match;
   }}
 />
 ```
-
 ### 为何弹出框不能横向滚动？
-
 关闭虚拟滚动即可，因为开启虚拟滚动时无法准确的测量完整列表的 `scrollWidth`。

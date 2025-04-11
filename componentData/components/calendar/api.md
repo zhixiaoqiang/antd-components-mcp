@@ -1,16 +1,12 @@
 ## API
-
 **注意**：Calendar 部分 locale 是从 value 中读取，所以请先正确设置 dayjs 的 locale。
-
 ```jsx
 // 默认语言为 en-US，所以如果需要使用其他语言，推荐在入口文件全局设置 locale
 // import dayjs from 'dayjs';
 // import 'dayjs/locale/zh-cn';
 // dayjs.locale('zh-cn');
-
 <Calendar cellRender={cellRender} onPanelChange={onPanelChange} onSelect={onSelect} />
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | cellRender | 自定义单元格的内容 | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \| 'minute' \| 'second' \| 'meridiem' }) => React.ReactNode | - | 5.4.0 |

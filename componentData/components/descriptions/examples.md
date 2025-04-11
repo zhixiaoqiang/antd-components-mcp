@@ -1,18 +1,12 @@
 ## Descriptions 组件示例
-
 ### 基本
-
 #### zh-CN
-
 简单的展示。
-
-
 
 ```typescript
 import React from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -40,26 +34,18 @@ const items: DescriptionsProps['items'] = [
     children: 'No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China',
   },
 ];
-
 const App: React.FC = () => <Descriptions title="User Info" items={items} />;
-
 export default App;
 
 ```
-
 ### 带边框的
-
 #### zh-CN
-
 带边框和背景颜色列表。
-
-
 
 ```typescript
 import React from 'react';
 import { Badge, Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -129,33 +115,24 @@ const items: DescriptionsProps['items'] = [
     ),
   },
 ];
-
 const App: React.FC = () => <Descriptions title="User Info" bordered items={items} />;
-
 export default App;
 
 ```
-
 ### 复杂文本的情况
-
 #### zh-CN
-
 复杂文本的情况。
-
-
 
 ```typescript
 import React from 'react';
 import { Badge, Descriptions, Table } from 'antd';
 import type { DescriptionsProps, TableProps } from 'antd';
-
 interface DataType {
   key: React.Key;
   name: string;
   age: number;
   address: string;
 }
-
 const dataSource: DataType[] = [
   {
     key: '1',
@@ -170,7 +147,6 @@ const dataSource: DataType[] = [
     address: '西湖区湖底公园1号',
   },
 ];
-
 const columns: TableProps<DataType>['columns'] = [
   {
     title: '姓名',
@@ -188,7 +164,6 @@ const columns: TableProps<DataType>['columns'] = [
     key: 'address',
   },
 ];
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -270,26 +245,18 @@ const items: DescriptionsProps['items'] = [
     ),
   },
 ];
-
 const App: React.FC = () => <Descriptions title="User Info" column={2} items={items} />;
-
 export default App;
 
 ```
-
 ### 间距
-
 #### zh-CN
-
 间距
-
-
 
 ```typescript
 import React from 'react';
 import { Descriptions, Flex } from 'antd';
 import type { DescriptionsProps } from 'antd';
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -317,7 +284,6 @@ const items: DescriptionsProps['items'] = [
     children: 'loooooooooooooooooooooooooooooooooooooooooooooooong',
   },
 ];
-
 const App: React.FC = () => (
   <Flex gap={8} vertical>
     <div style={{ width: 600, border: '1px solid', padding: 20 }}>
@@ -328,24 +294,17 @@ const App: React.FC = () => (
     </div>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 自定义尺寸
-
 #### zh-CN
-
 自定义尺寸，适应在各种容器中展示。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Descriptions, Radio } from 'antd';
 import type { DescriptionsProps, RadioChangeEvent } from 'antd';
-
 const borderedItems: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -398,7 +357,6 @@ const borderedItems: DescriptionsProps['items'] = [
     ),
   },
 ];
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -431,15 +389,12 @@ const items: DescriptionsProps['items'] = [
     children: '$60.00',
   },
 ];
-
 const App: React.FC = () => {
   const [size, setSize] = useState<'default' | 'middle' | 'small'>('default');
-
   const onChange = (e: RadioChangeEvent) => {
     console.log('size checked', e.target.value);
     setSize(e.target.value);
   };
-
   return (
     <div>
       <Radio.Group onChange={onChange} value={size}>
@@ -467,24 +422,17 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 响应式
-
 #### zh-CN
-
 通过响应式的配置可以实现在小屏幕设备上的完美呈现。
-
-
 
 ```typescript
 import React from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
-
 const items: DescriptionsProps['items'] = [
   {
     label: 'Product',
@@ -541,7 +489,6 @@ const items: DescriptionsProps['items'] = [
     ),
   },
 ];
-
 const App: React.FC = () => (
   <Descriptions
     title="Responsive Descriptions"
@@ -550,24 +497,17 @@ const App: React.FC = () => (
     items={items}
   />
 );
-
 export default App;
 
 ```
-
 ### 垂直
-
 #### zh-CN
-
 垂直的列表。
-
-
 
 ```typescript
 import React from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -596,26 +536,18 @@ const items: DescriptionsProps['items'] = [
     children: 'empty',
   },
 ];
-
 const App: React.FC = () => <Descriptions title="User Info" layout="vertical" items={items} />;
-
 export default App;
 
 ```
-
 ### 垂直带边框的
-
 #### zh-CN
-
 垂直带边框和背景颜色的列表。
-
-
 
 ```typescript
 import React from 'react';
 import { Badge, Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -685,33 +617,23 @@ const items: DescriptionsProps['items'] = [
     ),
   },
 ];
-
 const App: React.FC = () => (
   <Descriptions title="User Info" layout="vertical" bordered items={items} />
 );
-
 export default App;
 
 ```
-
 ### 自定义 label & wrapper 样式
-
 #### zh-CN
-
 自定义 label & wrapper 样式
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Descriptions, Divider, Radio, Switch } from 'antd';
 import type { DescriptionsProps } from 'antd';
-
 const labelStyle: React.CSSProperties = { background: 'red' };
 const contentStyle: React.CSSProperties = { background: 'green' };
-
 type LayoutType = 'horizontal' | 'vertical' | undefined;
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -733,7 +655,6 @@ const items: DescriptionsProps['items'] = [
     children: 'YES',
   },
 ];
-
 const rootStyleItems: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -755,11 +676,9 @@ const rootStyleItems: DescriptionsProps['items'] = [
     },
   },
 ];
-
 const App: React.FC = () => {
   const [border, setBorder] = useState(true);
   const [layout, setLayout] = useState('horizontal' as LayoutType);
-
   return (
     <>
       <Switch
@@ -789,23 +708,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### JSX demo
-
 #### zh-CN
-
 JSX 风格演示。
-
-
 
 ```typescript
 import React from 'react';
 import { Descriptions } from 'antd';
-
 const App: React.FC = () => (
   <Descriptions title="User Info">
     <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
@@ -817,24 +729,17 @@ const App: React.FC = () => (
     </Descriptions.Item>
   </Descriptions>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { DescriptionsProps, RadioChangeEvent } from 'antd';
 import { Button, ConfigProvider, Descriptions, Radio } from 'antd';
-
 const borderedItems: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -919,15 +824,12 @@ const items: DescriptionsProps['items'] = [
     children: '$60.00',
   },
 ];
-
 const App: React.FC = () => {
   const [size, setSize] = useState<'default' | 'middle' | 'small'>('default');
-
   const onChange = (e: RadioChangeEvent) => {
     console.log('size checked', e.target.value);
     setSize(e.target.value);
   };
-
   return (
     <ConfigProvider
       theme={{
@@ -973,24 +875,17 @@ const App: React.FC = () => {
     </ConfigProvider>
   );
 };
-
 export default App;
 
 ```
-
 ### 整行
-
 #### zh-CN
-
 整行的展示。
-
-
 
 ```typescript
 import React from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
-
 const items: DescriptionsProps['items'] = [
   {
     label: 'UserName',
@@ -1012,10 +907,7 @@ const items: DescriptionsProps['items'] = [
     children: 'No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China',
   },
 ];
-
 const App: React.FC = () => <Descriptions bordered title="User Info" items={items} />;
-
 export default App;
 
 ```
-

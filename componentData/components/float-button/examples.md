@@ -1,60 +1,40 @@
 ## FloatButton 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React from 'react';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => <FloatButton onClick={() => console.log('onClick')} />;
-
 export default App;
 
 ```
-
 ### 类型
-
 #### zh-CN
-
 通过 `type` 改变悬浮按钮的类型。
-
-
 
 ```typescript
 import React from 'react';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => (
   <>
     <FloatButton icon={<QuestionCircleOutlined />} type="primary" style={{ insetInlineEnd: 24 }} />
     <FloatButton icon={<QuestionCircleOutlined />} type="default" style={{ insetInlineEnd: 94 }} />
   </>
 );
-
 export default App;
 
 ```
-
 ### 形状
-
 #### zh-CN
-
 通过 `shape` 设置不同的形状。
-
-
 
 ```typescript
 import React from 'react';
 import { CustomerServiceOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => (
   <>
     <FloatButton
@@ -71,26 +51,18 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 描述
-
 #### zh-CN
-
 可以通过 `description` 设置文字内容。
-
 > 仅当 `shape` 属性为 `square` 时支持。由于空间较小，推荐使用比较精简的双数文字。
-
-
 
 ```typescript
 import React from 'react';
 import { FileTextOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => (
   <>
     <FloatButton
@@ -108,42 +80,28 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 含有气泡卡片的悬浮按钮
-
 #### zh-CN
-
 设置 tooltip 属性，即可开启气泡卡片。
-
-
 
 ```typescript
 import React from 'react';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => <FloatButton tooltip={<div>Documents</div>} />;
-
 export default App;
 
 ```
-
 ### 浮动按钮组
-
 #### zh-CN
-
 按钮组合使用时，推荐使用 `<FloatButton.Group />`，并通过设置 `shape` 属性改变悬浮按钮组的形状。悬浮按钮组的 `shape` 会覆盖内部 FloatButton 的 `shape` 属性。
-
-
 
 ```typescript
 import React from 'react';
 import { QuestionCircleOutlined, SyncOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => (
   <>
     <FloatButton.Group shape="circle" style={{ insetInlineEnd: 24 }}>
@@ -159,24 +117,17 @@ const App: React.FC = () => (
     </FloatButton.Group>
   </>
 );
-
 export default App;
 
 ```
-
 ### 菜单模式
-
 #### zh-CN
-
 设置 `trigger` 属性即可开启菜单模式。提供 `hover` 和 `click` 两种触发方式。
-
-
 
 ```typescript
 import React from 'react';
 import { CommentOutlined, CustomerServiceOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => (
   <>
     <FloatButton.Group
@@ -199,24 +150,17 @@ const App: React.FC = () => (
     </FloatButton.Group>
   </>
 );
-
 export default App;
 
 ```
-
 ### 受控模式
-
 #### zh-CN
-
 通过 `open` 设置组件为受控模式，需要配合 `trigger` 一起使用。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { CommentOutlined, CustomerServiceOutlined } from '@ant-design/icons';
 import { FloatButton, Switch } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState<boolean>(true);
   return (
@@ -246,18 +190,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 弹出方向
-
 #### zh-CN
-
 自定义弹出位置，提供了四个预设值：`top`、`right`、`bottom`、`left`，默认值为 `top`。
-
-
 
 ```typescript
 import React from 'react';
@@ -269,44 +207,37 @@ import {
   UpOutlined,
 } from '@ant-design/icons';
 import { Flex, FloatButton } from 'antd';
-
 const BOX_SIZE = 100;
 const BUTTON_SIZE = 40;
-
 const wrapperStyle: React.CSSProperties = {
   width: '100%',
   height: '100vh',
   overflow: 'hidden',
   position: 'relative',
 };
-
 const boxStyle: React.CSSProperties = {
   width: BOX_SIZE,
   height: BOX_SIZE,
   position: 'relative',
 };
-
 const insetInlineEnd: React.CSSProperties['insetInlineEnd'][] = [
   (BOX_SIZE - BUTTON_SIZE) / 2,
   -(BUTTON_SIZE / 2),
   (BOX_SIZE - BUTTON_SIZE) / 2,
   BOX_SIZE - BUTTON_SIZE / 2,
 ];
-
 const bottom: React.CSSProperties['bottom'][] = [
   BOX_SIZE - BUTTON_SIZE / 2,
   (BOX_SIZE - BUTTON_SIZE) / 2,
   -BUTTON_SIZE / 2,
   (BOX_SIZE - BUTTON_SIZE) / 2,
 ];
-
 const icons = [
   <UpOutlined key="up" />,
   <RightOutlined key="right" />,
   <DownOutlined key="down" />,
   <LeftOutlined key="left" />,
 ];
-
 const App: React.FC = () => (
   <Flex justify="space-evenly" align="center" style={wrapperStyle}>
     <div style={boxStyle}>
@@ -332,23 +263,16 @@ const App: React.FC = () => (
     </div>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 回到顶部
-
 #### zh-CN
-
 返回页面顶部的操作按钮。
-
-
 
 ```typescript
 import React from 'react';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => (
   <div style={{ height: '300vh', padding: 10 }}>
     <div>Scroll to bottom</div>
@@ -361,24 +285,17 @@ const App: React.FC = () => (
     <FloatButton.BackTop />
   </div>
 );
-
 export default App;
 
 ```
-
 ### 徽标数
-
 #### zh-CN
-
 右上角附带圆形徽标数字的悬浮按钮。
-
-
 
 ```typescript
 import React from 'react';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-
 const App: React.FC = () => (
   <>
     <FloatButton shape="circle" style={{ insetInlineEnd: 24 + 70 + 70 }} badge={{ dot: true }} />
@@ -397,33 +314,23 @@ const App: React.FC = () => (
     </FloatButton.Group>
   </>
 );
-
 export default App;
 
 ```
-
 ### 调试小圆点使用
-
 #### zh-CN
-
 调试使用。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { ConfigProvider, FloatButton, Slider } from 'antd';
 import type { ConfigProviderProps, GetProp } from 'antd';
-
 type AliasToken = GetProp<ConfigProviderProps, 'theme'>['token'];
-
 const App: React.FC = () => {
   const [radius, setRadius] = useState<number>(0);
-
   const token: Partial<AliasToken> = {
     borderRadius: radius,
   };
-
   return (
     <>
       <Slider min={0} max={20} style={{ margin: 16 }} onChange={setRadius} />
@@ -433,27 +340,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { CustomerServiceOutlined, QuestionCircleOutlined, SyncOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-
 /** Test usage. Do not use in your production. */
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalFloatButton } = FloatButton;
-
 const App: React.FC = () => (
   <div style={{ display: 'flex', columnGap: 16, alignItems: 'center' }}>
     <InternalFloatButton backTop />
@@ -484,8 +383,6 @@ const App: React.FC = () => (
     />
   </div>
 );
-
 export default App;
 
 ```
-

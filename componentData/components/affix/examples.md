@@ -1,17 +1,11 @@
 ## Affix 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Affix, Button } from 'antd';
-
 const App: React.FC = () => {
   const [top, setTop] = React.useState<number>(100);
   const [bottom, setBottom] = React.useState<number>(100);
@@ -31,45 +25,31 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 固定状态改变的回调
-
 #### zh-CN
-
 可以获得是否固定的状态。
-
-
 
 ```typescript
 import React from 'react';
 import { Affix, Button } from 'antd';
-
 const App: React.FC = () => (
   <Affix offsetTop={120} onChange={(affixed) => console.log(affixed)}>
     <Button>120px to affix top</Button>
   </Affix>
 );
-
 export default App;
 
 ```
-
 ### 滚动容器
-
 #### zh-CN
-
 用 `target` 设置 `Affix` 需要监听其滚动事件的元素，默认为 `window`。
-
-
 
 ```typescript
 import React from 'react';
 import { Affix, Button } from 'antd';
-
 const containerStyle: React.CSSProperties = {
   width: '100%',
   height: 100,
@@ -78,12 +58,10 @@ const containerStyle: React.CSSProperties = {
   scrollbarWidth: 'thin',
   scrollbarGutter: 'stable',
 };
-
 const style: React.CSSProperties = {
   width: '100%',
   height: 1000,
 };
-
 const App: React.FC = () => {
   const [container, setContainer] = React.useState<HTMLDivElement | null>(null);
   return (
@@ -96,26 +74,18 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 调整浏览器大小，观察 Affix 容器是否发生变化。跟随变化为正常。#17678
-
 #### zh-CN
-
 DEBUG
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Affix, Button } from 'antd';
-
 const App: React.FC = () => {
   const [top, setTop] = useState(10);
-
   return (
     <div style={{ height: 10000 }}>
       <div>Top</div>
@@ -130,8 +100,6 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-

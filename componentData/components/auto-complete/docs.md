@@ -1,18 +1,11 @@
-
 ## 何时使用
-
 - 需要一个输入框而不是选择器。
 - 需要输入建议/辅助提示。
-
 和 Select 的区别是：
-
 - AutoComplete 是一个带提示的文本输入框，用户可以自由输入，关键词是辅助**输入**。
 - Select 是在限定的可选项中进行选择，关键词是**选择**。
 
-
-
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 支持清除 | boolean \| { clearIcon?: ReactNode } | false | 5.8.0: 支持对象形式 |
@@ -47,24 +40,15 @@
 | onClear | 清除内容时的回调 | function | - | 4.6.0 |
 | onInputKeyDown | 按键按下时回调 | (event: KeyboardEvent) => void | - |  |
 | onPopupScroll | 下拉列表滚动时的回调 | (event: UIEvent) => void | - |  |
-
 ## 方法
-
 | 名称    | 描述     | 版本 |
 | ------- | -------- | ---- |
 | blur()  | 移除焦点 |      |
 | focus() | 获取焦点 |      |
 
-
-
 ## FAQ
-
 ### 为何受控状态下使用 onSearch 无法输入中文？
-
 请使用 `onChange` 进行受控管理。`onSearch` 触发于搜索输入，与 `onChange` 时机不同。此外，点击选项时也不会触发 `onSearch` 事件。
-
 相关 issue：[#18230](https://github.com/ant-design/ant-design/issues/18230) [#17916](https://github.com/ant-design/ant-design/issues/17916)
-
 ### 为何 options 为空时，受控 open 展开不会显示下拉菜单？
-
 AutoComplete 组件本质上是 Input 输入框的一种扩展，当 `options` 为空时，显示空文本会让用户误以为该组件不可操作，实际上它仍然可以进行文本输入操作。因此，为了避免给用户带来困惑，当 `options` 为空时，`open` 属性为 `true` 也不会展示下拉菜单，需要与 `options` 属性配合使用。

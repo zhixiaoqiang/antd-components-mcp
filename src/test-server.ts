@@ -7,7 +7,7 @@ import { ROOT_DIR } from "./constants/path";
 
 const transport = new StdioClientTransport({
   command: "node",
-  args: [resolve(ROOT_DIR, "dist/server.js")],
+  args: [resolve(ROOT_DIR, "dist/cli.js")],
 });
 
 const client = new Client({

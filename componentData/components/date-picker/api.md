@@ -1,44 +1,31 @@
 ## API
-
 日期类组件包括以下五种形式。
-
 - DatePicker
 - DatePicker\[picker="month"]
 - DatePicker\[picker="week"]
 - DatePicker\[picker="year"]
 - DatePicker\[picker="quarter"] (4.1.0 新增)
 - RangePicker
-
 ### 国际化配置
-
 默认配置为 en-US，如果你需要设置其他语言，推荐在入口处使用我们提供的国际化组件，详见：[ConfigProvider 国际化](https://ant.design/components/config-provider-cn/)。
-
 如有特殊需求（仅修改单一组件的语言），请使用 locale 参数，参考：[默认配置](https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json)。
-
 ```jsx
 // 默认语言为 en-US，如果你需要设置其他语言，推荐在入口文件全局设置 locale
 // 确保还导入相关的 dayjs 文件，否则所有文本的区域设置都不会更改（例如范围选择器月份）
 import locale from 'antd/locale/zh_CN';
 import dayjs from 'dayjs';
-
 import 'dayjs/locale/zh-cn';
-
 dayjs.locale('zh-cn');
-
 <ConfigProvider locale={locale}>
   <DatePicker defaultValue={dayjs('2015-01-01', 'YYYY-MM-DD')} />
 </ConfigProvider>;
 ```
-
 <!-- prettier-ignore -->
 :::warning
 在搭配 Next.js 的 App Router 使用时，注意在引入 dayjs 的 locale 文件时加上 `'use client'`。这是由于 Ant Design 的组件都是客户端组件，在 RSC 中引入 dayjs 的 locale 文件将不会在客户端生效。
 :::
-
 ### 共同的 API
-
 以下 API 为 DatePicker、 RangePicker 共享的 API。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 自定义清除按钮 | boolean \| { clearIcon?: ReactNode } | true | 5.8.0: 支持对象类型 |
@@ -80,16 +67,12 @@ dayjs.locale('zh-cn');
 | variant | 形态变体 | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | 5.13.0 \| `underlined`: 5.24.0 |
 | onOpenChange | 弹出日历和关闭日历的回调 | function(open) | - |  |
 | onPanelChange | 日历面板切换的回调 | function(value, mode) | - |  |
-
 ### 共同的方法
-
 | 名称    | 描述     | 版本 |
 | ------- | -------- | ---- |
 | blur()  | 移除焦点 |      |
 | focus() | 获取焦点 |      |
-
 ### DatePicker
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | defaultPickerValue | 默认面板日期，每次面板打开时会被重置到该日期 | [dayjs](https://day.js.org/) | - | 5.14.0 |
@@ -107,9 +90,7 @@ dayjs.locale('zh-cn');
 | onChange | 时间发生变化的回调 | function(date: dayjs, dateString: string) | - |  |
 | onOk | 点击确定按钮的回调 | function() | - |  |
 | onPanelChange | 日期面板变化时的回调 | function(value, mode) | - |  |
-
 ### DatePicker\[picker=year]
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | defaultValue | 默认日期 | [dayjs](https://day.js.org/) | - |  |
@@ -118,11 +99,8 @@ dayjs.locale('zh-cn');
 | renderExtraFooter | 在面板中添加额外的页脚 | () => React.ReactNode | - |  |
 | value | 日期 | [dayjs](https://day.js.org/) | - |  |
 | onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs, dateString: string) | - |  |
-
 ### DatePicker\[picker=quarter]
-
 `4.1.0` 新增。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | defaultValue | 默认日期 | [dayjs](https://day.js.org/) | - |  |
@@ -131,9 +109,7 @@ dayjs.locale('zh-cn');
 | renderExtraFooter | 在面板中添加额外的页脚 | () => React.ReactNode | - |  |
 | value | 日期 | [dayjs](https://day.js.org/) | - |  |
 | onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs, dateString: string) | - |  |
-
 ### DatePicker\[picker=month]
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | defaultValue | 默认日期 | [dayjs](https://day.js.org/) | - |  |
@@ -142,9 +118,7 @@ dayjs.locale('zh-cn');
 | renderExtraFooter | 在面板中添加额外的页脚 | () => React.ReactNode | - |  |
 | value | 日期 | [dayjs](https://day.js.org/) | - |  |
 | onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs, dateString: string) | - |  |
-
 ### DatePicker\[picker=week]
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | defaultValue | 默认日期 | [dayjs](https://day.js.org/) | - |  |
@@ -154,9 +128,7 @@ dayjs.locale('zh-cn');
 | value | 日期 | [dayjs](https://day.js.org/) | - |  |
 | onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs, dateString: string) | - |  |
 | showWeek | DatePicker 下展示当前周 | boolean | true | 5.14.0 |
-
 ### RangePicker
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowEmpty | 允许起始项部分为空 | \[boolean, boolean] | \[false, false] |  |
@@ -179,15 +151,11 @@ dayjs.locale('zh-cn');
 | onChange | 日期范围发生变化的回调 | function(dates: \[dayjs, dayjs], dateStrings: \[string, string]) | - |  |
 | onFocus | 聚焦时回调 | function(event, { range: 'start' \| 'end' }) | - | `range`: 5.14.0 |
 | onBlur | 失焦时回调 | function(event, { range: 'start' \| 'end' }) | - | `range`: 5.14.0 |
-
 #### formatType
-
 ```typescript
 import type { Dayjs } from 'dayjs';
-
 type Generic = string;
 type GenericFn = (value: Dayjs) => string;
-
 export type FormatType =
   | Generic
   | GenericFn
@@ -197,5 +165,4 @@ export type FormatType =
       type?: 'mask';
     };
 ```
-
 注意：`type` 定义为 `5.14.0` 新增。

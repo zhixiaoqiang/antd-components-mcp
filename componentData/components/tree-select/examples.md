@@ -1,18 +1,12 @@
 ## TreeSelect 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
 import type { TreeSelectProps } from 'antd';
-
 const treeData = [
   {
     value: 'parent 1',
@@ -63,15 +57,12 @@ const treeData = [
 ];
 const App: React.FC = () => {
   const [value, setValue] = useState<string>();
-
   const onChange = (newValue: string) => {
     setValue(newValue);
   };
-
   const onPopupScroll: TreeSelectProps['onPopupScroll'] = (e) => {
     console.log('onPopupScroll', e);
   };
-
   return (
     <TreeSelect
       showSearch
@@ -87,23 +78,16 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 多选
-
 #### zh-CN
-
 多选的树选择。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
-
 const treeData = [
   {
     value: 'parent 1',
@@ -138,12 +122,10 @@ const treeData = [
 ];
 const App: React.FC = () => {
   const [value, setValue] = useState<string>();
-
   const onChange = (newValue: string) => {
     console.log(newValue);
     setValue(newValue);
   };
-
   return (
     <TreeSelect
       showSearch
@@ -159,23 +141,16 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 从数据直接生成
-
 #### zh-CN
-
 使用 `treeData` 把 JSON 数据直接生成树结构。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
-
 const treeData = [
   {
     title: 'Node1',
@@ -196,15 +171,12 @@ const treeData = [
     value: '0-1',
   },
 ];
-
 const App: React.FC = () => {
   const [value, setValue] = useState<string>();
-
   const onChange = (newValue: string) => {
     console.log(newValue);
     setValue(newValue);
   };
-
   return (
     <TreeSelect
       style={{ width: '100%' }}
@@ -217,25 +189,17 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 可勾选
-
 #### zh-CN
-
 使用勾选框实现多选功能。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
-
 const { SHOW_PARENT } = TreeSelect;
-
 const treeData = [
   {
     title: 'Node1',
@@ -272,15 +236,12 @@ const treeData = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const [value, setValue] = useState(['0-0-0']);
-
   const onChange = (newValue: string[]) => {
     console.log('onChange ', newValue);
     setValue(newValue);
   };
-
   const tProps = {
     treeData,
     value,
@@ -292,29 +253,20 @@ const App: React.FC = () => {
       width: '100%',
     },
   };
-
   return <TreeSelect {...tProps} />;
 };
-
 export default App;
 
 ```
-
 ### 异步加载
-
 #### zh-CN
-
 异步加载树节点。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { GetProp, TreeSelectProps } from 'antd';
 import { TreeSelect } from 'antd';
-
 type DefaultOptionType = GetProp<TreeSelectProps, 'treeData'>[number];
-
 const App: React.FC = () => {
   const [value, setValue] = useState<string>();
   const [treeData, setTreeData] = useState<Omit<DefaultOptionType, 'label'>[]>([
@@ -322,7 +274,6 @@ const App: React.FC = () => {
     { id: 2, pId: 0, value: '2', title: 'Expand to load' },
     { id: 3, pId: 0, value: '3', title: 'Tree Node', isLeaf: true },
   ]);
-
   const genTreeNode = (parentId: number, isLeaf = false) => {
     const random = Math.random().toString(36).substring(2, 6);
     return {
@@ -333,7 +284,6 @@ const App: React.FC = () => {
       isLeaf,
     };
   };
-
   const onLoadData: TreeSelectProps['loadData'] = ({ id }) =>
     new Promise((resolve) => {
       setTimeout(() => {
@@ -343,12 +293,10 @@ const App: React.FC = () => {
         resolve(undefined);
       }, 300);
     });
-
   const onChange = (newValue: string) => {
     console.log(newValue);
     setValue(newValue);
   };
-
   return (
     <TreeSelect
       treeDataSimpleMode
@@ -362,24 +310,17 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 线性样式
-
 #### zh-CN
-
 通过 `treeLine` 配置线性样式。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { CarryOutOutlined } from '@ant-design/icons';
 import { Space, Switch, TreeSelect } from 'antd';
-
 const treeData = [
   {
     value: 'parent 1',
@@ -418,12 +359,10 @@ const treeData = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const [treeLine, setTreeLine] = useState(true);
   const [showLeafIcon, setShowLeafIcon] = useState(false);
   const [showIcon, setShowIcon] = useState<boolean>(false);
-
   return (
     <Space direction="vertical">
       <Switch
@@ -454,26 +393,18 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 弹出位置
-
 #### zh-CN
-
 可以通过 `placement` 手动指定弹出的位置。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { GetProp, RadioChangeEvent, TreeSelectProps } from 'antd';
 import { Radio, TreeSelect } from 'antd';
-
 type SelectCommonPlacement = GetProp<TreeSelectProps, 'placement'>;
-
 const treeData = [
   {
     value: 'parent 1',
@@ -508,11 +439,9 @@ const treeData = [
 ];
 const App: React.FC = () => {
   const [placement, SetPlacement] = useState<SelectCommonPlacement>('topLeft');
-
   const placementChange = (e: RadioChangeEvent) => {
     SetPlacement(e.target.value);
   };
-
   return (
     <>
       <Radio.Group value={placement} onChange={placementChange}>
@@ -523,7 +452,6 @@ const App: React.FC = () => {
       </Radio.Group>
       <br />
       <br />
-
       <TreeSelect
         showSearch
         dropdownStyle={{ maxHeight: 400, overflow: 'auto', minWidth: 300 }}
@@ -537,28 +465,20 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 形态变体
-
 #### zh-CN
-
 TreeSelect 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, TreeSelect } from 'antd';
-
 const style: React.CSSProperties = {
   width: '100%',
   maxWidth: '100%',
 };
-
 const App: React.FC = () => {
   return (
     <Flex vertical gap="middle">
@@ -569,23 +489,16 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义状态
-
 #### zh-CN
-
 使用 `status` 为 TreeSelect 添加状态，可选 `error` 或者 `warning`。
-
-
 
 ```typescript
 import React from 'react';
 import { Space, TreeSelect } from 'antd';
-
 const App: React.FC = () => (
   <Space direction="vertical" style={{ width: '100%' }}>
     <TreeSelect status="error" style={{ width: '100%' }} placeholder="Error" />
@@ -597,26 +510,18 @@ const App: React.FC = () => (
     />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 最大选中数量
-
 #### zh-CN
-
 你可以通过设置 `maxCount` 约束最多可选中的数量，当超出限制时会变成禁止选中状态。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { TreeSelect } from 'antd';
-
 const MAX_COUNT = 3;
-
 const treeData = [
   {
     title: 'Parent 1',
@@ -647,14 +552,11 @@ const treeData = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const [value, setValue] = React.useState<string[]>(['child1-1']);
-
   const onChange = (newValue: string[]) => {
     setValue(newValue);
   };
-
   const suffix = (
     <>
       <span>
@@ -663,7 +565,6 @@ const App: React.FC = () => {
       <DownOutlined />
     </>
   );
-
   return (
     <TreeSelect
       treeData={treeData}
@@ -679,24 +580,17 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 前后缀
-
 #### zh-CN
-
 自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { TreeSelect } from 'antd';
-
 const icon = <SmileOutlined />;
 const treeData = [
   {
@@ -730,15 +624,12 @@ const treeData = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const [value, setValue] = useState<string>();
-
   const onChange = (newValue: string) => {
     console.log(newValue);
     setValue(newValue);
   };
-
   return (
     <>
       <TreeSelect
@@ -770,25 +661,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { TreeSelect } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalTreeSelect } = TreeSelect;
-
 const treeData = [
   {
     title: 'Node1',
@@ -809,27 +692,19 @@ const treeData = [
     value: '0-1',
   },
 ];
-
 const App: React.FC = () => (
   <InternalTreeSelect defaultValue="lucy" style={{ width: '100%' }} treeData={treeData} />
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 组件 Token
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { ConfigProvider, TreeSelect } from 'antd';
-
 const treeData = [
   {
     value: 'parent 1',
@@ -864,11 +739,9 @@ const treeData = [
 ];
 const App: React.FC = () => {
   const [value, setValue] = useState<string>();
-
   const onChange = (newValue: string) => {
     setValue(newValue);
   };
-
   return (
     <ConfigProvider
       theme={{
@@ -894,8 +767,6 @@ const App: React.FC = () => {
     </ConfigProvider>
   );
 };
-
 export default App;
 
 ```
-

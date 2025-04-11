@@ -1,36 +1,23 @@
 ## Input 组件示例
-
 ### 基本使用
-
 #### zh-CN
-
 基本使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Input } from 'antd';
-
 const App: React.FC = () => <Input placeholder="Basic usage" />;
-
 export default App;
 
 ```
-
 ### 三种大小
-
 #### zh-CN
-
 我们为 `<Input />` 输入框定义了三种尺寸（大、默认、小），高度分别为 `40px`、`32px` 和 `24px`。
-
-
 
 ```typescript
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Input size="large" placeholder="large size" prefix={<UserOutlined />} />
@@ -42,23 +29,16 @@ const App: React.FC = () => (
     <Input size="small" placeholder="small size" prefix={<UserOutlined />} />
   </>
 );
-
 export default App;
 
 ```
-
 ### 形态变体
-
 #### zh-CN
-
 Input 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Input } from 'antd';
-
 const App: React.FC = () => (
   <Flex vertical gap={12}>
     <Input placeholder="Outlined" />
@@ -67,25 +47,17 @@ const App: React.FC = () => (
     <Input placeholder="Underlined" variant="underlined" />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 面性变体 Debug
-
 #### zh-CN
-
 Filled Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Input } from 'antd';
-
 const { TextArea } = Input;
-
 const App: React.FC = () => (
   <Flex vertical gap={20}>
     <Flex gap={12}>
@@ -151,26 +123,18 @@ const App: React.FC = () => (
     />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 前置/后置标签
-
 #### zh-CN
-
 用于配置一些固定组合。
-
-
 
 ```typescript
 import React from 'react';
 import { SettingOutlined } from '@ant-design/icons';
 import { Cascader, Input, Select, Space } from 'antd';
-
 const { Option } = Select;
-
 const selectBefore = (
   <Select defaultValue="http://">
     <Option value="http://">http://</Option>
@@ -185,7 +149,6 @@ const selectAfter = (
     <Option value=".org">.org</Option>
   </Select>
 );
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <Input addonBefore="http://" addonAfter=".com" defaultValue="mysite" />
@@ -198,26 +161,18 @@ const App: React.FC = () => (
     />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 紧凑模式
-
 #### zh-CN
-
 使用 `Space.Compact` 创建紧凑模式，更多请查看 [Space.Compact](/components/space-cn##spacecompact) 文档。
-
-
 
 ```typescript
 import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Select, Space } from 'antd';
-
 const { Search } = Input;
-
 const options = [
   {
     value: 'zhejiang',
@@ -228,7 +183,6 @@ const options = [
     label: 'Jiangsu',
   },
 ];
-
 const App: React.FC = () => (
   <Space direction="vertical" size="middle">
     <Space.Compact>
@@ -255,18 +209,12 @@ const App: React.FC = () => (
     </Space.Compact>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 输入框组合
-
 #### zh-CN
-
 `Input.Group` 已废弃，可以使用 [Space.Compact](/components/space-cn##spacecompact) 替代 `Input.Group`。
-
-
 
 ```typescript
 import React from 'react';
@@ -283,9 +231,7 @@ import {
   Select,
   Tooltip,
 } from 'antd';
-
 const { Option } = Select;
-
 const options = [
   {
     value: 'zhejiang',
@@ -320,7 +266,6 @@ const options = [
     ],
   },
 ];
-
 const App: React.FC = () => (
   <div className="site-input-group-wrapper">
     <Input.Group size="large">
@@ -445,29 +390,20 @@ const App: React.FC = () => (
     </Input.Group>
   </div>
 );
-
 export default App;
 
 ```
-
 ### 搜索框
-
 #### zh-CN
-
 带有搜索按钮的输入框。
-
-
 
 ```typescript
 import React from 'react';
 import { AudioOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import type { GetProps } from 'antd';
-
 type SearchProps = GetProps<typeof Input.Search>;
-
 const { Search } = Input;
-
 const suffix = (
   <AudioOutlined
     style={{
@@ -476,9 +412,7 @@ const suffix = (
     }}
   />
 );
-
 const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
@@ -507,25 +441,17 @@ const App: React.FC = () => (
     />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 搜索框 loading
-
 #### zh-CN
-
 用于 `onSearch` 的时候展示 `loading`。
-
-
 
 ```typescript
 import React from 'react';
 import { Input } from 'antd';
-
 const { Search } = Input;
-
 const App: React.FC = () => (
   <>
     <Search placeholder="input search loading default" loading />
@@ -537,25 +463,17 @@ const App: React.FC = () => (
     <Search placeholder="input search text" enterButton="Search" size="large" loading />
   </>
 );
-
 export default App;
 
 ```
-
 ### 文本域
-
 #### zh-CN
-
 用于多行输入。
-
-
 
 ```typescript
 import React from 'react';
 import { Input } from 'antd';
-
 const { TextArea } = Input;
-
 const App: React.FC = () => (
   <>
     <TextArea rows={4} />
@@ -564,28 +482,19 @@ const App: React.FC = () => (
     <TextArea rows={4} placeholder="maxLength is 6" maxLength={6} />
   </>
 );
-
 export default App;
 
 ```
-
 ### 适应文本高度的文本域
-
 #### zh-CN
-
 `autoSize` 属性适用于 `textarea` 节点，并且只有高度会自动变化。另外 `autoSize` 可以设定为一个对象，指定最小行数和最大行数。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Input } from 'antd';
-
 const { TextArea } = Input;
-
 const App: React.FC = () => {
   const [value, setValue] = useState('');
-
   return (
     <>
       <TextArea placeholder="Autosize height based on content lines" autoSize />
@@ -604,42 +513,30 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 一次性密码框
-
 #### zh-CN
-
 一次性密码输入框。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Input, Typography } from 'antd';
 import type { GetProps } from 'antd';
-
 type OTPProps = GetProps<typeof Input.OTP>;
-
 const { Title } = Typography;
-
 const App: React.FC = () => {
   const onChange: OTPProps['onChange'] = (text) => {
     console.log('onChange:', text);
   };
-
   const onInput: OTPProps['onInput'] = (value) => {
     console.log('onInput:', value);
   };
-
   const sharedProps: OTPProps = {
     onChange,
     onInput,
   };
-
   return (
     <Flex gap="middle" align="flex-start" vertical>
       <Title level={5}>With formatter (Upcase)</Title>
@@ -662,34 +559,24 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 输入时格式化展示
-
 #### zh-CN
-
 结合 [Tooltip](/components/tooltip-cn) 组件，实现一个数值输入框，方便内容超长时的全量展现。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Input, Tooltip } from 'antd';
-
 interface NumericInputProps {
   style: React.CSSProperties;
   value: string;
   onChange: (value: string) => void;
 }
-
 const formatNumber = (value: number) => new Intl.NumberFormat().format(value);
-
 const NumericInput = (props: NumericInputProps) => {
   const { value, onChange } = props;
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = e.target;
     const reg = /^-?\d*(\.\d*)?$/;
@@ -697,7 +584,6 @@ const NumericInput = (props: NumericInputProps) => {
       onChange(inputValue);
     }
   };
-
   // '.' at the end or only '-' in the input box.
   const handleBlur = () => {
     let valueTemp = value;
@@ -706,13 +592,11 @@ const NumericInput = (props: NumericInputProps) => {
     }
     onChange(valueTemp.replace(/0*(\d+)/, '$1'));
   };
-
   const title = value ? (
     <span className="numeric-input-title">{value !== '-' ? formatNumber(Number(value)) : '-'}</span>
   ) : (
     'Input a number'
   );
-
   return (
     <Tooltip
       trigger={['focus']}
@@ -730,30 +614,21 @@ const NumericInput = (props: NumericInputProps) => {
     </Tooltip>
   );
 };
-
 const App: React.FC = () => {
   const [value, setValue] = useState('');
-
   return <NumericInput style={{ width: 120 }} value={value} onChange={setValue} />;
 };
-
 export default App;
 
 ```
-
 ### 前缀和后缀
-
 #### zh-CN
-
 在输入框上添加前缀或后缀图标。
-
-
 
 ```typescript
 import React from 'react';
 import { InfoCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { Input, Tooltip } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Input
@@ -773,27 +648,19 @@ const App: React.FC = () => (
     <Input prefix="￥" suffix="RMB" disabled />
   </>
 );
-
 export default App;
 
 ```
-
 ### 密码框
-
 #### zh-CN
-
 密码框。
-
-
 
 ```typescript
 import React from 'react';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Button, Input, Space } from 'antd';
-
 const App: React.FC = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
-
   return (
     <Space direction="vertical">
       <Input.Password placeholder="input password" />
@@ -814,29 +681,20 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 带移除图标
-
 #### zh-CN
-
 带移除图标的输入框，点击图标删除所有内容。
-
-
 
 ```typescript
 import React from 'react';
 import { Input } from 'antd';
-
 const { TextArea } = Input;
-
 const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
   console.log(e);
 };
-
 const App: React.FC = () => (
   <>
     <Input placeholder="input with clear icon" allowClear onChange={onChange} />
@@ -845,29 +703,20 @@ const App: React.FC = () => (
     <TextArea placeholder="textarea with clear icon" allowClear onChange={onChange} />
   </>
 );
-
 export default App;
 
 ```
-
 ### 带字数提示
-
 #### zh-CN
-
 展示字数提示。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Input } from 'antd';
-
 const { TextArea } = Input;
-
 const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
   console.log('Change:', e.target.value);
 };
-
 const App: React.FC = () => (
   <Flex vertical gap={32}>
     <Input showCount maxLength={20} onChange={onChange} />
@@ -881,24 +730,17 @@ const App: React.FC = () => (
     />
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### = 5.10.0">定制计数能力
-
 #### zh-CN
-
 在某些场景下，需要定制计数能力（例如 emoji 长度以 1 计算），可以通过 `count` 属性来实现。在该模式下，通过 `count.max` 属性来超出原生 `maxLength` 的限制。
-
-
 
 ```typescript
 import React from 'react';
 import { Flex, Input, Typography } from 'antd';
 import { runes } from 'runes2';
-
 const App: React.FC = () => (
   <Flex vertical gap={16}>
     <div>
@@ -911,7 +753,6 @@ const App: React.FC = () => (
         defaultValue="Hello, antd!"
       />
     </div>
-
     <div>
       <Typography.Title level={5}>Emoji count as length 1</Typography.Title>
       <Input
@@ -922,7 +763,6 @@ const App: React.FC = () => (
         defaultValue="🔥🔥🔥"
       />
     </div>
-
     <div>
       <Typography.Title level={5}>Not exceed max</Typography.Title>
       <Input
@@ -937,24 +777,17 @@ const App: React.FC = () => (
     </div>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 自定义状态
-
 #### zh-CN
-
 使用 `status` 为 Input 添加状态，可选 `error` 或者 `warning`。
-
-
 
 ```typescript
 import React from 'react';
 import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
 import { Input, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space direction="vertical" style={{ width: '100%' }}>
     <Input status="error" placeholder="Error" />
@@ -963,34 +796,25 @@ const App: React.FC = () => (
     <Input status="warning" prefix={<ClockCircleOutlined />} placeholder="Warning with prefix" />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 聚焦
-
 #### zh-CN
-
 聚焦额外配置属性。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import type { InputRef } from 'antd';
 import { Button, Input, Space, Switch } from 'antd';
-
 const App: React.FC = () => {
   const inputRef = useRef<InputRef>(null);
   const [input, setInput] = useState(true);
-
   const sharedProps = {
     style: { width: '100%' },
     defaultValue: 'Ant Design love you!',
     ref: inputRef,
   };
-
   return (
     <Space direction="vertical" style={{ width: '100%' }}>
       <Space wrap>
@@ -1044,25 +868,17 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### Style Debug
-
 #### zh-CN
-
 Buggy! 测试一些踩过的样式坑。
-
-
 
 ```typescript
 import React from 'react';
 import { Input } from 'antd';
-
 const { TextArea } = Input;
-
 const App: React.FC = () => (
   <div style={{ backgroundColor: 'rgba(0, 0, 128, .2)' }}>
     <Input placeholder="Unbordered" variant="borderless" />
@@ -1073,7 +889,6 @@ const App: React.FC = () => (
     <Input prefix="￥" suffix="RMB" variant="borderless" />
     <Input prefix="￥" suffix="RMB" disabled variant="borderless" />
     <TextArea allowClear style={{ border: '2px solid #000' }} />
-
     {/* status */}
     <Input defaultValue="error" variant="borderless" status="error" />
     <Input defaultValue="warning" variant="borderless" status="warning" />
@@ -1081,18 +896,12 @@ const App: React.FC = () => (
     <Input prefix="$" defaultValue="warning" variant="borderless" status="warning" />
   </div>
 );
-
 export default App;
 
 ```
-
 ### 文本对齐
-
 #### zh-CN
-
 默认对齐效果。
-
-
 
 ```typescript
 import React from 'react';
@@ -1110,14 +919,11 @@ import {
   TreeSelect,
   Typography,
 } from 'antd';
-
 const { Text } = Typography;
 const { RangePicker } = DatePicker;
-
 const narrowStyle: React.CSSProperties = {
   width: 50,
 };
-
 const options = [
   {
     value: 'zhejiang',
@@ -1152,12 +958,10 @@ const options = [
     ],
   },
 ];
-
 const selectOptions = [
   { value: 'jack', label: 'Jack' },
   { value: 'lucy', label: 'Lucy' },
 ];
-
 const App: React.FC = () => (
   <>
     <Mentions style={{ width: 100 }} rows={1} />
@@ -1189,31 +993,21 @@ const App: React.FC = () => (
     <Input style={narrowStyle} defaultValue="1" suffix="Y" />
   </>
 );
-
 export default App;
 
 ```
-
 ### 文本域
-
 #### zh-CN
-
 用于多行输入。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
-
 const { TextArea } = Input;
-
 const defaultValue =
   'The autoSize property applies to textarea nodes, and only the height changes automatically. In addition, autoSize can be set to an object, specifying the minimum number of rows and the maximum number of rows. The autoSize property applies to textarea nodes, and only the height changes automatically. In addition, autoSize can be set to an object, specifying the minimum number of rows and the maximum number of rows.';
-
 const App: React.FC = () => {
   const [autoResize, setAutoResize] = useState(false);
-
   return (
     <>
       <Button onClick={() => setAutoResize(!autoResize)} style={{ marginBottom: 16 }}>
@@ -1231,24 +1025,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### debug token
-
 #### zh-CN
-
 token debug
-
-
 
 ```typescript
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { ConfigProvider, Input } from 'antd';
-
 const App: React.FC = () => (
   <>
     <ConfigProvider theme={{ token: { controlHeight: 28 } }}>
@@ -1265,8 +1052,6 @@ const App: React.FC = () => (
     </ConfigProvider>
   </>
 );
-
 export default App;
 
 ```
-

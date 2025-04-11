@@ -1,7 +1,5 @@
 ## API
-
 #### Checkbox
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | autoFocus | 自动获取焦点 | boolean | false |  |
@@ -12,9 +10,7 @@
 | onChange | 变化时的回调函数 | (e: CheckboxChangeEvent) => void | - |  |
 | onBlur | 失去焦点时的回调 | function() | - |  |
 | onFocus | 获得焦点时的回调 | function() | - |  |
-
 #### Checkbox Group
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | defaultValue | 默认选中的选项 | (string \| number)\[] | \[] |  |
@@ -23,9 +19,7 @@
 | options | 指定可选项 | string\[] \| number\[] \| Option\[] | \[] |  |
 | value | 指定选中的选项 | (string \| number \| boolean)\[] | \[] |  |
 | onChange | 变化时的回调函数 | (checkedValue: T[]) => void | - |  |
-
 ##### Option
-
 ```typescript
 interface Option {
   label: string;
@@ -33,11 +27,8 @@ interface Option {
   disabled?: boolean;
 }
 ```
-
 ### 方法
-
 #### Checkbox
-
 | 名称          | 描述                      | 版本   |
 | ------------- | ------------------------- | ------ |
 | blur()        | 移除焦点                  |        |

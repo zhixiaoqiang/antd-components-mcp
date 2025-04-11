@@ -1,9 +1,7 @@
 ## API
-
 ```jsx
 <Pagination onChange={onChange} total={50} />
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | align | 对齐方式 | start \| center \| end | - | 5.19.0 |

@@ -1,14 +1,8 @@
-
 ## 何时使用
-
 一般出现在通知图标或头像的右上角，用于显示需要处理的消息条数，通过醒目视觉形式吸引用户处理。
 
-
-
 ## API
-
 ### Badge
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | color | 自定义小圆点的颜色 | string | - |  |
@@ -23,15 +17,11 @@
 | styles | 语义化结构 style | [Record<SemanticDOM, CSSProperties>](#semantic-dom) | - | 5.7.0 |
 | text | 在设置了 `status` 的前提下有效，设置状态点的文本 | ReactNode | - |  |
 | title | 设置鼠标放在状态点上时显示的文字 | string | - |  |
-
 ### Badge.Ribbon
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | color | 自定义缎带的颜色 | string | - |  |
 | placement | 缎带的位置，`start` 和 `end` 随文字方向（RTL 或 LTR）变动 | `start` \| `end` | `end` |  |
 | text | 缎带中填入的内容 | ReactNode | - |  |
-
-
 
 

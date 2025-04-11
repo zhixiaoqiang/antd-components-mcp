@@ -1,21 +1,14 @@
 ## Menu 组件示例
-
 ### 顶部导航
-
 #### zh-CN
-
 水平的顶部导航菜单。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     label: 'Navigation One',
@@ -60,38 +53,27 @@ const items: MenuItem[] = [
     ),
   },
 ];
-
 const App: React.FC = () => {
   const [current, setCurrent] = useState('mail');
-
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
   };
-
   return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
 };
-
 export default App;
 
 ```
-
 ### 顶部导航（dark）
-
 #### zh-CN
-
 水平的顶部导航菜单。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     label: 'Navigation One',
@@ -136,40 +118,29 @@ const items: MenuItem[] = [
     ),
   },
 ];
-
 const App: React.FC = () => {
   const [current, setCurrent] = useState('mail');
-
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
   };
-
   return (
     <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} theme="dark" />
   );
 };
-
 export default App;
 
 ```
-
 ### 内嵌菜单
-
 #### zh-CN
-
 垂直菜单，子菜单内嵌在菜单区域。
-
-
 
 ```typescript
 import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     key: 'sub1',
@@ -237,12 +208,10 @@ const items: MenuItem[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
   };
-
   return (
     <Menu
       onClick={onClick}
@@ -254,20 +223,13 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 缩起内嵌菜单
-
 #### zh-CN
-
 内嵌菜单可以被缩起/展开。
-
 你可以在 [Layout](/components/layout-cn/##layout-demo-side) 里查看侧边布局结合的完整示例。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -282,9 +244,7 @@ import {
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Menu } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   { key: '1', icon: <PieChartOutlined />, label: 'Option 1' },
   { key: '2', icon: <DesktopOutlined />, label: 'Option 2' },
@@ -318,14 +278,11 @@ const items: MenuItem[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
-
   return (
     <div style={{ width: 256 }}>
       <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
@@ -342,27 +299,19 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 只展开当前父级菜单
-
 #### zh-CN
-
 点击菜单，收起其他展开的所有菜单，保持菜单聚焦简洁。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     key: '1',
@@ -414,12 +363,10 @@ const items: MenuItem[] = [
     ],
   },
 ];
-
 interface LevelKeysProps {
   key?: string;
   children?: LevelKeysProps[];
 }
-
 const getLevelKeys = (items1: LevelKeysProps[]) => {
   const key: Record<string, number> = {};
   const func = (items2: LevelKeysProps[], level = 1) => {
@@ -435,12 +382,9 @@ const getLevelKeys = (items1: LevelKeysProps[]) => {
   func(items1);
   return key;
 };
-
 const levelKeys = getLevelKeys(items as LevelKeysProps[]);
-
 const App: React.FC = () => {
   const [stateOpenKeys, setStateOpenKeys] = useState(['2', '23']);
-
   const onOpenChange: MenuProps['onOpenChange'] = (openKeys) => {
     const currentOpenKey = openKeys.find((key) => stateOpenKeys.indexOf(key) === -1);
     // open
@@ -448,7 +392,6 @@ const App: React.FC = () => {
       const repeatIndex = openKeys
         .filter((key) => key !== currentOpenKey)
         .findIndex((key) => levelKeys[key] === levelKeys[currentOpenKey]);
-
       setStateOpenKeys(
         openKeys
           // remove repeat key
@@ -461,7 +404,6 @@ const App: React.FC = () => {
       setStateOpenKeys(openKeys);
     }
   };
-
   return (
     <Menu
       mode="inline"
@@ -473,27 +415,19 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 垂直菜单
-
 #### zh-CN
-
 子菜单是弹出的形式。
-
-
 
 ```typescript
 import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     key: 'sub1',
@@ -549,35 +483,25 @@ const items: MenuItem[] = [
     ],
   },
 ];
-
 const onClick: MenuProps['onClick'] = (e) => {
   console.log('click', e);
 };
-
 const App: React.FC = () => (
   <Menu onClick={onClick} style={{ width: 256 }} mode="vertical" items={items} />
 );
-
 export default App;
 
 ```
-
 ### 主题
-
 #### zh-CN
-
 内建了两套主题 `light` 和 `dark`，默认 `light`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps, MenuTheme } from 'antd';
 import { Menu, Switch } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     key: 'sub1',
@@ -619,20 +543,16 @@ const items: MenuItem[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const [theme, setTheme] = useState<MenuTheme>('dark');
   const [current, setCurrent] = useState('1');
-
   const changeTheme = (value: boolean) => {
     setTheme(value ? 'dark' : 'light');
   };
-
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
   };
-
   return (
     <>
       <Switch
@@ -655,39 +575,28 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 子菜单主题
-
 #### zh-CN
-
 你可以通过 `theme` 属性来设置 SubMenu 的主题从而达到不同目录树下不同主题色的效果。该例子默认为根目录深色，子目录浅色效果。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { MailOutlined } from '@ant-design/icons';
 import type { MenuProps, MenuTheme } from 'antd';
 import { Menu, Switch } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const App: React.FC = () => {
   const [menuTheme, setMenuTheme] = useState<MenuTheme>('light');
   const [current, setCurrent] = useState('1');
-
   const changeTheme = (value: boolean) => {
     setMenuTheme(value ? 'dark' : 'light');
   };
-
   const onClick: MenuProps['onClick'] = (e) => {
     setCurrent(e.key);
   };
-
   const items: MenuItem[] = [
     {
       key: 'sub1',
@@ -703,7 +612,6 @@ const App: React.FC = () => {
     { key: '5', label: 'Option 5' },
     { key: '6', label: 'Option 6' },
   ];
-
   return (
     <>
       <Switch
@@ -727,18 +635,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 切换菜单类型
-
 #### zh-CN
-
 展示动态切换模式。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -751,11 +653,8 @@ import {
 } from '@ant-design/icons';
 import { Divider, Menu, Switch } from 'antd';
 import type { GetProp, MenuProps } from 'antd';
-
 type MenuTheme = GetProp<MenuProps, 'theme'>;
-
 type MenuItem = GetProp<MenuProps, 'items'>[number];
-
 const items: MenuItem[] = [
   {
     key: '1',
@@ -805,19 +704,15 @@ const items: MenuItem[] = [
     ),
   },
 ];
-
 const App: React.FC = () => {
   const [mode, setMode] = useState<'vertical' | 'inline'>('inline');
   const [theme, setTheme] = useState<MenuTheme>('light');
-
   const changeMode = (value: boolean) => {
     setMode(value ? 'vertical' : 'inline');
   };
-
   const changeTheme = (value: boolean) => {
     setTheme(value ? 'dark' : 'light');
   };
-
   return (
     <>
       <Switch onChange={changeMode} /> Change Mode
@@ -836,27 +731,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### Style debug
-
 #### zh-CN
-
 buggy!
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined } from '@ant-design/icons';
 import type { MenuProps, MenuTheme } from 'antd';
 import { Menu, Switch } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     key: 'sub1',
@@ -889,20 +776,16 @@ const items: MenuItem[] = [
   { key: '11', label: 'Option 11' },
   { key: '12', label: 'Option 12' },
 ];
-
 const App: React.FC = () => {
   const [menuTheme, setMenuTheme] = useState<MenuTheme>('dark');
   const [current, setCurrent] = useState('1');
-
   const changeTheme = (value: boolean) => {
     setMenuTheme(value ? 'dark' : 'light');
   };
-
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
   };
-
   return (
     <>
       <Switch
@@ -944,18 +827,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### v4 版本 Menu
-
 #### zh-CN
-
 V4 样式的 Menu 组件。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -968,9 +845,7 @@ import {
 } from '@ant-design/icons';
 import { ConfigProvider, Menu, Switch, Typography } from 'antd';
 import type { MenuProps } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     key: '1',
@@ -1030,14 +905,11 @@ const items: MenuItem[] = [
     ),
   },
 ];
-
 const App: React.FC = () => {
   const [mode, setMode] = useState<'vertical' | 'inline'>('inline');
-
   const changeMode = (value: boolean) => {
     setMode(value ? 'vertical' : 'inline');
   };
-
   return (
     <>
       <Switch onChange={changeMode} /> Change Mode
@@ -1070,18 +942,12 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 组件 Token debug。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -1095,9 +961,7 @@ import {
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { ConfigProvider, Menu, Space, theme } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items: MenuItem[] = [
   {
     label: 'Navigation One',
@@ -1142,7 +1006,6 @@ const items: MenuItem[] = [
     ),
   },
 ];
-
 const items2: MenuItem[] = [
   {
     key: '1',
@@ -1188,15 +1051,12 @@ const items2: MenuItem[] = [
     ],
   },
 ];
-
 const App: React.FC = () => {
   const [current, setCurrent] = useState('mail');
-
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
   };
-
   return (
     <Space direction="vertical">
       <ConfigProvider
@@ -1263,27 +1123,19 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### Extra Style debug
-
 #### zh-CN
-
 调试使用
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined, MailOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Flex, Menu, Space } from 'antd';
-
 type MenuItem = Required<MenuProps>['items'][number];
-
 const items1: MenuItem[] = [
   {
     key: 'sub1',
@@ -1312,12 +1164,10 @@ const items1: MenuItem[] = [
     ],
   },
 ];
-
 const items2: MenuItem[] = [
   { key: '1', label: 'Users', extra: '⌘U' },
   { key: '2', label: 'Profile', extra: '⌘P' },
 ];
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <Menu
@@ -1330,8 +1180,6 @@ const App: React.FC = () => (
     <Menu theme="dark" style={{ width: 256 }} items={items2} />
   </Space>
 );
-
 export default App;
 
 ```
-

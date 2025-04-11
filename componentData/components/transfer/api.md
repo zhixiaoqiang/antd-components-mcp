@@ -1,7 +1,5 @@
 ## API
-
 ### Transfer
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | dataSource | 数据源，其中的数据将会被渲染到左边一栏中，`targetKeys` 中指定的除外 | [RecordType extends TransferItem = TransferItem](https://github.com/ant-design/ant-design/blob/1bf0bab2a7bc0a774119f501806e3e0e3a6ba283/components/transfer/index.tsx#L12)\[] | \[] |  |
@@ -27,11 +25,8 @@
 | onScroll | 选项列表滚动时的回调函数 | (direction, event): void | - |  |
 | onSearch | 搜索框内容时改变时的回调函数 | (direction: `left` \| `right`, value: string): void | - |  |
 | onSelectChange | 选中项发生改变时的回调函数 | (sourceSelectedKeys, targetSelectedKeys): void | - |  |
-
 ### Render Props
-
 Transfer 支持接收 `children` 自定义渲染列表，并返回以下参数：
-
 | 参数            | 说明           | 类型                                              | 版本 |
 | --------------- | -------------- | ------------------------------------------------- | ---- |
 | direction       | 渲染列表的方向 | `left` \| `right`                                 |      |
@@ -40,9 +35,7 @@ Transfer 支持接收 `children` 自定义渲染列表，并返回以下参数�
 | selectedKeys    | 选中的条目     | string\[] \| number\[]                            |      |
 | onItemSelect    | 勾选条目       | (key: string \| number, selected: boolean)        |      |
 | onItemSelectAll | 勾选一组条目   | (keys: string\[] \| number\[], selected: boolean) |      |
-
 #### 参考示例
-
 ```jsx
 <Transfer {...props}>{(listProps) => <YourComponent {...listProps} />}</Transfer>
 ```

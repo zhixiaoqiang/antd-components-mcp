@@ -16,6 +16,11 @@ const EXTRACTED_METADATA_PATH =  join(EXTRACTED_DATA_DIR, "metadata.json")
 /** 提取的组件数据目录 */
 const EXTRACTED_COMPONENTS_DATA_PATH = join(EXTRACTED_DATA_DIR, "components");
 
+/** README.md 目录路径 */
+const README_PATH = join(ROOT_DIR, "README.md");
+/** README.md 提取结果匹配字段 */
+const README_MATCH_FIELD = /(?<=(预处理版本为 ))`(.*)`/;
+
 /** 提取的组件更新日志路径 */
 const EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH = join(EXTRACTED_DATA_DIR, "components-changelog.json");
 
@@ -31,6 +36,8 @@ const API_FILE_NAME = 'api.md'
 
 export {
   ROOT_DIR,
+  README_PATH,
+  README_MATCH_FIELD,
   EXTRACTED_DATA_DIR,
   EXTRACTED_COMPONENTS_LIST_PATH,
   EXTRACTED_METADATA_PATH,

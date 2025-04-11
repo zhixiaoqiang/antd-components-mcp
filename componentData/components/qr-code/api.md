@@ -1,7 +1,5 @@
 ## API
-
 > 自 `antd@5.1.0` 版本开始提供该组件。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | :-- | :-- | :-- | :-- | :-- |
 | value | 扫描后的文本 | string | - |
@@ -16,9 +14,7 @@
 | status | 二维码状态 | `active \| expired \| loading \| scanned` | `active` | scanned: 5.13.0 |
 | statusRender | 自定义状态渲染器 | (info: [StatusRenderInfo](/components/qr-code-cn#statusrenderinfo)) => React.ReactNode | - | 5.20.0 |
 | onRefresh | 点击"点击刷新"的回调 | `() => void` | - |
-
 ### StatusRenderInfo
-
 ```typescript
 type StatusRenderInfo = {
   status: QRStatus;

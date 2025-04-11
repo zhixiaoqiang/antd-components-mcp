@@ -1,7 +1,5 @@
 ## API
-
 ### Form
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | colon | 配置 Form.Item 的 `colon` 的默认值。表示是否显示 label 后面的冒号 (只有在属性 layout 为 horizontal 时有效) | boolean | true |  |
@@ -29,30 +27,22 @@
 | onFinishFailed | 提交表单且数据验证失败后回调事件 | function({ values, errorFields, outOfDate }) | - |  |
 | onValuesChange | 字段值更新时触发回调事件 | function(changedValues, allValues) | - |  |
 | clearOnDestroy | 当表单被卸载时清空表单值 | boolean | false | 5.18.0 |
-
 > 支持原生 form 除 `onSubmit` 外的所有属性。
-
 ### validateMessages
-
 Form 为验证提供了[默认的错误提示信息](https://github.com/ant-design/ant-design/blob/6234509d18bac1ac60fbb3f92a5b2c6a6361295a/components/locale/en_US.ts#L88-L134)，你可以通过配置 `validateMessages` 属性，修改对应的提示模板。一种常见的使用方式，是配置国际化提示信息：
-
 ```jsx
 const validateMessages = {
   required: "'${name}' 是必选字段",
   // ...
 };
-
 <Form validateMessages={validateMessages} />;
 ```
-
 此外，[ConfigProvider](/components/config-provider-cn) 也提供了全局化配置方案，允许统一配置错误提示模板：
-
 ```jsx
 const validateMessages = {
   required: "'${name}' 是必选字段",
   // ...
 };
-
 <ConfigProvider form={{ validateMessages }}>
   <Form />
 </ConfigProvider>;

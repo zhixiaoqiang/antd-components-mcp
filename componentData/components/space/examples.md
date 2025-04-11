@@ -1,18 +1,12 @@
 ## Space 组件示例
-
 ### 基本用法
-
 #### zh-CN
-
 相邻组件水平间距。
-
-
 
 ```typescript
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Popconfirm, Space, Upload } from 'antd';
-
 const App: React.FC = () => (
   <Space>
     Space
@@ -25,23 +19,16 @@ const App: React.FC = () => (
     </Popconfirm>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 垂直间距
-
 #### zh-CN
-
 相邻组件垂直间距。
-
-
 
 ```typescript
 import React from 'react';
 import { Card, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
     <Card title="Card" size="small">
@@ -58,26 +45,18 @@ const App: React.FC = () => (
     </Card>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 间距大小
-
 #### zh-CN
-
 使用 `size` 设置元素之间的间距，预设了 `small`、`middle`、`large` 三种尺寸，也可以自定义间距，若不设置 `size`，则默认为 `small`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Radio, Slider, Space } from 'antd';
 import type { ConfigProviderProps } from 'antd';
-
 type SizeType = ConfigProviderProps['componentSize'];
-
 const App: React.FC = () => {
   const [size, setSize] = useState<SizeType | [SizeType, SizeType] | 'customize'>('small');
   const [customSize, setCustomSize] = React.useState<number>(0);
@@ -107,23 +86,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 对齐
-
 #### zh-CN
-
 设置对齐模式。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Space } from 'antd';
-
 const App: React.FC = () => (
   <div className="space-align-container">
     <div className="space-align-block">
@@ -156,23 +128,16 @@ const App: React.FC = () => (
     </div>
   </div>
 );
-
 export default App;
 
 ```
-
 ### 自动换行
-
 #### zh-CN
-
 自动换行。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space size={[8, 16]} wrap>
     {Array.from({ length: 20 }).map((_, index) => (
@@ -181,23 +146,16 @@ const App: React.FC = () => (
     ))}
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 分隔符
-
 #### zh-CN
-
 相邻组件分隔符。
-
-
 
 ```typescript
 import React from 'react';
 import { Divider, Space, Typography } from 'antd';
-
 const App: React.FC = () => (
   <Space split={<Divider type="vertical" />}>
     <Typography.Link>Link</Typography.Link>
@@ -205,18 +163,12 @@ const App: React.FC = () => (
     <Typography.Link>Link</Typography.Link>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 紧凑布局组合
-
 #### zh-CN
-
 使用 Space.Compact 让表单组件之间紧凑连接且合并边框。
-
-
 
 ```typescript
 import React from 'react';
@@ -235,10 +187,8 @@ import {
   Tooltip,
   TreeSelect,
 } from 'antd';
-
 const { Option } = Select;
 const { TreeNode } = TreeSelect;
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <Space.Compact block>
@@ -429,18 +379,12 @@ const App: React.FC = () => (
     </Space.Compact>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### Button 紧凑布局
-
 #### zh-CN
-
 Button 组件紧凑排列的示例。
-
-
 
 ```typescript
 import React from 'react';
@@ -457,7 +401,6 @@ import {
   WarningOutlined,
 } from '@ant-design/icons';
 import { Button, Dropdown, Space, Tooltip } from 'antd';
-
 const App: React.FC = () => (
   <div>
     <Space.Compact block>
@@ -555,23 +498,16 @@ const App: React.FC = () => (
     </Space.Compact>
   </div>
 );
-
 export default App;
 
 ```
-
 ### 垂直方向紧凑布局
-
 #### zh-CN
-
 垂直方向的紧凑布局，目前仅支持 Button 组合。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space>
     <Space.Compact direction="vertical">
@@ -591,18 +527,12 @@ const App: React.FC = () => (
     </Space.Compact>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 调试 Input 前置/后置标签
-
 #### zh-CN
-
 调试 Input 前置/后置标签。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -622,9 +552,7 @@ import {
   Space,
   Tooltip,
 } from 'antd';
-
 const { Option } = Select;
-
 const selectBefore = (
   <Select defaultValue="http://" className="select-before">
     <Option value="http://">http://</Option>
@@ -639,7 +567,6 @@ const selectAfter = (
     <Option value=".org">.org</Option>
   </Select>
 );
-
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
@@ -837,26 +764,18 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 紧凑布局嵌套
-
 #### zh-CN
-
 嵌套使用的紧凑布局。
-
-
 
 ```typescript
 import React from 'react';
 import { CopyOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button, Cascader, Input, InputNumber, Select, Space, TimePicker } from 'antd';
-
 const { Option } = Select;
-
 const App: React.FC = () => (
   <>
     <Space.Compact block>
@@ -936,23 +855,16 @@ const App: React.FC = () => (
     </>
   </>
 );
-
 export default App;
 
 ```
-
 ### 多样的 Child
-
 #### zh-CN
-
 Debug usage
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Popconfirm, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space>
     <>
@@ -974,32 +886,23 @@ const App: React.FC = () => (
     {undefined}
   </Space>
 );
-
 export default App;
 
 ```
-
 ### Flex gap 样式
-
 #### zh-CN
-
 Debug usage
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Space, Switch } from 'antd';
-
 const style: React.CSSProperties = {
   width: 150,
   height: 100,
   background: 'red',
 };
-
 const App: React.FC = () => {
   const [singleCol, setSingleCol] = useState(false);
-
   return (
     <>
       <Switch
@@ -1019,8 +922,6 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-

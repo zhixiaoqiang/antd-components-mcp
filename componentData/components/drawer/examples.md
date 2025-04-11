@@ -1,28 +1,19 @@
 ## Drawer 组件示例
-
 ### 基础抽屉
-
 #### zh-CN
-
 基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   return (
     <>
       <Button type="primary" onClick={showDrawer}>
@@ -36,40 +27,29 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义位置
-
 #### zh-CN
-
 自定义位置，点击触发按钮抽屉从相应的位置滑出，点击遮罩区关闭。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { DrawerProps, RadioChangeEvent } from 'antd';
 import { Button, Drawer, Radio, Space } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<DrawerProps['placement']>('left');
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   const onChange = (e: RadioChangeEvent) => {
     setPlacement(e.target.value);
   };
-
   return (
     <>
       <Space>
@@ -98,37 +78,27 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 加载中
-
 #### zh-CN
-
 设置抽屉加载状态。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Drawer } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState<boolean>(true);
-
   const showLoading = () => {
     setOpen(true);
     setLoading(true);
-
     // Simple loading mock. You should add cleanup logic in real world.
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   };
-
   return (
     <>
       <Button type="primary" onClick={showLoading}>
@@ -153,40 +123,29 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 额外操作
-
 #### zh-CN
-
 在 Ant Design 规范中，操作按钮建议放在抽屉的右上角，可以使用 `extra` 属性来实现。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Drawer, Radio, Space } from 'antd';
 import type { DrawerProps, RadioChangeEvent } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<DrawerProps['placement']>('right');
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onChange = (e: RadioChangeEvent) => {
     setPlacement(e.target.value);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   return (
     <>
       <Space>
@@ -222,39 +181,27 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 渲染在当前 DOM
-
 #### zh-CN
-
 渲染在当前 dom 里。自定义容器，查看 `getContainer`。
-
 > 注意：在 v5 中 `style` 与 `className` 迁移至 Drawer 面板上与 Modal 保持一致，原 `style` 与 `className` 替换为 `rootStyle` 与 `rootClassName`。
-
 > 当 `getContainer` 返回 DOM 节点时，需要手动设置 `rootStyle` 为 `{ position: 'absolute' }`，参考 [##41951](https://github.com/ant-design/ant-design/issues/41951##issuecomment-1521099152)。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Drawer, theme } from 'antd';
-
 const App: React.FC = () => {
   const { token } = theme.useToken();
   const [open, setOpen] = useState(false);
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   const containerStyle: React.CSSProperties = {
     position: 'relative',
     height: 200,
@@ -264,7 +211,6 @@ const App: React.FC = () => {
     border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: token.borderRadiusLG,
   };
-
   return (
     <div style={containerStyle}>
       Render in this
@@ -286,37 +232,26 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 抽屉表单
-
 #### zh-CN
-
 在抽屉中使用表单。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space } from 'antd';
-
 const { Option } = Select;
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   return (
     <>
       <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />}>
@@ -440,46 +375,34 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 信息预览抽屉
-
 #### zh-CN
-
 需要快速预览对象概要时使用，点击遮罩区关闭。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Avatar, Col, Divider, Drawer, List, Row } from 'antd';
-
 interface DescriptionItemProps {
   title: string;
   content: React.ReactNode;
 }
-
 const DescriptionItem = ({ title, content }: DescriptionItemProps) => (
   <div className="site-description-item-profile-wrapper">
     <p className="site-description-item-profile-p-label">{title}:</p>
     {content}
   </div>
 );
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   return (
     <>
       <List
@@ -602,43 +525,31 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 多层抽屉
-
 #### zh-CN
-
 在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [childrenDrawer, setChildrenDrawer] = useState(false);
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   const showChildrenDrawer = () => {
     setChildrenDrawer(true);
   };
-
   const onChildrenDrawerClose = () => {
     setChildrenDrawer(false);
   };
-
   return (
     <>
       <Button type="primary" onClick={showDrawer}>
@@ -661,42 +572,31 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 预设宽度
-
 #### zh-CN
-
 抽屉的默认宽度为 `378px`，另外还提供一个大号抽屉 `736px`，可以用 `size` 属性来设置。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Drawer, Space } from 'antd';
 import type { DrawerProps } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [size, setSize] = useState<DrawerProps['size']>();
-
   const showDefaultDrawer = () => {
     setSize('default');
     setOpen(true);
   };
-
   const showLargeDrawer = () => {
     setSize('large');
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   return (
     <>
       <Space>
@@ -729,25 +629,18 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义内部样式
-
 #### zh-CN
-
 通过 `classNames` 属性设置抽屉内部区域（header、body、footer、mask、wrapper）的 `className`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, ConfigProvider, Drawer, Space } from 'antd';
 import { createStyles, useTheme } from 'antd-style';
 import type { DrawerClassNames, DrawerStyles } from 'antd/es/drawer/DrawerPanel';
-
 const useStyle = createStyles(({ token }) => ({
   'my-drawer-body': {
     background: token.blue1,
@@ -765,19 +658,16 @@ const useStyle = createStyles(({ token }) => ({
     borderLeft: '2px dotted #333',
   },
 }));
-
 const App: React.FC = () => {
   const [open, setOpen] = useState([false, false]);
   const { styles } = useStyle();
   const token = useTheme();
-
   const toggleDrawer = (idx: number, target: boolean) => {
     setOpen((p) => {
       p[idx] = target;
       return [...p];
     });
   };
-
   const classNames: DrawerClassNames = {
     body: styles['my-drawer-body'],
     mask: styles['my-drawer-mask'],
@@ -785,7 +675,6 @@ const App: React.FC = () => {
     footer: styles['my-drawer-footer'],
     content: styles['my-drawer-content'],
   };
-
   const drawerStyles: DrawerStyles = {
     mask: {
       backdropFilter: 'blur(10px)',
@@ -803,7 +692,6 @@ const App: React.FC = () => {
       borderTop: `1px solid ${token.colorBorder}`,
     },
   };
-
   return (
     <>
       <Space>
@@ -848,35 +736,25 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### ConfigProvider
-
 #### zh-CN
-
 支持 ConfigProvider 配置。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { Button, ConfigProvider, Drawer } from 'antd';
-
 const App: React.FC = () => {
   const domRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   return (
     <ConfigProvider getPopupContainer={() => domRef.current!}>
       <div ref={domRef} className="site-drawer-render-in-current-wrapper">
@@ -898,34 +776,24 @@ const App: React.FC = () => {
     </ConfigProvider>
   );
 };
-
 export default App;
 
 ```
-
 ### 无遮罩
-
 #### zh-CN
-
 通过 `mask={false}` 去掉遮罩。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
-
   return (
     <>
       <Button type="primary" onClick={showDrawer}>
@@ -954,26 +822,18 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### _InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Drawer } from 'antd';
-
 /** Test usage. Do not use in your production. */
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalDrawer } = Drawer;
-
 export default () => (
   <div style={{ padding: 32, background: '#e6e6e6' }}>
     <InternalDrawer title="Hello Title" style={{ height: 300 }} footer="Footer!">
@@ -983,25 +843,18 @@ export default () => (
 );
 
 ```
-
 ### 滚动锁定调试
-
 #### zh-CN
-
 当 Modal 和 Drawer 共同作用时的滚动锁定调试。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Drawer, Modal, Space, Switch } from 'antd';
-
 const App: React.FC = () => {
   const [drawer, setDrawer] = useState(false);
   const [drawer2, setDrawer2] = useState(false);
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-
   return (
     <div style={{ position: 'relative', zIndex: 999999 }}>
       <Space>
@@ -1048,26 +901,18 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Drawer } from 'antd';
-
 /** Test usage. Do not use in your production. */
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalDrawer } = Drawer;
-
 export default () => (
   <ConfigProvider
     theme={{ components: { Drawer: { footerPaddingBlock: 0, footerPaddingInline: 0 } } }}
@@ -1081,4 +926,3 @@ export default () => (
 );
 
 ```
-

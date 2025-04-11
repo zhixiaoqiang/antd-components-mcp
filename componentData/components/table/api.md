@@ -1,7 +1,5 @@
 ## API
-
 ### Table
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | bordered | 是否展示外边框和列边框 | boolean | false |  |
@@ -32,18 +30,13 @@
 | onHeaderRow | 设置头部行属性 | function(columns, index) | - |  |
 | onRow | 设置行属性 | function(record, index) | - |  |
 | onScroll | 表单内容滚动时触发（虚拟滚动下只有垂直滚动会触发事件） | function(event) | - | 5.16.0 |
-
 ### Table ref
-
 | 参数 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
 | nativeElement | 最外层 div 元素 | HTMLDivElement | 5.11.0 |
 | scrollTo | 滚动到目标位置（设置 `key` 时为 Record 对应的 `rowKey`） | (config: { index?: number, key?: React.Key, top?: number }) => void | 5.11.0 |
-
 #### onRow 用法
-
 适用于 `onRow` `onHeaderRow` `onCell` `onHeaderCell`。
-
 ```jsx
 <Table
   onRow={(record) => {
@@ -62,11 +55,8 @@
   }}
 />
 ```
-
 ### Column
-
 列描述数据对象，是 columns 中的一项，Column 使用相同的 API。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | align | 设置列的对齐方式 | `left` \| `right` \| `center` | `left` |  |
@@ -105,27 +95,18 @@
 | onCell | 设置单元格属性 | function(record, rowIndex) | - |  |
 | onFilter | 本地模式下，确定筛选的运行函数 | function | - |  |
 | onHeaderCell | 设置头部单元格属性 | function(column) | - |  |
-
 ### ColumnGroup
-
 | 参数  | 说明         | 类型      | 默认值 |
 | ----- | ------------ | --------- | ------ |
 | title | 列头显示文字 | ReactNode | -      |
-
 ### pagination
-
 分页的配置项。
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | position | 指定分页显示的位置， 取值为`topLeft` \| `topCenter` \| `topRight` \|`bottomLeft` \| `bottomCenter` \| `bottomRight` | Array | \[`bottomRight`] |
-
 更多配置项，请查看 [`Pagination`](/components/pagination-cn)。
-
 ### expandable
-
 展开功能的配置。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | childrenColumnName | 指定树形结构的列名 | string | children |  |
@@ -144,11 +125,8 @@
 | showExpandColumn | 是否显示展开图标列 | boolean | true | 4.18.0 |
 | onExpand | 点击展开图标时触发 | function(expanded, record) | - |  |
 | onExpandedRowsChange | 展开的行变化时触发 | function(expandedRows) | - |  |
-
 ### rowSelection
-
 选择功能的配置。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | checkStrictly | checkable 状态下节点选择完全受控（父子数据选中状态不再关联） | boolean | true | 4.4.0 |
@@ -170,17 +148,13 @@
 | onSelectInvert | 用户手动选择反选的回调 | function(selectedRowKeys) | - |  |
 | onSelectNone | 用户清空选择的回调 | function() | - |  |
 | onSelectMultiple | 用户使用键盘 shift 选择多行的回调 | function(selected, selectedRows, changeRows) | - |  |
-
 ### scroll
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | scrollToFirstRowOnChange | 当分页、排序、筛选变化后是否滚动到表格顶部 | boolean | - |
 | x | 设置横向滚动，也可用于指定滚动区域的宽，可以设置为像素值，百分比，`true` 和 ['max-content'](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width#max-content) | string \| number \| true | - |
 | y | 设置纵向滚动，也可用于指定滚动区域的高，可以设置为像素值 | string \| number | - |
-
 ### selection
-
 | 参数     | 说明                       | 类型                        | 默认值 |
 | -------- | -------------------------- | --------------------------- | ------ |
 | key      | React 需要的 key，建议设置 | string                      | -      |

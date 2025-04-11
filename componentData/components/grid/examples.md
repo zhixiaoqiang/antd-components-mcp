@@ -1,19 +1,12 @@
 ## Grid 组件示例
-
 ### 基础栅格
-
 #### zh-CN
-
 从堆叠到水平排列。
-
 使用单一的一组 `Row` 和 `Col` 栅格组件，就可以创建一个基本的栅格系统，所有列（Col）必须放在 `Row` 内。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Row>
@@ -36,31 +29,20 @@ const App: React.FC = () => (
     </Row>
   </>
 );
-
 export default App;
 
 ```
-
 ### 区块间隔
-
 #### zh-CN
-
 栅格常常需要和间隔进行配合，你可以使用 `Row` 的 `gutter` 属性，我们推荐使用 `(16+8n)px` 作为栅格间隔(n 是自然数)。
-
 如果要支持响应式，可以写成 `{ xs: 8, sm: 16, md: 24, lg: 32 }`。
-
 如果需要垂直间距，可以写成数组形式 `[水平间距, 垂直间距]` `[16, { xs: 8, sm: 16, md: 24, lg: 32 }]`。
-
 > 数组形式垂直间距在 `3.24.0` 之后支持。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Divider, Row } from 'antd';
-
 const style: React.CSSProperties = { background: '#0092ff', padding: '8px 0' };
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Horizontal</Divider>
@@ -122,25 +104,17 @@ const App: React.FC = () => (
     </Row>
   </>
 );
-
 export default App;
 
 ```
-
 ### 左右偏移
-
 #### zh-CN
-
 列偏移。
-
 使用 `offset` 可以将列向右侧偏。例如，`offset={4}` 将元素向右侧偏移了 4 个列（column）的宽度。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Row>
@@ -164,25 +138,17 @@ const App: React.FC = () => (
     </Row>
   </>
 );
-
 export default App;
 
 ```
-
 ### 栅格排序
-
 #### zh-CN
-
 列排序。
-
 通过使用 `push` 和 `pull` 类就可以很容易的改变列（column）的顺序。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <Row>
     <Col span={18} push={6}>
@@ -193,25 +159,17 @@ const App: React.FC = () => (
     </Col>
   </Row>
 );
-
 export default App;
 
 ```
-
 ### 排版
-
 #### zh-CN
-
 布局基础。
-
 子元素根据不同的值 `start`、`center`、`end`、`space-between`、`space-around` 和 `space-evenly`，分别定义其在父节点里面的排版方式。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Divider, Row } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">sub-element align left</Divider>
@@ -221,7 +179,6 @@ const App: React.FC = () => (
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-
     <Divider orientation="left">sub-element align center</Divider>
     <Row justify="center">
       <Col span={4}>col-4</Col>
@@ -229,7 +186,6 @@ const App: React.FC = () => (
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-
     <Divider orientation="left">sub-element align right</Divider>
     <Row justify="end">
       <Col span={4}>col-4</Col>
@@ -237,7 +193,6 @@ const App: React.FC = () => (
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-
     <Divider orientation="left">sub-element monospaced arrangement</Divider>
     <Row justify="space-between">
       <Col span={4}>col-4</Col>
@@ -245,7 +200,6 @@ const App: React.FC = () => (
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-
     <Divider orientation="left">sub-element align full</Divider>
     <Row justify="space-around">
       <Col span={4}>col-4</Col>
@@ -253,7 +207,6 @@ const App: React.FC = () => (
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-
     <Divider orientation="left">sub-element align evenly</Divider>
     <Row justify="space-evenly">
       <Col span={4}>col-4</Col>
@@ -263,27 +216,19 @@ const App: React.FC = () => (
     </Row>
   </>
 );
-
 export default App;
 
 ```
-
 ### 对齐
-
 #### zh-CN
-
 子元素垂直对齐。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Divider, Row } from 'antd';
-
 const DemoBox: React.FC<React.PropsWithChildren<{ value: number }>> = (props) => (
   <p className={`height-${props.value}`}>{props.children}</p>
 );
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Align Top</Divider>
@@ -301,7 +246,6 @@ const App: React.FC = () => (
         <DemoBox value={80}>col-4</DemoBox>
       </Col>
     </Row>
-
     <Divider orientation="left">Align Middle</Divider>
     <Row justify="space-around" align="middle">
       <Col span={4}>
@@ -317,7 +261,6 @@ const App: React.FC = () => (
         <DemoBox value={80}>col-4</DemoBox>
       </Col>
     </Row>
-
     <Divider orientation="left">Align Bottom</Divider>
     <Row justify="space-between" align="bottom">
       <Col span={4}>
@@ -335,23 +278,16 @@ const App: React.FC = () => (
     </Row>
   </>
 );
-
 export default App;
 
 ```
-
 ### 排序
-
 #### zh-CN
-
 通过 `order` 来改变元素的排序。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Divider, Row } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Normal</Divider>
@@ -386,23 +322,16 @@ const App: React.FC = () => (
     </Row>
   </>
 );
-
 export default App;
 
 ```
-
 ### Flex 填充
-
 #### zh-CN
-
 Col 提供 `flex` 属性以支持填充。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Divider, Row } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Percentage columns</Divider>
@@ -420,7 +349,6 @@ const App: React.FC = () => (
       <Col flex="1 1 200px">1 1 200px</Col>
       <Col flex="0 1 300px">0 1 300px</Col>
     </Row>
-
     <Row wrap={false}>
       <Col flex="none">
         <div style={{ padding: '0 16px' }}>none</div>
@@ -429,23 +357,16 @@ const App: React.FC = () => (
     </Row>
   </>
 );
-
 export default App;
 
 ```
-
 ### 响应式布局
-
 #### zh-CN
-
 参照 Bootstrap 的 [响应式设计](http://getbootstrap.com/css/##grid-media-queries)，预设六个响应尺寸：`xs` `sm` `md` `lg` `xl` `xxl`。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <Row>
     <Col xs={2} sm={4} md={6} lg={8} xl={10}>
@@ -459,23 +380,16 @@ const App: React.FC = () => (
     </Col>
   </Row>
 );
-
 export default App;
 
 ```
-
 ### Flex 响应式布局
-
 #### zh-CN
-
 支持更灵活的响应式下的任意 flex 比例，该功能需要浏览器支持 CSS Variables。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <Row>
     {Array.from({ length: 10 }).map((_, index) => {
@@ -495,25 +409,17 @@ const App: React.FC = () => (
     })}
   </Row>
 );
-
 export default App;
 
 ```
-
 ### 其他属性的响应式
-
 #### zh-CN
-
 `span` `pull` `push` `offset` `order` 属性可以通过内嵌到 `xs` `sm` `md` `lg` `xl` `xxl` 属性中来使用。
-
 其中 `xs={6}` 相当于 `xs={{ span: 6 }}`。
-
-
 
 ```typescript
 import React from 'react';
 import { Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <Row>
     <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
@@ -527,27 +433,19 @@ const App: React.FC = () => (
     </Col>
   </Row>
 );
-
 export default App;
 
 ```
-
 ### 栅格配置器
-
 #### zh-CN
-
 可以简单配置几种等分栅格和间距。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Col, Row, Slider } from 'antd';
-
 const gutters: Record<PropertyKey, number> = {};
 const vgutters: Record<PropertyKey, number> = {};
 const colCounts: Record<PropertyKey, number> = {};
-
 [8, 16, 24, 32, 40, 48].forEach((value, i) => {
   gutters[i] = value;
 });
@@ -557,12 +455,10 @@ const colCounts: Record<PropertyKey, number> = {};
 [2, 3, 4, 6, 8, 12].forEach((value, i) => {
   colCounts[i] = value;
 });
-
 const App: React.FC = () => {
   const [gutterKey, setGutterKey] = useState(1);
   const [vgutterKey, setVgutterKey] = useState(1);
   const [colCountKey, setColCountKey] = useState(2);
-
   const cols = [];
   const colCount = colCounts[colCountKey];
   let colCode = '';
@@ -574,7 +470,6 @@ const App: React.FC = () => {
     );
     colCode += `  <Col span={${24 / colCount}} />\n`;
   }
-
   return (
     <>
       <span>Horizontal Gutter (px): </span>
@@ -624,28 +519,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### useBreakpoint Hook
-
 #### zh-CN
-
 使用 `useBreakpoint` Hook 个性化布局，其中 `xs` 仅当满足最小宽度时生效。
-
-
 
 ```typescript
 import React from 'react';
 import { Grid, Tag } from 'antd';
-
 const { useBreakpoint } = Grid;
-
 const App: React.FC = () => {
   const screens = useBreakpoint();
-
   return (
     <>
       Current break point:{' '}
@@ -659,8 +545,6 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-

@@ -1,16 +1,10 @@
-
 ## 何时使用
-
 上传是将信息（网页、文字、图片、视频等）通过网页或者上传工具发布到远程服务器上的过程。
-
 - 当需要上传一个或一些文件时。
 - 当需要展现上传的进度时。
 - 当需要使用拖拽交互时。
 
-
-
 ## API
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | accept | 接受上传的文件类型，详见 [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) | string | - |  |
@@ -41,11 +35,8 @@
 | onDownload | 点击下载文件时的回调，如果没有指定，则默认跳转到文件 url 对应的标签页 | function(file): void | (跳转新标签页) |  |
 | onPreview | 点击文件链接或预览图标时的回调 | function(file) | - |  |
 | onRemove   | 点击移除文件时的回调，返回值为 false 时不移除。支持返回一个 Promise 对象，Promise 对象 resolve(false) 或 reject 时不移除               | function(file): boolean \| Promise | -   |  |
-
 ### UploadFile
-
 继承自 File，附带额外属性用于渲染。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | crossOrigin | CORS 属性设置 | `'anonymous'` \| `'use-credentials'` \| `''` | - | 4.20.0 |
@@ -55,13 +46,9 @@
 | thumbUrl | 缩略图地址 | string | - | - |
 | uid | 唯一标识符，不设置时会自动生成 | string | - | - |
 | url | 下载地址 | string | - | - |
-
 ### onChange
-
 > 💡 上传中、完成、失败都会调用这个函数。
-
 文件状态改变的回调，返回为：
-
 ```jsx
 {
   file: { /* ... */ },
@@ -69,9 +56,7 @@
   event: { /* ... */ },
 }
 ```
-
 1. `file` 当前操作的文件对象。
-
    ```jsx
    {
       uid: 'uid',      // 文件唯一标识，建议设置为负数，防止和内部产生的 id 冲突
@@ -81,53 +66,31 @@
       linkProps: '{"download": "image"}', // 下载链接额外的 HTML 属性
    }
    ```
-
 2. `fileList` 当前的文件列表。
-
 3. `event` 上传中的服务端响应内容，包含了上传进度等信息，高级浏览器支持。
 
-
-
 ## FAQ
-
 ### 服务端如何实现？
-
 - 服务端上传接口实现可以参考 [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload/wiki#server-side)。
 - 如果要做本地 mock 可以参考这个 [express 的例子](https://github.com/react-component/upload/blob/211979fdaa2c7896b6496df7061a0cfc0fc5434e/server.js)。
-
 ### 如何显示下载链接？
-
 请使用 `fileList` 属性设置数组项的 `url` 属性进行展示控制。
-
 ### `customRequest` 怎么使用？
-
 请参考 <https://github.com/react-component/upload#customrequest>。
-
 ### 为何 `fileList` 受控时，上传不在列表中的文件不会触发 `onChange` 后续的 `status` 更新事件？
-
 `onChange` 事件仅会作用于在列表中的文件，因而 `fileList` 不存在对应文件时后续事件会被忽略。请注意，在 `4.13.0` 版本之前受控状态存在 bug 导致不在列表中的文件也会触发。
-
 ### `onChange` 为什么有时候返回 File 有时候返回 { originFileObj: File }？
-
 历史原因，在 `beforeUpload` 返回 `false` 时，会返回 `File` 对象。在下个大版本我们会统一返回 `{ originFileObj: File }` 对象。当前版本已经兼容所有场景下 `info.file.originFileObj` 获取原 `File` 写法。你可以提前切换。
-
 ### 为何有时 Chrome 点击 Upload 无法弹出文件选择框？
-
 与 `antd` 无关，原生上传也会失败。请重启 `Chrome` 浏览器，让其完成升级工作。
-
 <img alt="点击 Chrome 重启启动按钮" src="https://github.com/ant-design/ant-design/assets/507615/1509b25f-4cd3-41b2-9415-90394ad08273" width="800" />
-
 相关 `issue`：
-
 - [#48007](https://github.com/ant-design/ant-design/issues/48007)
 - [#32672](https://github.com/ant-design/ant-design/issues/32672)
 - [#32913](https://github.com/ant-design/ant-design/issues/32913)
 - [#33988](https://github.com/ant-design/ant-design/issues/33988)
-
 ### 文件夹上传在 Safari 仍然可以选中文件?
-
 组件内部是以 `directory`、`webkitdirectory` 属性控制 input 来实现文件夹选择的, 但似乎在 Safari 的实现中，[并不会阻止用户选择文件](https://stackoverflow.com/q/55649945/3040605)，请尝试额外传递无法匹配文件的 `accept` 属性来规避此问题 例如:
-
 ```jsx
 accept: `.${'n'.repeat(100)}`;
 ```

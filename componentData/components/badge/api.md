@@ -1,7 +1,5 @@
 ## API
-
 ### Badge
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | color | 自定义小圆点的颜色 | string | - |  |
@@ -16,9 +14,7 @@
 | styles | 语义化结构 style | [Record<SemanticDOM, CSSProperties>](#semantic-dom) | - | 5.7.0 |
 | text | 在设置了 `status` 的前提下有效，设置状态点的文本 | ReactNode | - |  |
 | title | 设置鼠标放在状态点上时显示的文字 | string | - |  |
-
 ### Badge.Ribbon
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | color | 自定义缎带的颜色 | string | - |  |

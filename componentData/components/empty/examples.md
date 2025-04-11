@@ -1,53 +1,33 @@
 ## Empty 组件示例
-
 ### 基本
-
 #### zh-CN
-
 简单的展示。
 
-
-
 ```typescript
 import React from 'react';
 import { Empty } from 'antd';
-
 const App: React.FC = () => <Empty />;
-
 export default App;
 
 ```
-
 ### 选择图片
-
 #### zh-CN
-
 可以通过设置 `image` 为 `Empty.PRESENTED_IMAGE_SIMPLE` 选择另一种风格的图片。
 
-
-
 ```typescript
 import React from 'react';
 import { Empty } from 'antd';
-
 const App: React.FC = () => <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />;
-
 export default App;
 
 ```
-
 ### 自定义
-
 #### zh-CN
-
 自定义图片链接、图片大小、描述、附属内容。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Empty, Typography } from 'antd';
-
 const App: React.FC = () => (
   <Empty
     image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
@@ -61,18 +41,12 @@ const App: React.FC = () => (
     <Button type="primary">Create Now</Button>
   </Empty>
 );
-
 export default App;
 
 ```
-
 ### 全局化配置
-
 #### zh-CN
-
 自定义全局组件的 Empty 样式。
-
-
 
 ```typescript
 import React, { useState } from 'react';
@@ -89,16 +63,13 @@ import {
   Transfer,
   TreeSelect,
 } from 'antd';
-
 const customizeRenderEmpty = () => (
   <div style={{ textAlign: 'center' }}>
     <SmileOutlined style={{ fontSize: 20 }} />
     <p>Data Not Found</p>
   </div>
 );
-
 const style: React.CSSProperties = { width: 200 };
-
 const App: React.FC = () => {
   const [customize, setCustomize] = useState(true);
   return (
@@ -135,26 +106,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 无描述
-
 #### zh-CN
-
 无描述展示。
-
-
 
 ```typescript
 import React from 'react';
 import { Empty } from 'antd';
-
 const App: React.FC = () => <Empty description={false} />;
-
 export default App;
 
 ```
-

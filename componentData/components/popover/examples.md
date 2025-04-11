@@ -1,53 +1,38 @@
 ## Popover 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法，浮层的大小由内容区域决定。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Popover } from 'antd';
-
 const content = (
   <div>
     <p>Content</p>
     <p>Content</p>
   </div>
 );
-
 const App: React.FC = () => (
   <Popover content={content} title="Title">
     <Button type="primary">Hover me</Button>
   </Popover>
 );
-
 export default App;
 
 ```
-
 ### 三种触发方式
-
 #### zh-CN
-
 鼠标移入、聚集、点击。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Popover, Space } from 'antd';
-
 const content = (
   <div>
     <p>Content</p>
     <p>Content</p>
   </div>
 );
-
 const App: React.FC = () => (
   <Space wrap>
     <Popover content={content} title="Title" trigger="hover">
@@ -61,34 +46,24 @@ const App: React.FC = () => (
     </Popover>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 位置
-
 #### zh-CN
-
 位置有十二个方向。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, ConfigProvider, Flex, Popover } from 'antd';
-
 const text = <span>Title</span>;
-
 const content = (
   <div>
     <p>Content</p>
     <p>Content</p>
   </div>
 );
-
 const buttonWidth = 80;
-
 const App: React.FC = () => (
   <ConfigProvider button={{ style: { width: buttonWidth, margin: 4 } }}>
     <Flex vertical justify="center" align="center" className="demo">
@@ -141,52 +116,38 @@ const App: React.FC = () => (
     </Flex>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-
 ### 箭头展示
-
 #### zh-CN
-
 通过 `arrow` 属性隐藏箭头。
-
-
 
 ```typescript
 import React, { useMemo, useState } from 'react';
 import { Button, ConfigProvider, Flex, Popover, Segmented } from 'antd';
 import type { PopoverProps } from 'antd';
-
 const text = <span>Title</span>;
-
 const buttonWidth = 80;
-
 const content = (
   <div>
     <p>Content</p>
     <p>Content</p>
   </div>
 );
-
 const App: React.FC = () => {
   const [arrow, setArrow] = useState<'Show' | 'Hide' | 'Center'>('Show');
-
   const mergedArrow = useMemo<PopoverProps['arrow']>(() => {
     if (arrow === 'Hide') {
       return false;
     }
-
     if (arrow === 'Show') {
       return true;
     }
-
     return {
       pointAtCenter: true,
     };
   }, [arrow]);
-
   return (
     <ConfigProvider button={{ style: { width: buttonWidth, margin: 4 } }}>
       <Segmented
@@ -245,25 +206,18 @@ const App: React.FC = () => {
     </ConfigProvider>
   );
 };
-
 export default App;
 
 ```
-
 ### Arrow.pointAtCenter
-
 #### zh-CN
-
 `arrow={{ pointAtCenter: true }}` 属性可以让箭头指向目标元素的中心。
-
-
 
 ```typescript
 import React from 'react';
 import { createStyles } from 'antd-style';
 import { Flex, Popover } from 'antd';
 import type { GetProp } from 'antd';
-
 const useStyle = createStyles(() => ({
   item: {
     width: '280px',
@@ -273,16 +227,13 @@ const useStyle = createStyles(() => ({
     alignItems: 'center',
     border: '1px dashed purple',
   },
-
   box: {
     width: '40px',
     height: '40px',
     backgroundColor: 'deepskyblue',
   },
-
   cross: {
     position: 'relative',
-
     '&::before, &::after': {
       content: '""',
       position: 'absolute',
@@ -300,9 +251,7 @@ const useStyle = createStyles(() => ({
     },
   },
 }));
-
 type Placement = GetProp<typeof Popover, 'placement'>;
-
 const placements: Placement[] = [
   'topLeft',
   'top',
@@ -317,7 +266,6 @@ const placements: Placement[] = [
   'bottom',
   'bottomRight',
 ];
-
 const App = () => {
   const { styles, cx } = useStyle();
   return (
@@ -343,23 +291,16 @@ const App = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 贴边偏移
-
 #### zh-CN
-
 当 Popover 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Popover } from 'antd';
-
 const style: React.CSSProperties = {
   width: '300vw',
   height: '300vh',
@@ -367,7 +308,6 @@ const style: React.CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
 };
-
 const App: React.FC = () => {
   React.useEffect(() => {
     document.documentElement.scrollTop = document.documentElement.clientHeight;
@@ -381,34 +321,24 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 从浮层内关闭
-
 #### zh-CN
-
 使用 `open` 属性控制浮层显示。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Popover } from 'antd';
-
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
-
   const hide = () => {
     setOpen(false);
   };
-
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen);
   };
-
   return (
     <Popover
       content={<a onClick={hide}>Close</a>}
@@ -421,42 +351,31 @@ const App: React.FC = () => {
     </Popover>
   );
 };
-
 export default App;
 
 ```
-
 ### 悬停点击弹出窗口
-
 #### zh-CN
-
 以下示例显示如何创建可悬停和单击的弹出窗口。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Popover } from 'antd';
-
 const App: React.FC = () => {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
-
   const hide = () => {
     setClicked(false);
     setHovered(false);
   };
-
   const handleHoverChange = (open: boolean) => {
     setHovered(open);
     setClicked(false);
   };
-
   const handleClickChange = (open: boolean) => {
     setHovered(false);
     setClicked(open);
   };
-
   const hoverContent = <div>This is hover content.</div>;
   const clickContent = <div>This is click content.</div>;
   return (
@@ -485,32 +404,23 @@ const App: React.FC = () => {
     </Popover>
   );
 };
-
 export default App;
 
 ```
-
 ### _InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Popover } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopover } = Popover;
-
 const content = (
   <div>
     <p>Content</p>
     <p>Content</p>
   </div>
 );
-
 const App: React.FC = () => (
   <>
     <InternalPopover content={content} title="Title" />
@@ -522,32 +432,23 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 线框风格
-
 #### zh-CN
-
 线框样式。
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Popover } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopover } = Popover;
-
 const content = (
   <div>
     <p>Content</p>
     <p>Content</p>
   </div>
 );
-
 const App: React.FC = () => (
   <ConfigProvider theme={{ token: { wireframe: true } }}>
     <InternalPopover content={content} title="Title" />
@@ -559,32 +460,23 @@ const App: React.FC = () => (
     />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Popover } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopover } = Popover;
-
 const content = (
   <div>
     <p>Content</p>
     <p>Content</p>
   </div>
 );
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -604,8 +496,6 @@ const App: React.FC = () => (
     />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

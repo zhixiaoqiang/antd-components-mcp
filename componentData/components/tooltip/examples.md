@@ -1,43 +1,28 @@
 ## Tooltip 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React from 'react';
 import { Tooltip } from 'antd';
-
 const App: React.FC = () => (
   <Tooltip title="prompt text">
     <span>Tooltip will show on mouse enter.</span>
   </Tooltip>
 );
-
 export default App;
 
 ```
-
 ### 位置
-
 #### zh-CN
-
 位置有 12 个方向。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, ConfigProvider, Flex, Tooltip } from 'antd';
-
 const text = <span>prompt text</span>;
-
 const buttonWidth = 80;
-
 const App: React.FC = () => (
   <ConfigProvider button={{ style: { width: buttonWidth, margin: 4 } }}>
     <Flex vertical justify="center" align="center" className="demo">
@@ -90,45 +75,32 @@ const App: React.FC = () => (
     </Flex>
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-
 ### 箭头展示
-
 #### zh-CN
-
 支持显示、隐藏以及将箭头保持居中定位。
-
-
 
 ```typescript
 import React, { useMemo, useState } from 'react';
 import { Button, ConfigProvider, Flex, Segmented, Tooltip } from 'antd';
 import type { TooltipProps } from 'antd';
-
 const text = <span>prompt text</span>;
-
 const buttonWidth = 80;
-
 const App: React.FC = () => {
   const [arrow, setArrow] = useState<'Show' | 'Hide' | 'Center'>('Show');
-
   const mergedArrow = useMemo<TooltipProps['arrow']>(() => {
     if (arrow === 'Hide') {
       return false;
     }
-
     if (arrow === 'Show') {
       return true;
     }
-
     return {
       pointAtCenter: true,
     };
   }, [arrow]);
-
   return (
     <ConfigProvider button={{ style: { width: buttonWidth, margin: 4 } }}>
       <Segmented
@@ -188,23 +160,16 @@ const App: React.FC = () => {
     </ConfigProvider>
   );
 };
-
 export default App;
 
 ```
-
 ### 贴边偏移
-
 #### zh-CN
-
 当 Tooltip 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Tooltip } from 'antd';
-
 const style: React.CSSProperties = {
   width: '300vw',
   height: '300vh',
@@ -212,7 +177,6 @@ const style: React.CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
 };
-
 const App: React.FC = () => {
   React.useEffect(() => {
     document.documentElement.scrollTop = document.documentElement.clientHeight;
@@ -226,24 +190,17 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 自动调整位置
-
 #### zh-CN
-
 气泡框不可见时自动调整位置。
-
-
 
 ```typescript
 import React from 'react';
 import type { TooltipProps } from 'antd';
 import { Button, Tooltip, Typography } from 'antd';
-
 const Block = React.forwardRef<HTMLDivElement, Partial<TooltipProps>>((props, ref) => (
   <div
     style={{
@@ -272,65 +229,47 @@ const Block = React.forwardRef<HTMLDivElement, Partial<TooltipProps>>((props, re
     </div>
   </div>
 ));
-
 const App: React.FC = () => {
   const containerRef1 = React.useRef<HTMLDivElement>(null);
   const containerRef2 = React.useRef<HTMLDivElement>(null);
-
   React.useEffect(() => {
     containerRef1.current!.scrollLeft = containerRef1.current!.clientWidth * 0.5;
     containerRef2.current!.scrollLeft = containerRef2.current!.clientWidth * 0.5;
   }, []);
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', rowGap: 16 }}>
       <Typography.Title level={5}>With `getPopupContainer`</Typography.Title>
       <Block ref={containerRef1} getPopupContainer={(trigger) => trigger.parentElement!} />
-
       <Typography.Title level={5}>Without `getPopupContainer`</Typography.Title>
       <Block ref={containerRef2} />
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 隐藏后销毁
-
 #### zh-CN
-
 通过 `destroyTooltipOnHide` 控制提示关闭时是否销毁 dom 节点。
-
-
 
 ```typescript
 import React from 'react';
 import { Tooltip } from 'antd';
-
 const App: React.FC = () => (
   <Tooltip destroyTooltipOnHide title="prompt text">
     <span>Tooltip will destroy when hidden.</span>
   </Tooltip>
 );
-
 export default App;
 
 ```
-
 ### 多彩文字提示
-
 #### zh-CN
-
 我们添加了多种预设色彩的文字提示样式，用作不同场景使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Divider, Space, Tooltip } from 'antd';
-
 const colors = [
   'pink',
   'red',
@@ -346,9 +285,7 @@ const colors = [
   'gold',
   'lime',
 ];
-
 const customColors = ['#f50', '#2db7f5', '#87d068', '#108ee9'];
-
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Presets</Divider>
@@ -369,25 +306,17 @@ const App: React.FC = () => (
     </Space>
   </>
 );
-
 export default App;
 
 ```
-
 ### _InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Tooltip } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalTooltip } = Tooltip;
-
 const App: React.FC = () => (
   <>
     <InternalTooltip title="Hello, Pink Pure Panel!" color="pink" />
@@ -395,25 +324,17 @@ const App: React.FC = () => (
     <InternalTooltip title="Hello, Pure Panel!" placement="bottomLeft" style={{ width: 200 }} />
   </>
 );
-
 export default App;
 
 ```
-
 ### Debug
-
 #### zh-CN
-
 Debug 用例。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Flex, Tooltip } from 'antd';
-
 const zeroWidthEle = <div />;
-
 const App: React.FC = () => (
   <Flex vertical gap={72} align="flex-start">
     <span />
@@ -433,53 +354,37 @@ const App: React.FC = () => (
     </Tooltip>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 禁用
-
 #### zh-CN
-
 通过设置 `title={null}` 或者 `title=""` 可以禁用 Tooltip。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Tooltip } from 'antd';
-
 const App: React.FC = () => {
   const [disabled, setDisabled] = useState(true);
-
   return (
     <Tooltip title={disabled ? null : 'prompt text'}>
       <Button onClick={() => setDisabled(!disabled)}>{disabled ? 'Enable' : 'Disable'}</Button>
     </Tooltip>
   );
 };
-
 export default App;
 
 ```
-
 ### 禁用子元素
-
 #### zh-CN
-
 Disabled 子元素。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Checkbox, Input, InputNumber, Select, Space, Tooltip } from 'antd';
-
 const WrapperTooltip: React.FC<React.PropsWithChildren> = (props) => (
   <Tooltip title="Thanks for using antd. Have a nice day !" {...props} />
 );
-
 const App: React.FC = () => (
   <Space>
     <WrapperTooltip>
@@ -499,34 +404,24 @@ const App: React.FC = () => (
     </WrapperTooltip>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 自定义子组件
-
 #### zh-CN
-
 与自定义组件一起使用.
-
-
 
 ```typescript
 import { Tooltip } from 'antd';
 import React from 'react';
-
 const ComponentWithEvents: React.FC<React.HTMLAttributes<HTMLSpanElement>> = (props) => (
   <span {...props}>This text is inside a component with the necessary events exposed.</span>
 );
-
 const App: React.FC = () => (
   <Tooltip title="prompt text">
     <ComponentWithEvents />
   </Tooltip>
 );
-
 export default App;
 
 ```
-

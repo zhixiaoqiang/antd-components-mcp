@@ -1,104 +1,70 @@
 ## Skeleton 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的占位效果。
 
-
-
 ```typescript
 import React from 'react';
 import { Skeleton } from 'antd';
-
 const App: React.FC = () => <Skeleton />;
-
 export default App;
 
 ```
-
 ### 复杂的组合
-
 #### zh-CN
-
 更复杂的组合。
 
-
-
 ```typescript
 import React from 'react';
 import { Skeleton } from 'antd';
-
 const App: React.FC = () => <Skeleton avatar paragraph={{ rows: 4 }} />;
-
 export default App;
 
 ```
-
 ### 动画效果
-
 #### zh-CN
-
 显示动画效果。
 
-
-
 ```typescript
 import React from 'react';
 import { Skeleton } from 'antd';
-
 const App: React.FC = () => <Skeleton active />;
-
 export default App;
 
 ```
-
 ### 按钮/头像/输入框/图像/自定义节点
-
 #### zh-CN
-
 骨架按钮、头像、输入框、图像和自定义节点。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { DotChartOutlined } from '@ant-design/icons';
 import type { RadioChangeEvent } from 'antd';
 import { Flex, Divider, Form, Radio, Skeleton, Space, Switch } from 'antd';
-
 type SizeType = 'default' | 'small' | 'large';
 type ButtonShapeType = 'circle' | 'square' | 'round' | 'default';
 type AvatarShapeType = 'circle' | 'square';
-
 const App: React.FC = () => {
   const [active, setActive] = useState(false);
   const [block, setBlock] = useState(false);
   const [size, setSize] = useState<SizeType>('default');
   const [buttonShape, setButtonShape] = useState<ButtonShapeType>('default');
   const [avatarShape, setAvatarShape] = useState<AvatarShapeType>('circle');
-
   const handleActiveChange = (checked: boolean) => {
     setActive(checked);
   };
-
   const handleBlockChange = (checked: boolean) => {
     setBlock(checked);
   };
-
   const handleSizeChange = (e: RadioChangeEvent) => {
     setSize(e.target.value);
   };
-
   const handleShapeButton = (e: RadioChangeEvent) => {
     setButtonShape(e.target.value);
   };
-
   const handleAvatarShape = (e: RadioChangeEvent) => {
     setAvatarShape(e.target.value);
   };
-
   return (
     <Flex gap="middle" vertical>
       <Space>
@@ -150,33 +116,24 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 包含子组件
-
 #### zh-CN
-
 加载占位图包含子组件。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Button, Skeleton, Space } from 'antd';
-
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
-
   const showSkeleton = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   };
-
   return (
     <Space direction="vertical" style={{ width: '100%' }} size={16}>
       <Skeleton loading={loading}>
@@ -193,30 +150,22 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 列表
-
 #### zh-CN
-
 在列表组件中使用加载占位符。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type Icon from '@ant-design/icons';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import { Avatar, List, Skeleton, Switch } from 'antd';
-
 interface IconTextProps {
   icon: typeof Icon;
   text: React.ReactNode;
 }
-
 const listData = Array.from({ length: 3 }).map((_, i) => ({
   href: 'https://ant.design',
   title: `ant design part ${i + 1}`,
@@ -226,21 +175,17 @@ const listData = Array.from({ length: 3 }).map((_, i) => ({
   content:
     'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
 }));
-
 const IconText: React.FC<IconTextProps> = ({ icon, text }) => (
   <>
     {React.createElement(icon, { style: { marginInlineEnd: 8 } })}
     {text}
   </>
 );
-
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
-
   const onChange = (checked: boolean) => {
     setLoading(!checked);
   };
-
   return (
     <>
       <Switch checked={!loading} onChange={onChange} style={{ marginBottom: 16 }} />
@@ -284,23 +229,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义组件 Token
-
 #### zh-CN
-
 自定义组件 Token。
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Skeleton } from 'antd';
-
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -319,8 +257,6 @@ const App: React.FC = () => (
     <Skeleton loading active />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

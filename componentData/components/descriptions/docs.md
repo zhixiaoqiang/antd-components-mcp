@@ -1,11 +1,7 @@
-
 ## 何时使用
-
 常见于详情页的信息展示。
-
 ```tsx | pure
 // >= 5.8.0 可用，推荐的写法 ✅
-
 const items: DescriptionsProps['items'] = [
   {
     key: '1',
@@ -33,11 +29,8 @@ const items: DescriptionsProps['items'] = [
     children: <p>No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China</p>,
   },
 ];
-
 <Descriptions title="User Info" items={items} />;
-
 // <5.8.0 可用，>=5.8.0 时不推荐 🙅🏻‍♀️
-
 <Descriptions title="User Info">
   <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
   <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
@@ -49,12 +42,8 @@ const items: DescriptionsProps['items'] = [
 </Descriptions>;
 ```
 
-
-
 ## API
-
 ### Descriptions
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | bordered | 是否展示边框 | boolean | false |  |
@@ -69,18 +58,13 @@ const items: DescriptionsProps['items'] = [
 | title | 描述列表的标题，显示在最顶部 | ReactNode | - |  |
 | classNames | 语义化结构 class | [Record<SemanticDOM, string>](#semantic-dom) | - | 5.23.0 |
 | styles | 语义化结构 style | [Record<SemanticDOM, CSSProperties>](#semantic-dom) | - | 5.23.0 |
-
 ### DescriptionItem
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | ~~contentStyle~~ | 自定义内容样式，请使用 `styles={{ content: {} }}` 替换 | CSSProperties | - | 4.9.0 |
 | label | 内容的描述 | ReactNode | - |  |
 | ~~labelStyle~~ | 自定义标签样式，请使用 `styles={{ label: {} }}` 替换 | CSSProperties | - | 4.9.0 |
 | span | 包含列的数量（`filled` 铺满当前行剩余部分） | number\| `filled` \| [Screens](/components/grid-cn#col) | 1 | `screens: 5.9.0`，`filled: 5.22.0` |
-
 > span 是 Description.Item 的数量。 span={2} 会占用两个 DescriptionItem 的宽度。当同时配置 `style` 和 `labelStyle`（或 `contentStyle`）时，两者会同时作用。样式冲突时，后者会覆盖前者。
-
-
 
 

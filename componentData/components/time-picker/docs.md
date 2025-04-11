@@ -1,22 +1,14 @@
-
 ## 何时使用
-
 当用户需要输入一个时间，可以点击标准输入框，弹出时间面板进行选择。
 
-
-
 ## API
-
 ---
-
 ```jsx
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-
 dayjs.extend(customParseFormat)
 <TimePicker defaultValue={dayjs('13:30:56', 'HH:mm:ss')} />;
 ```
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | allowClear | 自定义清除按钮 | boolean \| { clearIcon?: ReactNode } | true | 5.8.0: 支持对象类型 |
@@ -52,9 +44,7 @@ dayjs.extend(customParseFormat)
 | onCalendarChange | 待选日期发生变化的回调。`info` 参数自 4.4.0 添加 | function(dates: \[dayjs, dayjs], dateStrings: \[string, string], info: { range:`start`\|`end` }) | - |  |
 | onChange | 时间发生变化的回调 | function(time: dayjs, timeString: string): void | - |  |
 | onOpenChange | 面板打开/关闭时的回调 | (open: boolean) => void | - |  |
-
 #### DisabledTime
-
 ```typescript
 type DisabledTime = (now: Dayjs) => {
   disabledHours?: () => number[];
@@ -67,27 +57,19 @@ type DisabledTime = (now: Dayjs) => {
   ) => number[];
 };
 ```
-
 注意：`disabledMilliseconds` 为 `5.14.0` 新增。
-
 ## 方法
-
 | 名称    | 描述     | 版本 |
 | ------- | -------- | ---- |
 | blur()  | 移除焦点 |      |
 | focus() | 获取焦点 |      |
-
 ## RangePicker
-
 属性与 DatePicker 的 [RangePicker](/components/date-picker-cn#rangepicker) 相同。还包含以下属性：
-
 | 参数         | 说明                 | 类型                                    | 默认值 | 版本   |
 | ------------ | -------------------- | --------------------------------------- | ------ | ------ |
 | disabledTime | 不可选择的时间       | [RangeDisabledTime](#rangedisabledtime) | -      | 4.19.0 |
 | order        | 始末时间是否自动排序 | boolean                                 | true   | 4.1.0  |
-
 ### RangeDisabledTime
-
 ```typescript
 type RangeDisabledTime = (
   now: Dayjs,
@@ -99,8 +81,5 @@ type RangeDisabledTime = (
 };
 ```
 
-
-
 ## FAQ
-
 - [如何在 TimePicker 中使用自定义日期库（如 Moment.js ）](/docs/react/use-custom-date-library#timepicker)

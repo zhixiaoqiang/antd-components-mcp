@@ -1,38 +1,27 @@
 ## AutoComplete 组件示例
-
 ### 基本使用
-
 #### zh-CN
-
 基本使用，通过 `options` 设置自动完成的数据源。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AutoComplete } from 'antd';
 import type { AutoCompleteProps } from 'antd';
-
 const mockVal = (str: string, repeat = 1) => ({
   value: str.repeat(repeat),
 });
-
 const App: React.FC = () => {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState<AutoCompleteProps['options']>([]);
   const [anotherOptions, setAnotherOptions] = useState<AutoCompleteProps['options']>([]);
-
   const getPanelValue = (searchText: string) =>
     !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)];
-
   const onSelect = (data: string) => {
     console.log('onSelect', data);
   };
-
   const onChange = (data: string) => {
     setValue(data);
   };
-
   return (
     <>
       <AutoComplete
@@ -56,24 +45,17 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义选项
-
 #### zh-CN
-
 可以返回自定义的 `Option` label
-
-
 
 ```typescript
 import React from 'react';
 import { AutoComplete } from 'antd';
 import type { AutoCompleteProps } from 'antd';
-
 const App: React.FC = () => {
   const [options, setOptions] = React.useState<AutoCompleteProps['options']>([]);
   const handleSearch = (value: string) => {
@@ -96,43 +78,31 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义输入组件
-
 #### zh-CN
-
 自定义输入组件。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AutoComplete, Input } from 'antd';
 import type { AutoCompleteProps } from 'antd';
-
 const { TextArea } = Input;
-
 const App: React.FC = () => {
   const [options, setOptions] = useState<AutoCompleteProps['options']>([]);
-
   const handleSearch = (value: string) => {
     setOptions(
       !value ? [] : [{ value }, { value: value + value }, { value: value + value + value }],
     );
   };
-
   const handleKeyPress = (ev: React.KeyboardEvent<HTMLTextAreaElement>) => {
     console.log('handleKeyPress', ev);
   };
-
   const onSelect = (value: string) => {
     console.log('onSelect', value);
   };
-
   return (
     <AutoComplete
       options={options}
@@ -149,29 +119,21 @@ const App: React.FC = () => {
     </AutoComplete>
   );
 };
-
 export default App;
 
 ```
-
 ### 不区分大小写
-
 #### zh-CN
-
 不区分大小写的 AutoComplete
-
-
 
 ```typescript
 import React from 'react';
 import { AutoComplete } from 'antd';
-
 const options = [
   { value: 'Burns Bay Road' },
   { value: 'Downing Street' },
   { value: 'Wall Street' },
 ];
-
 const App: React.FC = () => (
   <AutoComplete
     style={{ width: 200 }}
@@ -182,24 +144,17 @@ const App: React.FC = () => (
     }
   />
 );
-
 export default App;
 
 ```
-
 ### 查询模式 - 确定类目
-
 #### zh-CN
-
 [查询模式: 确定类目](https://ant.design/docs/spec/reaction##lookup-patterns) 示例。
-
-
 
 ```typescript
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { AutoComplete, Flex, Input } from 'antd';
-
 const Title: React.FC<Readonly<{ title?: string }>> = (props) => (
   <Flex align="center" justify="space-between">
     {props.title}
@@ -208,7 +163,6 @@ const Title: React.FC<Readonly<{ title?: string }>> = (props) => (
     </a>
   </Flex>
 );
-
 const renderItem = (title: string, count: number) => ({
   value: title,
   label: (
@@ -220,7 +174,6 @@ const renderItem = (title: string, count: number) => ({
     </Flex>
   ),
 });
-
 const options = [
   {
     label: <Title title="Libraries" />,
@@ -235,7 +188,6 @@ const options = [
     options: [renderItem('AntDesign design language', 100000)],
   },
 ];
-
 const App: React.FC = () => (
   <AutoComplete
     popupClassName="certain-category-search-dropdown"
@@ -247,26 +199,18 @@ const App: React.FC = () => (
     <Input.Search size="large" placeholder="input here" />
   </AutoComplete>
 );
-
 export default App;
 
 ```
-
 ### 查询模式 - 不确定类目
-
 #### zh-CN
-
 [查询模式: 不确定类目](https://ant.design/docs/spec/reaction##lookup-patterns) 示例。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AutoComplete, Input } from 'antd';
 import type { AutoCompleteProps } from 'antd';
-
 const getRandomInt = (max: number, min = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
-
 const searchResult = (query: string) =>
   Array.from({ length: getRandomInt(5) })
     .join('.')
@@ -297,18 +241,14 @@ const searchResult = (query: string) =>
         ),
       };
     });
-
 const App: React.FC = () => {
   const [options, setOptions] = useState<AutoCompleteProps['options']>([]);
-
   const handleSearch = (value: string) => {
     setOptions(value ? searchResult(value) : []);
   };
-
   const onSelect = (value: string) => {
     console.log('onSelect', value);
   };
-
   return (
     <AutoComplete
       popupMatchSelectWidth={252}
@@ -322,35 +262,25 @@ const App: React.FC = () => {
     </AutoComplete>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义状态
-
 #### zh-CN
-
 使用 `status` 为 AutoComplete 添加状态，可选 `error` 或者 `warning`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AutoComplete, Space } from 'antd';
 import type { AutoCompleteProps } from 'antd';
-
 const mockVal = (str: string, repeat = 1) => ({
   value: str.repeat(repeat),
 });
-
 const App: React.FC = () => {
   const [options, setOptions] = useState<AutoCompleteProps['options']>([]);
   const [anotherOptions, setAnotherOptions] = useState<AutoCompleteProps['options']>([]);
-
   const getPanelValue = (searchText: string) =>
     !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)];
-
   return (
     <Space direction="vertical" style={{ width: '100%' }}>
       <AutoComplete
@@ -368,34 +298,24 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 多种形态
-
 #### zh-CN
-
 可选 `outlined` `filled` `borderless` 三种形态。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { AutoComplete, Flex } from 'antd';
 import type { AutoCompleteProps } from 'antd';
-
 const mockVal = (str: string, repeat = 1) => ({
   value: str.repeat(repeat),
 });
-
 const App: React.FC = () => {
   const [options, setOptions] = useState<AutoCompleteProps['options']>([]);
-
   const getPanelValue = (searchText: string) =>
     !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)];
-
   return (
     <Flex vertical gap={12}>
       <AutoComplete
@@ -424,35 +344,25 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义清除按钮
-
 #### zh-CN
-
 自定义清除按钮
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { CloseSquareFilled } from '@ant-design/icons';
 import { AutoComplete } from 'antd';
 import type { AutoCompleteProps } from 'antd';
-
 const mockVal = (str: string, repeat = 1) => ({
   value: str.repeat(repeat),
 });
-
 const App: React.FC = () => {
   const [options, setOptions] = useState<AutoCompleteProps['options']>([]);
-
   const getPanelValue = (searchText: string) =>
     !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)];
-
   return (
     <>
       <AutoComplete
@@ -474,20 +384,16 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 在 Form 中 Debug
-
 undefined
 
 ```typescript
 import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { AutoComplete, Button, Form, Input, TreeSelect } from 'antd';
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -498,7 +404,6 @@ const formItemLayout = {
     sm: { span: 16 },
   },
 };
-
 const App: React.FC = () => (
   <Form style={{ margin: '0 auto' }} {...formItemLayout}>
     <Form.Item label="单独 AutoComplete">
@@ -547,23 +452,16 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
-
 export default App;
 
 ```
-
 ### AutoComplete 和 Select
-
 #### zh-CN
-
 debug demo
-
-
 
 ```typescript
 import React from 'react';
 import { AutoComplete, Flex, Select } from 'antd';
-
 const AutoCompleteAndSelect = () => {
   return (
     <Flex vertical gap={16}>
@@ -582,28 +480,19 @@ const AutoCompleteAndSelect = () => {
     </Flex>
   );
 };
-
 export default AutoCompleteAndSelect;
 
 ```
-
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { AutoComplete, Space, Switch } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalAutoComplete } = AutoComplete;
-
 const App: React.FC = () => {
   const [open, setOpen] = React.useState(false);
-
   return (
     <Space direction="vertical" style={{ display: 'flex' }}>
       <Switch checked={open} onChange={() => setOpen(!open)} />
@@ -621,8 +510,6 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-

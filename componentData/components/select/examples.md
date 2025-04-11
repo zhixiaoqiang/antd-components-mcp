@@ -1,21 +1,14 @@
 ## Select 组件示例
-
 ### 基本使用
-
 #### zh-CN
-
 基本使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Select, Space } from 'antd';
-
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
 };
-
 const App: React.FC = () => (
   <Space wrap>
     <Select
@@ -50,31 +43,22 @@ const App: React.FC = () => (
     />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 带搜索框
-
 #### zh-CN
-
 展开后可对选项进行搜索。
-
-
 
 ```typescript
 import React from 'react';
 import { Select } from 'antd';
-
 const onChange = (value: string) => {
   console.log(`selected ${value}`);
 };
-
 const onSearch = (value: string) => {
   console.log('search:', value);
 };
-
 const App: React.FC = () => (
   <Select
     showSearch
@@ -98,23 +82,16 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 自定义搜索
-
 #### zh-CN
-
 使用 `filterOption` 自定义搜索。
-
-
 
 ```typescript
 import React from 'react';
 import { Select } from 'antd';
-
 const App: React.FC = () => (
   <Select
     showSearch
@@ -129,37 +106,27 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 多选
-
 #### zh-CN
-
 多选，从已有条目中选择。
-
-
 
 ```typescript
 import React from 'react';
 import { Select, Space } from 'antd';
 import type { SelectProps } from 'antd';
-
 const options: SelectProps['options'] = [];
-
 for (let i = 10; i < 36; i++) {
   options.push({
     label: i.toString(36) + i,
     value: i.toString(36) + i,
   });
 }
-
 const handleChange = (value: string[]) => {
   console.log(`selected ${value}`);
 };
-
 const App: React.FC = () => (
   <Space style={{ width: '100%' }} direction="vertical">
     <Select
@@ -182,46 +149,33 @@ const App: React.FC = () => (
     />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 三种大小
-
 #### zh-CN
-
 三种大小的选择框，当 size 分别为 `large` 和 `small` 时，输入框高度为 `40px` 和 `24px` ，默认高度为 `32px`。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Radio, Select, Space } from 'antd';
 import type { ConfigProviderProps, RadioChangeEvent, SelectProps } from 'antd';
-
 type SizeType = ConfigProviderProps['componentSize'];
-
 const options: SelectProps['options'] = [];
-
 for (let i = 10; i < 36; i++) {
   options.push({
     value: i.toString(36) + i,
     label: i.toString(36) + i,
   });
 }
-
 const handleChange = (value: string | string[]) => {
   console.log(`Selected: ${value}`);
 };
-
 const App: React.FC = () => {
   const [size, setSize] = useState<SizeType>('middle');
-
   const handleSizeChange = (e: RadioChangeEvent) => {
     setSize(e.target.value);
   };
-
   return (
     <>
       <Radio.Group value={size} onChange={handleSizeChange}>
@@ -261,27 +215,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义下拉选项
-
 #### zh-CN
-
 使用 `optionRender` 自定义渲染下拉选项。
-
-
 
 ```typescript
 import React from 'react';
 import { Select, Space } from 'antd';
-
 const handleChange = (value: string[]) => {
   console.log(`selected ${value}`);
 };
-
 const options = [
   {
     label: 'China',
@@ -308,7 +254,6 @@ const options = [
     desc: 'Korea (韩国)',
   },
 ];
-
 const App: React.FC = () => (
   <Select
     mode="multiple"
@@ -327,23 +272,16 @@ const App: React.FC = () => (
     )}
   />
 );
-
 export default App;
 
 ```
-
 ### 带排序的搜索
-
 #### zh-CN
-
 在搜索模式下对过滤结果项进行排序。
-
-
 
 ```typescript
 import React from 'react';
 import { Select } from 'antd';
-
 const App: React.FC = () => (
   <Select
     showSearch
@@ -381,37 +319,27 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 标签
-
 #### zh-CN
-
 标签形式的多选框，用户亦可自由输入。
-
-
 
 ```typescript
 import React from 'react';
 import { Select } from 'antd';
 import type { SelectProps } from 'antd';
-
 const options: SelectProps['options'] = [];
-
 for (let i = 10; i < 36; i++) {
   options.push({
     value: i.toString(36) + i,
     label: i.toString(36) + i,
   });
 }
-
 const handleChange = (value: string[]) => {
   console.log(`selected ${value}`);
 };
-
 const App: React.FC = () => (
   <Select
     mode="tags"
@@ -421,27 +349,19 @@ const App: React.FC = () => (
     options={options}
   />
 );
-
 export default App;
 
 ```
-
 ### 分组
-
 #### zh-CN
-
 用 `OptGroup` 进行选项分组。
-
-
 
 ```typescript
 import React from 'react';
 import { Select } from 'antd';
-
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
 };
-
 const App: React.FC = () => (
   <Select
     defaultValue="lucy"
@@ -467,45 +387,32 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 联动
-
 #### zh-CN
-
 省市联动是典型的例子，联动场景我们更推荐使用 [Cascader](/components/cascader-cn/) 组件。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Select, Space } from 'antd';
-
 const cityData = {
   Zhejiang: ['Hangzhou', 'Ningbo', 'Wenzhou'],
   Jiangsu: ['Nanjing', 'Suzhou', 'Zhenjiang'],
 };
-
 type CityName = keyof typeof cityData;
-
 const provinceData: CityName[] = ['Zhejiang', 'Jiangsu'];
-
 const App: React.FC = () => {
   const [cities, setCities] = useState(cityData[provinceData[0] as CityName]);
   const [secondCity, setSecondCity] = useState(cityData[provinceData[0]][0] as CityName);
-
   const handleProvinceChange = (value: CityName) => {
     setCities(cityData[value]);
     setSecondCity(cityData[value][0] as CityName);
   };
-
   const onSecondCityChange = (value: CityName) => {
     setSecondCity(value);
   };
-
   return (
     <Space wrap>
       <Select
@@ -523,18 +430,12 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 搜索框
-
 #### zh-CN
-
 搜索和远程数据结合。
-
-
 
 ```typescript
 /* eslint-disable compat/compat */
@@ -542,10 +443,8 @@ import React, { useState } from 'react';
 import { Select } from 'antd';
 import type { SelectProps } from 'antd';
 import type { AnyObject } from 'antd/es/_util/type';
-
 let timeout: ReturnType<typeof setTimeout> | null;
 let currentValue: string;
-
 const toURLSearchParams = <T extends AnyObject>(record: T) => {
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(record)) {
@@ -553,16 +452,13 @@ const toURLSearchParams = <T extends AnyObject>(record: T) => {
   }
   return params;
 };
-
 const fetchData = (value: string, callback: (data: { value: string; text: string }[]) => void) => {
   if (timeout) {
     clearTimeout(timeout);
     timeout = null;
   }
   currentValue = value;
-
   const params = toURLSearchParams({ code: 'utf-8', q: value });
-
   const fake = () => {
     fetch(`https://suggest.taobao.com/sug?${params.toString()}`)
       .then((response) => response.json())
@@ -579,19 +475,15 @@ const fetchData = (value: string, callback: (data: { value: string; text: string
     callback([]);
   }
 };
-
 const SearchInput: React.FC<{ placeholder: string; style: React.CSSProperties }> = (props) => {
   const [data, setData] = useState<SelectProps['options']>([]);
   const [value, setValue] = useState<string>();
-
   const handleSearch = (newValue: string) => {
     fetchData(newValue, setData);
   };
-
   const handleChange = (newValue: string) => {
     setValue(newValue);
   };
-
   return (
     <Select
       showSearch
@@ -611,31 +503,21 @@ const SearchInput: React.FC<{ placeholder: string; style: React.CSSProperties }>
     />
   );
 };
-
 const App: React.FC = () => <SearchInput placeholder="input search text" style={{ width: 200 }} />;
-
 export default App;
 
 ```
-
 ### 获得选项的文本
-
 #### zh-CN
-
 默认情况下 `onChange` 里只能拿到 `value`，如果需要拿到选中的节点文本 `label`，可以使用 `labelInValue` 属性。
-
 选中项的 `label` 会被包装到 `value` 中传递给 `onChange` 等函数，此时 `value` 是一个对象。
-
-
 
 ```typescript
 import React from 'react';
 import { Select } from 'antd';
-
 const handleChange = (value: { value: string; label: React.ReactNode }) => {
   console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
 };
-
 const App: React.FC = () => (
   <Select
     labelInValue
@@ -654,37 +536,27 @@ const App: React.FC = () => (
     ]}
   />
 );
-
 export default App;
 
 ```
-
 ### 自动分词
-
 #### zh-CN
-
 试下复制 `露西,杰克` 并粘贴到输入框里。只在 tags 和 multiple 模式下可用。
-
-
 
 ```typescript
 import React from 'react';
 import { Select } from 'antd';
 import type { SelectProps } from 'antd';
-
 const options: SelectProps['options'] = [];
-
 for (let i = 10; i < 36; i++) {
   options.push({
     value: i.toString(36) + i,
     label: i.toString(36) + i,
   });
 }
-
 const handleChange = (value: string[]) => {
   console.log(`selected ${value}`);
 };
-
 const App: React.FC = () => (
   <Select
     mode="tags"
@@ -694,59 +566,46 @@ const App: React.FC = () => (
     options={options}
   />
 );
-
 export default App;
 
 ```
-
 ### 搜索用户
-
 #### zh-CN
-
 一个带有远程搜索，防抖控制，请求时序控制，加载状态的多选示例。
-
-
 
 ```typescript
 import React, { useMemo, useRef, useState } from 'react';
 import { Select, Spin } from 'antd';
 import type { SelectProps } from 'antd';
 import debounce from 'lodash/debounce';
-
 export interface DebounceSelectProps<ValueType = any>
   extends Omit<SelectProps<ValueType | ValueType[]>, 'options' | 'children'> {
   fetchOptions: (search: string) => Promise<ValueType[]>;
   debounceTimeout?: number;
 }
-
 function DebounceSelect<
   ValueType extends { key?: string; label: React.ReactNode; value: string | number } = any,
 >({ fetchOptions, debounceTimeout = 800, ...props }: DebounceSelectProps<ValueType>) {
   const [fetching, setFetching] = useState(false);
   const [options, setOptions] = useState<ValueType[]>([]);
   const fetchRef = useRef(0);
-
   const debounceFetcher = useMemo(() => {
     const loadOptions = (value: string) => {
       fetchRef.current += 1;
       const fetchId = fetchRef.current;
       setOptions([]);
       setFetching(true);
-
       fetchOptions(value).then((newOptions) => {
         if (fetchId !== fetchRef.current) {
           // for fetch callback order
           return;
         }
-
         setOptions(newOptions);
         setFetching(false);
       });
     };
-
     return debounce(loadOptions, debounceTimeout);
   }, [fetchOptions, debounceTimeout]);
-
   return (
     <Select
       labelInValue
@@ -758,16 +617,13 @@ function DebounceSelect<
     />
   );
 }
-
 // Usage of DebounceSelect
 interface UserValue {
   label: string;
   value: string;
 }
-
 async function fetchUserList(username: string): Promise<UserValue[]> {
   console.log('fetching user', username);
-
   return fetch('https://randomuser.me/api/?results=5')
     .then((response) => response.json())
     .then((body) =>
@@ -779,10 +635,8 @@ async function fetchUserList(username: string): Promise<UserValue[]> {
       ),
     );
 }
-
 const App: React.FC = () => {
   const [value, setValue] = useState<UserValue[]>([]);
-
   return (
     <DebounceSelect
       mode="multiple"
@@ -798,31 +652,22 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 前后缀
-
 #### zh-CN
-
 自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
-
-
 
 ```typescript
 import React from 'react';
 import { MehOutlined, SmileOutlined } from '@ant-design/icons';
 import { Select, Space } from 'antd';
-
 const smileIcon = <SmileOutlined />;
 const mehIcon = <MehOutlined />;
-
 const handleChange = (value: string | string[]) => {
   console.log(`selected ${value}`);
 };
-
 const App: React.FC = () => (
   <Space wrap>
     <Select
@@ -893,36 +738,26 @@ const App: React.FC = () => (
     />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 扩展菜单
-
 #### zh-CN
-
 使用 `dropdownRender` 对下拉菜单进行自由扩展。如果希望点击自定义内容后关闭浮层，你需要使用受控模式自行控制（[codesandbox](https://codesandbox.io/s/ji-ben-shi-yong-antd-4-21-7-forked-gnp4cy?file=/demo.js)）。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Divider, Input, Select, Space } from 'antd';
 import type { InputRef } from 'antd';
-
 let index = 0;
-
 const App: React.FC = () => {
   const [items, setItems] = useState(['jack', 'lucy']);
   const [name, setName] = useState('');
   const inputRef = useRef<InputRef>(null);
-
   const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
-
   const addItem = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     e.preventDefault();
     setItems([...items, name || `New item ${index++}`]);
@@ -931,7 +766,6 @@ const App: React.FC = () => {
       inputRef.current?.focus();
     }, 0);
   };
-
   return (
     <Select
       style={{ width: 300 }}
@@ -958,30 +792,20 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 隐藏已选择选项
-
 #### zh-CN
-
 隐藏下拉列表中已选择的选项。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Select } from 'antd';
-
 const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters'];
-
 const App: React.FC = () => {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
-
   const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
-
   return (
     <Select
       mode="multiple"
@@ -996,23 +820,16 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-
 ### 形态变体
-
 #### zh-CN
-
 Select 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-
-
 ```typescript
 import React from 'react';
 import { Flex, Select } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap={12} vertical>
     <Flex gap={8}>
@@ -1111,23 +928,16 @@ const App: React.FC = () => (
     </Flex>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### Filled debug
-
 #### zh-CN
-
 可选 `outlined` `filled` `borderless` 三种形态。
 
-
-
 ```typescript
 import React from 'react';
 import { Flex, Select } from 'antd';
-
 const App: React.FC = () => (
   <Flex gap={12} vertical>
     <Flex gap={8}>
@@ -1212,33 +1022,24 @@ const App: React.FC = () => (
     </Flex>
   </Flex>
 );
-
 export default App;
 
 ```
-
 ### 自定义选择标签
-
 #### zh-CN
-
 允许自定义选择标签的样式。
-
-
 
 ```typescript
 import React from 'react';
 import { Select, Tag } from 'antd';
 import type { SelectProps } from 'antd';
-
 type TagRender = SelectProps['tagRender'];
-
 const options: SelectProps['options'] = [
   { value: 'gold' },
   { value: 'lime' },
   { value: 'green' },
   { value: 'cyan' },
 ];
-
 const tagRender: TagRender = (props) => {
   const { label, value, closable, onClose } = props;
   const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
@@ -1257,7 +1058,6 @@ const tagRender: TagRender = (props) => {
     </Tag>
   );
 };
-
 const App: React.FC = () => (
   <Select
     mode="multiple"
@@ -1267,70 +1067,50 @@ const App: React.FC = () => (
     options={options}
   />
 );
-
 export default App;
 
 ```
-
 ### 自定义选中 label
-
 #### zh-CN
-
 允许自定义渲染当前选中的 label, 可用于 value 回填但对应选项缺失而不想直接渲染 value 的场景。
-
-
 
 ```typescript
 import React from 'react';
 import { Select } from 'antd';
 import type { SelectProps } from 'antd';
-
 type LabelRender = SelectProps['labelRender'];
-
 const options = [
   { label: 'gold', value: 'gold' },
   { label: 'lime', value: 'lime' },
   { label: 'green', value: 'green' },
   { label: 'cyan', value: 'cyan' },
 ];
-
 const labelRender: LabelRender = (props) => {
   const { label, value } = props;
-
   if (label) {
     return value;
   }
   return <span>No option match</span>;
 };
-
 const App: React.FC = () => (
   <Select labelRender={labelRender} defaultValue="1" style={{ width: '100%' }} options={options} />
 );
-
 export default App;
 
 ```
-
 ### 响应式 maxTagCount
-
 #### zh-CN
-
 多选下通过响应式布局让选项自动收缩。该功能对性能有所消耗，不推荐在大表单场景下使用。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { SelectProps } from 'antd';
 import { Select, Space, Tooltip } from 'antd';
-
 interface ItemProps {
   label: string;
   value: string;
 }
-
 const options: ItemProps[] = [];
-
 for (let i = 10; i < 36; i++) {
   const value = i.toString(36) + i;
   options.push({
@@ -1338,7 +1118,6 @@ for (let i = 10; i < 36; i++) {
     value,
   });
 }
-
 const sharedProps: SelectProps = {
   mode: 'multiple',
   style: { width: '100%' },
@@ -1346,15 +1125,12 @@ const sharedProps: SelectProps = {
   placeholder: 'Select Item...',
   maxTagCount: 'responsive',
 };
-
 const App: React.FC = () => {
   const [value, setValue] = useState(['a10', 'c12', 'h17', 'j19', 'k20']);
-
   const selectProps: SelectProps = {
     value,
     onChange: setValue,
   };
-
   return (
     <Space direction="vertical" style={{ width: '100%' }}>
       <Select {...sharedProps} {...selectProps} />
@@ -1374,28 +1150,19 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 大数据
-
 #### zh-CN
-
 Select 默认针对大数据开启了[虚拟滚动](https://github.com/react-component/virtual-list)，因而获得了更好的性能，可以通过 `virtual={false}` 关闭。
-
-
 
 ```typescript
 import React from 'react';
 import type { SelectProps } from 'antd';
 import { Select, Typography } from 'antd';
-
 const { Title } = Typography;
-
 const options: SelectProps['options'] = [];
-
 for (let i = 0; i < 100000; i++) {
   const value = `${i.toString(36)}${i}`;
   options.push({
@@ -1404,11 +1171,9 @@ for (let i = 0; i < 100000; i++) {
     disabled: i === 10,
   });
 }
-
 const handleChange = (value: string[]) => {
   console.log(`selected ${value}`);
 };
-
 const App: React.FC = () => (
   <>
     <Title level={4}>{options.length} Items</Title>
@@ -1422,56 +1187,39 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 自定义状态
-
 #### zh-CN
-
 使用 `status` 为 Select 添加状态，可选 `error` 或者 `warning`。
-
-
 
 ```typescript
 import React from 'react';
 import { Select, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space direction="vertical" style={{ width: '100%' }}>
     <Select status="error" style={{ width: '100%' }} />
     <Select status="warning" style={{ width: '100%' }} />
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 弹出位置
-
 #### zh-CN
-
 可以通过 `placement` 手动指定弹出的位置。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { RadioChangeEvent, SelectProps } from 'antd';
 import { Radio, Select } from 'antd';
-
 type SelectCommonPlacement = SelectProps['placement'];
-
 const App: React.FC = () => {
   const [placement, SetPlacement] = useState<SelectCommonPlacement>('topLeft');
-
   const placementChange = (e: RadioChangeEvent) => {
     SetPlacement(e.target.value);
   };
-
   return (
     <>
       <Radio.Group value={placement} onChange={placementChange}>
@@ -1505,45 +1253,33 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 动态高度
-
 #### zh-CN
-
 可以通过 `placement` 手动指定弹出的位置。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { RadioChangeEvent, SelectProps } from 'antd';
 import { Button, Radio, Select, Space, Switch } from 'antd';
-
 type SelectCommonPlacement = SelectProps['placement'];
-
 const randomOptions = (count?: number) => {
   const length = count ?? Math.floor(Math.random() * 5) + 1;
-
   // Random 1 ~ 5 options
   return Array.from({ length }).map((_, index) => ({
     value: index,
     label: `Option ${index}`,
   }));
 };
-
 const App: React.FC = () => {
   const [placement, SetPlacement] = useState<SelectCommonPlacement>('topLeft');
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState(() => randomOptions(3));
-
   const placementChange = (e: RadioChangeEvent) => {
     SetPlacement(e.target.value);
   };
-
   return (
     <div
       style={{
@@ -1570,7 +1306,6 @@ const App: React.FC = () => {
           <Radio.Button value="bottomLeft">BL</Radio.Button>
           <Radio.Button value="bottomRight">BR</Radio.Button>
         </Radio.Group>
-
         <Switch checked={open} onChange={() => setOpen((o) => !o)} />
         <Button onClick={() => setOptions(randomOptions())}>Random</Button>
       </Space>
@@ -1584,23 +1319,16 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### 4.0 Debug
-
 #### zh-CN
-
 调试使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Button, Input, Select, Space } from 'antd';
-
 const style: React.CSSProperties = {
   width: 500,
   position: 'relative',
@@ -1608,11 +1336,9 @@ const style: React.CSSProperties = {
   border: '1px solid red',
   backgroundColor: '#fff',
 };
-
 const handleChange = (value: string | string[]) => {
   console.log(`selected ${value}`);
 };
-
 const App: React.FC = () => (
   <Space style={style} wrap>
     <Input style={{ width: 100 }} value="222" />
@@ -1648,28 +1374,19 @@ const App: React.FC = () => (
     <Button>222</Button>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Select, Space, Switch } from 'antd';
-
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalSelect } = Select;
-
 const App: React.FC = () => {
   const [open, setOpen] = React.useState(true);
-
   return (
     <Space direction="vertical" style={{ display: 'flex' }}>
       <Switch checked={open} onChange={() => setOpen(!open)} />
@@ -1688,18 +1405,12 @@ const App: React.FC = () => {
     </Space>
   );
 };
-
 export default App;
 
 ```
-
 ### 选项文本居中
-
 #### zh-CN
-
 选项文本应该居中。
-
-
 
 ```typescript
 import React from 'react';
@@ -1714,13 +1425,11 @@ import {
   TreeSelect,
   Typography,
 } from 'antd';
-
 const options = [
   { value: 'long', label: <Typography>long, long, long piece of text</Typography> },
   { value: 'short', label: <Typography>short</Typography> },
   { value: 'normal', label: <div>normal</div> },
 ];
-
 const App: React.FC = () => (
   <>
     <Space wrap>
@@ -1730,14 +1439,12 @@ const App: React.FC = () => (
         allowClear
         options={options}
       />
-
       <Select
         placeholder="Select a option"
         style={{ width: 120, height: 60 }}
         allowClear
         options={options}
       />
-
       <Select
         defaultValue="normal"
         placeholder="Select a option"
@@ -1745,7 +1452,6 @@ const App: React.FC = () => (
         allowClear
         options={options}
       />
-
       <Select
         defaultValue={['normal']}
         mode="multiple"
@@ -1754,7 +1460,6 @@ const App: React.FC = () => (
         allowClear
         options={options}
       />
-
       <Select
         mode="multiple"
         placeholder="Select a option"
@@ -1762,14 +1467,12 @@ const App: React.FC = () => (
         allowClear
         options={options}
       />
-
       <Cascader
         placeholder="Select a option"
         style={{ width: 120, height: 60 }}
         allowClear
         options={options}
       />
-
       <TreeSelect
         showSearch
         style={{ width: 120, height: 60 }}
@@ -1854,7 +1557,6 @@ const App: React.FC = () => (
         </Form.Item>
       </Form>
     </Space>
-
     {/* Test for align */}
     <Flex vertical style={{ width: 200 }}>
       {/* Single */}
@@ -1889,33 +1591,24 @@ const App: React.FC = () => (
     </Flex>
   </>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 组件 Token
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Select, Space } from 'antd';
 import type { SelectProps } from 'antd';
-
 const options: SelectProps['options'] = [];
-
 for (let i = 10; i < 36; i++) {
   options.push({
     label: i.toString(36) + i,
     value: i.toString(36) + i,
   });
 }
-
 const App: React.FC = () => (
   <Space direction="vertical">
     <ConfigProvider
@@ -2000,29 +1693,20 @@ const App: React.FC = () => (
     </ConfigProvider>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 最大选中数量
-
 #### zh-CN
-
 你可以通过设置 `maxCount` 约束最多可选中的数量，当超出限制时会变成禁止选中状态。
-
-
 
 ```typescript
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
-
 const MAX_COUNT = 3;
-
 const App: React.FC = () => {
   const [value, setValue] = React.useState<string[]>(['Ava Swift']);
-
   const suffix = (
     <>
       <span>
@@ -2031,7 +1715,6 @@ const App: React.FC = () => {
       <DownOutlined />
     </>
   );
-
   return (
     <Select
       mode="multiple"
@@ -2055,8 +1738,6 @@ const App: React.FC = () => {
     />
   );
 };
-
 export default App;
 
 ```
-

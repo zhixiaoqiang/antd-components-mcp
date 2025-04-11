@@ -1,30 +1,20 @@
 ## Pagination 组件示例
-
 ### 基本
-
 #### zh-CN
-
 基础分页。
-
-
 
 ```typescript
 import React from 'react';
 import { Pagination } from 'antd';
-
 const App: React.FC = () => <Pagination defaultCurrent={1} total={50} />;
-
 export default App;
 
 ```
-
 ### 方向
-
 
 ```typescript
 import React from 'react';
 import { Pagination } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Pagination align="start" defaultCurrent={1} total={50} />
@@ -34,46 +24,31 @@ const App: React.FC = () => (
     <Pagination align="end" defaultCurrent={1} total={50} />
   </>
 );
-
 export default App;
 
 ```
-
 ### 更多
-
 #### zh-CN
-
 更多分页。
-
-
 
 ```typescript
 import React from 'react';
 import { Pagination } from 'antd';
-
 const App: React.FC = () => <Pagination defaultCurrent={6} total={500} />;
-
 export default App;
 
 ```
-
 ### 改变
-
 #### zh-CN
-
 改变每页显示条目数。
-
-
 
 ```typescript
 import React from 'react';
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
-
 const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {
   console.log(current, pageSize);
 };
-
 const App: React.FC = () => (
   <>
     <Pagination
@@ -92,28 +67,20 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 跳转
-
 #### zh-CN
-
 快速跳转到某一页。
-
-
 
 ```typescript
 import React from 'react';
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
-
 const onChange: PaginationProps['onChange'] = (pageNumber) => {
   console.log('Page: ', pageNumber);
 };
-
 const App: React.FC = () => (
   <>
     <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onChange} />
@@ -121,26 +88,18 @@ const App: React.FC = () => (
     <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onChange} disabled />
   </>
 );
-
 export default App;
 
 ```
-
 ### 迷你
-
 #### zh-CN
-
 迷你版本。
-
-
 
 ```typescript
 import React from 'react';
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
-
 const showTotal: PaginationProps['showTotal'] = (total) => `Total ${total} items`;
-
 const App: React.FC = () => (
   <>
     <Pagination size="small" total={50} />
@@ -156,23 +115,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 简洁
-
 #### zh-CN
-
 简单的翻页。
-
-
 
 ```typescript
 import React from 'react';
 import { Pagination } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Pagination simple defaultCurrent={2} total={50} />
@@ -182,51 +134,35 @@ const App: React.FC = () => (
     <Pagination disabled simple defaultCurrent={2} total={50} />
   </>
 );
-
 export default App;
 
 ```
-
 ### 受控
-
 #### zh-CN
-
 受控制的页码。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
-
 const App: React.FC = () => {
   const [current, setCurrent] = useState(3);
-
   const onChange: PaginationProps['onChange'] = (page) => {
     console.log(page);
     setCurrent(page);
   };
-
   return <Pagination current={current} onChange={onChange} total={50} />;
 };
-
 export default App;
 
 ```
-
 ### 总数
-
 #### zh-CN
-
 通过设置 `showTotal` 展示总共有多少数据。
-
-
 
 ```typescript
 import React from 'react';
 import { Pagination } from 'antd';
-
 const App: React.FC = () => (
   <>
     <Pagination
@@ -244,23 +180,16 @@ const App: React.FC = () => (
     />
   </>
 );
-
 export default App;
 
 ```
-
 ### 全部展示
-
 #### zh-CN
-
 展示所有配置选项。
-
-
 
 ```typescript
 import React from 'react';
 import { Pagination } from 'antd';
-
 const App: React.FC = () => (
   <Pagination
     total={85}
@@ -269,24 +198,17 @@ const App: React.FC = () => (
     showTotal={(total) => `Total ${total} items`}
   />
 );
-
 export default App;
 
 ```
-
 ### 上一步和下一步
-
 #### zh-CN
-
 修改上一步和下一步为文字链接。
-
-
 
 ```typescript
 import React from 'react';
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
-
 const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
   if (type === 'prev') {
     return <a>Previous</a>;
@@ -296,25 +218,17 @@ const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => 
   }
   return originalElement;
 };
-
 const App: React.FC = () => <Pagination total={500} itemRender={itemRender} />;
-
 export default App;
 
 ```
-
 ### 线框风格
-
 #### zh-CN
-
 线框化样式。
-
-
 
 ```typescript
 import React from 'react';
 import { ConfigProvider, Pagination } from 'antd';
-
 const App: React.FC = () => (
   <ConfigProvider theme={{ token: { wireframe: true } }}>
     <Pagination showSizeChanger defaultCurrent={3} total={500} />
@@ -326,24 +240,17 @@ const App: React.FC = () => (
     <Pagination disabled size="small" defaultCurrent={50} total={500} />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import type { PaginationProps } from 'antd';
 import { ConfigProvider, Pagination } from 'antd';
-
 const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
   if (type === 'prev') {
     return <a>Previous</a>;
@@ -382,8 +289,6 @@ const App: React.FC = () => (
     <Pagination showSizeChanger defaultCurrent={3} total={500} disabled />
   </ConfigProvider>
 );
-
 export default App;
 
 ```
-

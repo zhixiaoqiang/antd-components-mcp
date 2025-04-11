@@ -1,13 +1,8 @@
-
 ## 何时使用
-
 - 当有大量结构化的数据需要展现时；
 - 当需要对数据进行排序、搜索、分页、自定义操作等复杂行为时。
-
 ## 如何使用
-
 指定表格的数据源 `dataSource` 为一个数组。
-
 ```jsx
 const dataSource = [
   {
@@ -23,7 +18,6 @@ const dataSource = [
     address: '西湖区湖底公园1号',
   },
 ];
-
 const columns = [
   {
     title: '姓名',
@@ -41,22 +35,15 @@ const columns = [
     key: 'address',
   },
 ];
-
 <Table dataSource={dataSource} columns={columns} />;
 ```
-
 ## 相关推荐
-
 - [Kitchen Sketch 插件 💎](https://kitchen.alipay.com/)：设计师神器，两步自动生成 Ant Design 表格组件。
 - [ProTable](https://procomponents.ant.design/components/table) 高级表格：在 `antd` Table 之上扩展了更多便捷易用的功能，内置搜索、筛选、刷新等常用表格行为，并为多种类型数据展示提供了内置格式化。
 - [S2](https://s2.antv.vision/zh) 多维交叉分析表格：[AntV S2 和 Antd Table 有什么区别？](https://zhuanlan.zhihu.com/p/494995642)
 
-
-
 ## API
-
 ### Table
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | bordered | 是否展示外边框和列边框 | boolean | false |  |
@@ -87,18 +74,13 @@ const columns = [
 | onHeaderRow | 设置头部行属性 | function(columns, index) | - |  |
 | onRow | 设置行属性 | function(record, index) | - |  |
 | onScroll | 表单内容滚动时触发（虚拟滚动下只有垂直滚动会触发事件） | function(event) | - | 5.16.0 |
-
 ### Table ref
-
 | 参数 | 说明 | 类型 | 版本 |
 | --- | --- | --- | --- |
 | nativeElement | 最外层 div 元素 | HTMLDivElement | 5.11.0 |
 | scrollTo | 滚动到目标位置（设置 `key` 时为 Record 对应的 `rowKey`） | (config: { index?: number, key?: React.Key, top?: number }) => void | 5.11.0 |
-
 #### onRow 用法
-
 适用于 `onRow` `onHeaderRow` `onCell` `onHeaderCell`。
-
 ```jsx
 <Table
   onRow={(record) => {
@@ -117,11 +99,8 @@ const columns = [
   }}
 />
 ```
-
 ### Column
-
 列描述数据对象，是 columns 中的一项，Column 使用相同的 API。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | align | 设置列的对齐方式 | `left` \| `right` \| `center` | `left` |  |
@@ -160,27 +139,18 @@ const columns = [
 | onCell | 设置单元格属性 | function(record, rowIndex) | - |  |
 | onFilter | 本地模式下，确定筛选的运行函数 | function | - |  |
 | onHeaderCell | 设置头部单元格属性 | function(column) | - |  |
-
 ### ColumnGroup
-
 | 参数  | 说明         | 类型      | 默认值 |
 | ----- | ------------ | --------- | ------ |
 | title | 列头显示文字 | ReactNode | -      |
-
 ### pagination
-
 分页的配置项。
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | position | 指定分页显示的位置， 取值为`topLeft` \| `topCenter` \| `topRight` \|`bottomLeft` \| `bottomCenter` \| `bottomRight` | Array | \[`bottomRight`] |
-
 更多配置项，请查看 [`Pagination`](/components/pagination-cn)。
-
 ### expandable
-
 展开功能的配置。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | childrenColumnName | 指定树形结构的列名 | string | children |  |
@@ -199,11 +169,8 @@ const columns = [
 | showExpandColumn | 是否显示展开图标列 | boolean | true | 4.18.0 |
 | onExpand | 点击展开图标时触发 | function(expanded, record) | - |  |
 | onExpandedRowsChange | 展开的行变化时触发 | function(expandedRows) | - |  |
-
 ### rowSelection
-
 选择功能的配置。
-
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | checkStrictly | checkable 状态下节点选择完全受控（父子数据选中状态不再关联） | boolean | true | 4.4.0 |
@@ -225,35 +192,27 @@ const columns = [
 | onSelectInvert | 用户手动选择反选的回调 | function(selectedRowKeys) | - |  |
 | onSelectNone | 用户清空选择的回调 | function() | - |  |
 | onSelectMultiple | 用户使用键盘 shift 选择多行的回调 | function(selected, selectedRows, changeRows) | - |  |
-
 ### scroll
-
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | scrollToFirstRowOnChange | 当分页、排序、筛选变化后是否滚动到表格顶部 | boolean | - |
 | x | 设置横向滚动，也可用于指定滚动区域的宽，可以设置为像素值，百分比，`true` 和 ['max-content'](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width#max-content) | string \| number \| true | - |
 | y | 设置纵向滚动，也可用于指定滚动区域的高，可以设置为像素值 | string \| number | - |
-
 ### selection
-
 | 参数     | 说明                       | 类型                        | 默认值 |
 | -------- | -------------------------- | --------------------------- | ------ |
 | key      | React 需要的 key，建议设置 | string                      | -      |
 | text     | 选择项显示的文字           | ReactNode                   | -      |
 | onSelect | 选择项点击回调             | function(changeableRowKeys) | -      |
-
 ## 在 TypeScript 中使用
-
 ```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
-
 interface User {
   key: number;
   name: string;
 }
-
 const columns: TableColumnsType<User> = [
   {
     key: 'name',
@@ -261,14 +220,12 @@ const columns: TableColumnsType<User> = [
     dataIndex: 'name',
   },
 ];
-
 const data: User[] = [
   {
     key: 0,
     name: 'Jack',
   },
 ];
-
 const Demo: React.FC = () => (
   <>
     <Table<User> columns={columns} dataSource={data} />
@@ -278,57 +235,33 @@ const Demo: React.FC = () => (
     </Table>
   </>
 );
-
 export default Demo;
 ```
-
 TypeScript 里使用 Table 的 [CodeSandbox 实例](https://codesandbox.io/s/serene-platform-0jo5t)。
 
-
-
 ## 注意
-
 按照 [React 的规范](https://zh-hans.react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key)，所有的列表必须绑定 `key`。在 Table 中，`dataSource` 和 `columns` 里的数据值都需要指定 `key` 值。对于 `dataSource` 默认将每列数据的 `key` 属性作为唯一的标识。
-
 ![控制台警告](https://os.alipayobjects.com/rmsportal/luLdLvhPOiRpyss.png)
-
 如果 `dataSource[i].key` 没有提供，你应该使用 `rowKey` 来指定 `dataSource` 的主键，如下所示。若没有指定，控制台会出现以上的提示，表格组件也会出现各类奇怪的错误。
-
 ```jsx
 // 比如你的数据主键是 uid
 return <Table rowKey="uid" />;
 // 或
 return <Table rowKey={(record) => record.uid} />;
 ```
-
 ## FAQ
-
 ### 如何在没有数据或只有一页数据时隐藏分页栏
-
 你可以设置 `pagination` 的 `hideOnSinglePage` 属性为 `true`。
-
 ### 表格过滤时会回到第一页？
-
 前端过滤时通常条目总数会减少，从而导致总页数小于筛选前的当前页数，为了防止当前页面没有数据，我们默认会返回第一页。
-
 如果你在使用远程分页，很可能需要保持当前页面，你可以参照这个 [受控例子](https://codesandbox.io/s/yuanchengjiazaishuju-ant-design-demo-7y2uf) 控制当前页面不变。
-
 ### 表格分页为何会出现 size 切换器？
-
 自 `4.1.0` 起，Pagination 在 `total` 大于 50 条时会默认显示 size 切换器以提升用户交互体验。如果你不需要该功能，可以通过设置 `showSizeChanger` 为 `false` 来关闭。
-
 ### 为什么 更新 state 会导致全表渲染？
-
 由于 `columns` 支持 `render` 方法，因而 Table 无法知道哪些单元会受到影响。你可以通过 `column.shouldCellUpdate` 来控制单元格的渲染。
-
 ### 固定列穿透到最上层该怎么办？
-
 固定列通过 `z-index` 属性将其悬浮于非固定列之上，这使得有时候你会发现在 Table 上放置遮罩层时固定列会被透过的情况。为遮罩层设置更高的 `z-index` 覆盖住固定列即可。
-
 ### 如何自定义渲染可选列的勾选框（比如增加 Tooltip）？
-
 自 `4.1.0` 起，可以通过 [rowSelection](https://ant.design/components/table-cn/#rowselection) 的 `renderCell` 属性控制，可以参考此处 [Demo](https://codesandbox.io/s/table-row-tooltip-v79j2v) 实现展示 Tooltip 需求或其他自定义的需求。
-
 ### 为什么 components.body.wrapper 或 components.body.row 在 virtual 开启时会报错？
-
 因为虚拟表格需要获取其 ref 做一些计算，所以你需要使用 `React.forwardRef` 包裹并传递 ref 到 dom。

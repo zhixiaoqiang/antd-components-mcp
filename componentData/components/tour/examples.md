@@ -1,26 +1,18 @@
 ## Tour 组件示例
-
 ### 基本
-
 #### zh-CN
-
 最简单的用法。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Divider, Space, Tour } from 'antd';
 import type { TourProps } from 'antd';
-
 const App: React.FC = () => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-
   const [open, setOpen] = useState<boolean>(false);
-
   const steps: TourProps['steps'] = [
     {
       title: 'Upload File',
@@ -61,32 +53,23 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 非模态
-
 #### zh-CN
-
 使用 `mask={false}` 可以将引导变为非模态，同时为了强调引导本身，建议与 `type="primary"` 组合使用。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Divider, Space, Tour } from 'antd';
 import type { TourProps } from 'antd';
-
 const App: React.FC = () => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-
   const [open, setOpen] = useState<boolean>(false);
-
   const steps: TourProps['steps'] = [
     {
       title: 'Upload File',
@@ -110,15 +93,12 @@ const App: React.FC = () => {
       target: () => ref3.current,
     },
   ];
-
   return (
     <>
       <Button type="primary" onClick={() => setOpen(true)}>
         Begin non-modal Tour
       </Button>
-
       <Divider />
-
       <Space>
         <Button ref={ref1}> Upload</Button>
         <Button ref={ref2} type="primary">
@@ -126,34 +106,24 @@ const App: React.FC = () => {
         </Button>
         <Button ref={ref3} icon={<EllipsisOutlined />} />
       </Space>
-
       <Tour open={open} onClose={() => setOpen(false)} mask={false} type="primary" steps={steps} />
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 位置
-
 #### zh-CN
-
 改变引导相对于目标的位置，共有 12 种位置可供选择。当 `target={null}` 时引导将会展示在正中央。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { Button, Tour } from 'antd';
 import type { TourProps } from 'antd';
-
 const App: React.FC = () => {
   const ref = useRef(null);
-
   const [open, setOpen] = useState<boolean>(false);
-
   const steps: TourProps['steps'] = [
     {
       title: 'Center',
@@ -173,43 +143,32 @@ const App: React.FC = () => {
       target: () => ref.current,
     },
   ];
-
   return (
     <>
       <Button type="primary" onClick={() => setOpen(true)} ref={ref}>
         Begin Tour
       </Button>
-
       <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义遮罩样式
-
 #### zh-CN
-
 自定义遮罩样式。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Divider, Space, Tour } from 'antd';
 import type { TourProps } from 'antd';
-
 const App: React.FC = () => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-
   const [open, setOpen] = useState<boolean>(false);
-
   const steps: TourProps['steps'] = [
     {
       title: 'Upload File',
@@ -240,15 +199,12 @@ const App: React.FC = () => {
       mask: false,
     },
   ];
-
   return (
     <>
       <Button type="primary" onClick={() => setOpen(true)}>
         Begin Tour
       </Button>
-
       <Divider />
-
       <Space>
         <Button ref={ref1}> Upload</Button>
         <Button ref={ref2} type="primary">
@@ -256,7 +212,6 @@ const App: React.FC = () => {
         </Button>
         <Button ref={ref3} icon={<EllipsisOutlined />} />
       </Space>
-
       <Tour
         open={open}
         onClose={() => setOpen(false)}
@@ -271,32 +226,23 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义指示器
-
 #### zh-CN
-
 自定义指示器。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import type { GetRef, TourProps } from 'antd';
 import { Button, Divider, Space, Tour } from 'antd';
-
 const App: React.FC = () => {
   const ref1 = useRef<GetRef<typeof Button>>(null);
   const ref2 = useRef<GetRef<typeof Button>>(null);
   const ref3 = useRef<GetRef<typeof Button>>(null);
-
   const [open, setOpen] = useState<boolean>(false);
-
   const steps: TourProps['steps'] = [
     {
       title: 'Upload File',
@@ -314,7 +260,6 @@ const App: React.FC = () => {
       target: () => ref3.current!,
     },
   ];
-
   return (
     <>
       <Button type="primary" onClick={() => setOpen(true)}>
@@ -341,28 +286,19 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 自定义高亮区域的样式
-
 #### zh-CN
-
 使用 `gap` 参数来控制高亮区域的边距和圆角。
-
 - `5.9.0` 之前不支持单独设置两个方向上的边距和数组类型的 `offset` 参数。
-
-
 
 ```typescript
 import React, { useRef, useState } from 'react';
 import { Button, Col, Row, Slider, Space, Tour, Typography } from 'antd';
 import type { TourProps } from 'antd';
-
 const { Text } = Typography;
-
 const App: React.FC = () => {
   const tourNodeRef = useRef(null);
   const [radius, setRadius] = useState(8);
@@ -371,7 +307,6 @@ const App: React.FC = () => {
   const [offset, setOffset] = useState(2);
   const [open, setOpen] = useState(false);
   const [offsetDirection, setOffsetDirection] = useState<'both' | 'individual'>('individual');
-
   const steps: TourProps['steps'] = [
     {
       title: 'Upload File',
@@ -385,7 +320,6 @@ const App: React.FC = () => {
       target: () => tourNodeRef.current,
     },
   ];
-
   const offsetGap =
     offsetDirection === 'both'
       ? { offset }
@@ -455,26 +389,18 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
 
 ```
-
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-
 #### zh-CN
-
 调试用组件，请勿直接使用。
-
-
 
 ```typescript
 import React from 'react';
 import { Tour } from 'antd';
-
 /** Test usage. Do not use in your production. */
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPanel } = Tour;
-
 export default () => (
   <div
     style={{
@@ -509,4 +435,3 @@ export default () => (
 );
 
 ```
-

@@ -1,17 +1,11 @@
 ## Card 组件示例
-
 ### 典型卡片
-
 #### zh-CN
-
 包含标题、内容、操作区域。
-
-
 
 ```typescript
 import React from 'react';
 import { Card, Space } from 'antd';
-
 const App: React.FC = () => (
   <Space direction="vertical" size={16}>
     <Card title="Default size card" extra={<a href="#">More</a>} style={{ width: 300 }}>
@@ -26,23 +20,16 @@ const App: React.FC = () => (
     </Card>
   </Space>
 );
-
 export default App;
 
 ```
-
 ### 无边框
-
 #### zh-CN
-
 在灰色背景上使用无边框的卡片。
-
-
 
 ```typescript
 import React from 'react';
 import { Card } from 'antd';
-
 const App: React.FC = () => (
   <Card title="Card title" variant="borderless" style={{ width: 300 }}>
     <p>Card content</p>
@@ -50,23 +37,16 @@ const App: React.FC = () => (
     <p>Card content</p>
   </Card>
 );
-
 export default App;
 
 ```
-
 ### 简洁卡片
-
 #### zh-CN
-
 只包含内容区域。
-
-
 
 ```typescript
 import React from 'react';
 import { Card } from 'antd';
-
 const App: React.FC = () => (
   <Card style={{ width: 300 }}>
     <p>Card content</p>
@@ -74,25 +54,17 @@ const App: React.FC = () => (
     <p>Card content</p>
   </Card>
 );
-
 export default App;
 
 ```
-
 ### 更灵活的内容展示
-
 #### zh-CN
-
 可以利用 `Card.Meta` 支持更灵活的内容。
-
-
 
 ```typescript
 import React from 'react';
 import { Card } from 'antd';
-
 const { Meta } = Card;
-
 const App: React.FC = () => (
   <Card
     hoverable
@@ -102,23 +74,16 @@ const App: React.FC = () => (
     <Meta title="Europe Street beat" description="www.instagram.com" />
   </Card>
 );
-
 export default App;
 
 ```
-
 ### 栅格卡片
-
 #### zh-CN
-
 在系统概览页面常常和栅格进行配合。
-
-
 
 ```typescript
 import React from 'react';
 import { Card, Col, Row } from 'antd';
-
 const App: React.FC = () => (
   <Row gutter={16}>
     <Col span={8}>
@@ -138,30 +103,22 @@ const App: React.FC = () => (
     </Col>
   </Row>
 );
-
 export default App;
 
 ```
-
 ### 预加载的卡片
-
 #### zh-CN
-
 数据读入前会有文本块样式。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card, Flex, Switch } from 'antd';
-
 const actions: React.ReactNode[] = [
   <EditOutlined key="edit" />,
   <SettingOutlined key="setting" />,
   <EllipsisOutlined key="ellipsis" />,
 ];
-
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   return (
@@ -194,28 +151,20 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-
 export default App;
 
 ```
-
 ### 网格型内嵌卡片
-
 #### zh-CN
-
 一种常见的卡片内容区隔模式。
-
-
 
 ```typescript
 import React from 'react';
 import { Card } from 'antd';
-
 const gridStyle: React.CSSProperties = {
   width: '25%',
   textAlign: 'center',
 };
-
 const App: React.FC = () => (
   <Card title="Card Title">
     <Card.Grid style={gridStyle}>Content</Card.Grid>
@@ -229,23 +178,16 @@ const App: React.FC = () => (
     <Card.Grid style={gridStyle}>Content</Card.Grid>
   </Card>
 );
-
 export default App;
 
 ```
-
 ### 内部卡片
-
 #### zh-CN
-
 可以放在普通卡片内部，展示多层级结构的信息。
-
-
 
 ```typescript
 import React from 'react';
 import { Card } from 'antd';
-
 const App: React.FC = () => (
   <Card title="Card title">
     <Card type="inner" title="Inner Card title" extra={<a href="#">More</a>}>
@@ -261,23 +203,16 @@ const App: React.FC = () => (
     </Card>
   </Card>
 );
-
 export default App;
 
 ```
-
 ### 带页签的卡片
-
 #### zh-CN
-
 可承载更多内容。
-
-
 
 ```typescript
 import React, { useState } from 'react';
 import { Card } from 'antd';
-
 const tabList = [
   {
     key: 'tab1',
@@ -288,12 +223,10 @@ const tabList = [
     tab: 'tab2',
   },
 ];
-
 const contentList: Record<string, React.ReactNode> = {
   tab1: <p>content1</p>,
   tab2: <p>content2</p>,
 };
-
 const tabListNoTitle = [
   {
     key: 'article',
@@ -308,24 +241,20 @@ const tabListNoTitle = [
     label: 'project',
   },
 ];
-
 const contentListNoTitle: Record<string, React.ReactNode> = {
   article: <p>article content</p>,
   app: <p>app content</p>,
   project: <p>project content</p>,
 };
-
 const App: React.FC = () => {
   const [activeTabKey1, setActiveTabKey1] = useState<string>('tab1');
   const [activeTabKey2, setActiveTabKey2] = useState<string>('app');
-
   const onTab1Change = (key: string) => {
     setActiveTabKey1(key);
   };
   const onTab2Change = (key: string) => {
     setActiveTabKey2(key);
   };
-
   return (
     <>
       <Card
@@ -355,26 +284,18 @@ const App: React.FC = () => {
     </>
   );
 };
-
 export default App;
 
 ```
-
 ### 支持更多内容配置
-
 #### zh-CN
-
 一种支持封面、头像、标题和描述信息的卡片。
-
-
 
 ```typescript
 import React from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
-
 const { Meta } = Card;
-
 const App: React.FC = () => (
   <Card
     style={{ width: 300 }}
@@ -397,24 +318,17 @@ const App: React.FC = () => (
     />
   </Card>
 );
-
 export default App;
 
 ```
-
 ### 组件 Token
-
 #### zh-CN
-
 Component Token Debug.
-
-
 
 ```typescript
 import React from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Card, ConfigProvider } from 'antd';
-
 export default () => (
   <ConfigProvider
     theme={{
@@ -469,4 +383,3 @@ export default () => (
 );
 
 ```
-
