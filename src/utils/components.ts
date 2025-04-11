@@ -23,9 +23,9 @@ export async function loadComponentsList() {
     if (cacheComponentList) {
       return cacheComponentList
     }
-
+    
     const componentList = await readFile(EXTRACTED_COMPONENTS_LIST_PATH, "utf-8");
-    console.log('componentList', componentList)
+
     const componentListJson = JSON.parse(componentList) as ComponentData[]
     
     componentCache.set('componentsList', componentListJson)

@@ -18,7 +18,7 @@
     "pretest": "tsup",
     "test": "tsx test-server.ts",
     "extract": "tsx cli.ts extract ../ant-design",
-    "inspector": "pnpm build & npx @modelcontextprotocol/inspector node dist/server.js",
+    "inspector": "pnpm build & npx @modelcontextprotocol/inspector node dist/cli.js",
     "prepublishOnly": "pnpm build"
   },
   "keywords": [
