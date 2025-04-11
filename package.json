@@ -12,6 +12,7 @@
     "access": "public"
   },
   "scripts": {
+    "start": "tsx cli.js",
     "build": "tsup",
     "dev": "tsup --watch",
     "test": "tsup && tsx src/test-server.ts",

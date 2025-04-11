@@ -2,7 +2,7 @@
 
 import { resolve } from "path";
 import { DEFAULT_ANT_DESIGN_EXTRACT_PATH } from "./src/constants/path";
-import extractAllData from "./scripts/extract-docs";
+import extractAllData from "./src/scripts/extract-docs";
 import antDesignServer from "./src/server";
 
 // 获取命令行参数
@@ -31,13 +31,15 @@ async function run() {
       return;
     }
 
-    console.error(`未知命令: ${command}`);
     console.log("可用命令:");
     console.log(
       "  npx @jzone-mcp/antd-components-mcp         - 启动 MCP 服务器"
     );
     console.log(
-      "  npx @jzone-mcp/antd-components-mcp extract - 提取 Ant Design 组件文档"
+      "  npx @jzone-mcp/antd-components-mcp extract - 提取 Ant Design 组件文档，默认读取 ../ant-design"
+    );
+    console.log(
+      "  npx @jzone-mcp/antd-components-mcp extract [ant-design repo path]"
     );
     process.exit(1);
   } catch (error) {

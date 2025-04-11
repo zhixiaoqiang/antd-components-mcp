@@ -1,14 +1,9 @@
 #!/usr/bin/env node
-import { parseMDMatter } from "./matter-parse";
+import { parseMDMatter } from "../utils/matter-parse";
 
 /**
- * 此脚本从 Ant Design 仓库中提取组件文档，
+ * 此脚本从 Ant Design 仓库中提取组件相关文档，
  * 并将其保存到本地数据目录中供 MCP 服务器使用。
- *
- * 使用方法:
- *   node extract-docs.mjs [path/to/ant-design]
- *
- *   如果未提供路径参数，默认使用 ./ant-design
  */
 import { existsSync } from "node:fs";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
@@ -24,14 +19,14 @@ import {
   EXTRACTED_COMPONENTS_LIST_PATH,
   EXTRACTED_DATA_DIR,
   EXTRACTED_METADATA_PATH,
-} from "../src/constants/path";
+} from "../constants/path";
 import {
   extractSection,
   removeFrontmatter,
   removeSection,
   toPascalCase,
-  writeJsonFile,
-} from "./utils";
+} from "../utils/md-extract";
+import { writeJsonFile } from "../utils/write";
 
 /**
  * 提取的组件示例信息
@@ -59,7 +54,7 @@ export interface ComponentData {
   /** 组件 API */
   apiContent?: string;
   /** 组件可用版本 */
-  version?: string;
+  validVersion?: string;
   /** 组件描述 */
   description?: string;
   /** 何时使用当前组件 */
@@ -151,7 +146,9 @@ async function processComponent(componentsPath: string, dirName: string) {
     // 读取并解析文档
     const docContent = await readFile(indexMdPath, "utf-8");
     const mdMatter = await parseMDMatter(indexMdPath);
-    componentData.version = mdMatter?.tag;
+    componentData.validVersion = mdMatter?.tag
+      ? `自 ${mdMatter?.tag} 起支持`
+      : undefined;
     componentData.description = mdMatter?.description;
 
     const initHandleDoc = (doc: string) => {
@@ -233,7 +230,12 @@ async function extractAllData(antdRepoPath: string) {
   /** 待提取数据的组件库 packageJson */
   const antDPackageJsonPath = join(antdRepoPath, "package.json");
   /** 待提取数据的组件库 changelog */
-  const antDChangelogPath = join(antdRepoPath, ".dumi", 'preset', 'components-changelog.zh-CN.json');
+  const antDChangelogPath = join(
+    antdRepoPath,
+    ".dumi",
+    "preset",
+    EXTRACT_COMPONENTS_CHANGELOG_PATH
+  );
 
   console.log(`🔍 从 ${componentsPath} 抓取文档信息`);
 
@@ -250,11 +252,15 @@ async function extractAllData(antdRepoPath: string) {
     );
   } else {
     try {
-      await writeJsonFile(EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH, await readFile(antDChangelogPath, "utf-8"))
+      await writeJsonFile(
+        EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH,
+        await import(antDChangelogPath)
+      );
     } catch (error) {
       console.error(
         `  ❌ 写入 changelog 错误:`,
-        (error as Error).message
+        (error as Error).message,
+        "使用内置的更新日志"
       );
     }
   }
@@ -297,15 +303,18 @@ async function extractAllData(antdRepoPath: string) {
     extractedAt: new Date().toISOString(),
     extractedCount: processedCount,
     componentCount: componentDirs.length,
-    antdVersion: (await import(antDPackageJsonPath).then(({ version }) => version).catch(() => undefined)) || "5.24.6",
+    antdVersion:
+      (await import(antDPackageJsonPath)
+        .then(({ version }) => version)
+        .catch(() => undefined)) || "5.24.6",
   };
 
   /** 组件列表索引 */
   const componentsIndex: ComponentIndex = Object.values(componentDataMap).map(
-    ({ name, dirName, version, description, whenToUse }) => ({
+    ({ name, dirName, validVersion, description, whenToUse }) => ({
       name,
       dirName,
-      validVersion: version ? `自 ${version} 起支持` : undefined,
+      validVersion,
       description,
       whenToUse,
     })
@@ -361,4 +370,4 @@ ${example.code}
   console.log(`🎉 文档提取完成！数据已保存到 ${EXTRACTED_DATA_DIR}`);
 }
 
-export default extractAllData
+export default extractAllData;

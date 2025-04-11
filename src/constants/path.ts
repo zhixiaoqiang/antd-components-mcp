@@ -2,7 +2,7 @@ import { dirname, join, resolve } from "path";
 import { fileURLToPath } from "url";
 
 /** 项目根目录 */
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..", '..');
 
 /** 提取的组件数据存储目录 */
 const EXTRACTED_DATA_DIR = resolve(ROOT_DIR, "componentData");
@@ -20,7 +20,7 @@ const EXTRACTED_COMPONENTS_DATA_PATH = join(EXTRACTED_DATA_DIR, "components");
 const EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH = join(EXTRACTED_DATA_DIR, "components-changelog.json");
 
 /** antd组件更新记录文件路径 */
-const EXTRACT_COMPONENTS_CHANGELOG_PATH = "components-changelog.zh-CN.json"
+const EXTRACT_COMPONENTS_CHANGELOG_PATH = "components-changelog-cn.json"
 
 /** 默认提取 ant design 的路径  */
 const DEFAULT_ANT_DESIGN_EXTRACT_PATH = './ant-design'
