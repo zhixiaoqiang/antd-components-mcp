@@ -28,7 +28,7 @@ import {
   removeSection,
   toPascalCase,
 } from "../utils/md-extract";
-import { writeJsonFile } from "../utils/write";
+import {  writeExtractedInfoToReadme, writeJsonFile } from "../utils/write";
 
 /**
  * 提取的组件示例信息
@@ -79,7 +79,7 @@ export type ComponentIndex = (Pick<
 /**
  * 提取结果元数据
  */
-interface MetaDataResult {
+export interface MetaDataResult {
   /** 提取时间 */
   extractedAt: string;
   /** 提取的组件数量 */
@@ -333,19 +333,7 @@ async function extractAllData(antdRepoPath: string) {
 
   await writeJsonFile(EXTRACTED_METADATA_PATH, metaDataResult);
 
-  await writeFile(
-    README_PATH,
-    await readFile(README_PATH, "utf-8").then((content) =>
-      content.replace(
-        README_MATCH_FIELD,
-        `\`Ant Design V${metaDataResult.antdVersion} ${new Date(
-          metaDataResult.extractedAt
-        ).toLocaleDateString()}\``
-      )
-    )
-  );
-
-  console.log(`✅ README.md 中预处理版本信息已更新`);
+  await writeExtractedInfoToReadme(metaDataResult)
 
   // 创建组件目录
   await mkdir(EXTRACTED_COMPONENTS_DATA_PATH, { recursive: true });
