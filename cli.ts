@@ -36,7 +36,7 @@ async function run() {
       "  npx @jzone-mcp/antd-components-mcp         - 启动 MCP 服务器"
     );
     console.log(
-      "  npx @jzone-mcp/antd-components-mcp extract - 提取 Ant Design 组件文档，默认读取 ../ant-design"
+      "  npx @jzone-mcp/antd-components-mcp extract - 提取 Ant Design 组件文档，默认读取 ./ant-design"
     );
     console.log(
       "  npx @jzone-mcp/antd-components-mcp extract [ant-design repo path]"
