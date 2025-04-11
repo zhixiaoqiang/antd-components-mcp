@@ -2,7 +2,7 @@ import { dirname, join, resolve } from "path";
 import { fileURLToPath } from "url";
 
 /** 项目根目录 */
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..", '..');
+const ROOT_DIR = process.env.IS_BUILD ? process.cwd() : resolve(dirname(fileURLToPath(import.meta.url)), "..", '..');
 
 /** 提取的组件数据存储目录 */
 const EXTRACTED_DATA_DIR = resolve(ROOT_DIR, "componentData");

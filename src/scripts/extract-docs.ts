@@ -262,7 +262,8 @@ async function extractAllData(antdRepoPath: string) {
     try {
       await writeJsonFile(
         EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH,
-        await import(antDChangelogPath)
+        await readFile(antDChangelogPath, 'utf-8').then((content) => JSON.parse(content)
+        )
       );
     } catch (error) {
       console.error(
@@ -312,8 +313,8 @@ async function extractAllData(antdRepoPath: string) {
     extractedCount: processedCount,
     componentCount: componentDirs.length,
     antdVersion:
-      (await import(antDPackageJsonPath)
-        .then(({ version }) => version)
+      (await readFile(antDPackageJsonPath, 'utf-8')
+        .then((content) => JSON.parse(content).version)
         .catch(() => undefined)) || "5.24.6",
   };
 

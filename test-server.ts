@@ -2,12 +2,10 @@
 
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
-import { resolve } from "path";
-import { ROOT_DIR } from "./constants/path";
 
 const transport = new StdioClientTransport({
   command: "node",
-  args: [resolve(ROOT_DIR, "dist/cli.js")],
+  args: ["./dist/cli.js"],
 });
 
 const client = new Client({

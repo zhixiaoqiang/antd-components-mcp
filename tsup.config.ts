@@ -12,7 +12,8 @@ export default defineConfig({
   esbuildOptions(options) {
     options.charset = 'utf8' // 添加这行来保留中文字符
       options.define = {
-        'process.env.VERSION': `"${require('./package.json').version}"`
+        'process.env.VERSION': `"${require('./package.json').version}"`,
+        'process.env.IS_BUILD': "true"
     }
   }
 })

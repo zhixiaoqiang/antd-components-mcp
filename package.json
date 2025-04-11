@@ -12,11 +12,11 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsx cli.js",
+    "start": "node dist/cli.js",
     "build": "tsup",
     "dev": "tsup --watch",
     "pretest": "tsup",
-    "test": "tsx src/test-server.ts",
+    "test": "tsx test-server.ts",
     "extract": "tsx cli.ts extract ../ant-design",
     "inspector": "pnpm build & npx @modelcontextprotocol/inspector node dist/server.js",
     "prepublishOnly": "pnpm build"
