@@ -4,7 +4,7 @@
 
 ## 功能特性
 
-- 已预处理数据，开箱即用(预处理版本为 `Ant Design V5 2025-04-10`)
+- 已预处理数据，开箱即用(预处理版本为 `Ant Design V5.24.6 2025/4/11`)
   - 可以自行提取最新的/其他版本的组件文档
 - 列出所有可用的 `Ant Design` 组件
   - 包含组件名称、描述、可用版本、何时使用当前组件信息
@@ -20,6 +20,7 @@
 2. 你想使用其他版本的组件文档
 
 ### 组件文档
+
 ```bash
 # 克隆 Ant Design 仓库
 git clone https://github.com/ant-design/ant-design.git --depth 1 --branch master --single-branch --filter=blob:none
