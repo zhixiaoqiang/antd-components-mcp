@@ -16,14 +16,16 @@ const registryTool = (server: McpServer) => {
     { componentName: z.string() },
     async ({ componentName }) => {
       const componentsChangelog = await getComponentsChangelog(componentName);
-  
+
+      const currentComponentChangelog = componentsChangelog[componentName] || componentsChangelog[componentName.charAt(0).toUpperCase() + componentName.slice(1)]
+
       return {
         content: [
           {
             type: "text",
-            text: `
+            text: currentComponentChangelog ? `
 以下是组件的更新日志：
-${JSON.stringify(componentsChangelog[componentName])}`,
+${currentComponentChangelog}` : '当前组件没有找到更新日志',
           },
         ],
       };
