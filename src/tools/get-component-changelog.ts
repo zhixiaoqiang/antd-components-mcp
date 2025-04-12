@@ -25,7 +25,7 @@ const registryTool = (server: McpServer) => {
             type: "text",
             text: currentComponentChangelog ? `
 以下是组件的更新日志：
-${currentComponentChangelog}` : '当前组件没有找到更新日志',
+${JSON.stringify(currentComponentChangelog)}` : '当前组件没有找到更新日志',
           },
         ],
       };

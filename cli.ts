@@ -29,6 +29,10 @@ async function run() {
         process.exit(1);
       });
       return;
+    } else if (command === "version" || command === "-v") {
+      const packageJson = require("./package.json");
+      console.log(packageJson.version);
+      return;
     }
 
     console.log("可用命令:");
