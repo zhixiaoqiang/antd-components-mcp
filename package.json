@@ -1,6 +1,6 @@
 {
   "name": "@jzone-mcp/antd-components-mcp",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "一个 Ant Design 组件查询的 mcp 服务，包含 组件文档、API 文档、代码示例、组件更新日志查询",
   "bin": "dist/cli.js",
