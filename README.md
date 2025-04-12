@@ -72,9 +72,8 @@ npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 服务器提供以下工具供LLM与Ant Design组件文档交互：
 
 - `list-components`: 列出所有可用的 Ant Design 组件
-- `get-component-props`: 获取 Ant Design 特定组件的 API 文档
-- `get-component-docs`: 获取 Ant Design 特定组件的详细文档，不包含 API 及代码示例
-- `get-component-examples`: 获取 Ant Design 特定组件的代码示例
+- `get-component-docs`: 获取 Ant Design 特定组件的详细文档，不包含代码示例
+- `list-component-examples`: 获取 Ant Design 特定组件的代码示例
 - `get-component-changelog`: 列出 Ant Design 特定组件的更新日志
 
 ## 查询示例

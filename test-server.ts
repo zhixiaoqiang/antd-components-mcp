@@ -37,16 +37,6 @@ try {
   });
   Array.isArray(docs.content) && console.log(docs.content[0].text);
 
-  // 获取组件属性
-  console.log("\n--- 获取组件属性 ---");
-  const props = await client.callTool({
-    name: "get-component-props",
-    arguments: {
-      componentName: "Affix",
-    },
-  });
-  Array.isArray(props.content) && console.log(props.content[0].text);
-
   // 列出组件示例
   console.log("\n--- 列出组件示例 ---");
   const examples = await client.callTool({
