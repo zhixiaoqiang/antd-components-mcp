@@ -41,7 +41,6 @@ const columns = [
 - [Kitchen Sketch 插件 💎](https://kitchen.alipay.com/)：设计师神器，两步自动生成 Ant Design 表格组件。
 - [ProTable](https://procomponents.ant.design/components/table) 高级表格：在 `antd` Table 之上扩展了更多便捷易用的功能，内置搜索、筛选、刷新等常用表格行为，并为多种类型数据展示提供了内置格式化。
 - [S2](https://s2.antv.vision/zh) 多维交叉分析表格：[AntV S2 和 Antd Table 有什么区别？](https://zhuanlan.zhihu.com/p/494995642)
-
 ## API
 ### Table
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -238,7 +237,6 @@ const Demo: React.FC = () => (
 export default Demo;
 ```
 TypeScript 里使用 Table 的 [CodeSandbox 实例](https://codesandbox.io/s/serene-platform-0jo5t)。
-
 ## 注意
 按照 [React 的规范](https://zh-hans.react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key)，所有的列表必须绑定 `key`。在 Table 中，`dataSource` 和 `columns` 里的数据值都需要指定 `key` 值。对于 `dataSource` 默认将每列数据的 `key` 属性作为唯一的标识。
 ![控制台警告](https://os.alipayobjects.com/rmsportal/luLdLvhPOiRpyss.png)

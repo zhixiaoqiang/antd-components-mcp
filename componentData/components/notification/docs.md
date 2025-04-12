@@ -3,7 +3,6 @@
 - 较为复杂的通知内容。
 - 带有交互的通知，给出用户下一步的行动点。
 - 系统主动推送。
-
 ## API
 - `notification.success(config)`
 - `notification.error(config)`
@@ -72,7 +71,6 @@ notification.config({
 | rtl | 是否开启 RTL 模式 | boolean | false |  |
 | top | 消息从顶部弹出时，距离顶部的位置，单位像素 | number | 24 |  |
 | maxCount | 最大显示数，超过限制时，最早的消息会被自动关闭 | number | - | 4.17.0 |
-
 ## FAQ
 ### 为什么 notification 不能获取 context、redux 的内容和 ConfigProvider 的 `locale/prefixCls/theme` 等配置？
 直接调用 notification 方法，antd 会通过 `ReactDOM.render` 动态创建新的 React 实体。其 context 与当前代码所在 context 并不相同，因而无法获取 context 信息。

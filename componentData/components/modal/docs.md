@@ -1,7 +1,6 @@
 ## 何时使用
 需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 `Modal` 在当前页面正中打开一个浮层，承载相应的操作。
 另外当需要一个简洁的确认框询问用户时，可以使用 [`App.useApp`](/components/app-cn/) 封装的语法糖方法。
-
 ## API
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
@@ -117,8 +116,6 @@ return <div>{contextHolder}</div>;
 //点击 `onOk` 时返回 `true`，点击 `onCancel` 时返回 `false`
 const confirmed = await modal.confirm({ ... });
 ```
-
-
 ## FAQ
 ### 为什么 Modal 关闭时，内容不会更新？
 Modal 在关闭时会将内容进行 memo 从而避免关闭过程中的内容跳跃。也因此如果你在配合使用 Form 有关闭时重置 `initialValues` 的操作，请通过在 effect 中调用 `resetFields` 来重置。

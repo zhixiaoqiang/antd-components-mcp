@@ -12,7 +12,6 @@
 - 如果一个 `row` 中的 `col` 总和超过 24，那么多余的 `col` 会作为一个整体另起一行排列。
 我们的栅格化系统基于 Flex 布局，允许子元素在父节点内的水平对齐方式 - 居左、居中、居右、等宽排列、分散排列。子元素与子元素之间，支持顶部对齐、垂直居中对齐、底部对齐的方式。同时，支持使用 order 来定义元素的排列顺序。
 布局是基于 24 栅格来定义每一个『盒子』的宽度，但不拘泥于栅格。
-
 ## API
 Ant Design 的布局组件若不能满足你的需求，你也可以直接使用社区的优秀布局组件：
 - [react-flexbox-grid](http://roylee0704.github.io/react-flexbox-grid/)
@@ -41,4 +40,3 @@ Ant Design 的布局组件若不能满足你的需求，你也可以直接使用
 | xxl | `窗口宽度 ≥ 1600px` 响应式栅格，可为栅格数或一个包含其他属性的对象 | number \| object | - |  |
 您可以使用 [主题定制](/docs/react/customize-theme-cn) 修改 `screen[XS|SM|MD|LG|XL|XXL]` 来修改断点值（自 5.1.0 起，[codesandbox demo](https://codesandbox.io/s/antd-reproduction-template-forked-dlq3r9?file=/index.js)）。
 响应式栅格的断点扩展自 [BootStrap 4 的规则](https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints)（不包含链接里 `occasionally` 的部分)。
-

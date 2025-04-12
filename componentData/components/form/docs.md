@@ -1,7 +1,6 @@
 ## 何时使用
 - 用于创建一个实体或收集信息。
 - 需要对输入的数据类型进行校验时。
-
 ## API
 ### Form
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -396,7 +395,6 @@ type Rule = RuleConfig | ((form: FormInstance) => RuleConfig);
 | -------- | ------------------------------------- | ------------ | ---------------------- | ----- |
 | form     | 指定 Form 实例                        | FormInstance | 当前 context 中的 Form | 5.4.0 |
 | preserve | 是否监视没有对应的 `Form.Item` 的字段 | boolean      | false                  | 5.4.0 |
-
 ## FAQ
 ### Switch、Checkbox 为什么不能绑定数据？
 Form.Item 默认绑定值属性到 `value` 上，而 Switch、Checkbox 等组件的值属性为 `checked`。你可以通过 `valuePropName` 来修改绑定的值属性。

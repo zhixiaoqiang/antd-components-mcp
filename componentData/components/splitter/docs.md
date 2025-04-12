@@ -2,7 +2,6 @@
 - 可以水平或垂直地分隔区域。
 - 当需要自由拖拽调整各区域大小。
 - 当需要指定区域的最大最小宽高时。
-
 ## API
 > Splitter 组件需要通过子元素计算面板大小，因而其子元素仅支持 `Splitter.Panel`。
 ### Splitter
@@ -22,4 +21,3 @@
 | size | 受控面板大小，支持数字 px 或者文字 '百分比%' 类型 | `number \| string` | - | - |
 | collapsible | 快速折叠 | `boolean \| { start?: boolean; end?: boolean }` | `false` | - |
 | resizable | 是否开启拖拽伸缩 | `boolean` | `true` | - |
-

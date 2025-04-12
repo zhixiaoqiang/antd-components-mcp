@@ -1,7 +1,6 @@
 ## 何时使用
 - 当目前没有数据时，用于显式的用户提示。
 - 初始化场景时的引导创建流程。
-
 ## API
 ```jsx
 <Empty>
@@ -34,5 +33,3 @@
     background-image: url("https://user-images.githubusercontent.com/507615/54591670-ac0a0180-4a65-11e9-846c-e55ffce0fe7b.png");
   }
 </style>
-
-

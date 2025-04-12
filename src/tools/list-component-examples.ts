@@ -23,7 +23,7 @@ const registryTool = (server: McpServer) => {
             type: "text",
             text: `
 ${componentName} 组件的代码示例文档：
-${componentExamples}`,
+${componentExamples || '暂无代码示例'}`,
           },
         ],
       };

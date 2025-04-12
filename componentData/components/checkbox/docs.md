@@ -1,7 +1,6 @@
 ## 何时使用
 - 在一组可选项中进行多项选择时；
 - 单独使用可以表示两种状态之间的切换，和 `switch` 类似。区别在于切换 `switch` 会直接触发状态改变，而 `checkbox` 一般用于状态标记，需要和提交操作配合。
-
 ## API
 #### Checkbox
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -38,7 +37,6 @@ interface Option {
 | blur()        | 移除焦点                  |        |
 | focus()       | 获取焦点                  |        |
 | nativeElement | 返回 Checkbox 的 DOM 节点 | 5.17.3 |
-
 ## FAQ
 ### 为什么在 Form.Item 下不能绑定数据？
 Form.Item 默认绑定值属性到 `value` 上，而 Checkbox 的值属性为 `checked`。你可以通过 `valuePropName` 来修改绑定的值属性。

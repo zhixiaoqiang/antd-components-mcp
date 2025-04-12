@@ -2,7 +2,6 @@
 - 当有一组平级的内容。
 - 当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
 - 常用于一组图片或卡片轮播。
-
 ## API
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
@@ -28,7 +27,6 @@
 | goTo(slideNumber, dontAnimate) | 切换到指定面板, dontAnimate = true 时，不使用动画 |
 | next()                         | 切换到下一面板                                    |
 | prev()                         | 切换到上一面板                                    |
-
 ## FAQ
 ### 如何自定义箭头？
 可参考 [#12479](https://github.com/ant-design/ant-design/issues/12479)。

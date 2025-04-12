@@ -1,7 +1,6 @@
 ## 何时使用
 - 可提供成功、警告和错误等反馈信息。
 - 顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式。
-
 ## API
 组件提供了一些静态方法，使用方式和参数如下：
 - `message.success(content, [duration], onClose)`
@@ -62,7 +61,6 @@ message.config({
 | prefixCls | 消息节点的 className 前缀 | string | `ant-message` | 4.5.0 |
 | rtl | 是否开启 RTL 模式 | boolean | false |  |
 | top | 消息距离顶部的位置 | string \| number | 8 |  |
-
 ## FAQ
 ### 为什么 message 不能获取 context、redux 的内容和 ConfigProvider 的 `locale/prefixCls/theme` 等配置？
 直接调用 message 方法，antd 会通过 `ReactDOM.render` 动态创建新的 React 实体。其 context 与当前代码所在 context 并不相同，因而无法获取 context 信息。

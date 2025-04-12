@@ -4,7 +4,6 @@ Ant Design 依次提供了三级选项卡，分别用于不同的场景。
 - 卡片式的页签，提供可关闭的样式，常用于容器顶部。
 - 既可用于容器顶部，也可用于容器内部，是最通用的 Tabs。
 - [Radio.Button](/components/radio-cn/#radio-demo-radiobutton) 可作为更次级的页签来使用。
-
 ## API
 ### Tabs
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -50,4 +49,3 @@ Ant Design 依次提供了三级选项卡，分别用于不同的场景。
 | -------------------------------------------- | -------------- | --------- | ------ | ---- |
 | icon                                         | 自定义折叠图标 | ReactNode | -      |      |
 | [DropdownProps](/components/dropdown-cn#api) |                |           |        |      |
-

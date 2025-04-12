@@ -14,7 +14,6 @@ return (
 // 或
 return <Breadcrumb routes={[{ breadcrumbName: 'sample' }]} />;
 ```
-
 ## API
 ### Breadcrumb
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -88,4 +87,3 @@ function itemRender(currentRoute, params, items, paths) {
 }
 return <Breadcrumb itemRender={itemRender} items={items} />;
 ```
-

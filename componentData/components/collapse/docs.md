@@ -39,7 +39,6 @@ const items: CollapseProps['items'] = [
   </Panel>
 </Collapse>;
 ```
-
 ## API
 ### Collapse
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -81,5 +80,3 @@ const items: CollapseProps['items'] = [
 | header | 面板标题 | ReactNode | - |  |
 | key | 对应 activeKey | string \| number | - |  |
 | showArrow | 是否展示当前面板上的箭头（为 false 时，collapsible 不能设为 icon） | boolean | true |  |
-
-

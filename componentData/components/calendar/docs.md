@@ -1,6 +1,5 @@
 ## 何时使用
 当数据是日期或按照日期划分时，例如日程、课表、价格日历等，农历等。目前支持年/月切换。
-
 ## API
 **注意**：Calendar 部分 locale 是从 value 中读取，所以请先正确设置 dayjs 的 locale。
 ```jsx
@@ -27,7 +26,6 @@
 | onChange | 日期变化回调 | function(date: Dayjs) | - |  |
 | onPanelChange | 日期面板变化回调 | function(date: Dayjs, mode: string) | - |  |
 | onSelect | 选择日期回调，包含来源信息 | function(date: Dayjs, info: { source: 'year' \| 'month' \| 'date' \| 'customize' }) | - | `info`: 5.6.0 |
-
 ## FAQ
 ### 如何在 Calendar 中使用自定义日期库
 参考 [使用自定义日期库](/docs/react/use-custom-date-library#calendar)。

@@ -22,7 +22,6 @@ return (
   </Radio.Group>
 );
 ```
-
 ## API
 ### Radio/Radio.Button
 <!-- prettier-ignore -->
@@ -65,4 +64,3 @@ return (
 | ------- | -------- |
 | blur()  | 移除焦点 |
 | focus() | 获取焦点 |
-

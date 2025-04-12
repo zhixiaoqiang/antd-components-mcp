@@ -1,6 +1,5 @@
 ## 何时使用
 类似 Select 的选择控件，可选择的数据结构是一个树形结构时，可以使用 TreeSelect，例如公司层级、学科系统、分类目录等等。
-
 ## API
 ### Tree props
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -78,7 +77,6 @@
 | selectable      | 是否可选                                           | boolean   | true   |      |
 | title           | 树节点显示的内容                                   | ReactNode | `---`  |      |
 | value           | 默认根据此属性值进行筛选（其值在整个树范围内唯一） | string    | -      |      |
-
 ## FAQ
 ### onChange 时如何获得父节点信息？
 从性能角度考虑，我们默认不透出父节点信息。你可以这样获得：<https://codesandbox.io/s/get-parent-node-in-onchange-eb1608>

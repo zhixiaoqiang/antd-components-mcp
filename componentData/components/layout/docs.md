@@ -27,7 +27,6 @@
 - `Content`：内容部分，自带默认样式，其下可嵌套任何元素，只能放在 `Layout` 中。
 - `Footer`：底部布局，自带默认样式，其下可嵌套任何元素，只能放在 `Layout` 中。
 > 注意：采用 flex 布局实现，请注意[浏览器兼容性](http://caniuse.com/#search=flex)问题。
-
 ## API
 ```jsx
 <Layout>
@@ -76,4 +75,3 @@
   xxl: '1600px',
 }
 ```
-

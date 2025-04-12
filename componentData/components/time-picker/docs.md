@@ -1,6 +1,5 @@
 ## 何时使用
 当用户需要输入一个时间，可以点击标准输入框，弹出时间面板进行选择。
-
 ## API
 ---
 ```jsx
@@ -80,6 +79,5 @@ type RangeDisabledTime = (
   disabledSeconds?: (selectedHour: number, selectedMinute: number) => number[];
 };
 ```
-
 ## FAQ
 - [如何在 TimePicker 中使用自定义日期库（如 Moment.js ）](/docs/react/use-custom-date-library#timepicker)

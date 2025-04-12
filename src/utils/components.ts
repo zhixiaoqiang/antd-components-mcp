@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { API_FILE_NAME, EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH, DOC_FILE_NAME, EXAMPLE_FILE_NAME, EXTRACTED_COMPONENTS_DATA_PATH, EXTRACTED_COMPONENTS_LIST_PATH } from "../constants/path";
+import { EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH, DOC_FILE_NAME, EXAMPLE_FILE_NAME, EXTRACTED_COMPONENTS_DATA_PATH, EXTRACTED_COMPONENTS_LIST_PATH } from "../constants/path";
 import { Cache } from "./cache";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
@@ -70,45 +70,12 @@ export const getComponentDocumentation = async (componentName: string) => {
       componentCache.set('componentsDoc', cacheComponentDoc)
 
       return docResult
-    } else {
-      return `${component.name} 组件文档不存在`;
     }
+
+    return `${component.name} 组件文档不存在`;
   } catch (error) {
     console.error(`获取 ${component.name} 组件文档错误: ${(error as Error).message}`);
     return `获取 ${component.name} 组件文档错误: ${(error as Error).message}`;
-  }
-};
-
-
-/** 获取 Ant Design 特定组件 API 文档 */
-export const getComponentProps = async (componentName: string) => {
-  const component = await findComponentByName(componentName);
-
-  if (!component) {
-    return `${componentName} API 文档不存在`;
-  }
-
-  try {
-    const apiPath = join(EXTRACTED_COMPONENTS_DATA_PATH, component.dirName, API_FILE_NAME);
-
-    const cacheComponentApi = componentCache.get('componentApi') || {}
-    if (cacheComponentApi?.[component.name]) {
-      return cacheComponentApi[component.name]
-    }
-
-    if (existsSync(apiPath)) {
-      const apiResult = await readFile(apiPath, "utf-8");
-
-      cacheComponentApi[component.name] = apiResult
-      componentCache.set('componentApi', cacheComponentApi)
-
-      return apiResult
-    }
-
-    return `${componentName} API 文档不存在`;
-  } catch (error) {
-    console.error(`获取 ${component.name} API文档错误: ${(error as Error).message}`);
-    return `获取 ${component.name} API文档错误: ${(error as Error).message}`;
   }
 };
 

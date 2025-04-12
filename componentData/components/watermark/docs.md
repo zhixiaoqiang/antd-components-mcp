@@ -1,7 +1,6 @@
 ## 何时使用
 - 页面需要添加水印标识版权时使用。
 - 适用于防止信息盗用。
-
 ## API
 > 自 `antd@5.1.0` 版本开始提供该组件。
 ### Watermark
@@ -27,7 +26,6 @@
 | fontFamily | 字体类型 | string | sans-serif |  |
 | fontStyle | 字体样式 | `none` \| `normal` \| `italic` \| `oblique` | normal |  |
 | textAlign | 指定文本对齐方向  | [CanvasTextAlign](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textAlign) | `center` | 5.10.0 |
-
 ## FAQ
 ### 处理异常图片水印
 当使用图片水印且图片加载异常时，可以同时添加 `content` 防止水印失效（自 5.2.3 开始支持）。

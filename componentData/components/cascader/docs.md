@@ -2,7 +2,6 @@
 - 需要从一组相关联的数据集合进行选择，例如省市区，公司层级，事物分类等。
 - 从一个较大的数据集合中进行选择时，用多级分类进行分隔，方便选择。
 - 比起 Select 组件，可以在同一个浮层中完成选择，有较好的体验。
-
 ## API
 ```jsx
 <Cascader options={options} onChange={onChange} />
@@ -78,4 +77,3 @@ interface Option {
 | blur()  | 移除焦点 |      |
 | focus() | 获取焦点 |      |
 > 注意，如果需要获得中国省市区数据，可以参考 [china-division](https://gist.github.com/afc163/7582f35654fd03d5be7009444345ea17)。
-

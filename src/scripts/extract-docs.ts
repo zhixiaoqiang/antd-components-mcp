@@ -10,7 +10,6 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import {
-  API_FILE_NAME,
   DOC_FILE_NAME,
   EXAMPLE_FILE_NAME,
   EXTRACT_COMPONENTS_CHANGELOG_PATH,
@@ -19,8 +18,6 @@ import {
   EXTRACTED_COMPONENTS_LIST_PATH,
   EXTRACTED_DATA_DIR,
   EXTRACTED_METADATA_PATH,
-  README_MATCH_FIELD,
-  README_PATH,
 } from "../constants/path";
 import {
   extractSection,
@@ -53,8 +50,6 @@ export interface ComponentData {
   dirName: string;
   /** 组件文档 */
   documentation: string;
-  /** 组件 API */
-  apiContent?: string;
   /** 组件可用版本 */
   validVersion?: string;
   /** 组件描述 */
@@ -163,8 +158,7 @@ async function processComponent(componentsPath: string, dirName: string) {
         removeFrontmatter,
         (doc: string) =>
           doc
-            .replace(DOC_CLEANUP_REGEX, "")
-            .replace(DOC_CLEANUP_EMPTY_LINE, "\n"),
+            .replace(DOC_CLEANUP_REGEX, ""),
         (doc: string) => removeSection(doc, "\n## Design Token"),
         (doc: string) => removeSection(doc, "\n## 主题变量"),
         (doc: string) => removeSection(doc, "\n## Semantic DOM"),
@@ -174,9 +168,7 @@ async function processComponent(componentsPath: string, dirName: string) {
 
     const handleDocResult = initHandleDoc(docContent);
 
-    componentData.whenToUse = extractSection(handleDocResult, "\n## 何时使用");
-
-    componentData.apiContent = extractSection(handleDocResult, "\n## API");
+    componentData.whenToUse = extractSection(handleDocResult, "## 何时使用");
 
     // 从文档中提取示例及其描述
     componentData.exampleInfoList = extractExamples(handleDocResult);
@@ -184,7 +176,7 @@ async function processComponent(componentsPath: string, dirName: string) {
     componentData.documentation = removeSection(
       handleDocResult,
       "\n## 代码演示"
-    );
+    ).replace(DOC_CLEANUP_EMPTY_LINE, "\n");
 
     // 从演示目录中读取示例文件
     if (existsSync(demoPath) && componentData.exampleInfoList) {
@@ -352,14 +344,6 @@ async function extractAllData(antdRepoPath: string) {
       join(componentDir, DOC_FILE_NAME),
       componentData.documentation
     );
-
-    // 如果有API部分，则写入
-    if (componentData.apiContent) {
-      await writeFile(
-        join(componentDir, API_FILE_NAME),
-        componentData.apiContent
-      );
-    }
 
     // 写入示例
     // 创建带有示例描述的markdown文件

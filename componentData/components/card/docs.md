@@ -1,6 +1,5 @@
 ## 何时使用
 最基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。
-
 ## API
 ```jsx
 <Card title="卡片标题">卡片内容</Card>
@@ -39,5 +38,3 @@
 | description | 描述内容           | ReactNode     | -      |      |
 | style       | 定义容器类名的样式 | CSSProperties | -      |      |
 | title       | 标题内容           | ReactNode     | -      |      |
-
-

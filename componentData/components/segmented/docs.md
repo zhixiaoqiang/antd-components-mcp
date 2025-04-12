@@ -2,7 +2,6 @@
 ## 何时使用
 - 用于展示多个选项并允许用户选择其中单个选项；
 - 当切换选中选项时，关联区域的内容会发生变化。
-
 ## API
 > 自 `antd@4.20.0` 版本开始提供该组件。
 ### Segmented
@@ -26,4 +25,3 @@
 | icon      | 分段项的显示图标 | ReactNode        | -      |      |
 | disabled  | 分段项的禁用状态 | boolean          | false  |      |
 | className | 自定义类名       | string           | -      |      |
-

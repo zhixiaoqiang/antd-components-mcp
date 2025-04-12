@@ -5,7 +5,6 @@
 安装 [Kitchen Sketch 插件 💎](https://kitchen.alipay.com)，就可以一键拖拽使用 Ant Design 和 Iconfont 的海量图标，还可以关联自有项目。
 ## 图标列表
 <IconSearch></IconSearch>
-
 ## API
 从 4.0 开始，antd 不再内置 Icon 组件，请使用独立的包 `@ant-design/icons`。
 ### 通用图标
@@ -115,4 +114,3 @@ ReactDOM.createRoot(mountNode).render(<Icon component={MessageSvg} />);
 | height    | `svg` 元素高度          | string \| number | `1em`          |      |
 | style     | 计算后的 `svg` 元素样式 | CSSProperties    | -              |      |
 | width     | `svg` 元素宽度          | string \| number | `1em`          |      |
-

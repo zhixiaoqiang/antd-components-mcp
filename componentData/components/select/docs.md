@@ -18,7 +18,6 @@ return (
   </Select>
 );
 ```
-
 ## API
 ### Select props
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -98,7 +97,6 @@ return (
 | label     | 组名                    | React.ReactNode | -      |      |
 | className | Option 器类名           | string          | -      |      |
 | title     | 选项上的原生 title 提示 | string          | -      |      |
-
 ## FAQ
 ### `mode="tags"` 模式下为何搜索有时会出现两个相同选项？
 这一般是 `options` 中的 `label` 和 `value` 不同导致的，你可以通过 `optionFilterProp="label"` 将过滤设置为展示值以避免这种情况。

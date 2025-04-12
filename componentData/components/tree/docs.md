@@ -1,6 +1,5 @@
 ## 何时使用
 文件夹、组织架构、生物分类、国家地区等等，世间万物的大多数结构都是树形结构。使用 `树控件` 可以完整展现其中的层级关系，并具有展开收起选择等交互功能。
-
 ## API
 ### Tree props
 <!-- prettier-ignore -->
@@ -82,7 +81,6 @@
 | 名称 | 说明 |
 | --- | --- |
 | scrollTo({ key: string \| number; align?: 'top' \| 'bottom' \| 'auto'; offset?: number }) | 虚拟滚动下，滚动到指定 key 条目 |
-
 ## FAQ
 ### defaultExpandAll 在异步加载数据时为何不生效？
 `default` 前缀属性只有在初始化时生效，因而异步加载数据时 `defaultExpandAll` 已经执行完成。你可以通过受控 `expandedKeys` 或者在数据加载完成后渲染 Tree 来实现全部展开。

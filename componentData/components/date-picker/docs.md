@@ -1,6 +1,5 @@
 ## 何时使用
 当用户需要输入一个日期，可以点击标准输入框，弹出日期面板进行选择。
-
 ## API
 日期类组件包括以下五种形式。
 - DatePicker
@@ -169,7 +168,6 @@ export type FormatType =
     };
 ```
 注意：`type` 定义为 `5.14.0` 新增。
-
 ## FAQ
 ### 当我指定了 DatePicker/RangePicker 的 mode 属性后，点击后无法选择年份/月份？
 请参考[常见问答](/docs/react/faq#当我指定了-datepickerrangepicker-的-mode-属性后点击后无法选择年份月份)

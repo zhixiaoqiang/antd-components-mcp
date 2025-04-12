@@ -17,7 +17,6 @@ return (
   </Timeline>
 );
 ```
-
 ## API
 ### Timeline
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -36,4 +35,3 @@ return (
 | label | 设置标签 | ReactNode | - |
 | children | 设置内容 | ReactNode | - |
 | position | 自定义节点位置 | `left` \| `right` | - |
-

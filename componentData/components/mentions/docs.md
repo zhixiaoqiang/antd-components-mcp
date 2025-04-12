@@ -17,7 +17,6 @@ return (
   </Mentions>
 );
 ```
-
 ## API
 ### Mentions
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -59,4 +58,3 @@ return (
 | disabled  | 是否可选       | boolean             | -      |
 | className | css 类名       | string              | -      |
 | style     | 选项样式       | React.CSSProperties | -      |
-

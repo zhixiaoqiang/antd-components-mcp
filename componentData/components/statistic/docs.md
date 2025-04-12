@@ -1,7 +1,6 @@
 ## 何时使用
 - 当需要突出某个或某组数字时。
 - 当需要展示带描述的统计类数据时使用。
-
 ## API
 #### Statistic
 | 参数             | 说明               | 类型                 | 默认值 | 版本  |
@@ -27,4 +26,3 @@
 | valueStyle | 设置数值区域的样式 | CSSProperties | - |  |
 | onFinish | 倒计时完成时触发 | () => void | - |  |
 | onChange | 倒计时时间变化时触发 | (value: number) => void | - | 4.16.0 |
-

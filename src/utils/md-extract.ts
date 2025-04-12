@@ -58,7 +58,7 @@ export const extractSection = (markdown: string, startMatch: string, endMatch = 
     }
 
     // 提取完整的指定部分
-    return markdown.slice(startPos, endPos).trim();
+    return markdown.slice(startIndex, endPos).trim();
   }
 
   return undefined;

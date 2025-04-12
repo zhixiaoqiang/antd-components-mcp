@@ -4,7 +4,6 @@
 ## 开发者注意事项
 - Menu 元素为 `ul`，因而仅支持 [`li` 以及 `script-supporting` 子元素](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element)。因而你的子节点元素应该都在 `Menu.Item` 内使用。
 - Menu 需要计算节点结构，因而其子元素仅支持 `Menu.*` 以及对此进行封装的 HOC 组件。
-
 ## API
 ### Menu
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -90,4 +89,3 @@ Menu 初始化时会先全部渲染，然后根据宽度裁剪内容。当处于
   <Menu style={{ minWidth: 0, flex: "auto" }} />
 </div>
 ```
-

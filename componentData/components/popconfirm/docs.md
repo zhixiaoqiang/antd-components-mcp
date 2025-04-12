@@ -1,7 +1,6 @@
 ## 何时使用
 目标元素的操作需要用户进一步的确认时，在目标元素附近弹出浮层提示，询问用户。
 和 `confirm` 弹出的全屏居中模态对话框相比，交互形式更轻量。
-
 ## API
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
@@ -20,8 +19,6 @@
 | onPopupClick | 弹出气泡点击事件 | function(e) | - | 5.5.0 |
 <!-- 共同的 API -->
 <embed src="../tooltip/shared/sharedProps.zh-CN.md"></embed>
-
-
 ## FAQ
 <embed src="../tooltip/shared/sharedFAQ.zh-CN.md"></embed>
 更多问题，请参考 [Tooltip FAQ](/components/tooltip-cn#faq)。

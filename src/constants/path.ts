@@ -40,7 +40,6 @@ const DEFAULT_ANT_DESIGN_EXTRACT_PATH = "./ant-design";
 
 const DOC_FILE_NAME = "docs.md";
 const EXAMPLE_FILE_NAME = "examples.md";
-const API_FILE_NAME = "api.md";
 
 export {
   ROOT_DIR,
@@ -55,5 +54,4 @@ export {
   EXTRACT_COMPONENTS_CHANGELOG_PATH,
   DOC_FILE_NAME,
   EXAMPLE_FILE_NAME,
-  API_FILE_NAME,
 };

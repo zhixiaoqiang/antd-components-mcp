@@ -1,7 +1,6 @@
 ## 何时使用
 - 需要用户输入表单域内容时。
 - 提供组合型输入框，带搜索的输入框，还可以进行大小选择。
-
 ## API
 ### Input
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -92,8 +91,6 @@ interface CountConfig {
 | --- | --- | --- | --- |
 | blur | 取消焦点 | - |  |
 | focus | 获取焦点 | (option?: { preventScroll?: boolean, cursor?: 'start' \| 'end' \| 'all' }) | option - 4.10.0 |
-
-
 ## FAQ
 ### 为什么我动态改变 `prefix/suffix/showCount` 时，Input 会失去焦点？
 当 Input 动态添加或者删除 `prefix/suffix/showCount` 时，React 会重新创建 DOM 结构而新的 input 是没有焦点的。你可以预设一个空的 `<span />` 来保持 DOM 结构不变：

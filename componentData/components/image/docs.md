@@ -1,7 +1,6 @@
 ## 何时使用
 - 需要展示图片时使用。
 - 加载显示大图或加载失败时容错处理。
-
 ## API
 ### Image
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -129,4 +128,3 @@ type TransformAction =
   height: string | number;
 }
 ```
-

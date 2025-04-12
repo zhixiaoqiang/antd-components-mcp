@@ -4,7 +4,6 @@
 穿梭选择框用直观的方式在两栏中移动元素，完成选择行为。
 选择一个或以上的选项后，点击对应的方向键，可以把选中的选项移动到另一栏。其中，左边一栏为 `source`，右边一栏为 `target`，API 的设计也反映了这两个概念。
 > 注意：穿梭框组件只支持受控使用，不支持非受控模式。
-
 ## API
 ### Transfer
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
@@ -53,7 +52,6 @@ Transfer 支持接收 `children` 自定义渲染列表，并返回以下参数�
 // 比如你的数据主键是 uid
 return <Transfer rowKey={(record) => record.uid} />;
 ```
-
 ## FAQ
 ### 怎样让 Transfer 穿梭框列表支持异步数据加载
 为了保持页码同步，在勾选时可以不移除选项而以禁用代替：<https://codesandbox.io/s/objective-wing-6iqbx>

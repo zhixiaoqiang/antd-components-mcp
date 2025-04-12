@@ -1,6 +1,6 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import { getComponentProps } from "../utils/components";
+import { getComponentDocumentation } from "../utils/components";
 
 /** 获取组件 API 文档 */
 const registryTool = (server: McpServer) => {
@@ -13,7 +13,7 @@ const registryTool = (server: McpServer) => {
 1. 用户询问特定组件的属性时；`,
     { componentName: z.string() },
     async ({ componentName }) => {
-      const propsSection = await getComponentProps(componentName);
+      const propsSection = await getComponentDocumentation(componentName);
       return {
         content: [
           {
