@@ -2,7 +2,9 @@
 
 # Ant Design 组件库 MCP 服务
 
-一个模型上下文协议(MCP)服务器，用于向 `Claude` 等大型语言模型(LLMs)提供 `Ant Design` 组件文档。该服务器允许 LLM 通过一组专用工具探索和理解 `Ant Design` 组件。
+[![smithery badge](https://smithery.ai/badge/@zhixiaoqiang/antd-components-mcp)](https://smithery.ai/server/@zhixiaoqiang/antd-components-mcp)
+
+一个模型上下文协议(MCP)服务器，用于向 `Claude` 等大型语言模型(LLMs)提供 `Ant Design` 组件文档。该服务器允许 LLM通过一组专用工具探索和理解 `Ant Design` 组件。
 
 ## 功能特性
 
@@ -35,7 +37,7 @@
 ### 组件文档
 
 ```bash
-# 克隆 Ant Design 仓库
+# 焦龙 Ant Design 仓库
 git clone https://github.com/ant-design/ant-design.git --depth 1 --branch master --single-branch --filter=blob:none
 
 # 在当前目录执行提取文档命令
@@ -62,14 +64,22 @@ npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 
 ## Claude桌面版集成
 
+### Installing via Smithery
+
+To install Ant Design 组件库 MCP 服务 for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@zhixiaoqiang/antd-components-mcp):
+
+```bash
+npx -y @smithery/cli install @zhixiaoqiang/antd-components-mcp --client claude
+```
+
 在Claude桌面版中使用此MCP服务器，编辑 `claude_desktop_config.json` 配置文件：
 
 ```json
 {
   "mcpServers": {
-    "Ant Design Components": {
+    "Ant Design 组件库 MCP服务": {
       "command": "npx",
-      "args": ["@jzone-mcp/antd-components-mcp"]
+      "args": ["@zhixiaoqiang/antd-components-mcp"]
     }
   }
 }
@@ -86,7 +96,7 @@ npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 
 - `list-components`: 列出所有可用的 Ant Design 组件
 - `get-component-docs`: 获取 Ant Design 特定组件的详细文档，不包含代码示例
-- `list-component-examples`: 获取 Ant Design 特定组件的代码示例
+- `list-component-examples`: 获取 Ant Design特定组件的代码示例
 - `get-component-changelog`: 列出 Ant Design 特定组件的更新日志
 
 ## 查询示例
@@ -94,15 +104,15 @@ npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 可尝试的示例查询：
 
 ```text
-Ant Design 有哪些可用组件？
+Ant Design有哪些可用组件？
 
 上传图片示例后，使用 Ant Design 实现如图功能。
 
-显示 Button 组件的文档。
+显示 Button组件的文档。
 
-Button 组件接受哪些属性？
+Button组件接受哪些属性？
 
-显示 Button 组件的代码示例。
+显示 Button组件的代码示例。
 
 查看 Button 组件的基础用法。
 
