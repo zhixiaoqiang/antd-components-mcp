@@ -6,15 +6,18 @@
 
 ## 功能特性
 
-- 已预处理数据，开箱即用(预处理版本为 `Ant Design V5.24.6 2025/4/12`)
-  - 可以自行提取最新的/其他版本的组件文档
-- 列出所有可用的 `Ant Design` 组件
-  - 包含组件名称、描述、可用版本、何时使用当前组件信息
-- 查看特定组件文档(已过滤无意义内容，对上下文友好)
-- 查看特定组件属性和 API 定义
-- 查看特定组件组件的代码示例
-- 查看特定组件组件的更新日志
-- 做了大量的缓存，有效缓解 IO 压力
+- 🚀 已预处理数据，开箱即用(预处理版本为 `Ant Design V5.24.6 2025/4/12`)
+  - 🔨 可以自行提取最新的/其他版本的组件文档
+- 🔗 列出所有可用的 `Ant Design` 组件
+  - 📃 包含组件名称、描述、可用版本、何时使用当前组件信息
+- 📃 查看特定组件文档(已过滤无意义内容，对上下文友好)
+- 📃 查看特定组件属性和 API 定义
+- 📃 查看特定组件组件的代码示例
+- 📖 查看特定组件组件的更新日志
+- 💪 做了大量的缓存，有效缓解 IO 压力
+- ⚙️ 提供了预置的 prompt，有效减少重复的工具调用(对上下文优化)
+  - 😺 测试下来 Claude 客户端可以使用
+  - 😩 github copilot/Cline 插件暂时无法使用
 
 ## 后续计划
 
@@ -83,9 +86,33 @@ npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 - macOS/Linux: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - Windows: `$env:AppData\Claude\claude_desktop_config.json`
 
+## MCP Prompt
+
+服务器提供以下 prompt 供 LLM 交互：
+
+- `system-description`: 专业的 Ant Design 组件库专家助手，可有效减少重复性的工具调用
+
+> PS：考虑到部分客户端不支持使用 prompt,可自行复制如下 prompt
+
+```test
+你是一个专业的 Ant Design 组件库专家助手，具有以下能力：
+1. 可以查询所有可用组件列表
+2. 能获取组件的详细文档、属性说明和API定义
+3. 能提供组件的代码示例
+4. 能查询组件的更新历史
+
+使用规则：
+- 严格遵循以下工具使用优先级：
+  1. 首先检查当前对话上下文是否已包含所需信息
+  2. 只有当上下文确实缺少必要信息时才调用工具
+  3. 对于完全相同的组件查询参数，禁止重复调用工具
+- 对专业术语保持准确，不自行编造组件属性
+- 代码示例要完整可运行，并注明所需版本
+```
+
 ## MCP Tools
 
-服务器提供以下工具供LLM与Ant Design组件文档交互：
+服务器提供以下工具供 LLM 与 Ant Design 组件文档交互：
 
 - `list-components`: 列出所有可用的 Ant Design 组件
 - `get-component-docs`: 获取 Ant Design 特定组件的详细文档，不包含代码示例
