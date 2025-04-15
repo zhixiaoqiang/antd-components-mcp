@@ -31,8 +31,8 @@
   "files": [
     "dist",
     "componentData",
-    "assets",
-    "README.md"
+    "README.md",
+    "README.zh-CN.md"
   ],
   "author": "zhixiaoqiang",
   "license": "MIT",

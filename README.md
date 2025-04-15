@@ -3,7 +3,9 @@
 [![npm version](https://img.shields.io/npm/v/@jzone-mcp/antd-components-mcp.svg)](https://www.npmjs.com/package/@jzone-mcp/antd-components-mcp)
 
 <center>
-[中文文档](./README.zh-CN.md) | [English Documentation](#ant-design-components-mcp-service)
+<a href="./README.zh-CN.md">中文文档</a> | 
+<a href="#ant-design-components-mcp-service">English Documentation</a>
+
 </center>
 
 # Ant Design Components MCP Service
