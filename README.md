@@ -1,74 +1,80 @@
 ![antd-components-mcp](https://socialify.git.ci/zhixiaoqiang/antd-components-mcp/image?description=1&font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
 
-# Ant Design 组件库 MCP 服务
+[![npm version](https://img.shields.io/npm/v/@jzone-mcp/antd-components-mcp.svg)](https://www.npmjs.com/package/@jzone-mcp/antd-components-mcp)
 
-一个模型上下文协议(MCP)服务器，用于向 `Claude` 等大型语言模型(LLMs)提供 `Ant Design` 组件文档。该服务器允许 LLM 通过一组专用工具探索和理解 `Ant Design` 组件。
+<center>
+[中文文档](./README.zh-CN.md) | [English Documentation](#ant-design-components-mcp-service)
+</center>
 
-## 功能特性
+# Ant Design Components MCP Service
 
-- 🚀 已预处理数据，开箱即用(预处理版本为 `Ant Design V5.24.6 2025/4/12`)
-  - 🔨 可以自行提取最新的/其他版本的组件文档
-- 🔗 列出所有可用的 `Ant Design` 组件
-  - 📃 包含组件名称、描述、可用版本、何时使用当前组件信息
-- 📃 查看特定组件文档(已过滤无意义内容，对上下文友好)
-- 📃 查看特定组件属性和 API 定义
-- 📃 查看特定组件组件的代码示例
-- 📖 查看特定组件组件的更新日志
-- 💪 做了大量的缓存，有效缓解 IO 压力
-- ⚙️ 提供了预置的 prompt，有效减少重复的工具调用(对上下文优化)
-  - 😺 测试下来 Claude 客户端可以使用
-  - 😩 github copilot/Cline 插件暂时无法使用
+A Model Context Protocol (MCP) server that provides `Ant Design` component documentation to large language models (LLMs) like `Claude`. This server allows LLMs to explore and understand `Ant Design` components through a set of dedicated tools.
 
-## 后续计划
+## Features
 
-- [ ] 实现监听 Ant Design 组件库的更新，自动进行数据提取发版
-- [ ] 考虑为工具调用添加上下文感知，如前文已获取，则返回："请使用前文获取的内容"
-  - 通过 sessionId 处理
-  - 客户端通常可以实现重新编辑对话，所以需要考虑当前情况
-- [ ] 添加详细的 mcp tools 例子文档
-- [ ] 考虑将提取的数据考虑放到CDN上，使用时实时获取
-  - 实际上 npx 执行时会检测新版并安装新版本使用，目前可以保证数据实时性
-- [ ] 考虑支持通过传参调整 tool 的注册来改善上下文
-  - 目前部分 client 已支持手动开关单一工具：cline、github copilot等
-- [ ] 考虑兼容 Ant Design 4.x 版本或者其他 UI 库
-  - 如 Ant Design X 等系列组件库
+- 🚀 Pre-processed data, ready to use (Pre-processed version: `Ant Design V5.24.6 2025/4/12`)
+  - 🔨 Can extract documentation for the latest/other versions
+- 🔗 List all available `Ant Design` components
+  - 📃 Includes component name, description, available versions, and when to use the component
+- 📃 View specific component documentation (filtered for context-friendly content)
+- 📃 View component properties and API definitions
+- 📃 View code examples for specific components
+- 📖 View changelog for specific components
+- 💪 Extensive caching to effectively reduce IO pressure
+- ⚙️ Pre-configured prompt to reduce repetitive tool calls (optimized for context)
+  - 😺 Tested working with Claude client
+  - 😩 Currently not working with github copilot/Cline plugins
 
-## 什么时候需要自行提取组件文档？
+## Roadmap
 
-1. 你想使用最新的组件文档
-2. 你想使用其他版本的组件文档
+- [ ] Implement automatic data extraction when Ant Design components update
+- [ ] Add context awareness for tool calls (e.g. return "Please use previously obtained content")
+  - Handle via sessionId
+  - Consider client-side conversation editing capabilities
+- [ ] Add detailed MCP tools example documentation
+- [ ] Consider hosting extracted data on CDN for real-time access
+  - Currently npx checks for and installs new versions automatically
+- [ ] Support adjusting tool registration via parameters to improve context
+  - Some clients already support manual tool toggling (e.g. cline, github copilot)
+- [ ] Consider compatibility with Ant Design 4.x or other UI libraries
+  - Such as Ant Design X series components
 
-### 组件文档
+## When to Extract Component Documentation Yourself?
+
+1. You want to use the latest component documentation
+2. You want to use documentation for other versions
+
+### Component Documentation
 
 ```bash
-# 克隆 Ant Design 仓库
+# Clone Ant Design repository
 git clone https://github.com/ant-design/ant-design.git --depth 1 --branch master --single-branch --filter=blob:none
 
-# 在当前目录执行提取文档命令
-npx @jzone-mcp/antd-components-mcp extract [ant design repo path]  #默认提取路径为 ./ant-design
+# Run extraction command in current directory
+npx @jzone-mcp/antd-components-mcp extract [ant design repo path]  # Default path: ./ant-design
 ```
 
-### 组件更新日志
+### Component Changelog
 
-组件更新日志提取依赖于 `Ant Design` 的 `scripts/generate-component-changelog.ts` 脚本，需要按照依赖后生成：
+Component changelog extraction depends on Ant Design's `scripts/generate-component-changelog.ts` script:
 
 ```bash
 cd ant-design
 
 pnpm install
 
-# 生成组件更新日志 JSON
+# Generate component changelog JSON
 pnpm lint:changelog
 
-# 提取组件信息
+# Extract component information
 npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 ```
 
-这将创建一个包含所有提取的组件文档的 data 目录，供 MCP 服务器使用。
+This creates a data directory containing all extracted component documentation for the MCP server.
 
-## Claude桌面版集成
+## Claude Desktop Integration
 
-在Claude桌面版中使用此MCP服务器，编辑 `claude_desktop_config.json` 配置文件：
+To use this MCP server with Claude Desktop, edit the `claude_desktop_config.json` configuration file:
 
 ```json
 {
@@ -81,104 +87,103 @@ npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 }
 ```
 
-配置文件位置：
+Configuration file locations:
 
 - macOS/Linux: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - Windows: `$env:AppData\Claude\claude_desktop_config.json`
 
 ## MCP Prompt
 
-服务器提供以下 prompt 供 LLM 交互：
+The server provides the following prompt for LLM interaction:
 
-- `system-description`: 专业的 Ant Design 组件库专家助手，可有效减少重复性的工具调用
+- `system-description`: Professional Ant Design components expert assistant that effectively reduces repetitive tool calls
 
-> PS：考虑到部分客户端不支持使用 prompt,可自行复制如下 prompt
+> Note: For clients that don't support prompts, you can copy the following:
 
-```test
-你是一个专业的 Ant Design 组件库专家助手，具有以下能力：
-1. 可以查询所有可用组件列表
-2. 能获取组件的详细文档、属性说明和API定义
-3. 能提供组件的代码示例
-4. 能查询组件的更新历史
+```text
+You are a professional Ant Design components expert assistant with these capabilities:
+1. Can query all available components
+2. Can get detailed component documentation, property descriptions and API definitions
+3. Can provide component code examples
+4. Can query component change history
 
-使用规则：
-- 严格遵循以下工具使用优先级：
-  1. 首先检查当前对话上下文是否已包含所需信息
-  2. 只有当上下文确实缺少必要信息时才调用工具
-  3. 对于完全相同的组件查询参数，禁止重复调用工具
-- 对专业术语保持准确，不自行编造组件属性
-- 代码示例要完整可运行，并注明所需版本
+Usage rules:
+- Strictly follow these tool usage priorities:
+  1. First check if current conversation context already contains needed information
+  2. Only call tools when context is missing necessary information
+  3. Never call tools repeatedly for identical component queries
+- Maintain accurate technical terminology, don't invent component properties
+- Provide complete, runnable code examples with version requirements
 ```
 
 ## MCP Tools
 
-服务器提供以下工具供 LLM 与 Ant Design 组件文档交互：
+The server provides these tools for interacting with Ant Design component documentation:
 
-- `list-components`: 列出所有可用的 Ant Design 组件
-- `get-component-docs`: 获取 Ant Design 特定组件的详细文档，不包含代码示例
-- `list-component-examples`: 获取 Ant Design 特定组件的代码示例
-- `get-component-changelog`: 列出 Ant Design 特定组件的更新日志
+- `list-components`: List all available Ant Design components
+- `get-component-docs`: Get detailed documentation for a specific Ant Design component (no code examples)
+- `list-component-examples`: Get code examples for a specific Ant Design component
+- `get-component-changelog`: List changelog for a specific Ant Design component
 
-## 查询示例
+## Example Queries
 
-可尝试的示例查询：
+Try these example queries:
 
 ```text
-Ant Design 有哪些可用组件？
+What Ant Design components are available?
 
-上传图片示例后，使用 Ant Design 实现如图功能。
+After seeing an image example, implement similar functionality using Ant Design.
 
-显示 Button 组件的文档。
+Show Button component documentation.
 
-Button 组件接受哪些属性？
+What properties does the Button component accept?
 
-显示 Button 组件的代码示例。
+Show Button component code examples.
 
-查看 Button 组件的基础用法。
+View basic usage examples for Button component.
 
-查看 Button 组件的更新记录
+View Button component changelog.
 ```
 
-## 工作原理
+## How It Works
 
-`scripts/extract-docs.ts` 脚本从 `Ant Design` 仓库提取文档并保存到 `componentData` 目录，包括：
+The `scripts/extract-docs.ts` script extracts documentation from the Ant Design repository and saves it to the `componentData` directory, including:
 
-- 组件文档(markdown格式)
-- API/属性文档
-- 示例代码
-- 全量的更新日志
+- Component documentation (markdown format)
+- API/property documentation
+- Example code
+- Complete changelog
 
-这种方法有几个优点：
+Advantages:
 
-1. 用户无需克隆整个Ant Design仓库
-2. MCP服务器启动更快
-3. 包体积更小
-4. 新版本发布时更容易更新
+1. Users don't need to clone the entire Ant Design repository
+2. Faster MCP server startup
+3. Smaller package size
+4. Easier updates when new versions are released
 
-当你要更新 Ant Design 文档时，只需执行 `npx @jzone-mcp/antd-components-mcp extract [ant design repo path]` 命令即可。
+To update Ant Design documentation, simply run:
+`npx @jzone-mcp/antd-components-mcp extract [ant design repo path]`
 
-## 整体架构
-
-以下是使用Mermaid绘制的项目架构图，展示了MCP Ant Design组件服务的主要模块和数据流向。
+## Architecture
 
 ```mermaid
 graph TD
-    %% 主要模块
+    %% Main modules
     Server[MCP Server] --> Tools
     Server --> Transport[StdioServerTransport]
     
-    %% 工具模块
-    subgraph Tools[工具模块]
+    %% Tool modules
+    subgraph Tools[Tool Modules]
         ListComponents[list-components]
         GetDocs[get-component-docs]
         ListExamples[list-component-examples]
         GetChangelog[get-component-changelog]
     end
     
-    %% 工具依赖的工具函数
+    %% Tool utility functions
     Tools --> Utils
     
-    subgraph Utils[工具函数]
+    subgraph Utils[Utility Functions]
         Components[components.ts]
         Cache[cache.ts]
         MdExtract[md-extract.ts]
@@ -186,44 +191,44 @@ graph TD
         Write[write.ts]
     end
     
-    %% 数据存储
+    %% Data storage
     Utils --> ComponentData
     
-    subgraph ComponentData[组件数据]
+    subgraph ComponentData[Component Data]
         CompIndex[components-index.json]
         CompChangelog[components-changelog.json]
-        CompDirs[组件目录]
+        CompDirs[Component Directories]
     end
     
-    %% 组件目录详情
-    CompDirs --> DocFiles[文档文件]
-    CompDirs --> ExampleFiles[示例文件]
+    %% Component directory details
+    CompDirs --> DocFiles[Documentation Files]
+    CompDirs --> ExampleFiles[Example Files]
     
-    %% 数据提取脚本
+    %% Data extraction script
     Scripts[extract-docs.ts] --> ComponentData
 ```
 
-## 数据流向
+## Data Flow
 
 ```mermaid
 sequenceDiagram
-    participant Client as 客户端
+    participant Client as Client
     participant Server as MCP Server
-    participant Tools as 工具模块
-    participant Utils as 工具函数
-    participant Data as 组件数据
+    participant Tools as Tool Modules
+    participant Utils as Utility Functions
+    participant Data as Component Data
     
-    Client->>Server: 请求组件信息
-    Server->>Tools: 调用相应工具
-    Tools->>Utils: 使用工具函数
-    Utils->>Data: 读取组件数据
-    Data-->>Utils: 返回数据
-    Utils-->>Tools: 处理后的数据
-    Tools-->>Server: 格式化响应
-    Server-->>Client: 返回组件信息
+    Client->>Server: Request component information
+    Server->>Tools: Call appropriate tool
+    Tools->>Utils: Use utility functions
+    Utils->>Data: Read component data
+    Data-->>Utils: Return data
+    Utils-->>Tools: Processed data
+    Tools-->>Server: Formatted response
+    Server-->>Client: Return component information
 ```
 
-## 组件数据结构
+## Component Data Structure
 
 ```mermaid
 erDiagram
@@ -255,14 +260,14 @@ erDiagram
     }
 ```
 
-## 缓存机制
+## Caching Mechanism
 
 ```mermaid
 flowchart LR
-    Request[组件请求] --> CacheCheck{缓存检查}
-    CacheCheck -->|存在| ReturnCache[返回缓存数据]
-    CacheCheck -->|不存在| ReadFile[读取文件]
-    ReadFile --> ProcessData[处理数据]
-    ProcessData --> UpdateCache[更新缓存]
-    UpdateCache --> ReturnData[返回数据]
+    Request[Component Request] --> CacheCheck{Cache Check}
+    CacheCheck -->|Exists| ReturnCache[Return Cached Data]
+    CacheCheck -->|Not Exists| ReadFile[Read File]
+    ReadFile --> ProcessData[Process Data]
+    ProcessData --> UpdateCache[Update Cache]
+    UpdateCache --> ReturnData[Return Data]
 ```
