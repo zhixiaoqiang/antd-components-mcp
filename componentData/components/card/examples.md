@@ -1,9 +1,8 @@
 ## Card 组件示例
 ### 典型卡片
-#### zh-CN
 包含标题、内容、操作区域。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card, Space } from 'antd';
 const App: React.FC = () => (
@@ -21,13 +20,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 无边框
-#### zh-CN
 在灰色背景上使用无边框的卡片。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card } from 'antd';
 const App: React.FC = () => (
@@ -38,13 +35,11 @@ const App: React.FC = () => (
   </Card>
 );
 export default App;
-
 ```
 ### 简洁卡片
-#### zh-CN
 只包含内容区域。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card } from 'antd';
 const App: React.FC = () => (
@@ -55,13 +50,11 @@ const App: React.FC = () => (
   </Card>
 );
 export default App;
-
 ```
 ### 更灵活的内容展示
-#### zh-CN
 可以利用 `Card.Meta` 支持更灵活的内容。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card } from 'antd';
 const { Meta } = Card;
@@ -75,13 +68,11 @@ const App: React.FC = () => (
   </Card>
 );
 export default App;
-
 ```
 ### 栅格卡片
-#### zh-CN
 在系统概览页面常常和栅格进行配合。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card, Col, Row } from 'antd';
 const App: React.FC = () => (
@@ -104,13 +95,11 @@ const App: React.FC = () => (
   </Row>
 );
 export default App;
-
 ```
 ### 预加载的卡片
-#### zh-CN
 数据读入前会有文本块样式。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card, Flex, Switch } from 'antd';
@@ -152,13 +141,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 网格型内嵌卡片
-#### zh-CN
 一种常见的卡片内容区隔模式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card } from 'antd';
 const gridStyle: React.CSSProperties = {
@@ -179,13 +166,11 @@ const App: React.FC = () => (
   </Card>
 );
 export default App;
-
 ```
 ### 内部卡片
-#### zh-CN
 可以放在普通卡片内部，展示多层级结构的信息。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card } from 'antd';
 const App: React.FC = () => (
@@ -204,13 +189,11 @@ const App: React.FC = () => (
   </Card>
 );
 export default App;
-
 ```
 ### 带页签的卡片
-#### zh-CN
 可承载更多内容。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Card } from 'antd';
 const tabList = [
@@ -285,13 +268,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 支持更多内容配置
-#### zh-CN
 一种支持封面、头像、标题和描述信息的卡片。
 
-```typescript
+```tsx
 import React from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
@@ -319,13 +300,11 @@ const App: React.FC = () => (
   </Card>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Card, ConfigProvider } from 'antd';
@@ -381,5 +360,4 @@ export default () => (
     </Card>
   </ConfigProvider>
 );
-
 ```

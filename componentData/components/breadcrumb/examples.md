@@ -1,9 +1,8 @@
 ## Breadcrumb 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Breadcrumb } from 'antd';
 const App: React.FC = () => (
@@ -25,13 +24,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 带有图标的
-#### zh-CN
 图标放在文字前面。
 
-```typescript
+```tsx
 import React from 'react';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb } from 'antd';
@@ -58,13 +55,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 带有参数的
-#### zh-CN
 带有路由参数的。
 
-```typescript
+```tsx
 import React from 'react';
 import { Breadcrumb } from 'antd';
 const App: React.FC = () => (
@@ -82,13 +77,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 分隔符
-#### zh-CN
 使用 `separator=">"` 可以自定义分隔符。
 
-```typescript
+```tsx
 import React from 'react';
 import { Breadcrumb } from 'antd';
 const App: React.FC = () => (
@@ -113,13 +106,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 带下拉菜单的面包屑
-#### zh-CN
 面包屑支持下拉菜单。
 
-```typescript
+```tsx
 import React from 'react';
 import { Breadcrumb } from 'antd';
 const menuItems = [
@@ -168,13 +159,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 独立的分隔符
-#### zh-CN
 自定义单独的分隔符。
 
-```typescript
+```tsx
 import React from 'react';
 import { Breadcrumb } from 'antd';
 const App: React.FC = () => (
@@ -209,13 +198,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, ConfigProvider } from 'antd';
@@ -295,5 +282,4 @@ export default () => (
     />
   </ConfigProvider>
 );
-
 ```

@@ -1,9 +1,8 @@
 ## Slider 组件示例
 ### 基本
-#### zh-CN
 基本滑动条。当 `range` 为 `true` 时，渲染为双滑块。当 `disabled` 为 `true` 时，滑块处于不可用状态。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Slider, Switch } from 'antd';
 const App: React.FC = () => {
@@ -20,13 +19,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 带输入框的滑块
-#### zh-CN
 和 [数字输入框](/components/input-number-cn) 组件保持同步。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { InputNumberProps } from 'antd';
 import { Col, InputNumber, Row, Slider, Space } from 'antd';
@@ -96,13 +93,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 带 icon 的滑块
-#### zh-CN
 滑块左右可以设置图标来表达业务含义。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { FrownOutlined, SmileOutlined } from '@ant-design/icons';
 import { Slider } from 'antd';
@@ -126,13 +121,11 @@ const IconSlider: React.FC<IconSliderProps> = (props) => {
 };
 const App: React.FC = () => <IconSlider min={0} max={20} />;
 export default App;
-
 ```
 ### 自定义提示
-#### zh-CN
 使用 `tooltip.formatter` 可以格式化 `Tooltip` 的内容，设置 `tooltip.formatter={null}`，则隐藏 `Tooltip`。
 
-```typescript
+```tsx
 import React from 'react';
 import type { SliderSingleProps } from 'antd';
 import { Slider } from 'antd';
@@ -144,13 +137,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 事件
-#### zh-CN
 当 Slider 的值发生改变时，会触发 `onChange` 事件，并把改变后的值作为参数传入。在 `mouseup` 或者 `keyup` 时，会触发 `onChangeComplete` 事件，并把当前值作为参数传入。
 
-```typescript
+```tsx
 import React from 'react';
 import { Slider } from 'antd';
 const onChange = (value: number | number[]) => {
@@ -172,13 +163,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 带标签的滑块
-#### zh-CN
 使用 `marks` 属性标注分段式滑块，使用 `value` / `defaultValue` 指定滑块位置。当 `included=false` 时，表明不同标记间为并列关系。当 `step=null` 时，Slider 的可选值仅有 `marks` 标出来的部分。
 
-```typescript
+```tsx
 import React from 'react';
 import { Slider } from 'antd';
 import type { SliderSingleProps } from 'antd';
@@ -207,13 +196,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 垂直
-#### zh-CN
 垂直方向的 Slider。
 
-```typescript
+```tsx
 import React from 'react';
 import { Slider } from 'antd';
 import type { SliderSingleProps } from 'antd';
@@ -245,24 +232,20 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 控制 ToolTip 的显示
-#### zh-CN
 当 `tooltip.open` 为 `true` 时，将始终显示 ToolTip；反之则始终不显示，即使在拖动、移入时也是如此。
 
-```typescript
+```tsx
 import React from 'react';
 import { Slider } from 'antd';
 const App: React.FC = () => <Slider defaultValue={30} tooltip={{ open: true }} />;
 export default App;
-
 ```
 ### 反向
-#### zh-CN
 设置 `reverse` 可以将滑动条置反。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Slider, Switch } from 'antd';
 const App: React.FC = () => {
@@ -276,24 +259,20 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 范围可拖拽
-#### zh-CN
 可以设置 `range.draggableTrack`，使得范围刻度整体可拖拽。
 
-```typescript
+```tsx
 import React from 'react';
 import { Slider } from 'antd';
 const App: React.FC = () => <Slider range={{ draggableTrack: true }} defaultValue={[20, 50]} />;
 export default App;
-
 ```
 ### 多点组合
-#### zh-CN
 范围多个点组合。
 
-```typescript
+```tsx
 import React from 'react';
 import { Slider } from 'antd';
 function getGradientColor(percentage: number) {
@@ -329,13 +308,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 动态增减节点
-#### zh-CN
 点击添加节点，拖出或者按键删除节点。
 
-```typescript
+```tsx
 import React from 'react';
 import { Slider } from 'antd';
 const App: React.FC = () => {
@@ -349,13 +326,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Slider } from 'antd';
 const style: React.CSSProperties = {
@@ -411,5 +386,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

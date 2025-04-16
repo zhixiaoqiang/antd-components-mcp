@@ -1,9 +1,8 @@
 ## Checkbox 组件示例
 ### 基本用法
-#### zh-CN
 简单的 checkbox。
 
-```typescript
+```tsx
 import React from 'react';
 import { Checkbox } from 'antd';
 import type { CheckboxProps } from 'antd';
@@ -12,13 +11,11 @@ const onChange: CheckboxProps['onChange'] = (e) => {
 };
 const App: React.FC = () => <Checkbox onChange={onChange}>Checkbox</Checkbox>;
 export default App;
-
 ```
 ### 不可用
-#### zh-CN
 checkbox 不可用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Checkbox } from 'antd';
 const App: React.FC = () => (
@@ -31,13 +28,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 受控的 Checkbox
-#### zh-CN
 联动 checkbox。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Checkbox } from 'antd';
 import type { CheckboxProps } from 'antd';
@@ -74,13 +69,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Checkbox 组
-#### zh-CN
 方便的从数组生成 Checkbox 组。
 
-```typescript
+```tsx
 import React from 'react';
 import { Checkbox } from 'antd';
 import type { GetProp } from 'antd';
@@ -115,13 +108,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 全选
-#### zh-CN
 在实现全选效果时，你可能会用到 `indeterminate` 属性。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Checkbox, Divider } from 'antd';
 import type { CheckboxProps } from 'antd';
@@ -149,13 +140,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 布局
-#### zh-CN
 Checkbox.Group 内嵌 Checkbox 并与 Grid 组件一起使用，可以实现灵活的布局。
 
-```typescript
+```tsx
 import React from 'react';
 import { Checkbox, Col, Row } from 'antd';
 import type { GetProp } from 'antd';
@@ -184,13 +173,11 @@ const App: React.FC = () => (
   </Checkbox.Group>
 );
 export default App;
-
 ```
 ### 自定义 lineWidth
-#### zh-CN
 测试自定义 lineWidth 的情况：https://github.com/ant-design/ant-design/issues/46307
 
-```typescript
+```tsx
 import React from 'react';
 import { Checkbox, ConfigProvider } from 'antd';
 const App: React.FC = () => (
@@ -212,5 +199,4 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```

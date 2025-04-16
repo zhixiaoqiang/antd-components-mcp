@@ -1,9 +1,8 @@
 ## Result 组件示例
 ### Success
-#### zh-CN
 成功的结果。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Result } from 'antd';
 const App: React.FC = () => (
@@ -20,13 +19,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### Info
-#### zh-CN
 展示处理结果。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Result } from 'antd';
 const App: React.FC = () => (
@@ -40,13 +37,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### Warning
-#### zh-CN
 警告类型的结果。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Result } from 'antd';
 const App: React.FC = () => (
@@ -61,13 +56,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 403
-#### zh-CN
 你没有此页面的访问权限。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Result } from 'antd';
 const App: React.FC = () => (
@@ -79,13 +72,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 404
-#### zh-CN
 此页面未找到。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Result } from 'antd';
 const App: React.FC = () => (
@@ -97,13 +88,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 500
-#### zh-CN
 服务器发生了错误。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Result } from 'antd';
 const App: React.FC = () => (
@@ -115,13 +104,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### Error
-#### zh-CN
 复杂的错误反馈。
 
-```typescript
+```tsx
 import React from 'react';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { Button, Result, Typography } from 'antd';
@@ -161,13 +148,11 @@ const App: React.FC = () => (
   </Result>
 );
 export default App;
-
 ```
 ### 自定义 icon
-#### zh-CN
 自定义 icon。
 
-```typescript
+```tsx
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Button, Result } from 'antd';
@@ -179,13 +164,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, ConfigProvider, Result } from 'antd';
 const App: React.FC = () => (
@@ -215,5 +198,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

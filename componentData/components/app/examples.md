@@ -1,9 +1,8 @@
 ## App 组件示例
 ### 基本用法
-#### zh-CN
 获取 `message`、`notification`、`modal` 实例。
 
-```typescript
+```tsx
 import React from 'react';
 import { App, Button, Space } from 'antd';
 // Sub page
@@ -45,13 +44,11 @@ export default () => (
     <MyPage />
   </App>
 );
-
 ```
 ### Hooks 配置
-#### zh-CN
 对 `message`、`notification` 进行配置。
 
-```typescript
+```tsx
 import React from 'react';
 import { App, Button, Space } from 'antd';
 // Sub page
@@ -83,5 +80,4 @@ export default () => (
     <MyPage />
   </App>
 );
-
 ```

@@ -1,20 +1,17 @@
 ## Input 组件示例
 ### 基本使用
-#### zh-CN
 基本使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Input } from 'antd';
 const App: React.FC = () => <Input placeholder="Basic usage" />;
 export default App;
-
 ```
 ### 三种大小
-#### zh-CN
 我们为 `<Input />` 输入框定义了三种尺寸（大、默认、小），高度分别为 `40px`、`32px` 和 `24px`。
 
-```typescript
+```tsx
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
@@ -30,13 +27,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 形态变体
-#### zh-CN
 Input 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Input } from 'antd';
 const App: React.FC = () => (
@@ -48,13 +43,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 面性变体 Debug
-#### zh-CN
 Filled Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Input } from 'antd';
 const { TextArea } = Input;
@@ -124,13 +117,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 前置/后置标签
-#### zh-CN
 用于配置一些固定组合。
 
-```typescript
+```tsx
 import React from 'react';
 import { SettingOutlined } from '@ant-design/icons';
 import { Cascader, Input, Select, Space } from 'antd';
@@ -162,13 +153,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 紧凑模式
-#### zh-CN
-使用 `Space.Compact` 创建紧凑模式，更多请查看 [Space.Compact](/components/space-cn##spacecompact) 文档。
+使用 `Space.Compact` 创建紧凑模式，更多请查看 [Space.Compact](/components/space-cn#spacecompact) 文档。
 
-```typescript
+```tsx
 import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Select, Space } from 'antd';
@@ -210,13 +199,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 输入框组合
-#### zh-CN
-`Input.Group` 已废弃，可以使用 [Space.Compact](/components/space-cn##spacecompact) 替代 `Input.Group`。
+`Input.Group` 已废弃，可以使用 [Space.Compact](/components/space-cn#spacecompact) 替代 `Input.Group`。
 
-```typescript
+```tsx
 import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import {
@@ -391,13 +378,11 @@ const App: React.FC = () => (
   </div>
 );
 export default App;
-
 ```
 ### 搜索框
-#### zh-CN
 带有搜索按钮的输入框。
 
-```typescript
+```tsx
 import React from 'react';
 import { AudioOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
@@ -442,13 +427,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 搜索框 loading
-#### zh-CN
 用于 `onSearch` 的时候展示 `loading`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Input } from 'antd';
 const { Search } = Input;
@@ -464,13 +447,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 文本域
-#### zh-CN
 用于多行输入。
 
-```typescript
+```tsx
 import React from 'react';
 import { Input } from 'antd';
 const { TextArea } = Input;
@@ -483,13 +464,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 适应文本高度的文本域
-#### zh-CN
 `autoSize` 属性适用于 `textarea` 节点，并且只有高度会自动变化。另外 `autoSize` 可以设定为一个对象，指定最小行数和最大行数。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Input } from 'antd';
 const { TextArea } = Input;
@@ -514,13 +493,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 一次性密码框
-#### zh-CN
 一次性密码输入框。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Input, Typography } from 'antd';
 import type { GetProps } from 'antd';
@@ -560,13 +537,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 输入时格式化展示
-#### zh-CN
 结合 [Tooltip](/components/tooltip-cn) 组件，实现一个数值输入框，方便内容超长时的全量展现。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Input, Tooltip } from 'antd';
 interface NumericInputProps {
@@ -619,13 +594,11 @@ const App: React.FC = () => {
   return <NumericInput style={{ width: 120 }} value={value} onChange={setValue} />;
 };
 export default App;
-
 ```
 ### 前缀和后缀
-#### zh-CN
 在输入框上添加前缀或后缀图标。
 
-```typescript
+```tsx
 import React from 'react';
 import { InfoCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { Input, Tooltip } from 'antd';
@@ -649,13 +622,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 密码框
-#### zh-CN
 密码框。
 
-```typescript
+```tsx
 import React from 'react';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Button, Input, Space } from 'antd';
@@ -682,13 +653,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 带移除图标
-#### zh-CN
 带移除图标的输入框，点击图标删除所有内容。
 
-```typescript
+```tsx
 import React from 'react';
 import { Input } from 'antd';
 const { TextArea } = Input;
@@ -704,13 +673,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 带字数提示
-#### zh-CN
 展示字数提示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Input } from 'antd';
 const { TextArea } = Input;
@@ -731,13 +698,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### = 5.10.0">定制计数能力
-#### zh-CN
 在某些场景下，需要定制计数能力（例如 emoji 长度以 1 计算），可以通过 `count` 属性来实现。在该模式下，通过 `count.max` 属性来超出原生 `maxLength` 的限制。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Input, Typography } from 'antd';
 import { runes } from 'runes2';
@@ -778,13 +743,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 自定义状态
-#### zh-CN
 使用 `status` 为 Input 添加状态，可选 `error` 或者 `warning`。
 
-```typescript
+```tsx
 import React from 'react';
 import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
 import { Input, Space } from 'antd';
@@ -797,13 +760,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 聚焦
-#### zh-CN
 聚焦额外配置属性。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import type { InputRef } from 'antd';
 import { Button, Input, Space, Switch } from 'antd';
@@ -869,13 +830,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Style Debug
-#### zh-CN
 Buggy! 测试一些踩过的样式坑。
 
-```typescript
+```tsx
 import React from 'react';
 import { Input } from 'antd';
 const { TextArea } = Input;
@@ -897,13 +856,11 @@ const App: React.FC = () => (
   </div>
 );
 export default App;
-
 ```
 ### 文本对齐
-#### zh-CN
 默认对齐效果。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   AutoComplete,
@@ -994,13 +951,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 文本域
-#### zh-CN
 用于多行输入。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
 const { TextArea } = Input;
@@ -1026,13 +981,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### debug token
-#### zh-CN
 token debug
 
-```typescript
+```tsx
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { ConfigProvider, Input } from 'antd';
@@ -1053,5 +1006,4 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```

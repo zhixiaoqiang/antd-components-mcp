@@ -1,9 +1,8 @@
 ## Upload 组件示例
 ### 点击上传
-#### zh-CN
 经典款式，用户点击按钮弹出文件选择框。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -31,14 +30,12 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 用户头像
-#### zh-CN
 点击上传用户头像，并使用 `beforeUpload` 限制用户上传的图片格式和大小。
-> `beforeUpload` 的返回值可以是一个 Promise 以支持异步处理，如服务端校验等：[示例](https://upload-react-component.vercel.app/demo/before-upload##beforeupload)。
+> `beforeUpload` 的返回值可以是一个 Promise 以支持异步处理，如服务端校验等：[示例](https://upload-react-component.vercel.app/demo/before-upload#beforeupload)。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Flex, message, Upload } from 'antd';
@@ -110,13 +107,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 已上传的文件列表
-#### zh-CN
 使用 `defaultFileList` 设置已上传的内容。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -157,13 +152,11 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 照片墙
-#### zh-CN
 用户可以上传图片并在列表中显示缩略图。当上传照片数到达限制后，上传按钮消失。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Image, Upload } from 'antd';
@@ -258,13 +251,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 圆形照片墙
-#### zh-CN
 图片卡的替代显示。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Image, Upload } from 'antd';
@@ -341,15 +332,13 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 完全控制的上传列表
-#### zh-CN
 使用 `fileList` 对列表进行完全控制，可以实现各种自定义功能，以下演示二种情况：
 1. 上传列表数量的限制。
 2. 读取远程路径并显示链接。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadFile, UploadProps } from 'antd';
@@ -390,14 +379,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 拖拽上传
-#### zh-CN
 把文件拖入指定区域，完成上传，同样支持点击上传。
 设置 `multiple` 后，在 `IE10+` 可以一次上传多个文件。
 
-```typescript
+```tsx
 import React from 'react';
 import { InboxOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -435,13 +422,11 @@ const App: React.FC = () => (
   </Dragger>
 );
 export default App;
-
 ```
 ### 文件夹上传
-#### zh-CN
-支持上传一个文件夹里的所有文件。 [Safari 里仍然能选择文件?](##%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8A%E4%BC%A0%E5%9C%A8-safari-%E4%BB%8D%E7%84%B6%E5%8F%AF%E4%BB%A5%E9%80%89%E4%B8%AD%E6%96%87%E4%BB%B6)
+支持上传一个文件夹里的所有文件。 [Safari 里仍然能选择文件?](#%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8A%E4%BC%A0%E5%9C%A8-safari-%E4%BB%8D%E7%84%B6%E5%8F%AF%E4%BB%A5%E9%80%89%E4%B8%AD%E6%96%87%E4%BB%B6)
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
@@ -451,13 +436,11 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 手动上传
-#### zh-CN
 `beforeUpload` 返回 `false` 后，手动上传文件。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
@@ -520,13 +503,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 只上传 png 图片
-#### zh-CN
-`beforeUpload` 返回 `false` 或 `Promise.reject` 时，只用于拦截上传行为，不会阻止文件进入上传列表（[原因](https://github.com/ant-design/ant-design/issues/15561##issuecomment-475108235)）。如果需要阻止列表展现，可以通过返回 `Upload.LIST_IGNORE` 实现。
+`beforeUpload` 返回 `false` 或 `Promise.reject` 时，只用于拦截上传行为，不会阻止文件进入上传列表（[原因](https://github.com/ant-design/ant-design/issues/15561#issuecomment-475108235)）。如果需要阻止列表展现，可以通过返回 `Upload.LIST_IGNORE` 实现。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -549,13 +530,11 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 图片列表样式
-#### zh-CN
 上传文件为图片，可展示本地缩略图。`IE8/9` 不支持浏览器本地缩略图展示（[Ref](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL)），可以写 `thumbUrl` 属性来代替。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
@@ -592,13 +571,11 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 自定义预览
-#### zh-CN
 自定义本地预览，用于处理非图片格式文件（例如视频文件）。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -623,13 +600,11 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 限制数量
-#### zh-CN
 通过 `maxCount` 限制上传数量。当为 `1` 时，始终用最新上传的代替当前。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Space, Upload } from 'antd';
@@ -653,13 +628,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 上传前转换文件
-#### zh-CN
 使用 `beforeUpload` 转换上传的文件（例如添加水印）。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -696,13 +669,11 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 阿里云 OSS
-#### zh-CN
 使用阿里云 OSS 上传示例.
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadFile, UploadProps } from 'antd';
@@ -799,13 +770,11 @@ const Demo: React.FC = () => (
   </Form>
 );
 export default Demo;
-
 ```
 ### 自定义显示 icon
-#### zh-CN
 根据类型默认显示对应 icon
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   FileExcelTwoTone,
@@ -925,13 +894,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义交互图标和文件信息
-#### zh-CN
 使用 `showUploadList` 设置列表交互图标和其他文件信息。
 
-```typescript
+```tsx
 import React from 'react';
 import { StarOutlined, UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -984,13 +951,11 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 上传列表拖拽排序
-#### zh-CN
 使用 `itemRender` ，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现对上传列表拖拽排序。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { DragEndEvent } from '@dnd-kit/core';
@@ -1096,13 +1061,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 上传前裁切图片
-#### zh-CN
 配合 [antd-img-crop](https://github.com/nanxiaobei/antd-img-crop) 实现上传前裁切图片。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Upload } from 'antd';
 import type { GetProp, UploadFile, UploadProps } from 'antd';
@@ -1149,13 +1112,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义进度条样式
-#### zh-CN
 使用 `progress` 属性自定义进度条样式。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -1191,13 +1152,11 @@ const App: React.FC = () => (
   </Upload>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
@@ -1248,5 +1207,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

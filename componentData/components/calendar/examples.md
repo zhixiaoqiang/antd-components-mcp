@@ -1,9 +1,8 @@
 ## Calendar 组件示例
 ### 基本
-#### zh-CN
 一个通用的日历面板，支持年/月切换。
 
-```typescript
+```tsx
 import React from 'react';
 import { Calendar } from 'antd';
 import type { CalendarProps } from 'antd';
@@ -15,13 +14,11 @@ const App: React.FC = () => {
   return <Calendar onPanelChange={onPanelChange} />;
 };
 export default App;
-
 ```
 ### 通知事项日历
-#### zh-CN
 一个复杂的应用示例，用 `dateCellRender` 和 `monthCellRender` 函数来自定义需要渲染的数据。
 
-```typescript
+```tsx
 import React from 'react';
 import type { BadgeProps, CalendarProps } from 'antd';
 import { Badge, Calendar } from 'antd';
@@ -91,13 +88,11 @@ const App: React.FC = () => {
   return <Calendar cellRender={cellRender} />;
 };
 export default App;
-
 ```
 ### 卡片模式
-#### zh-CN
 用于嵌套在空间有限的容器中。
 
-```typescript
+```tsx
 import React from 'react';
 import { Calendar, theme } from 'antd';
 import type { CalendarProps } from 'antd';
@@ -119,13 +114,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 选择功能
-#### zh-CN
 一个通用的日历面板，支持年/月切换。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Alert, Calendar } from 'antd';
 import type { Dayjs } from 'dayjs';
@@ -148,13 +141,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 农历日历
-#### zh-CN
 展示农历、节气等信息。
 
-```typescript
+```tsx
 import React from 'react';
 import { Calendar, Col, Radio, Row, Select } from 'antd';
 import type { CalendarProps } from 'antd';
@@ -397,13 +388,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 周数
-#### zh-CN
 通过将 `showWeek` 属性设置为 `true`，在全屏日历中显示周数。
 
-```typescript
+```tsx
 import React from 'react';
 import { Calendar } from 'antd';
 const App: React.FC = () => (
@@ -414,13 +403,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 自定义头部
-#### zh-CN
 自定义日历头部内容。
 
-```typescript
+```tsx
 import React from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
@@ -522,13 +509,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { Calendar, ConfigProvider } from 'antd';
 import type { CalendarProps } from 'antd';
@@ -556,5 +541,4 @@ export default () => {
     </ConfigProvider>
   );
 };
-
 ```

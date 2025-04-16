@@ -1,9 +1,8 @@
 ## Image 组件示例
 ### 基本用法
-#### zh-CN
 单击图像可以放大显示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
@@ -13,13 +12,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 容错处理
-#### zh-CN
 加载失败显示图像占位符。
 
-```typescript
+```tsx
 import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
@@ -31,13 +28,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 渐进加载
-#### zh-CN
 大图使用 placeholder 渐进加载。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Image, Space } from 'antd';
 const App: React.FC = () => {
@@ -67,13 +62,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 多张图片预览
-#### zh-CN
 点击左右切换按钮可以预览多张图片。
 
-```typescript
+```tsx
 import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
@@ -90,13 +83,11 @@ const App: React.FC = () => (
   </Image.PreviewGroup>
 );
 export default App;
-
 ```
 ### 相册模式
-#### zh-CN
 从一张图片点开相册。
 
-```typescript
+```tsx
 import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
@@ -114,13 +105,11 @@ const App: React.FC = () => (
   </Image.PreviewGroup>
 );
 export default App;
-
 ```
 ### 自定义预览图片
-#### zh-CN
 可以设置不同的预览图片。
 
-```typescript
+```tsx
 import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
@@ -133,13 +122,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 受控的预览
-#### zh-CN
 可以使预览受控。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Image, InputNumber } from 'antd';
 const App: React.FC = () => {
@@ -178,13 +165,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义工具栏
-#### zh-CN
 可以自定义工具栏并添加下载原图或翻转旋转后图片的按钮。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   DownloadOutlined,
@@ -269,13 +254,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义预览内容
-#### zh-CN
 可以自定义预览内容。
 
-```typescript
+```tsx
 import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
@@ -297,13 +280,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 自定义预览文本
-#### zh-CN
 自定义预览文本。
 
-```typescript
+```tsx
 import React from 'react';
 import { ZoomInOutlined } from '@ant-design/icons';
 import { Image, Space } from 'antd';
@@ -323,13 +304,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 嵌套
-#### zh-CN
 嵌套在弹框当中使用
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Divider, Image, Modal } from 'antd';
 const App: React.FC = () => {
@@ -416,13 +395,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 多图预览时顶部进度自定义
-#### zh-CN
 多图预览时顶部展示进度, 支持自定义
 
-```typescript
+```tsx
 import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
@@ -441,13 +418,11 @@ const App: React.FC = () => (
   </Image.PreviewGroup>
 );
 export default App;
-
 ```
 ### 自定义组件 Token
-#### zh-CN
 自定义组件 Token。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Image } from 'antd';
 const App: React.FC = () => (
@@ -477,13 +452,11 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
 ### 在渲染函数中获取图片信息
-#### zh-CN
 在渲染函数中获取图片的信息。
 
-```typescript
+```tsx
 import React from 'react';
 import { Image } from 'antd';
 const src = 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
@@ -500,5 +473,4 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```

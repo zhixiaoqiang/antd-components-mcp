@@ -1,9 +1,8 @@
 ## Notification 组件示例
 ### Hooks 调用（推荐）
-#### zh-CN
 通过 `notification.useNotification` 创建支持读取 context 的 `contextHolder`。请注意，我们推荐通过顶层注册的方式代替 `notification` 静态方法，因为静态方法无法消费上下文，因而 ConfigProvider 的数据也不会生效。
 
-```typescript
+```tsx
 import React, { useMemo } from 'react';
 import {
   RadiusBottomleftOutlined,
@@ -65,13 +64,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自动关闭的延时
-#### zh-CN
 自定义通知框自动关闭的延时，默认 `4.5s`，取消自动关闭只要将该值设为 `0` 即可。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, notification } from 'antd';
 const App: React.FC = () => {
@@ -94,13 +91,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 带有图标的通知提醒框
-#### zh-CN
 通知提醒框左侧有图标。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, notification, Space } from 'antd';
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
@@ -126,13 +121,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义按钮
-#### zh-CN
 自定义关闭按钮的样式和文字。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, notification, Space } from 'antd';
 const close = () => {
@@ -173,13 +166,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义图标
-#### zh-CN
 图标可以被自定义。
 
-```typescript
+```tsx
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Button, notification } from 'antd';
@@ -203,13 +194,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 位置
-#### zh-CN
 使用 `placement` 可以配置通知从上面、下面、左上角、右上角、左下角、右下角弹出。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   BorderBottomOutlined,
@@ -285,13 +274,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义样式
-#### zh-CN
 使用 style 和 className 来定义样式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, notification } from 'antd';
 const App: React.FC = () => {
@@ -317,13 +304,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 更新消息内容
-#### zh-CN
 可以通过唯一的 key 来更新内容。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, notification } from 'antd';
 const key = 'updatable';
@@ -353,13 +338,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 堆叠
-#### zh-CN
 堆叠配置，默认开启。超过 3 个以上的消息会被自动收起，可以通过 `threshold` 来设置不会被收起的最大数量。
 
-```typescript
+```tsx
 import React, { useMemo } from 'react';
 import { Button, Divider, InputNumber, notification, Space, Switch } from 'antd';
 const Context = React.createContext({ name: 'Default' });
@@ -414,13 +397,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 显示进度条
-#### zh-CN
 显示自动关闭通知框的进度条。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, notification, Space } from 'antd';
 const App: React.FC = () => {
@@ -449,13 +430,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 静态方法（不推荐）
-#### zh-CN
 静态方法无法消费 Context，推荐优先使用 Hooks 版本。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, notification } from 'antd';
 const openNotification = () => {
@@ -474,13 +453,11 @@ const App: React.FC = () => (
   </Button>
 );
 export default App;
-
 ```
 ### _InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, notification } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -497,5 +474,4 @@ export default () => (
     }
   />
 );
-
 ```

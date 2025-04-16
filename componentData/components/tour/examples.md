@@ -1,9 +1,8 @@
 ## Tour 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Divider, Space, Tour } from 'antd';
@@ -54,13 +53,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 非模态
-#### zh-CN
 使用 `mask={false}` 可以将引导变为非模态，同时为了强调引导本身，建议与 `type="primary"` 组合使用。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Divider, Space, Tour } from 'antd';
@@ -111,13 +108,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 位置
-#### zh-CN
 改变引导相对于目标的位置，共有 12 种位置可供选择。当 `target={null}` 时引导将会展示在正中央。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { Button, Tour } from 'antd';
 import type { TourProps } from 'antd';
@@ -153,13 +148,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义遮罩样式
-#### zh-CN
 自定义遮罩样式。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Divider, Space, Tour } from 'antd';
@@ -227,13 +220,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义指示器
-#### zh-CN
 自定义指示器。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import type { GetRef, TourProps } from 'antd';
@@ -287,14 +278,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义高亮区域的样式
-#### zh-CN
 使用 `gap` 参数来控制高亮区域的边距和圆角。
 - `5.9.0` 之前不支持单独设置两个方向上的边距和数组类型的 `offset` 参数。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { Button, Col, Row, Slider, Space, Tour, Typography } from 'antd';
 import type { TourProps } from 'antd';
@@ -390,13 +379,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tour } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -433,5 +420,4 @@ export default () => (
     />
   </div>
 );
-
 ```

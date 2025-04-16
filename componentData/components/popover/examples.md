@@ -1,9 +1,8 @@
 ## Popover 组件示例
 ### 基本
-#### zh-CN
 最简单的用法，浮层的大小由内容区域决定。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Popover } from 'antd';
 const content = (
@@ -18,13 +17,11 @@ const App: React.FC = () => (
   </Popover>
 );
 export default App;
-
 ```
 ### 三种触发方式
-#### zh-CN
 鼠标移入、聚集、点击。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Popover, Space } from 'antd';
 const content = (
@@ -47,13 +44,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 位置
-#### zh-CN
 位置有十二个方向。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, ConfigProvider, Flex, Popover } from 'antd';
 const text = <span>Title</span>;
@@ -117,13 +112,11 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
 ### 箭头展示
-#### zh-CN
 通过 `arrow` 属性隐藏箭头。
 
-```typescript
+```tsx
 import React, { useMemo, useState } from 'react';
 import { Button, ConfigProvider, Flex, Popover, Segmented } from 'antd';
 import type { PopoverProps } from 'antd';
@@ -207,13 +200,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Arrow.pointAtCenter
-#### zh-CN
 `arrow={{ pointAtCenter: true }}` 属性可以让箭头指向目标元素的中心。
 
-```typescript
+```tsx
 import React from 'react';
 import { createStyles } from 'antd-style';
 import { Flex, Popover } from 'antd';
@@ -292,13 +283,11 @@ const App = () => {
   );
 };
 export default App;
-
 ```
 ### 贴边偏移
-#### zh-CN
 当 Popover 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Popover } from 'antd';
 const style: React.CSSProperties = {
@@ -322,13 +311,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 从浮层内关闭
-#### zh-CN
 使用 `open` 属性控制浮层显示。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Popover } from 'antd';
 const App: React.FC = () => {
@@ -352,13 +339,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 悬停点击弹出窗口
-#### zh-CN
 以下示例显示如何创建可悬停和单击的弹出窗口。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Popover } from 'antd';
 const App: React.FC = () => {
@@ -405,13 +390,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### _InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Popover } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopover } = Popover;
@@ -433,13 +416,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 线框风格
-#### zh-CN
 线框样式。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Popover } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopover } = Popover;
@@ -461,13 +442,11 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Popover } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopover } = Popover;
@@ -497,5 +476,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

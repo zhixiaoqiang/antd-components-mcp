@@ -1,31 +1,26 @@
 ## Empty 组件示例
 ### 基本
-#### zh-CN
 简单的展示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Empty } from 'antd';
 const App: React.FC = () => <Empty />;
 export default App;
-
 ```
 ### 选择图片
-#### zh-CN
 可以通过设置 `image` 为 `Empty.PRESENTED_IMAGE_SIMPLE` 选择另一种风格的图片。
 
-```typescript
+```tsx
 import React from 'react';
 import { Empty } from 'antd';
 const App: React.FC = () => <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />;
 export default App;
-
 ```
 ### 自定义
-#### zh-CN
 自定义图片链接、图片大小、描述、附属内容。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Empty, Typography } from 'antd';
 const App: React.FC = () => (
@@ -42,13 +37,11 @@ const App: React.FC = () => (
   </Empty>
 );
 export default App;
-
 ```
 ### 全局化配置
-#### zh-CN
 自定义全局组件的 Empty 样式。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import {
@@ -107,16 +100,13 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 无描述
-#### zh-CN
 无描述展示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Empty } from 'antd';
 const App: React.FC = () => <Empty description={false} />;
 export default App;
-
 ```

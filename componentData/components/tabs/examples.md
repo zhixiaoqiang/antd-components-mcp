@@ -1,9 +1,8 @@
 ## Tabs 组件示例
 ### 基本
-#### zh-CN
 默认选中第一项。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
@@ -29,13 +28,11 @@ const items: TabsProps['items'] = [
 ];
 const App: React.FC = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
 export default App;
-
 ```
 ### 禁用
-#### zh-CN
 禁用某一项。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tabs } from 'antd';
 const App: React.FC = () => (
@@ -62,13 +59,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 居中
-#### zh-CN
 标签居中展示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tabs } from 'antd';
 const App: React.FC = () => (
@@ -86,13 +81,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 图标
-#### zh-CN
 有图标的标签。
 
-```typescript
+```tsx
 import React from 'react';
 import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
@@ -111,13 +104,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 指示条
-#### zh-CN
 设置 `indicator` 属性，自定义指示条宽度和对齐方式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Segmented, Tabs } from 'antd';
 import type { TabsProps } from 'antd';
@@ -150,13 +141,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 滑动
-#### zh-CN
 可以左右、上下滑动，容纳更多标签。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Radio, Tabs } from 'antd';
@@ -190,13 +179,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 附加内容
-#### zh-CN
 可以在页签两边添加附加操作。
 
-```typescript
+```tsx
 import React, { useMemo, useState } from 'react';
 import { Button, Checkbox, Divider, Tabs } from 'antd';
 const CheckboxGroup = Checkbox.Group;
@@ -248,13 +235,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 大小
-#### zh-CN
 大号页签用在页头区域，小号用在弹出框等较狭窄的容器内。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { RadioChangeEvent, TabsProps } from 'antd';
 import { Radio, Tabs } from 'antd';
@@ -358,13 +343,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 位置
-#### zh-CN
 有四个位置，`tabPosition="left|right|top|bottom"`。在移动端下，`left|right` 会自动切换成 `top`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Radio, Space, Tabs } from 'antd';
@@ -400,13 +383,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 卡片式页签
-#### zh-CN
 另一种样式的页签，不提供对应的垂直样式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tabs } from 'antd';
 const onChange = (key: string) => {
@@ -427,13 +408,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 新增和关闭页签
-#### zh-CN
 只有卡片样式的页签支持新增和关闭选项。使用 `closable={false}` 禁止关闭。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { Tabs } from 'antd';
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
@@ -501,13 +480,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 卡片式页签容器
-#### zh-CN
 用于容器顶部，需要一点额外的样式覆盖。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tabs } from 'antd';
 import { createStyles } from 'antd-style';
@@ -559,13 +536,11 @@ const App = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义新增页签触发器
-#### zh-CN
 隐藏默认的页签增加图标，给自定义触发器绑定事件。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { Button, Tabs } from 'antd';
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
@@ -618,13 +593,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义页签头
-#### zh-CN
 使用 [react-sticky-box](https://www.npmjs.com/package/react-sticky-box) 和 `renderTabBar` 实现吸顶效果。
 
-```typescript
+```tsx
 import React from 'react';
 import type { TabsProps } from 'antd';
 import { Tabs, theme } from 'antd';
@@ -650,13 +623,11 @@ const App: React.FC = () => {
   return <Tabs defaultActiveKey="1" renderTabBar={renderTabBar} items={items} />;
 };
 export default App;
-
 ```
 ### 可拖拽标签
-#### zh-CN
 使用 [dnd-kit](https://github.com/clauderic/dnd-kit) 实现标签可拖拽。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { DragEndEvent } from '@dnd-kit/core';
 import { closestCenter, DndContext, PointerSensor, useSensor } from '@dnd-kit/core';
@@ -728,13 +699,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 动画
-#### zh-CN
 动画切换。
 
-```typescript
+```tsx
 import React from 'react';
 import { Space, Switch, Tabs } from 'antd';
 const App: React.FC = () => {
@@ -792,13 +761,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 嵌套
-#### zh-CN
 默认选中第一项。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Select, Tabs } from 'antd';
 const { Option } = Select;
@@ -890,13 +857,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, ConfigProvider, Tabs } from 'antd';
 const App: React.FC = () => (
@@ -1033,5 +998,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

@@ -1,9 +1,8 @@
 ## Typography 组件示例
 ### 基本
-#### zh-CN
 展示文档样例。
 
-```typescript
+```tsx
 import React from 'react';
 import { Divider, Typography } from 'antd';
 const { Title, Paragraph, Text, Link } = Typography;
@@ -88,13 +87,11 @@ const App: React.FC = () => (
   </Typography>
 );
 export default App;
-
 ```
 ### 标题组件
-#### zh-CN
 展示不同级别的标题。
 
-```typescript
+```tsx
 import React from 'react';
 import { Typography } from 'antd';
 const { Title } = Typography;
@@ -108,13 +105,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 标题与段落
-#### zh-CN
 展示标题与段落的组合。
 
-```typescript
+```tsx
 import React from 'react';
 import { Typography } from 'antd';
 const { Title, Paragraph, Text } = Typography;
@@ -209,13 +204,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 文本与超链接组件
-#### zh-CN
 内置不同样式的文本以及超链接组件。
 
-```typescript
+```tsx
 import React from 'react';
 import { Space, Typography } from 'antd';
 const { Text, Link } = Typography;
@@ -240,13 +233,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 可编辑
-#### zh-CN
 提供可编辑的交互能力。
 
-```typescript
+```tsx
 import React, { useMemo, useState } from 'react';
 import { CheckOutlined, HighlightOutlined } from '@ant-design/icons';
 import { Radio, Typography } from 'antd';
@@ -385,13 +376,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 可复制
-#### zh-CN
 提供可复制的交互能力。
 
-```typescript
+```tsx
 import React from 'react';
 import { SmileFilled, SmileOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
@@ -425,13 +414,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 省略号
-#### zh-CN
 多行文本省略。你可以通过 `tooltip` 属性配置省略展示内容，大量文本时推荐优先使用 `expandable`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Switch, Typography } from 'antd';
 const { Paragraph, Text } = Typography;
@@ -478,13 +465,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 受控省略展开/收起
-#### zh-CN
 受控多行文本省略。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Flex, Slider, Switch, Typography } from 'antd';
 const App = () => {
@@ -517,13 +502,11 @@ const App = () => {
   );
 };
 export default App;
-
 ```
 ### 省略中间
-#### zh-CN
 使用 `ellipsis={{ suffix: ... }}` 可以封装一个从中间省略内容的组件，适合于需要保留文本末位特征的内容。
 
-```typescript
+```tsx
 import React from 'react';
 import { Typography } from 'antd';
 const { Text } = Typography;
@@ -547,13 +530,11 @@ const App: React.FC = () => (
   </EllipsisMiddle>
 );
 export default App;
-
 ```
 ### 省略号 Debug
-#### zh-CN
 多行文本省略。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Slider, Switch, Typography } from 'antd';
 const { Text, Paragraph } = Typography;
@@ -649,13 +630,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 后缀
-#### zh-CN
 添加后缀的省略。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Slider, Typography } from 'antd';
 const { Paragraph } = Typography;
@@ -683,13 +662,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 自定义组件 Token。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Divider, Typography } from 'antd';
 const { Title, Paragraph, Text, Link } = Typography;
@@ -784,5 +761,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

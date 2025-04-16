@@ -1,31 +1,26 @@
 ## Rate 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Rate } from 'antd';
 const App: React.FC = () => <Rate />;
 export default App;
-
 ```
 ### 半星
-#### zh-CN
 支持选中半星。
 
-```typescript
+```tsx
 import React from 'react';
 import { Rate } from 'antd';
 const App: React.FC = () => <Rate allowHalf defaultValue={2.5} />;
 export default App;
-
 ```
 ### 文案展现
-#### zh-CN
 给评分组件加上文案展示。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Flex, Rate } from 'antd';
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
@@ -39,24 +34,20 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 只读
-#### zh-CN
 只读，无法进行鼠标交互。
 
-```typescript
+```tsx
 import React from 'react';
 import { Rate } from 'antd';
 const App: React.FC = () => <Rate disabled defaultValue={2} />;
 export default App;
-
 ```
 ### 清除
-#### zh-CN
 支持允许或者禁用清除。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Rate } from 'antd';
 const App: React.FC = () => (
@@ -72,13 +63,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 其他字符
-#### zh-CN
 可以将星星替换为其他字符，比如字母，数字，字体图标甚至中文。
 
-```typescript
+```tsx
 import React from 'react';
 import { HeartOutlined } from '@ant-design/icons';
 import { Flex, Rate } from 'antd';
@@ -90,13 +79,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 自定义字符
-#### zh-CN
 可以使用 `(RateProps) => ReactNode` 的方式自定义每一个字符。
 
-```typescript
+```tsx
 import React from 'react';
 import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import { Flex, Rate } from 'antd';
@@ -114,13 +101,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 调试使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Rate } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -140,5 +125,4 @@ export default () => (
     <Rate defaultValue={2.5} />
   </ConfigProvider>
 );
-
 ```

@@ -1,9 +1,8 @@
 ## Affix 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Affix, Button } from 'antd';
 const App: React.FC = () => {
@@ -26,13 +25,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 固定状态改变的回调
-#### zh-CN
 可以获得是否固定的状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Affix, Button } from 'antd';
 const App: React.FC = () => (
@@ -41,13 +38,11 @@ const App: React.FC = () => (
   </Affix>
 );
 export default App;
-
 ```
 ### 滚动容器
-#### zh-CN
 用 `target` 设置 `Affix` 需要监听其滚动事件的元素，默认为 `window`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Affix, Button } from 'antd';
 const containerStyle: React.CSSProperties = {
@@ -75,13 +70,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 调整浏览器大小，观察 Affix 容器是否发生变化。跟随变化为正常。#17678
-#### zh-CN
 DEBUG
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Affix, Button } from 'antd';
 const App: React.FC = () => {
@@ -101,5 +94,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

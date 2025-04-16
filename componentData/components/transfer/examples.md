@@ -1,9 +1,8 @@
 ## Transfer 组件示例
 ### 基本用法
-#### zh-CN
 最基本的用法，展示了 `dataSource`、`targetKeys`、每行的渲染函数 `render` 以及回调函数 `onChange` `onSelectChange` `onScroll` 的用法。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Transfer } from 'antd';
 import type { TransferProps } from 'antd';
@@ -53,13 +52,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 单向样式
-#### zh-CN
 通过 `oneWay` 将 Transfer 转为单向样式。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Switch, Transfer } from 'antd';
 import type { TransferProps } from 'antd';
@@ -126,13 +123,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 带搜索框
-#### zh-CN
 带搜索框的穿梭框，可以自定义搜索函数。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Transfer } from 'antd';
 import type { TransferProps } from 'antd';
@@ -187,13 +182,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 高级用法
-#### zh-CN
 穿梭框高级用法，可配置操作文案，可定制宽高，可对底部进行自定义渲染。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Button, Transfer } from 'antd';
 import type { TransferProps } from 'antd';
@@ -269,13 +262,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义渲染行数据
-#### zh-CN
 自定义渲染每一个 Transfer Item，可用于渲染复杂数据。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Transfer } from 'antd';
 import type { TransferProps } from 'antd';
@@ -338,13 +329,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 分页
-#### zh-CN
 大数据下使用分页。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Switch, Transfer } from 'antd';
 import type { TransferProps } from 'antd';
@@ -401,13 +390,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 表格穿梭框
-#### zh-CN
 使用 Table 组件作为自定义渲染列表。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Flex, Switch, Table, Tag, Transfer } from 'antd';
 import type { GetProp, TableColumnsType, TableProps, TransferProps } from 'antd';
@@ -527,13 +514,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 树穿梭框
-#### zh-CN
 使用 Tree 组件作为自定义渲染列表。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { theme, Transfer, Tree } from 'antd';
 import type { GetProp, TransferProps, TreeDataNode } from 'antd';
@@ -626,13 +611,11 @@ const App: React.FC = () => {
   return <TreeTransfer dataSource={treeData} targetKeys={targetKeys} onChange={onChange} />;
 };
 export default App;
-
 ```
 ### 自定义状态
-#### zh-CN
 使用 `status` 为 Transfer 添加状态，可选 `error` 或者 `warning`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Transfer } from 'antd';
 const App: React.FC = () => (
@@ -642,13 +625,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 自定义全选文字
-#### zh-CN
 自定义穿梭框全选按钮的文字。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Transfer } from 'antd';
 import type { TransferProps } from 'antd';
@@ -680,13 +661,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ConfigProvider, Space, Switch, Table, Tag, Transfer } from 'antd';
 import type { GetProp, TableColumnsType, TableProps, TransferProps } from 'antd';
@@ -879,5 +858,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

@@ -1,42 +1,35 @@
 ## Skeleton 组件示例
 ### 基本
-#### zh-CN
 最简单的占位效果。
 
-```typescript
+```tsx
 import React from 'react';
 import { Skeleton } from 'antd';
 const App: React.FC = () => <Skeleton />;
 export default App;
-
 ```
 ### 复杂的组合
-#### zh-CN
 更复杂的组合。
 
-```typescript
+```tsx
 import React from 'react';
 import { Skeleton } from 'antd';
 const App: React.FC = () => <Skeleton avatar paragraph={{ rows: 4 }} />;
 export default App;
-
 ```
 ### 动画效果
-#### zh-CN
 显示动画效果。
 
-```typescript
+```tsx
 import React from 'react';
 import { Skeleton } from 'antd';
 const App: React.FC = () => <Skeleton active />;
 export default App;
-
 ```
 ### 按钮/头像/输入框/图像/自定义节点
-#### zh-CN
 骨架按钮、头像、输入框、图像和自定义节点。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DotChartOutlined } from '@ant-design/icons';
 import type { RadioChangeEvent } from 'antd';
@@ -117,13 +110,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 包含子组件
-#### zh-CN
 加载占位图包含子组件。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Skeleton, Space } from 'antd';
 const App: React.FC = () => {
@@ -151,13 +142,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 列表
-#### zh-CN
 在列表组件中使用加载占位符。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type Icon from '@ant-design/icons';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
@@ -230,13 +219,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义组件 Token
-#### zh-CN
 自定义组件 Token。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Skeleton } from 'antd';
 const App: React.FC = () => (
@@ -258,5 +245,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

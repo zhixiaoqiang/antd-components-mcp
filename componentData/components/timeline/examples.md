@@ -1,9 +1,8 @@
 ## Timeline 组件示例
 ### 基本用法
-#### zh-CN
 基本的时间轴。
 
-```typescript
+```tsx
 import React from 'react';
 import { Timeline } from 'antd';
 const App: React.FC = () => (
@@ -25,13 +24,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 圆圈颜色
-#### zh-CN
 圆圈颜色，绿色用于已完成、成功状态，红色表示告警或错误状态，蓝色可表示正在进行或其他默认状态，灰色表示未完成或失效状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Timeline } from 'antd';
@@ -94,13 +91,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 最后一个及排序
-#### zh-CN
 当任务状态正在发生，还在记录过程中，可用幽灵节点来表示当前的时间节点，当 pending 为真值时展示幽灵节点，如果 pending 是 React 元素可用于定制该节点内容，同时 pendingDot 将可以用于定制其轴点。reverse 属性用于控制节点排序，为 false 时按正序排列，为 true 时按倒序排列。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Timeline } from 'antd';
 const App: React.FC = () => {
@@ -132,13 +127,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 交替展现
-#### zh-CN
 内容在时间轴两侧轮流出现。
 
-```typescript
+```tsx
 import React from 'react';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Timeline } from 'antd';
@@ -172,13 +165,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 自定义时间轴点
-#### zh-CN
 可以设置为图标或其他自定义元素。
 
-```typescript
+```tsx
 import React from 'react';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Timeline } from 'antd';
@@ -203,13 +194,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 右侧时间轴点
-#### zh-CN
 时间轴点可以在内容的右边。
 
-```typescript
+```tsx
 import React from 'react';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Timeline } from 'antd';
@@ -235,13 +224,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 标签
-#### zh-CN
 使用 `label` 标签单独展示时间。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Radio, Timeline } from 'antd';
@@ -287,13 +274,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 线框风格
-#### zh-CN
 线框风格。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Timeline } from 'antd';
 const App: React.FC = () => (
@@ -317,13 +302,11 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 自定义组件 Token。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Timeline } from 'antd';
 const App: React.FC = () => (
@@ -359,5 +342,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

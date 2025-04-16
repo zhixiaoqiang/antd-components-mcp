@@ -1,21 +1,18 @@
 ## ColorPicker 组件示例
 ### 基本使用
-#### zh-CN
 最简单的使用方法。
 
-```typescript
+```tsx
 import React from 'react';
 import { ColorPicker } from 'antd';
 const Demo = () => <ColorPicker defaultValue="#1677ff" />;
 export default Demo;
-
 ```
 ### 触发器尺寸大小
-#### zh-CN
 触发器有大、中、小三种尺寸。
 通过设置 `size` 为 `large` `small` 分别把触发器设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
 
-```typescript
+```tsx
 import React from 'react';
 import { ColorPicker, Space } from 'antd';
 const Demo = () => (
@@ -33,13 +30,11 @@ const Demo = () => (
   </Space>
 );
 export default Demo;
-
 ```
 ### 受控模式
-#### zh-CN
 通过 `value` 和 `onChange` 设置组件为受控模式，如果通过 `onChangeComplete` 受控则会锁定展示颜色。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ColorPicker, Space } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
@@ -54,13 +49,11 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### 渐变色
-#### zh-CN
 通过 `mode` 设置颜色为单一颜色还是渐变色。
 
-```typescript
+```tsx
 import React from 'react';
 import { ColorPicker, Space } from 'antd';
 const DEFAULT_COLOR = [
@@ -96,13 +89,11 @@ const Demo = () => (
   </Space>
 );
 export default Demo;
-
 ```
 ### 渲染触发器文本
-#### zh-CN
 渲染触发器的默认文本, `showText` 为 `true` 时生效。自定义文本时，可以使用 `showText` 为函数的方式，返回自定义的文本。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { ColorPicker, Space } from 'antd';
@@ -132,34 +123,28 @@ const Demo = () => {
   );
 };
 export default Demo;
-
 ```
 ### 禁用
-#### zh-CN
 设置为禁用状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { ColorPicker } from 'antd';
 export default () => <ColorPicker defaultValue="#1677ff" showText disabled />;
-
 ```
 ### 禁用透明度
-#### zh-CN
 禁用颜色透明度。
 
-```typescript
+```tsx
 import React from 'react';
 import { ColorPicker } from 'antd';
 const Demo = () => <ColorPicker defaultValue="#1677ff" disabledAlpha />;
 export default Demo;
-
 ```
 ### 清除颜色
-#### zh-CN
 清除已选择的颜色。
 
-```typescript
+```tsx
 import React from 'react';
 import { ColorPicker } from 'antd';
 export default () => {
@@ -174,13 +159,11 @@ export default () => {
     />
   );
 };
-
 ```
 ### 自定义触发器
-#### zh-CN
 自定义颜色面板的触发器。
 
-```typescript
+```tsx
 import React, { useMemo, useState } from 'react';
 import { Button, ColorPicker } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
@@ -203,24 +186,20 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### 自定义触发事件
-#### zh-CN
 自定义颜色面板的触发事件，提供 `click` 和 `hover` 两个选项。
 
-```typescript
+```tsx
 import React from 'react';
 import { ColorPicker } from 'antd';
 const Demo = () => <ColorPicker defaultValue="#1677ff" trigger="hover" />;
 export default Demo;
-
 ```
 ### 颜色编码
-#### zh-CN
 编码格式，支持`HEX`、`HSB`、`RGB`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ColorPicker, Space } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
@@ -291,13 +270,11 @@ const Demo: React.FC = () => (
   </Space>
 );
 export default Demo;
-
 ```
 ### 预设颜色
-#### zh-CN
 设置颜色选择器的预设颜色。
 
-```typescript
+```tsx
 import React from 'react';
 import { generate, green, presetPalettes, red } from '@ant-design/colors';
 import { ColorPicker, theme } from 'antd';
@@ -312,13 +289,11 @@ const Demo: React.FC = () => {
   return <ColorPicker presets={presets} defaultValue="#1677ff" />;
 };
 export default Demo;
-
 ```
 ### 自定义面板
-#### zh-CN
 通过 `panelRender` 自由控制面板的渲染。
 
-```typescript
+```tsx
 import React from 'react';
 import { cyan, generate, green, presetPalettes, red } from '@ant-design/colors';
 import { Col, ColorPicker, Divider, Row, Space, theme } from 'antd';
@@ -390,13 +365,11 @@ export default () => (
     </Space>
   </Space>
 );
-
 ```
 ### Pure Render
-#### zh-CN
 Pure Panel
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ColorPicker } from 'antd';
 import type { ColorPickerProps, GetProp } from 'antd';
@@ -411,5 +384,4 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```

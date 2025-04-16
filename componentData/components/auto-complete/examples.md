@@ -1,9 +1,8 @@
 ## AutoComplete 组件示例
 ### 基本使用
-#### zh-CN
 基本使用，通过 `options` 设置自动完成的数据源。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AutoComplete } from 'antd';
 import type { AutoCompleteProps } from 'antd';
@@ -46,13 +45,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义选项
-#### zh-CN
 可以返回自定义的 `Option` label
 
-```typescript
+```tsx
 import React from 'react';
 import { AutoComplete } from 'antd';
 import type { AutoCompleteProps } from 'antd';
@@ -79,13 +76,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义输入组件
-#### zh-CN
 自定义输入组件。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AutoComplete, Input } from 'antd';
 import type { AutoCompleteProps } from 'antd';
@@ -120,13 +115,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 不区分大小写
-#### zh-CN
 不区分大小写的 AutoComplete
 
-```typescript
+```tsx
 import React from 'react';
 import { AutoComplete } from 'antd';
 const options = [
@@ -145,13 +138,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 查询模式 - 确定类目
-#### zh-CN
-[查询模式: 确定类目](https://ant.design/docs/spec/reaction##lookup-patterns) 示例。
+[查询模式: 确定类目](https://ant.design/docs/spec/reaction#lookup-patterns) 示例。
 
-```typescript
+```tsx
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { AutoComplete, Flex, Input } from 'antd';
@@ -200,13 +191,11 @@ const App: React.FC = () => (
   </AutoComplete>
 );
 export default App;
-
 ```
 ### 查询模式 - 不确定类目
-#### zh-CN
-[查询模式: 不确定类目](https://ant.design/docs/spec/reaction##lookup-patterns) 示例。
+[查询模式: 不确定类目](https://ant.design/docs/spec/reaction#lookup-patterns) 示例。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AutoComplete, Input } from 'antd';
 import type { AutoCompleteProps } from 'antd';
@@ -263,13 +252,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义状态
-#### zh-CN
 使用 `status` 为 AutoComplete 添加状态，可选 `error` 或者 `warning`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AutoComplete, Space } from 'antd';
 import type { AutoCompleteProps } from 'antd';
@@ -299,13 +286,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 多种形态
-#### zh-CN
 可选 `outlined` `filled` `borderless` 三种形态。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AutoComplete, Flex } from 'antd';
 import type { AutoCompleteProps } from 'antd';
@@ -345,13 +330,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义清除按钮
-#### zh-CN
 自定义清除按钮
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { CloseSquareFilled } from '@ant-design/icons';
 import { AutoComplete } from 'antd';
@@ -385,12 +368,10 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
-### 在 Form 中 Debug
-undefined
+### 在 Form 中 Debugundefined
 
-```typescript
+```tsx
 import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { AutoComplete, Button, Form, Input, TreeSelect } from 'antd';
@@ -453,13 +434,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### AutoComplete 和 Select
-#### zh-CN
 debug demo
 
-```typescript
+```tsx
 import React from 'react';
 import { AutoComplete, Flex, Select } from 'antd';
 const AutoCompleteAndSelect = () => {
@@ -481,13 +460,11 @@ const AutoCompleteAndSelect = () => {
   );
 };
 export default AutoCompleteAndSelect;
-
 ```
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { AutoComplete, Space, Switch } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalAutoComplete } = AutoComplete;
@@ -511,5 +488,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

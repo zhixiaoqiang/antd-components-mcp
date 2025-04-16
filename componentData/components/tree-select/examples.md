@@ -1,9 +1,8 @@
 ## TreeSelect 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
 import type { TreeSelectProps } from 'antd';
@@ -79,13 +78,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 多选
-#### zh-CN
 多选的树选择。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
 const treeData = [
@@ -142,13 +139,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 从数据直接生成
-#### zh-CN
 使用 `treeData` 把 JSON 数据直接生成树结构。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
 const treeData = [
@@ -190,13 +185,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 可勾选
-#### zh-CN
 使用勾选框实现多选功能。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { TreeSelect } from 'antd';
 const { SHOW_PARENT } = TreeSelect;
@@ -256,13 +249,11 @@ const App: React.FC = () => {
   return <TreeSelect {...tProps} />;
 };
 export default App;
-
 ```
 ### 异步加载
-#### zh-CN
 异步加载树节点。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { GetProp, TreeSelectProps } from 'antd';
 import { TreeSelect } from 'antd';
@@ -311,13 +302,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 线性样式
-#### zh-CN
 通过 `treeLine` 配置线性样式。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { CarryOutOutlined } from '@ant-design/icons';
 import { Space, Switch, TreeSelect } from 'antd';
@@ -394,13 +383,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 弹出位置
-#### zh-CN
 可以通过 `placement` 手动指定弹出的位置。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { GetProp, RadioChangeEvent, TreeSelectProps } from 'antd';
 import { Radio, TreeSelect } from 'antd';
@@ -466,13 +453,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 形态变体
-#### zh-CN
 TreeSelect 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, TreeSelect } from 'antd';
 const style: React.CSSProperties = {
@@ -490,13 +475,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义状态
-#### zh-CN
 使用 `status` 为 TreeSelect 添加状态，可选 `error` 或者 `warning`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Space, TreeSelect } from 'antd';
 const App: React.FC = () => (
@@ -511,13 +494,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 最大选中数量
-#### zh-CN
 你可以通过设置 `maxCount` 约束最多可选中的数量，当超出限制时会变成禁止选中状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { TreeSelect } from 'antd';
@@ -581,13 +562,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 前后缀
-#### zh-CN
 自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { TreeSelect } from 'antd';
@@ -662,13 +641,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { TreeSelect } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalTreeSelect } = TreeSelect;
@@ -696,13 +673,11 @@ const App: React.FC = () => (
   <InternalTreeSelect defaultValue="lucy" style={{ width: '100%' }} treeData={treeData} />
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 组件 Token
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ConfigProvider, TreeSelect } from 'antd';
 const treeData = [
@@ -768,5 +743,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

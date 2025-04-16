@@ -1,9 +1,8 @@
 ## Cascader 组件示例
 ### 基本
-#### zh-CN
 省市区级联。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -53,13 +52,11 @@ const App: React.FC = () => (
   <Cascader options={options} onChange={onChange} placeholder="Please select" />
 );
 export default App;
-
 ```
 ### 默认值
-#### zh-CN
 默认值通过数组的方式指定。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -109,13 +106,11 @@ const App: React.FC = () => (
   <Cascader defaultValue={['zhejiang', 'hangzhou', 'xihu']} options={options} onChange={onChange} />
 );
 export default App;
-
 ```
 ### 可以自定义显示
-#### zh-CN
 切换按钮和结果分开。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -162,13 +157,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 移入展开
-#### zh-CN
 通过移入展开下级菜单，点击完成选择。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -225,13 +218,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 禁用选项
-#### zh-CN
 通过指定 options 里的 `disabled` 字段。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -281,13 +272,11 @@ const onChange: CascaderProps<Option>['onChange'] = (value) => {
 };
 const App: React.FC = () => <Cascader options={options} onChange={onChange} />;
 export default App;
-
 ```
 ### 选择即改变
-#### zh-CN
 这种交互允许只选中父级选项。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -335,13 +324,11 @@ const onChange: CascaderProps<Option>['onChange'] = (value) => {
 };
 const App: React.FC = () => <Cascader options={options} onChange={onChange} changeOnSelect />;
 export default App;
-
 ```
 ### 多选
-#### zh-CN
 一次性选择多个选项。通过添加 `disableCheckbox` 属性,选择具体某一个`checkbox`禁用 。可以通过类名修改禁用的样式。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -399,13 +386,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 自定义回填方式
-#### zh-CN
 通过设置 `showCheckedStrategy` 选择回填方式。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -482,13 +467,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 大小
-#### zh-CN
 不同大小的级联选择器。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -548,13 +531,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 自定义已选项
-#### zh-CN
 例如给最后一项加上邮编链接。
 
-```typescript
+```tsx
 import React from 'react';
 import { Cascader } from 'antd';
 import type { CascaderProps, GetProp } from 'antd';
@@ -630,14 +611,12 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 搜索
-#### zh-CN
 可以直接搜索选项并选择。
-> `Cascader[showSearch]` 暂不支持服务端搜索，更多信息见 [##5547](https://github.com/ant-design/ant-design/issues/5547)
+> `Cascader[showSearch]` 暂不支持服务端搜索，更多信息见 [#5547](https://github.com/ant-design/ant-design/issues/5547)
 
-```typescript
+```tsx
 import React from 'react';
 import { Cascader } from 'antd';
 import type { CascaderProps, GetProp } from 'antd';
@@ -704,14 +683,12 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 动态加载选项
-#### zh-CN
 使用 `loadData` 实现动态加载选项。
 > 注意：`loadData` 与 `showSearch` 无法一起使用。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -758,13 +735,11 @@ const App: React.FC = () => {
   return <Cascader options={options} loadData={loadData} onChange={onChange} changeOnSelect />;
 };
 export default App;
-
 ```
 ### 自定义字段名
-#### zh-CN
 自定义字段名。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
@@ -819,13 +794,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 前后缀
-#### zh-CN
 通过 `prefix` 自定前缀，通过 `suffixIcon` 自定义选择框后缀图标，通过 `expandIcon` 自定义次级菜单展开图标。
 
-```typescript
+```tsx
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import type { CascaderProps } from 'antd';
@@ -905,13 +878,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 扩展菜单
-#### zh-CN
 使用 `dropdownRender` 对下拉菜单进行自由扩展。
 
-```typescript
+```tsx
 import React from 'react';
 import { Cascader, Divider } from 'antd';
 interface Option {
@@ -964,13 +935,11 @@ const App: React.FC = () => (
   <Cascader options={options} dropdownRender={dropdownRender} placeholder="Please select" />
 );
 export default App;
-
 ```
 ### 弹出位置
-#### zh-CN
 可以通过 `placement` 手动指定弹出的位置。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Cascader, Radio } from 'antd';
@@ -1035,13 +1004,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 形态变体
-#### zh-CN
 Cascader 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Cascader, Flex } from 'antd';
 const App: React.FC = () => (
@@ -1053,13 +1020,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 自定义状态
-#### zh-CN
 使用 `status` 为 Cascader 添加状态，可选 `error` 或者 `warning`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Cascader, Space } from 'antd';
 const App: React.FC = () => (
@@ -1069,13 +1034,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### = 5.10.0">面板使用
-#### zh-CN
 适用于一些需要内嵌适用的场景。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader, Flex, Switch } from 'antd';
@@ -1142,13 +1105,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### _InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Cascader } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalCascader } = Cascader;
@@ -1193,13 +1154,11 @@ const options: Option[] = [
 ];
 const App: React.FC = () => <InternalCascader options={options} placeholder="Please select" />;
 export default App;
-
 ```
 ### Component Token
-#### zh-CN
 组件 Token
 
-```typescript
+```tsx
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader, ConfigProvider } from 'antd';
@@ -1259,5 +1218,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

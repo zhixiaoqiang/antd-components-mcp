@@ -1,9 +1,8 @@
 ## Mentions 组件示例
 ### 基本使用
-#### zh-CN
 基本使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Mentions } from 'antd';
 import type { GetProp, MentionProps } from 'antd';
@@ -37,13 +36,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 形态变体
-#### zh-CN
 Mentions 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Mentions } from 'antd';
 const App: React.FC = () => (
@@ -55,13 +52,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 异步加载
-#### zh-CN
 匹配内容列表为异步返回时。
 
-```typescript
+```tsx
 import React, { useCallback, useRef, useState } from 'react';
 import { Mentions } from 'antd';
 import debounce from 'lodash/debounce';
@@ -110,13 +105,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 配合 Form 使用
-#### zh-CN
 受控模式，例如配合 Form 使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Form, Mentions, Space } from 'antd';
 const { getMentions } = Mentions;
@@ -206,13 +199,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义触发字符
-#### zh-CN
 通过 `prefix` 属性自定义触发字符。默认为 `@`, 可以定义为数组。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Mentions } from 'antd';
 import type { MentionsProps } from 'antd';
@@ -241,13 +232,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 无效或只读
-#### zh-CN
 通过 `disabled` 属性设置是否生效。通过 `readOnly` 属性设置是否只读。
 
-```typescript
+```tsx
 import React from 'react';
 import { Mentions } from 'antd';
 const options = ['afc163', 'zombiej', 'yesmeck'].map((value) => ({
@@ -274,13 +263,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 向上展开
-#### zh-CN
 向上展开建议。
 
-```typescript
+```tsx
 import React from 'react';
 import { Mentions } from 'antd';
 const App: React.FC = () => (
@@ -304,13 +291,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 带移除图标
-#### zh-CN
 自定义清除按钮。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { CloseSquareFilled } from '@ant-design/icons';
 import { Mentions } from 'antd';
@@ -333,13 +318,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自动大小
-#### zh-CN
 自适应内容高度。
 
-```typescript
+```tsx
 import React from 'react';
 import { Mentions } from 'antd';
 const App: React.FC = () => (
@@ -363,13 +346,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 自定义状态
-#### zh-CN
 使用 `status` 为 Mentions 添加状态。可选 `error` 或者 `warning`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Mentions, Space } from 'antd';
 import type { GetProp, MentionProps } from 'antd';
@@ -415,13 +396,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### _InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Mentions } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalMentions } = Mentions;
@@ -439,13 +418,11 @@ const App: React.FC = () => (
   <InternalMentions style={{ width: '100%' }} value="@" options={options} />
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Mentions } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalMentions } = Mentions;
@@ -469,5 +446,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

@@ -1,9 +1,8 @@
 ## Segmented 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Segmented } from 'antd';
 const Demo: React.FC = () => (
@@ -15,13 +14,11 @@ const Demo: React.FC = () => (
   />
 );
 export default Demo;
-
 ```
 ### 垂直方向
-#### zh-CN
 垂直方向。
 
-```typescript
+```tsx
 import React from 'react';
 import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
 import { Segmented } from 'antd';
@@ -35,26 +32,22 @@ const Demo: React.FC = () => (
   />
 );
 export default Demo;
-
 ```
 ### Block 分段选择器
-#### zh-CN
 `block` 属性使其适合父元素宽度。
 
-```typescript
+```tsx
 import React from 'react';
 import { Segmented } from 'antd';
 const Demo: React.FC = () => (
   <Segmented options={[123, 456, 'longtext-longtext-longtext-longtext']} block />
 );
 export default Demo;
-
 ```
 ### 胶囊形状
-#### zh-CN
 胶囊型的 Segmented。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import { Flex, Segmented } from 'antd';
@@ -80,13 +73,11 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### 不可用
-#### zh-CN
 Segmented 不可用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Segmented } from 'antd';
 const App: React.FC = () => (
@@ -104,13 +95,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 受控模式
-#### zh-CN
 受控的 Segmented。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Segmented } from 'antd';
 const Demo: React.FC = () => {
@@ -118,13 +107,11 @@ const Demo: React.FC = () => {
   return <Segmented options={['Map', 'Transit', 'Satellite']} value={value} onChange={setValue} />;
 };
 export default Demo;
-
 ```
 ### 自定义渲染
-#### zh-CN
 使用 ReactNode 自定义渲染每一个 Segmented Item。
 
-```typescript
+```tsx
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Flex, Segmented } from 'antd';
@@ -204,13 +191,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 动态数据
-#### zh-CN
 动态加载数据。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Flex, Segmented } from 'antd';
 const Demo: React.FC = () => {
@@ -230,13 +215,11 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### 三种大小
-#### zh-CN
 我们为 `<Segmented />` 组件定义了三种尺寸（大、默认、小），高度分别为 `40px`、`32px` 和 `24px`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Segmented } from 'antd';
 const App: React.FC = () => (
@@ -247,13 +230,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 设置图标
-#### zh-CN
 给 Segmented Item 设置 Icon。
 
-```typescript
+```tsx
 import React from 'react';
 import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
 import { Segmented } from 'antd';
@@ -266,13 +247,11 @@ const Demo: React.FC = () => (
   />
 );
 export default Demo;
-
 ```
 ### 只设置图标
-#### zh-CN
 在 Segmented Item 选项中只设置 Icon。
 
-```typescript
+```tsx
 import React from 'react';
 import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
 import { Segmented } from 'antd';
@@ -285,26 +264,22 @@ const Demo: React.FC = () => (
   />
 );
 export default Demo;
-
 ```
 ### 配合 name 使用
-#### zh-CN
 可以为 Segmented 配置 `name` 参数，为组合内的 input 元素赋予相同的 `name` 属性，使浏览器把 Segmented 下的 input 真正看作是一组（例如可以通过方向键始终**在同一组内**更改选项）。
 
-```typescript
+```tsx
 import React from 'react';
 import { Segmented } from 'antd';
 const Demo: React.FC = () => (
   <Segmented<string> options={['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly']} name="group" />
 );
 export default Demo;
-
 ```
 ### 受控同步模式
-#### zh-CN
 测试受控模式下两个 Segmented 同步 state。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Segmented } from 'antd';
 const Demo: React.FC = () => {
@@ -318,13 +293,11 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### 统一高度
-#### zh-CN
 与其他组件保持统一高度。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex, Input, Segmented, Select } from 'antd';
 const App: React.FC = () => (
@@ -360,13 +333,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 自定义组件 Token
-#### zh-CN
 自定义组件 Token。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Segmented } from 'antd';
 const Demo: React.FC = () => (
@@ -388,5 +359,4 @@ const Demo: React.FC = () => (
   </ConfigProvider>
 );
 export default Demo;
-
 ```

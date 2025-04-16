@@ -1,9 +1,8 @@
 ## Watermark 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Watermark } from 'antd';
 const App: React.FC = () => (
@@ -12,13 +11,11 @@ const App: React.FC = () => (
   </Watermark>
 );
 export default App;
-
 ```
 ### 多行水印
-#### zh-CN
 通过 `content` 设置 字符串数组 指定多行文字水印内容。
 
-```typescript
+```tsx
 import React from 'react';
 import { Watermark } from 'antd';
 const App: React.FC = () => (
@@ -27,13 +24,11 @@ const App: React.FC = () => (
   </Watermark>
 );
 export default App;
-
 ```
 ### 图片水印
-#### zh-CN
 通过 `image` 指定图片地址。为保证图片高清且不被拉伸，请设置 width 和 height, 并上传至少两倍的宽高的 logo 图片地址。
 
-```typescript
+```tsx
 import React from 'react';
 import { Watermark } from 'antd';
 const App: React.FC = () => (
@@ -46,13 +41,11 @@ const App: React.FC = () => (
   </Watermark>
 );
 export default App;
-
 ```
 ### 自定义配置
-#### zh-CN
 通过自定义参数配置预览水印效果。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ColorPicker, Flex, Form, Input, InputNumber, Slider, Typography, Watermark } from 'antd';
 import type { ColorPickerProps, GetProp, WatermarkProps } from 'antd';
@@ -170,13 +163,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Modal 与 Drawer
-#### zh-CN
 在 Modal 与 Drawer 中使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Drawer, Flex, Modal, Watermark } from 'antd';
 const style: React.CSSProperties = {
@@ -230,5 +221,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

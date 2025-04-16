@@ -1,9 +1,8 @@
 ## Carousel 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Carousel } from 'antd';
 const contentStyle: React.CSSProperties = {
@@ -36,13 +35,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 位置
-#### zh-CN
 位置有 4 个方向。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { CarouselProps, RadioChangeEvent } from 'antd';
 import { Carousel, Radio } from 'antd';
@@ -85,13 +82,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自动切换
-#### zh-CN
 定时切换下一张。
 
-```typescript
+```tsx
 import React from 'react';
 import { Carousel } from 'antd';
 const contentStyle: React.CSSProperties = {
@@ -118,13 +113,11 @@ const App: React.FC = () => (
   </Carousel>
 );
 export default App;
-
 ```
 ### 渐显
-#### zh-CN
 切换效果为渐显。
 
-```typescript
+```tsx
 import React from 'react';
 import { Carousel } from 'antd';
 const contentStyle: React.CSSProperties = {
@@ -151,13 +144,11 @@ const App: React.FC = () => (
   </Carousel>
 );
 export default App;
-
 ```
 ### 切换箭头
-#### zh-CN
 显示切换箭头。
 
-```typescript
+```tsx
 import React from 'react';
 import { Carousel } from 'antd';
 const contentStyle: React.CSSProperties = {
@@ -202,13 +193,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 进度条
-#### zh-CN
 展示指示点的进度。
 
-```typescript
+```tsx
 import React from 'react';
 import { Carousel } from 'antd';
 const contentStyle: React.CSSProperties = {
@@ -235,13 +224,11 @@ const App: React.FC = () => (
   </Carousel>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { Carousel, ConfigProvider } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -281,5 +268,4 @@ export default () => (
     </Carousel>
   </ConfigProvider>
 );
-
 ```

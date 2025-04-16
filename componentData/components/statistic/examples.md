@@ -1,9 +1,8 @@
 ## Statistic 组件示例
 ### 基本
-#### zh-CN
 简单的展示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Col, Row, Statistic } from 'antd';
 const App: React.FC = () => (
@@ -23,13 +22,11 @@ const App: React.FC = () => (
   </Row>
 );
 export default App;
-
 ```
 ### 单位
-#### zh-CN
 通过前缀和后缀添加单位。
 
-```typescript
+```tsx
 import React from 'react';
 import { LikeOutlined } from '@ant-design/icons';
 import { Col, Row, Statistic } from 'antd';
@@ -44,13 +41,11 @@ const App: React.FC = () => (
   </Row>
 );
 export default App;
-
 ```
 ### 动画效果
-#### zh-CN
 给数值添加动画进入效果，需要配合 [react-countup](https://www.npmjs.com/package/react-countup)。
 
-```typescript
+```tsx
 import React from 'react';
 import type { StatisticProps } from 'antd';
 import { Col, Row, Statistic } from 'antd';
@@ -69,13 +64,11 @@ const App: React.FC = () => (
   </Row>
 );
 export default App;
-
 ```
 ### 在卡片中使用
-#### zh-CN
 在卡片中展示统计数值。
 
-```typescript
+```tsx
 import React from 'react';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import { Card, Col, Row, Statistic } from 'antd';
@@ -108,13 +101,11 @@ const App: React.FC = () => (
   </Row>
 );
 export default App;
-
 ```
 ### 倒计时
-#### zh-CN
 倒计时组件。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CountdownProps } from 'antd';
 import { Col, Row, Statistic } from 'antd';
@@ -145,13 +136,11 @@ const App: React.FC = () => (
   </Row>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Col, ConfigProvider, Row, Statistic } from 'antd';
 const App: React.FC = () => (
@@ -182,5 +171,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

@@ -159,9 +159,9 @@ async function processComponent(componentsPath: string, dirName: string) {
         (doc: string) =>
           doc
             .replace(DOC_CLEANUP_REGEX, ""),
-        (doc: string) => removeSection(doc, "\n## Design Token"),
-        (doc: string) => removeSection(doc, "\n## 主题变量"),
-        (doc: string) => removeSection(doc, "\n## Semantic DOM"),
+        (doc: string) => removeSection(doc, "## Design Token"),
+        (doc: string) => removeSection(doc, "## 主题变量"),
+        (doc: string) => removeSection(doc, "## Semantic DOM"),
       ];
       return handleList.reduce((acc, handle) => handle(acc), doc);
     };
@@ -191,8 +191,8 @@ async function processComponent(componentsPath: string, dirName: string) {
             "utf-8"
           ).then((content) =>
             removeSection(content, "\n## en-US")
+            .replace(/## zh-CN/g, "")
               .replace(DOC_CLEANUP_EMPTY_LINE, "\n")
-              .replace(/#/g, "##")
           );
         } catch (error) {}
 
@@ -350,11 +350,9 @@ async function extractAllData(antdRepoPath: string) {
     let examplesMarkdown = `## ${componentData.name} 组件示例\n`;
 
     componentData.exampleInfoList?.forEach((example) => {
-      examplesMarkdown += `### ${example.title}
-${example.description}
-\`\`\`typescript
-${example.code}
-\`\`\`
+      examplesMarkdown += `### ${example.title}${example.description}
+\`\`\`tsx
+${example.code}\`\`\`
 `;
     });
 

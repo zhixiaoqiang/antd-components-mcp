@@ -1,9 +1,8 @@
 ## Splitter 组件示例
 ### 基本用法
-#### zh-CN
 初始化面板大小，面板大小限制。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
@@ -24,13 +23,11 @@ const App: React.FC = () => (
   </Splitter>
 );
 export default App;
-
 ```
 ### 受控模式
-#### zh-CN
 受控调整尺寸。当 Panel 之间任意一方禁用 `resizable`，则其拖拽将被禁用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex, Splitter, Switch, Typography } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
@@ -69,13 +66,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 垂直方向
-#### zh-CN
 使用垂直布局。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
@@ -96,13 +91,11 @@ const App: React.FC = () => (
   </Splitter>
 );
 export default App;
-
 ```
 ### 可折叠
-#### zh-CN
 配置 `collapsible` 提供快捷收缩能力。可以通过 `min` 限制收缩后不能通过拖拽展开。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
 import type { SplitterProps } from 'antd';
@@ -130,13 +123,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 多面板
-#### zh-CN
 多面板
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
@@ -160,13 +151,11 @@ const App: React.FC = () => (
   </Splitter>
 );
 export default App;
-
 ```
 ### 复杂组合
-#### zh-CN
 复杂组合面板，快捷折叠，禁止改变大小
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
@@ -194,13 +183,11 @@ const App: React.FC = () => (
   </Splitter>
 );
 export default App;
-
 ```
 ### 标签页中嵌套
-#### zh-CN
 嵌套在标签页中。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Splitter, Tabs, Typography } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
@@ -252,13 +239,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 延迟渲染模式
-#### zh-CN
 延迟渲染模式，拖拽时不会立即更新大小，而是等到松手时才更新。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Space, Splitter, Typography } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
@@ -293,13 +278,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 调试
-#### zh-CN
 面板 2 宽度为 0，面板 3 禁止调整大小。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
@@ -356,5 +339,4 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```

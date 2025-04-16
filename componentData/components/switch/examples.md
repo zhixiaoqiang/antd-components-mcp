@@ -1,9 +1,8 @@
 ## Switch 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Switch } from 'antd';
 const onChange = (checked: boolean) => {
@@ -11,13 +10,11 @@ const onChange = (checked: boolean) => {
 };
 const App: React.FC = () => <Switch defaultChecked onChange={onChange} />;
 export default App;
-
 ```
 ### 不可用
-#### zh-CN
 Switch 失效状态。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Space, Switch } from 'antd';
 const App: React.FC = () => {
@@ -35,13 +32,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 文字和图标
-#### zh-CN
 带有文字和图标。
 
-```typescript
+```tsx
 import React from 'react';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { Space, Switch } from 'antd';
@@ -57,13 +52,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 两种大小
-#### zh-CN
 `size="small"` 表示小号开关。
 
-```typescript
+```tsx
 import React from 'react';
 import { Switch } from 'antd';
 const App: React.FC = () => (
@@ -74,13 +67,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 加载中
-#### zh-CN
 标识开关操作仍在执行中。
 
-```typescript
+```tsx
 import React from 'react';
 import { Switch } from 'antd';
 const App: React.FC = () => (
@@ -91,13 +82,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 自定义组件 Token
-#### zh-CN
 自定义组件 Token。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Space, Switch } from 'antd';
 const App: React.FC = () => (
@@ -126,5 +115,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

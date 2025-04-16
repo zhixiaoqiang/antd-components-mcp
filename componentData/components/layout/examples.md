@@ -1,9 +1,8 @@
 ## Layout 组件示例
 ### 基本结构
-#### zh-CN
 典型的页面布局。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Layout } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
@@ -79,14 +78,12 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 上中下布局
-#### zh-CN
 最基本的『上-中-下』布局。
 一般主导航放置于页面的顶端，从左自右依次为：logo、一级导航项、辅助菜单（用户、设置、通知等）。通常将内容放在固定尺寸（例如：1200px）内，整个页面排版稳定，不受用户终端显示器影响；上下级的结构符合用户上下浏览的习惯，也是较为经典的网站导航模式。页面上下切分的方式提高了主工作区域的信息展示效率，但在纵向空间上会有一些牺牲。此外，由于导航栏水平空间的限制，不适合那些一级导航项很多的信息结构。
 
-```typescript
+```tsx
 import React from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer } = Layout;
@@ -134,13 +131,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 顶部-侧边布局
-#### zh-CN
 拥有顶部导航及侧边栏的页面，多用于展示类网站。
 
-```typescript
+```tsx
 import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -211,13 +206,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 顶部-侧边布局-通栏
-#### zh-CN
 同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。
 
-```typescript
+```tsx
 import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -292,15 +285,13 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 侧边布局
-#### zh-CN
 侧边两列式布局。页面横向空间有限时，侧边导航可收起。
 侧边导航在页面布局上采用的是左右的结构，一般主导航放置于页面的左侧固定位置，辅助菜单放置于工作区顶部。内容根据浏览器终端进行自适应，能提高横向空间的使用率，但是整个页面排版不稳定。侧边导航的模式层级扩展性强，一、二、三级导航项目可以更为顺畅且具关联性的被展示，同时侧边导航可以固定，使得用户在操作和浏览中可以快速的定位和切换当前位置，有很高的操作效率。但这类导航横向页面内容的空间会被牺牲一部分。
 > 🛎️ 想要 3 分钟实现？试试 [ProLayout](https://procomponents.ant.design/components/layout)！
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   DesktopOutlined,
@@ -374,13 +365,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义触发器
-#### zh-CN
 要使用自定义触发器，可以设置 `trigger={null}` 来隐藏默认设定。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   MenuFoldOutlined,
@@ -452,14 +441,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 响应式布局
-#### zh-CN
 Layout.Sider 支持响应式布局。
 > 说明：配置 `breakpoint` 属性即生效，视窗宽度小于 `breakpoint` 时 Sider 缩小为 `collapsedWidth` 宽度，若将 `collapsedWidth` 设置为 0，会出现特殊 trigger。
 
-```typescript
+```tsx
 import React from 'react';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
@@ -512,13 +499,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 固定头部
-#### zh-CN
 一般用于固定顶部导航，方便页面切换。
 
-```typescript
+```tsx
 import React from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer } = Layout;
@@ -575,13 +560,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 固定侧边栏
-#### zh-CN
 当内容较长时，使用固定侧边栏可以提供更好的体验。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   AppstoreOutlined,
@@ -661,13 +644,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义触发器 Debug
-#### zh-CN
 修改内容前，请尝试此 Demo 查看样式是否抖动。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   DesktopOutlined,
@@ -777,13 +758,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 组件 Token
 
-```typescript
+```tsx
 import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -875,5 +854,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

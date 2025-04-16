@@ -1,9 +1,8 @@
 ## Collapse 组件示例
 ### 折叠面板
-#### zh-CN
 可以同时展开多个面板，这个例子默认展开了第一个。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CollapseProps } from 'antd';
 import { Collapse } from 'antd';
@@ -36,14 +35,12 @@ const App: React.FC = () => {
   return <Collapse items={items} defaultActiveKey={['1']} onChange={onChange} />;
 };
 export default App;
-
 ```
 ### 面板尺寸
-#### zh-CN
 折叠面板有大、中、小三种尺寸。
 通过设置 `size` 为 `large` `small` 分别把折叠面板设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
 
-```typescript
+```tsx
 import React from 'react';
 import { Collapse, Divider } from 'antd';
 const text = `
@@ -70,13 +67,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 手风琴
-#### zh-CN
 手风琴模式，始终只有一个面板处在激活状态。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CollapseProps } from 'antd';
 import { Collapse } from 'antd';
@@ -104,13 +99,11 @@ const items: CollapseProps['items'] = [
 ];
 const App: React.FC = () => <Collapse accordion items={items} />;
 export default App;
-
 ```
 ### 面板嵌套
-#### zh-CN
 嵌套折叠面板。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CollapseProps } from 'antd';
 import { Collapse } from 'antd';
@@ -150,13 +143,11 @@ const App: React.FC = () => {
   return <Collapse onChange={onChange} items={items} />;
 };
 export default App;
-
 ```
 ### 简洁风格
-#### zh-CN
 一套没有边框的简洁样式。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CollapseProps } from 'antd';
 import { Collapse } from 'antd';
@@ -185,13 +176,11 @@ const items: CollapseProps['items'] = [
 ];
 const App: React.FC = () => <Collapse items={items} bordered={false} defaultActiveKey={['1']} />;
 export default App;
-
 ```
 ### 自定义面板
-#### zh-CN
 自定义各个面板的背景色、圆角、边距和图标。
 
-```typescript
+```tsx
 import type { CSSProperties } from 'react';
 import React from 'react';
 import { CaretRightOutlined } from '@ant-design/icons';
@@ -241,13 +230,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 隐藏箭头
-#### zh-CN
 你可以通过 `showArrow={false}` 隐藏 `CollapsePanel` 组件的箭头图标。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CollapseProps } from 'antd';
 import { Collapse } from 'antd';
@@ -276,13 +263,11 @@ const App: React.FC = () => {
   return <Collapse defaultActiveKey={['1']} onChange={onChange} items={items} />;
 };
 export default App;
-
 ```
 ### 额外节点
-#### zh-CN
 自定义渲染每个面板右上角的内容。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { SettingOutlined } from '@ant-design/icons';
 import type { CollapseProps } from 'antd';
@@ -348,13 +333,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 幽灵折叠面板
-#### zh-CN
 将折叠面板的背景变成透明。
 
-```typescript
+```tsx
 import React from 'react';
 import type { CollapseProps } from 'antd';
 import { Collapse } from 'antd';
@@ -382,13 +365,11 @@ const items: CollapseProps['items'] = [
 ];
 const App: React.FC = () => <Collapse defaultActiveKey={['1']} ghost items={items} />;
 export default App;
-
 ```
 ### 可折叠触发区域
-#### zh-CN
 通过 `collapsible` 属性，可以设置面板的可折叠触发区域。
 
-```typescript
+```tsx
 import React from 'react';
 import { Collapse, Space } from 'antd';
 const text = `
@@ -433,13 +414,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { Collapse, ConfigProvider } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -466,5 +445,4 @@ export default () => (
     <Collapse items={items} />
   </ConfigProvider>
 );
-
 ```

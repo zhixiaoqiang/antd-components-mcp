@@ -1,9 +1,8 @@
 ## Tag 组件示例
 ### 基本
-#### zh-CN
 基本标签的用法，可以通过设置 `closeIcon` 变为可关闭标签并自定义关闭按钮，设置为 `true` 时将使用默认关闭按钮。可关闭标签具有 `onClose` 事件。
 
-```typescript
+```tsx
 import React from 'react';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { Tag } from 'antd';
@@ -32,13 +31,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 多彩标签
-#### zh-CN
 我们添加了多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。
 
-```typescript
+```tsx
 import React from 'react';
 import { Divider, Flex, Tag } from 'antd';
 const App: React.FC = () => (
@@ -67,13 +64,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 反色多彩标签
-#### zh-CN
 内部反色标签
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Tag } from 'antd';
 const App: React.FC = () => (
@@ -92,13 +87,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 动态添加和删除
-#### zh-CN
 用数组生成一组标签，可以动态添加和删除。
 
-```typescript
+```tsx
 import React, { useEffect, useRef, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import type { InputRef } from 'antd';
@@ -225,14 +218,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 可选择标签
-#### zh-CN
 可通过 `CheckableTag` 实现类似 Checkbox 的效果，点击切换选中效果。
 > 该组件为完全受控组件，不支持非受控用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Tag } from 'antd';
 const tagsData = ['Movies', 'Books', 'Music', 'Sports'];
@@ -261,13 +252,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 添加动画
-#### zh-CN
 使用 [rc-tween-one](https://github.com/react-component/tween-one) 给标签增加添加或删除动画。
 
-```typescript
+```tsx
 import React, { useEffect, useRef, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import type { InputRef } from 'antd';
@@ -356,14 +345,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 图标按钮
-#### zh-CN
 当需要在 `Tag` 内嵌入 `Icon` 时，可以设置 `icon` 属性，或者直接在 `Tag` 内使用 `Icon` 组件。
 如果想控制 `Icon` 具体的位置，只能直接使用 `Icon` 组件，而非 `icon` 属性。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   FacebookOutlined,
@@ -389,13 +376,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 预设状态的标签
-#### zh-CN
 预设五种状态颜色，可以通过设置 `color` 为 `success`、 `processing`、`error`、`default`、`warning` 来代表不同的状态。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   CheckCircleOutlined,
@@ -440,13 +425,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 无边框
-#### zh-CN
 无边框模式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Divider, Flex, Tag } from 'antd';
 const App: React.FC = () => (
@@ -512,13 +495,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 深色背景中无边框
-#### zh-CN
 深色背景中的无边框模式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Divider, Flex, Tag, theme } from 'antd';
 const App: React.FC = () => {
@@ -575,13 +556,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义关闭按钮
-#### zh-CN
 可用 `closeIcon` 自定义关闭按钮。
 
-```typescript
+```tsx
 import React from 'react';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { Flex, Tag } from 'antd';
@@ -596,13 +575,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 可拖拽标签
-#### zh-CN
 使用 [dnd kit](https://dndkit.com) 实现的可拖拽标签。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { closestCenter, DndContext, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import type { DragEndEvent } from '@dnd-kit/core';
@@ -673,13 +650,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { CloseCircleOutlined, SyncOutlined } from '@ant-design/icons';
 import { ConfigProvider, Flex, Tag } from 'antd';
@@ -723,5 +698,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

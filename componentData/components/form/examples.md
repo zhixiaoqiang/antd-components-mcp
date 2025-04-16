@@ -1,9 +1,8 @@
 ## Form 组件示例
 ### 基本使用
-#### zh-CN
 基本的表单数据域控制展示，包含布局、初始化、验证、提交。
 
-```typescript
+```tsx
 import React from 'react';
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input } from 'antd';
@@ -54,14 +53,12 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 表单方法调用
-#### zh-CN
 通过 `Form.useForm` 对表单数据域进行交互。
 > 注意 `useForm` 是 [React Hooks](https://reactjs.org/docs/hooks-intro.html) 的实现，只能用于函数组件。如果是在 Class Component 下，你也可以通过 `ref` 获取数据域：https://codesandbox.io/p/sandbox/ngtjtm
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Form, Input, Select, Space } from 'antd';
 const { Option } = Select;
@@ -148,13 +145,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 表单布局
-#### zh-CN
 表单有三种布局。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Form, Input, Radio } from 'antd';
 type LayoutType = Parameters<typeof Form>[0]['layout'];
@@ -192,13 +187,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 表单混合布局
-#### zh-CN
 在 `Form.Item` 上单独定义 `layout`，可以做到一个表单多种布局。
 
-```typescript
+```tsx
 import React from 'react';
 import { Form, Input } from 'antd';
 const App: React.FC = () => (
@@ -245,13 +238,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 表单禁用
-#### zh-CN
 设置表单组件禁用，仅对 antd 组件有效。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import {
@@ -379,13 +370,11 @@ const FormDisabledDemo: React.FC = () => {
   );
 };
 export default () => <FormDisabledDemo />;
-
 ```
 ### 表单变体
-#### zh-CN
 改变表单内所有组件的变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   Button,
@@ -492,13 +481,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 必选样式
-#### zh-CN
 通过 `requiredMark` 切换必选与可选样式。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Radio, Tag } from 'antd';
@@ -547,13 +534,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 表单尺寸
-#### zh-CN
 设置表单组件尺寸，仅对 antd 组件有效。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   Button,
@@ -632,13 +617,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 表单标签可换行
-#### zh-CN
 使用 `labelWrap` 可以开启 `label` 换行。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Form, Input } from 'antd';
 const App: React.FC = () => (
@@ -665,13 +648,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 非阻塞校验
-#### zh-CN
 `rule` 添加 `warningOnly` 后校验不再阻塞表单提交。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Form, Input, message, Space } from 'antd';
 const App: React.FC = () => {
@@ -716,13 +697,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 字段监听 Hooks
-#### zh-CN
-`useWatch` 允许你监听字段变化，同时仅当该字段变化时重新渲染。API 文档请[查阅此处](##formusewatch)。
+`useWatch` 允许你监听字段变化，同时仅当该字段变化时重新渲染。API 文档请[查阅此处](#formusewatch)。
 
-```typescript
+```tsx
 import React from 'react';
 import { Form, Input, InputNumber, Typography } from 'antd';
 const Demo: React.FC = () => {
@@ -748,13 +727,11 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### 校验时机
-#### zh-CN
 对于有异步校验的场景，过于频繁的校验会导致后端压力。可以通过 `validateTrigger` 改变校验时机，或者 `validateDebounce` 改变校验频率，或者 `validateFirst` 设置校验短路。
 
-```typescript
+```tsx
 import React from 'react';
 import { Alert, Form, Input } from 'antd';
 const App: React.FC = () => (
@@ -790,13 +767,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 仅校验
-#### zh-CN
 通过 `validateFields` 的 `validateOnly` 可以动态调整提交按钮的 `disabled` 状态。
 
-```typescript
+```tsx
 import React from 'react';
 import type { FormInstance } from 'antd';
 import { Button, Form, Input, Space } from 'antd';
@@ -839,13 +814,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 字段路径前缀
-#### zh-CN
 在某些场景，你希望统一设置一些字段的前缀。你可以通过 HOC 实现该效果。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Form, Input } from 'antd';
 import type { FormItemProps } from 'antd';
@@ -895,13 +868,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 动态增减表单项
-#### zh-CN
 动态增加、减少表单项。`add` 方法参数可用于设置初始值。
 
-```typescript
+```tsx
 import React from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
@@ -1008,13 +979,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 动态增减嵌套字段
-#### zh-CN
 嵌套表单字段需要对 `field` 进行拓展，将 `field.name` 应用于控制字段。
 
-```typescript
+```tsx
 import React from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
@@ -1066,13 +1035,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 动态增减嵌套纯字段
-#### zh-CN
 嵌套 `noStyle` 字段的动态表单示例。
 
-```typescript
+```tsx
 import React from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
@@ -1122,13 +1089,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 复杂的动态增减表单项
-#### zh-CN
 多个 Form.List 嵌套的使用场景。
 
-```typescript
+```tsx
 import React from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { Button, Card, Form, Input, Space, Typography } from 'antd';
@@ -1209,13 +1174,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 嵌套结构与校验信息
-#### zh-CN
 `name` 属性支持嵌套数据结构。通过 `validateMessages` 或 `message` 自定义校验信息模板，模板内容可参考[此处](https://github.com/react-component/field-form/blob/master/src/utils/messages.ts)。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Form, Input, InputNumber } from 'antd';
 const layout = {
@@ -1266,10 +1229,8 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 复杂一点的控件
-#### zh-CN
 这里演示 `Form.Item` 内有多个元素的使用方式。`<Form.Item name="field" />` 只会对它的直接子元素绑定表单功能，例如直接包裹了 Input/Select。如果控件前后还有一些文案或样式装点，或者一个表单项内有多个控件，你可以使用内嵌的 `Form.Item` 完成。你可以给 `Form.Item` 自定义 `style` 进行内联布局，或者添加 `noStyle` 作为纯粹的无样式绑定组件（类似 3.x 中的 `getFieldDecorator`）。
 ```diff
 - <Form.Item label="Field" name="field">
@@ -1287,7 +1248,7 @@ export default App;
 > 注意，在 label 对应的 Form.Item 上不要在指定 `name` 属性，这个 Item 只作为布局作用。
 更复杂的封装复用方式可以参考下面的 `自定义表单控件` 演示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Form, Input, Select, Space, Tooltip, Typography } from 'antd';
 const { Option } = Select;
@@ -1361,16 +1322,14 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 自定义表单控件
-#### zh-CN
 自定义或第三方的表单控件，也可以与 Form 组件一起使用。只要该组件遵循以下的约定：
-> - 提供受控属性 `value` 或其它与 [`valuePropName`](##formitem) 的值同名的属性。
-> - 提供 `onChange` 事件或 [`trigger`](##formitem) 的值同名的事件。
+> - 提供受控属性 `value` 或其它与 [`valuePropName`](#formitem) 的值同名的属性。
+> - 提供 `onChange` 事件或 [`trigger`](#formitem) 的值同名的事件。
 > - 转发 ref 或者传递 id 属性到 dom 以支持 `scrollToField` 方法。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Form, Input, Select } from 'antd';
 const { Option } = Select;
@@ -1460,14 +1419,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 表单数据存储于上层组件
-#### zh-CN
 通过 `onFieldsChange` 和 `fields`，可以把表单的数据存储到上层组件或者 [Redux](https://github.com/reactjs/redux)、[dva](https://github.com/dvajs/dva) 中，更多可参考 [rc-field-form 示例](https://rc-field-form.react-component.now.sh/?selectedKind=rc-field-form&selectedStory=StateForm-redux&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel)。
-**注意：** 将表单数据存储于外部容器[并非好的实践](https://github.com/reduxjs/redux/issues/1287##issuecomment-175351978)，如无必要请避免使用。
+**注意：** 将表单数据存储于外部容器[并非好的实践](https://github.com/reduxjs/redux/issues/1287#issuecomment-175351978)，如无必要请避免使用。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Form, Input, Typography } from 'antd';
 const { Paragraph } = Typography;
@@ -1517,13 +1474,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 多表单联动
-#### zh-CN
 通过 `Form.Provider` 在表单间处理数据。本例子中，Modal 的确认按钮在 Form 之外，通过 `form.submit` 方法调用表单提交功能。反之，则推荐使用 `<Button htmlType="submit" />` 调用 web 原生提交逻辑。
 
-```typescript
+```tsx
 import React, { useEffect, useRef, useState } from 'react';
 import { SmileOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Button, Flex, Form, Input, InputNumber, Modal, Space, Typography } from 'antd';
@@ -1643,13 +1598,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 内联登录栏
-#### zh-CN
 内联登录栏，常用在顶部导航栏中。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
@@ -1696,14 +1649,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 登录框
-#### zh-CN
 普通的登录框，可以容纳更多的元素。
 > 🛎️ 想要 3 分钟实现登录表单？试试 [Pro Components](https://procomponents.ant.design/components/login-form)！
 
-```typescript
+```tsx
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex } from 'antd';
@@ -1748,13 +1699,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 注册新用户
-#### zh-CN
 用户填写必须的信息以注册新用户。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { CascaderProps } from 'antd';
 import {
@@ -2023,15 +1972,13 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 高级搜索
-#### zh-CN
 三列栅格式的表单排列方式，常用于数据表格的高级搜索。
 有部分定制的样式代码，由于输入标签长度不确定，需要根据具体情况自行调整。
-> 🛎️ 想要 3 分钟实现？ 试试 ProForm 的[查询表单](https://procomponents.ant.design/components/form##%E6%9F%A5%E8%AF%A2%E7%AD%9B%E9%80%89)！
+> 🛎️ 想要 3 分钟实现？ 试试 ProForm 的[查询表单](https://procomponents.ant.design/components/form#%E6%9F%A5%E8%AF%A2%E7%AD%9B%E9%80%89)！
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Row, Select, Space, theme } from 'antd';
@@ -2138,14 +2085,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 弹出层中的新建表单
-#### zh-CN
 当用户访问一个展示了某个列表的页面，想新建一项但又不想跳转页面时，可以用 Modal 弹出一个表单，用户填写必要信息后创建新的项。
-> 🛎️ 想要 3 分钟实现？试试 ProForm 的 [Modal 表单](https://procomponents.ant.design/components/form##modal-%E8%A1%A8%E5%8D%95)！
+> 🛎️ 想要 3 分钟实现？试试 ProForm 的 [Modal 表单](https://procomponents.ant.design/components/form#modal-%E8%A1%A8%E5%8D%95)！
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Form, Input, Modal, Radio } from 'antd';
 interface Values {
@@ -2210,13 +2155,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 时间类控件
-#### zh-CN
 时间类组件的 `value` 类型为 `dayjs` 对象，所以在提交服务器前需要预处理。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, DatePicker, Form, TimePicker } from 'antd';
 const { RangePicker } = DatePicker;
@@ -2287,13 +2230,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 自行处理表单数据
-#### zh-CN
 `Form` 具有自动收集数据并校验的功能，但如果您不需要这个功能，或者默认的行为无法满足业务需求，可以选择自行处理数据。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { InputNumberProps } from 'antd';
 import { Form, InputNumber } from 'antd';
@@ -2347,16 +2288,14 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义校验
-#### zh-CN
 我们提供了 `validateStatus` `help` `hasFeedback` 等属性，你可以不通过 Form 自己定义校验的时机和内容。
 1. `validateStatus`: 校验状态，可选 'success', 'warning', 'error', 'validating'。
 2. `hasFeedback`：用于给输入框添加反馈图标。
 3. `help`：设置校验文案。
 
-```typescript
+```tsx
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import {
@@ -2493,13 +2432,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 动态校验规则
-#### zh-CN
 根据不同情况执行不同的校验规则。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 const formItemLayout = {
@@ -2559,13 +2496,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 校验与更新依赖
-#### zh-CN
 Form.Item 可以通过 `dependencies` 属性，设置关联字段。当关联字段的值发生变化时，会触发校验与更新。
 
-```typescript
+```tsx
 import React from 'react';
 import { Alert, Form, Input, Typography } from 'antd';
 const App: React.FC = () => {
@@ -2618,13 +2553,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 滑动到错误字段
-#### zh-CN
 校验失败时/手动滚动到错误字段。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex, Form, Input, Select } from 'antd';
 const App = () => {
@@ -2672,13 +2605,11 @@ const App = () => {
   );
 };
 export default App;
-
 ```
 ### 校验其他组件
-#### zh-CN
 以上演示没有出现的表单控件对应的校验演示。
 
-```typescript
+```tsx
 import React from 'react';
 import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
 import {
@@ -2870,13 +2801,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### getValueProps + normalize
-#### zh-CN
 配合 `getValueProps` 和 `normalize`，可以转换 `value` 的格式，如将时间戳转成 `dayjs` 对象再传给 `DatePicker`。
 
-```typescript
+```tsx
 import React from 'react';
 import type { FormProps } from 'antd';
 import { Button, DatePicker, Form } from 'antd';
@@ -2915,13 +2844,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### Disabled Input Debug
-#### zh-CN
 Test disabled Input with validate state
 
-```typescript
+```tsx
 import React from 'react';
 import { Form, Input } from 'antd';
 const App: React.FC = () => (
@@ -2965,13 +2892,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 测试 label 省略
-#### zh-CN
 `label` 中使用 `<Typography.Text ellipsis>` 时应该显示 `...`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Form, Input, Typography } from 'antd';
 const App: React.FC = () => (
@@ -3004,13 +2929,11 @@ const App: React.FC = () => (
   </Form>
 );
 export default App;
-
 ```
 ### 测试特殊 col 24 用法
-#### zh-CN
-See issue [##32980](https://github.com/ant-design/ant-design/issues/32980).
+See issue [#32980](https://github.com/ant-design/ant-design/issues/32980).
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Divider, Form, Input, Select } from 'antd';
 const sharedItem = (
@@ -3119,13 +3042,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 引用字段
-#### zh-CN
 请优先使用 `ref`！
 
-```typescript
+```tsx
 import React from 'react';
 import type { InputRef } from 'antd';
 import { Button, Form, Input } from 'antd';
@@ -3165,13 +3086,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Custom feedback icons
-#### zh-CN
 自定义反馈图标可以通过 `hasFeedback={{ icons: ... }}` 或 `<Form FeedbackIcons={icons}>` 传递（`Form.Item` 必须具有 `hasFeedback` 属性）。
 
-```typescript
+```tsx
 import React from 'react';
 import { AlertFilled, CloseSquareFilled } from '@ant-design/icons';
 import { Button, Form, Input, Tooltip } from 'antd';
@@ -3244,13 +3163,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Form, Input } from 'antd';
 const App: React.FC = () => (
@@ -3296,5 +3213,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

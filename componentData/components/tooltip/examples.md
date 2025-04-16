@@ -1,9 +1,8 @@
 ## Tooltip 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tooltip } from 'antd';
 const App: React.FC = () => (
@@ -12,13 +11,11 @@ const App: React.FC = () => (
   </Tooltip>
 );
 export default App;
-
 ```
 ### 位置
-#### zh-CN
 位置有 12 个方向。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, ConfigProvider, Flex, Tooltip } from 'antd';
 const text = <span>prompt text</span>;
@@ -76,13 +73,11 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
 ### 箭头展示
-#### zh-CN
 支持显示、隐藏以及将箭头保持居中定位。
 
-```typescript
+```tsx
 import React, { useMemo, useState } from 'react';
 import { Button, ConfigProvider, Flex, Segmented, Tooltip } from 'antd';
 import type { TooltipProps } from 'antd';
@@ -161,13 +156,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 贴边偏移
-#### zh-CN
 当 Tooltip 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Tooltip } from 'antd';
 const style: React.CSSProperties = {
@@ -191,13 +184,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自动调整位置
-#### zh-CN
 气泡框不可见时自动调整位置。
 
-```typescript
+```tsx
 import React from 'react';
 import type { TooltipProps } from 'antd';
 import { Button, Tooltip, Typography } from 'antd';
@@ -246,13 +237,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 隐藏后销毁
-#### zh-CN
 通过 `destroyTooltipOnHide` 控制提示关闭时是否销毁 dom 节点。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tooltip } from 'antd';
 const App: React.FC = () => (
@@ -261,13 +250,11 @@ const App: React.FC = () => (
   </Tooltip>
 );
 export default App;
-
 ```
 ### 多彩文字提示
-#### zh-CN
 我们添加了多种预设色彩的文字提示样式，用作不同场景使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Divider, Space, Tooltip } from 'antd';
 const colors = [
@@ -307,13 +294,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### _InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tooltip } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalTooltip } = Tooltip;
@@ -325,13 +310,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### Debug
-#### zh-CN
 Debug 用例。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex, Tooltip } from 'antd';
 const zeroWidthEle = <div />;
@@ -355,13 +338,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 禁用
-#### zh-CN
 通过设置 `title={null}` 或者 `title=""` 可以禁用 Tooltip。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Tooltip } from 'antd';
 const App: React.FC = () => {
@@ -373,13 +354,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 禁用子元素
-#### zh-CN
 Disabled 子元素。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Checkbox, Input, InputNumber, Select, Space, Tooltip } from 'antd';
 const WrapperTooltip: React.FC<React.PropsWithChildren> = (props) => (
@@ -405,13 +384,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 自定义子组件
-#### zh-CN
 与自定义组件一起使用.
 
-```typescript
+```tsx
 import { Tooltip } from 'antd';
 import React from 'react';
 const ComponentWithEvents: React.FC<React.HTMLAttributes<HTMLSpanElement>> = (props) => (
@@ -423,5 +400,4 @@ const App: React.FC = () => (
   </Tooltip>
 );
 export default App;
-
 ```

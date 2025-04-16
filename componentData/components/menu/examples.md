@@ -1,9 +1,8 @@
 ## Menu 组件示例
 ### 顶部导航
-#### zh-CN
 水平的顶部导航菜单。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -62,13 +61,11 @@ const App: React.FC = () => {
   return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
 };
 export default App;
-
 ```
 ### 顶部导航（dark）
-#### zh-CN
 水平的顶部导航菜单。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -129,13 +126,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 内嵌菜单
-#### zh-CN
 垂直菜单，子菜单内嵌在菜单区域。
 
-```typescript
+```tsx
 import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -224,14 +219,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 缩起内嵌菜单
-#### zh-CN
 内嵌菜单可以被缩起/展开。
-你可以在 [Layout](/components/layout-cn/##layout-demo-side) 里查看侧边布局结合的完整示例。
+你可以在 [Layout](/components/layout-cn/#layout-demo-side) 里查看侧边布局结合的完整示例。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   AppstoreOutlined,
@@ -300,13 +293,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 只展开当前父级菜单
-#### zh-CN
 点击菜单，收起其他展开的所有菜单，保持菜单聚焦简洁。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -416,13 +407,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 垂直菜单
-#### zh-CN
 子菜单是弹出的形式。
 
-```typescript
+```tsx
 import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -490,13 +479,11 @@ const App: React.FC = () => (
   <Menu onClick={onClick} style={{ width: 256 }} mode="vertical" items={items} />
 );
 export default App;
-
 ```
 ### 主题
-#### zh-CN
 内建了两套主题 `light` 和 `dark`，默认 `light`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps, MenuTheme } from 'antd';
@@ -576,13 +563,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 子菜单主题
-#### zh-CN
 你可以通过 `theme` 属性来设置 SubMenu 的主题从而达到不同目录树下不同主题色的效果。该例子默认为根目录深色，子目录浅色效果。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { MailOutlined } from '@ant-design/icons';
 import type { MenuProps, MenuTheme } from 'antd';
@@ -636,13 +621,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 切换菜单类型
-#### zh-CN
 展示动态切换模式。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   AppstoreOutlined,
@@ -732,13 +715,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Style debug
-#### zh-CN
 buggy!
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined } from '@ant-design/icons';
 import type { MenuProps, MenuTheme } from 'antd';
@@ -828,13 +809,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### v4 版本 Menu
-#### zh-CN
 V4 样式的 Menu 组件。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   AppstoreOutlined,
@@ -943,13 +922,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 组件 Token debug。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   AppstoreOutlined,
@@ -1124,13 +1101,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Extra Style debug
-#### zh-CN
 调试使用
 
-```typescript
+```tsx
 import React from 'react';
 import { DownOutlined, MailOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
@@ -1181,5 +1156,4 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```

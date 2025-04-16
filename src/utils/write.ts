@@ -1,5 +1,10 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { README_MATCH_FIELD, README_PATH } from "../constants/path";
+import {
+  README_MATCH_FIELD,
+  README_PATH,
+  README_ZH_CN_PATH,
+  README_ZH_CN_MATCH_FIELD,
+} from "../constants/path";
 import type { MetaDataResult } from "../scripts/extract-docs";
 
 /** 写入压缩后的 JSON */
@@ -17,18 +22,32 @@ export const writeExtractedInfoToReadme = async ({
   extractedAt,
 }: MetaDataResult) => {
   if (!process.env.IS_BUILD) {
-    await writeFile(
-      README_PATH,
-      await readFile(README_PATH, "utf-8").then((content) =>
-        content.replace(
-          README_MATCH_FIELD,
-          `\`Ant Design V${antdVersion} ${new Date(
-            extractedAt
-          ).toLocaleDateString()}\``
-        )
-      )
+    await Promise.all(
+      [
+        {
+          path: README_ZH_CN_PATH,
+          match: README_ZH_CN_MATCH_FIELD,
+        },
+        {
+          path: README_PATH,
+          match: README_MATCH_FIELD,
+        },
+      ].map(async ({ path, match }) => {
+        return writeFile(
+          path,
+          await readFile(path, "utf-8").then((content) =>
+            content.replace(
+              match,
+              `\`Ant Design V${antdVersion} ${new Date(
+                extractedAt
+              ).toLocaleDateString()}\``
+            )
+          )
+        );
+      })
     );
+
     console.log(`✅ README.md 中预处理版本信息已更新`);
   }
-  return null
+  return null;
 };

@@ -1,9 +1,8 @@
 ## Anchor 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor, Col, Row } from 'antd';
 const App: React.FC = () => (
@@ -37,13 +36,11 @@ const App: React.FC = () => (
   </Row>
 );
 export default App;
-
 ```
 ### 横向 Anchor
-#### zh-CN
 横向 Anchor。
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor } from 'antd';
 const App: React.FC = () => (
@@ -97,13 +94,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 静态位置
-#### zh-CN
 不浮动，状态不随页面滚动变化。
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor } from 'antd';
 const App: React.FC = () => (
@@ -141,13 +136,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 自定义 onClick 事件
-#### zh-CN
 点击锚点不记录历史。
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor } from 'antd';
 const handleClick = (
@@ -196,13 +189,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 自定义锚点高亮
-#### zh-CN
 自定义锚点高亮。
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor } from 'antd';
 const getCurrentAnchor = () => '#anchor-demo-static';
@@ -242,13 +233,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 设置锚点滚动偏移量
-#### zh-CN
 锚点目标滚动到屏幕正中间。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Anchor, Col, Row } from 'antd';
 const style: React.CSSProperties = {
@@ -301,13 +290,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 监听锚点链接改变
-#### zh-CN
 监听锚点链接改变
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor } from 'antd';
 const onChange = (link: string) => {
@@ -349,13 +336,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 替换历史中的 href
-#### zh-CN
 替换浏览器历史记录中的路径，后退按钮将返回到上一页而不是上一个锚点。
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor, Col, Row } from 'antd';
 const App: React.FC = () => (
@@ -390,13 +375,11 @@ const App: React.FC = () => (
   </Row>
 );
 export default App;
-
 ```
 ### 废弃的 JSX 示例
-#### zh-CN
 调试使用
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor } from 'antd';
 const { Link } = Anchor;
@@ -411,13 +394,11 @@ const App: React.FC = () => (
   </Anchor>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { Anchor, Col, ConfigProvider, Row } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -462,5 +443,4 @@ export default () => (
     </Row>
   </ConfigProvider>
 );
-
 ```

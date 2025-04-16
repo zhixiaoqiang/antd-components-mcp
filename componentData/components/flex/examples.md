@@ -1,9 +1,8 @@
 ## Flex 组件示例
 ### 基本布局
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Flex, Radio } from 'antd';
@@ -28,13 +27,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 对齐方式
-#### zh-CN
 设置对齐方式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex, Segmented } from 'antd';
 import type { FlexProps } from 'antd';
@@ -72,13 +69,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 设置间隙
-#### zh-CN
 使用 `gap` 设置元素之间的间距，预设了 `small`、`middle`、`large` 三种尺寸，也可以自定义间距。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex, Radio, Slider } from 'antd';
 import type { ConfigProviderProps } from 'antd';
@@ -106,13 +101,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自动换行
-#### zh-CN
 自动换行。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex } from 'antd';
 const Demo: React.FC = () => (
@@ -125,13 +118,11 @@ const Demo: React.FC = () => (
   </Flex>
 );
 export default Demo;
-
 ```
 ### 组合使用
-#### zh-CN
 嵌套使用，可以实现更复杂的布局。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Card, Flex, Typography } from 'antd';
 const cardStyle: React.CSSProperties = {
@@ -161,13 +152,11 @@ const App: React.FC = () => (
   </Card>
 );
 export default App;
-
 ```
 ### 调试专用
-#### zh-CN
 调试专用。
 
-```typescript
+```tsx
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Flex } from 'antd';
@@ -199,5 +188,4 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```

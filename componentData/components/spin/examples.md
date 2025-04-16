@@ -1,20 +1,17 @@
 ## Spin 组件示例
 ### 基本用法
-#### zh-CN
 一个简单的 loading 状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Spin } from 'antd';
 const App: React.FC = () => <Spin />;
 export default App;
-
 ```
 ### 各种大小
-#### zh-CN
 小的用于文本加载，默认用于卡片容器级加载，大的用于**页面级**加载。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Spin } from 'antd';
 const App: React.FC = () => (
@@ -25,13 +22,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 卡片加载中
-#### zh-CN
 可以直接把内容内嵌到 `Spin` 中，将现有容器变为加载状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Alert, Flex, Spin, Switch } from 'antd';
 const App: React.FC = () => {
@@ -53,13 +48,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义描述文案
-#### zh-CN
 自定义描述文案。
 
-```typescript
+```tsx
 import React from 'react';
 import { Alert, Flex, Spin } from 'antd';
 const contentStyle: React.CSSProperties = {
@@ -89,13 +82,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 延迟
-#### zh-CN
 延迟显示 loading 效果。当 spinning 状态在 `delay` 时间内结束，则不显示 loading 状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Alert, Flex, Spin, Switch } from 'antd';
 const App: React.FC = () => {
@@ -117,13 +108,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义指示符
-#### zh-CN
 使用自定义指示符。
 
-```typescript
+```tsx
 import React from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Flex, Spin } from 'antd';
@@ -136,13 +125,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 进度
-#### zh-CN
 展示进度，当设置 `percent="auto"` 时会预估一个永远不会停止的进度条。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Spin, Switch } from 'antd';
 const App: React.FC = () => {
@@ -177,13 +164,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 全屏
-#### zh-CN
 `fullscreen` 属性非常适合创建流畅的页面加载器。它添加了半透明覆盖层，并在其中心放置了一个旋转加载符号。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Spin } from 'antd';
 const App: React.FC = () => {
@@ -210,5 +195,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

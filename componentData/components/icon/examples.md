@@ -1,9 +1,8 @@
 ## Icon 组件示例
 ### 基本用法
-#### zh-CN
 通过 `@ant-design/icons` 引用 Icon 组件，不同主题的 Icon 组件名为图标名加主题做为后缀，也可以通过设置 `spin` 属性来实现动画旋转效果。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   HomeOutlined,
@@ -24,13 +23,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 多色图标
-#### zh-CN
 双色图标可以通过 `twoToneColor` 属性设置主题色。
 
-```typescript
+```tsx
 import React from 'react';
 import { CheckCircleTwoTone, HeartTwoTone, SmileTwoTone } from '@ant-design/icons';
 import { Space } from 'antd';
@@ -42,13 +39,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 自定义图标
-#### zh-CN
 利用 `Icon` 组件封装一个可复用的自定义图标。可以通过 `component` 属性传入一个组件来渲染最终的图标，以满足特定的需求。
 
-```typescript
+```tsx
 import React from 'react';
 import Icon, { HomeOutlined } from '@ant-design/icons';
 import { Space } from 'antd';
@@ -112,13 +107,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 使用 iconfont.cn
-#### zh-CN
 对于使用 [iconfont.cn](http://iconfont.cn/) 的用户，通过设置 `createFromIconfontCN` 方法参数对象中的 `scriptUrl` 字段， 即可轻松地使用已有项目中的图标。
 
-```typescript
+```tsx
 import React from 'react';
 import { createFromIconfontCN } from '@ant-design/icons';
 import { Space } from 'antd';
@@ -133,13 +126,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 使用 iconfont.cn 的多个资源
-#### zh-CN
 `@ant-design/icons@4.1.0` 以后，`scriptUrl` 可引用多个资源，用户可灵活的管理 [iconfont.cn](http://iconfont.cn/) 图标。如果资源的图标出现重名，会按照数组顺序进行覆盖。
 
-```typescript
+```tsx
 import React from 'react';
 import { createFromIconfontCN } from '@ant-design/icons';
 import { Space } from 'antd';
@@ -158,5 +149,4 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```

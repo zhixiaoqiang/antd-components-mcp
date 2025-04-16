@@ -1,9 +1,8 @@
 ## Drawer 组件示例
 ### 基础抽屉
-#### zh-CN
 基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 const App: React.FC = () => {
@@ -28,13 +27,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义位置
-#### zh-CN
 自定义位置，点击触发按钮抽屉从相应的位置滑出，点击遮罩区关闭。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { DrawerProps, RadioChangeEvent } from 'antd';
 import { Button, Drawer, Radio, Space } from 'antd';
@@ -79,13 +76,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 加载中
-#### zh-CN
 设置抽屉加载状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Drawer } from 'antd';
 const App: React.FC = () => {
@@ -124,13 +119,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 额外操作
-#### zh-CN
 在 Ant Design 规范中，操作按钮建议放在抽屉的右上角，可以使用 `extra` 属性来实现。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Drawer, Radio, Space } from 'antd';
 import type { DrawerProps, RadioChangeEvent } from 'antd';
@@ -182,15 +175,13 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 渲染在当前 DOM
-#### zh-CN
 渲染在当前 dom 里。自定义容器，查看 `getContainer`。
 > 注意：在 v5 中 `style` 与 `className` 迁移至 Drawer 面板上与 Modal 保持一致，原 `style` 与 `className` 替换为 `rootStyle` 与 `rootClassName`。
-> 当 `getContainer` 返回 DOM 节点时，需要手动设置 `rootStyle` 为 `{ position: 'absolute' }`，参考 [##41951](https://github.com/ant-design/ant-design/issues/41951##issuecomment-1521099152)。
+> 当 `getContainer` 返回 DOM 节点时，需要手动设置 `rootStyle` 为 `{ position: 'absolute' }`，参考 [#41951](https://github.com/ant-design/ant-design/issues/41951#issuecomment-1521099152)。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Drawer, theme } from 'antd';
 const App: React.FC = () => {
@@ -233,13 +224,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 抽屉表单
-#### zh-CN
 在抽屉中使用表单。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space } from 'antd';
@@ -376,13 +365,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 信息预览抽屉
-#### zh-CN
 需要快速预览对象概要时使用，点击遮罩区关闭。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Avatar, Col, Divider, Drawer, List, Row } from 'antd';
 interface DescriptionItemProps {
@@ -526,13 +513,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 多层抽屉
-#### zh-CN
 在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 const App: React.FC = () => {
@@ -573,13 +558,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 预设宽度
-#### zh-CN
 抽屉的默认宽度为 `378px`，另外还提供一个大号抽屉 `736px`，可以用 `size` 属性来设置。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Drawer, Space } from 'antd';
 import type { DrawerProps } from 'antd';
@@ -630,13 +613,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义内部样式
-#### zh-CN
 通过 `classNames` 属性设置抽屉内部区域（header、body、footer、mask、wrapper）的 `className`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, ConfigProvider, Drawer, Space } from 'antd';
 import { createStyles, useTheme } from 'antd-style';
@@ -737,13 +718,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### ConfigProvider
-#### zh-CN
 支持 ConfigProvider 配置。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { Button, ConfigProvider, Drawer } from 'antd';
 const App: React.FC = () => {
@@ -777,13 +756,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 无遮罩
-#### zh-CN
 通过 `mask={false}` 去掉遮罩。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 const App: React.FC = () => {
@@ -823,13 +800,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### _InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Drawer } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -841,13 +816,11 @@ export default () => (
     </InternalDrawer>
   </div>
 );
-
 ```
 ### 滚动锁定调试
-#### zh-CN
 当 Modal 和 Drawer 共同作用时的滚动锁定调试。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Drawer, Modal, Space, Switch } from 'antd';
 const App: React.FC = () => {
@@ -902,13 +875,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Drawer } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -924,5 +895,4 @@ export default () => (
     </div>
   </ConfigProvider>
 );
-
 ```

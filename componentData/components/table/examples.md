@@ -1,9 +1,8 @@
 ## Table 组件示例
 ### 基本用法
-#### zh-CN
 简单的表格，最后一列是各种操作。
 
-```typescript
+```tsx
 import React from 'react';
 import { Space, Table, Tag } from 'antd';
 import type { TableProps } from 'antd';
@@ -87,14 +86,12 @@ const data: DataType[] = [
 ];
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
 export default App;
-
 ```
 ### JSX 风格的 API
-#### zh-CN
 使用 JSX 风格的 API（2.5.0 以后引入）
 > 这个只是一个描述 `columns` 的语法糖，所以你不能用其他组件去包裹 `Column` 和 `ColumnGroup`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Space, Table, Tag } from 'antd';
 const { Column, ColumnGroup } = Table;
@@ -173,14 +170,12 @@ const App: React.FC = () => (
   </Table>
 );
 export default App;
-
 ```
 ### 可选择
-#### zh-CN
 第一列是联动的选择框。可以通过 `rowSelection.type` 属性指定选择类型，默认为 `checkbox`。
 > 默认点击 checkbox 触发选择行为，需要点击行触发可以参考例子：<https://codesandbox.io/s/000vqw38rl>
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Divider, Radio, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -259,13 +254,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 选择和操作
-#### zh-CN
 选择后进行操作，完成后清空选择，通过 `rowSelection.selectedRowKeys` 来控制选中项。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Flex, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -320,13 +313,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义选择项
-#### zh-CN
 通过 `rowSelection.selections` 自定义选择项，默认不显示下拉选项，设为 `true` 时显示默认选择项。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -403,13 +394,11 @@ const App: React.FC = () => {
   return <Table<DataType> rowSelection={rowSelection} columns={columns} dataSource={dataSource} />;
 };
 export default App;
-
 ```
 ### 选择性能
-#### zh-CN
 高损耗 `render` 性能调试。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { InputNumber, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -486,10 +475,8 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 筛选和排序
-#### zh-CN
 对某一列数据进行筛选，使用列的 `filters` 属性来指定需要筛选菜单的列，`onFilter` 用于筛选当前数据，`filterMultiple` 用于指定多选和单选，`filterOnClose` 用于指定是否在筛选菜单关闭时触发筛选。
 使用 `defaultFilteredValue` 属性，设置列的默认筛选项。
 对某一列数据进行排序，通过指定列的 `sorter` 函数即可启动排序按钮。`sorter: function(rowA, rowB) { ... }`， rowA、rowB 为比较的两个行数据。
@@ -497,7 +484,7 @@ export default App;
 使用 `defaultSortOrder` 属性，设置列的默认排序顺序。
 如果 `sortOrder` 或者 `defaultSortOrder` 的值为 `ascend` 或者 `descend`，则可以通过 `sorter` 的函数第三个参数获取当前排序的状态。该函数可以是 `function(a, b, sortOrder) { ... }` 的形式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -602,13 +589,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 树型筛选菜单
-#### zh-CN
 可以使用 `filterMode` 来修改筛选菜单的 UI，可选值有 `menu`（默认）和 `tree`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -717,13 +702,11 @@ const App: React.FC = () => (
   <Table<DataType> columns={columns} dataSource={data} onChange={onChange} />
 );
 export default App;
-
 ```
 ### 自定义筛选的搜索
-#### zh-CN
 `filterSearch` 用于开启筛选项的搜索，通过 `filterSearch:(input, record) => boolean` 设置自定义筛选方法
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -812,13 +795,11 @@ const App: React.FC = () => (
   <Table<DataType> columns={columns} dataSource={data} onChange={onChange} />
 );
 export default App;
-
 ```
 ### 多列排序
-#### zh-CN
 `column.sorter` 支持 `multiple` 字段以配置多列排序优先级。通过 `sorter.compare` 配置排序逻辑，你可以通过不设置该函数只启动多列排序的交互形式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -896,16 +877,14 @@ const App: React.FC = () => (
   <Table<DataType> columns={columns} dataSource={data} onChange={onChange} />
 );
 export default App;
-
 ```
 ### 可控的筛选和排序
-#### zh-CN
 使用受控属性对筛选和排序状态进行控制。
 > 1. columns 中定义了 filteredValue 和 sortOrder 属性即视为受控模式。
 > 2. 只支持同时对一列进行排序，请保证只有一列的 sortOrder 属性是生效的。
 > 3. 务必指定 `column.key`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { TableColumnsType, TableProps } from 'antd';
 import { Button, Space, Table } from 'antd';
@@ -1016,14 +995,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义筛选菜单
-#### zh-CN
 通过 `filterDropdown` 自定义的列筛选功能，并实现一个搜索列的示例。
 给函数 `clearFilters` 添加 `boolean` 类型参数 `closeDropdown`，是否关闭筛选菜单，默认为 `true`。添加 `boolean` 类型参数 `confirm`，清除筛选时是否提交已选项，默认 `true`。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import type { InputRef, TableColumnsType, TableColumnType } from 'antd';
@@ -1185,17 +1162,15 @@ const App: React.FC = () => {
   return <Table<DataType> columns={columns} dataSource={data} />;
 };
 export default App;
-
 ```
 ### 远程加载数据
-#### zh-CN
 这个例子通过简单的 ajax 读取方式，演示了如何从服务端读取并展现数据，具有筛选、排序等功能以及页面 loading 效果。开发者可以自行接入其他数据处理方式。
 另外，本例也展示了筛选排序功能如何交给服务端实现，列不需要指定具体的 `onFilter` 和 `sorter` 函数，而是在把筛选和排序的参数发到服务端来处理。
 当使用 `rowSelection` 时，请设置 `rowSelection.preserveSelectedRowKeys` 属性以保留 `key`。
 **注意，此示例使用 [模拟接口](https://randomuser.me)，展示数据可能不准确，请打开网络面板查看请求。**
 > 🛎️ 想要 3 分钟实现？试试 [ProTable](https://procomponents.ant.design/components/table)！
 
-```typescript
+```tsx
 /* eslint-disable compat/compat */
 import React, { useEffect, useState } from 'react';
 import type { GetProp, TableProps } from 'antd';
@@ -1314,13 +1289,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 紧凑型
-#### zh-CN
 两种紧凑型的列表，小型列表只用于对话框内。
 
-```typescript
+```tsx
 import React from 'react';
 import { Divider, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -1373,13 +1346,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 紧凑型
-#### zh-CN
 两种紧凑型的列表，小型列表只用于对话框内。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -1420,13 +1391,11 @@ const App: React.FC = () => (
   </div>
 );
 export default App;
-
 ```
 ### 带边框
-#### zh-CN
 添加表格边框线，页头和页脚。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableProps } from 'antd';
@@ -1483,13 +1452,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 可展开
-#### zh-CN
 当表格内容较多不能一次性完全展示时。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -1552,13 +1519,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 特殊列排序
-#### zh-CN
 你可以通过 `Table.EXPAND_COLUMN` 和 `Table.SELECTION_COLUMN` 来控制选择和展开列的顺序。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -1617,14 +1582,12 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 表格行/列合并
-#### zh-CN
 表头只支持列合并，使用 column 里的 colSpan 进行设置。
 表格支持行/列合并，当 `onCell` 里的单元格属性 `colSpan` 或者 `rowSpan` 设值为 0 时，设置的表格不会渲染。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableProps } from 'antd';
@@ -1737,14 +1700,12 @@ const data: DataType[] = [
 ];
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} bordered />;
 export default App;
-
 ```
 ### 树形数据展示
-#### zh-CN
 表格支持树形数据的展示，当数据中有 `children` 字段时会自动展示为树形表格，如果不需要或配置为其他字段可以用 `childrenColumnName` 进行配置。
 可以通过设置 `indentSize` 以控制每一层的缩进宽度。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Space, Switch, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -1867,13 +1828,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 树形数据省略情况测试
-#### zh-CN
 https://github.com/ant-design/ant-design/issues/36583
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Space, Switch, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -1986,14 +1945,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 树形数据保留key测试
-#### zh-CN
 treeData Table 使用 CheckStrictly: false & preserveSelectedRowKeys: true 的示例
 https://github.com/ant-design/ant-design/issues/50621
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Space, Switch, Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -2076,14 +2033,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 固定表头
-#### zh-CN
 方便一页内展示大量数据。
-需要指定 column 的 `width` 属性，否则列头和内容可能不对齐。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241)。
+需要指定 column 的 `width` 属性，否则列头和内容可能不对齐。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825#issuecomment-449889241)。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -2146,17 +2101,15 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 固定列
-#### zh-CN
 对于列数很多的数据，可以固定前后的列，横向滚动查看其它数据，需要和 `scroll.x` 配合使用。
-> 若列头与内容不对齐或出现列重复，请指定**固定列**的宽度 `width`。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241)。
+> 若列头与内容不对齐或出现列重复，请指定**固定列**的宽度 `width`。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825#issuecomment-449889241)。
 >
 > 建议指定 `scroll.x` 为大于表格宽度的固定值或百分比。注意，且非固定列宽度之和不要超过 `scroll.x`。
 **注意：v4 版本固定列通过 sticky 实现，IE 11 会降级成横向滚动。**
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -2245,13 +2198,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 堆叠固定列
-#### zh-CN
 混合固定列，滚动到一定距离进行堆叠，推荐配合 `bordered` 使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -2347,16 +2298,14 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 固定头和列
-#### zh-CN
 适合同时展示有大量数据和数据列。
-> 若列头与内容不对齐或出现列重复，请指定**固定列**的宽度 `width`。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825##issuecomment-449889241)。
+> 若列头与内容不对齐或出现列重复，请指定**固定列**的宽度 `width`。如果指定 `width` 不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有[超长连续字段破坏布局](https://github.com/ant-design/ant-design/issues/13825#issuecomment-449889241)。
 >
 > 建议指定 `scroll.x` 为大于表格宽度的固定值或百分比。注意，且非固定列宽度之和不要超过 `scroll.x`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -2480,13 +2429,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 隐藏列
-#### zh-CN
 使用 `hidden` 隐藏列。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Checkbox, Divider, Table } from 'antd';
 import type { CheckboxOptionType, TableColumnsType } from 'antd';
@@ -2546,13 +2493,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 表头分组
-#### zh-CN
 `columns[n]` 可以内嵌 `children`，以渲染分组表头。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -2693,13 +2638,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 可编辑单元格
-#### zh-CN
 带单元格编辑功能的表格。当配合 `shouldCellUpdate` 使用时请注意[闭包问题](https://github.com/ant-design/ant-design/issues/29243)。
 
-```typescript
+```tsx
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import type { GetRef, InputRef, TableProps } from 'antd';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
@@ -2893,14 +2836,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 可编辑行
-#### zh-CN
 带行编辑功能的表格。
 > 🛎️ 想要 3 分钟实现？试试 [ProTable 的可编辑表格](https://procomponents.ant.design/components/editable-table)！
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { TableProps } from 'antd';
 import { Form, Input, InputNumber, Popconfirm, Table, Typography } from 'antd';
@@ -3062,13 +3003,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 嵌套子表格
-#### zh-CN
 展示每行数据更详细的信息。
 
-```typescript
+```tsx
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { TableColumnsType } from 'antd';
@@ -3170,13 +3109,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 拖拽排序
-#### zh-CN
 使用自定义元素，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现拖拽排序。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { DragEndEvent } from '@dnd-kit/core';
 import { DndContext, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
@@ -3285,13 +3222,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 列拖拽排序
-#### zh-CN
 使用自定义元素，我们可以集成 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现列拖拽排序。
 
-```typescript
+```tsx
 import React, { createContext, useContext, useState } from 'react';
 import type { DragEndEvent, DragOverEvent, UniqueIdentifier } from '@dnd-kit/core';
 import {
@@ -3470,13 +3405,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 拖拽手柄列
-#### zh-CN
 使用 [dnd-kit](https://github.com/clauderic/dnd-kit) 来实现一个拖拽操作列。
 
-```typescript
+```tsx
 import React, { useContext, useMemo } from 'react';
 import { HolderOutlined } from '@ant-design/icons';
 import type { DragEndEvent } from '@dnd-kit/core';
@@ -3581,13 +3514,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 可伸缩列
-#### zh-CN
 集成 [react-resizable](https://github.com/STRML/react-resizable) 来实现可伸缩列。如果有排序需要，可以通过[额外标记](https://codesandbox.io/s/zrj8xvyzxx)阻止触发排序。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -3700,14 +3631,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 单元格自动省略
-#### zh-CN
 设置 `column.ellipsis` 可以让单元格内容根据宽度自动省略。
 > 列头缩略暂不支持和排序筛选一起使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -3781,13 +3710,11 @@ const data = [
 ];
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
 export default App;
-
 ```
 ### 自定义单元格省略提示
-#### zh-CN
 设置 `column.ellipsis.showTitle` 关闭单元格内容自动省略后默认的 `title` 提示, 使用 `Tooltip` 替代。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table, Tooltip } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -3886,13 +3813,11 @@ const data: DataType[] = [
 ];
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
 export default App;
-
 ```
 ### 自定义空状态
-#### zh-CN
 自定义空状态。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { GetProp } from 'antd';
 import { Button, ConfigProvider, Empty, Table } from 'antd';
@@ -3961,13 +3886,11 @@ function App() {
   );
 }
 export default App;
-
 ```
 ### 总结栏
-#### zh-CN
 通过 `summary` 设置总结栏。使用 `Table.Summary.Cell` 同步 Column 的固定状态。你可以通过配置 `Table.Summary` 的 `fixed` 属性使其固定(`4.16.0` 支持)。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Table, Typography } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -4116,13 +4039,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 虚拟列表
-#### zh-CN
 通过 `virtual` 开启虚拟滚动，此时 `scroll.x` 与 `scroll.y` 必须设置且为 `number` 类型。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Segmented, Space, Switch, Table, Typography } from 'antd';
 import type { TableProps } from 'antd';
@@ -4310,13 +4231,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 响应式
-#### zh-CN
 响应式配置列的展示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -4356,13 +4275,11 @@ const data: DataType[] = [
 ];
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
 export default App;
-
 ```
 ### 嵌套带边框的表格 Debug
-#### zh-CN
 看看边框的样式是不是影响到别的表格。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -4474,13 +4391,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 分页设置
-#### zh-CN
 表格的分页设置。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Radio, Space, Table, Tag } from 'antd';
 import type { TableProps } from 'antd';
@@ -4611,13 +4526,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义选择项组
-#### zh-CN
 自定义选项分组。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType, TableProps } from 'antd';
@@ -4650,13 +4563,11 @@ const App: React.FC = () => (
   <Table<DataType> rowSelection={rowSelection} columns={columns} dataSource={dataSource} />
 );
 export default App;
-
 ```
 ### 随页面滚动的固定表头和滚动条
-#### zh-CN
 对于长表格，需要滚动才能查看表头和滚动条，那么现在可以设置跟随页面固定表头和滚动条。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Switch, Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -4771,13 +4682,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 动态控制表格属性
-#### zh-CN
 选择不同配置组合查看效果。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { GetProp, RadioChangeEvent, TableProps } from 'antd';
@@ -5009,13 +4918,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 带下拉箭头的表头
-#### zh-CN
 调试使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Table } from 'antd';
 import type { TableColumnsType } from 'antd';
@@ -5068,13 +4975,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 组件 Token
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { ConfigProviderProps, GetProp, RadioChangeEvent, TableProps } from 'antd';
@@ -5345,5 +5250,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

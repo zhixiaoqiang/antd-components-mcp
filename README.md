@@ -5,7 +5,6 @@
 <center>
 <a href="./README.zh-CN.md">中文文档</a> | 
 <a href="#ant-design-components-mcp-service">English Documentation</a>
-
 </center>
 
 # Ant Design Components MCP Service
@@ -14,7 +13,7 @@ A Model Context Protocol (MCP) server that provides `Ant Design` component docum
 
 ## Features
 
-- 🚀 Pre-processed data, ready to use (Pre-processed version: `Ant Design V5.24.6 2025/4/12`)
+- 🚀 Pre-processed data, ready to use (Pre-processed version: `Ant Design V5.24.7 2025/4/16`)
   - 🔨 Can extract documentation for the latest/other versions
 - 🔗 List all available `Ant Design` components
   - 📃 Includes component name, description, available versions, and when to use the component

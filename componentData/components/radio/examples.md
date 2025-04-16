@@ -1,20 +1,17 @@
 ## Radio 组件示例
 ### 基本
-#### zh-CN
 最简单的用法。
 
-```typescript
+```tsx
 import React from 'react';
 import { Radio } from 'antd';
 const App: React.FC = () => <Radio>Radio</Radio>;
 export default App;
-
 ```
 ### 不可用
-#### zh-CN
 Radio 不可用。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Radio } from 'antd';
 const App: React.FC = () => {
@@ -38,13 +35,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 单选组合
-#### zh-CN
 一组互斥的 Radio 配合使用。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   BarChartOutlined,
@@ -105,13 +100,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Radio.Group 垂直
-#### zh-CN
 垂直的 Radio.Group，配合更多输入框选项。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Input, Radio } from 'antd';
@@ -154,13 +147,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Block 单选组合
-#### zh-CN
 `block` 属性将使 Radio.Group 撑满父容器。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Radio } from 'antd';
 import type { CheckboxGroupProps } from 'antd/es/checkbox';
@@ -183,13 +174,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### Radio.Group 组合 - 配置方式
-#### zh-CN
 通过配置 `options` 参数来渲染单选框。也可通过 `optionType` 参数来设置 Radio 类型。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Radio } from 'antd';
@@ -247,13 +236,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 按钮样式
-#### zh-CN
 按钮样式的单选组合。
 
-```typescript
+```tsx
 import React from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Flex, Radio } from 'antd';
@@ -285,13 +272,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 单选组合 - 配合 name 使用
-#### zh-CN
 可以为 Radio.Group 配置 `name` 参数，为组合内的 input 元素赋予相同的 `name` 属性，使浏览器把 Radio.Group 下的 Radio 真正看作是一组（例如可以通过方向键始终**在同一组内**更改选项）。
 
-```typescript
+```tsx
 import React from 'react';
 import { Radio } from 'antd';
 const App: React.FC = () => (
@@ -307,13 +292,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 大小
-#### zh-CN
 大中小三种组合，可以和表单输入框进行对应配合。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Radio } from 'antd';
 const App: React.FC = () => (
@@ -339,13 +322,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 填底的按钮样式
-#### zh-CN
 实色填底的单选按钮样式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Radio } from 'antd';
 const App: React.FC = () => (
@@ -367,13 +348,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 测试 Badge 的样式
-#### zh-CN
 测试 Badge 的样式。
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Radio } from 'antd';
 const App: React.FC = () => (
@@ -387,13 +366,11 @@ const App: React.FC = () => (
   </Radio.Group>
 );
 export default App;
-
 ```
 ### 线框风格
-#### zh-CN
 线框风格。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Radio } from 'antd';
 import type { CheckboxGroupProps } from 'antd/es/checkbox';
@@ -411,13 +388,11 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 组件 token debug
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Radio, Space } from 'antd';
 const App: React.FC = () => (
@@ -467,5 +442,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

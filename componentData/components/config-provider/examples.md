@@ -1,9 +1,8 @@
 ## ConfigProvider 组件示例
 ### 国际化
-#### zh-CN
 此处列出 Ant Design 中需要国际化支持的组件，你可以在演示里切换语言。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
 import type {
@@ -243,13 +242,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 方向
-#### zh-CN
 这里列出了支持 `rtl` 方向的组件，您可以在演示中切换方向。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   DownloadOutlined,
@@ -749,13 +746,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 组件尺寸
-#### zh-CN
 修改默认组件尺寸。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import {
   Button,
@@ -835,13 +830,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 主题
-#### zh-CN
 通过 `theme` 修改主题。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   Button,
@@ -939,13 +932,11 @@ export default () => {
     </div>
   );
 };
-
 ```
 ### 自定义波纹
-#### zh-CN
 波纹效果带来了灵动性，可以通过 `component` 判断来自哪个组件。你也可以使用 [`@ant-design/happy-work-theme`](https://github.com/ant-design/happy-work-theme) 提供的 HappyProvider 实现动态波纹效果。
 
-```typescript
+```tsx
 import React from 'react';
 import { HappyProvider } from '@ant-design/happy-work-theme';
 import { Button, ConfigProvider, Space } from 'antd';
@@ -1047,13 +1038,11 @@ const App = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 静态方法
-#### zh-CN
 使用 `holderRender` 给 `message` 、`modal` 、`notification` 静态方法设置 `Provider`
 
-```typescript
+```tsx
 import React, { useContext, useLayoutEffect } from 'react';
 import { StyleProvider } from '@ant-design/cssinjs';
 import { ExclamationCircleFilled } from '@ant-design/icons';
@@ -1113,13 +1102,11 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### 前缀
-#### zh-CN
 修改组件和图标前缀。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { Button, Checkbox, ConfigProvider, Radio, Select } from 'antd';
@@ -1149,13 +1136,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 获取配置
-#### zh-CN
 获取父级 `Provider` 的值。如 `DisabledContextProvider`、`SizeContextProvider`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Checkbox, ConfigProvider, Divider, Form, Input, Radio, Space } from 'antd';
 import type { ConfigProviderProps } from 'antd';
@@ -1205,13 +1190,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 警告
-#### zh-CN
 调整 warning 策略。
 
-```typescript
+```tsx
 import React from 'react';
 import { Alert, ConfigProvider, Input, Typography } from 'antd';
 const App: React.FC = () => (
@@ -1224,5 +1207,4 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```

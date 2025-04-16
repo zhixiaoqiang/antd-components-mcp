@@ -1,9 +1,8 @@
 ## Avatar 组件示例
 ### 基本
-#### zh-CN
 头像有三种尺寸，两种形状可选。
 
-```typescript
+```tsx
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Space } from 'antd';
@@ -26,13 +25,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 类型
-#### zh-CN
 支持三种类型：图片、Icon 以及字符，其中 Icon 和字符型可以自定义图标颜色及背景色。
 
-```typescript
+```tsx
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Space } from 'antd';
@@ -49,13 +46,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 自动调整字符大小
-#### zh-CN
 对于字符型的头像，当字符串较长时，字体大小可以根据头像宽度自动调整。也可使用 `gap` 来设置字符距离左右两侧边界单位像素。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Avatar, Button } from 'antd';
 const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
@@ -93,13 +88,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 带徽标的头像
-#### zh-CN
 通常用于消息提示。
 
-```typescript
+```tsx
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Space } from 'antd';
@@ -114,13 +107,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### Avatar.Group
-#### zh-CN
 头像组合展现。
 
-```typescript
+```tsx
 import React from 'react';
 import { AntDesignOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Divider, Tooltip } from 'antd';
@@ -191,13 +182,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 隐藏情况下计算字符对齐
-#### zh-CN
 切换 Avatar 显示的时候，文本样式应该居中并正确调整字体大小。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Avatar, Button, Space } from 'antd';
 type SizeType = 'large' | 'small' | 'default' | number;
@@ -250,13 +239,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 响应式尺寸
-#### zh-CN
 头像大小可以根据屏幕大小自动调整。
 
-```typescript
+```tsx
 import React from 'react';
 import { AntDesignOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
@@ -267,13 +254,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 图片不存在时
-#### zh-CN
 图片不存在时，如果 `src` 本身是个 ReactElement，会尝试回退到 `src`，否则尝试回退到 `icon`，最后回退到显示 `children`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, Space } from 'antd';
 const App: React.FC = () => (
@@ -287,13 +272,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { AntDesignOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Badge, ConfigProvider, Space, Tooltip } from 'antd';
@@ -346,5 +329,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

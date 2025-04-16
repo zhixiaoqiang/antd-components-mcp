@@ -1,9 +1,8 @@
 ## Button 组件示例
 ### 语法糖
-#### zh-CN
 通过 `type` 语法糖，使用预设的按钮样式：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。推荐主按钮在同一个操作区域最多出现一次。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex } from 'antd';
 const App: React.FC = () => (
@@ -16,13 +15,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 颜色与变体
-#### zh-CN
 同时设置 `color` 和 `variant` 属性，可以衍生出更多的变体按钮。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, ConfigProvider, Flex } from 'antd';
 import { useResponsive } from 'antd-style';
@@ -156,13 +153,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 按钮图标
-#### zh-CN
 可以通过 `icon`属性添加图标。
 
-```typescript
+```tsx
 import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Flex, Tooltip } from 'antd';
@@ -199,13 +194,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 按钮图标位置
-#### zh-CN
 通过设置 `iconPosition` 为 `start` 或 `end` 分别设置按钮图标的位置。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Divider, Flex, Radio, Space, Tooltip } from 'antd';
@@ -268,14 +261,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 按钮尺寸
-#### zh-CN
 按钮有大、中、小三种尺寸。
 通过设置 `size` 为 `large` `small` 分别把按钮设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DownloadOutlined } from '@ant-design/icons';
 import { Button, Divider, Flex, Radio } from 'antd';
@@ -322,13 +313,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 不可用状态
-#### zh-CN
 添加 `disabled` 属性即可让按钮处于不可用状态，同时按钮样式也会改变。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex } from 'antd';
 const App: React.FC = () => (
@@ -400,13 +389,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 加载中状态
-#### zh-CN
 添加 `loading` 属性即可让按钮处于加载状态，`loading.icon` 可以自定义加载图标，最后三个按钮演示点击后进入加载状态。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { PoweroffOutlined, SyncOutlined } from '@ant-design/icons';
 import { Button, Flex } from 'antd';
@@ -479,13 +466,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 多个按钮组合
-#### zh-CN
-按钮组合使用时，推荐使用 1 个主操作 + n 个次操作，3 个以上操作时把更多操作放到 [Dropdown.Button](/components/dropdown-cn/##dropdown-demo-dropdown-button) 中组合使用。
+按钮组合使用时，推荐使用 1 个主操作 + n 个次操作，3 个以上操作时把更多操作放到 [Dropdown.Button](/components/dropdown-cn/#dropdown-demo-dropdown-button) 中组合使用。
 
-```typescript
+```tsx
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, Flex } from 'antd';
@@ -514,13 +499,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 幽灵按钮
-#### zh-CN
 幽灵按钮将按钮的内容反色，背景变为透明，常用在有色背景上。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex } from 'antd';
 const App: React.FC = () => (
@@ -538,13 +521,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 危险按钮
-#### zh-CN
 在 4.0 之后，危险成为一种按钮属性而不是按钮类型。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex } from 'antd';
 const App: React.FC = () => (
@@ -565,13 +546,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### Block 按钮
-#### zh-CN
 `block` 属性将使按钮适合其父宽度。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex } from 'antd';
 const App: React.FC = () => (
@@ -595,13 +574,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 废弃的 Block 组
-#### zh-CN
 Debug usage
 
-```typescript
+```tsx
 import React from 'react';
 import { DownloadOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
@@ -629,13 +606,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 加载中状态 bug 还原
-#### zh-CN
 https://github.com/ant-design/ant-design/issues/36165
 
-```typescript
+```tsx
 import React from 'react';
 import { PoweroffOutlined } from '@ant-design/icons';
 import { Button, Flex } from 'antd';
@@ -666,13 +641,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 组件 Token，模仿 MUI 风格的 Button
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, ConfigProvider, Flex } from 'antd';
 const App: React.FC = () => (
@@ -754,13 +727,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 渐变按钮
-#### zh-CN
 自定义为渐变背景按钮。
 
-```typescript
+```tsx
 import React from 'react';
 import { AntDesignOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider, Space } from 'antd';
@@ -804,13 +775,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 移除两个汉字之间的空格
-#### zh-CN
 我们默认在两个汉字之间添加空格，可以通过设置 `autoInsertSpace` 为 `false` 关闭。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Flex } from 'antd';
 const App: React.FC = () => (
@@ -824,5 +793,4 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```

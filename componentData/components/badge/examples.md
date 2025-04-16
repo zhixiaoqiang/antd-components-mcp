@@ -1,9 +1,8 @@
 ## Badge 组件示例
 ### 基本
-#### zh-CN
 简单的徽章展示，当 `count` 为 `0` 时，默认不显示，但是可以使用 `showZero` 修改为显示。
 
-```typescript
+```tsx
 import React from 'react';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Space } from 'antd';
@@ -21,14 +20,12 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 独立使用
-#### zh-CN
 不包裹任何元素即是独立使用，可自定样式展现。
 > 在右上角的 badge 则限定为红色。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Badge, Space, Switch } from 'antd';
@@ -49,13 +46,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 封顶数字
-#### zh-CN
 超过 `overflowCount` 的会显示为 `${overflowCount}+`，默认的 `overflowCount` 为 `99`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, Badge, Space } from 'antd';
 const App: React.FC = () => (
@@ -75,13 +70,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 讨嫌的小红点
-#### zh-CN
 没有具体的数字。
 
-```typescript
+```tsx
 import React from 'react';
 import { NotificationOutlined } from '@ant-design/icons';
 import { Badge, Space } from 'antd';
@@ -96,13 +89,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 动态
-#### zh-CN
 展示动态变化的效果。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { MinusOutlined, PlusOutlined, QuestionOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Button, Space, Switch } from 'antd';
@@ -148,13 +139,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 可点击
-#### zh-CN
 用 a 标签进行包裹即可。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, Badge } from 'antd';
 const App: React.FC = () => (
@@ -165,13 +154,11 @@ const App: React.FC = () => (
   </a>
 );
 export default App;
-
 ```
 ### 自定义位置偏移
-#### zh-CN
 设置状态点的位置偏移，格式为 `[left, top]`，表示状态点距默认位置左侧、上方的偏移量。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, Badge } from 'antd';
 const App: React.FC = () => (
@@ -180,13 +167,11 @@ const App: React.FC = () => (
   </Badge>
 );
 export default App;
-
 ```
 ### 大小
-#### zh-CN
 可以设置有数字徽标的大小。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, Badge, Space } from 'antd';
 const App: React.FC = () => (
@@ -200,13 +185,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 状态点
-#### zh-CN
 用于表示状态的小圆点。
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Space } from 'antd';
 const App: React.FC = () => (
@@ -229,13 +212,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 多彩徽标
-#### zh-CN
 我们添加了多种预设色彩的徽标样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Divider, Space } from 'antd';
 const colors = [
@@ -271,13 +252,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 缎带
-#### zh-CN
 使用缎带型的徽标。
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Card, Space } from 'antd';
 const App: React.FC = () => (
@@ -325,13 +304,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### Ribbon Debug
-#### zh-CN
 Buggy!
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Card, Space } from 'antd';
 const App: React.FC = () => (
@@ -354,13 +331,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 各种混用的情况
-#### zh-CN
 测试 `count` `status` `color` `dot` 共用的情况。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, Badge, Space } from 'antd';
 const App: React.FC = () => (
@@ -408,13 +383,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 自定义标题
-#### zh-CN
 设置鼠标放在状态点上时显示的文字。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, Badge, Space } from 'antd';
 const App: React.FC = () => (
@@ -428,13 +401,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 多彩徽标支持 count 显示 Debug
-#### zh-CN
 在使用多彩徽标的同时，支持 count 属性显示
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Space } from 'antd';
 const colors = [
@@ -482,13 +453,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { NotificationOutlined } from '@ant-design/icons';
 import { Avatar, Badge, ConfigProvider, Space } from 'antd';
@@ -520,5 +489,4 @@ export default () => (
     </Space>
   </ConfigProvider>
 );
-
 ```

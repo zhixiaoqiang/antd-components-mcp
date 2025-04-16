@@ -1,9 +1,8 @@
 ## DatePicker 组件示例
 ### 基本
-#### zh-CN
 最简单的用法，在浮层中可以选择或者输入日期。
 
-```typescript
+```tsx
 import React from 'react';
 import type { DatePickerProps } from 'antd';
 import { DatePicker, Space } from 'antd';
@@ -20,13 +19,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 范围选择器
-#### zh-CN
 通过设置 `picker` 属性，指定范围选择器类型。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 const { RangePicker } = DatePicker;
@@ -53,13 +50,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 多选
-#### zh-CN
 多选，不支持 `showTime` 以及 `picker="time"`。
 
-```typescript
+```tsx
 import React from 'react';
 import type { DatePickerProps } from 'antd';
 import { DatePicker, Flex } from 'antd';
@@ -89,13 +84,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 多选 Debug
-#### zh-CN
 非响应式间距测试。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Flex } from 'antd';
 import dayjs from 'dayjs';
@@ -109,13 +102,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 选择确认
-#### zh-CN
 DatePicker 默认会根据 `picker` 的交互行为，自动选择是否需要确认按钮。你也可以通过 `needConfirm` 属性来手动设置是否需要确认按钮。当有 `needConfirm` 时，用户始终需要点击确认按钮才能完成选择。反之，则会在选择或者失去焦点时提交。
 
-```typescript
+```tsx
 import React from 'react';
 import type { DatePickerProps } from 'antd';
 import { DatePicker } from 'antd';
@@ -125,13 +116,11 @@ const onChange: DatePickerProps<Dayjs[]>['onChange'] = (date, dateString) => {
 };
 const App: React.FC = () => <DatePicker onChange={onChange} needConfirm />;
 export default App;
-
 ```
 ### 切换不同的选择器
-#### zh-CN
 提供选择器，自由切换不同类型的日期选择器，常用于日期筛选场合。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { DatePickerProps, TimePickerProps } from 'antd';
 import { DatePicker, Select, Space, TimePicker } from 'antd';
@@ -165,13 +154,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 日期格式
-#### zh-CN
 使用 `format` 属性，可以自定义日期显示格式。当 `format` 为数组时，选择器输入框可以输入数组中任意一个有效格式。
 
-```typescript
+```tsx
 import React from 'react';
 import type { DatePickerProps } from 'antd';
 import { DatePicker, Space } from 'antd';
@@ -204,13 +191,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 日期时间选择
-#### zh-CN
 增加选择时间功能，当 `showTime` 为一个对象时，其属性会传递给内建的 `TimePicker`。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 import type { DatePickerProps, GetProps } from 'antd';
@@ -241,13 +226,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 格式对齐
-#### zh-CN
 输入格式对齐，通过键盘左右切换焦点。失去焦点时会尝试对齐到最后合法的日期。
 
-```typescript
+```tsx
 import React from 'react';
 import type { DatePickerProps } from 'antd';
 import { DatePicker, Space } from 'antd';
@@ -273,13 +256,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 日期限定范围
-#### zh-CN
 通过 `minDate` 和 `maxDate` 限定日期范围。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
@@ -294,13 +275,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 禁用
-#### zh-CN
 选择框的不可用状态。你也可以通过数组单独禁用 RangePicker 的其中一项。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 import dayjs from 'dayjs';
@@ -328,13 +307,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 不可选择日期和时间
-#### zh-CN
 可用 `disabledDate` 和 `disabledTime` 分别禁止选择部分日期和时间，其中 `disabledTime` 需要和 `showTime` 一起使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 import type { GetProps } from 'antd';
@@ -395,13 +372,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 允许留空
-#### zh-CN
 在范围选择时，可以允许留空。这对于需要保留“至今”日期项颇为有用。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker } from 'antd';
 const App: React.FC = () => (
@@ -414,13 +389,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 选择不超过一定的范围
-#### zh-CN
 使用 `disabledDate` 的 `info.from` 来限制动态的日期区间选择。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Space, Typography } from 'antd';
 import type { DatePickerProps } from 'antd';
@@ -472,13 +445,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 预设范围
-#### zh-CN
 可以预设常用的日期范围以提高用户体验。自 `5.8.0` 开始，preset value 支持回调函数返回值方式。
 
-```typescript
+```tsx
 import React from 'react';
 import type { TimeRangePickerProps } from 'antd';
 import { DatePicker, Space } from 'antd';
@@ -532,13 +503,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 额外的页脚
-#### zh-CN
 在浮层中加入额外的页脚，以满足某些定制信息的需求。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 const { RangePicker } = DatePicker;
@@ -552,13 +521,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 三种大小
-#### zh-CN
 三种大小的输入框，若不设置，则为 `middle`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { ConfigProviderProps, RadioChangeEvent } from 'antd';
 import { DatePicker, Radio, Space } from 'antd';
@@ -584,13 +551,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 定制单元格
-#### zh-CN
 使用 `cellRender` 可以自定义单元格的内容和样式。
 
-```typescript
+```tsx
 import React from 'react';
 import type { DatePickerProps } from 'antd';
 import { DatePicker, Space, theme } from 'antd';
@@ -622,13 +587,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 定制面板
-#### zh-CN
 通过 `components` 替换对应面板。
 
-```typescript
+```tsx
 import React from 'react';
 import type { DatePickerProps } from 'antd';
 import { Button, DatePicker, Flex, Slider, Space, Typography } from 'antd';
@@ -695,13 +658,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 佛历格式
-#### zh-CN
 通过 `locale` 配置支持特殊的年历格式。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, DatePicker, Space, Typography } from 'antd';
 import type { DatePickerProps } from 'antd';
@@ -756,13 +717,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义状态
-#### zh-CN
 使用 `status` 为 DatePicker 添加状态，可选 `error` 或者 `warning`。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 const App: React.FC = () => (
@@ -774,13 +733,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 形态变体
-#### zh-CN
 DatePicker 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Flex } from 'antd';
 const { RangePicker } = DatePicker;
@@ -805,13 +762,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### Filled Debug
-#### zh-CN
 Filled Debug
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 import dayjs from 'dayjs';
@@ -850,13 +805,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 弹出位置
-#### zh-CN
 可以通过 `placement` 手动指定弹出的位置。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { DatePickerProps, RadioChangeEvent } from 'antd';
 import { DatePicker, Radio } from 'antd';
@@ -884,13 +837,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 受控面板
-#### zh-CN
 通过组合 `mode` 与 `onPanelChange` 控制要展示的面板。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DatePicker, Space } from 'antd';
 import type { DatePickerProps, GetProps } from 'antd';
@@ -945,15 +896,13 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 自定义日期范围选择
-#### zh-CN
 当 `RangePicker` 无法满足业务需求时，可以使用两个 `DatePicker` 实现类似的功能。
 > - 通过设置 `disabledDate` 方法，来约束开始和结束日期。
 > - 通过 `open` `onOpenChange` 来优化交互。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { DatePicker, Space } from 'antd';
 import type { Dayjs } from 'dayjs';
@@ -1006,13 +955,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 前后缀
-#### zh-CN
 自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
 
-```typescript
+```tsx
 import React from 'react';
 import { SmileOutlined } from '@ant-design/icons';
 import { DatePicker, Space } from 'antd';
@@ -1039,25 +986,21 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { DatePicker } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalDatePicker } = DatePicker;
 const App: React.FC = () => <InternalDatePicker />;
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, DatePicker, Divider, Flex, Space, TimePicker } from 'antd';
 import dayjs from 'dayjs';
@@ -1118,5 +1061,4 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```

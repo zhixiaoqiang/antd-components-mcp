@@ -1,10 +1,9 @@
 ## Popconfirm 组件示例
 ### 基本
-#### zh-CN
 最简单的用法，支持确认标题和描述。
 > `description` 在 `5.1.0` 版本中支持。
 
-```typescript
+```tsx
 import React from 'react';
 import type { PopconfirmProps } from 'antd';
 import { Button, message, Popconfirm } from 'antd';
@@ -29,13 +28,11 @@ const App: React.FC = () => (
   </Popconfirm>
 );
 export default App;
-
 ```
 ### 国际化
-#### zh-CN
 使用 `okText` 和 `cancelText` 自定义按钮文字。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Popconfirm } from 'antd';
 const App: React.FC = () => (
@@ -49,13 +46,11 @@ const App: React.FC = () => (
   </Popconfirm>
 );
 export default App;
-
 ```
 ### 位置
-#### zh-CN
 位置有十二个方向。如需箭头指向目标元素中心，可以设置 `arrow: { pointAtCenter: true }`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, ConfigProvider, Flex, Popconfirm } from 'antd';
 const text = 'Are you sure to delete this task?';
@@ -186,13 +181,11 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
 ### 贴边偏移
-#### zh-CN
 当 Popconfirm 贴边时，自动偏移并且调整箭头位置。当超出过多时，则一同滚出屏幕。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Popconfirm } from 'antd';
 const style: React.CSSProperties = {
@@ -216,13 +209,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 条件触发
-#### zh-CN
 可以判断是否需要弹出。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, message, Popconfirm, Switch } from 'antd';
 const App: React.FC = () => {
@@ -274,13 +265,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义 Icon 图标
-#### zh-CN
 自定义提示 `icon`。
 
-```typescript
+```tsx
 import React from 'react';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Button, Popconfirm } from 'antd';
@@ -294,13 +283,11 @@ const App: React.FC = () => (
   </Popconfirm>
 );
 export default App;
-
 ```
 ### 异步关闭
-#### zh-CN
 点击确定后异步关闭气泡确认框，例如提交表单。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Popconfirm } from 'antd';
 const App: React.FC = () => {
@@ -336,13 +323,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 基于 Promise 的异步关闭
-#### zh-CN
 点击确定后异步关闭 Popconfirm，例如提交表单。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Popconfirm } from 'antd';
 const App: React.FC = () => {
@@ -362,13 +347,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### _InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Popconfirm } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopconfirm } = Popconfirm;
@@ -386,13 +369,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 线框风格
-#### zh-CN
 线框风格。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Popconfirm } from 'antd';
 const { _InternalPanelDoNotUseOrYouWillBeFired: InternalPopconfirm } = Popconfirm;
@@ -403,5 +384,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

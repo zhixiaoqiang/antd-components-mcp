@@ -1,9 +1,8 @@
 ## Descriptions 组件示例
 ### 基本
-#### zh-CN
 简单的展示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
@@ -36,13 +35,11 @@ const items: DescriptionsProps['items'] = [
 ];
 const App: React.FC = () => <Descriptions title="User Info" items={items} />;
 export default App;
-
 ```
 ### 带边框的
-#### zh-CN
 带边框和背景颜色列表。
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
@@ -117,13 +114,11 @@ const items: DescriptionsProps['items'] = [
 ];
 const App: React.FC = () => <Descriptions title="User Info" bordered items={items} />;
 export default App;
-
 ```
 ### 复杂文本的情况
-#### zh-CN
 复杂文本的情况。
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Descriptions, Table } from 'antd';
 import type { DescriptionsProps, TableProps } from 'antd';
@@ -247,13 +242,11 @@ const items: DescriptionsProps['items'] = [
 ];
 const App: React.FC = () => <Descriptions title="User Info" column={2} items={items} />;
 export default App;
-
 ```
 ### 间距
-#### zh-CN
 间距
 
-```typescript
+```tsx
 import React from 'react';
 import { Descriptions, Flex } from 'antd';
 import type { DescriptionsProps } from 'antd';
@@ -295,13 +288,11 @@ const App: React.FC = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 自定义尺寸
-#### zh-CN
 自定义尺寸，适应在各种容器中展示。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Descriptions, Radio } from 'antd';
 import type { DescriptionsProps, RadioChangeEvent } from 'antd';
@@ -423,13 +414,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 响应式
-#### zh-CN
 通过响应式的配置可以实现在小屏幕设备上的完美呈现。
 
-```typescript
+```tsx
 import React from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
@@ -498,13 +487,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 垂直
-#### zh-CN
 垂直的列表。
 
-```typescript
+```tsx
 import React from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
@@ -538,13 +525,11 @@ const items: DescriptionsProps['items'] = [
 ];
 const App: React.FC = () => <Descriptions title="User Info" layout="vertical" items={items} />;
 export default App;
-
 ```
 ### 垂直带边框的
-#### zh-CN
 垂直带边框和背景颜色的列表。
 
-```typescript
+```tsx
 import React from 'react';
 import { Badge, Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
@@ -621,13 +606,11 @@ const App: React.FC = () => (
   <Descriptions title="User Info" layout="vertical" bordered items={items} />
 );
 export default App;
-
 ```
 ### 自定义 label & wrapper 样式
-#### zh-CN
 自定义 label & wrapper 样式
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Descriptions, Divider, Radio, Switch } from 'antd';
 import type { DescriptionsProps } from 'antd';
@@ -709,13 +692,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### JSX demo
-#### zh-CN
 JSX 风格演示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Descriptions } from 'antd';
 const App: React.FC = () => (
@@ -730,13 +711,11 @@ const App: React.FC = () => (
   </Descriptions>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { DescriptionsProps, RadioChangeEvent } from 'antd';
 import { Button, ConfigProvider, Descriptions, Radio } from 'antd';
@@ -876,13 +855,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 整行
-#### zh-CN
 整行的展示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Descriptions } from 'antd';
 import type { DescriptionsProps } from 'antd';
@@ -909,5 +886,4 @@ const items: DescriptionsProps['items'] = [
 ];
 const App: React.FC = () => <Descriptions bordered title="User Info" items={items} />;
 export default App;
-
 ```

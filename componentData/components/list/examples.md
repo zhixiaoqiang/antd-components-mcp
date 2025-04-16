@@ -1,11 +1,10 @@
 ## List 组件示例
 ### 简单列表
-#### zh-CN
 列表拥有大、中、小三种尺寸。
 通过设置 `size` 为 `large` `small` 分别把按钮设为大、小尺寸。若不设置 `size`，则尺寸为中。
 可通过设置 `header` 和 `footer`，来自定义列表头部和尾部。
 
-```typescript
+```tsx
 import React from 'react';
 import { Divider, List, Typography } from 'antd';
 const data = [
@@ -50,13 +49,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 基础列表
-#### zh-CN
 基础列表。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, List } from 'antd';
 const data = [
@@ -89,13 +86,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 加载更多
-#### zh-CN
 可通过 `loadMore` 属性实现加载更多功能。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Avatar, Button, List, Skeleton } from 'antd';
 interface DataType {
@@ -188,13 +183,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 竖排列表样式
-#### zh-CN
 通过设置 `itemLayout` 属性为 `vertical` 可实现竖排列表样式。
 
-```typescript
+```tsx
 import React from 'react';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import { Avatar, List, Space } from 'antd';
@@ -256,13 +249,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 分页设置
-#### zh-CN
 可通过 `pagination` 属性使用列表分页，并进行设置。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Avatar, List, Radio, Space } from 'antd';
 type PaginationPosition = 'top' | 'bottom' | 'both';
@@ -339,13 +330,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 栅格列表
-#### zh-CN
 可以通过设置 `List` 的 `grid` 属性来实现栅格列表，`column` 可设置期望显示的列数。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card, List } from 'antd';
 const data = [
@@ -374,13 +363,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 测试栅格列表
-#### zh-CN
 List `grid` 在各种情况下的样式表现，如 Fragment 和封装了 List.Item.
 
-```typescript
+```tsx
 import React from 'react';
 import { Card, List } from 'antd';
 const data = [
@@ -433,13 +420,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 响应式的栅格列表
-#### zh-CN
-响应式的栅格列表。尺寸与 [Layout Grid](/components/grid-cn/##col) 保持一致。
+响应式的栅格列表。尺寸与 [Layout Grid](/components/grid-cn/#col) 保持一致。
 
-```typescript
+```tsx
 import React from 'react';
 import { Card, List } from 'antd';
 const data = [
@@ -482,13 +467,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 滚动加载
-#### zh-CN
 结合 [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component) 实现滚动自动加载列表。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Avatar, Divider, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -564,13 +547,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 滚动加载无限长列表
-#### zh-CN
 结合 [rc-virtual-list](https://github.com/react-component/virtual-list) 实现滚动加载无限长列表，能够提高数据量大时候长列表的性能。
 
-```typescript
+```tsx
 import React, { useEffect, useState } from 'react';
 import { Avatar, List, message } from 'antd';
 import VirtualList from 'rc-virtual-list';
@@ -635,13 +616,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义组件 token
-#### zh-CN
 自定义组件 Token。
 
-```typescript
+```tsx
 import React from 'react';
 import { Avatar, ConfigProvider, Divider, List, Typography } from 'antd';
 const data = [
@@ -747,5 +726,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```

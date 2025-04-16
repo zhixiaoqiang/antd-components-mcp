@@ -1,9 +1,8 @@
 ## Tree 组件示例
 ### 基本
-#### zh-CN
 最简单的用法，展示可勾选，可选中，禁用，默认展开等功能。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
@@ -56,13 +55,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 受控操作示例
-#### zh-CN
 受控操作示例
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
@@ -144,13 +141,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 拖动示例
-#### zh-CN
 将节点拖拽到其他节点内部或前后。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
@@ -251,13 +246,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 异步数据加载
-#### zh-CN
 点击展开节点，动态加载数据。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Tree } from 'antd';
 interface DataNode {
@@ -309,13 +302,11 @@ const App: React.FC = () => {
   return <Tree loadData={onLoadData} treeData={treeData} />;
 };
 export default App;
-
 ```
 ### 可搜索
-#### zh-CN
 可搜索的树。
 
-```typescript
+```tsx
 import React, { useMemo, useState } from 'react';
 import { Input, Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
@@ -433,13 +424,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 连接线
-#### zh-CN
 节点之间带连接线的树，常用于文件目录结构展示。使用 `showLine` 开启，可以用 `switcherIcon` 修改默认图标。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { CarryOutOutlined, CheckOutlined, FormOutlined } from '@ant-design/icons';
 import { Select, Switch, Tree } from 'antd';
@@ -551,13 +540,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义图标
-#### zh-CN
 可以针对不同的节点定制图标。
 
-```typescript
+```tsx
 import React from 'react';
 import {
   DownOutlined,
@@ -597,13 +584,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 目录
-#### zh-CN
 内置的目录树，`multiple` 模式支持 `ctrl(Windows)` / `command(Mac)` 复选。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tree } from 'antd';
 import type { GetProps, TreeDataNode } from 'antd';
@@ -646,13 +631,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 目录 Debug
-#### zh-CN
-调试 [##51210](https://github.com/ant-design/ant-design/pull/51210), [##51448](https://github.com/ant-design/ant-design/pull/51448##issuecomment-2449144872)
+调试 [#51210](https://github.com/ant-design/ant-design/pull/51210), [#51448](https://github.com/ant-design/ant-design/pull/51448#issuecomment-2449144872)
 
-```typescript
+```tsx
 import React from 'react';
 import { Flex, Tree } from 'antd';
 import type { GetProps, TreeDataNode } from 'antd';
@@ -708,13 +691,11 @@ const App = () => (
   </Flex>
 );
 export default App;
-
 ```
 ### 自定义展开/折叠图标
-#### zh-CN
 自定义展开/折叠图标。
 
-```typescript
+```tsx
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Tree } from 'antd';
@@ -784,13 +765,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 虚拟滚动
-#### zh-CN
 使用 `height` 属性则切换为虚拟滚动。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tooltip, Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
@@ -823,12 +802,10 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
-### Drag Debug
-undefined
+### Drag Debugundefined
 
-```typescript
+```tsx
 import React from 'react';
 import { CarryOutOutlined } from '@ant-design/icons';
 import type { TreeDataNode, TreeProps } from 'antd';
@@ -967,13 +944,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 大数据
-#### zh-CN
 大数据展示。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
@@ -994,11 +969,9 @@ for (let i = 0; i < 100; i += 1) {
 }
 const App: React.FC = () => <Tree defaultExpandAll height={400} treeData={treeData} />;
 export default App;
-
 ```
 ### 占据整行
-
-```typescript
+```tsx
 import React from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
@@ -1024,13 +997,11 @@ const App: React.FC = () => (
   <Tree checkable defaultSelectedKeys={['0-1']} defaultExpandAll treeData={treeData} blockNode />
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 组件 Token
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
@@ -1097,13 +1068,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 多行
-#### zh-CN
 多行树节点。
 
-```typescript
+```tsx
 import React from 'react';
 import { Tree } from 'antd';
 import type { TreeDataNode, TreeProps } from 'antd';
@@ -1157,5 +1126,4 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```

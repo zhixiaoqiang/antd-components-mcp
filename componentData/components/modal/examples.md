@@ -1,9 +1,8 @@
 ## Modal 组件示例
 ### 基本
-#### zh-CN
 基础弹框。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 const App: React.FC = () => {
@@ -31,13 +30,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 异步关闭
-#### zh-CN
 点击确定后异步关闭对话框，例如提交表单。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 const App: React.FC = () => {
@@ -77,14 +74,12 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义页脚
-#### zh-CN
 更复杂的例子，自定义了页脚的按钮，点击提交后进入 loading 状态，完成后关闭。
 不需要默认确定取消按钮时，你可以把 `footer` 设为 `null`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 const App: React.FC = () => {
@@ -142,13 +137,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 加载中
-#### zh-CN
 设置对话框加载状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Modal } from 'antd';
 const App: React.FC = () => {
@@ -186,13 +179,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义页脚渲染函数
-#### zh-CN
 自定义页脚渲染函数，支持在原有基础上进行扩展。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Modal, Space } from 'antd';
 const App: React.FC = () => {
@@ -254,13 +245,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 使用 hooks 获得上下文
-#### zh-CN
 通过 `Modal.useModal` 创建支持读取 context 的 `contextHolder`。其中仅有 hooks 方法支持 Promise `await` 操作。
 
-```typescript
+```tsx
 import React, { createContext } from 'react';
 import { Button, Modal, Space } from 'antd';
 const ReachableContext = createContext<string | null>(null);
@@ -318,13 +307,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 国际化
-#### zh-CN
 设置 `okText` 与 `cancelText` 以自定义按钮文字。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Button, Modal, Space } from 'antd';
@@ -378,13 +365,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 手动更新和移除
-#### zh-CN
 通过返回的 instance 手动更新和关闭对话框。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Modal } from 'antd';
 const App: React.FC = () => {
@@ -414,13 +399,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义位置
-#### zh-CN
 使用 `centered` 或类似 `style.top` 的样式来设置对话框位置。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 const App: React.FC = () => {
@@ -462,13 +445,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 暗背景
-#### zh-CN
 第一个对话框。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { ClockCircleOutlined, DownOutlined } from '@ant-design/icons';
 import {
@@ -969,13 +950,11 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### 自定义页脚按钮属性
-#### zh-CN
 传入 `okButtonProps` 和 `cancelButtonProps` 可分别自定义确定按钮和取消按钮的 props。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 const App: React.FC = () => {
@@ -1012,13 +991,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义渲染对话框
-#### zh-CN
 自定义渲染对话框, 可通过 `react-draggable` 来实现拖拽。
 
-```typescript
+```tsx
 import React, { useRef, useState } from 'react';
 import { Button, Modal } from 'antd';
 import type { DraggableData, DraggableEvent } from 'react-draggable';
@@ -1100,13 +1077,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 自定义模态的宽度
-#### zh-CN
 使用 `width` 来设置模态对话框的宽度。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Flex, Modal } from 'antd';
 const App: React.FC = () => {
@@ -1157,13 +1132,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 静态方法
-#### zh-CN
 在绝大多数场景，都不需要静态方法。它无法消费 context，例如无法响应动态主题。请优先使用 hooks 版本或者 `App` 组件提供的 Modal 实例。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Modal, Space } from 'antd';
 const info = () => {
@@ -1204,13 +1177,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 静态确认对话框
-#### zh-CN
 使用 `confirm()` 可以快捷地弹出确认框。onCancel/onOk 返回 promise 可以延迟关闭。
 
-```typescript
+```tsx
 import React from 'react';
 import { ExclamationCircleFilled } from '@ant-design/icons';
 import { Button, Modal, Space } from 'antd';
@@ -1289,13 +1260,11 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
-
 ```
 ### 自定义内部模块 className
-#### zh-CN
 通过 `classNames` 属性设置弹窗内部区域（header、body、footer、mask、wrapper）的 `className`。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, ConfigProvider, Modal, Space } from 'antd';
 import { createStyles, useTheme } from 'antd-style';
@@ -1399,13 +1368,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 销毁确认对话框
-#### zh-CN
 使用 `Modal.destroyAll()` 可以销毁弹出的确认窗。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题。
 
-```typescript
+```tsx
 import React from 'react';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Button, Modal } from 'antd';
@@ -1431,13 +1398,11 @@ const showConfirm = () => {
 };
 const App: React.FC = () => <Button onClick={showConfirm}>Confirm</Button>;
 export default App;
-
 ```
 ### 嵌套弹框
-#### zh-CN
 嵌套弹框
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, message, Modal, notification, Select, Space, Switch } from 'antd';
 const options = [
@@ -1564,13 +1529,11 @@ const Demo: React.FC = () => {
   );
 };
 export default Demo;
-
 ```
 ### \_InternalPanelDoNotUseOrYouWillBeFired
-#### zh-CN
 调试用组件，请勿直接使用。
 
-```typescript
+```tsx
 import React from 'react';
 import { Button, Modal, Space, Typography } from 'antd';
 import type { ModalFuncProps } from 'antd';
@@ -1612,13 +1575,11 @@ export default () => (
     </InternalPanel>
   </div>
 );
-
 ```
 ### 控制弹框动画原点
-#### zh-CN
 通过 `mousePosition` 控制弹框动画原点.
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 const App: React.FC = () => {
@@ -1652,13 +1613,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 线框风格
-#### zh-CN
 线框风格。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Modal } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -1678,13 +1637,11 @@ export default () => (
     </div>
   </ConfigProvider>
 );
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Modal } from 'antd';
 /** Test usage. Do not use in your production. */
@@ -1722,5 +1679,4 @@ export default () => (
     </div>
   </ConfigProvider>
 );
-
 ```

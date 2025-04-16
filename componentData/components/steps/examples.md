@@ -1,9 +1,8 @@
 ## Steps 组件示例
 ### 基本用法
-#### zh-CN
 简单的步骤条。
 
-```typescript
+```tsx
 import React from 'react';
 import { Steps } from 'antd';
 const description = 'This is a description.';
@@ -28,13 +27,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 迷你版
-#### zh-CN
 迷你版的步骤条，通过设置 `<Steps size="small">` 启用.
 
-```typescript
+```tsx
 import React from 'react';
 import { Steps } from 'antd';
 const App: React.FC = () => (
@@ -55,13 +52,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 带图标的步骤条
-#### zh-CN
 通过设置 `items` 的 `icon` 属性，可以启用自定义图标。
 
-```typescript
+```tsx
 import React from 'react';
 import { LoadingOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import { Steps } from 'antd';
@@ -92,13 +87,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 步骤切换
-#### zh-CN
 通常配合内容及按钮使用，表示一个流程的处理进度。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Button, message, Steps, theme } from 'antd';
 const steps = [
@@ -159,13 +152,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 竖直方向的步骤条
-#### zh-CN
 简单的竖直方向的步骤条。
 
-```typescript
+```tsx
 import React from 'react';
 import { Steps } from 'antd';
 const description = 'This is a description.';
@@ -190,13 +181,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 竖直方向的小型步骤条
-#### zh-CN
 简单的竖直方向的小型步骤条。
 
-```typescript
+```tsx
 import React from 'react';
 import { Steps } from 'antd';
 const description = 'This is a description.';
@@ -219,13 +208,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 步骤运行错误
-#### zh-CN
 使用 Steps 的 `status` 属性来指定当前步骤的状态。
 
-```typescript
+```tsx
 import React from 'react';
 import { Steps } from 'antd';
 const description = 'This is a description';
@@ -250,13 +237,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 点状步骤条
-#### zh-CN
 包含步骤点的进度条。
 
-```typescript
+```tsx
 import React from 'react';
 import { Divider, Steps } from 'antd';
 const App: React.FC = () => (
@@ -310,13 +295,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 自定义点状步骤条
-#### zh-CN
 为点状步骤条增加自定义展示。
 
-```typescript
+```tsx
 import React from 'react';
 import type { StepsProps } from 'antd';
 import { Popover, Steps } from 'antd';
@@ -357,13 +340,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 迷你版点状步骤条
-#### zh-CN
 包含步骤点的进度条。
 
-```typescript
+```tsx
 import React from 'react';
 import { Divider, Steps } from 'antd';
 const App: React.FC = () => (
@@ -419,13 +400,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### 可点击
-#### zh-CN
 设置 `onChange` 后，Steps 变为可点击状态。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Divider, Steps } from 'antd';
 const App: React.FC = () => {
@@ -479,13 +458,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 导航步骤
-#### zh-CN
 导航类型的步骤条。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import { Steps } from 'antd';
 const App: React.FC = () => {
@@ -577,13 +554,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 带有进度的步骤
-#### zh-CN
 带有进度的步骤。
 
-```typescript
+```tsx
 import React from 'react';
 import { Steps } from 'antd';
 const description = 'This is a description.';
@@ -609,13 +584,11 @@ const App: React.FC = () => (
   />
 );
 export default App;
-
 ```
 ### 标签放置位置
-#### zh-CN
 修改标签放置位置为 `vertical`。
 
-```typescript
+```tsx
 import React from 'react';
 import { Steps } from 'antd';
 const description = 'This is a description.';
@@ -643,13 +616,11 @@ const App: React.FC = () => (
   </>
 );
 export default App;
-
 ```
 ### Progress Debug
-#### zh-CN
 Buggy!
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { StepsProps } from 'antd';
 import { Button, Space, Steps } from 'antd';
@@ -708,13 +679,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### Steps 嵌套 Steps
-#### zh-CN
 测试 Steps 嵌套 Steps 的样式。
 
-```typescript
+```tsx
 import React, { useState } from 'react';
 import type { StepsProps } from 'antd';
 import { Card, Radio, Steps } from 'antd';
@@ -774,13 +743,11 @@ const App: React.FC = () => {
   );
 };
 export default App;
-
 ```
 ### 内联步骤
-#### zh-CN
 内联类型的步骤条，适用于列表内容场景中展示对象所在流程、当前状态的情况。
 
-```typescript
+```tsx
 import React from 'react';
 import type { StepsProps } from 'antd';
 import { Avatar, List, Steps } from 'antd';
@@ -842,13 +809,11 @@ const App: React.FC = () => (
   </div>
 );
 export default App;
-
 ```
 ### 线框风格
-#### zh-CN
 线框风格。
 
-```typescript
+```tsx
 import React from 'react';
 import { ConfigProvider, Steps } from 'antd';
 const description = 'This is a description.';
@@ -875,13 +840,11 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
 ### 组件 Token
-#### zh-CN
 Component Token Debug.
 
-```typescript
+```tsx
 import React from 'react';
 import { LoadingOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import { ConfigProvider, Steps } from 'antd';
@@ -1014,5 +977,4 @@ const App: React.FC = () => (
   </ConfigProvider>
 );
 export default App;
-
 ```
