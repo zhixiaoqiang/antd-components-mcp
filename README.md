@@ -1,5 +1,9 @@
 ![antd-components-mcp](https://socialify.git.ci/zhixiaoqiang/antd-components-mcp/image?description=1&font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
 
+<a href="https://glama.ai/mcp/servers/@zhixiaoqiang/antd-components-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@zhixiaoqiang/antd-components-mcp/badge" alt="antd-components-mcp MCP server" />
+</a>
+
 [![npm version](https://img.shields.io/npm/v/@jzone-mcp/antd-components-mcp.svg)](https://www.npmjs.com/package/@jzone-mcp/antd-components-mcp)
 
 <center>
