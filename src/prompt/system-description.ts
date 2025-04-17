@@ -4,8 +4,8 @@ import { z } from "zod";
 /** 获取组件文档 */
 const registryPrompt = (server: McpServer) => {
   server.prompt(
-    "pre-description",
-    '专业的 Ant Design 组件库专家助手',
+    "system-description",
+    '专业的 Ant Design 组件库专家助手提示词',
     { },
     ({ }) => ({
       messages: [{

@@ -15,6 +15,10 @@
 
 A Model Context Protocol (MCP) server that provides `Ant Design` component documentation to large language models (LLMs) like `Claude`. This server allows LLMs to explore and understand `Ant Design` components through a set of dedicated tools.
 
+**Articles：**
+
+- [让 AI 更懂 Ant Design：MCP 协议在前端领域的落地实践](https://juejin.cn/post/7494106899646939173)
+
 ## Features
 
 - 🚀 Pre-processed data, ready to use (Pre-processed version: `Ant Design V5.24.7 2025/4/16`)
@@ -199,15 +203,21 @@ graph TD
     %% Data storage
     Utils --> ComponentData
     
-    subgraph ComponentData[Component Data]
+    subgraph ComponentData[componentData]
         CompIndex[components-index.json]
         CompChangelog[components-changelog.json]
-        CompDirs[Component Directories]
+        MetaData[metadata.json]
+        CompDirs[components]
     end
     
     %% Component directory details
-    CompDirs --> DocFiles[Documentation Files]
-    CompDirs --> ExampleFiles[Example Files]
+    
+    subgraph ComponentDirs[e.g：alert]
+        DocFiles[doc.md]
+        ExampleFiles[examples.md]
+    end
+
+    CompDirs --> ComponentDirs
     
     %% Data extraction script
     Scripts[extract-docs.ts] --> ComponentData
