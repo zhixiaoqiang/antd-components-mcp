@@ -263,8 +263,14 @@ To update Ant Design documentation, simply run:
 graph TD
     %% Main modules
     Server[MCP Server] --> Tools
-    Server --> Transport[StdioServerTransport]
-    
+    Server[MCP Server] --> Prompts
+
+    %% Prompt modules
+    subgraph Prompts[Prompt Modules]
+        SystemDescription[system-description]
+        SystemPagesGenerate[system-pages-generate]
+    end
+
     %% Tool modules
     subgraph Tools[Tool Modules]
         ListComponents[list-components]

@@ -257,8 +257,15 @@ Button 组件接受哪些属性？
 graph TD
     %% 主要模块
     Server[MCP Server] --> Tools
-    Server --> Transport[StdioServerTransport]
+    Server[MCP Server] --> Prompts
     
+
+    %% Prompt 模块
+    subgraph Prompts[Prompt模块]
+        SystemDescription[system-description]
+        SystemPagesGenerate[system-pages-generate]
+    end
+
     %% 工具模块
     subgraph Tools[工具模块]
         ListComponents[list-components]
@@ -294,7 +301,7 @@ graph TD
     end
 
     CompDirs --> ComponentDirs
-    
+
     %% 数据提取脚本
     Scripts[extract-docs.ts] --> ComponentData
 ```
