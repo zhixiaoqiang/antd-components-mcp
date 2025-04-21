@@ -2,12 +2,8 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import getComponentDocs from "./tools/get-component-docs";
-import listComponentExamples from "./tools/list-component-examples";
-import getComponentChangelog from "./tools/get-component-changelog";
-import listComponents from "./tools/list-components";
-
-import systemDescription from "./prompt/system-description";
+import registerTools from "./tools/index";
+import registerPrompts from "./prompt/index";
 
 export default function main() {
   // 创建 MCP 服务器
@@ -40,12 +36,10 @@ export default function main() {
   );
 
   /** 注册工具 */
-  [getComponentDocs, listComponentExamples, getComponentChangelog, listComponents].forEach((toolFn) => {
-    toolFn(server)
-  });
+  registerTools(server);
 
   /** 注册 prompt */
-  [systemDescription].forEach(promptFn => promptFn(server)); 
+  registerPrompts(server); 
 
   // 启动服务器
   const transport = new StdioServerTransport();
