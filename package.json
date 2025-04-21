@@ -29,7 +29,6 @@
     "ui components"
   ],
   "files": [
-    "assets",
     "dist",
     "componentData",
     "README.md",
