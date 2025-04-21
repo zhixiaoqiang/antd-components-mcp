@@ -8,7 +8,7 @@ import type { ComponentData } from '../scripts/extract-docs';
 
 interface CacheData {
   componentsList: ComponentData[]
-  componentsChangelog: Record<string, string>
+  componentsChangelog: Record<string, ComponentChangelogItem[]>
   componentsDoc: Record<string, string>
   componentApi: Record<string, string>
   componentExample: Record<string, string>
@@ -114,12 +114,20 @@ export const listComponentExamples = async (componentName: string) => {
   }
 };
 
+interface ComponentChangelogItem {
+  version: string;
+  changelog: string;
+  refs: string[]
+  releaseDate: string
+  contributors: string[]
+}
+
 /** 获取组件更新记录 */
-export const getComponentsChangelog = async (componentName: string) => {
+export const getComponentsChangelog = async (componentName: string): Promise<Record<string, ComponentChangelogItem[]> | string> => {
   const component = await findComponentByName(componentName);
 
   if (!component) {
-    return "当前组件不存在";
+    return `${component} 组件不存在`;
   }
 
   try {

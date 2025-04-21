@@ -13,15 +13,27 @@ const registryTool = (server: McpServer) => {
     { componentName: z.string() },
     async ({ componentName }) => {
       const componentsChangelog = await getComponentsChangelog(componentName);
+      if (typeof componentsChangelog === 'string') return {
+        content: [
+          {
+            type: "text",
+            text: componentsChangelog,
+          },
+        ],
+      }
 
       const currentComponentChangelog = componentsChangelog[componentName] || componentsChangelog[componentName.charAt(0).toUpperCase() + componentName.slice(1)]
+      
+      const reduceChangelogContent = currentComponentChangelog?.reduce((acc, item) => {
+        return `${acc}$${item.version}：{item.releaseDate}：${item.changelog}\n`
+      }, '')
 
       return {
         content: [
           {
             type: "text",
-            text: currentComponentChangelog ? `以下是组件的更新日志：
-${JSON.stringify(currentComponentChangelog)}` : '当前组件没有找到更新日志',
+            text: currentComponentChangelog ? `以下是 ${ componentName } 组件的更新日志：
+${reduceChangelogContent}` : '当前组件没有找到更新日志',
           },
         ],
       };

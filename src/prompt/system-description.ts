@@ -1,7 +1,5 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
 
-/** 获取组件文档 */
 const registryPrompt = (server: McpServer) => {
   server.prompt(
     "system-description",
