@@ -37,9 +37,8 @@ A Model Context Protocol (MCP) server that provides `Ant Design` component docum
 ## Roadmap
 
 - [ ] Implement automatic data extraction when Ant Design components update
-- [ ] Add context awareness for tool calls (e.g. return "Please use previously obtained content")
-  - Handle via sessionId
-  - Consider client-side conversation editing capabilities
+- [x] Add context awareness for tool calls (e.g. return "Please use previously obtained content")
+  - Implemented via the [system-description](## MCP Prompt) prompt
 - [ ] Add detailed MCP tools example documentation
 - [ ] Consider hosting extracted data on CDN for real-time access
   - Currently npx checks for and installs new versions automatically
