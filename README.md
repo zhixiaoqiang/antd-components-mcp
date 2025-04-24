@@ -1,4 +1,4 @@
-![antd-components-mcp](https://socialify.git.ci/zhixiaoqiang/antd-components-mcp/image?description=1&font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
+![antd-components-mcp](https://socialify.git.ci/zhixiaoqiang/antd-components-mcp/image?description=1&forks=1&issues=1&language=1&owner=1&pulls=1&stargazers=1)
 
 <a href="https://glama.ai/mcp/servers/@zhixiaoqiang/antd-components-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@zhixiaoqiang/antd-components-mcp/badge" alt="antd-components-mcp MCP server" />
@@ -19,7 +19,7 @@ A Model Context Protocol (MCP) server that provides `Ant Design` component docum
 
 ## Features
 
-- 🚀 Pre-processed data, ready to use (Pre-processed version: `Ant Design V5.24.7 2025/4/16`)
+- 🚀 Pre-processed data, ready to use (Pre-processed version: `Ant Design V5.24.8 2025/4/24`)
   - 🔨 Can extract documentation for the latest/other versions
 - 🔗 List all available `Ant Design` components
   - 📃 Includes component name, description, available versions, and when to use the component

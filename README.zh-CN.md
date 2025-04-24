@@ -1,4 +1,4 @@
-![antd-components-mcp](https://socialify.git.ci/zhixiaoqiang/antd-components-mcp/image?description=1&font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Light)
+![antd-components-mcp](https://socialify.git.ci/zhixiaoqiang/antd-components-mcp/image?description=1&forks=1&issues=1&language=1&owner=1&pulls=1&stargazers=1)
 
 [![npm version](https://img.shields.io/npm/v/@jzone-mcp/antd-components-mcp.svg)](https://www.npmjs.com/package/@jzone-mcp/antd-components-mcp)
 
@@ -12,7 +12,7 @@
 
 ## 功能特性
 
-- 🚀 已预处理数据，开箱即用(预处理版本为：`Ant Design V5.24.7 2025/4/16`)
+- 🚀 已预处理数据，开箱即用(预处理版本为：`Ant Design V5.24.8 2025/4/24`)
   - 🔨 可以自行提取最新的/其他版本的组件文档
 - 🔗 列出所有可用的 `Ant Design` 组件
   - 📃 包含组件名称、描述、可用版本、何时使用当前组件信息
