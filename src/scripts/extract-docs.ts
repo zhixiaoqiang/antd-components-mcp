@@ -5,7 +5,7 @@ import { parseMDMatter } from "../utils/matter-parse";
  * 此脚本从 Ant Design 仓库中提取组件相关文档，
  * 并将其保存到本地数据目录中供 MCP 服务器使用。
  */
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
@@ -25,7 +25,7 @@ import {
   removeSection,
   toPascalCase,
 } from "../utils/md-extract";
-import {  writeExtractedInfoToReadme, writeJsonFile } from "../utils/write";
+import { writeExtractedInfoToReadme, writeJsonFile } from "../utils/write";
 
 /**
  * 提取的组件示例信息
@@ -118,8 +118,31 @@ const DOC_CLEANUP_REGEX =
 const DOC_CLEANUP_EMPTY_LINE = /\n+/g;
 
 /**
+ * 注入 embed 文档
+ * @param markdown
+ * @returns
+ */
+function injectEmbedDoc(markdown: string, componentPath: string) {
+  // 快速检查是否存在embed标签，避免不必要的正则匹配
+  if (!markdown.includes("<embed")) {
+    return markdown;
+  }
+
+  // 获取文档中的 embed 文档
+  return markdown.replace(/<embed src="(.*)"><\/embed>/g, (_, embedSrc) => {
+    try {
+      const embedPath = join(componentPath, embedSrc);
+      const embedContent = readFileSync(embedPath, "utf-8");
+      return embedContent;
+    } catch (error) {
+      console.error(`❌ 读取embed文件失败: ${embedSrc}`, error);
+      return _;
+    }
+  });
+}
+
+/**
  * 处理组件数据
- *
  * @param componentsPath
  * @param dirName
  * @returns
@@ -156,12 +179,11 @@ async function processComponent(componentsPath: string, dirName: string) {
     const initHandleDoc = (doc: string) => {
       const handleList = [
         removeFrontmatter,
-        (doc: string) =>
-          doc
-            .replace(DOC_CLEANUP_REGEX, ""),
+        (doc: string) => doc.replace(DOC_CLEANUP_REGEX, ""),
         (doc: string) => removeSection(doc, "## Design Token"),
         (doc: string) => removeSection(doc, "## 主题变量"),
         (doc: string) => removeSection(doc, "## Semantic DOM"),
+        (doc: string) => injectEmbedDoc(doc, componentPath),
       ];
       return handleList.reduce((acc, handle) => handle(acc), doc);
     };
@@ -191,7 +213,7 @@ async function processComponent(componentsPath: string, dirName: string) {
             "utf-8"
           ).then((content) =>
             removeSection(content, "\n## en-US")
-            .replace(/## zh-CN/g, "")
+              .replace(/## zh-CN/g, "")
               .replace(DOC_CLEANUP_EMPTY_LINE, "\n")
           );
         } catch (error) {}
@@ -254,7 +276,8 @@ async function extractAllData(antdRepoPath: string) {
     try {
       await writeJsonFile(
         EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH,
-        await readFile(antDChangelogPath, 'utf-8').then((content) => JSON.parse(content)
+        await readFile(antDChangelogPath, "utf-8").then((content) =>
+          JSON.parse(content)
         )
       );
     } catch (error) {
@@ -305,7 +328,7 @@ async function extractAllData(antdRepoPath: string) {
     extractedCount: processedCount,
     componentCount: componentDirs.length,
     antdVersion:
-      (await readFile(antDPackageJsonPath, 'utf-8')
+      (await readFile(antDPackageJsonPath, "utf-8")
         .then((content) => JSON.parse(content).version)
         .catch(() => undefined)) || "5.24.6",
   };
@@ -325,7 +348,7 @@ async function extractAllData(antdRepoPath: string) {
 
   await writeJsonFile(EXTRACTED_METADATA_PATH, metaDataResult);
 
-  await writeExtractedInfoToReadme(metaDataResult)
+  await writeExtractedInfoToReadme(metaDataResult);
 
   // 创建组件目录
   await mkdir(EXTRACTED_COMPONENTS_DATA_PATH, { recursive: true });
