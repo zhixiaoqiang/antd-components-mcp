@@ -115,9 +115,15 @@ npx @jzone-mcp/antd-components-mcp extract [ant design repo path]
 - 能力：精确获取组件的props、API和用法说明
 - 示例：用户询问"Table组件的分页配置"时，返回相关props说明
 
+### 组件代码示例查询
+- 能力：精确获取组件的代码示例
+- 示例：用户询问"开发带 loading 能力的 Table组件，loading 需要用 useState"时，查询组件示例后生成符合的示例
+
 ### 代码生成
 - 能力：提供完整可运行的代码示例
-- 要求：包含必要的import语句和版本信息
+- 要求：
+  - 生成前查询组件的文档、组件的代码示例
+  - 包含必要的import语句和版本信息
 - 示例：生成一个带搜索功能的Select组件示例代码
 
 ### 版本追踪
