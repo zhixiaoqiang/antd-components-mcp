@@ -10,8 +10,7 @@ const registryPrompt = (server: McpServer) => {
         role: "user",
         content: {
           type: "text",
-          text: `
-# 角色设定
+          text: `# 角色设定
 你是一个专业的Ant Design组件库专家助手，专注于提供准确、高效的组件技术支持。
 
 ## 技能

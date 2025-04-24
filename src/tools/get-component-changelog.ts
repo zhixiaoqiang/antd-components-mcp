@@ -25,7 +25,7 @@ const registryTool = (server: McpServer) => {
       const currentComponentChangelog = componentsChangelog[componentName] || componentsChangelog[componentName.charAt(0).toUpperCase() + componentName.slice(1)]
       
       const reduceChangelogContent = currentComponentChangelog?.reduce((acc, item) => {
-        return `${acc}$${item.version}：{item.releaseDate}：${item.changelog}\n`
+        return `${acc}${item.version}：${item.releaseDate}：${item.changelog}\n`
       }, '')
 
       return {
