@@ -8,9 +8,27 @@
     "type": "git",
     "url": "https://github.com/zhixiaoqiang/antd-components-mcp"
   },
-  "publishConfig": {
-    "access": "public"
+  "homepage": "https://github.com/zhixiaoqiang/antd-components-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/zhixiaoqiang/antd-components-mcp/issues",
+    "email": "xdnazi1985@gmail.com"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": {
+    "name": "zhixiaoqiang",
+    "email": "xdnazi1985@gmail.com",
+    "url": "https://github.com/zhixiaoqiang"
+  },
+  "contributors": [
+    {
+      "name": "zhixiaoqiang",
+      "email": "xdnazi1985@gmail.com",
+      "url": "https://github.com/zhixiaoqiang"
+    }
+  ],
   "scripts": {
     "start": "node dist/cli.js",
     "build": "tsup",
@@ -34,7 +52,6 @@
     "README.md",
     "README.zh-CN.md"
   ],
-  "author": "zhixiaoqiang",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",
