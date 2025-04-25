@@ -2,8 +2,8 @@ name: Extract and Publish Ant Design Docs
 
 on:
   schedule:
-    - cron: '0 0 * * 1' # 每周一午夜运行
-  workflow_dispatch: # 允许手动触发
+    - cron: "0 0 * * 1" # 每周一午夜运行
+  workflow_dispatch:
   push:
     branches:
       - test-extract-antd-ci
@@ -12,65 +12,91 @@ jobs:
   extract-and-publish:
     runs-on: ubuntu-latest
     container:
-      image: node:22
+      image: node:22 # 使用完整镜像
+
     steps:
       - uses: actions/checkout@v4
         with:
-            fetch-depth: 1  # 只克隆最近一次commit
+          fetch-depth: 1
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ant-design/node_modules
+            ./node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
 
       - name: Setup npm
-        run: |
-          npm config set registry 'https://registry.npmmirror.com/'
+        run: npm config set registry 'https://registry.npmmirror.com/'
 
       - name: Clone Ant Design
         run: |
-          git clone https://github.com/ant-design/ant-design.git --depth 1 --branch master --single-branch --filter=blob:none
+          git clone https://github.com/ant-design/ant-design.git \
+            --depth 1 \
+            --branch master \
+            --single-branch \
+            --filter=blob:none || exit 1
 
       - name: Get Ant Design Version
         id: get_version
+        shell: bash
         run: |
           cd ant-design
-          echo "antd_version=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+          echo "antd_version=$(node -p \"require('./package.json').version\")" >> $GITHUB_OUTPUT
 
       - name: Get Extracted Data Version
         id: get_extracted_version
+        shell: bash
         run: |
-          echo "extracted_antd_version=$(node -p \"require('./componentData/metadata.json').antdVersion\")" >> $GITHUB_ENV
+          echo "extracted_antd_version=$(node -p \"require('./componentData/metadata.json').antdVersion\")" >> $GITHUB_OUTPUT
 
       - name: Check for Updates
-        id: check_updates
         run: |
-          if [ "$antd_version" != "$extracted_antd_version" ]; then
-            echo "update_needed=true" >> $GITHUB_ENV
+          if [ "${{ steps.get_version.outputs.antd_version }}" != "${{ steps.get_extracted_version.outputs.extracted_antd_version }}" ]; then
+            echo "UPDATE_NEEDED=true" >> $GITHUB_ENV
           else
-            echo "update_needed=false" >> $GITHUB_ENV
+            echo "UPDATE_NEEDED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Debug Versions
+        if: always()
+        run: |
+          echo "Ant Design Version: ${{ steps.get_version.outputs.antd_version }}"
+          echo "Extracted Version: ${{ steps.get_extracted_version.outputs.extracted_antd_version }}"
+          echo "Update Needed: ${{ env.UPDATE_NEEDED }}"
 
       - name: Generate Changelog
-        if: env.update_needed == 'true'
+        if: env.UPDATE_NEEDED == 'true'
         working-directory: ./ant-design
         run: |
-          npm ci --registry=https://registry.npmmirror.com/
+          npm ci
           npm run lint:changelog
 
       - name: Extract Docs
-        if: env.update_needed == 'true'
+        if: env.UPDATE_NEEDED == 'true'
         run: |
-          npm ci --registry=https://registry.npmmirror.com/
+          npm ci
           npm run extract ../ant-design
 
       - name: Commit and Push Changes
-        if: env.update_needed == 'true'
+        if: env.UPDATE_NEEDED == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
           git commit -m "Update extracted docs"
+          git push origin main
 
       - name: Publish Package
-        if: env.update_needed == 'true'
+        if: env.UPDATE_NEEDED == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm version patch --no-git-tag-version
           npm publish --access public
-          git push origin master
