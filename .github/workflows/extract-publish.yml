@@ -26,9 +26,7 @@ jobs:
             ~/.npm
             ant-design/node_modules
             ./node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+          key: npm-cache
 
       - name: Setup npm
         run: npm config set registry 'https://registry.npmmirror.com/'
