@@ -100,15 +100,14 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add .
-          git commit -m "Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}"
+          git commit -am "Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}"
 
       - name: Publish Package
         if: env.UPDATE_NEEDED == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          pnpm version patch --no-git-tag-version
+          pnpm version patch
           pnpm publish --registry=https://registry.npmjs.org/ --access public
 
       - name: Create PR
