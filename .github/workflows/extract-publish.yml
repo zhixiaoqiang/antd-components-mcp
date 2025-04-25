@@ -11,24 +11,30 @@ on:
 jobs:
   extract-and-publish:
     runs-on: ubuntu-latest
-    container:
-      image: node:22 # 使用完整镜像
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      - name: Cache npm dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'  # 缓存 pnpm 依赖
+
+      - name: Cache pnpm dependencies
         uses: actions/cache@v3
         with:
           path: |
             ~/.npm
-            ant-design/node_modules
+            ~/.pnpm-store
+            ~/.pnpm-cache
+            ../ant-design/node_modules
             ./node_modules
-          key: npm-cache
+          key: pnpm-cache
 
-      - name: Setup npm
+      - name: Setup npm registry
         run: npm config set registry 'https://registry.npmmirror.com/'
 
       - name: Clone Ant Design
@@ -73,14 +79,14 @@ jobs:
         if: env.UPDATE_NEEDED == 'true'
         working-directory: ./ant-design
         run: |
-          npm ci
-          npm run lint:changelog
+          pnpm install
+          pnpm lint:changelog
 
       - name: Extract Docs
         if: env.UPDATE_NEEDED == 'true'
         run: |
-          npm ci
-          npm run extract ../ant-design
+          pnpm install --frozen-lockfile
+          pnpm extract ../ant-design
 
       - name: Commit and Push Changes
         if: env.UPDATE_NEEDED == 'true'
@@ -96,5 +102,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npm version patch --no-git-tag-version
-          npm publish --access public
+          pnpm version patch --no-git-tag-version
+          pnpm publish --registry=https://registry.npmjs.org/ --access public
