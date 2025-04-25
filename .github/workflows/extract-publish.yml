@@ -12,7 +12,7 @@ jobs:
   extract-and-publish:
     runs-on: ubuntu-latest
     container:
-      image: node:22-slim # 使用更轻量级的 Node.js 镜像
+      image: node:22
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,8 +24,6 @@ jobs:
 
       - name: Clone Ant Design
         run: |
-          apt-get update
-          apt-get install -y git
           git clone https://github.com/ant-design/ant-design.git --depth 1 --branch master --single-branch --filter=blob:none
 
       - name: Get Ant Design Version
