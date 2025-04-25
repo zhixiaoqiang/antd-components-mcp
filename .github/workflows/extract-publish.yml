@@ -55,8 +55,8 @@ jobs:
       - name: Get Ant Design Version
         id: get_version
         shell: bash
+        working-directory: ../ant-design
         run: |
-          cd ant-design
           antd_version=$(node -p "require('./package.json').version")
           echo "antd_version=$antd_version" >> $GITHUB_OUTPUT
 
@@ -84,7 +84,7 @@ jobs:
 
       - name: Generate Changelog
         if: env.UPDATE_NEEDED == 'true'
-        working-directory: ./ant-design
+        working-directory: ../ant-design
         run: |
           pnpm install
           pnpm lint:changelog
