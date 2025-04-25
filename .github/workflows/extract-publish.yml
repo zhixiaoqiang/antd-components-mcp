@@ -24,6 +24,7 @@ jobs:
 
       - name: Clone Ant Design
         run: |
+          apt-get update
           apt-get install -y git
           git clone https://github.com/ant-design/ant-design.git --depth 1 --branch master --single-branch --filter=blob:none
 
