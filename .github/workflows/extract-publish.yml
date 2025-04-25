@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '0 0 * * 1' # 每周一午夜运行
   workflow_dispatch: # 允许手动触发
+  push:
+    branches:
+      - test-extract-antd-ci
 
 jobs:
   extract-and-publish:
