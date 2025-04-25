@@ -53,7 +53,6 @@ jobs:
         id: get_extracted_version
         shell: bash
         run: |
-          echo "extracted_antd_version=$(node -p \"require('./componentData/metadata.json').antdVersion\")" >> $GITHUB_OUTPUT
           extracted_antd_version=$(node -p "require('./componentData/metadata.json').antdVersion")
           echo "extracted_antd_version=$extracted_antd_version" >> $GITHUB_OUTPUT
 
