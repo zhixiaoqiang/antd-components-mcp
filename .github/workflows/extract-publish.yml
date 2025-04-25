@@ -12,7 +12,7 @@ jobs:
   extract-and-publish:
     runs-on: ubuntu-latest
     container:
-      image: node:22-alpine # 使用更轻量级的 Node.js 镜像
+      image: node:22-slim # 使用更轻量级的 Node.js 镜像
     steps:
       - uses: actions/checkout@v4
         with:
