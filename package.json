@@ -1,1 +1,71 @@
-{"scripts": {"lint:changelog": "tsx scripts/generate-component-changelog.ts"}}
+{
+  "name": "@jzone-mcp/antd-components-mcp",
+  "version": "1.0.19",
+  "type": "module",
+  "description": "An MCP service for Ant Design components query | 一个减少 Ant Design 组件代码生成幻觉的 MCP 服务，包含系统提示词、组件文档、API 文档、代码示例和更新日志查询",
+  "bin": "dist/cli.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhixiaoqiang/antd-components-mcp"
+  },
+  "homepage": "https://github.com/zhixiaoqiang/antd-components-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/zhixiaoqiang/antd-components-mcp/issues",
+    "email": "xdnazi1985@gmail.com"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": {
+    "name": "zhixiaoqiang",
+    "email": "xdnazi1985@gmail.com",
+    "url": "https://github.com/zhixiaoqiang"
+  },
+  "contributors": [
+    {
+      "name": "zhixiaoqiang",
+      "email": "xdnazi1985@gmail.com",
+      "url": "https://github.com/zhixiaoqiang"
+    }
+  ],
+  "scripts": {
+    "start": "node dist/cli.js",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "pretest": "tsup",
+    "test": "tsx test-server.ts",
+    "extract": "tsx cli.ts extract ../ant-design",
+    "inspector": "pnpm build & npx @modelcontextprotocol/inspector node dist/cli.js",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "mcp",
+    "antd",
+    "ant design",
+    "model context protocol",
+    "ui components"
+  ],
+  "files": [
+    "dist",
+    "componentData",
+    "README.md",
+    "README.zh-CN.md"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "to-vfile": "^8.0.0",
+    "vfile-matter": "^5.0.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.14",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
