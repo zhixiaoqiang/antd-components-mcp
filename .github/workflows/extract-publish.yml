@@ -23,6 +23,15 @@ jobs:
           node-version: 22
           cache: 'pnpm'  # 缓存 pnpm 依赖
 
+      - name: Setup npm registry
+        run: npm config set registry 'https://registry.npmmirror.com/'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10       # 指定 pnpm 版本（可选）
+          run_install: false
+
       - name: Cache pnpm dependencies
         uses: actions/cache@v3
         with:
@@ -33,9 +42,6 @@ jobs:
             ../ant-design/node_modules
             ./node_modules
           key: pnpm-cache
-
-      - name: Setup npm registry
-        run: npm config set registry 'https://registry.npmmirror.com/'
 
       - name: Clone Ant Design
         run: |
