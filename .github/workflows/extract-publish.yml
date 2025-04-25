@@ -17,6 +17,12 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10       # 指定 pnpm 版本（可选）
+          run_install: false
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -25,12 +31,6 @@ jobs:
 
       - name: Setup npm registry
         run: npm config set registry 'https://registry.npmmirror.com/'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 10       # 指定 pnpm 版本（可选）
-          run_install: false
 
       - name: Cache pnpm dependencies
         uses: actions/cache@v3
