@@ -86,7 +86,7 @@ jobs:
         if: env.UPDATE_NEEDED == 'true'
         working-directory: ../ant-design
         run: |
-          pnpm install
+          pnpm add fs-extra glob tsx -D
           pnpm lint:changelog
 
       - name: Extract Docs
@@ -101,8 +101,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
-          git commit -m "Update extracted docs"
-          git push origin main
+          git commit -m "Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}"
 
       - name: Publish Package
         if: env.UPDATE_NEEDED == 'true'
@@ -111,3 +110,17 @@ jobs:
         run: |
           pnpm version patch --no-git-tag-version
           pnpm publish --registry=https://registry.npmjs.org/ --access public
+
+      - name: Create PR
+        if: env.UPDATE_NEEDED == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}`,
+              body: `Automatically updated docs from antd version: ${{ steps.get_version.outputs.antd_version }}\n\nRun ID: ${context.runId}`,
+              head: `update-extracted-docs-${context.runId}`,
+              base: 'main'
+            })
