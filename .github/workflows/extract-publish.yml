@@ -130,6 +130,6 @@ jobs:
               repo: context.repo.repo,
               title: `Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}`,
               body: `Automatically updated docs from antd version: ${{ steps.get_version.outputs.antd_version }}\n\nRun ID: ${context.runId}`,
-              head: `${context.repo.owner}:${process.env.DYNAMIC_BRANCH}`
+              head: `${context.repo.owner}:${process.env.DYNAMIC_BRANCH}`,
               base: 'main'
             })
