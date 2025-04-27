@@ -2,7 +2,7 @@ name: Extract and Publish Ant Design Docs
 
 on:
   schedule:
-    - cron: "0 0 * * 1" # 每周一午夜运行
+    - cron: "0 22 * * 1" # 每周一晚上十点运行
   workflow_dispatch:
   push:
     branches:
@@ -94,7 +94,7 @@ jobs:
         working-directory: ../ant-design
         # 优化 antd 依赖安装效率
         run: |
-          echo '{"scripts": {"lint:changelog": "tsx scripts/generate-component-changelog.ts"}}' > package.json
+          echo '{"scripts": {"version": "${{ steps.get_version.outputs.antd_version }}", "lint:changelog": "tsx scripts/generate-component-changelog.ts"}}' > package.json
           pnpm add fs-extra glob tsx -D
           pnpm lint:changelog
 
@@ -118,7 +118,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           pnpm version patch
-          pnpm publish --registry=https://registry.npmjs.org/ --access public
+          pnpm publish --registry=https://registry.npmjs.org/ --access public --no-git-checks
 
       - name: Create PR
         if: env.UPDATE_NEEDED == 'true'
