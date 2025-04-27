@@ -1,0 +1,152 @@
+name: Extract and Publish Ant Design Docs
+
+on:
+  schedule:
+    - cron: "0 22 * * 1" # 每周一晚上十点运行
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  extract-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10       # 指定 pnpm 版本（可选）
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'  # 缓存 pnpm 依赖
+
+      - name: Setup npm registry
+        run: npm config set registry 'https://registry.npmmirror.com/'
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ~/.pnpm-store
+            ~/.pnpm-cache
+            ../ant-design/node_modules
+            ./node_modules
+          key: pnpm-cache
+
+      - name: Clone Ant Design
+        run: |
+          git clone https://github.com/ant-design/ant-design.git \
+            --depth 1 \
+            --branch master \
+            --single-branch \
+            --filter=blob:none \
+            ../ant-design || exit 1
+
+      - name: Get Ant Design Version
+        id: get_version
+        shell: bash
+        working-directory: ../ant-design
+        run: |
+          antd_version=$(node -p "require('./package.json').version")
+          echo "antd_version=$antd_version" >> $GITHUB_OUTPUT
+
+      - name: Get Extracted Data Version
+        id: get_extracted_version
+        shell: bash
+        run: |
+          extracted_antd_version=$(node -p "require('./componentData/metadata.json').antdVersion")
+          echo "extracted_antd_version=$extracted_antd_version" >> $GITHUB_OUTPUT
+
+      - name: Check for Updates
+        run: |
+          if [ "${{ steps.get_version.outputs.antd_version }}" != "${{ steps.get_extracted_version.outputs.extracted_antd_version }}" ]; then
+            echo "UPDATE_NEEDED=true" >> $GITHUB_ENV
+          else
+            echo "UPDATE_NEEDED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Debug Versions
+        if: always()
+        run: |
+          echo "Ant Design Version: ${{ steps.get_version.outputs.antd_version }}"
+          echo "Extracted Version: ${{ steps.get_extracted_version.outputs.extracted_antd_version }}"
+          echo "Update Needed: ${{ env.UPDATE_NEEDED }}"
+
+      - name: Create dynamic branch
+        if: env.UPDATE_NEEDED == 'true'
+        run: |
+          DYNAMIC_BRANCH="feature-extract-antd-${{ steps.get_version.outputs.antd_version }}"
+          git checkout -b "$DYNAMIC_BRANCH"
+          echo "DYNAMIC_BRANCH=$DYNAMIC_BRANCH" >> $GITHUB_ENV  # 存储变量供后续步骤使用
+
+      - name: Generate Changelog
+        if: env.UPDATE_NEEDED == 'true'
+        working-directory: ../ant-design
+        # 优化 antd 依赖安装效率
+        run: |
+          echo '{"scripts": {"version": "${{ steps.get_version.outputs.antd_version }}", "lint:changelog": "tsx scripts/generate-component-changelog.ts"}}' > package.json
+          pnpm add fs-extra glob tsx -D
+          pnpm lint:changelog
+
+      - name: Extract Docs
+        if: env.UPDATE_NEEDED == 'true'
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm extract ../ant-design
+
+      - name: Commit and Push Changes
+        if: env.UPDATE_NEEDED == 'true'
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git commit -am "Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}"
+          git push origin "${{ env.DYNAMIC_BRANCH }}" --force
+
+      - name: Publish Package
+        if: env.UPDATE_NEEDED == 'true'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          pnpm version patch
+          npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+          npm publish --registry=https://registry.npmjs.org/ --access public --no-git-checks
+
+      - name: Create PR
+        if: env.UPDATE_NEEDED == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // 首先检查是否已存在相同标题的PR
+            const head = `${context.repo.owner}:${process.env.DYNAMIC_BRANCH}`;
+            const existingPRs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: head
+            });
+              
+            // 如果已存在相同分支的PR，则跳过创建
+            if (existingPRs.data.length > 0) {
+              console.log('PR already exists:', existingPRs.data[0].html_url);
+              return;
+            }
+            // 不存在则创建新PR
+            github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}`,
+              body: `Automatically updated docs from antd version: ${{ steps.get_version.outputs.antd_version }}\n\nRun ID: ${context.runId}`,
+              head: head,
+              base: 'main'
+            })

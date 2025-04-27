@@ -35,12 +35,12 @@ export const writeExtractedInfoToReadme = async ({
       ].map(async ({ path, match }) => {
         return writeFile(
           path,
-          await readFile(path, "utf-8").then((content) =>
+          await readFile(path, "utf-8").then((content: string) =>
             content.replace(
               match,
               `\`Ant Design V${antdVersion} ${new Date(
                 extractedAt
-              ).toLocaleDateString()}\``
+              ).toLocaleDateString('zh-CN')}\``
             )
           )
         );
