@@ -31,7 +31,6 @@ jobs:
 
       - name: Setup npm registry
         run: |
-          npm config set registry 'https://registry.npmmirror.com/'
           npm whoami --registry=https://registry.npmjs.org/ --token=${{ secrets.NPM_TOKEN }}
 
       # - name: Cache pnpm dependencies
