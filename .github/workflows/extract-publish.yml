@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: "0 22 * * 1" # 每周一晚上十点运行
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   extract-and-publish:
