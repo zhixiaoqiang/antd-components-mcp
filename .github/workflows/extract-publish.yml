@@ -31,7 +31,9 @@ jobs:
 
       - name: Setup npm registry
         run: |
-          npm whoami --registry=https://registry.npmjs.org/ --token=${{ secrets.NPM_TOKEN }}
+          echo "Token prefix: ${NODE_AUTH_TOKEN:0:4}..."  # 确认 Token 已注入
+          npm whoami --registry=https://registry.npmjs.org/ --token=${{ secrets.NPM_TOKEN }} || true
+          curl -H "Authorization: Bearer ${{ secrets.NPM_TOKEN }}" https://registry.npmjs.org/-/whoami
 
       # - name: Cache pnpm dependencies
       #   uses: actions/cache@v3
