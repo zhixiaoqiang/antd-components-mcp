@@ -27,7 +27,7 @@
 
 ## 后续计划
 
-- [ ] 实现监听 Ant Design 组件库的更新，自动进行数据提取发版
+- [x] 实现监听 Ant Design 组件库的更新，自动进行数据提取发版
 - [x] 考虑为工具调用添加上下文感知，如前文已获取，则返回："请使用前文获取的内容"
   - 通过 [system-description](## MCP Prompt) 提示词实现
 - [ ] 添加详细的 mcp tools 例子文档
@@ -384,4 +384,44 @@ flowchart LR
     ReadFile --> ProcessData[处理数据]
     ProcessData --> UpdateCache[更新缓存]
     UpdateCache --> ReturnData[返回数据]
+```
+
+## 定时提取文档并发版机制
+
+```mermaid
+flowchart TD
+    A[开始] --> B[触发条件]
+    B --> |每周一晚上10点| C[定时触发]
+    B --> |手动触发| D[手动触发]
+    
+    C --> E[准备环境]
+    D --> E
+    E --> F[克隆 Ant Design 仓库]
+    F --> G[获取版本信息]
+    
+    G --> G1[获取 Ant Design 版本]
+    G --> G2[获取已提取数据版本]
+    
+    G1 --> H[检查是否需要更新]
+    G2 --> H
+    
+    H --> |输出调试信息| I[显示版本信息]
+    
+    H --> J{版本是否相同?}
+    J --> |是| K[结束流程]
+    J --> |否| L[创建动态分支]
+    
+    L --> M[生成 antd 变更日志]
+    M --> N[提取文档]
+    N --> O[提交并推送更改]
+    
+    O --> P[发布 npm 包]
+    P --> Q[创建 PR]
+    
+    Q --> R{PR 是否已存在?}
+    R --> |是| S[记录已存在 PR]
+    R --> |否| T[创建新 PR]
+    
+    S --> K
+    T --> K
 ```

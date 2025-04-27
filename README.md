@@ -34,7 +34,7 @@ A Model Context Protocol (MCP) server that provides `Ant Design` component docum
 
 ## Roadmap
 
-- [ ] Implement automatic data extraction when Ant Design components update
+- [x] Implement automatic data extraction when Ant Design components update
 - [x] Add context awareness for tool calls (e.g. return "Please use previously obtained content")
   - Implemented via the [system-description](## MCP Prompt) prompt
 - [ ] Add detailed MCP tools example documentation
@@ -391,4 +391,44 @@ flowchart LR
     ReadFile --> ProcessData[Process Data]
     ProcessData --> UpdateCache[Update Cache]
     UpdateCache --> ReturnData[Return Data]
+```
+
+## ## Scheduled Documentation Extraction and Publishing Mechanism
+
+```mermaid
+flowchart TD
+    A[Start] --> B[Trigger Conditions]
+    B --> |Every Monday at 10 PM| C[Scheduled Trigger]
+    B --> |Manual Trigger| D[Manual Trigger]
+    
+    C --> E[Setup Environment]
+    D --> E
+    E --> F[Clone Ant Design Repository]
+    F --> G[Get Version Information]
+    
+    G --> G1[Get Ant Design Version]
+    G --> G2[Get Extracted Data Version]
+    
+    G1 --> H[Check for Updates]
+    G2 --> H
+    
+    H --> |Output Debug Info| I[Display Version Information]
+    
+    H --> J{Versions Match?}
+    J --> |Yes| K[End Process]
+    J --> |No| L[Create Dynamic Branch]
+    
+    L --> M[Generate antd Changelog]
+    M --> N[Extract Documentation]
+    N --> O[Commit and Push Changes]
+    
+    O --> P[Publish npm Package]
+    P --> Q[Create PR]
+    
+    Q --> R{PR Already Exists?}
+    R --> |Yes| S[Log Existing PR]
+    R --> |No| T[Create New PR]
+    
+    S --> K
+    T --> K
 ```
