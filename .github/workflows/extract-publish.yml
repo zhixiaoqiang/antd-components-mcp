@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - test-extract-antd-ci
+      - main
 
 jobs:
   extract-and-publish:
@@ -115,7 +115,7 @@ jobs:
       - name: Publish Package
         if: env.UPDATE_NEEDED == 'true'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           pnpm version patch
           pnpm publish --registry=https://registry.npmjs.org/ --access public --no-git-checks
