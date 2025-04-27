@@ -116,9 +116,11 @@ jobs:
         if: env.UPDATE_NEEDED == 'true'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           pnpm version patch
-          npm publish --registry=https://registry.npmjs.org/ --access public --no-git-checks --token=${{ secrets.NPM_TOKEN }}
+          npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+          npm publish --registry=https://registry.npmjs.org/ --access public --no-git-checks
 
       - name: Create PR
         if: env.UPDATE_NEEDED == 'true'
