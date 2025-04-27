@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - chore-autoExtract-20250427
+      - main
 
 jobs:
   extract-and-publish:
@@ -127,11 +127,26 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            // 首先检查是否已存在相同标题的PR
+            const head = `${context.repo.owner}:${process.env.DYNAMIC_BRANCH}`;
+            const existingPRs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: head
+            });
+              
+            // 如果已存在相同分支的PR，则跳过创建
+            if (existingPRs.data.length > 0) {
+              console.log('PR already exists:', existingPRs.data[0].html_url);
+              return;
+            }
+            // 不存在则创建新PR
             github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: `Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}`,
               body: `Automatically updated docs from antd version: ${{ steps.get_version.outputs.antd_version }}\n\nRun ID: ${context.runId}`,
-              head: `${context.repo.owner}:${process.env.DYNAMIC_BRANCH}`,
+              head: head,
               base: 'main'
             })
