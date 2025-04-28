@@ -95,55 +95,46 @@ import React, { useEffect, useState } from 'react';
 import { Avatar, Button, List, Skeleton } from 'antd';
 interface DataType {
   gender?: string;
-  name: {
-    title?: string;
-    first?: string;
-    last?: string;
-  };
+  name?: string;
   email?: string;
-  picture: {
-    large?: string;
-    medium?: string;
-    thumbnail?: string;
-  };
-  nat?: string;
+  avatar?: string;
   loading: boolean;
 }
-const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
+const PAGE_SIZE = 3;
 const App: React.FC = () => {
   const [initLoading, setInitLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<DataType[]>([]);
   const [list, setList] = useState<DataType[]>([]);
+  const [page, setPage] = useState(1);
+  const fetchData = (currentPage: number) => {
+    const fakeDataUrl = `https://660d2bd96ddfa2943b33731c.mockapi.io/api/users?page=${currentPage}&limit=${PAGE_SIZE}`;
+    return fetch(fakeDataUrl).then((res) => res.json());
+  };
   useEffect(() => {
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        setInitLoading(false);
-        setData(res.results);
-        setList(res.results);
-      });
+    fetchData(page).then((res) => {
+      const results = Array.isArray(res) ? res : [];
+      setInitLoading(false);
+      setData(results);
+      setList(results);
+    });
   }, []);
   const onLoadMore = () => {
     setLoading(true);
-    setList(
-      data.concat(
-        Array.from({ length: count }).map(() => ({ loading: true, name: {}, picture: {} })),
-      ),
-    );
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        const newData = data.concat(res.results);
-        setData(newData);
-        setList(newData);
-        setLoading(false);
-        // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-        // In real scene, you can using public method of react-virtualized:
-        // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-        window.dispatchEvent(new Event('resize'));
-      });
+    setList(data.concat(Array.from({ length: PAGE_SIZE }).map(() => ({ loading: true }))));
+    const nextPage = page + 1;
+    setPage(nextPage);
+    fetchData(nextPage).then((res) => {
+      const results = Array.isArray(res) ? res : [];
+      const newData = data.concat(results);
+      setData(newData);
+      setList(newData);
+      setLoading(false);
+      // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
+      // In real scene, you can using public method of react-virtualized:
+      // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
+      window.dispatchEvent(new Event('resize'));
+    });
   };
   const loadMore =
     !initLoading && !loading ? (
@@ -171,8 +162,8 @@ const App: React.FC = () => {
         >
           <Skeleton avatar title={false} loading={item.loading} active>
             <List.Item.Meta
-              avatar={<Avatar src={item.picture.large} />}
-              title={<a href="https://ant.design">{item.name?.last}</a>}
+              avatar={<Avatar src={item.avatar} />}
+              title={<a href="https://ant.design">{item.name}</a>}
               description="Ant Design, a design language for background applications, is refined by Ant UED Team"
             />
             <div>content</div>
@@ -476,33 +467,28 @@ import React, { useEffect, useState } from 'react';
 import { Avatar, Divider, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 interface DataType {
-  gender: string;
-  name: {
-    title: string;
-    first: string;
-    last: string;
-  };
-  email: string;
-  picture: {
-    large: string;
-    medium: string;
-    thumbnail: string;
-  };
-  nat: string;
+  gender?: string;
+  name?: string;
+  email?: string;
+  avatar?: string;
+  id?: string;
 }
 const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<DataType[]>([]);
+  const [page, setPage] = useState(1);
   const loadMoreData = () => {
     if (loading) {
       return;
     }
     setLoading(true);
-    fetch('https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo')
+    fetch(`https://660d2bd96ddfa2943b33731c.mockapi.io/api/users/?page=${page}&limit=10`)
       .then((res) => res.json())
-      .then((body) => {
-        setData([...data, ...body.results]);
+      .then((res) => {
+        const results = Array.isArray(res) ? res : [];
+        setData([...data, ...results]);
         setLoading(false);
+        setPage(page + 1);
       })
       .catch(() => {
         setLoading(false);
@@ -534,8 +520,8 @@ const App: React.FC = () => {
           renderItem={(item) => (
             <List.Item key={item.email}>
               <List.Item.Meta
-                avatar={<Avatar src={item.picture.large} />}
-                title={<a href="https://ant.design">{item.name.last}</a>}
+                avatar={<Avatar src={item.avatar} />}
+                title={<a href="https://ant.design">{item.name}</a>}
                 description={item.email}
               />
               <div>Content</div>
@@ -558,29 +544,23 @@ import VirtualList from 'rc-virtual-list';
 interface UserItem {
   email: string;
   gender: string;
-  name: {
-    first: string;
-    last: string;
-    title: string;
-  };
-  nat: string;
-  picture: {
-    large: string;
-    medium: string;
-    thumbnail: string;
-  };
+  name: string;
+  avatar: string;
 }
-const fakeDataUrl =
-  'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
-const ContainerHeight = 400;
+const CONTAINER_HEIGHT = 400;
+const PAGE_SIZE = 20;
 const App: React.FC = () => {
   const [data, setData] = useState<UserItem[]>([]);
+  const [page, setPage] = useState(1);
   const appendData = (showMessage = true) => {
+    const fakeDataUrl = `https://660d2bd96ddfa2943b33731c.mockapi.io/api/users/?page=${page}&limit=${PAGE_SIZE}`;
     fetch(fakeDataUrl)
       .then((res) => res.json())
       .then((body) => {
-        setData(data.concat(body.results));
-        showMessage && message.success(`${body.results.length} more items loaded!`);
+        const results = Array.isArray(body) ? body : [];
+        setData(data.concat(results));
+        setPage(page + 1);
+        showMessage && message.success(`${results.length} more items loaded!`);
       });
   };
   useEffect(() => {
@@ -588,7 +568,9 @@ const App: React.FC = () => {
   }, []);
   const onScroll = (e: React.UIEvent<HTMLElement, UIEvent>) => {
     // Refer to: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#problems_and_solutions
-    if (Math.abs(e.currentTarget.scrollHeight - e.currentTarget.scrollTop - ContainerHeight) <= 1) {
+    if (
+      Math.abs(e.currentTarget.scrollHeight - e.currentTarget.scrollTop - CONTAINER_HEIGHT) <= 1
+    ) {
       appendData();
     }
   };
@@ -596,7 +578,7 @@ const App: React.FC = () => {
     <List>
       <VirtualList
         data={data}
-        height={ContainerHeight}
+        height={CONTAINER_HEIGHT}
         itemHeight={47}
         itemKey="email"
         onScroll={onScroll}
@@ -604,8 +586,8 @@ const App: React.FC = () => {
         {(item: UserItem) => (
           <List.Item key={item.email}>
             <List.Item.Meta
-              avatar={<Avatar src={item.picture.large} />}
-              title={<a href="https://ant.design">{item.name.last}</a>}
+              avatar={<Avatar src={item.avatar} />}
+              title={<a href="https://ant.design">{item.name}</a>}
               description={item.email}
             />
             <div>Content</div>
