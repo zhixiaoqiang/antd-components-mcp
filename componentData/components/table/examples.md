@@ -447,7 +447,7 @@ function genData(length: number) {
   }));
 }
 const App: React.FC = () => {
-  const [data, setData] = useState<DataType[]>(genData(50));
+  const [data, setData] = useState<DataType[]>(() => genData(50));
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
@@ -1167,7 +1167,7 @@ export default App;
 这个例子通过简单的 ajax 读取方式，演示了如何从服务端读取并展现数据，具有筛选、排序等功能以及页面 loading 效果。开发者可以自行接入其他数据处理方式。
 另外，本例也展示了筛选排序功能如何交给服务端实现，列不需要指定具体的 `onFilter` 和 `sorter` 函数，而是在把筛选和排序的参数发到服务端来处理。
 当使用 `rowSelection` 时，请设置 `rowSelection.preserveSelectedRowKeys` 属性以保留 `key`。
-**注意，此示例使用 [模拟接口](https://randomuser.me)，展示数据可能不准确，请打开网络面板查看请求。**
+**注意，此示例使用 [模拟接口](https://mocky.io)，展示数据可能不准确，请打开网络面板查看请求。**
 > 🛎️ 想要 3 分钟实现？试试 [ProTable](https://procomponents.ant.design/components/table)！
 
 ```tsx
@@ -1180,15 +1180,10 @@ import type { SorterResult } from 'antd/es/table/interface';
 type ColumnsType<T extends object = object> = TableProps<T>['columns'];
 type TablePaginationConfig = Exclude<GetProp<TableProps, 'pagination'>, boolean>;
 interface DataType {
-  name: {
-    first: string;
-    last: string;
-  };
+  name: string;
   gender: string;
   email: string;
-  login: {
-    uuid: string;
-  };
+  id: string;
 }
 interface TableParams {
   pagination?: TablePaginationConfig;
@@ -1201,7 +1196,6 @@ const columns: ColumnsType<DataType> = [
     title: 'Name',
     dataIndex: 'name',
     sorter: true,
-    render: (name) => `${name.first} ${name.last}`,
     width: '20%',
   },
   {
@@ -1225,11 +1219,33 @@ const toURLSearchParams = <T extends AnyObject>(record: T) => {
   }
   return params;
 };
-const getRandomuserParams = (params: TableParams) => ({
-  results: params.pagination?.pageSize,
-  page: params.pagination?.current,
-  ...params,
-});
+const getRandomuserParams = (params: TableParams) => {
+  const { pagination, filters, sortField, sortOrder, ...restParams } = params;
+  const result: Record<string, any> = {};
+  // https://github.com/mockapi-io/docs/wiki/Code-examples#pagination
+  result.limit = pagination?.pageSize;
+  result.page = pagination?.current;
+  // https://github.com/mockapi-io/docs/wiki/Code-examples#filtering
+  if (filters) {
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        result[key] = value;
+      }
+    });
+  }
+  // https://github.com/mockapi-io/docs/wiki/Code-examples#sorting
+  if (sortField) {
+    result.orderby = sortField;
+    result.order = sortOrder === 'ascend' ? 'asc' : 'desc';
+  }
+  // 处理其他参数
+  Object.entries(restParams).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      result[key] = value;
+    }
+  });
+  return result;
+};
 const App: React.FC = () => {
   const [data, setData] = useState<DataType[]>();
   const [loading, setLoading] = useState(false);
@@ -1242,17 +1258,17 @@ const App: React.FC = () => {
   const params = toURLSearchParams(getRandomuserParams(tableParams));
   const fetchData = () => {
     setLoading(true);
-    fetch(`https://randomuser.me/api?${params.toString()}`)
+    fetch(`https://660d2bd96ddfa2943b33731c.mockapi.io/api/users?${params.toString()}`)
       .then((res) => res.json())
-      .then(({ results }) => {
-        setData(results);
+      .then((res) => {
+        setData(Array.isArray(res) ? res : []);
         setLoading(false);
         setTableParams({
           ...tableParams,
           pagination: {
             ...tableParams.pagination,
-            total: 200,
-            // 200 is mock data, you should read it from server
+            total: 100,
+            // 100 is mock data, you should read it from server
             // total: data.totalCount,
           },
         });
@@ -1280,7 +1296,7 @@ const App: React.FC = () => {
   return (
     <Table<DataType>
       columns={columns}
-      rowKey={(record) => record.login.uuid}
+      rowKey={(record) => record.id}
       dataSource={data}
       pagination={tableParams.pagination}
       loading={loading}
