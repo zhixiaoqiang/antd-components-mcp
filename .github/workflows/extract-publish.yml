@@ -91,7 +91,7 @@ jobs:
         working-directory: ../ant-design
         # 优化 antd 依赖安装效率
         run: |
-          echo '{"scripts": {"version": "${{ steps.get_version.outputs.antd_version }}", "lint:changelog": "tsx scripts/generate-component-changelog.ts"}}' > package.json
+          echo '{"version": "${{ steps.get_version.outputs.antd_version }}","scripts": {"lint:changelog": "tsx scripts/generate-component-changelog.ts"}}' > package.json
           pnpm add fs-extra glob tsx -D
           pnpm lint:changelog
 
