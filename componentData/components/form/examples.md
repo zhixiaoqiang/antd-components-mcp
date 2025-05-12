@@ -2123,7 +2123,7 @@ const App: React.FC = () => {
         cancelText="Cancel"
         okButtonProps={{ autoFocus: true, htmlType: 'submit' }}
         onCancel={() => setOpen(false)}
-        destroyOnClose
+        destroyOnHidden
         modalRender={(dom) => (
           <Form
             layout="vertical"

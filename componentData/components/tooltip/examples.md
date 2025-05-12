@@ -239,14 +239,14 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 隐藏后销毁
-通过 `destroyTooltipOnHide` 控制提示关闭时是否销毁 dom 节点。
+通过 `destroyOnHidden` 控制提示关闭时是否销毁 dom 节点。
 
 ```tsx
 import React from 'react';
 import { Tooltip } from 'antd';
 const App: React.FC = () => (
-  <Tooltip destroyTooltipOnHide title="prompt text">
-    <span>Tooltip will destroy when hidden.</span>
+  <Tooltip destroyOnHidden title="prompt text">
+    <span>Dom will destroyed when Tooltip close</span>
   </Tooltip>
 );
 export default App;

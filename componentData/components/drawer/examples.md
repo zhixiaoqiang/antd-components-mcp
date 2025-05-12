@@ -18,7 +18,12 @@ const App: React.FC = () => {
       <Button type="primary" onClick={showDrawer}>
         Open
       </Button>
-      <Drawer title="Basic Drawer" onClose={onClose} open={open}>
+      <Drawer
+        title="Basic Drawer"
+        closable={{ 'aria-label': 'Close Button' }}
+        onClose={onClose}
+        open={open}
+      >
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
@@ -101,7 +106,7 @@ const App: React.FC = () => {
       </Button>
       <Drawer
         closable
-        destroyOnClose
+        destroyOnHidden
         title={<p>Loading Drawer</p>}
         placement="right"
         open={open}

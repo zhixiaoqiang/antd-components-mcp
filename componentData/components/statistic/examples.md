@@ -102,19 +102,20 @@ const App: React.FC = () => (
 );
 export default App;
 ```
-### 倒计时
-倒计时组件。
+### 计时器
+计时器组件。
 
 ```tsx
 import React from 'react';
-import type { CountdownProps } from 'antd';
+import type { StatisticTimerProps } from 'antd';
 import { Col, Row, Statistic } from 'antd';
-const { Countdown } = Statistic;
+const { Timer } = Statistic;
 const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30; // Dayjs is also OK
-const onFinish: CountdownProps['onFinish'] = () => {
+const before = Date.now() - 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
+const onFinish: StatisticTimerProps['onFinish'] = () => {
   console.log('finished!');
 };
-const onChange: CountdownProps['onChange'] = (val) => {
+const onChange: StatisticTimerProps['onChange'] = (val) => {
   if (typeof val === 'number' && 4.95 * 1000 < val && val < 5 * 1000) {
     console.log('changed!');
   }
@@ -122,16 +123,37 @@ const onChange: CountdownProps['onChange'] = (val) => {
 const App: React.FC = () => (
   <Row gutter={16}>
     <Col span={12}>
-      <Countdown title="Countdown" value={deadline} onFinish={onFinish} />
+      <Timer type="countdown" value={deadline} onFinish={onFinish} />
     </Col>
     <Col span={12}>
-      <Countdown title="Million Seconds" value={deadline} format="HH:mm:ss:SSS" />
+      <Timer type="countdown" title="Million Seconds" value={deadline} format="HH:mm:ss:SSS" />
+    </Col>
+    <Col span={12}>
+      <Timer
+        type="countdown"
+        title="Countdown"
+        value={Date.now() + 10 * 1000}
+        onChange={onChange}
+      />
+    </Col>
+    <Col span={12}>
+      <Timer type="countup" title="Countup" value={before} onChange={onChange} />
     </Col>
     <Col span={24} style={{ marginTop: 32 }}>
-      <Countdown title="Day Level" value={deadline} format="D 天 H 时 m 分 s 秒" />
+      <Timer
+        type="countdown"
+        title="Day Level (Countdown)"
+        value={deadline}
+        format="D 天 H 时 m 分 s 秒"
+      />
     </Col>
-    <Col span={12}>
-      <Countdown title="Countdown" value={Date.now() + 10 * 1000} onChange={onChange} />
+    <Col span={24} style={{ marginTop: 32 }}>
+      <Timer
+        type="countup"
+        title="Day Level (Countup)"
+        value={before}
+        format="D 天 H 时 m 分 s 秒"
+      />
     </Col>
   </Row>
 );

@@ -61,6 +61,7 @@ const App: React.FC = () => {
       options={[
         {
           value: 1,
+          className: 'option-1',
           label: (
             <Flex gap="small" justify="center" align="center" vertical>
               <LineChartOutlined style={{ fontSize: 18 }} />
@@ -70,6 +71,7 @@ const App: React.FC = () => {
         },
         {
           value: 2,
+          className: 'option-2',
           label: (
             <Flex gap="small" justify="center" align="center" vertical>
               <DotChartOutlined style={{ fontSize: 18 }} />
@@ -79,6 +81,7 @@ const App: React.FC = () => {
         },
         {
           value: 3,
+          className: 'option-3',
           label: (
             <Flex gap="small" justify="center" align="center" vertical>
               <BarChartOutlined style={{ fontSize: 18 }} />
@@ -88,6 +91,7 @@ const App: React.FC = () => {
         },
         {
           value: 4,
+          className: 'option-4',
           label: (
             <Flex gap="small" justify="center" align="center" vertical>
               <PieChartOutlined style={{ fontSize: 18 }} />
@@ -185,14 +189,14 @@ import { Radio } from 'antd';
 import type { CheckboxGroupProps } from 'antd/es/checkbox';
 const plainOptions: CheckboxGroupProps<string>['options'] = ['Apple', 'Pear', 'Orange'];
 const options: CheckboxGroupProps<string>['options'] = [
-  { label: 'Apple', value: 'Apple' },
-  { label: 'Pear', value: 'Pear' },
-  { label: 'Orange', value: 'Orange', title: 'Orange' },
+  { label: 'Apple', value: 'Apple', className: 'label-1' },
+  { label: 'Pear', value: 'Pear', className: 'label-2' },
+  { label: 'Orange', value: 'Orange', title: 'Orange', className: 'label-3' },
 ];
 const optionsWithDisabled: CheckboxGroupProps<string>['options'] = [
-  { label: 'Apple', value: 'Apple' },
-  { label: 'Pear', value: 'Pear' },
-  { label: 'Orange', value: 'Orange', disabled: true },
+  { label: 'Apple', value: 'Apple', className: 'label-1' },
+  { label: 'Pear', value: 'Pear', className: 'label-2' },
+  { label: 'Orange', value: 'Orange', className: 'label-3', disabled: true },
 ];
 const App: React.FC = () => {
   const [value1, setValue1] = useState('Apple');
