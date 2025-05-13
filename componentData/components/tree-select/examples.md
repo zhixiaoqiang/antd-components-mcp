@@ -67,7 +67,9 @@ const App: React.FC = () => {
       showSearch
       style={{ width: '100%' }}
       value={value}
-      dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+      styles={{
+        popup: { root: { maxHeight: 400, overflow: 'auto' } },
+      }}
       placeholder="Please select"
       allowClear
       treeDefaultExpandAll
@@ -128,7 +130,9 @@ const App: React.FC = () => {
       showSearch
       style={{ width: '100%' }}
       value={value}
-      dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+      styles={{
+        popup: { root: { maxHeight: 400, overflow: 'auto' } },
+      }}
       placeholder="Please select"
       allowClear
       multiple
@@ -176,7 +180,9 @@ const App: React.FC = () => {
     <TreeSelect
       style={{ width: '100%' }}
       value={value}
-      dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+      styles={{
+        popup: { root: { maxHeight: 400, overflow: 'auto' } },
+      }}
       treeData={treeData}
       placeholder="Please select"
       treeDefaultExpandAll
@@ -293,7 +299,9 @@ const App: React.FC = () => {
       treeDataSimpleMode
       style={{ width: '100%' }}
       value={value}
-      dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+      styles={{
+        popup: { root: { maxHeight: 400, overflow: 'auto' } },
+      }}
       placeholder="Please select"
       onChange={onChange}
       loadData={onLoadData}
@@ -441,7 +449,9 @@ const App: React.FC = () => {
       <br />
       <TreeSelect
         showSearch
-        dropdownStyle={{ maxHeight: 400, overflow: 'auto', minWidth: 300 }}
+        styles={{
+          popup: { root: { maxHeight: 400, overflow: 'auto', minWidth: 300 } },
+        }}
         placeholder="Please select"
         popupMatchSelectWidth={false}
         placement={placement}
@@ -616,7 +626,9 @@ const App: React.FC = () => {
         suffixIcon={icon}
         style={{ width: '100%' }}
         value={value}
-        dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+        styles={{
+          popup: { root: { maxHeight: 400, overflow: 'auto' } },
+        }}
         placeholder="Please select"
         allowClear
         treeDefaultExpandAll
@@ -630,7 +642,9 @@ const App: React.FC = () => {
         prefix="Prefix"
         style={{ width: '100%' }}
         value={value}
-        dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+        styles={{
+          popup: { root: { maxHeight: 400, overflow: 'auto' } },
+        }}
         placeholder="Please select"
         allowClear
         treeDefaultExpandAll
@@ -732,7 +746,7 @@ const App: React.FC = () => {
         showSearch
         style={{ width: '100%' }}
         value={value}
-        dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+        styles={{ popup: { root: { maxHeight: 400, overflow: 'auto' } } }}
         placeholder="Please select"
         allowClear
         treeDefaultExpandAll

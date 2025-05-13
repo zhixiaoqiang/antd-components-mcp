@@ -751,7 +751,7 @@ const App: React.FC = () => {
     <Select
       style={{ width: 300 }}
       placeholder="custom dropdown render"
-      dropdownRender={(menu) => (
+      popupRender={(menu) => (
         <>
           {menu}
           <Divider style={{ margin: '8px 0' }} />

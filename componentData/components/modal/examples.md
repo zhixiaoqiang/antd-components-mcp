@@ -21,7 +21,13 @@ const App: React.FC = () => {
       <Button type="primary" onClick={showModal}>
         Open Modal
       </Button>
-      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal
+        title="Basic Modal"
+        closable={{ 'aria-label': 'Custom Close Button' }}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
@@ -1437,7 +1443,7 @@ const Demo: React.FC = () => {
         title="Basic Modal"
         open={isModalOpen}
         footer={null}
-        destroyOnClose
+        destroyOnHidden
         onCancel={() => setIsModalOpen(false)}
         maskClosable={false}
         closable={false}
@@ -1452,7 +1458,7 @@ const Demo: React.FC = () => {
           title="Nested Modal"
           open={isModalOpen}
           footer={null}
-          destroyOnClose
+          destroyOnHidden
           mask={false}
           onCancel={() => setIsModalOpen(false)}
           maskClosable={false}
@@ -1472,7 +1478,7 @@ const Demo: React.FC = () => {
             title="Nested Modal"
             open={isModalOpen}
             footer={null}
-            destroyOnClose
+            destroyOnHidden
             mask={false}
             maskClosable={false}
             onCancel={() => setIsModalOpen(false)}
