@@ -36,7 +36,7 @@ export default App;
 import React, { useState } from 'react';
 import { Button, Image, Space } from 'antd';
 const App: React.FC = () => {
-  const [random, setRandom] = useState<number>();
+  const [random, setRandom] = useState<number>(Date.now());
   return (
     <Space size={12}>
       <Image

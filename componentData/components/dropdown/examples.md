@@ -493,7 +493,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 扩展菜单
-使用 `dropdownRender` 对下拉菜单进行自由扩展。如果你并不需要 Menu 内容，请直接使用 Popover 组件。
+使用 `popupRender` 对下拉菜单进行自由扩展。如果你并不需要 Menu 内容，请直接使用 Popover 组件。
 
 ```tsx
 import React from 'react';
