@@ -608,6 +608,12 @@ const App: React.FC = () => (
     defaultValue={['zhejiang', 'hangzhou', 'xihu']}
     displayRender={displayRender}
     style={{ width: '100%' }}
+    // `optionRender` is supported since 5.16.0
+    optionRender={(option) => (
+      <>
+        {option.label} ({option.value})
+      </>
+    )}
   />
 );
 export default App;
