@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/zhixiaoqiang-antd-components-mcp-badge.png)](https://mseep.ai/app/zhixiaoqiang-antd-components-mcp)
+
 ![antd-components-mcp](https://socialify.git.ci/zhixiaoqiang/antd-components-mcp/image?description=1&forks=1&issues=1&language=1&owner=1&pulls=1&stargazers=1)
 
 <a href="https://glama.ai/mcp/servers/@zhixiaoqiang/antd-components-mcp">
