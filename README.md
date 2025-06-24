@@ -1,10 +1,11 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/zhixiaoqiang-antd-components-mcp-badge.png)](https://mseep.ai/app/zhixiaoqiang-antd-components-mcp)
-
 ![antd-components-mcp](https://socialify.git.ci/zhixiaoqiang/antd-components-mcp/image?description=1&forks=1&issues=1&language=1&owner=1&pulls=1&stargazers=1)
 
 <a href="https://glama.ai/mcp/servers/@zhixiaoqiang/antd-components-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@zhixiaoqiang/antd-components-mcp/badge" alt="antd-components-mcp MCP server" />
 </a>
+
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/zhixiaoqiang-antd-components-mcp-badge.png)](https://mseep.ai/app/zhixiaoqiang-antd-components-mcp)
+
 
 [![npm version](https://img.shields.io/npm/v/@jzone-mcp/antd-components-mcp.svg)](https://www.npmjs.com/package/@jzone-mcp/antd-components-mcp)
 
