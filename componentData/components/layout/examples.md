@@ -257,7 +257,7 @@ const App: React.FC = () => {
             mode="inline"
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
-            style={{ height: '100%', borderRight: 0 }}
+            style={{ height: '100%', borderInlineEnd: 0 }}
             items={items2}
           />
         </Sider>
@@ -820,7 +820,7 @@ const App: React.FC = () => {
               mode="inline"
               defaultSelectedKeys={['1']}
               defaultOpenKeys={['sub1']}
-              style={{ borderRight: 0 }}
+              style={{ borderInlineEnd: 0 }}
               items={items2}
             />
           </Sider>

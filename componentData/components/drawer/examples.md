@@ -641,7 +641,7 @@ const useStyle = createStyles(({ token }) => ({
     color: token.colorPrimary,
   },
   'my-drawer-content': {
-    borderLeft: '2px dotted #333',
+    borderInlineStart: '2px dotted #333',
   },
 }));
 const App: React.FC = () => {
