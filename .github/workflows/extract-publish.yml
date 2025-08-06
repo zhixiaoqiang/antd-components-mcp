@@ -36,7 +36,6 @@ jobs:
             ~/.npm
             ~/.pnpm-store
             ~/.pnpm-cache
-            ../ant-design/node_modules
             ./node_modules
           key: pnpm-cache
 
