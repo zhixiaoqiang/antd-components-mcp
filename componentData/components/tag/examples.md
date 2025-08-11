@@ -356,8 +356,8 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 图标按钮
-当需要在 `Tag` 内嵌入 `Icon` 时，可以设置 `icon` 属性，或者直接在 `Tag` 内使用 `Icon` 组件。
-如果想控制 `Icon` 具体的位置，只能直接使用 `Icon` 组件，而非 `icon` 属性。
+你可以通过 `icon` 属性为标签添加自定义图标。注意，CheckableTag 的 `icon` 属性在 `>=5.27.0` 版本支持。
+若需要控制图标的位置，请在 `children` 中直接使用 `<XXXIcon />` 组件，而非通过 `icon` 属性实现。
 
 ```tsx
 import React from 'react';
@@ -367,23 +367,65 @@ import {
   TwitterOutlined,
   YoutubeOutlined,
 } from '@ant-design/icons';
-import { Flex, Tag } from 'antd';
-const App: React.FC = () => (
-  <Flex gap="4px 0" wrap>
-    <Tag icon={<TwitterOutlined />} color="#55acee">
-      Twitter
-    </Tag>
-    <Tag icon={<YoutubeOutlined />} color="#cd201f">
-      Youtube
-    </Tag>
-    <Tag icon={<FacebookOutlined />} color="#3b5999">
-      Facebook
-    </Tag>
-    <Tag icon={<LinkedinOutlined />} color="#55acee">
-      LinkedIn
-    </Tag>
-  </Flex>
-);
+import { Divider, Flex, Tag } from 'antd';
+const App: React.FC = () => {
+  const [checked, setChecked] = React.useState<Array<boolean>>([true, false, false, false]);
+  const handleChange = (index: number, value: boolean) => {
+    const newChecked = [...checked];
+    newChecked[index] = value;
+    setChecked(newChecked);
+  };
+  return (
+    <>
+      <Divider orientation="left">Tag with icon</Divider>
+      <Flex gap="4px 0" wrap align="center">
+        <Tag icon={<TwitterOutlined />} color="#55acee">
+          Twitter
+        </Tag>
+        <Tag icon={<YoutubeOutlined />} color="#cd201f">
+          Youtube
+        </Tag>
+        <Tag icon={<FacebookOutlined />} color="#3b5999">
+          Facebook
+        </Tag>
+        <Tag icon={<LinkedinOutlined />} color="#55acee">
+          LinkedIn
+        </Tag>
+      </Flex>
+      <Divider orientation="left">CheckableTag with icon</Divider>
+      <Flex gap="4px 0" wrap align="center">
+        <Tag.CheckableTag
+          icon={<TwitterOutlined />} // `icon` available since `5.27.0`
+          checked={checked[0]}
+          onChange={(checked) => handleChange(0, checked)}
+        >
+          Twitter
+        </Tag.CheckableTag>
+        <Tag.CheckableTag
+          icon={<YoutubeOutlined />}
+          checked={checked[1]}
+          onChange={(checked) => handleChange(1, checked)}
+        >
+          Youtube
+        </Tag.CheckableTag>
+        <Tag.CheckableTag
+          icon={<FacebookOutlined />}
+          checked={checked[2]}
+          onChange={(checked) => handleChange(2, checked)}
+        >
+          Facebook
+        </Tag.CheckableTag>
+        <Tag.CheckableTag
+          icon={<LinkedinOutlined />}
+          checked={checked[3]}
+          onChange={(checked) => handleChange(3, checked)}
+        >
+          LinkedIn
+        </Tag.CheckableTag>
+      </Flex>
+    </>
+  );
+};
 export default App;
 ```
 ### 预设状态的标签
