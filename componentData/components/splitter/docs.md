@@ -19,5 +19,5 @@
 | min | 最小阈值，支持数字 px 或者文字 '百分比%' 类型 | `number \| string` | - | - |
 | max | 最大阈值，支持数字 px 或者文字 '百分比%' 类型 | `number \| string` | - | - |
 | size | 受控面板大小，支持数字 px 或者文字 '百分比%' 类型 | `number \| string` | - | - |
-| collapsible | 快速折叠 | `boolean \| { start?: boolean; end?: boolean }` | `false` | - |
+| collapsible | 快速折叠 | `boolean \| { start?: boolean; end?: boolean; showCollapsibleIcon?: boolean \| 'auto' }` | `false` | showCollapsibleIcon: 5.27.0 |
 | resizable | 是否开启拖拽伸缩 | `boolean` | `true` | - |
