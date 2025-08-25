@@ -296,7 +296,7 @@ const cascaderOptions = [
         children: [
           {
             value: 'saadat-abad',
-            label: 'سعادت آیاد',
+            label: 'سعادت آباد',
           },
         ],
       },
@@ -311,7 +311,7 @@ const cascaderOptions = [
         label: 'اردبیل',
         children: [
           {
-            value: 'primadar',
+            value: 'pirmadar',
             label: 'پیرمادر',
           },
         ],

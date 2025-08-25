@@ -2,15 +2,16 @@
 鼠标移入则显示提示，移出消失，气泡浮层不承载复杂文本和操作。
 可用来代替系统默认的 `title` 提示，提供一个 `按钮/文字/操作` 的文案解释。
 ## API
-| 参数  | 说明     | 类型                         | 默认值 |
-| ----- | -------- | ---------------------------- | ------ |
-| title | 提示文字 | ReactNode \| () => ReactNode | -      |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| title | 提示文字 | ReactNode \| () => ReactNode | - | - |
+| color | 设置背景颜色，使用该属性后内部文字颜色将自适应 | string | - | 5.27.0 |
 ### 共同的 API
 <Antd component="Alert" message="以下 API 为 Tooltip、Popconfirm、Popover 共享的 API。" type="info" banner="true"></Antd>
 <!-- prettier-ignore -->
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| align | 该值将合并到 placement 的配置中，设置参考 [dom-align](https://github.com/yiminghe/dom-align) | object | - |  |
+| align | 请参考 [dom-align](https://github.com/yiminghe/dom-align) 进行配置 | object | - |  |
 | arrow | 修改箭头的显示状态以及修改箭头是否指向目标元素中心 | boolean \| { pointAtCenter: boolean } | true | 5.2.0 |
 | autoAdjustOverflow | 气泡被遮挡时自动调整位置 | boolean | true |  |
 | color | 背景颜色 | string | - | 4.3.0 |
