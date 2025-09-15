@@ -18,6 +18,7 @@ const App: React.FC = () => {
       description: 'Put your files here.',
       cover: (
         <img
+          draggable={false}
           alt="tour.png"
           src="https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png"
         />
@@ -73,6 +74,7 @@ const App: React.FC = () => {
       description: 'Put your files here.',
       cover: (
         <img
+          draggable={false}
           alt="tour.png"
           src="https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png"
         />
@@ -168,6 +170,7 @@ const App: React.FC = () => {
       description: 'Put your files here.',
       cover: (
         <img
+          draggable={false}
           alt="tour.png"
           src="https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png"
         />
@@ -370,6 +373,7 @@ const App: React.FC = () => {
       description: 'Put your files here.',
       cover: (
         <img
+          draggable={false}
           alt="tour.png"
           src="https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png"
         />
@@ -472,6 +476,7 @@ export default () => (
       description="Hello World?!"
       cover={
         <img
+          draggable={false}
           alt="tour.png"
           src="https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png"
         />
