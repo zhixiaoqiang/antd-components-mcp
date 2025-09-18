@@ -346,6 +346,8 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { Button, Popover } from 'antd';
+const hoverContent = <div>This is hover content.</div>;
+const clickContent = <div>This is click content.</div>;
 const App: React.FC = () => {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -361,8 +363,6 @@ const App: React.FC = () => {
     setHovered(false);
     setClicked(open);
   };
-  const hoverContent = <div>This is hover content.</div>;
-  const clickContent = <div>This is click content.</div>;
   return (
     <Popover
       style={{ width: 500 }}
@@ -384,7 +384,7 @@ const App: React.FC = () => {
         open={clicked}
         onOpenChange={handleClickChange}
       >
-        <Button>Hover and click / 悬停并单击</Button>
+        <Button>Hover and click</Button>
       </Popover>
     </Popover>
   );

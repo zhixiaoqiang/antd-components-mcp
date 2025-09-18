@@ -197,6 +197,7 @@ const App: React.FC = () => {
             extra={
               !loading && (
                 <img
+                  draggable={false}
                   width={272}
                   alt="logo"
                   src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
