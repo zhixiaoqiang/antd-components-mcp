@@ -1351,7 +1351,7 @@ const PriceInput: React.FC<PriceInputProps> = (props) => {
     onChange?.({ number, currency, ...value, ...changedValue });
   };
   const onNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newNumber = parseInt(e.target.value || '0', 10);
+    const newNumber = Number.parseInt(e.target.value || '0', 10);
     if (Number.isNaN(number)) {
       return;
     }

@@ -360,7 +360,7 @@ const App: React.FC = () => (
       format="YYYY-MM-DD HH:mm:ss"
       disabledDate={disabledDate}
       disabledTime={disabledDateTime}
-      showTime={{ defaultValue: dayjs('00:00:00', 'HH:mm:ss') }}
+      showTime={{ defaultOpenValue: dayjs('00:00:00', 'HH:mm:ss') }}
     />
     <DatePicker picker="month" disabledDate={disabledDateForMonth} />
     <RangePicker disabledDate={disabledDate} />
@@ -369,7 +369,7 @@ const App: React.FC = () => (
       disabledTime={disabledRangeTime}
       showTime={{
         hideDisabledOptions: true,
-        defaultValue: [dayjs('00:00:00', 'HH:mm:ss'), dayjs('11:59:59', 'HH:mm:ss')],
+        defaultOpenValue: [dayjs('00:00:00', 'HH:mm:ss'), dayjs('11:59:59', 'HH:mm:ss')],
       }}
       format="YYYY-MM-DD HH:mm:ss"
     />
@@ -670,7 +670,8 @@ export default App;
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { DatePicker, Dropdown, Space } from 'antd';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+import type { Dayjs } from 'dayjs';
 const DatePickerDemo: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
   const [panelVisible, setPanelVisible] = React.useState(false);

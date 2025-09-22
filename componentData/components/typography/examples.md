@@ -542,10 +542,9 @@ const templateStr =
   'In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development.';
 const text = `this is a multiline
   text that has many
-  lines and 
+  lines and
     - render like this
     - and this
-    
   and that`;
 const App: React.FC = () => {
   const [rows, setRows] = useState(1);
@@ -555,9 +554,12 @@ const App: React.FC = () => {
   const [expandable, setExpandable] = useState(false);
   const [display, setDisplay] = useState('none');
   React.useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setDisplay('block');
     }, 100);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
   return (
     <>
