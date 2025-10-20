@@ -294,7 +294,7 @@ const App: React.FC = () => {
     setInputValue(e.target.value);
   };
   const handleInputConfirm = () => {
-    if (inputValue && tags.indexOf(inputValue) === -1) {
+    if (inputValue && !tags.includes(inputValue)) {
       setTags([...tags, inputValue]);
     }
     setInputVisible(false);

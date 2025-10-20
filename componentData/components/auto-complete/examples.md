@@ -133,7 +133,7 @@ const App: React.FC = () => (
     options={options}
     placeholder="try to type `b`"
     filterOption={(inputValue, option) =>
-      option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+      option!.value.toUpperCase().includes(inputValue.toUpperCase())
     }
   />
 );
@@ -286,7 +286,7 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 多种形态
-可选 `outlined` `filled` `borderless` 三种形态。
+可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
 ```tsx
 import React, { useState } from 'react';
@@ -323,6 +323,14 @@ const App: React.FC = () => {
         onSearch={(text) => setOptions(getPanelValue(text))}
         onSelect={globalThis.console.log}
         variant="borderless"
+      />
+      <AutoComplete
+        options={options}
+        style={{ width: 200 }}
+        placeholder="Underlined"
+        onSearch={(text) => setOptions(getPanelValue(text))}
+        onSelect={globalThis.console.log}
+        variant="underlined"
       />
     </Flex>
   );

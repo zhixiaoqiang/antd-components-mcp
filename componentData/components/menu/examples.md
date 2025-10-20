@@ -377,7 +377,7 @@ const levelKeys = getLevelKeys(items as LevelKeysProps[]);
 const App: React.FC = () => {
   const [stateOpenKeys, setStateOpenKeys] = useState(['2', '23']);
   const onOpenChange: MenuProps['onOpenChange'] = (openKeys) => {
-    const currentOpenKey = openKeys.find((key) => stateOpenKeys.indexOf(key) === -1);
+    const currentOpenKey = openKeys.find((key) => !stateOpenKeys.includes(key));
     // open
     if (currentOpenKey !== undefined) {
       const repeatIndex = openKeys
