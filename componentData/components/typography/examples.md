@@ -536,7 +536,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react';
-import { Button, Slider, Switch, Typography } from 'antd';
+import { Slider, Switch, Typography } from 'antd';
 const { Text, Paragraph } = Typography;
 const templateStr =
   'In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development.';
@@ -606,16 +606,12 @@ const App: React.FC = () => {
       </p>
       <div style={{ display }}>
         <Text style={{ width: 100 }} ellipsis={{ tooltip: 'I am ellipsis now!' }}>
-          默认display none 样式的超长文字， 悬停tooltip失效了
+          默认 display none 样式的超长文字， 悬停 tooltip 失效了
         </Text>
       </div>
       <Typography.Paragraph
         style={{ width: 300 }}
-        ellipsis={{
-          rows: 3,
-          expandable: true,
-          symbol: <Button>Open</Button>,
-        }}
+        ellipsis={{ rows: 3, expandable: true, symbol: <span>Open</span> }}
       >
         {templateStr.slice(0, 60)}
         <span style={{ fontSize: '5em' }}>ANTD</span>

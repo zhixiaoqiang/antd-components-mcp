@@ -162,7 +162,7 @@ const App: React.FC = () => {
     getMock();
   }, []);
   const filterOption = (inputValue: string, option: RecordType) =>
-    option.description.indexOf(inputValue) > -1;
+    option.description.includes(inputValue);
   const handleChange: TransferProps['onChange'] = (newTargetKeys) => {
     setTargetKeys(newTargetKeys);
   };
@@ -835,7 +835,7 @@ const App: React.FC = () => {
         showSearch={showSearch}
         onChange={secondOnChange}
         filterOption={(inputValue, item) =>
-          item.title!.indexOf(inputValue) !== -1 || item.tag.indexOf(inputValue) !== -1
+          item.title!.includes(inputValue) || item.tag.includes(inputValue)
         }
         leftColumns={leftTableColumns}
         rightColumns={rightTableColumns}
