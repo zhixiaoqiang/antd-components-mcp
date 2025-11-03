@@ -38,20 +38,27 @@ export default App;
 import React from 'react';
 import { SettingOutlined } from '@ant-design/icons';
 import { Cascader, InputNumber, Select, Space } from 'antd';
-const { Option } = Select;
 const selectBefore = (
-  <Select defaultValue="add" style={{ width: 60 }}>
-    <Option value="add">+</Option>
-    <Option value="minus">-</Option>
-  </Select>
+  <Select
+    defaultValue="add"
+    style={{ width: 60 }}
+    options={[
+      { label: '+', value: 'add' },
+      { label: '-', value: 'minus' },
+    ]}
+  />
 );
 const selectAfter = (
-  <Select defaultValue="USD" style={{ width: 60 }}>
-    <Option value="USD">$</Option>
-    <Option value="EUR">€</Option>
-    <Option value="GBP">£</Option>
-    <Option value="CNY">¥</Option>
-  </Select>
+  <Select
+    defaultValue="USD"
+    style={{ width: 60 }}
+    options={[
+      { label: '$', value: 'USD' },
+      { label: '€', value: 'EUR' },
+      { label: '£', value: 'GBP' },
+      { label: '¥', value: 'CNY' },
+    ]}
+  />
 );
 const App: React.FC = () => (
   <Space direction="vertical">
@@ -337,8 +344,9 @@ export default App;
 
 ```tsx
 import React, { useRef } from 'react';
+import type { GetRef } from 'antd';
 import { Button, InputNumber, Space } from 'antd';
-import type { InputNumberRef } from 'rc-input-number';
+type InputNumberRef = GetRef<typeof InputNumber>;
 const App: React.FC = () => {
   const inputRef = useRef<InputNumberRef>(null);
   return (

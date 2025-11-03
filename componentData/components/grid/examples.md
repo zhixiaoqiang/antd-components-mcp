@@ -34,7 +34,8 @@ export default App;
 栅格常常需要和间隔进行配合，你可以使用 `Row` 的 `gutter` 属性，我们推荐使用 `(16+8n)px` 作为栅格间隔(n 是自然数)。
 如果要支持响应式，可以写成 `{ xs: 8, sm: 16, md: 24, lg: 32 }`。
 如果需要垂直间距，可以写成数组形式 `[水平间距, 垂直间距]` `[16, { xs: 8, sm: 16, md: 24, lg: 32 }]`。
-> 数组形式垂直间距在 `3.24.0` 之后支持。
+`Row` 的 `gutter` 属性可以设置为[字符串CSS单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Values_and_Units)，例如：`px`、`rem`、`vw`、`vh` 等。
+> 数组形式垂直间距在 `3.24.0` 之后支持。string 类型在 `5.28.0` 之后支持。
 
 ```tsx
 import React from 'react';
@@ -86,6 +87,21 @@ const App: React.FC = () => (
       <Col className="gutter-row" span={6}>
         <div style={style}>col-6</div>
       </Col>
+      <Col className="gutter-row" span={6}>
+        <div style={style}>col-6</div>
+      </Col>
+      <Col className="gutter-row" span={6}>
+        <div style={style}>col-6</div>
+      </Col>
+      <Col className="gutter-row" span={6}>
+        <div style={style}>col-6</div>
+      </Col>
+      <Col className="gutter-row" span={6}>
+        <div style={style}>col-6</div>
+      </Col>
+    </Row>
+    <Divider orientation="left">Gutter(string)</Divider>
+    <Row gutter="2rem">
       <Col className="gutter-row" span={6}>
         <div style={style}>col-6</div>
       </Col>

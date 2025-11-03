@@ -174,7 +174,6 @@ import {
   Tooltip,
   TreeSelect,
 } from 'antd';
-const { Option } = Select;
 const { TreeNode } = TreeSelect;
 const App: React.FC = () => (
   <Space direction="vertical">
@@ -200,17 +199,27 @@ const App: React.FC = () => (
       </Tooltip>
     </Space.Compact>
     <Space.Compact block>
-      <Select defaultValue="Zhejiang" allowClear>
-        <Option value="Zhejiang">Zhejiang</Option>
-        <Option value="Jiangsu">Jiangsu</Option>
-      </Select>
+      <Select
+        allowClear
+        defaultValue="Zhejiang"
+        options={[
+          { label: 'Zhejiang', value: 'Zhejiang' },
+          { label: 'Jiangsu', value: 'Jiangsu' },
+        ]}
+      />
       <Input style={{ width: '50%' }} defaultValue="Xihu District, Hangzhou" />
     </Space.Compact>
     <Space.Compact block>
-      <Select allowClear mode="multiple" defaultValue="Zhejianggggg" style={{ width: '50%' }}>
-        <Option value="Zhejianggggg">Zhejianggggg</Option>
-        <Option value="Jiangsu">Jiangsu</Option>
-      </Select>
+      <Select
+        allowClear
+        mode="multiple"
+        defaultValue="Zhejiang"
+        style={{ width: '50%' }}
+        options={[
+          { label: 'Zhejiang', value: 'Zhejiang' },
+          { label: 'Jiangsu', value: 'Jiangsu' },
+        ]}
+      />
       <Input style={{ width: '50%' }} defaultValue="Xihu District, Hangzhou" />
     </Space.Compact>
     <Space.Compact block>
@@ -219,10 +228,13 @@ const App: React.FC = () => (
       <Input.Search style={{ width: '20%' }} defaultValue="+1" />
     </Space.Compact>
     <Space.Compact block>
-      <Select defaultValue="Option1">
-        <Option value="Option1">Option1</Option>
-        <Option value="Option2">Option2</Option>
-      </Select>
+      <Select
+        defaultValue="Option1"
+        options={[
+          { label: 'Option1', value: 'Option1' },
+          { label: 'Option2', value: 'Option2' },
+        ]}
+      />
       <Input style={{ width: '50%' }} defaultValue="input content" />
       <InputNumber defaultValue={12} />
     </Space.Compact>
@@ -240,20 +252,29 @@ const App: React.FC = () => (
       <DatePicker.RangePicker style={{ width: '70%' }} />
     </Space.Compact>
     <Space.Compact block>
-      <Select defaultValue="Option1-1">
-        <Option value="Option1-1">Option1-1</Option>
-        <Option value="Option1-2">Option1-2</Option>
-      </Select>
-      <Select defaultValue="Option2-2">
-        <Option value="Option2-1">Option2-1</Option>
-        <Option value="Option2-2">Option2-2</Option>
-      </Select>
+      <Select
+        defaultValue="Option1-1"
+        options={[
+          { label: 'Option1-1', value: 'Option1-1' },
+          { label: 'Option1-2', value: 'Option1-2' },
+        ]}
+      />
+      <Select
+        defaultValue="Option2-2"
+        options={[
+          { label: 'Option2-1', value: 'Option2-1' },
+          { label: 'Option2-2', value: 'Option2-2' },
+        ]}
+      />
     </Space.Compact>
     <Space.Compact block>
-      <Select defaultValue="1">
-        <Option value="1">Between</Option>
-        <Option value="2">Except</Option>
-      </Select>
+      <Select
+        defaultValue="1"
+        options={[
+          { label: 'Between', value: '1' },
+          { label: 'Except', value: '2' },
+        ]}
+      />
       <Input style={{ width: 100, textAlign: 'center' }} placeholder="Minimum" />
       <Input
         className="site-input-split"
@@ -276,10 +297,14 @@ const App: React.FC = () => (
       />
     </Space.Compact>
     <Space.Compact block>
-      <Select defaultValue="Sign Up" style={{ width: '30%' }}>
-        <Option value="Sign Up">Sign Up</Option>
-        <Option value="Sign In">Sign In</Option>
-      </Select>
+      <Select
+        defaultValue="Sign Up"
+        style={{ width: '30%' }}
+        options={[
+          { label: 'Sign Up', value: 'Sign Up' },
+          { label: 'Sign In', value: 'Sign In' },
+        ]}
+      />
       <AutoComplete
         style={{ width: '70%' }}
         placeholder="Email"
@@ -535,20 +560,27 @@ import {
   Space,
   Tooltip,
 } from 'antd';
-const { Option } = Select;
 const selectBefore = (
-  <Select defaultValue="http://" className="select-before">
-    <Option value="http://">http://</Option>
-    <Option value="https://">https://</Option>
-  </Select>
+  <Select
+    defaultValue="http"
+    className="select-before"
+    options={[
+      { label: 'http://', value: 'http' },
+      { label: 'https://', value: 'https' },
+    ]}
+  />
 );
 const selectAfter = (
-  <Select defaultValue=".com" className="select-after">
-    <Option value=".com">.com</Option>
-    <Option value=".jp">.jp</Option>
-    <Option value=".cn">.cn</Option>
-    <Option value=".org">.org</Option>
-  </Select>
+  <Select
+    defaultValue=".com"
+    className="select-after"
+    options={[
+      { label: '.com', value: '.com' },
+      { label: '.jp', value: '.jp' },
+      { label: '.cn', value: '.cn' },
+      { label: '.org', value: '.org' },
+    ]}
+  />
 );
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -690,10 +722,13 @@ const App: React.FC = () => {
         <InputNumber addonBefore="+" addonAfter="$" defaultValue={100} />
       </Space.Compact>
       <Space.Compact>
-        <Select defaultValue="Sign Up">
-          <Option value="Sign Up">Sign Up</Option>
-          <Option value="Sign In">Sign In</Option>
-        </Select>
+        <Select
+          defaultValue="Sign Up"
+          options={[
+            { label: 'Sign Up', value: 'Sign Up' },
+            { label: 'Sign In', value: 'Sign In' },
+          ]}
+        />
       </Space.Compact>
       <Space.Compact>
         <DatePicker.RangePicker style={{ width: '70%' }} />
@@ -756,7 +791,6 @@ export default App;
 import React from 'react';
 import { CopyOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button, Cascader, Input, InputNumber, Select, Space, TimePicker } from 'antd';
-const { Option } = Select;
 const App: React.FC = () => (
   <>
     <Space.Compact block>
@@ -767,10 +801,13 @@ const App: React.FC = () => (
         </Space.Compact>
         <Space.Compact>
           <InputNumber defaultValue={12} />
-          <Select defaultValue="Option1">
-            <Option value="Option1">Opt1</Option>
-            <Option value="Option2">Opt2</Option>
-          </Select>
+          <Select
+            defaultValue="Option1"
+            options={[
+              { label: 'Opt1', value: 'Option1' },
+              { label: 'Opt2', value: 'Option2' },
+            ]}
+          />
         </Space.Compact>
       </Space.Compact>
       <Button type="primary">Separator</Button>

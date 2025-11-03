@@ -8,13 +8,22 @@
 在 5.11.0 版本后，我们提供了 `<Select options={[...]} />` 的简写方式，有更好的性能和更方便的数据组织方式，开发者不再需要自行拼接 JSX。
 同时我们废弃了原先的写法，你还是可以在 5.x 继续使用，但会在控制台看到警告，并会在 6.0 后移除。
 :::
-```jsx
+```tsx
 // >=5.11.0 可用，推荐的写法 ✅
-return <Select options={[{ value: 'sample', label: <span>sample</span> }]} />;
-// 5.x 都可用，>=5.11.0 时不推荐 🙅🏻‍♀️
+return (
+  <Select
+    onChange={onChange}
+    options={[
+      { value: '1', label: <span>Option 1</span> },
+      { value: '2', label: <span>Option 2</span> },
+    ]}
+  />
+);
+// 5.x 可用，但是 >=5.11.0 时不推荐 🙅🏻‍♀️
 return (
   <Select onChange={onChange}>
-    <Select.Option value="sample">Sample</Select.Option>
+    <Select.Option value="1">Option 1</Select.Option>
+    <Select.Option value="2">Option 2</Select.Option>
   </Select>
 );
 ```
