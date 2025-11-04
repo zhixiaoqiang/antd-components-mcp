@@ -217,7 +217,7 @@ const App: React.FC = () => {
 export default App;
 ```
 ### React 错误处理
-友好的 [React 错误处理](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html) 包裹组件。
+友好的 [React 错误处理](https://zh-hans.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 包裹组件。
 
 ```tsx
 import React, { useState } from 'react';

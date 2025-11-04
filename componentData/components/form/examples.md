@@ -56,12 +56,11 @@ export default App;
 ```
 ### 表单方法调用
 通过 `Form.useForm` 对表单数据域进行交互。
-> 注意 `useForm` 是 [React Hooks](https://reactjs.org/docs/hooks-intro.html) 的实现，只能用于函数组件。如果是在 Class Component 下，你也可以通过 `ref` 获取数据域：https://codesandbox.io/p/sandbox/ngtjtm
+> 注意 `useForm` 是 [React Hooks](https://zh-hans.react.dev/reference/react/hooks) 的实现，只能用于函数组件。如果是在 Class Component 下，你也可以通过 `ref` 获取数据域：https://codesandbox.io/p/sandbox/ngtjtm
 
 ```tsx
 import React from 'react';
 import { Button, Form, Input, Select, Space } from 'antd';
-const { Option } = Select;
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
@@ -107,14 +106,15 @@ const App: React.FC = () => {
       </Form.Item>
       <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
         <Select
+          allowClear
           placeholder="Select a option and change input text above"
           onChange={onGenderChange}
-          allowClear
-        >
-          <Option value="male">male</Option>
-          <Option value="female">female</Option>
-          <Option value="other">other</Option>
-        </Select>
+          options={[
+            { label: 'male', value: 'male' },
+            { label: 'female', value: 'female' },
+            { label: 'other', value: 'other' },
+          ]}
+        />
       </Form.Item>
       <Form.Item
         noStyle
@@ -251,11 +251,14 @@ import {
   Form,
   Input,
   InputNumber,
+  Mentions,
   Radio,
   Rate,
   Select,
   Slider,
   Switch,
+  Transfer,
+  Tree,
   TreeSelect,
   Upload,
 } from 'antd';
@@ -297,9 +300,7 @@ const FormDisabledDemo: React.FC = () => {
           <Input />
         </Form.Item>
         <Form.Item label="Select">
-          <Select>
-            <Select.Option value="demo">Demo</Select.Option>
-          </Select>
+          <Select options={[{ label: 'Demo', value: 'demo' }]} />
         </Form.Item>
         <Form.Item label="TreeSelect">
           <TreeSelect
@@ -361,6 +362,60 @@ const FormDisabledDemo: React.FC = () => {
         </Form.Item>
         <Form.Item label="Rate">
           <Rate />
+        </Form.Item>
+        <Form.Item label="Mentions">
+          <Mentions defaultValue="@afc163" />
+        </Form.Item>
+        <Form.Item label="Transfer">
+          <Transfer
+            dataSource={Array.from({ length: 20 }, (_, i) => ({
+              key: i.toString(),
+              title: `Content ${i + 1}`,
+              description: `Description of content ${i + 1}`,
+            }))}
+            targetKeys={['1', '3', '5']}
+            render={(item) => item.title}
+          />
+        </Form.Item>
+        <Form.Item label="Tree">
+          <Tree
+            checkable
+            defaultExpandedKeys={['0-0', '0-1']}
+            defaultSelectedKeys={['0-0-0', '0-1-0']}
+            defaultCheckedKeys={['0-0-0-0', '0-1-0']}
+            treeData={[
+              {
+                title: 'Parent 1',
+                key: '0-0',
+                children: [
+                  {
+                    title: 'Child 1-1',
+                    key: '0-0-0',
+                    children: [
+                      {
+                        title: 'Grandchild 1-1-1',
+                        key: '0-0-0-0',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Child 1-2',
+                    key: '0-0-1',
+                  },
+                ],
+              },
+              {
+                title: 'Parent 2',
+                key: '0-1',
+                children: [
+                  {
+                    title: 'Child 2-1',
+                    key: '0-1-0',
+                  },
+                ],
+              },
+            ]}
+          />
         </Form.Item>
       </Form>
     </>
@@ -576,9 +631,7 @@ const App: React.FC = () => {
         <Input />
       </Form.Item>
       <Form.Item label="Select">
-        <Select>
-          <Select.Option value="demo">Demo</Select.Option>
-        </Select>
+        <Select options={[{ label: 'Demo', value: 'demo' }]} />
       </Form.Item>
       <Form.Item label="TreeSelect">
         <TreeSelect
@@ -1251,7 +1304,6 @@ export default App;
 ```tsx
 import React from 'react';
 import { Button, Form, Input, Select, Space, Tooltip, Typography } from 'antd';
-const { Option } = Select;
 const onFinish = (values: any) => {
   console.log('Received values of form: ', values);
 };
@@ -1284,10 +1336,13 @@ const App: React.FC = () => (
           noStyle
           rules={[{ required: true, message: 'Province is required' }]}
         >
-          <Select placeholder="Select province">
-            <Option value="Zhejiang">Zhejiang</Option>
-            <Option value="Jiangsu">Jiangsu</Option>
-          </Select>
+          <Select
+            placeholder="Select province"
+            options={[
+              { label: 'Zhejiang', value: 'Zhejiang' },
+              { label: 'Jiangsu', value: 'Jiangsu' },
+            ]}
+          />
         </Form.Item>
         <Form.Item
           name={['address', 'street']}
@@ -1332,7 +1387,6 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { Button, Form, Input, Select } from 'antd';
-const { Option } = Select;
 type Currency = 'rmb' | 'dollar';
 interface PriceValue {
   number?: number;
@@ -1378,10 +1432,11 @@ const PriceInput: React.FC<PriceInputProps> = (props) => {
         value={value.currency || currency}
         style={{ width: 80, margin: '0 8px' }}
         onChange={onCurrencyChange}
-      >
-        <Option value="rmb">RMB</Option>
-        <Option value="dollar">Dollar</Option>
-      </Select>
+        options={[
+          { label: 'RMB', value: 'rmb' },
+          { label: 'Dollar', value: 'dollar' },
+        ]}
+      />
     </span>
   );
 };
@@ -1401,10 +1456,7 @@ const App: React.FC = () => {
       layout="inline"
       onFinish={onFinish}
       initialValues={{
-        price: {
-          number: 0,
-          currency: 'rmb',
-        },
+        price: { number: 0, currency: 'rmb' },
       }}
     >
       <Form.Item name="price" label="Price" rules={[{ validator: checkPrice }]}>
@@ -1719,7 +1771,6 @@ import {
   Select,
 } from 'antd';
 import type { DefaultOptionType } from 'antd/es/select';
-const { Option } = Select;
 interface FormCascaderOption {
   value: string;
   label: string;
@@ -1788,18 +1839,26 @@ const App: React.FC = () => {
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 70 }}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
+      <Select
+        style={{ width: 70 }}
+        defaultValue={'86'}
+        options={[
+          { label: '+86', value: '86' },
+          { label: '+87', value: '87' },
+        ]}
+      />
     </Form.Item>
   );
   const suffixSelector = (
     <Form.Item name="suffix" noStyle>
-      <Select style={{ width: 70 }}>
-        <Option value="USD">$</Option>
-        <Option value="CNY">¥</Option>
-      </Select>
+      <Select
+        style={{ width: 70 }}
+        defaultValue={'USD'}
+        options={[
+          { label: '$', value: 'USD' },
+          { label: '¥', value: 'CNY' },
+        ]}
+      />
     </Form.Item>
   );
   const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
@@ -1925,11 +1984,15 @@ const App: React.FC = () => {
         label="Gender"
         rules={[{ required: true, message: 'Please select gender!' }]}
       >
-        <Select placeholder="select your gender">
-          <Option value="male">Male</Option>
-          <Option value="female">Female</Option>
-          <Option value="other">Other</Option>
-        </Select>
+        <Select
+          placeholder="select your gender"
+          defaultValue={'male'}
+          options={[
+            { label: 'Male', value: 'male' },
+            { label: 'Female', value: 'female' },
+            { label: 'Other', value: 'other' },
+          ]}
+        />
       </Form.Item>
       <Form.Item label="Captcha" extra="We must make sure that your are a human.">
         <Row gutter={8}>
@@ -1981,7 +2044,6 @@ export default App;
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Input, Row, Select, Space, theme } from 'antd';
-const { Option } = Select;
 const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
   const [form] = Form.useForm();
@@ -1994,7 +2056,7 @@ const AdvancedSearchForm = () => {
   };
   const getFields = () => {
     const count = expand ? 10 : 6;
-    const children = [];
+    const children: React.ReactNode[] = [];
     for (let i = 0; i < count; i++) {
       children.push(
         <Col span={8} key={i}>
@@ -2023,12 +2085,19 @@ const AdvancedSearchForm = () => {
               ]}
               initialValue="1"
             >
-              <Select>
-                <Option value="1">
-                  longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong
-                </Option>
-                <Option value="2">222</Option>
-              </Select>
+              <Select
+                options={[
+                  {
+                    value: '1',
+                    label:
+                      'longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong',
+                  },
+                  {
+                    value: '2',
+                    label: '222',
+                  },
+                ]}
+              />
             </Form.Item>
           )}
         </Col>,
@@ -2308,7 +2377,6 @@ import {
   TimePicker,
   TreeSelect,
 } from 'antd';
-const { Option } = Select;
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -2363,11 +2431,16 @@ const App: React.FC = () => (
       <DatePicker.RangePicker style={{ width: '100%' }} />
     </Form.Item>
     <Form.Item label="Error" hasFeedback validateStatus="error">
-      <Select placeholder="I'm Select" allowClear>
-        <Option value="1">Option 1</Option>
-        <Option value="2">Option 2</Option>
-        <Option value="3">Option 3</Option>
-      </Select>
+      <Select
+        allowClear
+        placeholder="I'm Select"
+        defaultValue={'1'}
+        options={[
+          { label: 'Option 1', value: '1' },
+          { label: 'Option 2', value: '2' },
+          { label: 'Option 3', value: '3' },
+        ]}
+      />
     </Form.Item>
     <Form.Item
       label="Validating"
@@ -2627,7 +2700,6 @@ import {
   Switch,
   Upload,
 } from 'antd';
-const { Option } = Select;
 const formItemLayout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 14 },
@@ -2664,21 +2736,28 @@ const App: React.FC = () => (
       hasFeedback
       rules={[{ required: true, message: 'Please select your country!' }]}
     >
-      <Select placeholder="Please select a country">
-        <Option value="china">China</Option>
-        <Option value="usa">U.S.A</Option>
-      </Select>
+      <Select
+        placeholder="Please select a country"
+        options={[
+          { label: 'China', value: 'china' },
+          { label: 'U.S.A', value: 'usa' },
+        ]}
+      />
     </Form.Item>
     <Form.Item
       name="select-multiple"
       label="Select[multiple]"
       rules={[{ required: true, message: 'Please select your favourite colors!', type: 'array' }]}
     >
-      <Select mode="multiple" placeholder="Please select favourite colors">
-        <Option value="red">Red</Option>
-        <Option value="green">Green</Option>
-        <Option value="blue">Blue</Option>
-      </Select>
+      <Select
+        mode="multiple"
+        placeholder="Please select favourite colors"
+        options={[
+          { label: 'Red', value: 'red' },
+          { label: 'Green', value: 'green' },
+          { label: 'Blue', value: 'blue' },
+        ]}
+      />
     </Form.Item>
     <Form.Item label="InputNumber">
       <Form.Item name="input-number" noStyle>

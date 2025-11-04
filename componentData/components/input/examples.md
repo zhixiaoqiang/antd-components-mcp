@@ -224,7 +224,6 @@ import {
   Select,
   Tooltip,
 } from 'antd';
-const { Option } = Select;
 const options = [
   {
     value: 'zhejiang',
@@ -293,10 +292,14 @@ const App: React.FC = () => (
     </Input.Group>
     <br />
     <Input.Group compact>
-      <Select defaultValue="Zhejiang">
-        <Option value="Zhejiang">Zhejiang</Option>
-        <Option value="Jiangsu">Jiangsu</Option>
-      </Select>
+      <Select
+        defaultValue="Zhejiang"
+        options={[
+          { label: 'Zhejiang', value: 'Zhejiang' },
+          { label: 'Jiangsu', value: 'Jiangsu' },
+          { label: 'Other', value: 'Other' },
+        ]}
+      />
       <Input style={{ width: '50%' }} defaultValue="Xihu District, Hangzhou" />
     </Input.Group>
     <br />
@@ -306,10 +309,13 @@ const App: React.FC = () => (
     </Input.Group>
     <br />
     <Input.Group compact>
-      <Select defaultValue="Option1">
-        <Option value="Option1">Option1</Option>
-        <Option value="Option2">Option2</Option>
-      </Select>
+      <Select
+        defaultValue="Option1"
+        options={[
+          { label: 'Option1', value: 'Option1' },
+          { label: 'Option2', value: 'Option2' },
+        ]}
+      />
       <Input style={{ width: '50%' }} defaultValue="input content" />
       <InputNumber prefix="@" />
     </Input.Group>
@@ -325,21 +331,30 @@ const App: React.FC = () => (
     </Input.Group>
     <br />
     <Input.Group compact>
-      <Select defaultValue="Option1-1">
-        <Option value="Option1-1">Option1-1</Option>
-        <Option value="Option1-2">Option1-2</Option>
-      </Select>
-      <Select defaultValue="Option2-2">
-        <Option value="Option2-1">Option2-1</Option>
-        <Option value="Option2-2">Option2-2</Option>
-      </Select>
+      <Select
+        defaultValue="Option1-1"
+        options={[
+          { label: 'Option1-1', value: 'Option1-1' },
+          { label: 'Option1-2', value: 'Option1-2' },
+        ]}
+      />
+      <Select
+        defaultValue="Option2-2"
+        options={[
+          { label: 'Option2-1', value: 'Option2-1' },
+          { label: 'Option2-2', value: 'Option2-2' },
+        ]}
+      />
     </Input.Group>
     <br />
     <Input.Group compact>
-      <Select defaultValue="1">
-        <Option value="1">Between</Option>
-        <Option value="2">Except</Option>
-      </Select>
+      <Select
+        defaultValue="1"
+        options={[
+          { label: 'Between', value: '1' },
+          { label: 'Except', value: '2' },
+        ]}
+      />
       <Input style={{ width: 100, textAlign: 'center' }} placeholder="Minimum" />
       <Input
         className="site-input-split"
@@ -354,19 +369,20 @@ const App: React.FC = () => (
       />
       <Input
         className="site-input-right"
-        style={{
-          width: 100,
-          textAlign: 'center',
-        }}
+        style={{ width: 100, textAlign: 'center' }}
         placeholder="Maximum"
       />
     </Input.Group>
     <br />
     <Input.Group compact>
-      <Select defaultValue="Sign Up" style={{ width: '30%' }}>
-        <Option value="Sign Up">Sign Up</Option>
-        <Option value="Sign In">Sign In</Option>
-      </Select>
+      <Select
+        defaultValue="Sign Up"
+        style={{ width: '30%' }}
+        options={[
+          { label: 'Sign Up', value: 'Sign Up' },
+          { label: 'Sign In', value: 'Sign In' },
+        ]}
+      />
       <AutoComplete
         style={{ width: '70%' }}
         placeholder="Email"
@@ -375,10 +391,14 @@ const App: React.FC = () => (
     </Input.Group>
     <br />
     <Input.Group compact>
-      <Select style={{ width: '30%' }} defaultValue="Home">
-        <Option value="Home">Home</Option>
-        <Option value="Company">Company</Option>
-      </Select>
+      <Select
+        style={{ width: '30%' }}
+        defaultValue="Home"
+        options={[
+          { label: 'Home', value: 'Home' },
+          { label: 'Company', value: 'Company' },
+        ]}
+      />
       <Cascader style={{ width: '70%' }} options={options} placeholder="Select Address" />
     </Input.Group>
   </div>
@@ -395,14 +415,7 @@ import { Input, Space } from 'antd';
 import type { GetProps } from 'antd';
 type SearchProps = GetProps<typeof Input.Search>;
 const { Search } = Input;
-const suffix = (
-  <AudioOutlined
-    style={{
-      fontSize: 16,
-      color: '#1677ff',
-    }}
-  />
-);
+const suffix = <AudioOutlined style={{ fontSize: 16, color: '#1677ff' }} />;
 const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
 const App: React.FC = () => (
   <Space direction="vertical">
