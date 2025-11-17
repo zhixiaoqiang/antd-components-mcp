@@ -22,7 +22,7 @@ A Model Context Protocol (MCP) server that provides `Ant Design` component docum
 
 ## Features
 
-- 🚀 Pre-processed data, ready to use (Pre-processed version: `Ant Design V5.28.1 2025/11/10`)
+- 🚀 Pre-processed data, ready to use (Pre-processed version: `Ant Design V5.29.0 2025/11/17`)
   - 🔨 Can extract documentation for the latest/other versions
 - 🔗 List all available `Ant Design` components
   - 📃 Includes component name, description, available versions, and when to use the component

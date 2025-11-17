@@ -161,7 +161,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 紧凑模式
-使用 `Space.Compact` 创建紧凑模式，更多请查看 [Space.Compact](/components/space-cn#spacecompact) 文档。
+使用 Space.Compact 创建紧凑模式，更多请查看 [Space.Compact](/components/space-cn#spacecompact) 文档。
 
 ```tsx
 import React from 'react';
@@ -188,7 +188,8 @@ const App: React.FC = () => (
       <Input style={{ width: '80%' }} defaultValue="26888888" />
     </Space.Compact>
     <Space.Compact>
-      <Search addonBefore="https://" placeholder="input search text" allowClear />
+      <Space.Addon>https://</Space.Addon>
+      <Search placeholder="input search text" allowClear />
     </Space.Compact>
     <Space.Compact style={{ width: '100%' }}>
       <Input defaultValue="Combine input and button" />
@@ -199,7 +200,10 @@ const App: React.FC = () => (
       <Input defaultValue="Xihu District, Hangzhou" />
     </Space.Compact>
     <Space.Compact size="large">
-      <Input addonBefore={<SearchOutlined />} placeholder="large size" />
+      <Space.Addon>
+        <SearchOutlined />
+      </Space.Addon>
+      <Input placeholder="large size" />
       <Input placeholder="another input" />
     </Space.Compact>
   </Space>
@@ -421,13 +425,10 @@ const App: React.FC = () => (
   <Space direction="vertical">
     <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
     <Search placeholder="input search text" allowClear onSearch={onSearch} style={{ width: 200 }} />
-    <Search
-      addonBefore="https://"
-      placeholder="input search text"
-      allowClear
-      onSearch={onSearch}
-      style={{ width: 304 }}
-    />
+    <Space.Compact>
+      <Space.Addon>https://</Space.Addon>
+      <Search placeholder="input search text" allowClear onSearch={onSearch} />
+    </Space.Compact>
     <Search placeholder="input search text" onSearch={onSearch} enterButton />
     <Search
       placeholder="input search text"
