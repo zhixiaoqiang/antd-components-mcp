@@ -1769,6 +1769,7 @@ import {
   InputNumber,
   Row,
   Select,
+  Space,
 } from 'antd';
 import type { DefaultOptionType } from 'antd/es/select';
 interface FormCascaderOption {
@@ -1954,14 +1955,22 @@ const App: React.FC = () => {
         label="Phone Number"
         rules={[{ required: true, message: 'Please input your phone number!' }]}
       >
-        <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+        {/* Demo only, real usage should wrap as custom component */}
+        <Space.Compact block>
+          {prefixSelector}
+          <Input style={{ width: '100%' }} />
+        </Space.Compact>
       </Form.Item>
       <Form.Item
         name="donation"
         label="Donation"
         rules={[{ required: true, message: 'Please input donation amount!' }]}
       >
-        <InputNumber addonAfter={suffixSelector} style={{ width: '100%' }} />
+        {/* Demo only, real usage should wrap as custom component */}
+        <Space.Compact block>
+          <InputNumber style={{ width: '100%' }} />
+          {suffixSelector}
+        </Space.Compact>
       </Form.Item>
       <Form.Item
         name="website"
