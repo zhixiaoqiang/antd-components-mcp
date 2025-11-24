@@ -5,13 +5,13 @@
 ```tsx
 import React from 'react';
 import { CloseCircleOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Tag } from 'antd';
+import { Flex, Tag } from 'antd';
 const preventDefault = (e: React.MouseEvent<HTMLElement>) => {
   e.preventDefault();
   console.log('Clicked! But prevent default.');
 };
 const App: React.FC = () => (
-  <>
+  <Flex gap="small" align="center" wrap>
     <Tag>Tag 1</Tag>
     <Tag>
       <a
@@ -37,7 +37,7 @@ const App: React.FC = () => (
     >
       Tag 3
     </Tag>
-  </>
+  </Flex>
 );
 export default App;
 ```
@@ -47,53 +47,48 @@ export default App;
 ```tsx
 import React from 'react';
 import { Divider, Flex, Tag } from 'antd';
+const variants = ['filled', 'solid', 'outlined'] as const;
+const presets = [
+  'magenta',
+  'red',
+  'volcano',
+  'orange',
+  'gold',
+  'lime',
+  'green',
+  'cyan',
+  'blue',
+  'geekblue',
+  'purple',
+];
+const customs = ['#f50', '#2db7f5', '#87d068', '#108ee9'];
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">Presets</Divider>
-    <Flex gap="4px 0" wrap>
-      <Tag color="magenta">magenta</Tag>
-      <Tag color="red">red</Tag>
-      <Tag color="volcano">volcano</Tag>
-      <Tag color="orange">orange</Tag>
-      <Tag color="gold">gold</Tag>
-      <Tag color="lime">lime</Tag>
-      <Tag color="green">green</Tag>
-      <Tag color="cyan">cyan</Tag>
-      <Tag color="blue">blue</Tag>
-      <Tag color="geekblue">geekblue</Tag>
-      <Tag color="purple">purple</Tag>
-    </Flex>
-    <Divider orientation="left">Custom</Divider>
-    <Flex gap="4px 0" wrap>
-      <Tag color="#f50">#f50</Tag>
-      <Tag color="#2db7f5">#2db7f5</Tag>
-      <Tag color="#87d068">#87d068</Tag>
-      <Tag color="#108ee9">#108ee9</Tag>
-    </Flex>
+    {variants.map((variant) => (
+      <div key={variant}>
+        <Divider titlePlacement="start">Presets ({variant})</Divider>
+        <Flex gap="small" align="center" wrap>
+          {presets.map((color) => (
+            <Tag key={color} color={color} variant={variant}>
+              {color}
+            </Tag>
+          ))}
+        </Flex>
+      </div>
+    ))}
+    {variants.map((variant) => (
+      <div key={variant}>
+        <Divider titlePlacement="start">Custom ({variant})</Divider>
+        <Flex gap="small" align="center" wrap>
+          {customs.map((color) => (
+            <Tag key={color} color={color} variant={variant}>
+              {color}
+            </Tag>
+          ))}
+        </Flex>
+      </div>
+    ))}
   </>
-);
-export default App;
-```
-### 反色多彩标签
-内部反色标签
-
-```tsx
-import React from 'react';
-import { Flex, Tag } from 'antd';
-const App: React.FC = () => (
-  <Flex gap="4px 0" wrap>
-    <Tag color="magenta-inverse">magenta</Tag>
-    <Tag color="red-inverse">red</Tag>
-    <Tag color="volcano-inverse">volcano</Tag>
-    <Tag color="orange-inverse">orange</Tag>
-    <Tag color="gold-inverse">gold</Tag>
-    <Tag color="lime-inverse">lime</Tag>
-    <Tag color="green-inverse">green</Tag>
-    <Tag color="cyan-inverse">cyan</Tag>
-    <Tag color="blue-inverse">blue</Tag>
-    <Tag color="geekblue-inverse">geekblue</Tag>
-    <Tag color="purple-inverse">purple</Tag>
-  </Flex>
 );
 export default App;
 ```
@@ -162,7 +157,7 @@ const App: React.FC = () => {
     borderStyle: 'dashed',
   };
   return (
-    <Flex gap="4px 0" wrap>
+    <Flex gap="small" align="center" wrap>
       {tags.map<React.ReactNode>((tag, index) => {
         if (editInputIndex === index) {
           return (
@@ -229,35 +224,40 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 可选择标签
-可通过 `CheckableTag` 实现类似 Checkbox 的效果，点击切换选中效果。
-> 该组件为完全受控组件，不支持非受控用法。
+可通过 `CheckableTag` 实现类似 Checkbox 的效果，点击切换选中效果。而 `CheckableTagGroup` 则提供了类似 `CheckboxGroup` 或 `RadioGroup` 的功能。
+> `CheckableTag` 为完全受控组件，不支持非受控用法。
 
 ```tsx
-import React from 'react';
-import { Flex, Tag } from 'antd';
+import React, { useState } from 'react';
+import { Form, Tag } from 'antd';
 const tagsData = ['Movies', 'Books', 'Music', 'Sports'];
 const App: React.FC = () => {
-  const [selectedTags, setSelectedTags] = React.useState<string[]>(['Movies']);
-  const handleChange = (tag: string, checked: boolean) => {
-    const nextSelectedTags = checked
-      ? [...selectedTags, tag]
-      : selectedTags.filter((t) => t !== tag);
-    console.log('You are interested in: ', nextSelectedTags);
-    setSelectedTags(nextSelectedTags);
-  };
+  const [checked, setChecked] = useState(true);
+  const [singleSelected, setSingleSelected] = useState<string | null>('Books');
+  const [multipleSelected, setMultipleSelected] = useState<string[]>(['Movies', 'Music']);
   return (
-    <Flex gap={4} wrap align="center">
-      <span>Categories:</span>
-      {tagsData.map<React.ReactNode>((tag) => (
-        <Tag.CheckableTag
-          key={tag}
-          checked={selectedTags.includes(tag)}
-          onChange={(checked) => handleChange(tag, checked)}
-        >
-          {tag}
+    <Form labelCol={{ span: 6 }}>
+      <Form.Item label="Checkable">
+        <Tag.CheckableTag checked={checked} onChange={(val) => setChecked(val)}>
+          Yes
         </Tag.CheckableTag>
-      ))}
-    </Flex>
+      </Form.Item>
+      <Form.Item label="Single">
+        <Tag.CheckableTagGroup
+          options={tagsData}
+          value={singleSelected}
+          onChange={(val) => setSingleSelected(val)}
+        />
+      </Form.Item>
+      <Form.Item label="Multiple">
+        <Tag.CheckableTagGroup
+          multiple
+          options={tagsData}
+          value={multipleSelected}
+          onChange={(val) => setMultipleSelected(val)}
+        />
+      </Form.Item>
+    </Form>
   );
 };
 export default App;
@@ -271,6 +271,13 @@ import { PlusOutlined } from '@ant-design/icons';
 import type { InputRef } from 'antd';
 import { Input, Tag, theme } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
+const tagGroupStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  gap: 8,
+  marginBottom: 8,
+};
 const App: React.FC = () => {
   const { token } = theme.useToken();
   const [tags, setTags] = useState(['Tag 1', 'Tag 2', 'Tag 3']);
@@ -300,40 +307,36 @@ const App: React.FC = () => {
     setInputVisible(false);
     setInputValue('');
   };
-  const forMap = (tag: string) => (
-    <span key={tag} style={{ display: 'inline-block' }}>
-      <Tag
-        closable
-        onClose={(e) => {
-          e.preventDefault();
-          handleClose(tag);
-        }}
-      >
-        {tag}
-      </Tag>
-    </span>
-  );
-  const tagChild = tags.map(forMap);
   const tagPlusStyle: React.CSSProperties = {
     background: token.colorBgContainer,
     borderStyle: 'dashed',
   };
   return (
     <>
-      <div style={{ marginBottom: 16 }}>
-        <TweenOneGroup
-          appear={false}
-          enter={{ scale: 0.8, opacity: 0, type: 'from', duration: 100 }}
-          leave={{ opacity: 0, width: 0, scale: 0, duration: 200 }}
-          onEnd={(e) => {
-            if (e.type === 'appear' || e.type === 'enter') {
-              (e.target as any).style = 'display: inline-block';
-            }
-          }}
-        >
-          {tagChild}
-        </TweenOneGroup>
-      </div>
+      <TweenOneGroup
+        appear={false}
+        style={tagGroupStyle}
+        enter={{ scale: 0.8, opacity: 0, type: 'from', duration: 100 }}
+        leave={{ opacity: 0, width: 0, scale: 0, duration: 200 }}
+        onEnd={(e) => {
+          if (e.type === 'appear' || e.type === 'enter') {
+            (e.target as any).style = 'display: inline-block';
+          }
+        }}
+      >
+        {tags.map((tag) => (
+          <Tag
+            key={tag}
+            closable
+            onClose={(e) => {
+              e.preventDefault();
+              handleClose(tag);
+            }}
+          >
+            {tag}
+          </Tag>
+        ))}
+      </TweenOneGroup>
       {inputVisible ? (
         <Input
           ref={inputRef}
@@ -377,7 +380,7 @@ const App: React.FC = () => {
   };
   return (
     <>
-      <Divider orientation="left">Tag with icon</Divider>
+      <Divider titlePlacement="start">Tag with icon</Divider>
       <Flex gap="4px 0" wrap align="center">
         <Tag icon={<TwitterOutlined />} color="#55acee">
           Twitter
@@ -392,10 +395,10 @@ const App: React.FC = () => {
           LinkedIn
         </Tag>
       </Flex>
-      <Divider orientation="left">CheckableTag with icon</Divider>
+      <Divider titlePlacement="start">CheckableTag with icon</Divider>
       <Flex gap="4px 0" wrap align="center">
         <Tag.CheckableTag
-          icon={<TwitterOutlined />} // `icon` available since `5.27.0`
+          icon={<TwitterOutlined />}
           checked={checked[0]}
           onChange={(checked) => handleChange(0, checked)}
         >
@@ -438,174 +441,33 @@ import {
   ClockCircleOutlined,
   CloseCircleOutlined,
   ExclamationCircleOutlined,
-  MinusCircleOutlined,
   SyncOutlined,
 } from '@ant-design/icons';
 import { Divider, Flex, Tag } from 'antd';
+const variants = ['filled', 'solid', 'outlined'] as const;
+const presets = [
+  { status: 'success', icon: <CheckCircleOutlined /> },
+  { status: 'processing', icon: <SyncOutlined spin /> },
+  { status: 'warning', icon: <ExclamationCircleOutlined /> },
+  { status: 'error', icon: <CloseCircleOutlined /> },
+  { status: 'default', icon: <ClockCircleOutlined /> },
+];
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">Without icon</Divider>
-    <Flex gap="4px 0" wrap>
-      <Tag color="success">success</Tag>
-      <Tag color="processing">processing</Tag>
-      <Tag color="error">error</Tag>
-      <Tag color="warning">warning</Tag>
-      <Tag color="default">default</Tag>
-    </Flex>
-    <Divider orientation="left">With icon</Divider>
-    <Flex gap="4px 0" wrap>
-      <Tag icon={<CheckCircleOutlined />} color="success">
-        success
-      </Tag>
-      <Tag icon={<SyncOutlined spin />} color="processing">
-        processing
-      </Tag>
-      <Tag icon={<CloseCircleOutlined />} color="error">
-        error
-      </Tag>
-      <Tag icon={<ExclamationCircleOutlined />} color="warning">
-        warning
-      </Tag>
-      <Tag icon={<ClockCircleOutlined />} color="default">
-        waiting
-      </Tag>
-      <Tag icon={<MinusCircleOutlined />} color="default">
-        stop
-      </Tag>
-    </Flex>
+    {variants.map((variant) => (
+      <div key={variant}>
+        <Divider titlePlacement="start">Status ({variant})</Divider>
+        <Flex gap="small" align="center" wrap>
+          {presets.map(({ status, icon }) => (
+            <Tag key={status} color={status} icon={icon} variant={variant}>
+              {status}
+            </Tag>
+          ))}
+        </Flex>
+      </div>
+    ))}
   </>
 );
-export default App;
-```
-### 无边框
-无边框模式。
-
-```tsx
-import React from 'react';
-import { Divider, Flex, Tag } from 'antd';
-const App: React.FC = () => (
-  <>
-    <Flex gap="4px 0" wrap>
-      <Tag bordered={false}>Tag 1</Tag>
-      <Tag bordered={false}>Tag 2</Tag>
-      <Tag bordered={false} closable>
-        Tag 3
-      </Tag>
-      <Tag bordered={false} closable>
-        Tag 4
-      </Tag>
-    </Flex>
-    <Divider />
-    <Flex gap="4px 0" wrap>
-      <Tag bordered={false} color="processing">
-        processing
-      </Tag>
-      <Tag bordered={false} color="success">
-        success
-      </Tag>
-      <Tag bordered={false} color="error">
-        error
-      </Tag>
-      <Tag bordered={false} color="warning">
-        warning
-      </Tag>
-      <Tag bordered={false} color="magenta">
-        magenta
-      </Tag>
-      <Tag bordered={false} color="red">
-        red
-      </Tag>
-      <Tag bordered={false} color="volcano">
-        volcano
-      </Tag>
-      <Tag bordered={false} color="orange">
-        orange
-      </Tag>
-      <Tag bordered={false} color="gold">
-        gold
-      </Tag>
-      <Tag bordered={false} color="lime">
-        lime
-      </Tag>
-      <Tag bordered={false} color="green">
-        green
-      </Tag>
-      <Tag bordered={false} color="cyan">
-        cyan
-      </Tag>
-      <Tag bordered={false} color="blue">
-        blue
-      </Tag>
-      <Tag bordered={false} color="geekblue">
-        geekblue
-      </Tag>
-      <Tag bordered={false} color="purple">
-        purple
-      </Tag>
-    </Flex>
-  </>
-);
-export default App;
-```
-### 深色背景中无边框
-深色背景中的无边框模式。
-
-```tsx
-import React from 'react';
-import { Divider, Flex, Tag, theme } from 'antd';
-const App: React.FC = () => {
-  const { token } = theme.useToken();
-  return (
-    <div style={{ backgroundColor: token.colorBgLayout, padding: token.padding }}>
-      <Flex gap="4px 0" wrap>
-        <Tag bordered={false}>Tag 1</Tag>
-        <Tag bordered={false}>Tag 2</Tag>
-        <Tag bordered={false} closable>
-          Tag 3
-        </Tag>
-        <Tag bordered={false} closable>
-          Tag 4
-        </Tag>
-      </Flex>
-      <Divider />
-      <Flex gap="4px 0" wrap>
-        <Tag bordered={false} color="magenta">
-          magenta
-        </Tag>
-        <Tag bordered={false} color="red">
-          red
-        </Tag>
-        <Tag bordered={false} color="volcano">
-          volcano
-        </Tag>
-        <Tag bordered={false} color="orange">
-          orange
-        </Tag>
-        <Tag bordered={false} color="gold">
-          gold
-        </Tag>
-        <Tag bordered={false} color="lime">
-          lime
-        </Tag>
-        <Tag bordered={false} color="green">
-          green
-        </Tag>
-        <Tag bordered={false} color="cyan">
-          cyan
-        </Tag>
-        <Tag bordered={false} color="blue">
-          blue
-        </Tag>
-        <Tag bordered={false} color="geekblue">
-          geekblue
-        </Tag>
-        <Tag bordered={false} color="purple">
-          purple
-        </Tag>
-      </Flex>
-    </div>
-  );
-};
 export default App;
 ```
 ### 自定义关闭按钮
@@ -616,7 +478,7 @@ import React from 'react';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { Flex, Tag } from 'antd';
 const App: React.FC = () => (
-  <Flex gap="4px 0" wrap>
+  <Flex gap="small" align="center" wrap>
     <Tag closable closeIcon="关 闭">
       Tag1
     </Tag>
@@ -691,7 +553,7 @@ const App: React.FC = () => {
   return (
     <DndContext sensors={sensors} onDragEnd={handleDragEnd} collisionDetection={closestCenter}>
       <SortableContext items={items} strategy={horizontalListSortingStrategy}>
-        <Flex gap="4px 0" wrap>
+        <Flex gap="small" align="center" wrap>
           {items.map<React.ReactNode>((item) => (
             <DraggableTag tag={item} key={item.id} />
           ))}
@@ -703,50 +565,287 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 组件 Token
-Component Token Debug.
+组件 Token 调试使用。
 
 ```tsx
 import React from 'react';
 import { CloseCircleOutlined, SyncOutlined } from '@ant-design/icons';
-import { ConfigProvider, Flex, Tag } from 'antd';
+import { ConfigProvider, Flex, Tag, theme } from 'antd';
 const App: React.FC = () => (
-  <ConfigProvider
-    theme={{ components: { Tag: { defaultBg: '#f9f0ff', defaultColor: '#4b34d3' } } }}
-  >
-    <Flex gap="4px 0" wrap>
-      <Tag>
-        <a
-          href="https://github.com/ant-design/ant-design/issues/1862"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Link
-        </a>
-      </Tag>
-      <Tag bordered={false}>
-        <a
-          href="https://github.com/ant-design/ant-design/issues/1862"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Link
-        </a>
-      </Tag>
-      <Tag closable color="magenta">
-        Tag 2
-      </Tag>
-      <Tag icon={<CloseCircleOutlined />} color="error">
-        error
-      </Tag>
-      <Tag color="red-inverse">red</Tag>
-      <Tag bordered={false} color="magenta">
-        magenta
-      </Tag>
-      <Tag icon={<SyncOutlined spin />} color="processing">
-        processing
-      </Tag>
-    </Flex>
-  </ConfigProvider>
+  <Flex vertical gap="small" align="start">
+    <ConfigProvider
+      theme={{
+        components: {
+          Tag: { defaultBg: '#f9f0ff', defaultColor: '#4b34d3', colorBorderDisabled: '#FF0000' },
+        },
+      }}
+    >
+      <Flex gap="small" align="center" wrap>
+        <Tag>
+          <a
+            href="https://github.com/ant-design/ant-design/issues/1862"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Link
+          </a>
+        </Tag>
+        <Tag variant="filled">
+          <a
+            href="https://github.com/ant-design/ant-design/issues/1862"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Link
+          </a>
+        </Tag>
+        <Tag closable color="magenta">
+          Tag 2
+        </Tag>
+        <Tag icon={<CloseCircleOutlined />} color="error">
+          error
+        </Tag>
+        <Tag color="red" variant="solid">
+          red
+        </Tag>
+        <Tag variant="filled" color="magenta">
+          magenta
+        </Tag>
+        <Tag icon={<SyncOutlined spin />} color="processing">
+          processing
+        </Tag>
+        <Tag color="success" disabled>
+          disabled
+        </Tag>
+      </Flex>
+    </ConfigProvider>
+    <ConfigProvider
+      theme={{
+        algorithm: theme.darkAlgorithm,
+      }}
+    >
+      <Flex
+        gap="small"
+        align="center"
+        wrap
+        style={{
+          background: '#000',
+          padding: 4,
+        }}
+      >
+        <Tag variant="solid" color="default">
+          Dark
+        </Tag>
+      </Flex>
+    </ConfigProvider>
+  </Flex>
 );
+export default App;
+```
+### 禁用标签
+设置 `disabled` 属性后，标签将不可用。
+
+```tsx
+import React, { useState } from 'react';
+import { Flex, message, Tag } from 'antd';
+import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+const { CheckableTag } = Tag;
+const App: React.FC = () => {
+  const [selectedTags, setSelectedTags] = useState<string[]>(['Books']);
+  const handleClose = (tagName: string) => {
+    console.log(`Tag ${tagName} closed`);
+    message.info(`Tag ${tagName} closed`);
+  };
+  const handleCheckableChange = (tag: string, checked: boolean) => {
+    const nextSelectedTags = checked
+      ? [...selectedTags, tag]
+      : selectedTags.filter((t) => t !== tag);
+    setSelectedTags(nextSelectedTags);
+    message.info(`${tag} is ${checked ? 'checked' : 'unchecked'}`);
+  };
+  return (
+    <Flex vertical gap="middle">
+      <Flex gap="small" wrap>
+        <Tag disabled>Basic Tag</Tag>
+        <Tag disabled>
+          <a href="https://ant.design">Link Tag</a>
+        </Tag>
+        <Tag disabled href="https://ant.design">
+          Href Tag
+        </Tag>
+        <Tag disabled color="success" icon={<CheckCircleOutlined />}>
+          Icon Tag
+        </Tag>
+      </Flex>
+      <Flex gap="small" wrap>
+        <Tag disabled color="red">
+          Preset Color Red
+        </Tag>
+        <Tag disabled color="#f50">
+          Custom Color #f50 Outlined
+        </Tag>
+        <Tag disabled color="#f50" variant="solid">
+          Custom Color #f50 Filled
+        </Tag>
+        <Tag disabled color="#f50" variant="filled">
+          Custom Color #f50 Borderless
+        </Tag>
+        <Tag disabled color="success">
+          Preset Status Success
+        </Tag>
+      </Flex>
+      <Flex gap="small" wrap>
+        {['Books', 'Movies', 'Music'].map((tag) => (
+          <CheckableTag
+            key={tag}
+            disabled
+            checked={selectedTags.includes(tag)}
+            onChange={(checked) => handleCheckableChange(tag, checked)}
+          >
+            {tag}
+          </CheckableTag>
+        ))}
+      </Flex>
+      <Flex gap="small" wrap>
+        <Tag disabled closable onClose={() => handleClose('Closable')}>
+          Closable Tag
+        </Tag>
+        <Tag
+          disabled
+          closable
+          color="success"
+          icon={<CheckCircleOutlined />}
+          onClose={() => handleClose('Closable Success')}
+        >
+          Closable with Icon
+        </Tag>
+        <Tag disabled closable closeIcon={<CloseCircleOutlined />}>
+          Closable with Custom Icon
+        </Tag>
+      </Flex>
+      <Flex gap="small" wrap>
+        <Tag disabled variant="filled">
+          Borderless Basic
+        </Tag>
+        <Tag disabled variant="filled" color="success" icon={<CheckCircleOutlined />}>
+          Borderless with Icon
+        </Tag>
+        <Tag disabled variant="filled" closable onClose={() => handleClose('Borderless Closable')}>
+          Borderless Closable
+        </Tag>
+      </Flex>
+    </Flex>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Tag 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import { Flex, Space, Tag } from 'antd';
+import type { GetProps, TagProps } from 'antd';
+import { createStyles } from 'antd-style';
+type CheckableTagGroupProps = GetProps<typeof Tag.CheckableTagGroup>;
+const useStyles = createStyles(() => ({
+  root: {
+    padding: '2px 6px',
+    borderRadius: 4,
+  },
+}));
+const styles: TagProps['styles'] = {
+  root: {
+    backgroundColor: '#e6f7ff',
+  },
+  icon: {
+    color: '#52c41a',
+  },
+  content: {
+    color: '#262626',
+  },
+};
+const stylesFn: TagProps['styles'] = (info) => {
+  if (info.props.variant === 'filled') {
+    return {
+      root: {
+        backgroundColor: '#F5EFFF',
+      },
+      icon: {
+        color: '#8F87F1',
+      },
+      content: {
+        color: '#8F87F1',
+      },
+    } satisfies TagProps['styles'];
+  }
+};
+const groupStyles: CheckableTagGroupProps['styles'] = {
+  root: {
+    gap: 12,
+    padding: '8px 12px',
+    backgroundColor: 'rgba(82, 196, 26, 0.08)',
+    borderRadius: 8,
+  },
+  item: {
+    backgroundColor: 'rgba(82, 196, 26, 0.1)',
+    borderColor: 'rgba(82, 196, 26, 0.3)',
+    color: '#52c41a',
+  },
+};
+const groupStylesFn: CheckableTagGroupProps['styles'] = (info) => {
+  const { multiple } = info.props;
+  if (multiple) {
+    return {
+      root: {
+        gap: 16,
+        padding: '8px 12px',
+        backgroundColor: 'rgba(143, 135, 241, 0.08)',
+        borderRadius: 8,
+      },
+      item: {
+        backgroundColor: 'rgba(143, 135, 241, 0.1)',
+        borderColor: 'rgba(143, 135, 241, 0.3)',
+        color: '#8F87F1',
+        fontWeight: 500,
+      },
+    } satisfies CheckableTagGroupProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <Space size="large" vertical>
+      <Flex gap="middle">
+        <Tag classNames={classNames} styles={styles} icon={<CheckCircleOutlined />}>
+          Object
+        </Tag>
+        <Tag
+          variant="filled"
+          classNames={classNames}
+          styles={stylesFn}
+          icon={<CloseCircleOutlined />}
+        >
+          Function
+        </Tag>
+      </Flex>
+      <Flex vertical gap="middle">
+        <Tag.CheckableTagGroup
+          classNames={classNames}
+          styles={groupStyles}
+          options={['React', 'Vue', 'Angular']}
+        />
+        <Tag.CheckableTagGroup
+          classNames={classNames}
+          styles={groupStylesFn}
+          options={['meet-student', 'thinkasany']}
+          multiple
+        />
+      </Flex>
+    </Space>
+  );
+};
 export default App;
 ```

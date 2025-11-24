@@ -43,7 +43,7 @@ export default App;
 import React, { useState } from 'react';
 import type { CarouselProps, RadioChangeEvent } from 'antd';
 import { Carousel, Radio } from 'antd';
-type DotPosition = CarouselProps['dotPosition'];
+type DotPlacement = CarouselProps['dotPlacement'];
 const contentStyle: React.CSSProperties = {
   margin: 0,
   height: '160px',
@@ -53,19 +53,19 @@ const contentStyle: React.CSSProperties = {
   background: '#364d79',
 };
 const App: React.FC = () => {
-  const [dotPosition, setDotPosition] = useState<DotPosition>('top');
+  const [dotPlacement, setDotPlacement] = useState<DotPlacement>('top');
   const handlePositionChange = ({ target: { value } }: RadioChangeEvent) => {
-    setDotPosition(value);
+    setDotPlacement(value);
   };
   return (
     <>
-      <Radio.Group onChange={handlePositionChange} value={dotPosition} style={{ marginBottom: 8 }}>
+      <Radio.Group onChange={handlePositionChange} value={dotPlacement} style={{ marginBottom: 8 }}>
         <Radio.Button value="top">Top</Radio.Button>
         <Radio.Button value="bottom">Bottom</Radio.Button>
-        <Radio.Button value="left">Left</Radio.Button>
-        <Radio.Button value="right">Right</Radio.Button>
+        <Radio.Button value="start">Start</Radio.Button>
+        <Radio.Button value="end">End</Radio.Button>
       </Radio.Group>
-      <Carousel dotPosition={dotPosition}>
+      <Carousel dotPlacement={dotPlacement}>
         <div>
           <h3 style={contentStyle}>1</h3>
         </div>
@@ -179,7 +179,7 @@ const App: React.FC = () => (
       </div>
     </Carousel>
     <br />
-    <Carousel arrows dotPosition="left" infinite={false}>
+    <Carousel arrows dotPlacement="start" infinite={false}>
       <div>
         <h3 style={contentStyle}>1</h3>
       </div>

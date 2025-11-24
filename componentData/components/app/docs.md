@@ -10,7 +10,7 @@ import { App } from 'antd';
 const MyPage: React.FC = () => {
   const { message, notification, modal } = App.useApp();
   message.success('Good!');
-  notification.info({ message: 'Good' });
+  notification.info({ title: 'Good' });
   modal.warning({ title: 'Good' });
   // ....
   // other message, notification, modal static function

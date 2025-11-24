@@ -26,7 +26,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 带文字的分割线
-分割线中带有文字，可以用 `orientation` 指定文字位置。
+分割线中带有文字，可以用 `titlePlacement` 指定文字位置。
 
 ```tsx
 import React from 'react';
@@ -42,25 +42,25 @@ const App: React.FC = () => (
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="left">Left Text</Divider>
+    <Divider titlePlacement="start">Left Text</Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="right">Right Text</Divider>
+    <Divider titlePlacement="end">Right Text</Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="left" orientationMargin="0">
-      Left Text with 0 orientationMargin
+    <Divider titlePlacement="start" styles={{ content: { margin: 0 } }}>
+      Left Text margin with 0
     </Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="right" orientationMargin={50}>
-      Right Text with 50px orientationMargin
+    <Divider titlePlacement="end" styles={{ content: { margin: '0 50px' } }}>
+      Right Text margin with 50px
     </Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
@@ -118,14 +118,14 @@ const App: React.FC = () => (
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="left" plain>
+    <Divider titlePlacement="start" plain>
       Left Text
     </Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="right" plain>
+    <Divider titlePlacement="end" plain>
       Right Text
     </Divider>
     <p>
@@ -137,7 +137,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 垂直分割线
-使用 `type="vertical"` 设置为行内的垂直分割线。
+使用 `orientation="vertical"` 或者 `vertical` 设置为行内的垂直分割线。
 
 ```tsx
 import React from 'react';
@@ -145,9 +145,9 @@ import { Divider } from 'antd';
 const App: React.FC = () => (
   <>
     Text
-    <Divider type="vertical" />
+    <Divider orientation="vertical" />
     <a href="#">Link</a>
-    <Divider type="vertical" />
+    <Divider vertical />
     <a href="#">Link</a>
   </>
 );
@@ -166,10 +166,10 @@ const App: React.FC = () => (
     <Divider style={{ borderColor: '#7cb305' }} dashed>
       Text
     </Divider>
-    <Divider type="vertical" style={{ height: 60, borderColor: '#7cb305' }} />
-    <Divider type="vertical" style={{ height: 60, borderColor: '#7cb305' }} dashed />
+    <Divider vertical style={{ height: 60, borderColor: '#7cb305' }} />
+    <Divider vertical style={{ height: 60, borderColor: '#7cb305' }} dashed />
     <div style={{ display: 'flex', flexDirection: 'column', height: 50, boxShadow: '0 0 1px red' }}>
-      <Divider style={{ background: 'rgba(0,255,0,0.05)' }} orientation="left">
+      <Divider style={{ background: 'rgba(0,255,0,0.05)' }} titlePlacement="start">
         Text
       </Divider>
     </div>
@@ -210,25 +210,25 @@ const App: React.FC = () => (
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="left">Left Text</Divider>
+    <Divider titlePlacement="start">Left Text</Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="right">Right Text</Divider>
+    <Divider titlePlacement="end">Right Text</Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="left" orientationMargin="0">
-      Left Text with 0 orientationMargin
+    <Divider titlePlacement="start" styles={{ content: { margin: 0 } }}>
+      Left Text margin with 0
     </Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
-    <Divider orientation="right" orientationMargin={50}>
-      Right Text with 50px orientationMargin
+    <Divider titlePlacement="end" styles={{ content: { margin: '0 50px' } }}>
+      Right Text margin with 50px
     </Divider>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
@@ -270,6 +270,57 @@ const App: React.FC = () => (
       probare, quae sunt a te dicta? Refert tamen, quo modo.
     </p>
   </>
+);
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义分割线的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Divider } from 'antd';
+import type { DividerProps } from 'antd';
+const classNamesObject: DividerProps['classNames'] = {
+  root: 'demo-divider-root',
+  content: 'demo-divider-content',
+  rail: 'demo-divider-rail',
+};
+const classNamesFn: DividerProps['classNames'] = (info) => {
+  if (info.props.titlePlacement === 'start') {
+    return {
+      root: 'demo-divider-root--start',
+    } satisfies DividerProps['classNames'];
+  }
+  return {
+    root: 'demo-divider-root--default',
+  } satisfies DividerProps['classNames'];
+};
+const stylesObject: DividerProps['styles'] = {
+  root: { borderWidth: 2, borderStyle: 'dashed' },
+  content: { fontStyle: 'italic' },
+  rail: { opacity: 0.85 },
+};
+const stylesFn: DividerProps['styles'] = (info) => {
+  if (info.props.size === 'small') {
+    return {
+      root: { opacity: 0.6, cursor: 'default' },
+    } satisfies DividerProps['styles'];
+  }
+  return {
+    root: { backgroundColor: '#fafafa', borderColor: '#d9d9d9' },
+  } satisfies DividerProps['styles'];
+};
+const App: React.FC = () => (
+  <div>
+    <Divider classNames={classNamesObject}>classNames Object</Divider>
+    <Divider titlePlacement="start" classNames={classNamesFn}>
+      classNames Function
+    </Divider>
+    <Divider styles={stylesObject}>styles Object</Divider>
+    <Divider size="small" styles={stylesFn}>
+      styles Function
+    </Divider>
+  </div>
 );
 export default App;
 ```

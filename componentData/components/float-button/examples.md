@@ -49,7 +49,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 描述
-可以通过 `description` 设置文字内容。
+可以通过 `content` 设置文字内容。
 > 仅当 `shape` 属性为 `square` 时支持。由于空间较小，推荐使用比较精简的双数文字。
 
 ```tsx
@@ -60,14 +60,14 @@ const App: React.FC = () => (
   <>
     <FloatButton
       icon={<FileTextOutlined />}
-      description="HELP INFO"
+      content="HELP INFO"
       shape="square"
       style={{ insetInlineEnd: 24 }}
     />
-    <FloatButton description="HELP INFO" shape="square" style={{ insetInlineEnd: 94 }} />
+    <FloatButton content="HELP INFO" shape="square" style={{ insetInlineEnd: 94 }} />
     <FloatButton
       icon={<FileTextOutlined />}
-      description="HELP"
+      content="HELP"
       shape="square"
       style={{ insetInlineEnd: 164 }}
     />
@@ -332,6 +332,66 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 FloatButton 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import { FloatButton } from 'antd';
+import type { FloatButtonProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    border: `1px solid ${token.colorBorder}`,
+    borderRadius: token.borderRadius,
+    padding: `${token.paddingXS}px ${token.padding}px`,
+    height: 'auto',
+  },
+  content: {
+    color: token.colorText,
+  },
+}));
+const stylesObject: FloatButtonProps['styles'] = {
+  root: {
+    boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)',
+  },
+};
+const stylesFn: FloatButtonProps['styles'] = (info) => {
+  if (info.props.type === 'primary') {
+    return {
+      root: {
+        backgroundColor: '#171717',
+      },
+      content: {
+        color: '#fff',
+      },
+    } satisfies FloatButtonProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <FloatButton.Group shape="circle" style={{ insetInlineEnd: 24 + 70 }}>
+      <FloatButton
+        type="primary"
+        classNames={classNames}
+        href="https://ant.design/index-cn"
+        styles={stylesFn}
+        tooltip={<div>custom style class</div>}
+      />
+      <FloatButton
+        type="default"
+        classNames={classNames}
+        styles={stylesObject}
+        icon={<QuestionCircleOutlined />}
+      />
+    </FloatButton.Group>
+  );
+};
+export default App;
+```
 ### \_InternalPanelDoNotUseOrYouWillBeFired
 调试用组件，请勿直接使用。
 
@@ -347,7 +407,7 @@ const App: React.FC = () => (
     <InternalFloatButton icon={<CustomerServiceOutlined />} />
     <InternalFloatButton
       icon={<QuestionCircleOutlined />}
-      description="HELP"
+      content="HELP"
       shape="square"
       type="primary"
     />

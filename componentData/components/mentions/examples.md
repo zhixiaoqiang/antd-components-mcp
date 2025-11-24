@@ -37,6 +37,21 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 尺寸
+通过 `size` 属性配置大小。
+
+```tsx
+import React from 'react';
+import { Flex, Mentions } from 'antd';
+const App: React.FC = () => (
+  <Flex vertical gap="middle">
+    <Mentions size="large" placeholder="large size" />
+    <Mentions placeholder="default size" />
+    <Mentions size="small" placeholder="small size" />
+  </Flex>
+);
+export default App;
+```
 ### 形态变体
 Mentions 形态变体，可选 `outlined` `filled` `borderless` `underlined` 四种形态。
 
@@ -115,6 +130,10 @@ export default App;
 import React from 'react';
 import { Button, Form, Mentions, Space } from 'antd';
 const { getMentions } = Mentions;
+const formItemLayout = {
+  labelCol: { span: 6 },
+  wrapperCol: { span: 16 },
+};
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const onReset = () => {
@@ -135,14 +154,8 @@ const App: React.FC = () => {
     }
   };
   return (
-    <Form form={form} layout="horizontal" onFinish={onFinish}>
-      <Form.Item
-        name="coders"
-        label="Top coders"
-        labelCol={{ span: 6 }}
-        wrapperCol={{ span: 16 }}
-        rules={[{ validator: checkMention }]}
-      >
+    <Form form={form} layout="horizontal" onFinish={onFinish} {...formItemLayout}>
+      <Form.Item name="coders" label="Top coders" rules={[{ validator: checkMention }]}>
         <Mentions
           rows={1}
           options={[
@@ -161,13 +174,7 @@ const App: React.FC = () => {
           ]}
         />
       </Form.Item>
-      <Form.Item
-        name="bio"
-        label="Bio"
-        labelCol={{ span: 6 }}
-        wrapperCol={{ span: 16 }}
-        rules={[{ required: true }]}
-      >
+      <Form.Item name="bio" label="Bio" rules={[{ required: true }]}>
         <Mentions
           rows={3}
           placeholder="You can use @ to ref user here"
@@ -187,7 +194,7 @@ const App: React.FC = () => {
           ]}
         />
       </Form.Item>
-      <Form.Item wrapperCol={{ span: 14, offset: 6 }}>
+      <Form.Item label={null}>
         <Space wrap>
           <Button htmlType="submit" type="primary">
             Submit
@@ -349,6 +356,65 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### debug 自动大小
+autoSize debug
+
+```tsx
+import React from 'react';
+import { Flex, Mentions } from 'antd';
+import type { GetProp, MentionProps } from 'antd';
+type MentionsOptionProps = GetProp<MentionProps, 'options'>[number];
+const onChange = (value: string) => {
+  console.log('Change:', value);
+};
+const onSelect = (option: MentionsOptionProps) => {
+  console.log('select', option);
+};
+const App: React.FC = () => (
+  <Flex vertical gap={32}>
+    <Mentions
+      onChange={onChange}
+      onSelect={onSelect}
+      placeholder="can resize"
+      options={[
+        {
+          value: 'afc163',
+          label: 'afc163',
+        },
+        {
+          value: 'zombieJ',
+          label: 'zombieJ',
+        },
+        {
+          value: 'yesmeck',
+          label: 'yesmeck',
+        },
+      ]}
+    />
+    <Mentions
+      onChange={onChange}
+      onSelect={onSelect}
+      placeholder="disable resize"
+      style={{ resize: 'none' }}
+      options={[
+        {
+          value: 'afc163',
+          label: 'afc163',
+        },
+        {
+          value: 'zombieJ',
+          label: 'zombieJ',
+        },
+        {
+          value: 'yesmeck',
+          label: 'yesmeck',
+        },
+      ]}
+    />
+  </Flex>
+);
+export default App;
+```
 ### 自定义状态
 使用 `status` 为 Mentions 添加状态。可选 `error` 或者 `warning`。
 
@@ -379,7 +445,7 @@ const App: React.FC = () => {
     },
   ];
   return (
-    <Space direction="vertical">
+    <Space vertical>
       <Mentions
         onChange={onChange}
         onSelect={onSelect}
@@ -395,6 +461,61 @@ const App: React.FC = () => {
         options={options}
       />
     </Space>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Mentions 的[语义化结构](#semantic-dom)样式，例如设置文本框可缩放。
+
+```tsx
+import React from 'react';
+import { Flex, Mentions } from 'antd';
+import type { MentionsProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    border: `1px solid ${token.colorPrimary}`,
+    borderRadius: 8,
+    width: 300,
+  },
+}));
+const options: MentionsProps['options'] = [
+  { value: 'afc163', label: 'afc163' },
+  { value: 'zombieJ', label: 'zombieJ' },
+  { value: 'meet-student', label: 'meet-student' },
+  { value: 'thinkasany', label: 'thinkasany' },
+];
+const stylesObject: MentionsProps['styles'] = {
+  textarea: {
+    fontSize: 14,
+    resize: 'vertical',
+    fontWeight: 200,
+  },
+};
+const stylesFunction: MentionsProps['styles'] = (info) => {
+  if (info.props.variant === 'filled') {
+    return {
+      root: {
+        border: '1px solid #722ed1',
+      },
+      popup: {
+        border: '1px solid #722ed1',
+      },
+    } satisfies MentionsProps['styles'];
+  }
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  const sharedProps: MentionsProps = {
+    options,
+    classNames,
+  };
+  return (
+    <Flex vertical gap="middle">
+      <Mentions {...sharedProps} styles={stylesObject} placeholder="Object" rows={2} />
+      <Mentions {...sharedProps} styles={stylesFunction} variant="filled" placeholder="Function" />
+    </Flex>
   );
 };
 export default App;

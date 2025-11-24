@@ -196,7 +196,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 按钮图标位置
-通过设置 `iconPosition` 为 `start` 或 `end` 分别设置按钮图标的位置。
+通过设置 `iconPlacement` 为 `start` 或 `end` 分别设置按钮图标的位置。
 
 ```tsx
 import React, { useState } from 'react';
@@ -212,7 +212,7 @@ const App: React.FC = () => {
           <Radio.Button value="end">end</Radio.Button>
         </Radio.Group>
       </Space>
-      <Divider orientation="left" plain>
+      <Divider titlePlacement="start" plain>
         Preview
       </Divider>
       <Flex gap="small" vertical>
@@ -223,13 +223,13 @@ const App: React.FC = () => {
           <Button type="primary" shape="circle">
             A
           </Button>
-          <Button type="primary" icon={<SearchOutlined />} iconPosition={position}>
+          <Button type="primary" icon={<SearchOutlined />} iconPlacement={position}>
             Search
           </Button>
           <Tooltip title="search">
             <Button shape="circle" icon={<SearchOutlined />} />
           </Tooltip>
-          <Button icon={<SearchOutlined />} iconPosition={position}>
+          <Button icon={<SearchOutlined />} iconPlacement={position}>
             Search
           </Button>
         </Flex>
@@ -237,22 +237,22 @@ const App: React.FC = () => {
           <Tooltip title="search">
             <Button shape="circle" icon={<SearchOutlined />} />
           </Tooltip>
-          <Button icon={<SearchOutlined />} type="text" iconPosition={position}>
+          <Button icon={<SearchOutlined />} type="text" iconPlacement={position}>
             Search
           </Button>
           <Tooltip title="search">
             <Button type="dashed" shape="circle" icon={<SearchOutlined />} />
           </Tooltip>
-          <Button type="dashed" icon={<SearchOutlined />} iconPosition={position}>
+          <Button type="dashed" icon={<SearchOutlined />} iconPlacement={position}>
             Search
           </Button>
           <Button
             icon={<SearchOutlined />}
             href="https://www.google.com"
             target="_blank"
-            iconPosition={position}
+            iconPlacement={position}
           />
-          <Button type="primary" loading iconPosition={position}>
+          <Button type="primary" loading iconPlacement={position}>
             Loading
           </Button>
         </Flex>
@@ -281,7 +281,7 @@ const App: React.FC = () => {
         <Radio.Button value="default">Default</Radio.Button>
         <Radio.Button value="small">Small</Radio.Button>
       </Radio.Group>
-      <Divider orientation="left" plain>
+      <Divider titlePlacement="start" plain>
         Preview
       </Divider>
       <Flex gap="small" align="flex-start" vertical>
@@ -436,7 +436,7 @@ const App: React.FC = () => {
           type="primary"
           loading={loadings[2]}
           onClick={() => enterLoading(2)}
-          iconPosition="end"
+          iconPlacement="end"
         >
           Icon End
         </Button>
@@ -469,12 +469,13 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 多个按钮组合
-按钮组合使用时，推荐使用 1 个主操作 + n 个次操作，3 个以上操作时把更多操作放到 [Dropdown.Button](/components/dropdown-cn/#dropdown-demo-dropdown-button) 中组合使用。
+按钮组合使用时，推荐使用 1 个主操作 + n 个次操作，3 个以上操作时把更多操作放到 [Dropdown](/components/dropdown-cn/#dropdown-demo-dropdown-button) 中组合使用。
 
 ```tsx
 import React from 'react';
+import { EllipsisOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Button, Dropdown, Flex } from 'antd';
+import { Button, Dropdown, Flex, Space } from 'antd';
 const onMenuClick: MenuProps['onClick'] = (e) => {
   console.log('click', e);
 };
@@ -496,7 +497,12 @@ const App: React.FC = () => (
   <Flex align="flex-start" gap="small" vertical>
     <Button type="primary">primary</Button>
     <Button>secondary</Button>
-    <Dropdown.Button menu={{ items, onClick: onMenuClick }}>Actions</Dropdown.Button>
+    <Space.Compact>
+      <Button>Actions</Button>
+      <Dropdown menu={{ items, onClick: onMenuClick }} placement="bottomRight">
+        <Button icon={<EllipsisOutlined />} />
+      </Dropdown>
+    </Space.Compact>
   </Flex>
 );
 export default App;
@@ -688,7 +694,7 @@ const App: React.FC = () => (
           theme={{
             components: {
               Button: {
-                borderColorDisabled: 'rgba(0, 0, 0, 0.12)',
+                colorBorderDisabled: 'rgba(0, 0, 0, 0.12)',
                 colorBgContainerDisabled: 'transparent',
               },
             },
@@ -707,6 +713,14 @@ const App: React.FC = () => (
         <Button size="small">OUTLINED</Button>
       </Flex>
     </ConfigProvider>
+    <Flex gap="small" wrap>
+      <ConfigProvider theme={{ components: { Button: { colorBorderDisabled: 'red' } } }}>
+        <Button disabled>Custom Red Disabled</Button>
+      </ConfigProvider>
+      <ConfigProvider theme={{ components: { Button: { borderColorDisabled: 'blue' } } }}>
+        <Button disabled>Legacy Blue Disabled</Button>
+      </ConfigProvider>
+    </Flex>
     <ConfigProvider
       theme={{
         token: {
@@ -811,5 +825,87 @@ const App: React.FC = () => (
     </Button>
   </Flex>
 );
+export default App;
+```
+### 自定义禁用样式背景
+自定义disable下的背景颜色(适用 `default` 和 `dashed` 类型)
+
+```tsx
+import React from 'react';
+import { Button, ConfigProvider, Flex } from 'antd';
+const App: React.FC = () => (
+  <Flex gap="small" wrap>
+    <ConfigProvider
+      theme={{
+        components: {
+          Button: {
+            defaultBgDisabled: 'rgba(0,0,0,0.1)',
+            dashedBgDisabled: 'rgba(0,0,0,0.4)',
+          },
+        },
+      }}
+    >
+      <Button type="primary" disabled>
+        Primary Button
+      </Button>
+      <Button disabled>Default Button</Button>
+      <Button type="dashed" disabled>
+        Dashed Button
+      </Button>
+    </ConfigProvider>
+  </Flex>
+);
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Button 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Button, Flex } from 'antd';
+import type { ButtonProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    border: `1px solid ${token.colorBorder}`,
+    borderRadius: token.borderRadius,
+    padding: `${token.paddingXS}px ${token.padding}px`,
+    height: 'auto',
+  },
+  content: {
+    color: token.colorText,
+  },
+}));
+const stylesObject: ButtonProps['styles'] = {
+  root: {
+    boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)',
+  },
+};
+const stylesFn: ButtonProps['styles'] = (info) => {
+  if (info.props.type === 'primary') {
+    return {
+      root: {
+        backgroundColor: '#171717',
+      },
+      content: {
+        color: '#fff',
+      },
+    } satisfies ButtonProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <Flex gap="small">
+      <Button type="default" classNames={classNames} styles={stylesObject}>
+        Object
+      </Button>
+      <Button type="primary" classNames={classNames} styles={stylesFn}>
+        Function
+      </Button>
+    </Flex>
+  );
+};
 export default App;
 ```

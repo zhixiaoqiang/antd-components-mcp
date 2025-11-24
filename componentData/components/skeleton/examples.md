@@ -33,7 +33,7 @@ export default App;
 import React, { useState } from 'react';
 import { DotChartOutlined } from '@ant-design/icons';
 import type { RadioChangeEvent } from 'antd';
-import { Flex, Divider, Form, Radio, Skeleton, Space, Switch } from 'antd';
+import { Divider, Flex, Form, Radio, Skeleton, Space, Switch } from 'antd';
 type SizeType = 'default' | 'small' | 'large';
 type ButtonShapeType = 'circle' | 'square' | 'round' | 'default';
 type AvatarShapeType = 'circle' | 'square';
@@ -126,7 +126,7 @@ const App: React.FC = () => {
     }, 3000);
   };
   return (
-    <Space direction="vertical" style={{ width: '100%' }} size={16}>
+    <Space vertical style={{ width: '100%' }} size={16}>
       <Skeleton loading={loading}>
         <h4 style={{ marginBottom: 16 }}>Ant Design, a design language</h4>
         <p>
@@ -217,6 +217,69 @@ const App: React.FC = () => {
         )}
       />
     </>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象或者函数可以自定义 Skeleton 组件的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Skeleton } from 'antd';
+import type { SkeletonProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(() => ({
+  root: {
+    borderRadius: 10,
+    padding: 12,
+  },
+  header: {
+    marginBottom: 12,
+  },
+}));
+const useParagraphStyles = createStyles(({ css }) => ({
+  paragraph: css`
+    & > li {
+      background-color: rgba(229, 243, 254, 0.5);
+    }
+  `,
+}));
+const styles: SkeletonProps['styles'] = {
+  avatar: {
+    border: '1px solid #aaa',
+  },
+  title: {
+    border: '1px solid #aaa',
+  },
+};
+const stylesFn: SkeletonProps['styles'] = (info) => {
+  if (info.props.active) {
+    return {
+      root: {
+        border: '1px solid rgba(229, 243, 254, 0.3)',
+      },
+      title: {
+        backgroundColor: 'rgba(229, 243, 254, 0.5)',
+        height: 20,
+        borderRadius: 20,
+      },
+    } satisfies SkeletonProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classnames } = useStyles();
+  const { styles: paragraphStyles } = useParagraphStyles();
+  return (
+    <Flex gap="middle">
+      <Skeleton classNames={classnames} styles={styles} avatar paragraph={false} />
+      <Skeleton
+        classNames={{ ...classnames, paragraph: paragraphStyles.paragraph }}
+        styles={stylesFn}
+        active
+      />
+    </Flex>
   );
 };
 export default App;

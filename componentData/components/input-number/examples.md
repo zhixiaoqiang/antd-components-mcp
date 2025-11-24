@@ -61,7 +61,7 @@ const selectAfter = (
   />
 );
 const App: React.FC = () => (
-  <Space direction="vertical">
+  <Space vertical>
     <InputNumber addonBefore="+" addonAfter="$" defaultValue={100} />
     <InputNumber addonBefore={selectBefore} addonAfter={selectAfter} defaultValue={100} />
     <InputNumber addonAfter={<SettingOutlined />} defaultValue={100} />
@@ -226,6 +226,32 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 拨轮
+数字拨轮。
+
+```tsx
+import React from 'react';
+import type { InputNumberProps } from 'antd';
+import { Flex, InputNumber } from 'antd';
+const onChange: InputNumberProps['onChange'] = (value) => {
+  console.log('changed', value);
+};
+const sharedProps = {
+  mode: 'spinner' as const,
+  min: 1,
+  max: 10,
+  defaultValue: 3,
+  onChange,
+  style: { width: 150 },
+};
+const App: React.FC = () => (
+  <Flex vertical gap="middle">
+    <InputNumber {...sharedProps} placeholder="Outlined" />
+    <InputNumber {...sharedProps} variant="filled" placeholder="Filled" />
+  </Flex>
+);
+export default App;
+```
 ### Filled Debug
 Filled Debug.
 
@@ -270,6 +296,22 @@ const App: React.FC = () => (
       <InputNumber addonBefore="http://" placeholder="Filled" variant="filled" />
       <InputNumber addonBefore="http://" placeholder="Filled" variant="filled" disabled />
       <InputNumber addonBefore="http://" placeholder="Filled" variant="filled" status="error" />
+    </Flex>
+    <Flex gap={12}>
+      <InputNumber
+        addonBefore="http://"
+        placeholder="Outlined"
+        variant="outlined"
+        status="warning"
+      />
+      <InputNumber
+        addonBefore="http://"
+        placeholder="Filled"
+        variant="filled"
+        status="warning"
+        disabled
+      />
+      <InputNumber addonBefore="http://" placeholder="Filled" variant="filled" status="warning" />
     </Flex>
   </Flex>
 );
@@ -329,7 +371,7 @@ import React from 'react';
 import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
 import { InputNumber, Space } from 'antd';
 const App: React.FC = () => (
-  <Space direction="vertical" style={{ width: '100%' }}>
+  <Space vertical style={{ width: '100%' }}>
     <InputNumber status="error" style={{ width: '100%' }} />
     <InputNumber status="warning" style={{ width: '100%' }} />
     <InputNumber status="error" style={{ width: '100%' }} prefix={<ClockCircleOutlined />} />
@@ -349,40 +391,32 @@ type InputNumberRef = GetRef<typeof InputNumber>;
 const App: React.FC = () => {
   const inputRef = useRef<InputNumberRef>(null);
   return (
-    <Space direction="vertical" style={{ width: '100%' }}>
+    <Space vertical style={{ width: '100%' }}>
       <Space wrap>
         <Button
           onClick={() => {
-            inputRef.current!.focus({
-              cursor: 'start',
-            });
+            inputRef.current?.focus({ cursor: 'start' });
           }}
         >
           Focus at first
         </Button>
         <Button
           onClick={() => {
-            inputRef.current!.focus({
-              cursor: 'end',
-            });
+            inputRef.current?.focus({ cursor: 'end' });
           }}
         >
           Focus at last
         </Button>
         <Button
           onClick={() => {
-            inputRef.current!.focus({
-              cursor: 'all',
-            });
+            inputRef.current?.focus({ cursor: 'all' });
           }}
         >
           Focus to select all
         </Button>
         <Button
           onClick={() => {
-            inputRef.current!.focus({
-              preventScroll: true,
-            });
+            inputRef.current?.focus({ preventScroll: true });
           }}
         >
           Focus prevent scroll
@@ -390,6 +424,51 @@ const App: React.FC = () => {
       </Space>
       <InputNumber style={{ width: '100%' }} defaultValue={999} ref={inputRef} />
     </Space>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 InputNumber 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, InputNumber } from 'antd';
+import type { InputNumberProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyle = createStyles(({ token }) => ({
+  root: {
+    border: `1px solid ${token.colorPrimary}`,
+    borderRadius: 8,
+    width: 200,
+  },
+}));
+const stylesObject: InputNumberProps['styles'] = {
+  input: {
+    fontSize: 14,
+  },
+};
+const stylesFn: InputNumberProps['styles'] = ({ props }) => {
+  if (props.size === 'large') {
+    return {
+      root: {
+        backgroundColor: 'rgba(250,250,250, 0.5)',
+        borderColor: '#722ed1',
+      },
+    } satisfies InputNumberProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyle();
+  const sharedProps: InputNumberProps = {
+    classNames,
+  };
+  return (
+    <Flex vertical gap="middle">
+      <InputNumber {...sharedProps} styles={stylesObject} placeholder="Object" />
+      <InputNumber {...sharedProps} styles={stylesFn} placeholder="Function" size="large" />
+    </Flex>
   );
 };
 export default App;

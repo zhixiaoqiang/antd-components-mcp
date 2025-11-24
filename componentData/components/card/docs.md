@@ -10,6 +10,7 @@
 | activeTabKey | 当前激活页签的 key | string | - |  |
 | ~~bordered~~ | 是否有边框, 请使用 `variant` 替换 | boolean | true |  |
 | variant | 形态变体 | `outlined` \| `borderless` \| | `outlined` | 5.24.0 |
+| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  |
 | cover | 卡片封面 | ReactNode | - |  |
 | defaultActiveTabKey | 初始化选中页签的 key，如果没有设置 activeTabKey | string | `第一个页签的 key` |  |
 | extra | 卡片右上角的操作区域 | ReactNode | - |  |
@@ -21,8 +22,7 @@
 | tabProps | [Tabs](/components/tabs-cn#tabs) | - | - |  |
 | title | 卡片标题 | ReactNode | - |  |
 | type | 卡片类型，可设置为 `inner` 或 不设置 | string | - |  |
-| classNames | 配置卡片内置模块的 className | [Record<SemanticDOM, string>](#semantic-dom) | - | 5.14.0 |
-| styles | 配置卡片内置模块的 style | [Record<SemanticDOM, CSSProperties>](#semantic-dom) | - | 5.14.0 |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  |
 | onTabChange | 页签切换的回调 | (key) => void | - |  |
 ### Card.Grid
 | 参数      | 说明                   | 类型          | 默认值 | 版本 |

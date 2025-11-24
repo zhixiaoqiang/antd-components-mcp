@@ -3,20 +3,22 @@
 - 当需要展示带描述的统计类数据时使用。
 ## API
 #### Statistic
-| 参数             | 说明               | 类型                 | 默认值 | 版本  |
-| ---------------- | ------------------ | -------------------- | ------ | ----- |
-| decimalSeparator | 设置小数点         | string               | `.`    |       |
-| formatter        | 自定义数值展示     | (value) => ReactNode | -      |       |
-| groupSeparator   | 设置千分位标识符   | string               | `,`    |       |
-| loading          | 数值是否加载中     | boolean              | false  | 4.8.0 |
-| precision        | 数值精度           | number               | -      |       |
-| prefix           | 设置数值的前缀     | ReactNode            | -      |       |
-| suffix           | 设置数值的后缀     | ReactNode            | -      |       |
-| title            | 数值的标题         | ReactNode            | -      |       |
-| value            | 数值内容           | string \| number     | -      |       |
-| valueStyle       | 设置数值区域的样式 | CSSProperties        | -      |       |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| classNames | 用于自定义 Statistic 组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  |
+| decimalSeparator | 设置小数点 | string | `.` |  |
+| formatter | 自定义数值展示 | (value) => ReactNode | - |  |
+| groupSeparator | 设置千分位标识符 | string | `,` |  |
+| loading | 数值是否加载中 | boolean | false | 4.8.0 |
+| precision | 数值精度 | number | - |  |
+| prefix | 设置数值的前缀 | ReactNode | - |  |
+| styles | 用于自定义 Statistic 组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom) , CSSProperties> \| (info: { props }) => Record<[SemanticDOM](#semantic-dom) , CSSProperties> | - |  |
+| suffix | 设置数值的后缀 | ReactNode | - |  |
+| title | 数值的标题 | ReactNode | - |  |
+| value | 数值内容 | string \| number | - |  |
+| valueStyle | 设置数值区域的样式 | CSSProperties | - |  |
 #### Statistic.Countdown <Badge type="error">Deprecated</Badge>
-<Antd component="Alert" message="版本 >= 5.25.0 时请使用 Statistic.Timer 作为替代方案。" type="warning" banner="true"></Antd>
+<Antd component="Alert" title="版本 >= 5.25.0 时请使用 Statistic.Timer 作为替代方案。" type="warning" banner="true"></Antd>
 <!-- prettier-ignore -->
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |

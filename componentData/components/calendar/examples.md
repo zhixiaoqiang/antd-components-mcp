@@ -139,7 +139,7 @@ const App: React.FC = () => {
   };
   return (
     <>
-      <Alert message={`You selected date: ${selectedValue?.format('YYYY-MM-DD')}`} />
+      <Alert title={`You selected date: ${selectedValue?.format('YYYY-MM-DD')}`} />
       <Calendar value={value} onSelect={onSelect} onPanelChange={onPanelChange} />
     </>
   );
@@ -154,7 +154,7 @@ import React from 'react';
 import { Calendar, Col, Radio, Row, Select } from 'antd';
 import type { CalendarProps } from 'antd';
 import { createStyles } from 'antd-style';
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
 import { HolidayUtil, Lunar } from 'lunar-typescript';
@@ -268,14 +268,14 @@ const App: React.FC = () => {
     if (info.type === 'date') {
       return React.cloneElement(info.originNode, {
         ...(info.originNode as React.ReactElement<any>).props,
-        className: classNames(styles.dateCell, {
+        className: clsx(styles.dateCell, {
           [styles.current]: selectDate.isSame(date, 'date'),
           [styles.today]: date.isSame(dayjs(), 'date'),
         }),
         children: (
           <div className={styles.text}>
             <span
-              className={classNames({
+              className={clsx({
                 [styles.weekend]: isWeekend,
                 gray: !panelDateDate.isSame(date, 'month'),
               })}
@@ -296,7 +296,7 @@ const App: React.FC = () => {
       const month = d2.getMonthInChinese();
       return (
         <div
-          className={classNames(styles.monthCell, {
+          className={clsx(styles.monthCell, {
             [styles.monthCellCurrent]: selectDate.isSame(date, 'month'),
           })}
         >
@@ -487,6 +487,49 @@ const App: React.FC = () => {
         onPanelChange={onPanelChange}
       />
     </div>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Calendar 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Calendar, Flex } from 'antd';
+import type { CalendarProps } from 'antd';
+import { createStyles } from 'antd-style';
+import type { Dayjs } from 'dayjs';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    padding: 10,
+    backgroundColor: token.colorPrimaryBg,
+  },
+}));
+const stylesObject: CalendarProps<Dayjs>['styles'] = {
+  root: {
+    borderRadius: 8,
+    width: 600,
+  },
+};
+const stylesFunction: CalendarProps<Dayjs>['styles'] = (info) => {
+  if (info.props.fullscreen) {
+    return {
+      root: {
+        border: '2px solid #BDE3C3',
+        borderRadius: 10,
+        backgroundColor: 'rgba(189,227,195, 0.3)',
+      },
+    } satisfies CalendarProps<Dayjs>['styles'];
+  }
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <Flex vertical gap="middle">
+      <Calendar fullscreen={false} classNames={classNames} styles={stylesObject} />
+      <Calendar classNames={classNames} styles={stylesFunction} />
+    </Flex>
   );
 };
 export default App;

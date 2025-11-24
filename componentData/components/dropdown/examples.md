@@ -133,7 +133,7 @@ const items: MenuProps['items'] = [
   },
 ];
 const App: React.FC = () => (
-  <Space direction="vertical">
+  <Space vertical>
     <Space wrap>
       <Dropdown menu={{ items }} placement="bottomLeft">
         <Button>bottomLeft</Button>
@@ -194,7 +194,7 @@ const items: MenuProps['items'] = [
   },
 ];
 const App: React.FC = () => (
-  <Space direction="vertical">
+  <Space vertical>
     <Space wrap>
       <Dropdown menu={{ items }} placement="bottomLeft" arrow>
         <Button>bottomLeft</Button>
@@ -301,7 +301,7 @@ const items: MenuProps['items'] = [
   },
 ];
 const App: React.FC = () => (
-  <Space direction="vertical">
+  <Space vertical>
     <Space wrap>
       <Dropdown menu={{ items }} placement="bottomLeft" arrow={{ pointAtCenter: true }}>
         <Button>bottomLeft</Button>
@@ -415,7 +415,7 @@ export default App;
 
 ```tsx
 import React from 'react';
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import { DownOutlined, EllipsisOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, message, Space, Tooltip } from 'antd';
 const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -457,37 +457,47 @@ const menuProps = {
 };
 const App: React.FC = () => (
   <Space wrap>
-    <Dropdown.Button menu={menuProps} onClick={handleButtonClick}>
-      Dropdown
-    </Dropdown.Button>
-    <Dropdown.Button menu={menuProps} placement="bottom" icon={<UserOutlined />}>
-      Dropdown
-    </Dropdown.Button>
-    <Dropdown.Button menu={menuProps} onClick={handleButtonClick} disabled>
-      Dropdown
-    </Dropdown.Button>
-    <Dropdown.Button
-      menu={menuProps}
-      buttonsRender={([leftButton, rightButton]) => [
-        <Tooltip title="tooltip" key="leftButton">
-          {leftButton}
-        </Tooltip>,
-        React.cloneElement(rightButton as React.ReactElement<any, string>, { loading: true }),
-      ]}
-    >
-      With Tooltip
-    </Dropdown.Button>
+    <Space.Compact>
+      <Button onClick={handleButtonClick}>Dropdown</Button>
+      <Dropdown menu={menuProps} placement="bottomRight">
+        <Button icon={<EllipsisOutlined />} />
+      </Dropdown>
+    </Space.Compact>
+    <Space.Compact>
+      <Button onClick={handleButtonClick}>Dropdown</Button>
+      <Dropdown menu={menuProps} placement="bottomRight">
+        <Button icon={<UserOutlined />} />
+      </Dropdown>
+    </Space.Compact>
+    <Space.Compact>
+      <Button onClick={handleButtonClick} disabled>
+        Dropdown
+      </Button>
+      <Dropdown menu={menuProps} placement="bottomRight" disabled>
+        <Button icon={<EllipsisOutlined />} disabled />
+      </Dropdown>
+    </Space.Compact>
+    <Space.Compact>
+      <Tooltip title="tooltip">
+        <Button onClick={handleButtonClick}>With Tooltip</Button>
+      </Tooltip>
+      <Dropdown menu={menuProps} placement="bottomRight">
+        <Button loading />
+      </Dropdown>
+    </Space.Compact>
     <Dropdown menu={menuProps}>
-      <Button>
-        <Space>
-          Button
-          <DownOutlined />
-        </Space>
+      <Button onClick={handleButtonClick} icon={<DownOutlined />} iconPlacement="end">
+        Button
       </Button>
     </Dropdown>
-    <Dropdown.Button menu={menuProps} onClick={handleButtonClick} danger>
-      Danger
-    </Dropdown.Button>
+    <Space.Compact>
+      <Button onClick={handleButtonClick} danger>
+        Danger
+      </Button>
+      <Dropdown menu={menuProps} placement="bottomRight">
+        <Button icon={<EllipsisOutlined />} danger />
+      </Dropdown>
+    </Space.Compact>
   </Space>
 );
 export default App;
@@ -804,9 +814,9 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react';
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined, EllipsisOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Dropdown, Space } from 'antd';
+import { Button, Dropdown, Space } from 'antd';
 const items: MenuProps['items'] = [
   {
     label: 'Submit and continue',
@@ -830,29 +840,39 @@ const App: React.FC = () => {
     }, 6000);
   };
   return (
-    <Space direction="vertical">
-      <Dropdown.Button type="primary" loading menu={{ items }}>
-        Submit
-      </Dropdown.Button>
-      <Dropdown.Button type="primary" size="small" loading menu={{ items }}>
-        Submit
-      </Dropdown.Button>
-      <Dropdown.Button
-        type="primary"
-        loading={loadings[0]}
-        menu={{ items }}
-        onClick={() => enterLoading(0)}
-      >
-        Submit
-      </Dropdown.Button>
-      <Dropdown.Button
-        icon={<DownOutlined />}
-        loading={loadings[1]}
-        menu={{ items }}
-        onClick={() => enterLoading(1)}
-      >
-        Submit
-      </Dropdown.Button>
+    <Space vertical>
+      <Space.Compact>
+        <Button type="primary" loading>
+          Submit
+        </Button>
+        <Dropdown menu={{ items }}>
+          <Button type="primary" icon={<EllipsisOutlined />} />
+        </Dropdown>
+      </Space.Compact>
+      <Space.Compact size="small">
+        <Button type="primary" loading>
+          Submit
+        </Button>
+        <Dropdown menu={{ items }}>
+          <Button type="primary" icon={<EllipsisOutlined />} />
+        </Dropdown>
+      </Space.Compact>
+      <Space.Compact>
+        <Button type="primary" loading={loadings[0]} onClick={() => enterLoading(0)}>
+          Submit
+        </Button>
+        <Dropdown menu={{ items }}>
+          <Button type="primary" icon={<EllipsisOutlined />} />
+        </Dropdown>
+      </Space.Compact>
+      <Space.Compact>
+        <Button loading={loadings[1]} onClick={() => enterLoading(1)}>
+          Submit
+        </Button>
+        <Dropdown menu={{ items }}>
+          <Button icon={<DownOutlined />} />
+        </Dropdown>
+      </Space.Compact>
     </Space>
   );
 };
@@ -896,6 +916,108 @@ const App: React.FC = () => (
     </Typography.Link>
   </Dropdown>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Dropdown 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { DownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
+import { Button, Dropdown, Flex, Space } from 'antd';
+import type { DropdownProps, MenuProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    backgroundColor: token.colorFillAlter,
+    border: `1px solid ${token.colorBorder}`,
+    borderRadius: token.borderRadius,
+  },
+}));
+const items: MenuProps['items'] = [
+  {
+    key: '1',
+    label: 'Profile',
+  },
+  {
+    key: '2',
+    label: 'Settings',
+    icon: <SettingOutlined />,
+  },
+  {
+    type: 'divider',
+  },
+  {
+    key: '3',
+    label: 'Logout',
+    icon: <LogoutOutlined />,
+    danger: true,
+  },
+];
+const objectStyles: DropdownProps['styles'] = {
+  root: {
+    backgroundColor: '#ffffff',
+    border: '1px solid #d9d9d9',
+    borderRadius: '4px',
+  },
+  item: {
+    padding: '8px 12px',
+    fontSize: '14px',
+  },
+  itemTitle: {
+    fontWeight: '500',
+  },
+  itemIcon: {
+    color: '#1890ff',
+    marginRight: '8px',
+  },
+  itemContent: {
+    backgroundColor: 'transparent',
+  },
+};
+const functionStyles: DropdownProps['styles'] = (info) => {
+  const { props } = info;
+  const isClick = props.trigger?.includes('click');
+  if (isClick) {
+    return {
+      root: {
+        borderColor: '#1890ff',
+        borderRadius: '8px',
+      },
+    } satisfies DropdownProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles } = useStyles();
+  const sharedProps: DropdownProps = {
+    menu: { items },
+    placement: 'bottomLeft',
+    classNames: { root: styles.root },
+  };
+  return (
+    <Flex gap="middle" wrap="wrap">
+      <Space vertical size="large">
+        <Dropdown {...sharedProps} styles={objectStyles}>
+          <Button>
+            <Space>
+              Object Style
+              <DownOutlined />
+            </Space>
+          </Button>
+        </Dropdown>
+        <Dropdown {...sharedProps} styles={functionStyles} trigger={['click']}>
+          <Button type="primary">
+            <Space>
+              Function Style
+              <DownOutlined />
+            </Space>
+          </Button>
+        </Dropdown>
+      </Space>
+    </Flex>
+  );
+};
 export default App;
 ```
 ### Menu 完整样式
@@ -1018,12 +1140,27 @@ export default App;
 ```tsx
 import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
-import { Dropdown, Space } from 'antd';
+import { Button, Dropdown, Space } from 'antd';
 const App: React.FC = () => (
   <Space>
     <Dropdown.Button icon={<DownOutlined />} menu={{ items: [] }}>
       Submit
     </Dropdown.Button>
+    <Dropdown.Button icon={<DownOutlined />} placement="top" menu={{ items: [] }}>
+      Submit
+    </Dropdown.Button>
+    <Space.Compact>
+      <Button type="primary">Submit</Button>
+      <Dropdown menu={{ items: [] }}>
+        <Button type="primary" icon={<DownOutlined />} />
+      </Dropdown>
+    </Space.Compact>
+    <Space.Compact>
+      <Button>Submit</Button>
+      <Dropdown menu={{ items: [] }} placement="top">
+        <Button icon={<DownOutlined />} />
+      </Dropdown>
+    </Space.Compact>
   </Space>
 );
 export default App;

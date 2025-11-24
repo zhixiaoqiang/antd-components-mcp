@@ -147,11 +147,10 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react';
-import type { RadioChangeEvent } from 'antd';
+import type { RadioChangeEvent, TabsProps } from 'antd';
 import { Radio, Tabs } from 'antd';
-type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 const App: React.FC = () => {
-  const [mode, setMode] = useState<TabPosition>('top');
+  const [mode, setMode] = useState<TabsProps['tabPlacement']>('top');
   const handleModeChange = (e: RadioChangeEvent) => {
     setMode(e.target.value);
   };
@@ -163,7 +162,7 @@ const App: React.FC = () => {
       </Radio.Group>
       <Tabs
         defaultActiveKey="1"
-        tabPosition={mode}
+        tabPlacement={mode}
         style={{ height: 220 }}
         items={Array.from({ length: 30 }, (_, i) => {
           const id = String(i);
@@ -347,31 +346,30 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 位置
-有四个位置，`tabPosition="left|right|top|bottom"`。在移动端下，`left|right` 会自动切换成 `top`。
+有四个位置，`tabPlacement="start|end|top|bottom"`。在移动端下，`start|end` 会自动切换成 `top`。
 
 ```tsx
 import React, { useState } from 'react';
-import type { RadioChangeEvent } from 'antd';
+import type { RadioChangeEvent, TabsProps } from 'antd';
 import { Radio, Space, Tabs } from 'antd';
-type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 const App: React.FC = () => {
-  const [tabPosition, setTabPosition] = useState<TabPosition>('left');
-  const changeTabPosition = (e: RadioChangeEvent) => {
-    setTabPosition(e.target.value);
+  const [tabPlacement, setTabPlacement] = useState<TabsProps['tabPlacement']>('start');
+  const changeTabPlacement = (e: RadioChangeEvent) => {
+    setTabPlacement(e.target.value);
   };
   return (
     <>
       <Space style={{ marginBottom: 24 }}>
-        Tab position:
-        <Radio.Group value={tabPosition} onChange={changeTabPosition}>
+        Tab placement:
+        <Radio.Group value={tabPlacement} onChange={changeTabPlacement}>
           <Radio.Button value="top">top</Radio.Button>
           <Radio.Button value="bottom">bottom</Radio.Button>
-          <Radio.Button value="left">left</Radio.Button>
-          <Radio.Button value="right">right</Radio.Button>
+          <Radio.Button value="start">start</Radio.Button>
+          <Radio.Button value="end">end</Radio.Button>
         </Radio.Group>
       </Space>
       <Tabs
-        tabPosition={tabPosition}
+        tabPlacement={tabPlacement}
         items={Array.from({ length: 3 }).map((_, i) => {
           const id = String(i + 1);
           return {
@@ -702,6 +700,66 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Tabs 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Tabs } from 'antd';
+import type { TabsProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyle = createStyles(() => ({
+  root: { borderWidth: 2, borderStyle: 'dashed', padding: 16, marginBottom: 10 },
+}));
+const stylesObject: TabsProps['styles'] = {
+  root: { borderWidth: 2, borderStyle: 'dashed', padding: 16, marginBottom: 10 },
+  header: { backgroundColor: 'rgba(245,245,245,0.5)' },
+  item: { fontWeight: 'bold', color: '#1890ff', padding: `6px 10px` },
+  indicator: { backgroundColor: 'rgba(255,77,79, 0.3)', height: 4 },
+  content: { backgroundColor: 'rgba(230,247,255,0.8)', padding: 16 },
+};
+const stylesFn: TabsProps['styles'] = (info) => {
+  if (info.props.type === 'card') {
+    return {
+      root: { backgroundColor: 'rgba(250,250,250, 0.8)', borderColor: '#d9d9d9' },
+      header: { textAlign: 'start' },
+    } satisfies TabsProps['styles'];
+  }
+  return {};
+};
+const items = [
+  {
+    key: '1',
+    label: 'Tab 1',
+    children: 'Content of Tab Pane 1',
+  },
+  {
+    key: '2',
+    label: 'Tab 2',
+    children: 'Content of Tab Pane 2',
+  },
+  {
+    key: '3',
+    label: 'Tab 3',
+    children: 'Content of Tab Pane 3',
+  },
+];
+const App: React.FC = () => {
+  const { styles: classNames } = useStyle();
+  const shareProps: TabsProps = {
+    items,
+    defaultActiveKey: '1',
+    classNames,
+  };
+  return (
+    <Flex vertical gap="middle">
+      <Tabs {...shareProps} styles={stylesObject} />
+      <Tabs tabPlacement="start" type="card" {...shareProps} styles={stylesFn} />
+    </Flex>
+  );
+};
+export default App;
+```
 ### 动画
 动画切换。
 
@@ -770,7 +828,7 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { Select, Tabs } from 'antd';
-const positionList = ['left', 'right', 'top', 'bottom'];
+const placementList = ['start', 'end', 'top', 'bottom'];
 const App: React.FC = () => {
   const [parentPos, setParentPos] = useState(undefined);
   const [childPos, setChildPos] = useState(undefined);
@@ -781,7 +839,7 @@ const App: React.FC = () => {
       <Select
         style={{ width: 200 }}
         onChange={(val) => setParentPos(val)}
-        options={positionList.map((pos) => {
+        options={placementList.map((pos) => {
           return {
             value: pos,
             label: `Parent - ${pos}`,
@@ -791,7 +849,7 @@ const App: React.FC = () => {
       <Select
         style={{ width: 200 }}
         onChange={(val) => setChildPos(val)}
-        options={positionList.map((pos) => {
+        options={placementList.map((pos) => {
           return {
             value: pos,
             label: `Child - ${pos}`,
@@ -818,7 +876,7 @@ const App: React.FC = () => {
       />
       <Tabs
         defaultActiveKey="1"
-        tabPosition={parentPos}
+        tabPlacement={parentPos}
         type={parentType}
         items={[
           {
@@ -827,7 +885,7 @@ const App: React.FC = () => {
             children: (
               <Tabs
                 defaultActiveKey="1"
-                tabPosition={childPos}
+                tabPlacement={childPos}
                 type={childType}
                 style={{ height: 300 }}
                 items={Array.from({ length: 20 }).map((_, index) => {
@@ -917,7 +975,7 @@ const App: React.FC = () => (
           items={tabItems}
         />
         <Tabs
-          tabPosition="left"
+          tabPlacement="start"
           defaultActiveKey="1"
           tabBarExtraContent={<Button>Extra Action</Button>}
           style={{ marginBottom: 32 }}

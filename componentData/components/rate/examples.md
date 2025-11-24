@@ -8,6 +8,21 @@ import { Rate } from 'antd';
 const App: React.FC = () => <Rate />;
 export default App;
 ```
+### 尺寸
+三种尺寸。
+
+```tsx
+import React from 'react';
+import { Flex, Rate } from 'antd';
+const App: React.FC = () => (
+  <Flex vertical gap={12}>
+    <Rate size="large" />
+    <Rate />
+    <Rate size="small" />
+  </Flex>
+);
+export default App;
+```
 ### 半星
 支持选中半星。
 
@@ -23,13 +38,24 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { Flex, Rate } from 'antd';
-const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
+import type { RateProps } from 'antd';
+const desc: RateProps['tooltips'] = [
+  'terrible',
+  { placement: 'top', title: 'bad', trigger: 'hover' },
+  'normal',
+  'good',
+  'wonderful',
+];
+function getDescTitle(value: number, desc: RateProps['tooltips']) {
+  const item = desc?.[value - 1];
+  return typeof item === 'object' ? item.title : item;
+}
 const App: React.FC = () => {
   const [value, setValue] = useState(3);
   return (
     <Flex gap="middle" vertical>
       <Rate tooltips={desc} onChange={setValue} value={value} />
-      {value ? <span>{desc[value - 1]}</span> : null}
+      {value ? <span>{getDescTitle(value, desc) as React.ReactNode}</span> : null}
     </Flex>
   );
 };

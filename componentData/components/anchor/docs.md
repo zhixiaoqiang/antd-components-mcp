@@ -9,10 +9,12 @@
 | --- | --- | --- | --- | --- |
 | affix | 固定模式 | boolean \| Omit<AffixProps, 'offsetTop' \| 'target' \| 'children'> | true | object: 5.19.0 |
 | bounds | 锚点区域边界 | number | 5 |  |
+| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  |
 | getContainer | 指定滚动的容器 | () => HTMLElement | () => window |  |
 | getCurrentAnchor | 自定义高亮的锚点 | (activeLink: string) => string | - |  |
 | offsetTop | 距离窗口顶部达到指定偏移量后触发 | number |  |  |
 | showInkInFixed | `affix={false}` 时是否显示小方块 | boolean | false |  |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  |
 | targetOffset | 锚点滚动偏移量，默认与 offsetTop 相同，[例子](#anchor-demo-targetoffset) | number | - |  |
 | onChange | 监听锚点链接改变 | (currentActiveLink: string) => void | - |  |
 | onClick | `click` 事件的 handler | (e: MouseEvent, link: object) => void | - |  |

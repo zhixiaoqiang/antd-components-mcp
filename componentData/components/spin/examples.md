@@ -36,7 +36,7 @@ const App: React.FC = () => {
       <Spin spinning={loading}>
         <Alert
           type="info"
-          message="Alert message title"
+          title="Alert message title"
           description="Further details about the context of this alert."
         />
       </Spin>
@@ -74,7 +74,7 @@ const App: React.FC = () => (
     </Flex>
     <Spin tip="Loading...">
       <Alert
-        message="Alert message title"
+        title="Alert message title"
         description="Further details about the context of this alert."
         type="info"
       />
@@ -96,7 +96,7 @@ const App: React.FC = () => {
       <Spin spinning={loading} delay={500}>
         <Alert
           type="info"
-          message="Alert message title"
+          title="Alert message title"
           description="Further details about the context of this alert."
         />
       </Spin>
@@ -165,6 +165,50 @@ const App: React.FC = () => {
       <Spin percent={mergedPercent} size="small" />
       <Spin percent={mergedPercent} />
       <Spin percent={mergedPercent} size="large" />
+    </Flex>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Spin 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Spin } from 'antd';
+import type { SpinProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyle = createStyles(({ css }) => ({
+  root: css`
+    padding: 8px;
+  `,
+}));
+const stylesObject: SpinProps['styles'] = {
+  indicator: {
+    color: '#00d4ff',
+  },
+};
+const stylesFn: SpinProps['styles'] = ({ props }) => {
+  if (props.size === 'small') {
+    return {
+      indicator: {
+        color: '#722ed1',
+      },
+    } satisfies SpinProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles } = useStyle();
+  const sharedProps: SpinProps = {
+    spinning: true,
+    percent: 0,
+    classNames: { root: styles.root },
+  };
+  return (
+    <Flex align="center" gap="middle">
+      <Spin {...sharedProps} styles={stylesObject} />
+      <Spin {...sharedProps} styles={stylesFn} size="small" />
     </Flex>
   );
 };

@@ -80,7 +80,7 @@ const App: React.FC = () => (
           title="Active"
           value={11.28}
           precision={2}
-          valueStyle={{ color: '#3f8600' }}
+          styles={{ content: { color: '#3f8600' } }}
           prefix={<ArrowUpOutlined />}
           suffix="%"
         />
@@ -92,7 +92,7 @@ const App: React.FC = () => (
           title="Idle"
           value={9.3}
           precision={2}
-          valueStyle={{ color: '#cf1322' }}
+          styles={{ content: { color: '#cf1322' } }}
           prefix={<ArrowDownOutlined />}
           suffix="%"
         />
@@ -153,6 +153,65 @@ const App: React.FC = () => (
     </Col>
   </Row>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Statistic 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { ArrowUpOutlined } from '@ant-design/icons';
+import { Flex, Statistic } from 'antd';
+import type { StatisticProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyle = createStyles(({ css }) => ({
+  root: css`
+    border: 2px dashed #ccc;
+    padding: 16px;
+    border-radius: 8px;
+  `,
+}));
+const styleFn: StatisticProps['styles'] = ({ props }) => {
+  const numValue = Number(props.value ?? 0);
+  const isNegative = Number.isFinite(numValue) && numValue < 0;
+  if (isNegative) {
+    return {
+      title: {
+        color: '#ff4d4f',
+      },
+      content: {
+        color: '#ff7875',
+      },
+    } satisfies StatisticProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles } = useStyle();
+  const statisticSharedProps: StatisticProps = {
+    classNames: { root: styles.root },
+    prefix: <ArrowUpOutlined />,
+  };
+  return (
+    <Flex vertical gap="middle">
+      <Statistic
+        {...statisticSharedProps}
+        title="Monthly Active Users"
+        value={93241}
+        styles={{ title: { color: '#1890ff', fontWeight: 600 }, content: { fontSize: '24px' } }}
+        suffix="users"
+      />
+      <Statistic
+        {...statisticSharedProps}
+        title="Yearly Loss"
+        value={-18.7}
+        precision={1}
+        styles={styleFn}
+        suffix="%"
+      />
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 组件 Token

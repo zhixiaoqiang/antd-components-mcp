@@ -9,7 +9,8 @@
 | autoplay | 是否自动切换，如果为 object 可以指定 `dotDuration` 来展示指示点进度条 | boolean \| { dotDuration?: boolean } | false | dotDuration: 5.24.0 |
 | autoplaySpeed | 自动切换的间隔（毫秒） | number | 3000 |  |
 | adaptiveHeight | 高度自适应 | boolean | false |  |
-| dotPosition | 面板指示点位置，可选 `top` `bottom` `left` `right` | string | `bottom` |  |
+| dotPlacement | 面板指示点位置，可选 `top` `bottom` `start` `end` | string | `bottom` |  |
+| ~~dotPosition~~ | 面板指示点位置，可选 `top` `bottom` `left` `right` `start` `end`，请使用 `dotPlacement` 替换 | string | `bottom` |  |
 | dots | 是否显示面板指示点，如果为 `object` 则可以指定 `dotsClass` | boolean \| { className?: string } | true |  |
 | draggable | 是否启用拖拽切换 | boolean | false |  |
 | fade | 使用渐变切换动效 | boolean | false |  |

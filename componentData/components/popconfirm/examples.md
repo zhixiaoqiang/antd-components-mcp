@@ -7,26 +7,32 @@
 import React from 'react';
 import type { PopconfirmProps } from 'antd';
 import { Button, message, Popconfirm } from 'antd';
-const confirm: PopconfirmProps['onConfirm'] = (e) => {
-  console.log(e);
-  message.success('Click on Yes');
+const App: React.FC = () => {
+  const [messageApi, holder] = message.useMessage();
+  const confirm: PopconfirmProps['onConfirm'] = (e) => {
+    console.log(e);
+    messageApi.success('Click on Yes');
+  };
+  const cancel: PopconfirmProps['onCancel'] = (e) => {
+    console.log(e);
+    messageApi.error('Click on No');
+  };
+  return (
+    <>
+      {holder}
+      <Popconfirm
+        title="Delete the task"
+        description="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+      >
+        <Button danger>Delete</Button>
+      </Popconfirm>
+    </>
+  );
 };
-const cancel: PopconfirmProps['onCancel'] = (e) => {
-  console.log(e);
-  message.error('Click on No');
-};
-const App: React.FC = () => (
-  <Popconfirm
-    title="Delete the task"
-    description="Are you sure to delete this task?"
-    onConfirm={confirm}
-    onCancel={cancel}
-    okText="Yes"
-    cancelText="No"
-  >
-    <Button danger>Delete</Button>
-  </Popconfirm>
-);
 export default App;
 ```
 ### 国际化
@@ -344,6 +350,88 @@ const App: React.FC = () => {
     >
       <Button type="primary">Open Popconfirm with Promise</Button>
     </Popconfirm>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Popconfirm 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Button, Flex, Popconfirm } from 'antd';
+import type { PopconfirmProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(() => ({
+  container: {
+    padding: 10,
+  },
+}));
+const styles: PopconfirmProps['styles'] = {
+  container: {
+    backgroundColor: '#eee',
+    boxShadow: 'inset 5px 5px 3px #fff, inset -5px -5px 3px #ddd, 0 0 3px rgba(0,0,0,0.2)',
+  },
+  title: {
+    color: '#262626',
+  },
+  content: {
+    color: '#262626',
+  },
+};
+const stylesFn: PopconfirmProps['styles'] = (info) => {
+  if (!info.props.arrow) {
+    return {
+      container: {
+        backgroundColor: 'rgba(53, 71, 125, 0.8)',
+        padding: 12,
+        borderRadius: 4,
+      },
+      title: {
+        color: '#fff',
+      },
+      content: {
+        color: '#fff',
+      },
+    } satisfies PopconfirmProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <Flex gap="middle">
+      <Popconfirm
+        title="Object text"
+        description="Object description"
+        classNames={classNames}
+        styles={styles}
+        arrow={false}
+      >
+        <Button>Object Style</Button>
+      </Popconfirm>
+      <Popconfirm
+        title="Function text"
+        description="Function description"
+        classNames={classNames}
+        styles={stylesFn}
+        arrow={false}
+        okButtonProps={{
+          styles: { root: { backgroundColor: 'rgba(53, 71, 125, 0.6)', color: '#fff' } },
+        }}
+        cancelButtonProps={{
+          styles: {
+            root: {
+              borderColor: 'rgba(53, 71, 125, 0.6)',
+              backgroundColor: '#fff',
+              color: 'rgba(53, 71, 125, 0.8)',
+            },
+          },
+        }}
+      >
+        <Button type="primary">Function Style</Button>
+      </Popconfirm>
+    </Flex>
   );
 };
 export default App;

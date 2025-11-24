@@ -164,6 +164,67 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义消息的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Button, message, Space } from 'antd';
+import type { MessageArgsProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyle = createStyles(() => ({
+  icon: { fontSize: 14 },
+}));
+const stylesObject: MessageArgsProps['styles'] = {
+  icon: { fontSize: 20 },
+};
+const stylesFn: MessageArgsProps['styles'] = ({ props }) => {
+  if (props.type === 'success') {
+    return {
+      root: {
+        border: '1px solid #eee',
+        display: 'inline-flex',
+        borderRadius: 10,
+        overflow: 'hidden',
+      },
+    } satisfies MessageArgsProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles } = useStyle();
+  const [messageApi, contextHolder] = message.useMessage();
+  const showObjectStyle = () => {
+    messageApi.open({
+      type: 'info',
+      content: 'This is a message with object classNames and styles',
+      classNames: styles,
+      styles: stylesObject,
+    });
+  };
+  const showFunctionStyle = () => {
+    messageApi.open({
+      type: 'success',
+      content: 'This is a message with function classNames and styles',
+      classNames: styles,
+      styles: stylesFn,
+      duration: 60 * 1000,
+    });
+  };
+  return (
+    <>
+      {contextHolder}
+      <Space>
+        <Button onClick={showObjectStyle}>Object style</Button>
+        <Button onClick={showFunctionStyle} type="primary">
+          Function style
+        </Button>
+      </Space>
+    </>
+  );
+};
+export default App;
+```
 ### 更新消息内容
 可以通过唯一的 `key` 来更新内容。
 
