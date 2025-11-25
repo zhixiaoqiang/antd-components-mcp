@@ -35,6 +35,27 @@ A Model Context Protocol (MCP) server that provides `Ant Design` component docum
   - 😺 Tested working with Claude client
   - 😩 Currently not working with github copilot/Cline plugins
 
+## Version Mapping
+
+This package follows a version mapping strategy where the package major version corresponds to Ant Design's major version:
+
+- **Ant Design 5.0** → Use package version **1.0.x**
+- **Ant Design 6.0** → Use package version **2.0.x**
+- **Ant Design 7.0** → Will correspond to package version **3.0.x** (future)
+
+### Version Synchronization Strategy
+
+When Ant Design releases a new major version, this package will release a corresponding new major version following the rule: **Ant Design major version + 1 = Package major version**.
+
+For example:
+- When Ant Design 7.0 is released, this package will release version 3.0.0
+- The package version number is always one higher than the Ant Design major version to maintain clear version mapping
+
+Each package version includes `peerDependencies` to help you select the correct version:
+- Version 1.0.x requires `antd ^5.0.0`
+- Version 2.0.x requires `antd ^6.0.0`
+- Version 3.0.x will require `antd ^7.0.0` (future)
+
 ## Roadmap
 
 - [x] Implement automatic data extraction when Ant Design components update
