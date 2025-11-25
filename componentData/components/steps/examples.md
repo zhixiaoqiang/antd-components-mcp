@@ -1,56 +1,192 @@
 ## Steps 组件示例
 ### 基本用法
-简单的步骤条。
+简单的步骤条，使用 `variant` 属性来设置不同的样式，使用 `size` 控制大小。
 
 ```tsx
 import React from 'react';
-import { Steps } from 'antd';
-const description = 'This is a description.';
+import { Flex, Steps } from 'antd';
+const content = 'This is a content.';
+const items = [
+  {
+    title: 'Finished',
+    content,
+  },
+  {
+    title: 'In Progress',
+    content,
+    subTitle: 'Left 00:00:08',
+  },
+  {
+    title: 'Waiting',
+    content,
+  },
+];
 const App: React.FC = () => (
-  <Steps
-    current={1}
-    items={[
-      {
-        title: 'Finished',
-        description,
-      },
-      {
-        title: 'In Progress',
-        description,
-        subTitle: 'Left 00:00:08',
-      },
-      {
-        title: 'Waiting',
-        description,
-      },
-    ]}
-  />
+  <Flex vertical gap="large">
+    <Steps current={1} items={items} />
+    <Steps current={1} items={items} variant="outlined" />
+    <Steps current={1} items={items} size="small" />
+    <Steps current={1} items={items} size="small" variant="outlined" />
+  </Flex>
 );
 export default App;
 ```
-### 迷你版
-迷你版的步骤条，通过设置 `<Steps size="small">` 启用.
+### 步骤运行错误
+使用 Steps 的 `status` 属性来指定当前步骤的状态。
 
 ```tsx
 import React from 'react';
 import { Steps } from 'antd';
+const content = 'This is a content';
+const items = [
+  {
+    title: 'Finished',
+    content,
+  },
+  {
+    title: 'In Process',
+    content,
+  },
+  {
+    title: 'Waiting',
+    content,
+  },
+];
+const App: React.FC = () => <Steps current={1} status="error" items={items} />;
+export default App;
+```
+### 竖直方向的步骤条
+简单的竖直方向的步骤条。
+
+```tsx
+import React from 'react';
+import { Flex, Steps } from 'antd';
+const content = 'This is a content.';
+const items = [
+  {
+    title: 'Finished',
+    content,
+  },
+  {
+    title: 'In Progress',
+    content,
+  },
+  {
+    title: 'Waiting',
+    content,
+  },
+];
 const App: React.FC = () => (
-  <Steps
-    size="small"
-    current={1}
-    items={[
-      {
-        title: 'Finished',
-      },
-      {
-        title: 'In Progress',
-      },
-      {
-        title: 'Waiting',
-      },
-    ]}
-  />
+  <Flex>
+    <div style={{ flex: 1 }}>
+      <Steps orientation="vertical" current={1} items={items} />
+    </div>
+    <div style={{ flex: 1 }}>
+      <Steps orientation="vertical" current={1} items={items} size="small" />
+    </div>
+  </Flex>
 );
+export default App;
+```
+### 可点击
+设置 `onChange` 后，Steps 变为可点击状态。
+
+```tsx
+import React, { useState } from 'react';
+import { Divider, Steps } from 'antd';
+const App: React.FC = () => {
+  const [current, setCurrent] = useState(0);
+  const onChange = (value: number) => {
+    console.log('onChange:', value);
+    setCurrent(value);
+  };
+  const content = 'This is a content.';
+  return (
+    <>
+      <Steps
+        current={current}
+        onChange={onChange}
+        items={[
+          {
+            title: 'Step 1',
+            content,
+          },
+          {
+            title: 'Step 2',
+            content,
+          },
+          {
+            title: 'Step 3',
+            content,
+          },
+        ]}
+      />
+      <Divider />
+      <Steps
+        current={current}
+        onChange={onChange}
+        orientation="vertical"
+        items={[
+          {
+            title: 'Step 1',
+            content,
+          },
+          {
+            title: 'Step 2',
+            content,
+          },
+          {
+            title: 'Step 3',
+            content,
+          },
+        ]}
+      />
+    </>
+  );
+};
+export default App;
+```
+### 面板式步骤
+面板类型的步骤条。
+
+```tsx
+import React, { useState } from 'react';
+import { Flex, Steps } from 'antd';
+import type { StepsProps } from 'antd';
+const App: React.FC = () => {
+  const [current, setCurrent] = useState(0);
+  const onChange = (value: number) => {
+    console.log('onChange:', value);
+    setCurrent(value);
+  };
+  const sharedProps: StepsProps = {
+    type: 'panel',
+    current,
+    onChange,
+    items: [
+      {
+        title: 'Step 1',
+        subTitle: '00:00',
+        content: 'This is a content.',
+      },
+      {
+        title: 'Step 2',
+        content: 'This is a content.',
+        status: 'error',
+      },
+      {
+        title: 'Step 3',
+        content: 'This is a content.',
+      },
+    ],
+  };
+  return (
+    <Flex vertical gap="middle">
+      <Steps {...sharedProps} />
+      <Steps {...sharedProps} size="small" variant="outlined" />
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 带图标的步骤条
@@ -153,88 +289,35 @@ const App: React.FC = () => {
 };
 export default App;
 ```
-### 竖直方向的步骤条
-简单的竖直方向的步骤条。
+### 标签放置位置与进度
+使用 `titlePlacement` 设置标签位置，通过 `percent` 显示进度。
 
 ```tsx
 import React from 'react';
 import { Steps } from 'antd';
-const description = 'This is a description.';
+const content = 'This is a content.';
+const items = [
+  {
+    title: 'Finished',
+    content,
+  },
+  {
+    title: 'In Progress',
+    content,
+  },
+  {
+    title: 'Waiting',
+    content,
+  },
+];
 const App: React.FC = () => (
-  <Steps
-    direction="vertical"
-    current={1}
-    items={[
-      {
-        title: 'Finished',
-        description,
-      },
-      {
-        title: 'In Progress',
-        description,
-      },
-      {
-        title: 'Waiting',
-        description,
-      },
-    ]}
-  />
-);
-export default App;
-```
-### 竖直方向的小型步骤条
-简单的竖直方向的小型步骤条。
-
-```tsx
-import React from 'react';
-import { Steps } from 'antd';
-const description = 'This is a description.';
-const App: React.FC = () => (
-  <Steps
-    direction="vertical"
-    size="small"
-    current={1}
-    items={[
-      { title: 'Finished', description },
-      {
-        title: 'In Progress',
-        description,
-      },
-      {
-        title: 'Waiting',
-        description,
-      },
-    ]}
-  />
-);
-export default App;
-```
-### 步骤运行错误
-使用 Steps 的 `status` 属性来指定当前步骤的状态。
-
-```tsx
-import React from 'react';
-import { Steps } from 'antd';
-const description = 'This is a description';
-const App: React.FC = () => (
-  <Steps
-    current={1}
-    status="error"
-    items={[
-      {
-        title: 'Finished',
-        description,
-      },
-      {
-        title: 'In Process',
-        description,
-      },
-      {
-        title: 'Waiting',
-        description,
-      },
-    ]}
-  />
+  <>
+    <Steps current={1} titlePlacement="vertical" items={items} ellipsis />
+    <br />
+    <Steps current={1} percent={60} titlePlacement="vertical" items={items} />
+    <br />
+    <Steps current={1} percent={80} size="small" titlePlacement="vertical" items={items} />
+  </>
 );
 export default App;
 ```
@@ -243,56 +326,44 @@ export default App;
 
 ```tsx
 import React from 'react';
-import { Divider, Steps } from 'antd';
+import { Divider, Flex, Steps } from 'antd';
+import type { StepsProps } from 'antd';
+const items = [
+  {
+    title: 'Finished',
+    content: 'This is a content.',
+  },
+  {
+    title: 'In Progress',
+    content: 'This is a content.',
+  },
+  {
+    title: 'Waiting',
+    content: 'This is a content.',
+  },
+];
+const sharedProps: StepsProps = {
+  type: 'dot',
+  current: 1,
+  items,
+};
+const sharedVerticalProps = {
+  ...sharedProps,
+  orientation: 'vertical',
+  style: {
+    flex: 'auto',
+  },
+} as const;
 const App: React.FC = () => (
-  <>
-    <Steps
-      progressDot
-      current={1}
-      items={[
-        {
-          title: 'Finished',
-          description: 'This is a description.',
-        },
-        {
-          title: 'In Progress',
-          description: 'This is a description.',
-        },
-        {
-          title: 'Waiting',
-          description: 'This is a description.',
-        },
-      ]}
-    />
+  <Flex vertical gap="middle">
+    <Steps {...sharedProps} />
+    <Steps {...sharedProps} variant="outlined" />
     <Divider />
-    <Steps
-      progressDot
-      current={1}
-      direction="vertical"
-      items={[
-        {
-          title: 'Finished',
-          description: 'This is a description. This is a description.',
-        },
-        {
-          title: 'Finished',
-          description: 'This is a description. This is a description.',
-        },
-        {
-          title: 'In Progress',
-          description: 'This is a description. This is a description.',
-        },
-        {
-          title: 'Waiting',
-          description: 'This is a description.',
-        },
-        {
-          title: 'Waiting',
-          description: 'This is a description.',
-        },
-      ]}
-    />
-  </>
+    <Flex gap="middle">
+      <Steps {...sharedVerticalProps} />
+      <Steps {...sharedVerticalProps} variant="outlined" />
+    </Flex>
+  </Flex>
 );
 export default App;
 ```
@@ -314,7 +385,7 @@ const customDot: StepsProps['progressDot'] = (dot, { status, index }) => (
     {dot}
   </Popover>
 );
-const description = 'You can hover on the dot.';
+const content = 'You can hover on the dot.';
 const App: React.FC = () => (
   <Steps
     current={1}
@@ -322,141 +393,23 @@ const App: React.FC = () => (
     items={[
       {
         title: 'Finished',
-        description,
+        content,
       },
       {
         title: 'In Progress',
-        description,
+        content,
       },
       {
         title: 'Waiting',
-        description,
+        content,
       },
       {
         title: 'Waiting',
-        description,
+        content,
       },
     ]}
   />
 );
-export default App;
-```
-### 迷你版点状步骤条
-包含步骤点的进度条。
-
-```tsx
-import React from 'react';
-import { Divider, Steps } from 'antd';
-const App: React.FC = () => (
-  <>
-    <Steps
-      progressDot
-      current={1}
-      size="small"
-      items={[
-        {
-          title: 'Finished',
-          description: 'This is a description.',
-        },
-        {
-          title: 'In Progress',
-          description: 'This is a description.',
-        },
-        {
-          title: 'Waiting',
-          description: 'This is a description.',
-        },
-      ]}
-    />
-    <Divider />
-    <Steps
-      progressDot
-      current={1}
-      direction="vertical"
-      size="small"
-      items={[
-        {
-          title: 'Finished',
-          description: 'This is a description. This is a description.',
-        },
-        {
-          title: 'Finished',
-          description: 'This is a description. This is a description.',
-        },
-        {
-          title: 'In Progress',
-          description: 'This is a description. This is a description.',
-        },
-        {
-          title: 'Waiting',
-          description: 'This is a description.',
-        },
-        {
-          title: 'Waiting',
-          description: 'This is a description.',
-        },
-      ]}
-    />
-  </>
-);
-export default App;
-```
-### 可点击
-设置 `onChange` 后，Steps 变为可点击状态。
-
-```tsx
-import React, { useState } from 'react';
-import { Divider, Steps } from 'antd';
-const App: React.FC = () => {
-  const [current, setCurrent] = useState(0);
-  const onChange = (value: number) => {
-    console.log('onChange:', value);
-    setCurrent(value);
-  };
-  const description = 'This is a description.';
-  return (
-    <>
-      <Steps
-        current={current}
-        onChange={onChange}
-        items={[
-          {
-            title: 'Step 1',
-            description,
-          },
-          {
-            title: 'Step 2',
-            description,
-          },
-          {
-            title: 'Step 3',
-            description,
-          },
-        ]}
-      />
-      <Divider />
-      <Steps
-        current={current}
-        onChange={onChange}
-        direction="vertical"
-        items={[
-          {
-            title: 'Step 1',
-            description,
-          },
-          {
-            title: 'Step 2',
-            description,
-          },
-          {
-            title: 'Step 3',
-            description,
-          },
-        ]}
-      />
-    </>
-  );
-};
 export default App;
 ```
 ### 导航步骤
@@ -464,7 +417,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react';
-import { Steps } from 'antd';
+import { Flex, Steps } from 'antd';
 const App: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const onChange = (value: number) => {
@@ -472,31 +425,30 @@ const App: React.FC = () => {
     setCurrent(value);
   };
   return (
-    <>
+    <Flex vertical gap="large">
       <Steps
         type="navigation"
         size="small"
         current={current}
         onChange={onChange}
-        className="site-navigation-steps"
         items={[
           {
             title: 'Step 1',
             subTitle: '00:00:05',
             status: 'finish',
-            description: 'This is a description.',
+            content: 'This is a content.',
           },
           {
             title: 'Step 2',
             subTitle: '00:01:02',
             status: 'process',
-            description: 'This is a description.',
+            content: 'This is a content.',
           },
           {
             title: 'Step 3',
             subTitle: 'waiting for longlong time',
             status: 'wait',
-            description: 'This is a description.',
+            content: 'This is a content.',
           },
         ]}
       />
@@ -504,7 +456,6 @@ const App: React.FC = () => {
         type="navigation"
         current={current}
         onChange={onChange}
-        className="site-navigation-steps"
         items={[
           {
             status: 'finish',
@@ -529,7 +480,6 @@ const App: React.FC = () => {
         size="small"
         current={current}
         onChange={onChange}
-        className="site-navigation-steps"
         items={[
           {
             status: 'finish',
@@ -550,7 +500,7 @@ const App: React.FC = () => {
           },
         ]}
       />
-    </>
+    </Flex>
   );
 };
 export default App;
@@ -561,7 +511,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Steps } from 'antd';
-const description = 'This is a description.';
+const content = 'This is a content.';
 const App: React.FC = () => (
   <Steps
     current={1}
@@ -569,51 +519,19 @@ const App: React.FC = () => (
     items={[
       {
         title: 'Finished',
-        description,
+        content,
       },
       {
         title: 'In Progress',
         subTitle: 'Left 00:00:08',
-        description,
+        content,
       },
       {
         title: 'Waiting',
-        description,
+        content,
       },
     ]}
   />
-);
-export default App;
-```
-### 标签放置位置
-修改标签放置位置为 `vertical`。
-
-```tsx
-import React from 'react';
-import { Steps } from 'antd';
-const description = 'This is a description.';
-const items = [
-  {
-    title: 'Finished',
-    description,
-  },
-  {
-    title: 'In Progress',
-    description,
-  },
-  {
-    title: 'Waiting',
-    description,
-  },
-];
-const App: React.FC = () => (
-  <>
-    <Steps current={1} labelPlacement="vertical" items={items} />
-    <br />
-    <Steps current={1} percent={60} labelPlacement="vertical" items={items} />
-    <br />
-    <Steps current={1} percent={80} size="small" labelPlacement="vertical" items={items} />
-  </>
 );
 export default App;
 ```
@@ -628,27 +546,34 @@ const App: React.FC = () => {
   const [percent, setPercentage] = useState<number | undefined>(0);
   const [current, setCurrent] = useState(1);
   const [status, setStatus] = useState<StepsProps['status']>('process');
-  const description = 'This is a description.';
+  const content = 'This is a content.';
   const items = [
     {
       title: 'Finished',
-      description,
+      content,
     },
     {
       title: 'In Progress',
       subTitle: 'Left 00:00:08',
-      description,
+      content,
     },
     {
       title: 'Waiting',
-      description,
+      content,
     },
   ];
   return (
     <>
       <Space.Compact block>
         <Button onClick={() => setPercentage(undefined)}>Percentage to undefined</Button>
-        <Button onClick={() => setPercentage((prev) => ((prev ?? 0) + 10) % 100)}>
+        <Button
+          onClick={() =>
+            setPercentage((prev) => {
+              const next = (prev ?? 0) + 10;
+              return next > 100 ? 0 : next;
+            })
+          }
+        >
           Percentage +
         </Button>
         <Button onClick={() => setCurrent((prev) => (prev + 1) % 3)}>Current +</Button>
@@ -664,7 +589,7 @@ const App: React.FC = () => {
         current={current}
         percent={percent}
         status={status}
-        direction="vertical"
+        orientation="vertical"
         items={items}
       />
       <Steps
@@ -672,9 +597,10 @@ const App: React.FC = () => {
         percent={percent}
         status={status}
         size="small"
-        direction="vertical"
+        orientation="vertical"
         items={items}
       />
+      {percent}
     </>
   );
 };
@@ -689,7 +615,7 @@ import type { StepsProps } from 'antd';
 import { Card, Radio, Steps } from 'antd';
 const App: React.FC = () => {
   const [size, setSize] = useState<StepsProps['size']>('default');
-  const description = 'This is a description.';
+  const content = 'This is a content.';
   const horizontalSteps = (
     <Card>
       <Steps
@@ -697,15 +623,15 @@ const App: React.FC = () => {
         items={[
           {
             title: 'Finished',
-            description,
+            content,
           },
           {
             title: 'In Progress',
-            description,
+            content,
           },
           {
             title: 'Waiting',
-            description,
+            content,
           },
         ]}
       />
@@ -723,19 +649,19 @@ const App: React.FC = () => {
       </Radio.Group>
       <Steps
         size={size}
-        direction="vertical"
+        orientation="vertical"
         items={[
           {
             title: 'Finished',
-            description: horizontalSteps,
+            content: horizontalSteps,
           },
           {
             title: 'In Progress',
-            description,
+            content,
           },
           {
             title: 'Waiting',
-            description,
+            content,
           },
         ]}
       />
@@ -773,72 +699,159 @@ const data = [
 const items = [
   {
     title: 'Step 1',
-    description: 'This is a Step 1.',
+    content: 'This is Step 1',
   },
   {
     title: 'Step 2',
-    description: 'This is a Step 2.',
+    content: 'This is Step 2',
   },
   {
     title: 'Step 3',
-    description: 'This is a Step 3.',
+    content: 'This is Step 3',
   },
 ];
 const App: React.FC = () => (
-  <div>
-    <List
-      itemLayout="horizontal"
-      dataSource={data}
-      renderItem={(item, index) => (
-        <List.Item>
-          <List.Item.Meta
-            avatar={<Avatar src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
-            title={<a href="https://ant.design">{item.title}</a>}
-            description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-          />
-          <Steps
-            style={{ marginTop: 8 }}
-            type="inline"
-            current={item.current}
-            status={item.status as StepsProps['status']}
-            items={items}
-          />
-        </List.Item>
-      )}
-    />
-  </div>
+  <List
+    itemLayout="horizontal"
+    dataSource={data}
+    renderItem={(item, index) => (
+      <List.Item>
+        <List.Item.Meta
+          avatar={<Avatar src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
+          title={<a href="https://ant.design">{item.title}</a>}
+          description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+        />
+        <Steps
+          style={{ marginTop: 8 }}
+          type="inline"
+          current={item.current}
+          status={item.status as StepsProps['status']}
+          items={items}
+        />
+      </List.Item>
+    )}
+  />
 );
 export default App;
 ```
-### 线框风格
-线框风格。
+### 内联样式组合
+内联步骤条修改样式，通过 `offset` 进行对齐。
 
 ```tsx
 import React from 'react';
-import { ConfigProvider, Steps } from 'antd';
-const description = 'This is a description.';
-const App: React.FC = () => (
-  <ConfigProvider theme={{ token: { wireframe: true } }}>
-    <Steps
-      current={1}
-      items={[
-        {
-          title: 'Finished',
-          description,
-        },
-        {
-          title: 'In Progress',
-          description,
-          subTitle: 'Left 00:00:08',
-        },
-        {
-          title: 'Waiting',
-          description,
-        },
-      ]}
-    />
-  </ConfigProvider>
-);
+import type { StepsProps } from 'antd';
+import { Flex, Steps, theme } from 'antd';
+const items: StepsProps['items'] = Array.from({ length: 5 }, (_, index) => ({
+  title: `Step ${index + 1}`,
+  subTitle: 'Sub Title',
+  content: `This is Step ${index + 1}`,
+}));
+const App: React.FC = () => {
+  const { token } = theme.useToken();
+  return (
+    <Flex vertical>
+      <Steps type="inline" current={1} items={items} />
+      <Steps
+        type="inline"
+        current={4}
+        items={items}
+        status="finish"
+        styles={{
+          itemTitle: {
+            color: token.colorPrimaryText,
+          },
+          itemSubtitle: {
+            color: token.colorPrimaryTextActive,
+          },
+          itemRail: {
+            background: token.colorTextDisabled,
+          },
+        }}
+      />
+      <Steps type="inline" current={1} items={items.slice(2)} offset={2} />
+    </Flex>
+  );
+};
+export default App;
+```
+### 变体 Debug
+包含步骤点的进度条。
+
+```tsx
+import React from 'react';
+import { ConfigProvider, Divider, Flex, Steps } from 'antd';
+import type { StepsProps } from 'antd';
+const items: StepsProps['items'] = [
+  {
+    title: 'Finished',
+    content: 'This is a content.',
+  },
+  {
+    title: 'In Progress',
+    content: 'This is a content.',
+    status: 'error',
+  },
+  {
+    title: 'Waiting',
+    content: 'This is a content.',
+  },
+];
+const App: React.FC = () => {
+  const [current, setCurrent] = React.useState(1);
+  const sharedProps: StepsProps = {
+    current,
+    variant: 'outlined',
+    onChange: (current: number) => {
+      setCurrent(current);
+    },
+    items,
+  };
+  const sharedPercentProps: StepsProps = {
+    current,
+    variant: 'outlined',
+    onChange: (current: number) => {
+      setCurrent(current);
+    },
+    items: items.map(({ status, ...item }) => item),
+    percent: 60,
+  };
+  return (
+    <Flex vertical gap="middle">
+      <Steps {...sharedProps} variant="filled" />
+      <Steps {...sharedProps} />
+      <Steps {...sharedProps} size="small" />
+      <Steps {...sharedPercentProps} size="small" />
+      <Flex gap="middle">
+        <Steps {...sharedPercentProps} orientation="vertical" />
+        <Steps {...sharedPercentProps} size="small" orientation="vertical" />
+      </Flex>
+      <Flex gap="middle">
+        <Steps {...sharedProps} orientation="vertical" />
+        <Steps {...sharedProps} orientation="vertical" size="small" />
+      </Flex>
+      <Steps {...sharedProps} type="dot" size="small" />
+      <Flex gap="middle">
+        <Steps {...sharedProps} type="dot" size="small" orientation="vertical" />
+        <Steps {...sharedProps} type="navigation" size="small" orientation="vertical" />
+      </Flex>
+      <Divider />
+      <ConfigProvider
+        theme={{
+          components: {
+            Steps: {
+              descriptionMaxWidth: 140,
+              customIconSize: 22,
+            },
+          },
+        }}
+      >
+        <Steps {...sharedProps} type="dot" />
+        <Steps {...sharedProps} titlePlacement="vertical" />
+        <Steps {...sharedProps} titlePlacement="vertical" size="small" />
+      </ConfigProvider>
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 组件 Token
@@ -848,7 +861,7 @@ Component Token Debug.
 import React from 'react';
 import { LoadingOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 import { ConfigProvider, Steps } from 'antd';
-const description = 'This is a description.';
+const content = 'This is a content.';
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
@@ -876,16 +889,16 @@ const App: React.FC = () => (
       items={[
         {
           title: 'Finished',
-          description,
+          content,
         },
         {
           title: 'In Progress',
-          description,
+          content,
           subTitle: 'Left 00:00:08',
         },
         {
           title: 'Waiting',
-          description,
+          content,
         },
       ]}
     />
@@ -895,16 +908,16 @@ const App: React.FC = () => (
       items={[
         {
           title: 'Finished',
-          description,
+          content,
         },
         {
           title: 'In Progress',
-          description,
+          content,
           subTitle: 'Left 00:00:08',
         },
         {
           title: 'Waiting',
-          description,
+          content,
         },
       ]}
     />
@@ -933,20 +946,20 @@ const App: React.FC = () => (
       ]}
     />
     <Steps
-      progressDot
+      type="dot"
       current={1}
       items={[
         {
           title: 'Finished',
-          description: 'This is a description.',
+          content: 'This is a content.',
         },
         {
           title: 'In Progress',
-          description: 'This is a description.',
+          content: 'This is a content.',
         },
         {
           title: 'Waiting',
-          description: 'This is a description.',
+          content: 'This is a content.',
         },
       ]}
     />
@@ -958,23 +971,72 @@ const App: React.FC = () => (
           title: 'Step 1',
           subTitle: '00:00:05',
           status: 'finish',
-          description: 'This is a description.',
+          content: 'This is a content.',
         },
         {
           title: 'Step 2',
           subTitle: '00:01:02',
           status: 'process',
-          description: 'This is a description.',
+          content: 'This is a content.',
         },
         {
           title: 'Step 3',
           subTitle: 'waiting for longlong time',
           status: 'wait',
-          description: 'This is a description.',
+          content: 'This is a content.',
         },
       ]}
     />
   </ConfigProvider>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Steps 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Steps } from 'antd';
+import type { StepsProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    border: `2px dashed ${token.colorBorder}`,
+    borderRadius: token.borderRadius,
+    padding: token.padding,
+  },
+}));
+const stylesObject: StepsProps['styles'] = {
+  itemIcon: { borderRadius: '30%' },
+  itemContent: { fontStyle: 'italic' },
+};
+const stylesFn: StepsProps['styles'] = (info) => {
+  if (info.props.type === 'navigation') {
+    return {
+      root: {
+        borderColor: '#1890ff',
+      },
+    } satisfies StepsProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles } = useStyles();
+  const sharedProps: StepsProps = {
+    items: [
+      { title: 'Finished', content: 'This is a content.' },
+      { title: 'In Progress', content: 'This is a content.' },
+      { title: 'Waiting', content: 'This is a content.' },
+    ],
+    current: 1,
+    classNames: { root: styles.root },
+  };
+  return (
+    <Flex vertical gap="middle">
+      <Steps {...sharedProps} styles={stylesObject} />
+      <Steps {...sharedProps} styles={stylesFn} type="navigation" />
+    </Flex>
+  );
+};
 export default App;
 ```

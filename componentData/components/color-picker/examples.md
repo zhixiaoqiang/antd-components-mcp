@@ -17,12 +17,12 @@ import React from 'react';
 import { ColorPicker, Space } from 'antd';
 const Demo = () => (
   <Space>
-    <Space direction="vertical">
+    <Space vertical>
       <ColorPicker defaultValue="#1677ff" size="small" />
       <ColorPicker defaultValue="#1677ff" />
       <ColorPicker defaultValue="#1677ff" size="large" />
     </Space>
-    <Space direction="vertical">
+    <Space vertical>
       <ColorPicker defaultValue="#1677ff" size="small" showText />
       <ColorPicker defaultValue="#1677ff" showText />
       <ColorPicker defaultValue="#1677ff" size="large" showText />
@@ -67,7 +67,7 @@ const DEFAULT_COLOR = [
   },
 ];
 const Demo = () => (
-  <Space direction="vertical">
+  <Space vertical>
     <ColorPicker
       defaultValue={DEFAULT_COLOR}
       allowClear
@@ -100,7 +100,7 @@ import { ColorPicker, Space } from 'antd';
 const Demo = () => {
   const [open, setOpen] = useState(false);
   return (
-    <Space direction="vertical">
+    <Space vertical>
       <ColorPicker defaultValue="#1677ff" showText allowClear />
       <ColorPicker
         defaultValue="#1677ff"
@@ -263,7 +263,7 @@ const RgbCase: React.FC = () => {
   );
 };
 const Demo: React.FC = () => (
-  <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+  <Space vertical size="middle" style={{ display: 'flex' }}>
     <HexCase />
     <HsbCase />
     <RgbCase />
@@ -287,6 +287,43 @@ const Demo: React.FC = () => {
   const { token } = theme.useToken();
   const presets = genPresets({ primary: generate(token.colorPrimary), red, green });
   return <ColorPicker presets={presets} defaultValue="#1677ff" />;
+};
+export default Demo;
+```
+### 预设渐变色
+设置颜色选择器的预设渐变色。
+
+```tsx
+import React from 'react';
+import { ColorPicker } from 'antd';
+const PRESET_COLORS = [
+  ['rgb(42, 188, 191)', 'rgb(56, 54, 221)'],
+  ['rgb(34, 73, 254)', 'rgb(199, 74, 168)'],
+  ['rgb(255, 111, 4)', 'rgb(243, 48, 171)'],
+  ['rgb(244, 170, 6)', 'rgb(229, 70, 49)'],
+];
+const Demo: React.FC = () => {
+  return (
+    <ColorPicker
+      mode={['single', 'gradient']}
+      presets={[
+        {
+          label: 'Liner',
+          colors: PRESET_COLORS.map((colors) => [
+            {
+              color: colors[0],
+              percent: 0,
+            },
+            {
+              color: colors[1],
+              percent: 100,
+            },
+          ]),
+          defaultOpen: true,
+        },
+      ]}
+    />
+  );
 };
 export default Demo;
 ```
@@ -318,7 +355,7 @@ const HorizontalLayoutDemo = () => {
       <Col span={12}>
         <Presets />
       </Col>
-      <Divider type="vertical" style={{ height: 'auto' }} />
+      <Divider vertical style={{ height: 'auto' }} />
       <Col flex="auto">
         <Picker />
       </Col>
@@ -354,7 +391,7 @@ const BasicDemo = () => (
   />
 );
 export default () => (
-  <Space direction="vertical">
+  <Space vertical>
     <Space>
       <span>Add title:</span>
       <BasicDemo />
@@ -365,6 +402,64 @@ export default () => (
     </Space>
   </Space>
 );
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 ColorPicker 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { ColorPicker, Flex, Space } from 'antd';
+import type { ColorPickerProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    borderRadius: token.borderRadius,
+  },
+}));
+const stylesObject: ColorPickerProps['styles'] = {
+  popup: {
+    root: {
+      border: '1px solid #fff',
+    },
+  },
+};
+const stylesFn: ColorPickerProps['styles'] = (info) => {
+  if (info.props.size === 'large') {
+    return {
+      popup: {
+        root: {
+          border: '1px solid #722ed1',
+        },
+      },
+    } satisfies ColorPickerProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <Space size={[8, 16]} wrap>
+      <Flex gap="small">
+        <ColorPicker
+          defaultValue="#1677ff"
+          arrow={false}
+          styles={stylesObject}
+          classNames={classNames}
+        />
+      </Flex>
+      <Flex gap="small">
+        <ColorPicker
+          defaultValue="#722ed1"
+          size="large"
+          styles={stylesFn}
+          arrow={false}
+          classNames={classNames}
+        />
+      </Flex>
+    </Space>
+  );
+};
+export default App;
 ```
 ### Pure Render
 Pure Panel

@@ -68,7 +68,9 @@ const App: React.FC = () => {
       style={{ width: '100%' }}
       value={value}
       styles={{
-        popup: { root: { maxHeight: 400, overflow: 'auto' } },
+        popup: {
+          root: { maxHeight: 400, overflow: 'auto' },
+        },
       }}
       placeholder="Please select"
       allowClear
@@ -131,7 +133,9 @@ const App: React.FC = () => {
       style={{ width: '100%' }}
       value={value}
       styles={{
-        popup: { root: { maxHeight: 400, overflow: 'auto' } },
+        popup: {
+          root: { maxHeight: 400, overflow: 'auto' },
+        },
       }}
       placeholder="Please select"
       allowClear
@@ -181,7 +185,9 @@ const App: React.FC = () => {
       style={{ width: '100%' }}
       value={value}
       styles={{
-        popup: { root: { maxHeight: 400, overflow: 'auto' } },
+        popup: {
+          root: { maxHeight: 400, overflow: 'auto' },
+        },
       }}
       treeData={treeData}
       placeholder="Please select"
@@ -300,7 +306,9 @@ const App: React.FC = () => {
       style={{ width: '100%' }}
       value={value}
       styles={{
-        popup: { root: { maxHeight: 400, overflow: 'auto' } },
+        popup: {
+          root: { maxHeight: 400, overflow: 'auto' },
+        },
       }}
       placeholder="Please select"
       onChange={onChange}
@@ -361,7 +369,7 @@ const App: React.FC = () => {
   const [showLeafIcon, setShowLeafIcon] = useState(false);
   const [showIcon, setShowIcon] = useState<boolean>(false);
   return (
-    <Space direction="vertical">
+    <Space vertical>
       <Switch
         checkedChildren="showIcon"
         unCheckedChildren="showIcon"
@@ -450,7 +458,13 @@ const App: React.FC = () => {
       <TreeSelect
         showSearch
         styles={{
-          popup: { root: { maxHeight: 400, overflow: 'auto', minWidth: 300 } },
+          popup: {
+            root: {
+              maxHeight: 400,
+              overflow: 'auto',
+              minWidth: 300,
+            },
+          },
         }}
         placeholder="Please select"
         popupMatchSelectWidth={false}
@@ -493,7 +507,7 @@ export default App;
 import React from 'react';
 import { Space, TreeSelect } from 'antd';
 const App: React.FC = () => (
-  <Space direction="vertical" style={{ width: '100%' }}>
+  <Space vertical style={{ width: '100%' }}>
     <TreeSelect status="error" style={{ width: '100%' }} placeholder="Error" />
     <TreeSelect
       status="warning"
@@ -627,7 +641,9 @@ const App: React.FC = () => {
         style={{ width: '100%' }}
         value={value}
         styles={{
-          popup: { root: { maxHeight: 400, overflow: 'auto' } },
+          popup: {
+            root: { maxHeight: 400, overflow: 'auto' },
+          },
         }}
         placeholder="Please select"
         allowClear
@@ -643,7 +659,9 @@ const App: React.FC = () => {
         style={{ width: '100%' }}
         value={value}
         styles={{
-          popup: { root: { maxHeight: 400, overflow: 'auto' } },
+          popup: {
+            root: { maxHeight: 400, overflow: 'auto' },
+          },
         }}
         placeholder="Please select"
         allowClear
@@ -652,6 +670,95 @@ const App: React.FC = () => {
         treeData={treeData}
       />
     </>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 TreeSelect 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, TreeSelect } from 'antd';
+import type { TreeSelectProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    width: 300,
+    borderRadius: token.borderRadius,
+  },
+}));
+const styleObject: TreeSelectProps['styles'] = {
+  input: {
+    fontSize: 16,
+  },
+  suffix: {
+    color: '#1890ff',
+  },
+  popup: {
+    root: {
+      border: '1px solid #1890ff',
+    },
+  },
+};
+const styleFunction: TreeSelectProps['styles'] = (info) => {
+  if (info.props.size === 'middle') {
+    return {
+      suffix: {
+        color: '#722ed1',
+      },
+      popup: {
+        item: {
+          color: '#722ed1',
+        },
+      },
+    } satisfies TreeSelectProps['styles'];
+  }
+  return {};
+};
+const treeData: TreeSelectProps['treeData'] = [
+  {
+    value: 'parent 1',
+    title: 'parent 1',
+    children: [
+      {
+        value: 'parent 1-0',
+        title: 'parent 1-0',
+        children: [
+          {
+            value: 'leaf1',
+            title: 'leaf1',
+          },
+          {
+            value: 'leaf2',
+            title: 'leaf2',
+          },
+        ],
+      },
+      {
+        value: 'parent 1-1',
+        title: 'parent 1-1',
+        children: [
+          {
+            value: 'leaf3',
+            title: 'leaf3',
+          },
+        ],
+      },
+    ],
+  },
+];
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  const sharedProps: TreeSelectProps = {
+    treeData,
+    classNames,
+  };
+  return (
+    <Flex vertical gap="large">
+      <TreeSelect {...sharedProps} styles={styleObject} placeholder="Object" />
+      <TreeSelect {...sharedProps} styles={styleFunction} placeholder="Function" size="middle" />
+    </Flex>
   );
 };
 export default App;
@@ -746,7 +853,11 @@ const App: React.FC = () => {
         showSearch
         style={{ width: '100%' }}
         value={value}
-        styles={{ popup: { root: { maxHeight: 400, overflow: 'auto' } } }}
+        styles={{
+          popup: {
+            root: { maxHeight: 400, overflow: 'auto' },
+          },
+        }}
         placeholder="Please select"
         allowClear
         treeDefaultExpandAll

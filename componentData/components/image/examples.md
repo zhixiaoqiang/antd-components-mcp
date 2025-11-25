@@ -8,6 +8,7 @@ import { Image } from 'antd';
 const App: React.FC = () => (
   <Image
     width={200}
+    alt="basic"
     src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
   />
 );
@@ -21,6 +22,7 @@ import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
   <Image
+    alt="basic image"
     width={200}
     height={200}
     src="error"
@@ -41,10 +43,12 @@ const App: React.FC = () => {
     <Space size={12}>
       <Image
         width={200}
+        alt="basic image"
         src={`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?${random}`}
         placeholder={
           <Image
             preview={false}
+            alt="placeholder image"
             src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200"
             width={200}
           />
@@ -75,9 +79,14 @@ const App: React.FC = () => (
       onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
     }}
   >
-    <Image width={200} src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+    <Image
+      alt="svg image"
+      width={200}
+      src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+    />
     <Image
       width={200}
+      alt="svg image"
       src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
     />
   </Image.PreviewGroup>
@@ -99,6 +108,7 @@ const App: React.FC = () => (
     ]}
   >
     <Image
+      alt="webp image"
       width={200}
       src="https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp"
     />
@@ -115,6 +125,7 @@ import { Image } from 'antd';
 const App: React.FC = () => (
   <Image
     width={200}
+    alt="basic image"
     src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200"
     preview={{
       src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
@@ -130,7 +141,7 @@ export default App;
 import React, { useState } from 'react';
 import { Button, Image, InputNumber } from 'antd';
 const App: React.FC = () => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scaleStep, setScaleStep] = useState(0.5);
   return (
     <>
@@ -145,19 +156,20 @@ const App: React.FC = () => {
         />
       </div>
       <br />
-      <Button type="primary" onClick={() => setVisible(true)}>
+      <Button type="primary" onClick={() => setOpen(true)}>
         show image preview
       </Button>
       <Image
         width={200}
         style={{ display: 'none' }}
+        alt="basic image"
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200"
         preview={{
-          visible,
+          open,
           scaleStep,
           src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-          onVisibleChange: (value) => {
-            setVisible(value);
+          onOpenChange: (value) => {
+            setOpen(value);
           },
         }}
       />
@@ -213,7 +225,7 @@ const App: React.FC = () => {
   return (
     <Image.PreviewGroup
       preview={{
-        toolbarRender: (
+        actionsRender: (
           _,
           {
             transform: { scale },
@@ -250,8 +262,8 @@ const App: React.FC = () => {
         },
       }}
     >
-      {imageList.map((item) => (
-        <Image key={item} src={item} width={200} />
+      {imageList.map((item, index) => (
+        <Image alt={`image-${index}`} key={item} src={item} width={200} />
       ))}
     </Image.PreviewGroup>
   );
@@ -267,8 +279,8 @@ import { Image } from 'antd';
 const App: React.FC = () => (
   <Image
     width={200}
+    alt="basic image"
     preview={{
-      destroyOnHidden: true,
       imageRender: () => (
         <video
           muted
@@ -277,11 +289,118 @@ const App: React.FC = () => (
           src="https://mdn.alipayobjects.com/huamei_iwk9zp/afts/file/A*uYT7SZwhJnUAAAAAAAAAAAAADgCCAQ"
         />
       ),
-      toolbarRender: () => null,
+      actionsRender: () => null,
     }}
     src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
   />
 );
+export default App;
+```
+### 预览遮罩
+遮罩效果，默认 `blur`。
+
+```tsx
+import React from 'react';
+import { Image, Space } from 'antd';
+const App: React.FC = () => {
+  return (
+    <Space>
+      <Image
+        width={100}
+        alt="Default blur"
+        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        preview={{
+          mask: true,
+          cover: (
+            <Space vertical align="center">
+              Default blur
+            </Space>
+          ),
+        }}
+      />
+      <Image
+        alt="Dimmed mask"
+        width={100}
+        src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+        preview={{
+          mask: { blur: false },
+          cover: (
+            <Space vertical align="center">
+              Dimmed mask
+            </Space>
+          ),
+        }}
+      />
+      <Image
+        width={100}
+        alt="No mask"
+        src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
+        preview={{
+          mask: false,
+          cover: (
+            <Space vertical align="center">
+              No mask
+            </Space>
+          ),
+        }}
+      />
+    </Space>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Image 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Image } from 'antd';
+import type { ImageProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(() => ({
+  root: {
+    padding: 4,
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+}));
+const styles: ImageProps['styles'] = {
+  image: {
+    borderRadius: '4px',
+  },
+};
+const stylesFn: ImageProps['styles'] = (info) => {
+  if (info.props.preview) {
+    return {
+      root: {
+        border: '2px solid #A594F9',
+        borderRadius: 8,
+        padding: 4,
+        transition: 'all 0.3s ease',
+      },
+      image: {
+        borderRadius: 4,
+        filter: 'grayscale(50%)',
+      },
+    } satisfies ImageProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  const sharedProps: ImageProps = {
+    src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    width: 160,
+    alt: '示例图片',
+    classNames,
+  };
+  return (
+    <Flex gap="middle">
+      <Image {...sharedProps} styles={styles} />
+      <Image {...sharedProps} styles={stylesFn} preview={{ open: false }} />
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 自定义预览文本
@@ -294,11 +413,16 @@ import { Image, Space } from 'antd';
 const App: React.FC = () => (
   <Image
     width={96}
+    alt="basic image"
     src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+    classNames={{
+      popup: {
+        mask: 'customize-mask',
+      },
+    }}
     preview={{
-      maskClassName: 'customize-mask',
-      mask: (
-        <Space direction="vertical" align="center">
+      cover: (
+        <Space vertical align="center">
           <ZoomInOutlined />
           示例
         </Space>
@@ -306,6 +430,69 @@ const App: React.FC = () => (
     }}
   />
 );
+export default App;
+```
+### 自定义预览遮罩位置
+设置预览遮罩显示的位置
+
+```tsx
+import React from 'react';
+import { ZoomInOutlined } from '@ant-design/icons';
+import { Image, Space } from 'antd';
+const App: React.FC = () => {
+  return (
+    <Space size={16}>
+      <Image
+        width={96}
+        alt="basic image"
+        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        preview={{
+          cover: {
+            coverNode: (
+              <Space align="center">
+                <ZoomInOutlined />
+                center
+              </Space>
+            ),
+            placement: 'center',
+          },
+        }}
+      />
+      <Image
+        width={96}
+        alt="image"
+        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        preview={{
+          cover: {
+            coverNode: (
+              <Space align="center">
+                <ZoomInOutlined />
+                top
+              </Space>
+            ),
+            placement: 'top',
+          },
+        }}
+      />
+      <Image
+        width={96}
+        alt="image"
+        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+        preview={{
+          cover: {
+            coverNode: (
+              <Space align="center">
+                <ZoomInOutlined />
+                bottom
+              </Space>
+            ),
+            placement: 'bottom',
+          },
+        }}
+      />
+    </Space>
+  );
+};
 export default App;
 ```
 ### 嵌套
@@ -373,6 +560,7 @@ const App: React.FC = () => {
           >
             <Image
               width={200}
+              alt="svg image"
               src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
             />
             <Divider />
@@ -384,6 +572,7 @@ const App: React.FC = () => {
             >
               <Image
                 width={200}
+                alt="svg image"
                 src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
               />
               <Image
@@ -409,13 +598,19 @@ const App: React.FC = () => (
   <Image.PreviewGroup
     preview={{ countRender: (current, total) => `当前 ${current} / 总计 ${total}` }}
   >
-    <Image width={150} src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+    <Image
+      alt="svg image"
+      width={150}
+      src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+    />
     <Image
       width={150}
+      alt="svg image"
       src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
     />
     <Image
       width={150}
+      alt="svg image"
       src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
     />
   </Image.PreviewGroup>
@@ -445,10 +640,12 @@ const App: React.FC = () => (
     >
       <Image
         width={150}
+        alt="svg image"
         src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
       />
       <Image
         width={150}
+        alt="basic image"
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
       />
     </Image.PreviewGroup>
@@ -471,7 +668,7 @@ const App: React.FC = () => (
     alt="test"
     preview={{
       imageRender: (_, { image }) => <div>{JSON.stringify(image)}</div>,
-      toolbarRender: (_, { image }) => <div>{JSON.stringify(image)}</div>,
+      actionsRender: (_, { image }) => <div>{JSON.stringify(image)}</div>,
     }}
   />
 );

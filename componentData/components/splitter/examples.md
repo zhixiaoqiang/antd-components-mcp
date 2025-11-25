@@ -5,7 +5,7 @@
 ```tsx
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
-const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
+export const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
   <Flex justify="center" align="center" style={{ height: '100%' }}>
     <Typography.Title type="secondary" level={5} style={{ whiteSpace: 'nowrap' }}>
       {props.text}
@@ -81,7 +81,7 @@ const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
   </Flex>
 );
 const App: React.FC = () => (
-  <Splitter layout="vertical" style={{ height: 300, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+  <Splitter vertical style={{ height: 300, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
     <Splitter.Panel>
       <Desc text="First" />
     </Splitter.Panel>
@@ -119,7 +119,7 @@ const CustomSplitter: React.FC<Readonly<SplitterProps>> = ({ style, ...restProps
 const App: React.FC = () => (
   <Flex gap="middle" vertical>
     <CustomSplitter style={{ height: 200 }} />
-    <CustomSplitter style={{ height: 300 }} layout="vertical" />
+    <CustomSplitter style={{ height: 300 }} orientation="vertical" />
   </Flex>
 );
 export default App;
@@ -221,7 +221,7 @@ const App: React.FC = () => (
       <Desc text="Left" />
     </Splitter.Panel>
     <Splitter.Panel>
-      <Splitter layout="vertical">
+      <Splitter orientation="vertical">
         <Splitter.Panel>
           <Desc text="Top" />
         </Splitter.Panel>
@@ -232,6 +232,214 @@ const App: React.FC = () => (
     </Splitter.Panel>
   </Splitter>
 );
+export default App;
+```
+### 延迟渲染模式
+延迟渲染模式，拖拽时不会立即更新大小，而是等到松手时才更新。
+
+```tsx
+import React from 'react';
+import { Flex, Space, Splitter, Typography } from 'antd';
+const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
+  <Flex justify="center" align="center" style={{ height: '100%' }}>
+    <Typography.Title type="secondary" level={5} style={{ whiteSpace: 'nowrap' }}>
+      {props.text}
+    </Typography.Title>
+  </Flex>
+);
+const App: React.FC = () => (
+  <Space vertical style={{ width: '100%' }}>
+    <Splitter lazy style={{ height: 200, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+      <Splitter.Panel defaultSize="40%" min="20%" max="70%">
+        <Desc text="First" />
+      </Splitter.Panel>
+      <Splitter.Panel>
+        <Desc text="Second" />
+      </Splitter.Panel>
+    </Splitter>
+    <Splitter
+      lazy
+      orientation="vertical"
+      style={{ height: 200, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}
+    >
+      <Splitter.Panel defaultSize="40%" min="30%" max="70%">
+        <Desc text="First" />
+      </Splitter.Panel>
+      <Splitter.Panel>
+        <Desc text="Second" />
+      </Splitter.Panel>
+    </Splitter>
+  </Space>
+);
+export default App;
+```
+### 自定义样式
+自定义操作元素样式
+
+```tsx
+import React from 'react';
+import {
+  CaretDownOutlined,
+  CaretLeftOutlined,
+  CaretRightOutlined,
+  CaretUpOutlined,
+  ColumnWidthOutlined,
+} from '@ant-design/icons';
+import { ConfigProvider, Divider, Flex, Splitter, Typography } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  dragger: {
+    '&::before': {
+      backgroundColor: 'transparent !important',
+      border: `1px dashed ${token.controlItemBgHover}`,
+    },
+    '&:hover::before': {
+      border: `1px dashed ${token.colorPrimary}`,
+    },
+  },
+  draggerActive: {
+    '&::before': {
+      border: `1px dashed ${token.colorPrimary}`,
+    },
+  },
+  draggerIcon: {
+    '&:hover': {
+      color: token.colorPrimary,
+    },
+  },
+  collapsibleIcon: {
+    fontSize: 16,
+    color: token.colorTextDescription,
+    '&:hover': {
+      color: token.colorPrimary,
+    },
+  },
+}));
+const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
+  <Flex justify="center" align="center" style={{ height: '100%' }}>
+    <Typography.Title type="secondary" level={5} style={{ whiteSpace: 'nowrap' }}>
+      {props.text}
+    </Typography.Title>
+  </Flex>
+);
+const App: React.FC = () => {
+  const { styles } = useStyles();
+  return (
+    <ConfigProvider
+      theme={{
+        components: {
+          Splitter: { splitBarSize: 1, splitTriggerSize: 16 },
+        },
+      }}
+    >
+      <Splitter
+        style={{ height: 200, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}
+        draggerIcon={<ColumnWidthOutlined className={styles.draggerIcon} />}
+        collapsibleIcon={{
+          start: <CaretLeftOutlined className={styles.collapsibleIcon} />,
+          end: <CaretRightOutlined className={styles.collapsibleIcon} />,
+        }}
+      >
+        <Splitter.Panel defaultSize="40%" min="20%" max="70%" collapsible>
+          <Desc text="Panel 1" />
+        </Splitter.Panel>
+        <Splitter.Panel collapsible>
+          <Desc text="Panel 2" />
+        </Splitter.Panel>
+        <Splitter.Panel resizable={false}>
+          <Desc text="Panel 3" />
+        </Splitter.Panel>
+      </Splitter>
+      <Divider />
+      <Splitter
+        orientation="vertical"
+        classNames={{ dragger: { default: styles.dragger, active: styles.draggerActive } }}
+        style={{ height: 200, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}
+        draggerIcon={null}
+        collapsibleIcon={{
+          start: <CaretUpOutlined className={styles.collapsibleIcon} />,
+          end: <CaretDownOutlined className={styles.collapsibleIcon} />,
+        }}
+      >
+        <Splitter.Panel defaultSize="40%" min="30%" max="70%" collapsible>
+          <Desc text="First" />
+        </Splitter.Panel>
+        <Splitter.Panel collapsible>
+          <Desc text="Second" />
+        </Splitter.Panel>
+      </Splitter>
+    </ConfigProvider>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Splitter 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Splitter, Typography } from 'antd';
+import type { SplitterProps } from 'antd';
+import { createStyles } from 'antd-style';
+const Desc: React.FC<Readonly<{ text?: string | number; style?: React.CSSProperties }>> = (
+  props,
+) => {
+  return (
+    <Flex justify="center" align="center" style={{ height: '100%' }}>
+      <Typography.Title type="secondary" level={5} style={props.style}>
+        {props.text}
+      </Typography.Title>
+    </Flex>
+  );
+};
+const useStyle = createStyles(({ css, cssVar }) => ({
+  boxShadow: css`
+    box-shadow: ${cssVar.boxShadowSecondary};
+  `,
+}));
+const stylesObject: SplitterProps['styles'] = {
+  root: { backgroundColor: '#fffbe6' },
+  dragger: { backgroundColor: 'rgba(194,223,252,0.4)' },
+};
+const stylesFn: SplitterProps['styles'] = ({ props }) => {
+  if (props.orientation === 'horizontal') {
+    return {
+      root: {
+        borderWidth: 2,
+        borderStyle: 'dashed',
+        marginBottom: 10,
+      },
+    } satisfies SplitterProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles } = useStyle();
+  const splitSharedProps: SplitterProps = {
+    style: { height: 200 },
+    classNames: { root: styles.boxShadow },
+  };
+  return (
+    <Flex vertical gap="large">
+      <Splitter {...splitSharedProps} styles={stylesObject}>
+        <Splitter.Panel>
+          <Desc text="First" style={{ color: '#000' }} />
+        </Splitter.Panel>
+        <Splitter.Panel>
+          <Desc text="Second" style={{ color: '#000' }} />
+        </Splitter.Panel>
+      </Splitter>
+      <Splitter {...splitSharedProps} styles={stylesFn}>
+        <Splitter.Panel>
+          <Desc text="First" />
+        </Splitter.Panel>
+        <Splitter.Panel>
+          <Desc text="Second" />
+        </Splitter.Panel>
+      </Splitter>
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 标签页中嵌套
@@ -288,45 +496,6 @@ const App: React.FC = () => {
     />
   );
 };
-export default App;
-```
-### 延迟渲染模式
-延迟渲染模式，拖拽时不会立即更新大小，而是等到松手时才更新。
-
-```tsx
-import React from 'react';
-import { Flex, Space, Splitter, Typography } from 'antd';
-const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
-  <Flex justify="center" align="center" style={{ height: '100%' }}>
-    <Typography.Title type="secondary" level={5} style={{ whiteSpace: 'nowrap' }}>
-      {props.text}
-    </Typography.Title>
-  </Flex>
-);
-const App: React.FC = () => (
-  <Space direction="vertical" style={{ width: '100%' }}>
-    <Splitter lazy style={{ height: 200, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-      <Splitter.Panel defaultSize="40%" min="20%" max="70%">
-        <Desc text="First" />
-      </Splitter.Panel>
-      <Splitter.Panel>
-        <Desc text="Second" />
-      </Splitter.Panel>
-    </Splitter>
-    <Splitter
-      lazy
-      layout="vertical"
-      style={{ height: 200, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}
-    >
-      <Splitter.Panel defaultSize="40%" min="30%" max="70%">
-        <Desc text="First" />
-      </Splitter.Panel>
-      <Splitter.Panel>
-        <Desc text="Second" />
-      </Splitter.Panel>
-    </Splitter>
-  </Space>
-);
 export default App;
 ```
 ### 调试

@@ -249,11 +249,13 @@ const App: React.FC = () => {
     <Transfer
       dataSource={mockData}
       showSearch
-      listStyle={{
-        width: 250,
-        height: 300,
+      styles={{
+        section: {
+          width: 250,
+          height: 300,
+        },
       }}
-      operations={['to right', 'to left']}
+      actions={['to right', 'to left']}
       targetKeys={targetKeys}
       onChange={handleChange}
       render={(item) => `${item.title}-${item.description}`}
@@ -318,13 +320,125 @@ const App: React.FC = () => {
   return (
     <Transfer
       dataSource={mockData}
-      listStyle={{
-        width: 300,
-        height: 300,
+      styles={{
+        section: {
+          width: 300,
+          height: 300,
+        },
       }}
       targetKeys={targetKeys}
       onChange={handleChange}
       render={renderItem}
+    />
+  );
+};
+export default App;
+```
+### 自定义操作按钮
+使用 `actions` 属性可以自定义操作按钮。
+当 `actions` 传入字符串数组时，会使用默认的 Button 组件，并将字符串作为按钮文本。
+当 `actions` 传入 React 元素数组时，会直接使用这些元素作为操作按钮，这样你可以使用自定义的按钮组件，如本例中的带有加载状态的按钮。
+注意：
+1. 当使用自定义按钮时，Transfer 组件会自动处理按钮的禁用状态和点击事件。
+2. 你可以在自定义按钮上添加 `disabled` 属性来控制按钮的禁用状态。
+3. 你可以在自定义按钮上添加 `onClick` 事件处理函数，它会与 Transfer 组件的内部处理函数合并执行。
+
+```tsx
+import React, { useState } from 'react';
+import { Button, message, Transfer } from 'antd';
+import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
+import type { TransferProps } from 'antd';
+interface RecordType {
+  key: string;
+  title: string;
+  description: string;
+}
+const mockData: RecordType[] = Array.from({ length: 20 }).map((_, i) => ({
+  key: i.toString(),
+  title: `Content ${i + 1}`,
+  description: `Description ${i + 1}`,
+}));
+const initialTargetKeys = mockData.filter((item) => Number(item.key) > 10).map((item) => item.key);
+const App: React.FC = () => {
+  const [targetKeys, setTargetKeys] = useState<string[]>(initialTargetKeys);
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+  const [loadingRight, setLoadingRight] = useState<boolean>(false);
+  const [loadingLeft, setLoadingLeft] = useState<boolean>(false);
+  // Handle data transfer
+  const handleChange: TransferProps['onChange'] = (newTargetKeys, direction, moveKeys) => {
+    setTargetKeys(newTargetKeys as string[]);
+    // Simulate async action
+    if (direction === 'right') {
+      setLoadingRight(true);
+      setTimeout(() => {
+        setLoadingRight(false);
+        message.success(`Successfully added ${moveKeys.length} items to the right`);
+      }, 1000);
+    } else {
+      setLoadingLeft(true);
+      setTimeout(() => {
+        setLoadingLeft(false);
+        message.success(`Successfully added ${moveKeys.length} items to the left`);
+      }, 1000);
+    }
+  };
+  // Handle selection change
+  const handleSelectChange: TransferProps['onSelectChange'] = (
+    sourceSelectedKeys,
+    targetSelectedKeys,
+  ) => {
+    setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys] as string[]);
+  };
+  // Right button is disabled (no selected items on the left or all selected items are already in the right list)
+  const rightButtonDisabled =
+    selectedKeys.length === 0 || selectedKeys.every((key) => targetKeys.includes(key));
+  // Left button is disabled (no selected items on the right)
+  const leftButtonDisabled =
+    selectedKeys.length === 0 || selectedKeys.every((key) => !targetKeys.includes(key));
+  // Custom right button click handler
+  const handleRightButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // You can add custom logic here, such as showing a confirmation dialog
+    console.log('Right button clicked', event);
+    // The Transfer component will automatically handle data transfer
+  };
+  // Custom left button click handler
+  const handleLeftButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // You can add custom logic here, such as showing a confirmation dialog
+    console.log('Left button clicked', event);
+    // The Transfer component will automatically handle data transfer
+  };
+  return (
+    <Transfer
+      dataSource={mockData}
+      targetKeys={targetKeys}
+      selectedKeys={selectedKeys}
+      onChange={handleChange}
+      onSelectChange={handleSelectChange}
+      render={(item) => item.title}
+      actions={[
+        // Custom right button (transfer data to the right)
+        <Button
+          key="to-right"
+          type="primary"
+          icon={<DoubleRightOutlined />}
+          loading={loadingRight}
+          disabled={rightButtonDisabled}
+          onClick={handleRightButtonClick}
+        >
+          Move To Right
+        </Button>,
+        // Custom left button (transfer data to the left)
+        <Button
+          key="to-left"
+          type="primary"
+          icon={<DoubleLeftOutlined />}
+          loading={loadingLeft}
+          disabled={leftButtonDisabled}
+          onClick={handleLeftButtonClick}
+        >
+          Move To Left
+        </Button>,
+      ]}
     />
   );
 };
@@ -626,6 +740,58 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Transfers 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Transfer } from 'antd';
+import type { TransferProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token, css }) => ({
+  section: { backgroundColor: 'rgba(250,250,250, 0.5)' },
+  header: { color: token.colorPrimary },
+  actions: css`
+    & button {
+      background-color: rgba(255,242,232,0.6);
+    }
+  `,
+}));
+const mockData = Array.from({ length: 20 }).map<any>((_, i) => ({
+  key: i.toString(),
+  title: `content${i + 1}`,
+  description: `description of content${i + 1}`,
+}));
+const initialTargetKeys = mockData.filter((item) => Number(item.key) > 10).map((item) => item.key);
+const stylesObject: TransferProps['styles'] = {
+  header: { fontWeight: 'bold' },
+};
+const stylesFn: TransferProps['styles'] = (info) => {
+  if (info.props.status === 'warning') {
+    return {
+      section: { backgroundColor: 'rgba(246,255,237, 0.6)', borderColor: '#b7eb8f' },
+      header: { color: '#8DBCC7', fontWeight: 'normal' },
+    } satisfies TransferProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  const sharedProps: TransferProps = {
+    dataSource: mockData,
+    targetKeys: initialTargetKeys,
+    render: (item) => item.title,
+    classNames,
+  };
+  return (
+    <Flex vertical gap="large" style={{ width: '100%' }}>
+      <Transfer {...sharedProps} status="error" styles={stylesObject} />
+      <Transfer {...sharedProps} status="warning" styles={stylesFn} />
+    </Flex>
+  );
+};
+export default App;
+```
 ### 自定义全选文字
 自定义穿梭框全选按钮的文字。
 
@@ -705,14 +871,15 @@ const TableTransfer = ({ leftColumns, rightColumns, ...restProps }: TableTransfe
       const columns = direction === 'left' ? leftColumns : rightColumns;
       const rowSelection: TableRowSelection<TransferItem> = {
         getCheckboxProps: (item) => ({ disabled: listDisabled || item.disabled }),
-        onSelectAll(selected, selectedRows) {
+        onChange(_selectedKeys, selectedRows, info) {
           const treeSelectedKeys = selectedRows
             .filter((item) => !item.disabled)
             .map(({ key }) => key);
-          const diffKeys = selected
-            ? difference(treeSelectedKeys, listSelectedKeys)
-            : difference(listSelectedKeys, treeSelectedKeys);
-          onItemSelectAll(diffKeys as string[], selected);
+          const diffKeys =
+            info.type === 'all'
+              ? difference(treeSelectedKeys, listSelectedKeys)
+              : difference(listSelectedKeys, treeSelectedKeys);
+          onItemSelectAll(diffKeys as string[], info.type === 'all');
         },
         onSelect({ key }, selected) {
           onItemSelect(key as string, selected);

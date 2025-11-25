@@ -43,7 +43,7 @@ import { Col, Divider, Row } from 'antd';
 const style: React.CSSProperties = { background: '#0092ff', padding: '8px 0' };
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">Horizontal</Divider>
+    <Divider titlePlacement="start">Horizontal</Divider>
     <Row gutter={16}>
       <Col className="gutter-row" span={6}>
         <div style={style}>col-6</div>
@@ -58,7 +58,7 @@ const App: React.FC = () => (
         <div style={style}>col-6</div>
       </Col>
     </Row>
-    <Divider orientation="left">Responsive</Divider>
+    <Divider titlePlacement="start">Responsive</Divider>
     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
       <Col className="gutter-row" span={6}>
         <div style={style}>col-6</div>
@@ -73,7 +73,7 @@ const App: React.FC = () => (
         <div style={style}>col-6</div>
       </Col>
     </Row>
-    <Divider orientation="left">Vertical</Divider>
+    <Divider titlePlacement="start">Vertical</Divider>
     <Row gutter={[16, 24]}>
       <Col className="gutter-row" span={6}>
         <div style={style}>col-6</div>
@@ -100,7 +100,7 @@ const App: React.FC = () => (
         <div style={style}>col-6</div>
       </Col>
     </Row>
-    <Divider orientation="left">Gutter(string)</Divider>
+    <Divider titlePlacement="start">Gutter(string)</Divider>
     <Row gutter="2rem">
       <Col className="gutter-row" span={6}>
         <div style={style}>col-6</div>
@@ -179,42 +179,42 @@ import React from 'react';
 import { Col, Divider, Row } from 'antd';
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">sub-element align left</Divider>
+    <Divider titlePlacement="start">sub-element align left</Divider>
     <Row justify="start">
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-    <Divider orientation="left">sub-element align center</Divider>
+    <Divider titlePlacement="start">sub-element align center</Divider>
     <Row justify="center">
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-    <Divider orientation="left">sub-element align right</Divider>
+    <Divider titlePlacement="start">sub-element align right</Divider>
     <Row justify="end">
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-    <Divider orientation="left">sub-element monospaced arrangement</Divider>
+    <Divider titlePlacement="start">sub-element monospaced arrangement</Divider>
     <Row justify="space-between">
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-    <Divider orientation="left">sub-element align full</Divider>
+    <Divider titlePlacement="start">sub-element align full</Divider>
     <Row justify="space-around">
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
     </Row>
-    <Divider orientation="left">sub-element align evenly</Divider>
+    <Divider titlePlacement="start">sub-element align evenly</Divider>
     <Row justify="space-evenly">
       <Col span={4}>col-4</Col>
       <Col span={4}>col-4</Col>
@@ -236,7 +236,7 @@ const DemoBox: React.FC<React.PropsWithChildren<{ value: number }>> = (props) =>
 );
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">Align Top</Divider>
+    <Divider titlePlacement="start">Align Top</Divider>
     <Row justify="center" align="top">
       <Col span={4}>
         <DemoBox value={100}>col-4</DemoBox>
@@ -251,7 +251,7 @@ const App: React.FC = () => (
         <DemoBox value={80}>col-4</DemoBox>
       </Col>
     </Row>
-    <Divider orientation="left">Align Middle</Divider>
+    <Divider titlePlacement="start">Align Middle</Divider>
     <Row justify="space-around" align="middle">
       <Col span={4}>
         <DemoBox value={100}>col-4</DemoBox>
@@ -266,7 +266,7 @@ const App: React.FC = () => (
         <DemoBox value={80}>col-4</DemoBox>
       </Col>
     </Row>
-    <Divider orientation="left">Align Bottom</Divider>
+    <Divider titlePlacement="start">Align Bottom</Divider>
     <Row justify="space-between" align="bottom">
       <Col span={4}>
         <DemoBox value={100}>col-4</DemoBox>
@@ -293,7 +293,7 @@ import React from 'react';
 import { Col, Divider, Row } from 'antd';
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">Normal</Divider>
+    <Divider titlePlacement="start">Normal</Divider>
     <Row>
       <Col span={6} order={4}>
         1 col-order-4
@@ -308,7 +308,7 @@ const App: React.FC = () => (
         4 col-order-1
       </Col>
     </Row>
-    <Divider orientation="left">Responsive</Divider>
+    <Divider titlePlacement="start">Responsive</Divider>
     <Row>
       <Col span={6} xs={{ order: 1 }} sm={{ order: 2 }} md={{ order: 3 }} lg={{ order: 4 }}>
         1 col-order-responsive
@@ -335,17 +335,17 @@ import React from 'react';
 import { Col, Divider, Row } from 'antd';
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">Percentage columns</Divider>
+    <Divider titlePlacement="start">Percentage columns</Divider>
     <Row>
       <Col flex={2}>2 / 5</Col>
       <Col flex={3}>3 / 5</Col>
     </Row>
-    <Divider orientation="left">Fill rest</Divider>
+    <Divider titlePlacement="start">Fill rest</Divider>
     <Row>
       <Col flex="100px">100px</Col>
       <Col flex="auto">Fill Rest</Col>
     </Row>
-    <Divider orientation="left">Raw flex style</Divider>
+    <Divider titlePlacement="start">Raw flex style</Divider>
     <Row>
       <Col flex="1 1 200px">1 1 200px</Col>
       <Col flex="0 1 300px">0 1 300px</Col>

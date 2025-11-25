@@ -12,6 +12,39 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 平滑过渡
+通过 [ConfigProvider 全局配置](#config-provider-tooltip-unique) 实现同一时间只显示一个 Tooltip 的平滑过渡效果。
+
+```tsx
+import React from 'react';
+import { Button, ConfigProvider, Flex, Tooltip } from 'antd';
+const SharedButton = ({ placement = 'top' }: { placement?: 'top' | 'bottom' }) => (
+  <Tooltip title="Hello, Ant Design!" placement={placement}>
+    <Button type="primary">Button</Button>
+  </Tooltip>
+);
+const App: React.FC = () => {
+  return (
+    <ConfigProvider
+      tooltip={{
+        unique: true,
+      }}
+    >
+      <Flex vertical gap="small">
+        <Flex gap="small" justify="center">
+          <SharedButton />
+          <SharedButton />
+        </Flex>
+        <Flex gap="small" justify="center">
+          <SharedButton placement="bottom" />
+          <SharedButton placement="bottom" />
+        </Flex>
+      </Flex>
+    </ConfigProvider>
+  );
+};
+export default App;
+```
 ### 位置
 位置有 12 个方向。
 
@@ -194,13 +227,13 @@ import type { TooltipProps } from 'antd';
 import { Button, Tooltip, Typography } from 'antd';
 const Block = React.forwardRef<HTMLDivElement, Partial<TooltipProps>>((props, ref) => (
   <div
+    ref={ref}
     style={{
       overflow: 'auto',
       position: 'relative',
       padding: '24px',
       border: '1px solid #e9e9e9',
     }}
-    ref={ref}
   >
     <div
       style={{
@@ -275,7 +308,7 @@ const colors = [
 const customColors = ['#f50', '#2db7f5', '#87d068', '#108ee9'];
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">Presets</Divider>
+    <Divider titlePlacement="start">Presets</Divider>
     <Space wrap>
       {colors.map((color) => (
         <Tooltip title="prompt text" color={color} key={color}>
@@ -283,7 +316,7 @@ const App: React.FC = () => (
         </Tooltip>
       ))}
     </Space>
-    <Divider orientation="left">Custom</Divider>
+    <Divider titlePlacement="start">Custom</Divider>
     <Space wrap>
       {customColors.map((color) => (
         <Tooltip title="prompt text" color={color} key={color}>
@@ -389,15 +422,66 @@ export default App;
 与自定义组件一起使用.
 
 ```tsx
-import { Tooltip } from 'antd';
 import React from 'react';
-const ComponentWithEvents: React.FC<React.HTMLAttributes<HTMLSpanElement>> = (props) => (
-  <span {...props}>This text is inside a component with the necessary events exposed.</span>
+import { Tooltip } from 'antd';
+const ComponentWithEvents = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLElement>>(
+  (props, ref) => (
+    <span ref={ref} {...props}>
+      This text is inside a component with the necessary events exposed.
+    </span>
+  ),
 );
 const App: React.FC = () => (
   <Tooltip title="prompt text">
     <ComponentWithEvents />
   </Tooltip>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Tooltip 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Button, Flex, Tooltip } from 'antd';
+import type { TooltipProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(() => ({
+  container: {
+    padding: 10,
+  },
+}));
+const styles: TooltipProps['styles'] = {
+  container: {
+    borderRadius: 12,
+    boxShadow: 'inset 0 0 8px #ccc',
+  },
+};
+const stylesFn: TooltipProps['styles'] = (info) => {
+  if (!info.props.arrow) {
+    return {
+      container: {
+        backgroundColor: 'rgba(53, 71, 125, 0.8)',
+        padding: 12,
+        color: '#fff',
+        borderRadius: 4,
+      },
+    } satisfies TooltipProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <Flex gap="middle">
+      <Tooltip classNames={classNames} styles={styles} arrow={false} title="Object text">
+        <Button>Object Style</Button>
+      </Tooltip>
+      <Tooltip classNames={classNames} styles={stylesFn} arrow={false} title="Function text">
+        <Button type="primary">Function Style</Button>
+      </Tooltip>
+    </Flex>
+  );
+};
 export default App;
 ```

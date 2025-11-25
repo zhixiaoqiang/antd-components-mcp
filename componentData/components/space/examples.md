@@ -27,7 +27,7 @@ export default App;
 import React from 'react';
 import { Card, Space } from 'antd';
 const App: React.FC = () => (
-  <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+  <Space orientation="vertical" size="middle" style={{ display: 'flex' }}>
     <Card title="Card" size="small">
       <p>Card content</p>
       <p>Card content</p>
@@ -146,7 +146,7 @@ export default App;
 import React from 'react';
 import { Divider, Space, Typography } from 'antd';
 const App: React.FC = () => (
-  <Space split={<Divider type="vertical" />}>
+  <Space separator={<Divider vertical />}>
     <Typography.Link>Link</Typography.Link>
     <Typography.Link>Link</Typography.Link>
     <Typography.Link>Link</Typography.Link>
@@ -176,7 +176,7 @@ import {
 } from 'antd';
 const { TreeNode } = TreeSelect;
 const App: React.FC = () => (
-  <Space direction="vertical">
+  <Space orientation="vertical">
     <Space.Compact block>
       <Input style={{ width: '20%' }} defaultValue="0571" />
       <Input style={{ width: '30%' }} defaultValue="26888888" />
@@ -359,7 +359,9 @@ const App: React.FC = () => (
         style={{ width: '60%' }}
         value="leaf1"
         styles={{
-          popup: { root: { maxHeight: 400, overflow: 'auto' } },
+          popup: {
+            root: { maxHeight: 400, overflow: 'auto' },
+          },
         }}
         placeholder="Please select"
         allowClear
@@ -523,17 +525,17 @@ import React from 'react';
 import { Button, Space } from 'antd';
 const App: React.FC = () => (
   <Space>
-    <Space.Compact direction="vertical">
+    <Space.Compact orientation="vertical">
       <Button>Button 1</Button>
       <Button>Button 2</Button>
       <Button>Button 3</Button>
     </Space.Compact>
-    <Space.Compact direction="vertical">
+    <Space.Compact orientation="vertical">
       <Button type="dashed">Button 1</Button>
       <Button type="dashed">Button 2</Button>
       <Button type="dashed">Button 3</Button>
     </Space.Compact>
-    <Space.Compact direction="vertical">
+    <Space.Compact orientation="vertical">
       <Button type="primary">Button 1</Button>
       <Button type="primary">Button 2</Button>
       <Button type="primary">Button 3</Button>
@@ -589,7 +591,7 @@ const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   return (
-    <Space direction="vertical">
+    <Space orientation="vertical">
       <Space.Compact block>
         <Button>default Button</Button>
         <Button danger>danger Button</Button>
@@ -779,7 +781,7 @@ const App: React.FC = () => {
           placeholder="Select Address"
         />
       </Space.Compact>
-      <Space.Compact direction="vertical">
+      <Space.Compact orientation="vertical">
         <Button>vertical compact button A</Button>
       </Space.Compact>
     </Space>
@@ -933,6 +935,70 @@ const App: React.FC = () => {
         </Space>
       </div>
     </>
+  );
+};
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Space 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import * as React from 'react';
+import { Button, Space } from 'antd';
+import type { SpaceProps } from 'antd';
+const classNamesObject: SpaceProps['classNames'] = {
+  root: 'demo-space-root',
+  item: 'demo-space-item',
+  separator: 'demo-space-separator',
+};
+const classNamesFn: SpaceProps['classNames'] = (info) => {
+  if (info.props.orientation === 'vertical') {
+    return {
+      root: 'demo-space-root--vertical',
+    } satisfies SpaceProps['classNames'];
+  } else {
+    return {
+      root: 'demo-space-root--horizontal',
+    } satisfies SpaceProps['classNames'];
+  }
+};
+const stylesObject: SpaceProps['styles'] = {
+  root: { borderWidth: 2, borderStyle: 'dashed', padding: 8, marginBottom: 10 },
+  item: { backgroundColor: '#f0f0f0', padding: 4 },
+  separator: { color: 'red', fontWeight: 'bold' },
+};
+const stylesFn: SpaceProps['styles'] = (info) => {
+  if (info.props.size === 'large') {
+    return {
+      root: {
+        backgroundColor: '#e6f7ff',
+        borderColor: '#1890ff',
+        padding: 8,
+      },
+    } satisfies SpaceProps['styles'];
+  } else {
+    return {
+      root: {
+        backgroundColor: '#fff7e6',
+        borderColor: '#fa8c16',
+      },
+    } satisfies SpaceProps['styles'];
+  }
+};
+const App: React.FC = () => {
+  return (
+    <div>
+      <Space styles={stylesObject} classNames={classNamesObject} separator="•">
+        <Button>Styled Button 1</Button>
+        <Button>Styled Button 2</Button>
+        <Button>Styled Button 3</Button>
+      </Space>
+      <Space size="large" styles={stylesFn} classNames={classNamesFn}>
+        <Button>Large Space Button 1</Button>
+        <Button>Large Space Button 2</Button>
+        <Button>Large Space Button 3</Button>
+      </Space>
+    </div>
   );
 };
 export default App;

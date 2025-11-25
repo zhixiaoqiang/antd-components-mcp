@@ -57,7 +57,7 @@ const App: React.FC = () => (
   <Flex align="center" gap="small">
     <Progress
       type="circle"
-      trailColor="#e6f4ff"
+      railColor="#e6f4ff"
       percent={60}
       strokeWidth={20}
       size={14}
@@ -140,17 +140,49 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 仪表盘
-通过设置 `type=dashboard`，可以很方便地实现仪表盘样式的进度条。若想要修改缺口的角度，可以设置 `gapDegree` 为你想要的值。
+通过设置 `type=dashboard`，可以很方便地实现仪表盘样式的进度条。
 
 ```tsx
-import React from 'react';
-import { Flex, Progress } from 'antd';
-const App: React.FC = () => (
-  <Flex gap="small" wrap>
-    <Progress type="dashboard" percent={75} />
-    <Progress type="dashboard" percent={75} gapDegree={30} />
-  </Flex>
-);
+import React, { useState } from 'react';
+import { Flex, Progress, Segmented } from 'antd';
+import type { GapPlacement } from '../progress';
+const App: React.FC = () => {
+  const [gapPlacement, setGapPlacement] = useState<GapPlacement>('bottom');
+  const [gapDegree, setGapDegree] = useState<number>(50);
+  return (
+    <Flex vertical gap="large">
+      <div>
+        gapDegree:
+        <Segmented
+          options={[
+            { label: 50, value: 50 },
+            { label: 100, value: 100 },
+          ]}
+          defaultValue={50}
+          onChange={(value: number) => {
+            setGapDegree(value);
+          }}
+        />
+      </div>
+      <div>
+        gapPlacement:
+        <Segmented
+          options={[
+            { label: 'start', value: 'start' },
+            { label: 'end', value: 'end' },
+            { label: 'top', value: 'top' },
+            { label: 'bottom', value: 'bottom' },
+          ]}
+          defaultValue="bottom"
+          onChange={(value: GapPlacement) => {
+            setGapPlacement(value);
+          }}
+        />
+      </div>
+      <Progress type="dashboard" gapDegree={gapDegree} percent={30} gapPlacement={gapPlacement} />
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 分段进度条
@@ -264,14 +296,14 @@ const App: React.FC = () => {
           type="dashboard"
           steps={8}
           percent={50}
-          trailColor="rgba(0, 0, 0, 0.06)"
+          railColor="rgba(0, 0, 0, 0.06)"
           strokeWidth={20}
         />
         <Progress
           type="circle"
           percent={100}
           steps={{ count: stepsCount, gap: stepsGap }}
-          trailColor="rgba(0, 0, 0, 0.06)"
+          railColor="rgba(0, 0, 0, 0.06)"
           strokeWidth={20}
         />
       </Flex>
@@ -345,6 +377,50 @@ const App: React.FC = () => (
     <Progress percent={100} percentPosition={{ align: 'start', type: 'outer' }} />
     <Progress percent={60} percentPosition={{ align: 'center', type: 'outer' }} size="small" />
     <Progress percent={100} percentPosition={{ align: 'center', type: 'outer' }} />
+  </Flex>
+);
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象或者函数可以自定义 Progress 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Progress } from 'antd';
+import type { ProgressProps } from 'antd';
+const classNames: ProgressProps['classNames'] = {
+  root: 'demo-progress-root',
+  rail: 'demo-progress-rail',
+  track: 'demo-progress-track',
+};
+const stylesFn: ProgressProps['styles'] = (info) => {
+  const percent = info?.props?.percent ?? 0;
+  const hue = 200 - (200 * percent) / 100;
+  return {
+    track: {
+      backgroundImage: `
+        linear-gradient(
+          to right,
+          hsla(${hue}, 85%, 65%, 1),
+          hsla(${hue + 30}, 90%, 55%, 0.95)
+        )`,
+      borderRadius: 8,
+      transition: 'all 0.3s ease',
+    },
+    rail: {
+      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      borderRadius: 8,
+    },
+  } satisfies ProgressProps['styles'];
+};
+const App: React.FC = () => (
+  <Flex vertical gap="large">
+    <Progress classNames={classNames} styles={stylesFn} percent={10} />
+    <Progress classNames={classNames} styles={stylesFn} percent={20} />
+    <Progress classNames={classNames} styles={stylesFn} percent={40} />
+    <Progress classNames={classNames} styles={stylesFn} percent={60} />
+    <Progress classNames={classNames} styles={stylesFn} percent={80} />
+    <Progress classNames={classNames} styles={stylesFn} percent={99} />
   </Flex>
 );
 export default App;

@@ -152,11 +152,12 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { Button, Form, Input, Radio } from 'antd';
+import type { FormProps } from 'antd';
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
-  const onFormLayoutChange = ({ layout }: { layout: LayoutType }) => {
+  const onFormLayoutChange: FormProps<any>['onValuesChange'] = ({ layout }) => {
     setFormLayout(layout);
   };
   return (
@@ -524,7 +525,7 @@ const App: React.FC = () => {
       >
         <RangePicker />
       </Form.Item>
-      <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
+      <Form.Item label={null}>
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
@@ -541,6 +542,7 @@ export default App;
 import React, { useState } from 'react';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Radio, Tag } from 'antd';
+import type { FormProps } from 'antd';
 type RequiredMark = boolean | 'optional' | 'customize';
 const customizeRequiredMark = (label: React.ReactNode, { required }: { required: boolean }) => (
   <>
@@ -551,7 +553,7 @@ const customizeRequiredMark = (label: React.ReactNode, { required }: { required:
 const App: React.FC = () => {
   const [form] = Form.useForm();
   const [requiredMark, setRequiredMarkType] = useState<RequiredMark>('optional');
-  const onRequiredTypeChange = ({ requiredMarkValue }: { requiredMarkValue: RequiredMark }) => {
+  const onRequiredTypeChange: FormProps<any>['onValuesChange'] = ({ requiredMarkValue }) => {
     setRequiredMarkType(requiredMarkValue);
   };
   return (
@@ -604,10 +606,11 @@ import {
   Switch,
   TreeSelect,
 } from 'antd';
+import type { FormProps } from 'antd';
 type SizeType = Parameters<typeof Form>[0]['size'];
 const App: React.FC = () => {
   const [componentSize, setComponentSize] = useState<SizeType | 'default'>('default');
-  const onFormLayoutChange = ({ size }: { size: SizeType }) => {
+  const onFormLayoutChange: FormProps<any>['onValuesChange'] = ({ size }) => {
     setComponentSize(size);
   };
   return (
@@ -789,7 +792,7 @@ import React from 'react';
 import { Alert, Form, Input } from 'antd';
 const App: React.FC = () => (
   <Form name="trigger" style={{ maxWidth: 600 }} layout="vertical" autoComplete="off">
-    <Alert message="Use 'max' rule, continue type chars to see it" />
+    <Alert title="Use 'max' rule, continue type chars to see it" />
     <Form.Item
       hasFeedback
       label="Field A"
@@ -1709,7 +1712,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Flex } from 'antd';
+import { Button, Checkbox, Flex, Form, Input } from 'antd';
 const App: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
@@ -2120,7 +2123,7 @@ const AdvancedSearchForm = () => {
   return (
     <Form form={form} name="advanced_search" style={formStyle} onFinish={onFinish}>
       <Row gutter={24}>{getFields()}</Row>
-      <div style={{ textAlign: 'right' }}>
+      <div style={{ textAlign: 'end' }}>
         <Space size="small">
           <Button type="primary" htmlType="submit">
             Search
@@ -2594,7 +2597,7 @@ const App: React.FC = () => {
       style={{ maxWidth: 600 }}
       layout="vertical"
     >
-      <Alert message=" Try modify `Password2` and then modify `Password`" type="info" showIcon />
+      <Alert title=" Try modify `Password2` and then modify `Password`" type="info" showIcon />
       <Form.Item label="Password" name="password" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
@@ -2651,7 +2654,7 @@ const App = () => {
       labelCol={{ span: 6 }}
       wrapperCol={{ span: 14 }}
     >
-      <Form.Item wrapperCol={{ offset: 6 }}>
+      <Form.Item label={null}>
         <Button onClick={() => form.scrollToField('bio')}>Scroll to Bio</Button>
       </Form.Item>
       <Form.Item name="username" label="UserName" rules={[{ required: true }]}>
@@ -2672,7 +2675,7 @@ const App = () => {
       <Form.Item name="bio" label="Bio" rules={[{ required: true }]}>
         <Input.TextArea rows={6} />
       </Form.Item>
-      <Form.Item wrapperCol={{ offset: 6 }}>
+      <Form.Item label={null}>
         <Flex gap="small">
           <Button type="primary" htmlType="submit">
             Submit
@@ -2877,7 +2880,7 @@ const App: React.FC = () => (
     >
       <ColorPicker />
     </Form.Item>
-    <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
+    <Form.Item label={null}>
       <Space>
         <Button type="primary" htmlType="submit">
           Submit
@@ -2887,6 +2890,98 @@ const App: React.FC = () => (
     </Form.Item>
   </Form>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Form 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Button, Form, Input, Space } from 'antd';
+import type { FormProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    padding: token.padding,
+    maxWidth: 800,
+    marginTop: 32,
+    backgroundColor: token.colorBgContainer,
+    borderRadius: token.borderRadius,
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+  },
+}));
+const stylesObject: FormProps['styles'] = {
+  label: {
+    textAlign: 'end',
+    color: '#333',
+    fontWeight: 500,
+  },
+  content: {
+    paddingInlineStart: 12,
+  },
+};
+const stylesFunction: FormProps['styles'] = (info) => {
+  if (info.props.variant === 'filled') {
+    return {
+      root: {
+        border: '1px solid #1677FF',
+      },
+      label: {
+        textAlign: 'end',
+        color: '#1677FF',
+      },
+      content: {
+        paddingInlineStart: 12,
+      },
+    } satisfies FormProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  const sharedProps: FormProps = {
+    labelCol: { span: 4 },
+    wrapperCol: { span: 20 },
+    autoComplete: 'off',
+    classNames,
+  };
+  const sharedFormContent = (
+    <>
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[{ required: true, message: 'Please enter username!' }]}
+      >
+        <Input placeholder="Please enter username" />
+      </Form.Item>
+      <Form.Item
+        label="Email"
+        name="email"
+        rules={[{ required: true, message: 'Please enter email!' }]}
+      >
+        <Input placeholder="Please enter email" />
+      </Form.Item>
+      <Form.Item label={null}>
+        <Space>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+          <Button htmlType="reset">reset</Button>
+        </Space>
+      </Form.Item>
+    </>
+  );
+  return (
+    <>
+      <Form {...sharedProps} styles={stylesObject}>
+        {sharedFormContent}
+      </Form>
+      <Form {...sharedProps} styles={stylesFunction} variant="filled">
+        {sharedFormContent}
+      </Form>
+    </>
+  );
+};
 export default App;
 ```
 ### getValueProps + normalize
@@ -3180,7 +3275,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { AlertFilled, CloseSquareFilled } from '@ant-design/icons';
-import { Button, Form, Input, Tooltip, Mentions } from 'antd';
+import { Button, Form, Input, Mentions, Tooltip } from 'antd';
 import { createStyles, css } from 'antd-style';
 import uniqueId from 'lodash/uniqueId';
 const useStyle = createStyles(() => ({

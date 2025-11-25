@@ -246,10 +246,10 @@ const App: React.FC = () => {
       </Upload>
       {previewImage && (
         <Image
-          wrapperStyle={{ display: 'none' }}
+          styles={{ root: { display: 'none' } }}
           preview={{
-            visible: previewOpen,
-            onVisibleChange: (visible) => setPreviewOpen(visible),
+            open: previewOpen,
+            onOpenChange: (visible) => setPreviewOpen(visible),
             afterOpenChange: (visible) => !visible && setPreviewImage(''),
           }}
           src={previewImage}
@@ -327,10 +327,10 @@ const App: React.FC = () => {
       </Upload>
       {previewImage && (
         <Image
-          wrapperStyle={{ display: 'none' }}
+          styles={{ root: { display: 'none' } }}
           preview={{
-            visible: previewOpen,
-            onVisibleChange: (visible) => setPreviewOpen(visible),
+            open: previewOpen,
+            onOpenChange: (visible) => setPreviewOpen(visible),
             afterOpenChange: (visible) => !visible && setPreviewImage(''),
           }}
           src={previewImage}
@@ -650,7 +650,7 @@ import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Space, Upload } from 'antd';
 const App: React.FC = () => (
-  <Space direction="vertical" style={{ width: '100%' }} size="large">
+  <Space vertical style={{ width: '100%' }} size="large">
     <Upload
       action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
       listType="picture"
@@ -922,10 +922,10 @@ const App: React.FC = () => {
       </Upload>
       {previewImage && (
         <Image
-          wrapperStyle={{ display: 'none' }}
+          styles={{ root: { display: 'none' } }}
           preview={{
-            visible: previewOpen,
-            onVisibleChange: (visible) => setPreviewOpen(visible),
+            open: previewOpen,
+            onOpenChange: (visible) => setPreviewOpen(visible),
             afterOpenChange: (visible) => !visible && setPreviewImage(''),
           }}
           src={previewImage}
@@ -1192,6 +1192,87 @@ const App: React.FC = () => (
     <Button icon={<UploadOutlined />}>Click to Upload</Button>
   </Upload>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Upload 的[语义化结构](#semantic-upload)样式。
+
+```tsx
+import React from 'react';
+import { UploadOutlined } from '@ant-design/icons';
+import { Button, Flex, Upload } from 'antd';
+import type { UploadProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    borderRadius: token.borderRadius,
+    padding: token.padding,
+  },
+}));
+const stylesObject: UploadProps<any>['styles'] = {
+  item: {
+    borderRadius: 2,
+    backgroundColor: 'rgba(5, 5, 5, 0.06)',
+    height: 30,
+  },
+};
+const stylesFn: UploadProps<any>['styles'] = (info) => {
+  if (info.props.multiple) {
+    return {
+      root: { border: '1px solid #5459AC' },
+      item: {
+        borderRadius: 2,
+        backgroundColor: 'rgba(5, 5, 5, 0.06)',
+        height: 30,
+      },
+    } satisfies UploadProps<any>['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  const uploadProps: UploadProps<any> = {
+    classNames,
+    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    onChange({ file, fileList }) {
+      if (file.status !== 'uploading') {
+        console.log(file, fileList);
+      }
+    },
+    defaultFileList: [
+      {
+        uid: '1',
+        name: 'xxx.png',
+        status: 'uploading',
+        url: 'http://www.baidu.com/xxx.png',
+        percent: 33,
+      },
+      {
+        uid: '2',
+        name: 'yyy.png',
+        status: 'done',
+        url: 'http://www.baidu.com/yyy.png',
+      },
+      {
+        uid: '3',
+        name: 'zzz.png',
+        status: 'error',
+        response: 'Server Error 500', // custom error message to show
+        url: 'http://www.baidu.com/zzz.png',
+      },
+    ],
+  };
+  return (
+    <Flex gap="large" vertical>
+      <Upload {...uploadProps} styles={stylesObject}>
+        <Button icon={<UploadOutlined />}>Upload</Button>
+      </Upload>
+      <Upload {...uploadProps} styles={stylesFn} multiple>
+        <Button icon={<UploadOutlined />}>Upload</Button>
+      </Upload>
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 组件 Token

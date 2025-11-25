@@ -50,16 +50,16 @@ const text = `
 `;
 const App: React.FC = () => (
   <>
-    <Divider orientation="left">Default Size</Divider>
+    <Divider titlePlacement="start">Default Size</Divider>
     <Collapse
       items={[{ key: '1', label: 'This is default size panel header', children: <p>{text}</p> }]}
     />
-    <Divider orientation="left">Small Size</Divider>
+    <Divider titlePlacement="start">Small Size</Divider>
     <Collapse
       size="small"
       items={[{ key: '1', label: 'This is small size panel header', children: <p>{text}</p> }]}
     />
-    <Divider orientation="left">Large Size</Divider>
+    <Divider titlePlacement="start">Large Size</Divider>
     <Collapse
       size="large"
       items={[{ key: '1', label: 'This is large size panel header', children: <p>{text}</p> }]}
@@ -277,11 +277,11 @@ const text = `
   Known for its loyalty and faithfulness,
   it can be found as a welcome guest in many households across the world.
 `;
-type ExpandIconPosition = 'start' | 'end';
 const App: React.FC = () => {
-  const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('start');
-  const onPositionChange = (newExpandIconPosition: ExpandIconPosition) => {
-    setExpandIconPosition(newExpandIconPosition);
+  const [expandIconPlacement, setExpandIconPlacement] =
+    useState<CollapseProps['expandIconPlacement']>('start');
+  const onPlacementChange = (newExpandIconPlacement: CollapseProps['expandIconPlacement']) => {
+    setExpandIconPlacement(newExpandIconPlacement);
   };
   const onChange = (key: string | string[]) => {
     console.log(key);
@@ -319,15 +319,15 @@ const App: React.FC = () => {
       <Collapse
         defaultActiveKey={['1']}
         onChange={onChange}
-        expandIconPosition={expandIconPosition}
+        expandIconPlacement={expandIconPlacement}
         items={items}
       />
       <br />
-      <span>Expand Icon Position: </span>
+      <span>Expand Icon Placement: </span>
       <Select
-        value={expandIconPosition}
+        value={expandIconPlacement}
         style={{ margin: '0 8px' }}
-        onChange={onPositionChange}
+        onChange={onPlacementChange}
         options={[
           { label: 'start', value: 'start' },
           { label: 'end', value: 'end' },
@@ -382,7 +382,7 @@ const text = `
   it can be found as a welcome guest in many households across the world.
 `;
 const App: React.FC = () => (
-  <Space direction="vertical">
+  <Space vertical>
     <Collapse
       collapsible="header"
       defaultActiveKey={['1']}
@@ -417,6 +417,84 @@ const App: React.FC = () => (
     />
   </Space>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Collapse 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Collapse, Flex } from 'antd';
+import { createStyles } from 'antd-style';
+import type { CollapseProps } from '..';
+const useStyles = createStyles(() => ({
+  root: {
+    backgroundColor: '#fafafa',
+    border: '1px solid #e0e0e0',
+    borderRadius: 8,
+  },
+}));
+const element = (
+  <p>
+    A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found
+    as a welcome guest in many households across the world.
+  </p>
+);
+const items: CollapseProps['items'] = [
+  {
+    key: '1',
+    label: 'This is panel header 1',
+    children: element,
+  },
+  {
+    key: '2',
+    label: 'This is panel header 2',
+    children: element,
+  },
+  {
+    key: '3',
+    label: 'This is panel header 3',
+    children: element,
+  },
+];
+const styles: CollapseProps['styles'] = {
+  root: {
+    backgroundColor: '#fafafa',
+    border: '1px solid #e0e0e0',
+    borderRadius: 8,
+  },
+  header: {
+    backgroundColor: '#f0f0f0',
+    padding: '12px 16px',
+    color: '#141414',
+  },
+};
+const stylesFn: CollapseProps['styles'] = ({ props }) => {
+  if (props.size === 'large') {
+    return {
+      root: {
+        backgroundColor: '#fff',
+        border: '1px solid #696FC7',
+        borderRadius: 8,
+      },
+      header: {
+        backgroundColor: '#F5EFFF',
+        padding: '12px 16px',
+        color: '#141414',
+      },
+    } satisfies CollapseProps['styles'];
+  }
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  const sharedProps: CollapseProps = { classNames, items };
+  return (
+    <Flex vertical gap="middle">
+      <Collapse {...sharedProps} defaultActiveKey={['1']} styles={styles} />
+      <Collapse {...sharedProps} defaultActiveKey={['2']} styles={stylesFn} size="large" />
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 组件 Token

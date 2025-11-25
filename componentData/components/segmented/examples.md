@@ -24,7 +24,7 @@ import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
 import { Segmented } from 'antd';
 const Demo: React.FC = () => (
   <Segmented
-    vertical
+    orientation="vertical"
     options={[
       { value: 'List', icon: <BarsOutlined /> },
       { value: 'Kanban', icon: <AppstoreOutlined /> },
@@ -109,7 +109,7 @@ const Demo: React.FC = () => {
 export default Demo;
 ```
 ### 自定义渲染
-使用 ReactNode 自定义渲染每一个 Segmented Item。
+自定义渲染每一个 Segmented Item。
 
 ```tsx
 import React from 'react';
@@ -127,6 +127,7 @@ const App: React.FC = () => (
             </div>
           ),
           value: 'user1',
+          tooltip: { title: 'hello user1', color: 'gold' },
         },
         {
           label: (
@@ -136,6 +137,7 @@ const App: React.FC = () => (
             </div>
           ),
           value: 'user2',
+          tooltip: { title: 'hello user2', color: 'pink' },
         },
         {
           label: (
@@ -145,6 +147,7 @@ const App: React.FC = () => (
             </div>
           ),
           value: 'user3',
+          tooltip: { title: 'hello user3', color: 'geekblue' },
         },
       ]}
     />
@@ -275,6 +278,76 @@ const Demo: React.FC = () => (
   <Segmented<string> options={['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly']} name="group" />
 );
 export default Demo;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Segmented 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { CloudOutlined, RocketOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { Flex, Segmented } from 'antd';
+import type { SegmentedProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyle = createStyles(() => ({
+  root: {
+    padding: 2,
+  },
+}));
+const styleFn: SegmentedProps['styles'] = (info) => {
+  if (info.props.vertical) {
+    return {
+      root: {
+        border: '1px solid #77BEF0',
+        padding: 4,
+        width: 100,
+      },
+      icon: {
+        color: '#77BEF0',
+      },
+      item: {
+        textAlign: 'start',
+      },
+    } satisfies SegmentedProps['styles'];
+  }
+  return {};
+};
+const styles: SegmentedProps['styles'] = {
+  root: {
+    padding: 4,
+    width: 260,
+  },
+};
+const options: SegmentedProps['options'] = [
+  {
+    label: 'Boost',
+    value: 'boost',
+    icon: <RocketOutlined />,
+  },
+  {
+    label: 'Stream',
+    value: 'stream',
+    icon: <ThunderboltOutlined />,
+  },
+  {
+    label: 'Cloud',
+    value: 'cloud',
+    icon: <CloudOutlined />,
+  },
+];
+const App: React.FC = () => {
+  const { styles: classNames } = useStyle();
+  const segmentedSharedProps: SegmentedProps = {
+    options,
+    classNames,
+  };
+  return (
+    <Flex vertical gap="middle">
+      <Segmented {...segmentedSharedProps} styles={styles} />
+      <Segmented {...segmentedSharedProps} styles={styleFn} vertical />
+    </Flex>
+  );
+};
+export default App;
 ```
 ### 受控同步模式
 测试受控模式下两个 Segmented 同步 state。

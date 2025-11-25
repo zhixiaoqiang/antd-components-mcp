@@ -8,7 +8,7 @@ import { Input, QRCode, Space } from 'antd';
 const App: React.FC = () => {
   const [text, setText] = React.useState('https://ant.design/');
   return (
-    <Space direction="vertical" align="center">
+    <Space vertical align="center">
       <QRCode value={text || '-'} />
       <Input
         placeholder="-"
@@ -76,7 +76,7 @@ const customStatusRender: QRCodeProps['statusRender'] = (info) => {
       );
     case 'loading':
       return (
-        <Space direction="vertical">
+        <Space vertical>
           <Spin />
           <p>Loading...</p>
         </Space>
@@ -224,13 +224,13 @@ const downloadSvgQRCode = () => {
 const App: React.FC = () => {
   const [renderType, setRenderType] = React.useState<QRCodeProps['type']>('canvas');
   return (
-    <Space id="myqrcode" direction="vertical">
+    <Space id="myqrcode" vertical>
       <Segmented options={['canvas', 'svg']} value={renderType} onChange={setRenderType} />
       <div>
         <QRCode
           type={renderType}
           value="https://ant.design/"
-          bgColor="#fff"
+          bgColor="rgba(255,255,255,0.5)"
           style={{ marginBottom: 16 }}
           icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
         />
@@ -279,5 +279,61 @@ const App: React.FC = () => (
     <Button type="primary">Hover me</Button>
   </Popover>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 QRCode 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, QRCode } from 'antd';
+import type { QRCodeProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(() => ({
+  root: {
+    border: '1px solid #ccc',
+    borderRadius: 8,
+    padding: 16,
+  },
+}));
+const stylesObject: QRCodeProps['styles'] = {
+  root: {
+    border: '2px solid #1890ff',
+    borderRadius: 8,
+    padding: 16,
+    backgroundColor: 'rgb(24, 144, 255, 0.1)',
+  },
+};
+const stylesFunction: QRCodeProps['styles'] = (info) => {
+  if (info.props.type === 'canvas') {
+    return {
+      root: {
+        border: '2px solid #ff4d4f',
+        borderRadius: 8,
+        padding: 16,
+        backgroundColor: 'rgba(255, 77, 79, 0.1)',
+      },
+    } satisfies QRCodeProps['styles'];
+  }
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  const sharedProps: QRCodeProps = {
+    value: 'https://ant.design/',
+    size: 160,
+    classNames,
+  };
+  return (
+    <Flex gap="middle">
+      <QRCode {...sharedProps} styles={stylesObject} />
+      <QRCode
+        {...sharedProps}
+        type="canvas"
+        icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+        styles={stylesFunction}
+      />
+    </Flex>
+  );
+};
 export default App;
 ```

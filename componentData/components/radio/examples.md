@@ -112,11 +112,6 @@ export default App;
 import React, { useState } from 'react';
 import type { RadioChangeEvent } from 'antd';
 import { Input, Radio } from 'antd';
-const style: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 8,
-};
 const App: React.FC = () => {
   const [value, setValue] = useState(1);
   const onChange = (e: RadioChangeEvent) => {
@@ -124,7 +119,7 @@ const App: React.FC = () => {
   };
   return (
     <Radio.Group
-      style={style}
+      vertical
       onChange={onChange}
       value={value}
       options={[
@@ -353,6 +348,52 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义单选框的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, Radio } from 'antd';
+import type { RadioProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    borderRadius: token.borderRadius,
+    borderWidth: 1,
+    width: 300,
+  },
+}));
+const styles: RadioProps['styles'] = {
+  root: {
+    padding: 8,
+    borderRadius: 4,
+    borderColor: '#ccc',
+  },
+};
+const stylesFn: RadioProps['styles'] = (info) => {
+  if (info.props.checked) {
+    return {
+      root: { padding: 8, borderRadius: 4, borderColor: '#1890ff' },
+      label: { fontWeight: 'bold', color: '#333' },
+    } satisfies RadioProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <Flex vertical gap="middle">
+      <Radio classNames={classNames} styles={styles}>
+        Object
+      </Radio>
+      <Radio classNames={classNames} styles={stylesFn} checked>
+        Function
+      </Radio>
+    </Flex>
+  );
+};
+export default App;
+```
 ### 测试 Badge 的样式
 测试 Badge 的样式。
 
@@ -419,7 +460,7 @@ const App: React.FC = () => (
       },
     }}
   >
-    <Space direction="vertical">
+    <Space vertical>
       <Radio checked>Test</Radio>
       <Radio checked disabled>
         Disabled

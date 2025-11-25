@@ -26,7 +26,7 @@ import { TimePicker } from 'antd';
 import type { Dayjs } from 'dayjs';
 const App: React.FC = () => {
   const [value, setValue] = useState<Dayjs | null>(null);
-  const onChange = (time: Dayjs) => {
+  const onChange = (time: Dayjs | null) => {
     setValue(time);
   };
   return <TimePicker value={value} onChange={onChange} />;
@@ -224,7 +224,7 @@ export default App;
 import React from 'react';
 import { Space, TimePicker } from 'antd';
 const App: React.FC = () => (
-  <Space direction="vertical">
+  <Space vertical>
     <TimePicker status="error" />
     <TimePicker status="warning" />
     <TimePicker.RangePicker status="error" />
@@ -248,7 +248,7 @@ const onChange: TimePickerProps['onChange'] = (time, timeString) => {
   console.log(time, timeString);
 };
 const App: React.FC = () => (
-  <Space direction="vertical" size={12}>
+  <Space vertical size={12}>
     <TimePicker
       suffixIcon={<SmileOutlined />}
       onChange={onChange}
@@ -258,6 +258,52 @@ const App: React.FC = () => (
     <TimePicker.RangePicker prefix={<SmileOutlined />} />
   </Space>
 );
+export default App;
+```
+### 自定义语义结构的样式和类
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 TimePicker 的[语义化结构](#semantic-dom)样式。
+
+```tsx
+import React from 'react';
+import { Flex, TimePicker } from 'antd';
+import type { TimePickerProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles(({ token }) => ({
+  root: {
+    border: `1px solid ${token.colorPrimary}`,
+    width: 150,
+  },
+}));
+const stylesObject: TimePickerProps['styles'] = {
+  root: {
+    borderColor: '#d9d9d9',
+  },
+};
+const stylesFn: TimePickerProps['styles'] = (info) => {
+  if (info.props.size === 'large') {
+    return {
+      root: {
+        borderColor: '#722ed1',
+      },
+      suffix: {
+        color: '#722ed1',
+      },
+      popup: {
+        container: { border: '1px solid #722ed1', borderRadius: 8 },
+      },
+    } satisfies TimePickerProps['styles'];
+  }
+  return {};
+};
+const App: React.FC = () => {
+  const { styles: classNames } = useStyles();
+  return (
+    <Flex vertical gap="middle">
+      <TimePicker classNames={classNames} styles={stylesObject} placeholder="Object" />
+      <TimePicker classNames={classNames} styles={stylesFn} placeholder="Function" size="large" />
+    </Flex>
+  );
+};
 export default App;
 ```
 ### _InternalPanelDoNotUseOrYouWillBeFired

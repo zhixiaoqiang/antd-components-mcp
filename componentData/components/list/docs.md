@@ -1,5 +1,9 @@
 ## 何时使用
 最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。
+<!-- prettier-ignore -->
+:::warning{title=废弃提示}
+List 组件已经进入废弃阶段，将于下个 major 版本移除。
+:::
 ## API
 另外我们封装了 [ProList](https://procomponents.ant.design/components/list)，在 `antd` List 之上扩展了更多便捷易用的功能，比如多选，展开等功能，使用体验贴近 Table，欢迎尝试使用。
 ### List
