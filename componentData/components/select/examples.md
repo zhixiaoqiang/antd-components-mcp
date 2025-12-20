@@ -101,6 +101,28 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 多字段搜索
+使用 `optionFilterProp` 多字段搜索。
+
+```tsx
+import React from 'react';
+import { Select } from 'antd';
+const App: React.FC = () => (
+  <Select
+    placeholder="Select an option"
+    showSearch={{
+      optionFilterProp: ['label', 'otherField'],
+    }}
+    options={[
+      { value: 'a11', label: 'a11', otherField: 'c11' },
+      { value: 'b22', label: 'b22', otherField: 'b11' },
+      { value: 'c33', label: 'c33', otherField: 'b33' },
+      { value: 'd44', label: 'd44', otherField: 'd44' },
+    ]}
+  />
+);
+export default App;
+```
 ### 多选
 多选，从已有条目中选择。
 
@@ -212,49 +234,54 @@ export default App;
 ```tsx
 import React from 'react';
 import { Select, Space } from 'antd';
-const handleChange = (value: string[]) => {
-  console.log(`selected ${value}`);
-};
 const options = [
   {
-    label: 'China',
-    value: 'china',
-    emoji: '🇨🇳',
-    desc: 'China (中国)',
+    label: 'Happy',
+    value: 'happy',
+    emoji: '😄',
+    desc: 'Feeling Good',
   },
   {
-    label: 'USA',
-    value: 'usa',
-    emoji: '🇺🇸',
-    desc: 'USA (美国)',
+    label: 'Sad',
+    value: 'sad',
+    emoji: '😢',
+    desc: 'Feeling Blue',
   },
   {
-    label: 'Japan',
-    value: 'japan',
-    emoji: '🇯🇵',
-    desc: 'Japan (日本)',
+    label: 'Angry',
+    value: 'angry',
+    emoji: '😡',
+    desc: 'Furious',
   },
   {
-    label: 'Korea',
-    value: 'korea',
-    emoji: '🇰🇷',
-    desc: 'Korea (韩国)',
+    label: 'Cool',
+    value: 'cool',
+    emoji: '😎',
+    desc: 'Chilling',
+  },
+  {
+    label: 'Sleepy',
+    value: 'sleepy',
+    emoji: '😴',
+    desc: 'Need Sleep',
   },
 ];
 const App: React.FC = () => (
   <Select
     mode="multiple"
     style={{ width: '100%' }}
-    placeholder="select one country"
-    defaultValue={['china']}
-    onChange={handleChange}
+    placeholder="Please select your current mood."
+    defaultValue={['happy']}
+    onChange={(value) => {
+      console.log(`selected ${value}`);
+    }}
     options={options}
     optionRender={(option) => (
       <Space>
         <span role="img" aria-label={option.data.label}>
           {option.data.emoji}
         </span>
-        {option.data.desc}
+        {`${option.data.label} (${option.data.desc})`}
       </Space>
     )}
   />
@@ -726,7 +753,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 扩展菜单
-使用 `dropdownRender` 对下拉菜单进行自由扩展。如果希望点击自定义内容后关闭浮层，你需要使用受控模式自行控制（[codesandbox](https://codesandbox.io/s/ji-ben-shi-yong-antd-4-21-7-forked-gnp4cy?file=/demo.js)）。
+使用 `popupRender` 对下拉菜单进行自由扩展。如果希望点击自定义内容后关闭浮层，你需要使用受控模式自行控制（[codesandbox](https://codesandbox.io/s/ji-ben-shi-yong-antd-4-21-7-forked-gnp4cy?file=/demo.js)）。
 
 ```tsx
 import React, { useRef, useState } from 'react';

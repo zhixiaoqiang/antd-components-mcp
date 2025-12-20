@@ -1,4 +1,4 @@
-## 设计师专属
+## 设计师专属 {#designers-exclusive}
 安装 [Kitchen Sketch 插件 💎](https://kitchen.alipay.com)，一键填充高逼格头像和文本。
 ## API
 ### Avatar

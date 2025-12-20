@@ -579,7 +579,6 @@ const siderStyle: React.CSSProperties = {
   position: 'sticky',
   insetInlineStart: 0,
   top: 0,
-  bottom: 0,
   scrollbarWidth: 'thin',
   scrollbarGutter: 'stable',
 };

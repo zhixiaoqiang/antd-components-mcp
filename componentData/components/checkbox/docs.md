@@ -5,7 +5,6 @@
 #### Checkbox
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| autoFocus | 自动获取焦点 | boolean | false |  |
 | checked | 指定当前是否选中 | boolean | false |  |
 | classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  |
 | defaultChecked | 初始是否选中 | boolean | false |  |
@@ -35,7 +34,7 @@ interface Option {
   disabled?: boolean;
 }
 ```
-### 方法
+### 方法 {#methods}
 #### Checkbox
 | 名称          | 描述                      | 版本   |
 | ------------- | ------------------------- | ------ |
@@ -43,7 +42,7 @@ interface Option {
 | focus()       | 获取焦点                  |        |
 | nativeElement | 返回 Checkbox 的 DOM 节点 | 5.17.3 |
 ## FAQ
-### 为什么在 Form.Item 下不能绑定数据？
+### 为什么在 Form.Item 下不能绑定数据？ {#faq-form-item-limitations}
 Form.Item 默认绑定值属性到 `value` 上，而 Checkbox 的值属性为 `checked`。你可以通过 `valuePropName` 来修改绑定的值属性。
 ```tsx | pure
 <Form.Item name="fieldA" valuePropName="checked">

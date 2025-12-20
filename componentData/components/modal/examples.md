@@ -495,8 +495,8 @@ const App: React.FC = () => {
 };
 export default App;
 ```
-### 暗背景
-第一个对话框。
+### 调试使用
+调试使用。
 
 ```tsx
 import React, { useState } from 'react';

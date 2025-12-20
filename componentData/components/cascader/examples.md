@@ -896,7 +896,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 扩展菜单
-使用 `dropdownRender` 对下拉菜单进行自由扩展。
+使用 `popupRender` 对下拉菜单进行自由扩展。
 
 ```tsx
 import React from 'react';
