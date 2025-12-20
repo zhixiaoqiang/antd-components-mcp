@@ -184,10 +184,11 @@ export default App;
 
 ```tsx
 import React, { useMemo, useState } from 'react';
+import type { TabBarExtraMap } from '@rc-component/tabs/es/interface';
 import { Button, Checkbox, Divider, Tabs } from 'antd';
 const CheckboxGroup = Checkbox.Group;
 const operations = <Button>Extra Action</Button>;
-const OperationsSlot: Record<PositionType, React.ReactNode> = {
+const operationsSlot: Record<PositionType, React.ReactNode> = {
   left: <Button className="tabs-extra-demo-button">Left Extra Action</Button>,
   right: <Button>Right Extra Action</Button>,
 };
@@ -207,8 +208,8 @@ const App: React.FC = () => {
     if (position.length === 0) {
       return null;
     }
-    return position.reduce(
-      (acc, direction) => ({ ...acc, [direction]: OperationsSlot[direction] }),
+    return position.reduce<TabBarExtraMap>(
+      (acc, direction) => ({ ...acc, [direction]: operationsSlot[direction] }),
       {},
     );
   }, [position]);
@@ -220,13 +221,7 @@ const App: React.FC = () => {
       <br />
       <div>You can also specify its direction or both side</div>
       <Divider />
-      <CheckboxGroup
-        options={options}
-        value={position}
-        onChange={(value) => {
-          setPosition(value as PositionType[]);
-        }}
-      />
+      <CheckboxGroup<PositionType> options={options} value={position} onChange={setPosition} />
       <br />
       <br />
       <Tabs tabBarExtraContent={slot} items={items} />
@@ -239,7 +234,7 @@ export default App;
 大号页签用在页头区域，小号用在弹出框等较狭窄的容器内。
 
 ```tsx
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import type { RadioChangeEvent, TabsProps } from 'antd';
 import { Radio, Tabs } from 'antd';
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
@@ -263,17 +258,18 @@ const App: React.FC = () => {
       children: 'Content of editable tab 3',
     },
   ]);
+  const newTabIndex = useRef(0);
   const add = () => {
-    const newKey = String((items || []).length + 1);
+    const newActiveKey = `newTab${newTabIndex.current++}`;
     setItems([
       ...(items || []),
       {
-        label: `Tab ${newKey}`,
-        key: newKey,
-        children: `Content of editable tab ${newKey}`,
+        label: 'New Tab',
+        key: newActiveKey,
+        children: 'Content of new Tab',
       },
     ]);
-    setActiveKey(newKey);
+    setActiveKey(newActiveKey);
   };
   const remove = (targetKey: TargetKey) => {
     if (!items) {

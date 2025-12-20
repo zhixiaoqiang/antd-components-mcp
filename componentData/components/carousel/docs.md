@@ -22,12 +22,12 @@
 | beforeChange | 切换面板的回调 | (current: number, next: number) => void | - |  |
 | waitForAnimate | 是否等待切换动画 | boolean | false |  |
 更多 API 可参考：<https://react-slick.neostack.com/docs/api>
-## 方法
+## 方法 {#methods}
 | 名称                           | 描述                                              |
 | ------------------------------ | ------------------------------------------------- |
 | goTo(slideNumber, dontAnimate) | 切换到指定面板, dontAnimate = true 时，不使用动画 |
 | next()                         | 切换到下一面板                                    |
 | prev()                         | 切换到上一面板                                    |
 ## FAQ
-### 如何自定义箭头？
+### 如何自定义箭头？ {#faq-add-custom-arrows}
 可参考 [#12479](https://github.com/ant-design/ant-design/issues/12479)。

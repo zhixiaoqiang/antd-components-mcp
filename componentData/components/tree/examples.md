@@ -778,7 +778,7 @@ import React from 'react';
 import { Tooltip, Tree } from 'antd';
 import type { TreeDataNode } from 'antd';
 const dig = (path = '0', level = 3) => {
-  const list = [];
+  const list: TreeDataNode[] = [];
   for (let i = 0; i < 10; i += 1) {
     const key = `${path}-${i}`;
     const treeNode: TreeDataNode = {
@@ -793,7 +793,7 @@ const dig = (path = '0', level = 3) => {
   return list;
 };
 const treeData = dig();
-const MemoTooltip = Tooltip || React.memo(Tooltip);
+const MemoTooltip = React.memo(Tooltip);
 const App: React.FC = () => (
   <Tree
     treeData={treeData}

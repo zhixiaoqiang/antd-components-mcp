@@ -5,7 +5,6 @@
 | --- | --- | --- | --- | --- |
 | ~~addonAfter~~ | 带标签的 input，设置后置标签，请使用 Space.Compact 替换 | ReactNode | - | 4.17.0 |
 | ~~addonBefore~~ | 带标签的 input，设置前置标签，请使用 Space.Compact 替换 | ReactNode | - | 4.17.0 |
-| autoFocus | 自动获取焦点 | boolean | false | - |
 | changeOnBlur | 是否在失去焦点时，触发 `onChange` 事件（例如值超出范围时，重新限制回范围并触发事件） | boolean | true | 5.11.0 |
 | changeOnWheel | 允许鼠标滚轮改变数值 | boolean | - | 5.14.0 |
 | classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - | - |
@@ -41,12 +40,12 @@
 | focus() | 获取焦点 | (option?: { preventScroll?: boolean, cursor?: 'start' \| 'end' \| 'all' }) | cursor - 5.22.0 |
 | nativeElement | 获取原生 DOM 元素 | - | 5.17.3 |
 ## FAQ
-### 为何受控模式下，`value` 可以超出 `min` 和 `max` 范围？
+### 为何受控模式下，`value` 可以超出 `min` 和 `max` 范围？ {#faq-controlled-range}
 在受控模式下，开发者可能自行存储相关数据。如果组件将数据约束回范围内，会导致展示数据与实际存储数据不一致的情况。这使得一些如表单场景存在潜在的数据问题。
-### 为何动态修改 `min` 和 `max` 让 `value` 超出范围不会触发 `onChange` 事件？
+### 为何动态修改 `min` 和 `max` 让 `value` 超出范围不会触发 `onChange` 事件？ {#faq-dynamic-range-change}
 `onChange` 事件为用户触发事件，自行触发会导致表单库误以为变更来自用户操作。我们以错误样式展示超出范围的数值。
-### 为何 `onBlur` 等事件获取不到正确的 value？
+### 为何 `onBlur` 等事件获取不到正确的 value？ {#faq-onblur-value}
 InputNumber 的值由内部逻辑封装而成，通过 `onBlur` 等事件获取的 `event.target.value` 仅为 DOM 元素的 `value` 而非 InputNumber 的实际值。例如通过 `formatter` 或者 `decimalSeparator` 更改展示格式，DOM 中得到的就是格式化后的字符串。你总是应该通过 `onChange` 获取当前值。
-### 为何 `changeOnWheel` 无法控制鼠标滚轮是否改变数值？
+### 为何 `changeOnWheel` 无法控制鼠标滚轮是否改变数值？ {#faq-change-on-wheel}
 > 不建议使用 `type` 属性
 InputNumber 组件允许你使用 input 元素的所有属性最终透传至 input 元素，当你传入 `type="number"` 时 input 元素也会添加这个属性，这会使 input 元素触发原生特性（允许鼠标滚轮改变数值），从而导致 `changeOnWheel` 无法控制鼠标滚轮是否改变数值。

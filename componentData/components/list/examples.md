@@ -910,12 +910,12 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 滚动加载无限长列表
-结合 [rc-virtual-list](https://github.com/react-component/virtual-list) 实现滚动加载无限长列表，能够提高数据量大时候长列表的性能。
+结合 [@rc-component/virtual-list](https://github.com/react-component/virtual-list) 实现滚动加载无限长列表，能够提高数据量大时候长列表的性能。
 
 ```tsx
 import React, { useEffect, useState } from 'react';
 import { Avatar, List, message } from 'antd';
-import VirtualList from 'rc-virtual-list';
+import VirtualList from '@rc-component/virtual-list';
 interface UserItem {
   email: string;
   gender: string;

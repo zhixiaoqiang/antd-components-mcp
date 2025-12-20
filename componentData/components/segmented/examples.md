@@ -40,7 +40,7 @@ export default Demo;
 import React from 'react';
 import { Segmented } from 'antd';
 const Demo: React.FC = () => (
-  <Segmented options={[123, 456, 'longtext-longtext-longtext-longtext']} block />
+  <Segmented<string | number> options={[123, 456, 'longtext-longtext-longtext-longtext']} block />
 );
 export default Demo;
 ```
@@ -56,11 +56,7 @@ const Demo: React.FC = () => {
   const [size, setSize] = useState<SizeType>('middle');
   return (
     <Flex gap="small" align="flex-start" vertical>
-      <Segmented
-        options={['small', 'middle', 'large']}
-        value={size}
-        onChange={(value) => setSize(value as SizeType)}
-      />
+      <Segmented<SizeType> options={['small', 'middle', 'large']} value={size} onChange={setSize} />
       <Segmented
         size={size}
         shape="round"
@@ -103,8 +99,14 @@ export default App;
 import React, { useState } from 'react';
 import { Segmented } from 'antd';
 const Demo: React.FC = () => {
-  const [value, setValue] = useState<string | number>('Map');
-  return <Segmented options={['Map', 'Transit', 'Satellite']} value={value} onChange={setValue} />;
+  const [value, setValue] = useState<string>('Map');
+  return (
+    <Segmented<string>
+      options={['Map', 'Transit', 'Satellite']}
+      value={value}
+      onChange={setValue}
+    />
+  );
 };
 export default Demo;
 ```
@@ -122,7 +124,7 @@ const App: React.FC = () => (
         {
           label: (
             <div style={{ padding: 4 }}>
-              <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
+              <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" alt="User 1" />
               <div>User 1</div>
             </div>
           ),
@@ -132,7 +134,9 @@ const App: React.FC = () => (
         {
           label: (
             <div style={{ padding: 4 }}>
-              <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
+              <Avatar style={{ backgroundColor: '#f56a00' }} alt="User 2">
+                K
+              </Avatar>
               <div>User 2</div>
             </div>
           ),
@@ -142,7 +146,7 @@ const App: React.FC = () => (
         {
           label: (
             <div style={{ padding: 4 }}>
-              <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+              <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} alt="User 3" />
               <div>User 3</div>
             </div>
           ),
@@ -402,6 +406,7 @@ const App: React.FC = () => (
       <Select
         size="small"
         defaultValue="lucy"
+        aria-label="select"
         style={{ width: 150 }}
         options={[{ label: 'Lucy', value: 'lucy' }]}
       />
