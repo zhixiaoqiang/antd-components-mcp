@@ -109,7 +109,12 @@ const App: React.FC = () => {
   const [page, setPage] = useState(1);
   const fetchData = (currentPage: number) => {
     const fakeDataUrl = `https://660d2bd96ddfa2943b33731c.mockapi.io/api/users?page=${currentPage}&limit=${PAGE_SIZE}`;
-    return fetch(fakeDataUrl).then((res) => res.json());
+    return fetch(fakeDataUrl)
+      .then((res) => res.json())
+      .catch(() => {
+        console.log('fetch mock data failed');
+        return [];
+      });
   };
   useEffect(() => {
     fetchData(page).then((res) => {
@@ -914,8 +919,8 @@ export default App;
 
 ```tsx
 import React, { useEffect, useState } from 'react';
-import { Avatar, List, message } from 'antd';
 import VirtualList from '@rc-component/virtual-list';
+import { Avatar, List, message } from 'antd';
 interface UserItem {
   email: string;
   gender: string;
@@ -936,6 +941,9 @@ const App: React.FC = () => {
         setData(data.concat(results));
         setPage(page + 1);
         showMessage && message.success(`${results.length} more items loaded!`);
+      })
+      .catch(() => {
+        console.log('fetch mock data failed');
       });
   };
   useEffect(() => {

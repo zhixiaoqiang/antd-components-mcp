@@ -639,6 +639,10 @@ async function fetchUserList(username: string): Promise<UserValue[]> {
         value: user.id,
         avatar: user.avatar,
       }));
+    })
+    .catch(() => {
+      console.log('fetch mock data failed');
+      return [];
     });
 }
 const App: React.FC = () => {

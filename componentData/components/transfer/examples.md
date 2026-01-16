@@ -141,8 +141,8 @@ const App: React.FC = () => {
   const [mockData, setMockData] = useState<RecordType[]>([]);
   const [targetKeys, setTargetKeys] = useState<TransferProps['targetKeys']>([]);
   const getMock = () => {
-    const tempTargetKeys = [];
-    const tempMockData = [];
+    const tempTargetKeys: React.Key[] = [];
+    const tempMockData: RecordType[] = [];
     for (let i = 0; i < 20; i++) {
       const data = {
         key: i.toString(),
@@ -200,8 +200,8 @@ const App: React.FC = () => {
   const [mockData, setMockData] = useState<RecordType[]>([]);
   const [targetKeys, setTargetKeys] = useState<TransferProps['targetKeys']>([]);
   const getMock = () => {
-    const tempTargetKeys = [];
-    const tempMockData = [];
+    const tempTargetKeys: React.Key[] = [];
+    const tempMockData: RecordType[] = [];
     for (let i = 0; i < 20; i++) {
       const data = {
         key: i.toString(),
@@ -282,8 +282,8 @@ const App: React.FC = () => {
   const [mockData, setMockData] = useState<RecordType[]>([]);
   const [targetKeys, setTargetKeys] = useState<React.Key[]>([]);
   const getMock = () => {
-    const tempTargetKeys = [];
-    const tempMockData = [];
+    const tempTargetKeys: React.Key[] = [];
+    const tempMockData: RecordType[] = [];
     for (let i = 0; i < 20; i++) {
       const data = {
         key: i.toString(),
@@ -462,8 +462,8 @@ const App: React.FC = () => {
   const [mockData, setMockData] = useState<RecordType[]>([]);
   const [targetKeys, setTargetKeys] = useState<React.Key[]>([]);
   useEffect(() => {
-    const newTargetKeys = [];
-    const newMockData = [];
+    const newTargetKeys: React.Key[] = [];
+    const newMockData: RecordType[] = [];
     for (let i = 0; i < 2000; i++) {
       const data = {
         key: i.toString(),
