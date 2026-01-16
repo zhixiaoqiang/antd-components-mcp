@@ -627,8 +627,8 @@ export default () => (
 import React from 'react';
 import { Button, notification, Space } from 'antd';
 import type { NotificationArgsProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyle = createStyles(({ css }) => ({
+import { createStaticStyles } from 'antd-style';
+const classNames = createStaticStyles(({ css }) => ({
   root: css`
     border: 2px dashed #ccc;
   `,
@@ -644,13 +644,12 @@ const styleFn: NotificationArgsProps['styles'] = ({ props }) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles } = useStyle();
   const [api, contextHolder] = notification.useNotification();
   const sharedProps: NotificationArgsProps = {
     title: 'Notification Title',
     description: 'This is a notification description.',
     duration: false,
-    classNames: { root: styles.root },
+    classNames: { root: classNames.root },
   };
   const openDefault = () => {
     api.info({

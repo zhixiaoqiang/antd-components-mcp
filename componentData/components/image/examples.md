@@ -356,13 +356,13 @@ export default App;
 import React from 'react';
 import { Flex, Image } from 'antd';
 import type { ImageProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyles = createStyles(() => ({
-  root: {
-    padding: 4,
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
+import { createStaticStyles } from 'antd-style';
+const classNames = createStaticStyles(({ css }) => ({
+  root: css`
+    padding: 4px;
+    border-radius: 8px;
+    overflow: hidden;
+  `,
 }));
 const styles: ImageProps['styles'] = {
   image: {
@@ -387,7 +387,6 @@ const stylesFn: ImageProps['styles'] = (info) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles: classNames } = useStyles();
   const sharedProps: ImageProps = {
     src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
     width: 160,

@@ -107,13 +107,13 @@ export default App;
 ```tsx
 import React from 'react';
 import { Button, Empty, Flex } from 'antd';
-import { createStyles } from 'antd-style';
+import { createStaticStyles } from 'antd-style';
 import type { EmptyProps } from '..';
 const emptySharedProps: EmptyProps = {
   image: Empty.PRESENTED_IMAGE_SIMPLE,
   children: <Button type="primary">Create Now</Button>,
 };
-const useStyle = createStyles(({ css }) => ({
+const classNames = createStaticStyles(({ css }) => ({
   root: css`
     border: 1px dashed #ccc;
     padding: 16px;
@@ -136,22 +136,21 @@ const stylesFn: EmptyProps['styles'] = ({ props }) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles } = useStyle();
-  const classNames: EmptyProps['classNames'] = {
-    root: styles.root,
+  const emptyClassNames: EmptyProps['classNames'] = {
+    root: classNames.root,
   };
   return (
     <Flex vertical gap="middle">
       <Empty
         {...emptySharedProps}
         description="Object styles"
-        classNames={classNames}
+        classNames={emptyClassNames}
         styles={stylesObject}
       />
       <Empty
         {...emptySharedProps}
         description="Function styles"
-        classNames={classNames}
+        classNames={emptyClassNames}
         styles={stylesFn}
       />
     </Flex>

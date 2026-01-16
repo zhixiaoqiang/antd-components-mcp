@@ -697,11 +697,11 @@ export default App;
 import React from 'react';
 import { Descriptions, Flex } from 'antd';
 import type { DescriptionsProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyle = createStyles(() => ({
-  root: {
-    padding: 10,
-  },
+import { createStaticStyles } from 'antd-style';
+const classNames = createStaticStyles(({ css }) => ({
+  root: css`
+    padding: 10px;
+  `,
 }));
 const items: DescriptionsProps['items'] = [
   {
@@ -738,7 +738,6 @@ const stylesFn: DescriptionsProps['styles'] = (info) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles: classNames } = useStyle();
   const descriptionsProps: DescriptionsProps = {
     title: 'User Info',
     items,

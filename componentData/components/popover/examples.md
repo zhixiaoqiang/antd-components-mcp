@@ -206,41 +206,41 @@ export default App;
 
 ```tsx
 import React from 'react';
-import { createStyles } from 'antd-style';
+import { createStaticStyles } from 'antd-style';
 import { Flex, Popover } from 'antd';
 import type { GetProp } from 'antd';
-const useStyle = createStyles(() => ({
-  item: {
-    width: '280px',
-    height: '280px',
-    display: 'inline-flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    border: '1px dashed purple',
-  },
-  box: {
-    width: '40px',
-    height: '40px',
-    backgroundColor: 'deepskyblue',
-  },
-  cross: {
-    position: 'relative',
-    '&::before, &::after': {
-      content: '""',
-      position: 'absolute',
-      inset: 0,
-    },
-    '&::before': {
-      top: '50%',
-      height: '1px',
-      backgroundColor: 'red',
-    },
-    '&::after': {
-      left: '50%',
-      width: '1px',
-      backgroundColor: 'blue',
-    },
-  },
+const classNames = createStaticStyles(({ css }) => ({
+  item: css`
+    width: 280px;
+    height: 280px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed purple;
+  `,
+  box: css`
+    width: 40px;
+    height: 40px;
+    background-color: deepskyblue;
+  `,
+  cross: css`
+    position: relative;
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+    &::before {
+      top: 50%;
+      height: 1px;
+      background-color: red;
+    }
+    &::after {
+      left: 50%;
+      width: 1px;
+      background-color: blue;
+    }
+  `,
 }));
 type Placement = GetProp<typeof Popover, 'placement'>;
 const placements: Placement[] = [
@@ -258,11 +258,10 @@ const placements: Placement[] = [
   'bottomRight',
 ];
 const App = () => {
-  const { styles, cx } = useStyle();
   return (
     <Flex gap={16} wrap>
       {placements.map((placement) => (
-        <div key={placement} className={styles.item}>
+        <div key={placement} className={classNames.item}>
           <Popover
             placement={placement}
             content={
@@ -275,7 +274,7 @@ const App = () => {
             forceRender
             open
           >
-            <div className={cx(styles.box, styles.cross)} />
+            <div className={`${classNames.box} ${classNames.cross}`} />
           </Popover>
         </div>
       ))}
@@ -398,11 +397,11 @@ export default App;
 import React from 'react';
 import { Button, Flex, Popover } from 'antd';
 import type { PopoverProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyles = createStyles(() => ({
-  container: {
-    padding: 10,
-  },
+import { createStaticStyles } from 'antd-style';
+const classNames = createStaticStyles(({ css }) => ({
+  container: css`
+    padding: 10px;
+  `,
 }));
 const styles: PopoverProps['styles'] = {
   container: {
@@ -429,7 +428,6 @@ const stylesFn: PopoverProps['styles'] = (info) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles: classNames } = useStyles();
   return (
     <Flex gap="middle">
       <Popover content="Object text" classNames={classNames} styles={styles} arrow={false}>

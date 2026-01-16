@@ -393,8 +393,8 @@ export default App;
 import React from 'react';
 import { AutoComplete, Flex } from 'antd';
 import type { AutoCompleteProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyle = createStyles(({ css }) => ({
+import { createStaticStyles } from 'antd-style';
+const classNames = createStaticStyles(({ css }) => ({
   root: css`
     border-radius: 4px;
   `,
@@ -426,7 +426,6 @@ const options: AutoCompleteProps['options'] = [
   { value: 'Meet student' },
 ];
 const App: React.FC = () => {
-  const { styles: classNames } = useStyle();
   const sharedProps: AutoCompleteProps = {
     options,
     classNames: {

@@ -444,12 +444,12 @@ export default App;
 import React from 'react';
 import { Flex, Timeline } from 'antd';
 import type { TimelineProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyles = createStyles(() => ({
-  root: {
-    padding: 8,
-    borderRadius: 4,
-  },
+import { createStaticStyles } from 'antd-style';
+const classNames = createStaticStyles(({ css }) => ({
+  root: css`
+    padding: 8px;
+    border-radius: 4px;
+  `,
 }));
 const styles: TimelineProps['styles'] = {
   itemIcon: {
@@ -471,7 +471,6 @@ const stylesFn: TimelineProps['styles'] = (info) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles: classNames } = useStyles();
   const sharedProps: TimelineProps = {
     classNames,
     items: [
