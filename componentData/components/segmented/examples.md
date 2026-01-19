@@ -291,11 +291,11 @@ import React from 'react';
 import { CloudOutlined, RocketOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import { Flex, Segmented } from 'antd';
 import type { SegmentedProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyle = createStyles(() => ({
-  root: {
-    padding: 2,
-  },
+import { createStaticStyles } from 'antd-style';
+const classNames = createStaticStyles(({ css }) => ({
+  root: css`
+    padding: 2px;
+  `,
 }));
 const styleFn: SegmentedProps['styles'] = (info) => {
   if (info.props.vertical) {
@@ -339,7 +339,6 @@ const options: SegmentedProps['options'] = [
   },
 ];
 const App: React.FC = () => {
-  const { styles: classNames } = useStyle();
   const segmentedSharedProps: SegmentedProps = {
     options,
     classNames,

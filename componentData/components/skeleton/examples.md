@@ -228,17 +228,17 @@ export default App;
 import React from 'react';
 import { Flex, Skeleton } from 'antd';
 import type { SkeletonProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyles = createStyles(() => ({
-  root: {
-    borderRadius: 10,
-    padding: 12,
-  },
-  header: {
-    marginBottom: 12,
-  },
+import { createStaticStyles } from 'antd-style';
+const classnames = createStaticStyles(({ css }) => ({
+  root: css`
+    border-radius: 10px;
+    padding: 12px;
+  `,
+  header: css`
+    margin-bottom: 12px;
+  `,
 }));
-const useParagraphStyles = createStyles(({ css }) => ({
+const paragraphStyles = createStaticStyles(({ css }) => ({
   paragraph: css`
     & > li {
       background-color: rgba(229, 243, 254, 0.5);
@@ -269,8 +269,6 @@ const stylesFn: SkeletonProps['styles'] = (info) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles: classnames } = useStyles();
-  const { styles: paragraphStyles } = useParagraphStyles();
   return (
     <Flex gap="middle">
       <Skeleton classNames={classnames} styles={styles} avatar paragraph={false} />
