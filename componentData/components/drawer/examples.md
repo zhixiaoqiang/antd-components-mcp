@@ -878,7 +878,7 @@ export default App;
 import React, { useState } from 'react';
 import { Button, Drawer, Flex } from 'antd';
 import type { DrawerProps } from 'antd';
-import { createStyles } from 'antd-style';
+import { createStaticStyles } from 'antd-style';
 const lineStyle: React.CSSProperties = {
   lineHeight: '28px',
 };
@@ -896,11 +896,11 @@ const sharedContent = (
     <div style={lineStyle}>🎨 Powerful theme customization in every detail.</div>
   </>
 );
-const useStyles = createStyles(() => ({
-  container: {
-    borderRadius: 10,
-    padding: 10,
-  },
+const classNames = createStaticStyles(({ css }) => ({
+  container: css`
+    border-radius: 10px;
+    padding: 10px;
+  `,
 }));
 const styles: DrawerProps['styles'] = {
   mask: {
@@ -927,7 +927,6 @@ const stylesFn: DrawerProps['styles'] = (info) => {
 const App: React.FC = () => {
   const [drawerOpen, setOpen] = useState(false);
   const [drawerFnOpen, setFnOpen] = useState(false);
-  const { styles: classNames } = useStyles();
   const sharedProps: DrawerProps = {
     classNames,
     size: 500,

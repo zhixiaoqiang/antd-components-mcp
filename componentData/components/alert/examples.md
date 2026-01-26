@@ -402,8 +402,8 @@ export default App;
 import React from 'react';
 import { Alert, Button, Flex } from 'antd';
 import type { AlertProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyle = createStyles(({ css }) => ({
+import { createStaticStyles } from 'antd-style';
+const classNames = createStaticStyles(({ css }) => ({
   root: css`
     border: 2px dashed #ccc;
     border-radius: 8px;
@@ -436,11 +436,10 @@ const styleFn: AlertProps['styles'] = ({ props: { type } }) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles } = useStyle();
   const alertSharedProps: AlertProps = {
     showIcon: true,
     classNames: {
-      root: styles.root,
+      root: classNames.root,
     },
   };
   return (

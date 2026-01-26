@@ -380,7 +380,7 @@ export default App;
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
 import type { SplitterProps } from 'antd';
-import { createStyles } from 'antd-style';
+import { createStaticStyles } from 'antd-style';
 const Desc: React.FC<Readonly<{ text?: string | number; style?: React.CSSProperties }>> = (
   props,
 ) => {
@@ -392,7 +392,7 @@ const Desc: React.FC<Readonly<{ text?: string | number; style?: React.CSSPropert
     </Flex>
   );
 };
-const useStyle = createStyles(({ css, cssVar }) => ({
+const styles = createStaticStyles(({ css, cssVar }) => ({
   boxShadow: css`
     box-shadow: ${cssVar.boxShadowSecondary};
   `,
@@ -414,7 +414,6 @@ const stylesFn: SplitterProps['styles'] = ({ props }) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles } = useStyle();
   const splitSharedProps: SplitterProps = {
     style: { height: 200 },
     classNames: { root: styles.boxShadow },
