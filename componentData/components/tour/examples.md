@@ -459,7 +459,7 @@ export default App;
 import React, { useRef, useState } from 'react';
 import { Button, Divider, Flex, Space, Tour } from 'antd';
 import type { TourProps, TourStepProps } from 'antd';
-import { createStyles } from 'antd-style';
+import { createStaticStyles } from 'antd-style';
 const btnProps: {
   nextButtonProps: TourStepProps['nextButtonProps'];
   prevButtonProps: TourStepProps['prevButtonProps'];
@@ -477,13 +477,9 @@ const btnProps: {
     },
   },
 };
-const useStyles = createStyles(() => ({
-  root: {
-    borderRadius: 4,
-  },
-  section: {
-    borderRadius: 8,
-  },
+const classNames = createStaticStyles(({ css }) => ({
+  root: css`border-radius: 4px;`,
+  section: css`border-radius: 8px;`,
 }));
 const stylesObject: TourProps['styles'] = {
   mask: {
@@ -520,7 +516,6 @@ const App: React.FC = () => {
   const ref3 = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [openFn, setOpenFn] = useState<boolean>(false);
-  const { styles: classNames } = useStyles();
   const steps: TourProps['steps'] = [
     {
       title: 'Upload File',
