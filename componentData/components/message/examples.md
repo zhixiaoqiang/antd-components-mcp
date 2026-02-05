@@ -171,9 +171,11 @@ export default App;
 import React from 'react';
 import { Button, message, Space } from 'antd';
 import type { MessageArgsProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyle = createStyles(() => ({
-  icon: { fontSize: 14 },
+import { createStaticStyles } from 'antd-style';
+const messageClassNames = createStaticStyles(({ css }) => ({
+  icon: css`
+    font-size: 14px;
+  `,
 }));
 const stylesObject: MessageArgsProps['styles'] = {
   icon: { fontSize: 20 },
@@ -192,13 +194,12 @@ const stylesFn: MessageArgsProps['styles'] = ({ props }) => {
   return {};
 };
 const App: React.FC = () => {
-  const { styles } = useStyle();
   const [messageApi, contextHolder] = message.useMessage();
   const showObjectStyle = () => {
     messageApi.open({
       type: 'info',
       content: 'This is a message with object classNames and styles',
-      classNames: styles,
+      classNames: messageClassNames,
       styles: stylesObject,
     });
   };
@@ -206,7 +207,7 @@ const App: React.FC = () => {
     messageApi.open({
       type: 'success',
       content: 'This is a message with function classNames and styles',
-      classNames: styles,
+      classNames: messageClassNames,
       styles: stylesFn,
       duration: 60 * 1000,
     });
