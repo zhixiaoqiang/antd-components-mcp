@@ -552,9 +552,9 @@ const customizeRequiredMark = (label: React.ReactNode, { required }: { required:
 );
 const App: React.FC = () => {
   const [form] = Form.useForm();
-  const [requiredMark, setRequiredMarkType] = useState<RequiredMark>('optional');
+  const [requiredMark, setRequiredMark] = useState<RequiredMark>('optional');
   const onRequiredTypeChange: FormProps<any>['onValuesChange'] = ({ requiredMarkValue }) => {
-    setRequiredMarkType(requiredMarkValue);
+    setRequiredMark(requiredMarkValue);
   };
   return (
     <Form
