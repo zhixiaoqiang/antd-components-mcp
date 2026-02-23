@@ -1066,9 +1066,9 @@ import type { DatePickerProps, RadioChangeEvent } from 'antd';
 import { DatePicker, Radio } from 'antd';
 const { RangePicker } = DatePicker;
 const App: React.FC = () => {
-  const [placement, SetPlacement] = useState<DatePickerProps['placement']>('topLeft');
+  const [placement, setPlacement] = useState<DatePickerProps['placement']>('topLeft');
   const placementChange = (e: RadioChangeEvent) => {
-    SetPlacement(e.target.value);
+    setPlacement(e.target.value);
   };
   return (
     <>

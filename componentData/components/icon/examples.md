@@ -109,7 +109,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 使用 iconfont.cn
-对于使用 [iconfont.cn](http://iconfont.cn/) 的用户，通过设置 `createFromIconfontCN` 方法参数对象中的 `scriptUrl` 字段， 即可轻松地使用已有项目中的图标。
+对于使用 [iconfont.cn](https://iconfont.cn/) 的用户，通过设置 `createFromIconfontCN` 方法参数对象中的 `scriptUrl` 字段， 即可轻松地使用已有项目中的图标。
 
 ```tsx
 import React from 'react';
@@ -128,7 +128,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 使用 iconfont.cn 的多个资源
-`@ant-design/icons@4.1.0` 以后，`scriptUrl` 可引用多个资源，用户可灵活的管理 [iconfont.cn](http://iconfont.cn/) 图标。如果资源的图标出现重名，会按照数组顺序进行覆盖。
+`@ant-design/icons@4.1.0` 以后，`scriptUrl` 可引用多个资源，用户可灵活的管理 [iconfont.cn](https://iconfont.cn/) 图标。如果资源的图标出现重名，会按照数组顺序进行覆盖。
 
 ```tsx
 import React from 'react';

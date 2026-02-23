@@ -532,7 +532,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 省略号 Debug
-多行文本省略。
+多行文本省略。页面底部包含「可复制 + 省略」时 tooltip 行为的调试区块，便于验证：悬停文字显示省略 tooltip，悬停复制按钮仅显示复制 tooltip，从复制按钮移回文字时省略 tooltip 再次出现。
 
 ```tsx
 import React, { useState } from 'react';
@@ -624,6 +624,21 @@ const App: React.FC = () => {
       <Text style={{ width: 100, whiteSpace: 'nowrap' }} ellipsis copyable>
         {templateStr}
       </Text>
+      <div style={{ marginTop: 24 }}>
+        <div style={{ marginBottom: 8, fontSize: 12, color: '#666' }}>
+          <strong>Debug: copyable + ellipsis tooltips</strong>
+          <br />
+          1. Hover the text → ellipsis tooltip (full content) should show.
+          <br />
+          2. Hover the copy button → only &quot;Copy&quot; / &quot;Copied&quot; tooltip should show.
+          <br />
+          3. Move from copy button back to the text (without leaving the block) → ellipsis tooltip
+          should show again.
+        </div>
+        <Text style={{ width: 280, display: 'block' }} ellipsis={{ tooltip: true }} copyable>
+          {templateStr}
+        </Text>
+      </div>
     </>
   );
 };
