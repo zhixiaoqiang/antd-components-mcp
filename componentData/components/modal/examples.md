@@ -145,7 +145,7 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 遮罩
-遮罩效果，默认 `blur`。
+遮罩效果。
 
 ```tsx
 import React from 'react';
@@ -161,14 +161,14 @@ const App: React.FC = () => {
       <Space>
         <Button
           onClick={() => {
-            modal.confirm({ ...modalConfig });
+            modal.confirm({ ...modalConfig, mask: { blur: true } });
           }}
         >
-          Default blur
+          blur
         </Button>
         <Button
           onClick={() => {
-            modal.confirm({ ...modalConfig, mask: { blur: false } });
+            modal.confirm(modalConfig);
           }}
         >
           Dimmed mask
@@ -1311,114 +1311,6 @@ const App: React.FC = () => (
 );
 export default App;
 ```
-### 自定义内部模块 className
-通过 `classNames` 属性设置弹窗内部区域（header、body、footer、mask、wrapper）的 `className`。
-
-```tsx
-import React, { useState } from 'react';
-import { Button, ConfigProvider, Modal, Space } from 'antd';
-import { createStyles, useTheme } from 'antd-style';
-const useStyle = createStyles(({ token }) => ({
-  'my-modal-body': {
-    background: token.blue1,
-    padding: token.paddingSM,
-  },
-  'my-modal-mask': {
-    boxShadow: `inset 0 0 15px #fff`,
-  },
-  'my-modal-header': {
-    borderBottom: `1px dotted ${token.colorPrimary}`,
-  },
-  'my-modal-footer': {
-    color: token.colorPrimary,
-  },
-  'my-modal-content': {
-    border: '1px solid #333',
-  },
-}));
-const App: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState([false, false]);
-  const { styles } = useStyle();
-  const token = useTheme();
-  const toggleModal = (idx: number, target: boolean) => {
-    setIsModalOpen((p) => {
-      p[idx] = target;
-      return [...p];
-    });
-  };
-  const classNames = {
-    body: styles['my-modal-body'],
-    mask: styles['my-modal-mask'],
-    header: styles['my-modal-header'],
-    footer: styles['my-modal-footer'],
-    content: styles['my-modal-content'],
-  };
-  const modalStyles = {
-    header: {
-      borderInlineStart: `5px solid ${token.colorPrimary}`,
-      borderRadius: 0,
-      paddingInlineStart: 5,
-    },
-    body: {
-      boxShadow: 'inset 0 0 5px #999',
-      borderRadius: 5,
-    },
-    mask: {
-      backdropFilter: 'blur(10px)',
-    },
-    footer: {
-      borderTop: '1px solid #333',
-    },
-    content: {
-      boxShadow: '0 0 30px #999',
-    },
-  };
-  return (
-    <>
-      <Space>
-        <Button type="primary" onClick={() => toggleModal(0, true)}>
-          Open Modal
-        </Button>
-        <Button type="primary" onClick={() => toggleModal(1, true)}>
-          ConfigProvider
-        </Button>
-      </Space>
-      <Modal
-        title="Basic Modal"
-        open={isModalOpen[0]}
-        onOk={() => toggleModal(0, false)}
-        onCancel={() => toggleModal(0, false)}
-        footer="Footer"
-        classNames={classNames}
-        styles={modalStyles}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
-      <ConfigProvider
-        modal={{
-          classNames,
-          styles: modalStyles,
-        }}
-      >
-        <Modal
-          title="Basic Modal"
-          open={isModalOpen[1]}
-          onOk={() => toggleModal(1, false)}
-          onCancel={() => toggleModal(1, false)}
-          footer="Footer"
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
-      </ConfigProvider>
-    </>
-  );
-};
-export default App;
-```
 ### 销毁确认对话框
 使用 `Modal.destroyAll()` 可以销毁弹出的确认窗。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题。
 
@@ -1509,8 +1401,8 @@ const stylesFn: ModalProps['styles'] = (info) => {
   return {};
 };
 const App: React.FC = () => {
-  const [modalOpen, setOpen] = useState(false);
-  const [modalFnOpen, setFnOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalFnOpen, setModalFnOpen] = useState(false);
   const sharedProps: ModalProps = {
     centered: true,
     classNames,
@@ -1518,7 +1410,7 @@ const App: React.FC = () => {
   const footer: React.ReactNode = (
     <>
       <Button
-        onClick={() => setFnOpen(false)}
+        onClick={() => setModalFnOpen(false)}
         styles={{ root: { borderColor: '#ccc', color: '#171717', backgroundColor: '#fff' } }}
       >
         Cancel
@@ -1526,7 +1418,7 @@ const App: React.FC = () => {
       <Button
         type="primary"
         styles={{ root: { backgroundColor: '#171717' } }}
-        onClick={() => setOpen(true)}
+        onClick={() => setModalOpen(true)}
       >
         Submit
       </Button>
@@ -1534,8 +1426,8 @@ const App: React.FC = () => {
   );
   return (
     <Flex gap="middle">
-      <Button onClick={() => setOpen(true)}>Open Style Modal</Button>
-      <Button type="primary" onClick={() => setFnOpen(true)}>
+      <Button onClick={() => setModalOpen(true)}>Open Style Modal</Button>
+      <Button type="primary" onClick={() => setModalFnOpen(true)}>
         Open Function Modal
       </Button>
       <Modal
@@ -1544,8 +1436,8 @@ const App: React.FC = () => {
         title="Custom Style Modal"
         styles={styles}
         open={modalOpen}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
+        onOk={() => setModalOpen(false)}
+        onCancel={() => setModalOpen(false)}
       >
         {sharedContent}
       </Modal>
@@ -1556,8 +1448,8 @@ const App: React.FC = () => {
         styles={stylesFn}
         mask={{ enabled: true, blur: true }}
         open={modalFnOpen}
-        onOk={() => setFnOpen(false)}
-        onCancel={() => setFnOpen(false)}
+        onOk={() => setModalFnOpen(false)}
+        onCancel={() => setModalFnOpen(false)}
       >
         {sharedContent}
       </Modal>
@@ -1606,7 +1498,7 @@ const Demo: React.FC = () => {
         footer={null}
         destroyOnHidden
         onCancel={() => setIsModalOpen(false)}
-        maskClosable={false}
+        mask={{ closable: false }}
         closable={false}
         styles={{
           container: {
