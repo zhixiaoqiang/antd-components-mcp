@@ -117,7 +117,7 @@ const actions: React.ReactNode[] = [
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   return (
-    <Flex gap="middle" align="start" vertical>
+    <Flex gap="medium" align="start" vertical>
       <Switch checked={!loading} onChange={(checked) => setLoading(!checked)} />
       <Card loading={loading} actions={actions} style={{ minWidth: 300 }}>
         <Card.Meta
@@ -387,7 +387,7 @@ const App: React.FC = () => {
     description: 'This is the description',
   };
   return (
-    <Flex gap="middle">
+    <Flex gap="medium">
       <Card
         {...sharedCardProps}
         title="Object Card"

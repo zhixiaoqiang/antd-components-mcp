@@ -606,7 +606,7 @@ const App: React.FC = () => {
     setDisabled(checked);
   };
   return (
-    <Flex align="start" gap="middle" vertical>
+    <Flex align="start" gap="medium" vertical>
       <TableTransfer
         dataSource={mockData}
         targetKeys={targetKeys}
@@ -733,7 +733,7 @@ export default App;
 import React from 'react';
 import { Flex, Transfer } from 'antd';
 const App: React.FC = () => (
-  <Flex gap="middle" vertical>
+  <Flex gap="medium" vertical>
     <Transfer status="error" />
     <Transfer status="warning" showSearch />
   </Flex>

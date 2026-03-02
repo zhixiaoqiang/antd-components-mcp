@@ -832,7 +832,7 @@ const App: React.FC = () => {
     size: 500,
   };
   const footer: React.ReactNode = (
-    <Flex gap="middle" justify="flex-end">
+    <Flex gap="medium" justify="flex-end">
       <Button
         onClick={() => setDrawerFnOpen(false)}
         styles={{ root: { borderColor: '#ccc', color: '#171717', backgroundColor: '#fff' } }}
@@ -849,7 +849,7 @@ const App: React.FC = () => {
     </Flex>
   );
   return (
-    <Flex gap="middle">
+    <Flex gap="medium">
       <Button onClick={() => setDrawerOpen(true)}>Open Style Drawer</Button>
       <Button type="primary" onClick={() => setDrawerFnOpen(true)}>
         Open Function Drawer

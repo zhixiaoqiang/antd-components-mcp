@@ -44,7 +44,7 @@ export default App;
 import React from 'react';
 import { Flex, Mentions } from 'antd';
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Mentions size="large" placeholder="large size" />
     <Mentions placeholder="default size" />
     <Mentions size="small" placeholder="small size" />
@@ -512,7 +512,7 @@ const App: React.FC = () => {
     classNames,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Mentions {...sharedProps} styles={stylesObject} placeholder="Object" rows={2} />
       <Mentions {...sharedProps} styles={stylesFunction} variant="filled" placeholder="Function" />
     </Flex>

@@ -181,7 +181,7 @@ const App: React.FC = () => {
     ],
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Steps {...sharedProps} />
       <Steps {...sharedProps} size="small" variant="outlined" />
     </Flex>
@@ -355,11 +355,11 @@ const sharedVerticalProps = {
   },
 } as const;
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Steps {...sharedProps} />
     <Steps {...sharedProps} variant="outlined" />
     <Divider />
-    <Flex gap="middle">
+    <Flex gap="medium">
       <Steps {...sharedVerticalProps} />
       <Steps {...sharedVerticalProps} variant="outlined" />
     </Flex>
@@ -816,21 +816,21 @@ const App: React.FC = () => {
     percent: 60,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Steps {...sharedProps} variant="filled" />
       <Steps {...sharedProps} />
       <Steps {...sharedProps} size="small" />
       <Steps {...sharedPercentProps} size="small" />
-      <Flex gap="middle">
+      <Flex gap="medium">
         <Steps {...sharedPercentProps} orientation="vertical" />
         <Steps {...sharedPercentProps} size="small" orientation="vertical" />
       </Flex>
-      <Flex gap="middle">
+      <Flex gap="medium">
         <Steps {...sharedProps} orientation="vertical" />
         <Steps {...sharedProps} orientation="vertical" size="small" />
       </Flex>
       <Steps {...sharedProps} type="dot" size="small" />
-      <Flex gap="middle">
+      <Flex gap="medium">
         <Steps {...sharedProps} type="dot" size="small" orientation="vertical" />
         <Steps {...sharedProps} type="navigation" size="small" orientation="vertical" />
       </Flex>
@@ -1032,7 +1032,7 @@ const App: React.FC = () => {
     classNames: { root: styles.root },
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Steps {...sharedProps} styles={stylesObject} />
       <Steps {...sharedProps} styles={stylesFn} type="navigation" />
     </Flex>

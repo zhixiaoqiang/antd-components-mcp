@@ -19,7 +19,7 @@ checkbox 不可用。
 import React from 'react';
 import { Checkbox, Flex } from 'antd';
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Checkbox defaultChecked={false} disabled />
     <Checkbox indeterminate disabled />
     <Checkbox defaultChecked disabled />
@@ -227,7 +227,7 @@ const App: React.FC = () => {
     };
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Checkbox styles={styles}>Object styles</Checkbox>
       <Checkbox classNames={classNamesFn} defaultChecked>
         Function styles

@@ -183,7 +183,7 @@ const handleChange = (value: string | string[]) => {
   console.log(`Selected: ${value}`);
 };
 const App: React.FC = () => {
-  const [size, setSize] = useState<SizeType>('middle');
+  const [size, setSize] = useState<SizeType>('medium');
   const handleSizeChange = (e: RadioChangeEvent) => {
     setSize(e.target.value);
   };
@@ -191,7 +191,7 @@ const App: React.FC = () => {
     <>
       <Radio.Group value={size} onChange={handleSizeChange}>
         <Radio.Button value="large">Large</Radio.Button>
-        <Radio.Button value="middle">Default</Radio.Button>
+        <Radio.Button value="medium">Medium</Radio.Button>
         <Radio.Button value="small">Small</Radio.Button>
       </Radio.Group>
       <br />
@@ -1280,7 +1280,7 @@ const handleChange = (value: string | string[]) => {
   console.log(`selected ${value}`);
 };
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Space style={style} wrap>
       <Input style={{ width: 100 }} value="222" />
       <Select
@@ -1755,7 +1755,7 @@ const App: React.FC = () => {
     prefix: <MehOutlined />,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Select {...sharedProps} styles={stylesObject} placeholder="Object" />
       <Select {...sharedProps} styles={stylesFn} placeholder="Function" variant="filled" />
     </Flex>

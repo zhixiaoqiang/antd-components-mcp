@@ -255,7 +255,7 @@ const sharedProps = {
   style: { width: 150 },
 };
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <InputNumber {...sharedProps} placeholder="Outlined" />
     <InputNumber {...sharedProps} variant="filled" placeholder="Filled" />
   </Flex>
@@ -359,7 +359,7 @@ import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Flex, InputNumber, Space } from 'antd';
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <InputNumber prefix="￥" style={{ width: '100%' }} />
     <Space.Compact block>
       <Space.Addon>
@@ -475,7 +475,7 @@ const App: React.FC = () => {
     classNames,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <InputNumber {...sharedProps} styles={stylesObject} placeholder="Object" />
       <InputNumber {...sharedProps} styles={stylesFn} placeholder="Function" size="large" />
     </Flex>

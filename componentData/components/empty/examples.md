@@ -140,7 +140,7 @@ const App: React.FC = () => {
     root: classNames.root,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Empty
         {...emptySharedProps}
         description="Object styles"
