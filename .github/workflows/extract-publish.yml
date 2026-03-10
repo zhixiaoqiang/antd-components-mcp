@@ -5,6 +5,10 @@ on:
     - cron: "0 22 * * 1" # 每周一晚上十点运行
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   extract-and-publish:
     runs-on: ubuntu-latest
@@ -144,31 +148,75 @@ jobs:
             git push origin "${{ env.DYNAMIC_BRANCH }}"
           fi
 
-      - name: Create PR
+      - name: Create PR and Try Auto Merge
         if: env.UPDATE_NEEDED == 'true'
         uses: actions/github-script@v7
         with:
           script: |
-            // 首先检查是否已存在相同标题的PR
             const head = `${context.repo.owner}:${process.env.DYNAMIC_BRANCH}`;
-            const existingPRs = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+            const { owner, repo } = context.repo;
+            const title = `Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}`;
+            const body = `Automatically updated docs from antd version: ${{ steps.get_version.outputs.antd_version }}\n\nRun ID: ${context.runId}`;
+
+            const existingPullRequests = await github.rest.pulls.list({
+              owner,
+              repo,
               state: 'open',
-              head: head
+              head,
             });
-              
-            // 如果已存在相同分支的PR，则跳过创建
-            if (existingPRs.data.length > 0) {
-              console.log('PR already exists:', existingPRs.data[0].html_url);
-              return;
+
+            let pullRequest = existingPullRequests.data[0];
+
+            if (!pullRequest) {
+              const created = await github.rest.pulls.create({
+                owner,
+                repo,
+                title,
+                body,
+                head,
+                base: 'main',
+              });
+              pullRequest = created.data;
+              core.info(`Created PR: ${pullRequest.html_url}`);
+            } else {
+              core.info(`Reusing existing PR: ${pullRequest.html_url}`);
             }
-            // 不存在则创建新PR
-            github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}`,
-              body: `Automatically updated docs from antd version: ${{ steps.get_version.outputs.antd_version }}\n\nRun ID: ${context.runId}`,
-              head: head,
-              base: 'main'
-            })
+
+            try {
+              for (let attempt = 1; attempt <= 6; attempt++) {
+                const prDetail = await github.rest.pulls.get({
+                  owner,
+                  repo,
+                  pull_number: pullRequest.number,
+                });
+
+                if (prDetail.data.merged) {
+                  core.info(`PR already merged: ${prDetail.data.html_url}`);
+                  return;
+                }
+
+                if (prDetail.data.mergeable !== null) {
+                  pullRequest = prDetail.data;
+                  break;
+                }
+
+                core.info(`Waiting for mergeable status, attempt ${attempt}/6`);
+                await new Promise((resolve) => setTimeout(resolve, 5000));
+              }
+
+              if (pullRequest.mergeable === false) {
+                core.warning(`PR is not mergeable automatically: ${pullRequest.html_url}`);
+                return;
+              }
+
+              const merged = await github.rest.pulls.merge({
+                owner,
+                repo,
+                pull_number: pullRequest.number,
+                merge_method: 'squash',
+              });
+
+              core.info(`PR merged: ${merged.data.message}`);
+            } catch (error) {
+              core.warning(`Auto merge skipped: ${error.message}`);
+            }
