@@ -108,16 +108,41 @@ jobs:
           git commit -am "Update extracted docs for antd@${{ steps.get_version.outputs.antd_version }}"
           git push origin "${{ env.DYNAMIC_BRANCH }}" --force
 
+      - name: Resolve Publish Version
+        if: env.UPDATE_NEEDED == 'true'
+        run: |
+          CURRENT_PACKAGE_NAME=$(node -p "require('./package.json').name")
+          CURRENT_PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          PUBLISH_VERSION="$CURRENT_PACKAGE_VERSION"
+
+          while npm view "${CURRENT_PACKAGE_NAME}@${PUBLISH_VERSION}" version --registry=https://registry.npmjs.org/ >/dev/null 2>&1; do
+            PUBLISH_VERSION=$(node -e "const [major, minor, patch] = process.argv[1].split('.').map(Number); console.log([major, minor, patch + 1].join('.'))" "$PUBLISH_VERSION")
+          done
+
+          echo "CURRENT_PACKAGE_NAME=$CURRENT_PACKAGE_NAME" >> $GITHUB_ENV
+          echo "CURRENT_PACKAGE_VERSION=$CURRENT_PACKAGE_VERSION" >> $GITHUB_ENV
+          echo "PUBLISH_VERSION=$PUBLISH_VERSION" >> $GITHUB_ENV
+
+          echo "Current package version: $CURRENT_PACKAGE_VERSION"
+          echo "Resolved publish version: $PUBLISH_VERSION"
+
       - name: Publish Package
         if: env.UPDATE_NEEDED == 'true'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          pnpm version patch
+          if [ "${PUBLISH_VERSION}" != "${CURRENT_PACKAGE_VERSION}" ]; then
+            pnpm version "${PUBLISH_VERSION}" --no-git-tag-version
+          fi
+
           npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
           npm publish --registry=https://registry.npmjs.org/ --access public --no-git-checks
-          git push origin "${{ env.DYNAMIC_BRANCH }}"
+
+          if [ "${PUBLISH_VERSION}" != "${CURRENT_PACKAGE_VERSION}" ]; then
+            git commit -am "Bump package version to ${PUBLISH_VERSION}"
+            git push origin "${{ env.DYNAMIC_BRANCH }}"
+          fi
 
       - name: Create PR
         if: env.UPDATE_NEEDED == 'true'
