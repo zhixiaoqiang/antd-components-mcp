@@ -543,7 +543,7 @@ import React, { useState } from 'react';
 import type { StepsProps } from 'antd';
 import { Button, Space, Steps } from 'antd';
 const App: React.FC = () => {
-  const [percent, setPercentage] = useState<number | undefined>(0);
+  const [percent, setPercent] = useState<number | undefined>(0);
   const [current, setCurrent] = useState(1);
   const [status, setStatus] = useState<StepsProps['status']>('process');
   const content = 'This is a content.';
@@ -565,10 +565,10 @@ const App: React.FC = () => {
   return (
     <>
       <Space.Compact block>
-        <Button onClick={() => setPercentage(undefined)}>Percentage to undefined</Button>
+        <Button onClick={() => setPercent(undefined)}>Percentage to undefined</Button>
         <Button
           onClick={() =>
-            setPercentage((prev) => {
+            setPercent((prev) => {
               const next = (prev ?? 0) + 10;
               return next > 100 ? 0 : next;
             })
