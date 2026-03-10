@@ -38,7 +38,7 @@ const columns: TableProps<DataType>['columns'] = [
       <Flex gap="small" align="center" wrap>
         {tags.map((tag) => {
           let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
+          if (tag === 'kawaii') {
             color = 'volcano';
           }
           return (
@@ -54,7 +54,7 @@ const columns: TableProps<DataType>['columns'] = [
     title: 'Action',
     key: 'action',
     render: (_, record) => (
-      <Space size="middle">
+      <Space size="medium">
         <a>Invite {record.name}</a>
         <a>Delete</a>
       </Space>
@@ -74,7 +74,7 @@ const data: DataType[] = [
     name: 'Jim Green',
     age: 42,
     address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    tags: ['kawaii'],
   },
   {
     key: '3',
@@ -118,7 +118,7 @@ const data: DataType[] = [
     lastName: 'Green',
     age: 42,
     address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    tags: ['kawaii'],
   },
   {
     key: '3',
@@ -145,7 +145,7 @@ const App: React.FC = () => (
         <Flex gap="small" align="center" wrap>
           {tags.map((tag) => {
             let color = tag.length > 5 ? 'geekblue' : 'green';
-            if (tag === 'loser') {
+            if (tag === 'kawaii') {
               color = 'volcano';
             }
             return (
@@ -161,7 +161,7 @@ const App: React.FC = () => (
       title="Action"
       key="action"
       render={(_: any, record: DataType) => (
-        <Space size="middle">
+        <Space size="medium">
           <a>Invite {record.lastName}</a>
           <a>Delete</a>
         </Space>
@@ -301,8 +301,8 @@ const App: React.FC = () => {
   };
   const hasSelected = selectedRowKeys.length > 0;
   return (
-    <Flex gap="middle" vertical>
-      <Flex align="center" gap="middle">
+    <Flex gap="medium" vertical>
+      <Flex align="center" gap="medium">
         <Button type="primary" onClick={start} disabled={!hasSelected} loading={loading}>
           Reload
         </Button>
@@ -1359,8 +1359,8 @@ const data: DataType[] = [
 ];
 const App: React.FC = () => (
   <>
-    <Divider>Middle size table</Divider>
-    <Table<DataType> columns={columns} dataSource={data} size="middle" />
+    <Divider>Medium size table</Divider>
+    <Table<DataType> columns={columns} dataSource={data} size="medium" />
     <Divider>Small size table</Divider>
     <Table<DataType> columns={columns} dataSource={data} size="small" />
   </>
@@ -2734,7 +2734,7 @@ const App: React.FC = () => {
       columns={columns}
       dataSource={dataSource}
       bordered
-      size="middle"
+      size="medium"
       scroll={{ x: 'calc(700px + 50%)', y: 47 * 5 }}
     />
   );
@@ -3161,7 +3161,7 @@ const expandColumns: TableColumnsType<ExpandedDataType> = [
     title: 'Action',
     key: 'operation',
     render: () => (
-      <Space size="middle">
+      <Space size="medium">
         <a>Pause</a>
         <a>Stop</a>
         <Dropdown menu={{ items }}>
@@ -3200,7 +3200,7 @@ const App: React.FC = () => (
       columns={columns}
       expandable={{ expandedRowRender, defaultExpandedRowKeys: ['0'] }}
       dataSource={dataSource}
-      size="middle"
+      size="medium"
     />
     <Table<DataType>
       columns={columns}
@@ -3678,7 +3678,7 @@ const data = [
     name: 'Jim Green',
     age: 42,
     address: 'London No. 2 Lake Park, London No. 2 Lake Park',
-    tags: ['loser'],
+    tags: ['kawaii'],
   },
   {
     key: '3',
@@ -4301,7 +4301,7 @@ const expandedColumns: TableProps<ExpandedDataType>['columns'] = [
     dataIndex: 'operation',
     key: 'operation',
     render: () => (
-      <Space size="middle">
+      <Space size="medium">
         <a>Pause</a>
         <a>Stop</a>
         <Dropdown menu={{ items }}>
@@ -4427,7 +4427,7 @@ const columns: ColumnsType<DataType> = [
       <Flex gap="small" align="center" wrap>
         {tags.map((tag) => {
           let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
+          if (tag === 'kawaii') {
             color = 'volcano';
           }
           return (
@@ -4443,7 +4443,7 @@ const columns: ColumnsType<DataType> = [
     title: 'Action',
     key: 'action',
     render: (_, record) => (
-      <Space size="middle">
+      <Space size="medium">
         <a>Invite {record.name}</a>
         <a>Delete</a>
       </Space>
@@ -4463,7 +4463,7 @@ const data: DataType[] = [
     name: 'Jim Green',
     age: 42,
     address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    tags: ['kawaii'],
   },
   {
     key: '3',
@@ -4713,7 +4713,7 @@ const columns: ColumnsType<DataType> = [
     key: 'action',
     sorter: true,
     render: () => (
-      <Space size="middle">
+      <Space size="medium">
         <a>Delete</a>
         <a>
           <Space>
@@ -4852,7 +4852,7 @@ const App: React.FC = () => {
         <Form.Item label="Size">
           <Radio.Group value={size} onChange={handleSizeChange}>
             <Radio.Button value="large">Large</Radio.Button>
-            <Radio.Button value="middle">Middle</Radio.Button>
+            <Radio.Button value="medium">Medium</Radio.Button>
             <Radio.Button value="small">Small</Radio.Button>
           </Radio.Group>
         </Form.Item>
@@ -4968,7 +4968,7 @@ const styles: TableProps<DataType>['styles'] = {
   },
 };
 const stylesFn: TableProps<DataType>['styles'] = (info) => {
-  if (info?.props?.size === 'middle') {
+  if (info?.props?.size === 'medium') {
     return {
       root: {
         color: '#e0e0e0',
@@ -5014,7 +5014,7 @@ const App: React.FC = () => {
     pagination: { pageSize: 3, simple: true },
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Table<DataType>
         {...sharedProps}
         styles={styles}
@@ -5027,7 +5027,7 @@ const App: React.FC = () => {
         styles={stylesFn}
         title={() => 'Table Function Styles'}
         footer={() => 'Table Function Styles'}
-        size="middle"
+        size="medium"
       />
     </Flex>
   );
@@ -5142,7 +5142,7 @@ const columns: ColumnsType<DataType> = [
     key: 'action',
     sorter: true,
     render: () => (
-      <Space size="middle">
+      <Space size="medium">
         <a>Delete</a>
         <a>
           <Space>
@@ -5283,7 +5283,7 @@ const App: React.FC = () => {
         <Form.Item label="Size">
           <Radio.Group value={size} onChange={handleSizeChange}>
             <Radio.Button value="large">Large</Radio.Button>
-            <Radio.Button value="middle">Middle</Radio.Button>
+            <Radio.Button value="medium">Medium</Radio.Button>
             <Radio.Button value="small">Small</Radio.Button>
           </Radio.Group>
         </Form.Item>

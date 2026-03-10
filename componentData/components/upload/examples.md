@@ -80,7 +80,7 @@ const App: React.FC = () => {
     </button>
   );
   return (
-    <Flex gap="middle" wrap>
+    <Flex gap="medium" wrap>
       <Upload
         name="avatar"
         listType="picture-card"

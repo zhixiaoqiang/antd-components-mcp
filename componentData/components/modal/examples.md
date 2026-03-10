@@ -805,12 +805,10 @@ const Demo: React.FC = () => {
   const showModal = () => {
     setOpen(true);
   };
-  const handleOk = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(e);
+  const handleOk = () => {
     setOpen(false);
   };
-  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(e);
+  const handleCancel = () => {
     setOpen(false);
   };
   return (
@@ -1012,12 +1010,10 @@ const App: React.FC = () => {
   const showModal = () => {
     setOpen(true);
   };
-  const handleOk = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e);
+  const handleOk = () => {
     setOpen(false);
   };
-  const handleCancel = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e);
+  const handleCancel = () => {
     setOpen(false);
   };
   return (
@@ -1058,12 +1054,10 @@ const App: React.FC = () => {
   const showModal = () => {
     setOpen(true);
   };
-  const handleOk = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e);
+  const handleOk = () => {
     setOpen(false);
   };
-  const handleCancel = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e);
+  const handleCancel = () => {
     setOpen(false);
   };
   const onStart = (_event: DraggableEvent, uiData: DraggableData) => {
@@ -1138,7 +1132,7 @@ const App: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [openResponsive, setOpenResponsive] = useState(false);
   return (
-    <Flex vertical gap="middle" align="flex-start">
+    <Flex vertical gap="medium" align="flex-start">
       {/* Basic */}
       <Button type="primary" onClick={() => setOpen(true)}>
         Open Modal of 1000px width
@@ -1425,7 +1419,7 @@ const App: React.FC = () => {
     </>
   );
   return (
-    <Flex gap="middle">
+    <Flex gap="medium">
       <Button onClick={() => setModalOpen(true)}>Open Style Modal</Button>
       <Button type="primary" onClick={() => setModalFnOpen(true)}>
         Open Function Modal

@@ -192,7 +192,7 @@ const App: React.FC = () => {
     prefix: <ArrowUpOutlined />,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Statistic
         {...statisticSharedProps}
         title="Monthly Active Users"

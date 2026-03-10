@@ -26,7 +26,7 @@ import { useResponsive } from 'antd-style';
 const App: React.FC = () => {
   const { xxl } = useResponsive();
   return (
-    <ConfigProvider componentSize={xxl ? 'middle' : 'small'}>
+    <ConfigProvider componentSize={xxl ? 'medium' : 'small'}>
       <Flex vertical gap="small">
         <Flex gap="small" wrap>
           <Button color="default" variant="solid">
@@ -264,7 +264,7 @@ export default App;
 ```
 ### 按钮尺寸
 按钮有大、中、小三种尺寸。
-通过设置 `size` 为 `large` `small` 分别把按钮设为大、小尺寸。若不设置 `size`，则尺寸默认为中。
+通过设置 `size` 为 `large` `small` 分别把按钮设为大、小尺寸。若不设置 `size`，则尺寸默认为 `medium`。
 
 ```tsx
 import React, { useState } from 'react';
@@ -273,12 +273,12 @@ import { Button, Divider, Flex, Radio } from 'antd';
 import type { ConfigProviderProps } from 'antd';
 type SizeType = ConfigProviderProps['componentSize'];
 const App: React.FC = () => {
-  const [size, setSize] = useState<SizeType>('large'); // default is 'middle'
+  const [size, setSize] = useState<SizeType>('large'); // default is 'medium'
   return (
     <>
       <Radio.Group value={size} onChange={(e) => setSize(e.target.value)}>
         <Radio.Button value="large">Large</Radio.Button>
-        <Radio.Button value="default">Default</Radio.Button>
+        <Radio.Button value="medium">Medium</Radio.Button>
         <Radio.Button value="small">Small</Radio.Button>
       </Radio.Group>
       <Divider titlePlacement="start" plain>

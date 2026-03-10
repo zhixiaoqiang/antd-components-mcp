@@ -381,7 +381,7 @@ const items: DescriptionsProps['items'] = [
   },
 ];
 const App: React.FC = () => {
-  const [size, setSize] = useState<'default' | 'middle' | 'small'>('default');
+  const [size, setSize] = useState<'large' | 'medium' | 'small'>('large');
   const onChange = (e: RadioChangeEvent) => {
     console.log('size checked', e.target.value);
     setSize(e.target.value);
@@ -389,8 +389,8 @@ const App: React.FC = () => {
   return (
     <div>
       <Radio.Group onChange={onChange} value={size}>
-        <Radio value="default">default</Radio>
-        <Radio value="middle">middle</Radio>
+        <Radio value="large">large</Radio>
+        <Radio value="medium">medium</Radio>
         <Radio value="small">small</Radio>
       </Radio.Group>
       <br />
@@ -726,7 +726,7 @@ const styles: DescriptionsProps['styles'] = {
   },
 };
 const stylesFn: DescriptionsProps['styles'] = (info) => {
-  if (info.props.size === 'default') {
+  if (info.props.size === 'large') {
     return {
       root: {
         borderRadius: 8,
@@ -745,9 +745,9 @@ const App: React.FC = () => {
     classNames,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Descriptions {...descriptionsProps} styles={styles} size="small" />
-      <Descriptions {...descriptionsProps} styles={stylesFn} size="default" />
+      <Descriptions {...descriptionsProps} styles={stylesFn} size="large" />
     </Flex>
   );
 };
@@ -864,7 +864,7 @@ const items: DescriptionsProps['items'] = [
   },
 ];
 const App: React.FC = () => {
-  const [size, setSize] = useState<'default' | 'middle' | 'small'>('default');
+  const [size, setSize] = useState<'large' | 'medium' | 'small'>('large');
   const onChange = (e: RadioChangeEvent) => {
     console.log('size checked', e.target.value);
     setSize(e.target.value);
@@ -889,8 +889,8 @@ const App: React.FC = () => {
     >
       <div>
         <Radio.Group onChange={onChange} value={size}>
-          <Radio value="default">default</Radio>
-          <Radio value="middle">middle</Radio>
+          <Radio value="large">large</Radio>
+          <Radio value="medium">medium</Radio>
           <Radio value="small">small</Radio>
         </Radio.Group>
         <br />

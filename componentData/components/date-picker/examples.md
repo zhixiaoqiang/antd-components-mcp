@@ -534,7 +534,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 三种大小
-三种大小的输入框，若不设置，则为 `middle`。
+三种大小的输入框，若不设置，则为 `medium`。
 
 ```tsx
 import React, { useState } from 'react';
@@ -543,7 +543,7 @@ import { DatePicker, Radio, Space } from 'antd';
 type SizeType = ConfigProviderProps['componentSize'];
 const { RangePicker } = DatePicker;
 const App: React.FC = () => {
-  const [size, setSize] = useState<SizeType>('middle');
+  const [size, setSize] = useState<SizeType>('medium');
   const handleSizeChange = (e: RadioChangeEvent) => {
     setSize(e.target.value);
   };
@@ -551,7 +551,7 @@ const App: React.FC = () => {
     <Space vertical size={12}>
       <Radio.Group value={size} onChange={handleSizeChange}>
         <Radio.Button value="large">Large</Radio.Button>
-        <Radio.Button value="middle">middle</Radio.Button>
+        <Radio.Button value="medium">Medium</Radio.Button>
         <Radio.Button value="small">Small</Radio.Button>
       </Radio.Group>
       <DatePicker size={size} />
@@ -1005,7 +1005,7 @@ const stylesFn: DatePickerProps<Dayjs>['styles'] = (info) => {
 const App: React.FC = () => {
   const { styles: classNames } = useStyles();
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <DatePicker classNames={classNames} styles={stylesObject} placeholder="Object" />
       <DatePicker classNames={classNames} styles={stylesFn} placeholder="Function" size="large" />
     </Flex>

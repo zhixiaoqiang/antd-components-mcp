@@ -81,7 +81,7 @@ const App: React.FC = () => {
     font: { color: typeof color === 'string' ? color : color.toRgbString(), fontSize },
   };
   return (
-    <Flex gap="middle">
+    <Flex gap="medium">
       <Watermark {...watermarkProps}>
         <Typography>
           <Paragraph>
@@ -193,7 +193,7 @@ const App: React.FC = () => {
   const closeDrawer2 = () => setShowDrawer2(false);
   return (
     <>
-      <Flex gap="middle">
+      <Flex gap="medium">
         <Button type="primary" onClick={() => setShowModal(true)}>
           Show in Modal
         </Button>

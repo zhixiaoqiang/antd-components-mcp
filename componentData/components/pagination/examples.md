@@ -90,7 +90,7 @@ import type { PaginationProps } from 'antd';
 import { Divider, Flex, Pagination } from 'antd';
 const showTotal: PaginationProps['showTotal'] = (total) => `Total ${total} items`;
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Divider titlePlacement="start">Small</Divider>
     <Pagination size="small" total={50} />
     <Pagination size="small" total={50} showSizeChanger showQuickJumper />
@@ -312,7 +312,7 @@ const App: React.FC = () => {
     classNames: { root: classNames.root },
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Pagination {...paginationSharedProps} styles={{ item: { borderRadius: 999 } }} />
       <Pagination {...paginationSharedProps} size="small" styles={styleFn} />
     </Flex>
