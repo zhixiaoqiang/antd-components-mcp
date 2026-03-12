@@ -243,7 +243,7 @@ const items = [
 ];
 const App: React.FC = () => {
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Breadcrumb
         classNames={classNames}
         items={items.slice(0, 2)}

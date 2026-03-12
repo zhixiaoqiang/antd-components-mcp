@@ -376,12 +376,10 @@ const Page: React.FC<{ placement: Placement }> = ({ placement }) => {
   const showModal = () => {
     setModalOpen(true);
   };
-  const handleOk = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e);
+  const handleOk = () => {
     setModalOpen(false);
   };
-  const handleCancel = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e);
+  const handleCancel = () => {
     setModalOpen(false);
   };
   // ==== End Modal ====
@@ -813,7 +811,7 @@ const App: React.FC = () => {
         }}
       >
         <Radio.Button value="small">Small</Radio.Button>
-        <Radio.Button value="middle">Middle</Radio.Button>
+        <Radio.Button value="medium">Medium</Radio.Button>
         <Radio.Button value="large">Large</Radio.Button>
       </Radio.Group>
       <Divider />
@@ -1206,7 +1204,7 @@ const App: React.FC = () => {
           }}
         >
           <Radio.Button value="small">Small</Radio.Button>
-          <Radio.Button value="middle">Middle</Radio.Button>
+          <Radio.Button value="medium">Medium</Radio.Button>
           <Radio.Button value="large">Large</Radio.Button>
         </Radio.Group>
         <Checkbox checked={disabled} onChange={(e) => setDisabled(e.target.checked)}>

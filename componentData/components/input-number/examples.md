@@ -255,7 +255,7 @@ const sharedProps = {
   style: { width: 150 },
 };
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <InputNumber {...sharedProps} placeholder="Outlined" />
     <InputNumber {...sharedProps} variant="filled" placeholder="Filled" />
   </Flex>
@@ -327,6 +327,39 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### Borderless 高度对齐
+```tsx
+import React from 'react';
+import { Flex, Input, InputNumber, Select } from 'antd';
+const App: React.FC = () => (
+  <Flex vertical gap={16}>
+    <Flex gap={8} align="center">
+      <InputNumber
+        style={{ width: 100, background: 'lightpink' }}
+        variant="borderless"
+        size="large"
+      />
+      <Input style={{ width: 100, background: 'lightpink' }} variant="borderless" size="large" />
+      <Select style={{ width: 100, background: 'lightpink' }} variant="borderless" size="large" />
+    </Flex>
+    <Flex gap={8} align="center">
+      <InputNumber style={{ width: 100, background: 'lightpink' }} variant="borderless" />
+      <Input style={{ width: 100, background: 'lightpink' }} variant="borderless" />
+      <Select style={{ width: 100, background: 'lightpink' }} variant="borderless" />
+    </Flex>
+    <Flex gap={8} align="center">
+      <InputNumber
+        style={{ width: 100, background: 'lightpink' }}
+        variant="borderless"
+        size="small"
+      />
+      <Input style={{ width: 100, background: 'lightpink' }} variant="borderless" size="small" />
+      <Select style={{ width: 100, background: 'lightpink' }} variant="borderless" size="small" />
+    </Flex>
+  </Flex>
+);
+export default App;
+```
 ### 超出边界
 当通过受控将 `value` 超出边界时，提供警告样式。
 
@@ -359,7 +392,7 @@ import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Flex, InputNumber, Space } from 'antd';
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <InputNumber prefix="￥" style={{ width: '100%' }} />
     <Space.Compact block>
       <Space.Addon>
@@ -475,7 +508,7 @@ const App: React.FC = () => {
     classNames,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <InputNumber {...sharedProps} styles={stylesObject} placeholder="Object" />
       <InputNumber {...sharedProps} styles={stylesFn} placeholder="Function" size="large" />
     </Flex>

@@ -165,7 +165,7 @@ const options: CheckboxGroupProps<string>['options'] = [
   { label: 'Orange', value: 'Orange' },
 ];
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Radio.Group block options={options} defaultValue="Apple" />
     <Radio.Group
       block
@@ -252,7 +252,7 @@ const onChange = (e: RadioChangeEvent) => {
   console.log(`radio checked:${e.target.value}`);
 };
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Radio.Group onChange={onChange} defaultValue="a">
       <Radio.Button value="a">Hangzhou</Radio.Button>
       <Radio.Button value="b">Shanghai</Radio.Button>
@@ -304,7 +304,7 @@ export default App;
 import React from 'react';
 import { Flex, Radio } from 'antd';
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Radio.Group defaultValue="a" size="large">
       <Radio.Button value="a">Hangzhou</Radio.Button>
       <Radio.Button value="b">Shanghai</Radio.Button>
@@ -334,7 +334,7 @@ export default App;
 import React from 'react';
 import { Flex, Radio } from 'antd';
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Radio.Group defaultValue="a" buttonStyle="solid">
       <Radio.Button value="a">Hangzhou</Radio.Button>
       <Radio.Button value="b">Shanghai</Radio.Button>
@@ -409,7 +409,7 @@ const App: React.FC = () => {
     };
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Radio
         name="style-class"
         styles={styles}

@@ -64,7 +64,7 @@ const App: React.FC = () => {
     setReverse(!reverse);
   };
   return (
-    <Flex vertical gap="middle" align="flex-start">
+    <Flex vertical gap="medium" align="flex-start">
       <Timeline
         reverse={reverse}
         items={[
@@ -98,7 +98,7 @@ export default App;
 import React from 'react';
 import { Flex, Timeline } from 'antd';
 const App: React.FC = () => (
-  <Flex vertical gap="middle" align="flex-start">
+  <Flex vertical gap="medium" align="flex-start">
     <Timeline
       pending="Recording..."
       items={[
@@ -371,7 +371,7 @@ const items: TimelineProps['items'] = [
 ];
 const App: React.FC = () => {
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Typography.Title level={5} style={{ margin: 0 }}>
         titleSpan = 100px
       </Typography.Title>
@@ -488,7 +488,7 @@ const App: React.FC = () => {
     ],
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Timeline {...sharedProps} orientation="horizontal" styles={styles} />
       <Timeline {...sharedProps} orientation="vertical" styles={stylesFn} />
     </Flex>

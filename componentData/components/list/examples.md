@@ -276,7 +276,7 @@ const App: React.FC = () => {
   const [align, setAlign] = useState<PaginationAlign>('center');
   return (
     <>
-      <Space vertical style={{ marginBottom: '20px' }} size="middle">
+      <Space vertical style={{ marginBottom: '20px' }} size="medium">
         <Space>
           <span>Pagination Position:</span>
           <Radio.Group

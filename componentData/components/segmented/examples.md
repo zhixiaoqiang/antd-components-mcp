@@ -53,10 +53,10 @@ import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import { Flex, Segmented } from 'antd';
 import type { SizeType } from '../../config-provider/SizeContext';
 const Demo: React.FC = () => {
-  const [size, setSize] = useState<SizeType>('middle');
+  const [size, setSize] = useState<SizeType>('medium');
   return (
     <Flex gap="small" align="flex-start" vertical>
-      <Segmented<SizeType> options={['small', 'middle', 'large']} value={size} onChange={setSize} />
+      <Segmented<SizeType> options={['small', 'medium', 'large']} value={size} onChange={setSize} />
       <Segmented
         size={size}
         shape="round"
@@ -224,7 +224,7 @@ const Demo: React.FC = () => {
 export default Demo;
 ```
 ### 三种大小
-我们为 `<Segmented />` 组件定义了三种尺寸（大、默认、小），高度分别为 `40px`、`32px` 和 `24px`。
+我们为 `<Segmented />` 组件定义了三种尺寸（大、中、小），高度分别为 `40px`、`32px` 和 `24px`。
 
 ```tsx
 import React from 'react';
@@ -344,7 +344,7 @@ const App: React.FC = () => {
     classNames,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Segmented {...segmentedSharedProps} styles={styles} />
       <Segmented {...segmentedSharedProps} styles={styleFn} vertical />
     </Flex>
@@ -390,7 +390,7 @@ const App: React.FC = () => (
     </div>
     <div>
       <Segmented
-        size="middle"
+        size="medium"
         style={{ marginInlineEnd: 6 }}
         options={['Daily', 'Weekly', 'Monthly']}
       />

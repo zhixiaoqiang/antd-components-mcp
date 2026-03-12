@@ -996,7 +996,7 @@ const App: React.FC = () => {
     classNames: { root: styles.root },
   };
   return (
-    <Flex gap="middle" wrap="wrap">
+    <Flex gap="medium" wrap="wrap">
       <Space vertical size="large">
         <Dropdown {...sharedProps} styles={objectStyles}>
           <Button>

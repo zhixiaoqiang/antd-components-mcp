@@ -242,7 +242,7 @@ const conicColors: ProgressProps['strokeColor'] = {
   '100%': '#ffccc7',
 };
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Progress percent={99.9} strokeColor={twoColors} />
     <Progress percent={50} status="active" strokeColor={{ from: '#108ee9', to: '#87d068' }} />
     <Flex gap="small" wrap>
@@ -291,7 +291,7 @@ const App: React.FC = () => {
       <Slider min={2} max={10} value={stepsCount} onChange={setStepsCount} />
       <Typography.Title level={5}>Custom gap:</Typography.Title>
       <Slider step={4} min={0} max={40} value={stepsGap} onChange={setStepsGap} />
-      <Flex wrap gap="middle" style={{ marginTop: 16 }}>
+      <Flex wrap gap="medium" style={{ marginTop: 16 }}>
         <Progress
           type="dashboard"
           steps={8}
@@ -319,7 +319,7 @@ export default App;
 import React from 'react';
 import { Flex, Progress } from 'antd';
 const App: React.FC = () => (
-  <Flex vertical gap="middle">
+  <Flex vertical gap="medium">
     <Flex vertical gap="small" style={{ width: 300 }}>
       <Progress percent={50} />
       <Progress percent={50} size="small" />

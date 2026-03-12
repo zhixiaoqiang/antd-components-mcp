@@ -239,7 +239,7 @@ import type { RadioChangeEvent, TabsProps } from 'antd';
 import { Radio, Tabs } from 'antd';
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 const App: React.FC = () => {
-  const [size, setSize] = useState<'small' | 'middle' | 'large'>('small');
+  const [size, setSize] = useState<'small' | 'medium' | 'large'>('small');
   const [activeKey, setActiveKey] = useState('1');
   const [items, setItems] = useState<TabsProps['items']>([
     {
@@ -298,7 +298,7 @@ const App: React.FC = () => {
     <div>
       <Radio.Group value={size} onChange={onChange} style={{ marginBottom: 16 }}>
         <Radio.Button value="small">Small</Radio.Button>
-        <Radio.Button value="middle">Middle</Radio.Button>
+        <Radio.Button value="medium">Medium</Radio.Button>
         <Radio.Button value="large">Large</Radio.Button>
       </Radio.Group>
       <Tabs
@@ -752,7 +752,7 @@ const App: React.FC = () => {
     classNames,
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Tabs {...shareProps} styles={stylesObject} />
       <Tabs tabPlacement="start" type="card" {...shareProps} styles={stylesFn} />
     </Flex>
@@ -1021,7 +1021,7 @@ const App: React.FC = () => (
     </ConfigProvider>
     <Flex align="flex-end">
       <Tabs size="large" type="card" {...sharedTabsProps} />
-      <Tabs size="middle" type="card" {...sharedTabsProps} />
+      <Tabs size="medium" type="card" {...sharedTabsProps} />
       <Tabs size="small" type="editable-card" {...sharedTabsProps} />
       <Tabs size="small" type="card" {...sharedTabsProps} />
     </Flex>

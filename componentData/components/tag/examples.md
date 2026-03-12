@@ -664,7 +664,7 @@ const App: React.FC = () => {
     message.info(`${tag} is ${checked ? 'checked' : 'unchecked'}`);
   };
   return (
-    <Flex vertical gap="middle">
+    <Flex vertical gap="medium">
       <Flex gap="small" wrap>
         <Tag disabled>Basic Tag</Tag>
         <Tag disabled>
@@ -817,7 +817,7 @@ const groupStylesFn: CheckableTagGroupProps['styles'] = (info) => {
 const App: React.FC = () => {
   return (
     <Space size="large" vertical>
-      <Flex gap="middle">
+      <Flex gap="medium">
         <Tag classNames={classNames} styles={styles} icon={<CheckCircleOutlined />}>
           Object
         </Tag>
@@ -830,7 +830,7 @@ const App: React.FC = () => {
           Function
         </Tag>
       </Flex>
-      <Flex vertical gap="middle">
+      <Flex vertical gap="medium">
         <Tag.CheckableTagGroup
           classNames={classNames}
           styles={groupStyles}

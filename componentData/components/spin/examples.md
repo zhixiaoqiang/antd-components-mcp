@@ -15,7 +15,7 @@ export default App;
 import React from 'react';
 import { Flex, Spin } from 'antd';
 const App: React.FC = () => (
-  <Flex align="center" gap="middle">
+  <Flex align="center" gap="medium">
     <Spin size="small" />
     <Spin />
     <Spin size="large" />
@@ -32,7 +32,7 @@ import { Alert, Flex, Spin, Switch } from 'antd';
 const App: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   return (
-    <Flex gap="middle" vertical>
+    <Flex gap="medium" vertical>
       <Spin spinning={loading}>
         <Alert
           type="info"
@@ -62,8 +62,8 @@ const contentStyle: React.CSSProperties = {
 };
 const content = <div style={contentStyle} />;
 const App: React.FC = () => (
-  <Flex gap="middle" vertical>
-    <Flex gap="middle">
+  <Flex gap="medium" vertical>
+    <Flex gap="medium">
       <Spin description="Loading" size="small">
         {content}
       </Spin>
@@ -92,7 +92,7 @@ import { Alert, Flex, Spin, Switch } from 'antd';
 const App: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   return (
-    <Flex gap="middle" vertical>
+    <Flex gap="medium" vertical>
       <Spin spinning={loading} delay={500}>
         <Alert
           type="info"
@@ -117,7 +117,7 @@ import React from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Flex, Spin } from 'antd';
 const App: React.FC = () => (
-  <Flex align="center" gap="middle">
+  <Flex align="center" gap="medium">
     <Spin indicator={<LoadingOutlined spin />} size="small" />
     <Spin indicator={<LoadingOutlined spin />} />
     <Spin indicator={<LoadingOutlined spin />} size="large" />
@@ -152,7 +152,7 @@ const App: React.FC = () => {
   }, [percent]);
   const mergedPercent = auto ? 'auto' : percent;
   return (
-    <Flex align="center" gap="middle">
+    <Flex align="center" gap="medium">
       <Switch
         checkedChildren="Auto"
         unCheckedChildren="Auto"
@@ -205,7 +205,7 @@ const App: React.FC = () => {
     classNames: { root: classNames.root },
   };
   return (
-    <Flex align="center" gap="middle">
+    <Flex align="center" gap="medium">
       <Spin {...sharedProps} styles={stylesObject} />
       <Spin {...sharedProps} styles={stylesFn} size="small" />
     </Flex>
