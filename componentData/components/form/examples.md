@@ -2657,7 +2657,7 @@ const App: React.FC = () => {
   return (
     <Form
       form={form}
-      name="dependencies"
+      name="dependenciesDemo"
       autoComplete="off"
       style={{ maxWidth: 600 }}
       layout="vertical"

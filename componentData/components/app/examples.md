@@ -6,7 +6,7 @@
 import React from 'react';
 import { App, Button, Space } from 'antd';
 // Sub page
-const MyPage = () => {
+const Page: React.FC = () => {
   const { message, modal, notification } = App.useApp();
   const showMessage = () => {
     message.success('Success!');
@@ -41,7 +41,7 @@ const MyPage = () => {
 // Entry component
 export default () => (
   <App>
-    <MyPage />
+    <Page />
   </App>
 );
 ```
@@ -52,7 +52,7 @@ export default () => (
 import React from 'react';
 import { App, Button, Space } from 'antd';
 // Sub page
-const MyPage = () => {
+const Page: React.FC = () => {
   const { message, notification } = App.useApp();
   const showMessage = () => {
     message.success('Success!');
@@ -77,7 +77,7 @@ const MyPage = () => {
 // Entry component
 export default () => (
   <App message={{ maxCount: 1 }} notification={{ placement: 'bottomLeft' }}>
-    <MyPage />
+    <Page />
   </App>
 );
 ```
