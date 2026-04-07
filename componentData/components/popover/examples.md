@@ -206,9 +206,9 @@ export default App;
 
 ```tsx
 import React from 'react';
-import { createStaticStyles } from 'antd-style';
 import { Flex, Popover } from 'antd';
 import type { GetProp } from 'antd';
+import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   item: css`
     width: 280px;
@@ -225,8 +225,9 @@ const classNames = createStaticStyles(({ css }) => ({
   `,
   cross: css`
     position: relative;
-    &::before, &::after {
-      content: "";
+    &::before,
+    &::after {
+      content: '';
       position: absolute;
       inset: 0;
     }
@@ -236,7 +237,7 @@ const classNames = createStaticStyles(({ css }) => ({
       background-color: red;
     }
     &::after {
-      left: 50%;
+      inset-inline-start: 50%;
       width: 1px;
       background-color: blue;
     }
