@@ -425,8 +425,8 @@ export default App;
 ```tsx
 import React from 'react';
 import { Collapse, Flex } from 'antd';
+import type { CollapseProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
-import type { CollapseProps } from '..';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
     background-color: #fafafa;

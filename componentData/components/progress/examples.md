@@ -145,7 +145,8 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { Flex, Progress, Segmented } from 'antd';
-import type { GapPlacement } from '../progress';
+import type { ProgressProps } from 'antd';
+type GapPlacement = NonNullable<ProgressProps['gapPlacement']>;
 const App: React.FC = () => {
   const [gapPlacement, setGapPlacement] = useState<GapPlacement>('bottom');
   const [gapDegree, setGapDegree] = useState<number>(50);
