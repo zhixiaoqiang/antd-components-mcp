@@ -307,7 +307,7 @@ const App: React.FC = () => {
     <Space>
       <Image
         width={100}
-        alt="blur"
+        alt="blur preview"
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
         preview={{
           mask: { blur: true },
@@ -319,7 +319,7 @@ const App: React.FC = () => {
         }}
       />
       <Image
-        alt="Dimmed mask"
+        alt="Dimmed mask preview"
         width={100}
         src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
         preview={{
@@ -332,7 +332,7 @@ const App: React.FC = () => {
       />
       <Image
         width={100}
-        alt="No mask"
+        alt="No mask preview"
         src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
         preview={{
           mask: false,
