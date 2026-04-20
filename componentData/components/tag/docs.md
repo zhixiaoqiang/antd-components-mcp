@@ -15,6 +15,7 @@
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  |
 | target | 相当于 a 标签的 target 属性，href 存在时生效 | string | - | 6.0.0 |
 | variant | 标签变体 | `'filled' \| 'solid' \| 'outlined'` | `'filled'` | 6.0.0 |
+| ~~bordered~~ | 是否带边框，请使用 `variant="filled"` 替代 | boolean | true | - |
 ### Tag.CheckableTag
 | 参数     | 说明                 | 类型              | 默认值 | 版本   |
 | -------- | -------------------- | ----------------- | ------ | ------ |

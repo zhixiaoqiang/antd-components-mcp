@@ -12,7 +12,7 @@
 | classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  |
 | description | 自定义描述内容 | ReactNode | - |  |
 | image | 设置显示图片，为 string 时表示自定义图片地址。 | ReactNode | `Empty.PRESENTED_IMAGE_DEFAULT` |  |
-| imageStyle | 图片样式 | CSSProperties | - |  |
+| ~~imageStyle~~ | 图片样式，请使用 `styles.image` 替代 | CSSProperties | - |  |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  |
 ## 内置图片
 - Empty.PRESENTED_IMAGE_SIMPLE
