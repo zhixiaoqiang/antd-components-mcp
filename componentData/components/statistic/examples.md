@@ -49,21 +49,43 @@ export default App;
 import React from 'react';
 import type { StatisticProps } from 'antd';
 import { Col, Row, Statistic } from 'antd';
+import { createStyles } from 'antd-style';
 import CountUp from 'react-countup';
+const useStyle = createStyles(({ css }) => {
+  return {
+    content: css`
+      font-variant-numeric: tabular-nums;
+    `,
+  };
+});
 const formatter: StatisticProps['formatter'] = (value) => (
   <CountUp end={value as number} separator="," />
 );
-const App: React.FC = () => (
-  <Row gutter={16}>
-    <Col span={12}>
-      <Statistic title="Active Users" value={112893} formatter={formatter} />
-    </Col>
-    <Col span={12}>
-      <Statistic title="Account Balance (CNY)" value={112893} precision={2} formatter={formatter} />
-    </Col>
-  </Row>
-);
-export default App;
+const Demo: React.FC = () => {
+  const { styles } = useStyle();
+  return (
+    <Row gutter={16}>
+      <Col span={12}>
+        <Statistic
+          classNames={{ content: styles.content }}
+          title="Active Users"
+          value={112893}
+          formatter={formatter}
+        />
+      </Col>
+      <Col span={12}>
+        <Statistic
+          classNames={{ content: styles.content }}
+          title="Account Balance (CNY)"
+          value={112893}
+          precision={2}
+          formatter={formatter}
+        />
+      </Col>
+    </Row>
+  );
+};
+export default Demo;
 ```
 ### 在卡片中使用
 在卡片中展示统计数值。
@@ -109,7 +131,15 @@ export default App;
 import React from 'react';
 import type { StatisticTimerProps } from 'antd';
 import { Col, Row, Statistic } from 'antd';
+import { createStyles } from 'antd-style';
 const { Timer } = Statistic;
+const useStyle = createStyles(({ css }) => {
+  return {
+    content: css`
+      font-variant-numeric: tabular-nums;
+    `,
+  };
+});
 const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30; // Dayjs is also OK
 const before = Date.now() - 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
 const tenSecondsLater = Date.now() + 10 * 1000;
@@ -117,43 +147,71 @@ const onFinish: StatisticTimerProps['onFinish'] = () => {
   console.log('finished!');
 };
 const onChange: StatisticTimerProps['onChange'] = (val) => {
-  if (typeof val === 'number' && 4.95 * 1000 < val && val < 5 * 1000) {
+  if (typeof val === 'number' && !Number.isNaN(val) && 4.95 * 1000 < val && val < 5 * 1000) {
     console.log('changed!');
   }
 };
-const App: React.FC = () => (
-  <Row gutter={16}>
-    <Col span={12}>
-      <Timer type="countdown" value={deadline} onFinish={onFinish} />
-    </Col>
-    <Col span={12}>
-      <Timer type="countdown" title="Million Seconds" value={deadline} format="HH:mm:ss:SSS" />
-    </Col>
-    <Col span={12}>
-      <Timer type="countdown" title="Countdown" value={tenSecondsLater} onChange={onChange} />
-    </Col>
-    <Col span={12}>
-      <Timer type="countup" title="Countup" value={before} onChange={onChange} />
-    </Col>
-    <Col span={24} style={{ marginTop: 32 }}>
-      <Timer
-        type="countdown"
-        title="Day Level (Countdown)"
-        value={deadline}
-        format="D 天 H 时 m 分 s 秒"
-      />
-    </Col>
-    <Col span={24} style={{ marginTop: 32 }}>
-      <Timer
-        type="countup"
-        title="Day Level (Countup)"
-        value={before}
-        format="D 天 H 时 m 分 s 秒"
-      />
-    </Col>
-  </Row>
-);
-export default App;
+const Demo: React.FC = () => {
+  const { styles } = useStyle();
+  return (
+    <Row gutter={16}>
+      <Col span={12}>
+        <Timer
+          classNames={{ content: styles.content }}
+          type="countdown"
+          value={deadline}
+          onFinish={onFinish}
+        />
+      </Col>
+      <Col span={12}>
+        <Timer
+          classNames={{ content: styles.content }}
+          type="countdown"
+          title="Million Seconds"
+          value={deadline}
+          format="HH:mm:ss:SSS"
+        />
+      </Col>
+      <Col span={12}>
+        <Timer
+          classNames={{ content: styles.content }}
+          type="countdown"
+          title="Countdown"
+          value={tenSecondsLater}
+          onChange={onChange}
+        />
+      </Col>
+      <Col span={12}>
+        <Timer
+          classNames={{ content: styles.content }}
+          type="countup"
+          title="Countup"
+          value={before}
+          onChange={onChange}
+        />
+      </Col>
+      <Col span={24} style={{ marginTop: 32 }}>
+        <Timer
+          classNames={{ content: styles.content }}
+          type="countdown"
+          title="Day Level (Countdown)"
+          value={deadline}
+          format="D 天 H 时 m 分 s 秒"
+        />
+      </Col>
+      <Col span={24} style={{ marginTop: 32 }}>
+        <Timer
+          classNames={{ content: styles.content }}
+          type="countup"
+          title="Day Level (Countup)"
+          value={before}
+          format="D 天 H 时 m 分 s 秒"
+        />
+      </Col>
+    </Row>
+  );
+};
+export default Demo;
 ```
 ### 自定义语义结构的样式和类
 通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Statistic 的[语义化结构](#semantic-dom)样式。

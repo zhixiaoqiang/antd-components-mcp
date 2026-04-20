@@ -16,7 +16,7 @@
 | suffix | 设置数值的后缀 | ReactNode | - |  |
 | title | 数值的标题 | ReactNode | - |  |
 | value | 数值内容 | string \| number | - |  |
-| valueStyle | 设置数值区域的样式 | CSSProperties | - |  |
+| ~~valueStyle~~ | 设置数值区域的样式，请使用 `styles.content` 替代 | CSSProperties | - |  |
 #### Statistic.Countdown <Badge type="error">Deprecated</Badge>
 <Antd component="Alert" title="版本 >= 5.25.0 时请使用 Statistic.Timer 作为替代方案。" type="warning" banner="true"></Antd>
 <!-- prettier-ignore -->
