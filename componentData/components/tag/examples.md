@@ -585,7 +585,7 @@ const App: React.FC = () => (
           <a
             href="https://github.com/ant-design/ant-design/issues/1862"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Link
           </a>
@@ -594,7 +594,7 @@ const App: React.FC = () => (
           <a
             href="https://github.com/ant-design/ant-design/issues/1862"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Link
           </a>
