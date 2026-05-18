@@ -359,7 +359,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Radio } from 'antd';
-import type { RadioProps } from 'antd';
+import type { GetProp, RadioProps } from 'antd';
 import { createStyles } from 'antd-style';
 import clsx from 'clsx';
 const useStyles = createStyles(({ token, css }) => ({
@@ -394,7 +394,9 @@ const App: React.FC = () => {
   const [value, setValue] = React.useState<'styles' | 'classNames'>('styles');
   const { styles: classNamesStyles } = useStyles();
   // Function classNames - dynamically adjust based on checked state
-  const classNamesFn: RadioProps['classNames'] = (info) => {
+  const classNamesFn: RadioProps['classNames'] = (
+    info,
+  ): GetProp<RadioProps, 'classNames', 'Return'> => {
     if (info.props.checked) {
       return {
         root: clsx(classNamesStyles.root),

@@ -1709,7 +1709,7 @@ export default App;
 import React from 'react';
 import { MehOutlined } from '@ant-design/icons';
 import { Flex, Select } from 'antd';
-import type { SelectProps } from 'antd';
+import type { GetProp, SelectProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -1729,8 +1729,7 @@ const stylesObject: SelectProps['styles'] = {
     color: '#1890ff',
   },
 };
-const stylesFn: SelectProps['styles'] = (info) => {
-  const { props } = info;
+const stylesFn: SelectProps['styles'] = ({ props }): GetProp<SelectProps, 'styles', 'Return'> => {
   if (props.variant === 'filled') {
     return {
       prefix: {
@@ -1744,7 +1743,7 @@ const stylesFn: SelectProps['styles'] = (info) => {
           border: '1px solid #722ed1',
         },
       },
-    } satisfies SelectProps['styles'];
+    };
   }
   return {};
 };

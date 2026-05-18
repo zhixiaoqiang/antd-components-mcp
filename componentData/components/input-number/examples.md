@@ -516,7 +516,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, InputNumber } from 'antd';
-import type { InputNumberProps } from 'antd';
+import type { GetProp, InputNumberProps } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyle = createStyles(({ token }) => ({
   root: {
@@ -530,14 +530,16 @@ const stylesObject: InputNumberProps['styles'] = {
     fontSize: 14,
   },
 };
-const stylesFn: InputNumberProps['styles'] = ({ props }) => {
+const stylesFn: InputNumberProps['styles'] = ({
+  props,
+}): GetProp<InputNumberProps, 'styles', 'Return'> => {
   if (props.size === 'large') {
     return {
       root: {
         backgroundColor: 'rgba(250,250,250, 0.5)',
         borderColor: '#722ed1',
       },
-    } satisfies InputNumberProps['styles'];
+    };
   }
   return {};
 };

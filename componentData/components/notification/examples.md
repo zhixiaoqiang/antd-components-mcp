@@ -291,36 +291,6 @@ const App: React.FC = () => {
 };
 export default App;
 ```
-### 自定义样式
-使用 style 和 className 来定义样式。
-
-```tsx
-import React from 'react';
-import { Button, notification } from 'antd';
-const App: React.FC = () => {
-  const [api, contextHolder] = notification.useNotification();
-  const openNotification = () => {
-    api.open({
-      title: 'Notification Title',
-      description:
-        'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-      className: 'custom-class',
-      style: {
-        width: 600,
-      },
-    });
-  };
-  return (
-    <>
-      {contextHolder}
-      <Button type="primary" onClick={openNotification}>
-        Open the notification box
-      </Button>
-    </>
-  );
-};
-export default App;
-```
 ### 更新消息内容
 可以通过唯一的 key 来更新内容。
 
@@ -356,7 +326,7 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 堆叠
-堆叠配置，默认开启。超过 3 个以上的消息会被自动收起，可以通过 `threshold` 来设置不会被收起的最大数量。
+堆叠配置，默认开启。超过阈值后的消息会被自动收起，可以通过 `threshold` 设置触发堆叠的数量。折叠状态下最多展示 3 个消息。
 
 ```tsx
 import React, { useMemo } from 'react';
@@ -620,28 +590,55 @@ export default () => (
   />
 );
 ```
-### 自定义语义结构的样式和类
-通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Notification 的[语义化结构](#semantic-dom)样式。
+### 自定义语义结构样式
+通过 `classNames` 和 `styles` 可以自定义 Notification 的[语义化结构](#semantic-dom)样式。
 
 ```tsx
 import React from 'react';
 import { Button, notification, Space } from 'antd';
-import type { NotificationArgsProps } from 'antd';
-import { createStaticStyles } from 'antd-style';
-const classNames = createStaticStyles(({ css }) => ({
-  root: css`
-    border: 2px dashed #ccc;
-  `,
-}));
-const styleFn: NotificationArgsProps['styles'] = ({ props }) => {
+import type { GetProp, NotificationArgsProps } from 'antd';
+const defaultStyles: GetProp<NotificationArgsProps, 'styles', 'Return'> = {
+  root: {
+    backgroundColor: '#f6ffed',
+    border: '2px solid #95de64',
+    borderRadius: 16,
+    boxShadow: '4px 4px 0 #d9f7be',
+  },
+  icon: {
+    color: '#237804',
+  },
+  title: {
+    color: '#237804',
+    fontWeight: 600,
+  },
+  description: {
+    color: '#3f6600',
+  },
+};
+const styleFn: NotificationArgsProps['styles'] = ({
+  props,
+}): GetProp<NotificationArgsProps, 'styles', 'Return'> => {
   if (props.type === 'error') {
     return {
+      ...defaultStyles,
       root: {
-        backgroundColor: `rgba(255, 200, 200, 0.3)`,
+        ...defaultStyles.root,
+        backgroundColor: '#fff2f0',
+        borderColor: '#ffccc7',
+        boxShadow: '4px 4px 0 #ffccc7',
       },
-    } satisfies NotificationArgsProps['styles'];
+      icon: {
+        color: '#cf1322',
+      },
+      title: {
+        color: '#cf1322',
+      },
+      description: {
+        color: '#5c0011',
+      },
+    };
   }
-  return {};
+  return defaultStyles;
 };
 const App: React.FC = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -649,12 +646,11 @@ const App: React.FC = () => {
     title: 'Notification Title',
     description: 'This is a notification description.',
     duration: false,
-    classNames: { root: classNames.root },
   };
   const openDefault = () => {
     api.info({
       ...sharedProps,
-      styles: { root: { borderRadius: 8 } },
+      styles: defaultStyles,
     });
   };
   const openError = () => {

@@ -1341,7 +1341,7 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { Button, Flex, Modal } from 'antd';
-import type { ModalProps } from 'antd';
+import type { GetProp, ModalProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const lineStyle: React.CSSProperties = {
   lineHeight: '28px',
@@ -1371,7 +1371,7 @@ const styles: ModalProps['styles'] = {
     backgroundImage: `linear-gradient(to top, #18181b 0, rgba(21, 21, 22, 0.2) 100%)`,
   },
 };
-const stylesFn: ModalProps['styles'] = (info) => {
+const stylesFn: ModalProps['styles'] = (info): GetProp<ModalProps, 'styles', 'Return'> => {
   if (info.props.footer) {
     return {
       container: {
@@ -1390,7 +1390,7 @@ const stylesFn: ModalProps['styles'] = (info) => {
         padding: '16px 10px',
         backgroundColor: '#fafafa',
       },
-    } satisfies ModalProps['styles'];
+    };
   }
   return {};
 };

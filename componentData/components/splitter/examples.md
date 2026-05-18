@@ -96,8 +96,8 @@ export default App;
 配置 `collapsible` 提供快捷收缩能力。可以通过 `min` 限制收缩后不能通过拖拽展开。
 
 ```tsx
-import React from 'react';
-import { Flex, Splitter, Typography } from 'antd';
+import React, { useState } from 'react';
+import { Flex, Splitter, Switch, Typography } from 'antd';
 import type { SplitterProps } from 'antd';
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
   <Flex justify="center" align="center" style={{ height: '100%' }}>
@@ -116,12 +116,23 @@ const CustomSplitter: React.FC<Readonly<SplitterProps>> = ({ style, ...restProps
     </Splitter.Panel>
   </Splitter>
 );
-const App: React.FC = () => (
-  <Flex gap="medium" vertical>
-    <CustomSplitter style={{ height: 200 }} />
-    <CustomSplitter style={{ height: 300 }} orientation="vertical" />
-  </Flex>
-);
+const App: React.FC = () => {
+  const [motion, setMotion] = useState(true);
+  return (
+    <Flex vertical gap="middle">
+      <Flex gap="middle">
+        <Switch
+          checked={motion}
+          onChange={setMotion}
+          checkedChildren="motion"
+          unCheckedChildren="motion"
+        />
+      </Flex>
+      <CustomSplitter style={{ height: 200 }} collapsible={{ motion }} />
+      <CustomSplitter style={{ height: 300 }} orientation="vertical" collapsible={{ motion }} />
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 可折叠图标显示
@@ -335,9 +346,11 @@ const App: React.FC = () => {
       <Splitter
         style={{ height: 200, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}
         draggerIcon={<ColumnWidthOutlined className={styles.draggerIcon} />}
-        collapsibleIcon={{
-          start: <CaretLeftOutlined className={styles.collapsibleIcon} />,
-          end: <CaretRightOutlined className={styles.collapsibleIcon} />,
+        collapsible={{
+          icon: {
+            start: <CaretLeftOutlined className={styles.collapsibleIcon} />,
+            end: <CaretRightOutlined className={styles.collapsibleIcon} />,
+          },
         }}
       >
         <Splitter.Panel defaultSize="40%" min="20%" max="70%" collapsible>
@@ -356,9 +369,11 @@ const App: React.FC = () => {
         classNames={{ dragger: { default: styles.dragger, active: styles.draggerActive } }}
         style={{ height: 200, boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}
         draggerIcon={null}
-        collapsibleIcon={{
-          start: <CaretUpOutlined className={styles.collapsibleIcon} />,
-          end: <CaretDownOutlined className={styles.collapsibleIcon} />,
+        collapsible={{
+          icon: {
+            start: <CaretUpOutlined className={styles.collapsibleIcon} />,
+            end: <CaretDownOutlined className={styles.collapsibleIcon} />,
+          },
         }}
       >
         <Splitter.Panel defaultSize="40%" min="30%" max="70%" collapsible>
@@ -379,7 +394,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Splitter, Typography } from 'antd';
-import type { SplitterProps } from 'antd';
+import type { GetProp, SplitterProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const Desc: React.FC<Readonly<{ text?: string | number; style?: React.CSSProperties }>> = (
   props,
@@ -399,9 +414,12 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
 }));
 const stylesObject: SplitterProps['styles'] = {
   root: { backgroundColor: '#fffbe6' },
-  dragger: { backgroundColor: 'rgba(194,223,252,0.4)' },
+  // dragger: { backgroundColor: 'rgba(194,223,252,0.4)' },
+  dragger: { default: { backgroundColor: 'rgba(194,223,252,0.4)' } },
 };
-const stylesFn: SplitterProps['styles'] = ({ props }) => {
+const stylesFn: SplitterProps['styles'] = ({
+  props,
+}): GetProp<SplitterProps, 'styles', 'Return'> => {
   if (props.orientation === 'horizontal') {
     return {
       root: {
@@ -409,7 +427,7 @@ const stylesFn: SplitterProps['styles'] = ({ props }) => {
         borderStyle: 'dashed',
         marginBottom: 10,
       },
-    } satisfies SplitterProps['styles'];
+    };
   }
   return {};
 };

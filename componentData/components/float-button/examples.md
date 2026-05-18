@@ -339,7 +339,7 @@ export default App;
 import React from 'react';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-import type { FloatButtonProps } from 'antd';
+import type { FloatButtonProps, GetProp } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
@@ -357,7 +357,9 @@ const stylesObject: FloatButtonProps['styles'] = {
     boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)',
   },
 };
-const stylesFn: FloatButtonProps['styles'] = (info) => {
+const stylesFn: FloatButtonProps['styles'] = (
+  info,
+): GetProp<FloatButtonProps, 'styles', 'Return'> => {
   if (info.props.type === 'primary') {
     return {
       root: {
@@ -366,9 +368,8 @@ const stylesFn: FloatButtonProps['styles'] = (info) => {
       content: {
         color: '#fff',
       },
-    } satisfies FloatButtonProps['styles'];
+    };
   }
-  return {};
 };
 const App: React.FC = () => {
   const { styles: classNames } = useStyles();

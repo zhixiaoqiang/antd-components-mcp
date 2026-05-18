@@ -392,7 +392,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { AutoComplete, Flex } from 'antd';
-import type { AutoCompleteProps } from 'antd';
+import type { AutoCompleteProps, GetProp } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -406,7 +406,9 @@ const stylesObject: AutoCompleteProps['styles'] = {
     listItem: { color: '#272727' },
   },
 };
-const stylesFn: AutoCompleteProps['styles'] = ({ props }) => {
+const stylesFn: AutoCompleteProps['styles'] = ({
+  props,
+}): GetProp<AutoCompleteProps, 'styles', 'Return'> => {
   if (props.variant === 'filled') {
     return {
       popup: {
@@ -414,7 +416,7 @@ const stylesFn: AutoCompleteProps['styles'] = ({ props }) => {
         list: { backgroundColor: 'rgba(240,240,240, 0.85)' },
         listItem: { color: '#272727' },
       },
-    } satisfies AutoCompleteProps['styles'];
+    };
   }
   return {};
 };

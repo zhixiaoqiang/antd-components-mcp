@@ -424,8 +424,8 @@ export default App;
 
 ```tsx
 import React from 'react';
+import type { CollapseProps, GetProp } from 'antd';
 import { Collapse, Flex } from 'antd';
-import type { CollapseProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -469,7 +469,9 @@ const styles: CollapseProps['styles'] = {
     color: '#141414',
   },
 };
-const stylesFn: CollapseProps['styles'] = ({ props }) => {
+const stylesFn: CollapseProps['styles'] = ({
+  props,
+}): GetProp<CollapseProps, 'styles', 'Return'> => {
   if (props.size === 'large') {
     return {
       root: {
@@ -482,7 +484,7 @@ const stylesFn: CollapseProps['styles'] = ({ props }) => {
         padding: '12px 16px',
         color: '#141414',
       },
-    } satisfies CollapseProps['styles'];
+    };
   }
 };
 const App: React.FC = () => {

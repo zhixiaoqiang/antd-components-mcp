@@ -106,8 +106,8 @@ export default App;
 
 ```tsx
 import React from 'react';
+import type { EmptyProps, GetProp } from 'antd';
 import { Button, Empty, Flex } from 'antd';
-import type { EmptyProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const emptySharedProps: EmptyProps = {
   image: Empty.PRESENTED_IMAGE_SIMPLE,
@@ -125,13 +125,13 @@ const stylesObject: EmptyProps['styles'] = {
   description: { color: '#1890ff', fontWeight: 'bold' },
   footer: { marginTop: '16px' },
 };
-const stylesFn: EmptyProps['styles'] = ({ props }) => {
+const stylesFn: EmptyProps['styles'] = ({ props }): GetProp<EmptyProps, 'styles', 'Return'> => {
   if (props.description) {
     return {
       root: { backgroundColor: '#e6f7ff', border: '1px solid #91d5ff' },
       description: { color: '#1890ff', fontWeight: 'bold' },
       image: { filter: 'hue-rotate(180deg)' },
-    } satisfies EmptyProps['styles'];
+    };
   }
   return {};
 };

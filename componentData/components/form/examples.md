@@ -712,12 +712,13 @@ export default App;
 import React from 'react';
 import { Button, Form, Input, message, Space } from 'antd';
 const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const onFinish = () => {
-    message.success('Submit success!');
+    messageApi.success('Submit success!');
   };
   const onFinishFailed = () => {
-    message.error('Submit failed!');
+    messageApi.error('Submit failed!');
   };
   const onFill = () => {
     form.setFieldsValue({
@@ -725,31 +726,38 @@ const App: React.FC = () => {
     });
   };
   return (
-    <Form
-      form={form}
-      layout="vertical"
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item
-        name="url"
-        label="URL"
-        rules={[{ required: true }, { type: 'url', warningOnly: true }, { type: 'string', min: 6 }]}
+    <>
+      {contextHolder}
+      <Form
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
       >
-        <Input placeholder="input placeholder" />
-      </Form.Item>
-      <Form.Item>
-        <Space>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          <Button htmlType="button" onClick={onFill}>
-            Fill
-          </Button>
-        </Space>
-      </Form.Item>
-    </Form>
+        <Form.Item
+          name="url"
+          label="URL"
+          rules={[
+            { required: true },
+            { type: 'url', warningOnly: true },
+            { type: 'string', min: 6 },
+          ]}
+        >
+          <Input placeholder="input placeholder" />
+        </Form.Item>
+        <Form.Item>
+          <Space>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+            <Button htmlType="button" onClick={onFill}>
+              Fill
+            </Button>
+          </Space>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 export default App;
@@ -2963,7 +2971,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Button, Form, Input, Space } from 'antd';
-import type { FormProps } from 'antd';
+import type { FormProps, GetProp } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
@@ -2985,7 +2993,7 @@ const stylesObject: FormProps['styles'] = {
     paddingInlineStart: 12,
   },
 };
-const stylesFunction: FormProps['styles'] = (info) => {
+const stylesFunction: FormProps['styles'] = (info): GetProp<FormProps, 'styles', 'Return'> => {
   if (info.props.variant === 'filled') {
     return {
       root: {
@@ -2998,7 +3006,7 @@ const stylesFunction: FormProps['styles'] = (info) => {
       content: {
         paddingInlineStart: 12,
       },
-    } satisfies FormProps['styles'];
+    };
   }
   return {};
 };

@@ -313,7 +313,7 @@ export default App;
 import React from 'react';
 import { EditOutlined, HeartOutlined, ShareAltOutlined } from '@ant-design/icons';
 import { Avatar, Button, Card, Flex } from 'antd';
-import type { CardMetaProps, CardProps } from 'antd';
+import type { CardMetaProps, CardProps, GetProp } from 'antd';
 import { createStyles } from 'antd-style';
 const { Meta } = Card;
 const useStyles = createStyles(({ token }) => ({
@@ -342,7 +342,7 @@ const stylesCard: CardProps['styles'] = {
     fontWeight: 500,
   },
 };
-const stylesCardFn: CardProps['styles'] = (info) => {
+const stylesCardFn: CardProps['styles'] = (info): GetProp<CardProps, 'styles', 'Return'> => {
   if (info.props.variant === 'outlined') {
     return {
       root: {
@@ -358,7 +358,7 @@ const stylesCardFn: CardProps['styles'] = (info) => {
         fontWeight: 500,
         color: '#A7AAE1',
       },
-    } satisfies CardProps['styles'];
+    };
   }
 };
 const stylesCardMeta: CardMetaProps['styles'] = {

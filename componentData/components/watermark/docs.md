@@ -10,7 +10,7 @@
 | height | 水印的高度，`content` 的默认值为自身的高度 | number | 64 |  |
 | inherit | 是否将水印传导给弹出组件如 Modal、Drawer | boolean | true | 5.11.0 |
 | rotate | 水印绘制时，旋转的角度，单位 `°` | number | -22 |  |
-| zIndex | 追加的水印元素的 z-index | number | 9 |  |
+| zIndex | 追加的水印元素的 z-index | number | 999 |  |
 | image | 图片源，建议导出 2 倍或 3 倍图，优先级高 (支持 base64 格式) | string | - |  |
 | content | 水印文字内容 | string \| string[] | - |  |
 | font | 文字样式 | [Font](#font) | [Font](#font) |  |

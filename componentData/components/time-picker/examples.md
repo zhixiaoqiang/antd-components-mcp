@@ -151,7 +151,7 @@ const onChange: TimePickerProps['onChange'] = (time, timeString) => {
 const App: React.FC = () => <TimePicker onChange={onChange} changeOnScroll needConfirm={false} />;
 export default App;
 ```
-### 色付きポップアップ
+### 彩色弹出层
 将自定义 class 传给 `TimePicker` 弹框。
 
 ```tsx
@@ -266,7 +266,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, TimePicker } from 'antd';
-import type { TimePickerProps } from 'antd';
+import type { GetProp, TimePickerProps } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
@@ -279,7 +279,9 @@ const stylesObject: TimePickerProps['styles'] = {
     borderColor: '#d9d9d9',
   },
 };
-const stylesFn: TimePickerProps['styles'] = (info) => {
+const stylesFn: TimePickerProps['styles'] = (
+  info,
+): GetProp<TimePickerProps, 'styles', 'Return'> => {
   if (info.props.size === 'large') {
     return {
       root: {
@@ -291,7 +293,7 @@ const stylesFn: TimePickerProps['styles'] = (info) => {
       popup: {
         container: { border: '1px solid #722ed1', borderRadius: 8 },
       },
-    } satisfies TimePickerProps['styles'];
+    };
   }
   return {};
 };

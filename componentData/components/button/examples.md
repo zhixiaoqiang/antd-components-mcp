@@ -1163,7 +1163,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Button, Flex } from 'antd';
-import type { ButtonProps } from 'antd';
+import type { ButtonProps, GetProp } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
@@ -1181,7 +1181,7 @@ const stylesObject: ButtonProps['styles'] = {
     boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)',
   },
 };
-const stylesFn: ButtonProps['styles'] = (info) => {
+const stylesFn: ButtonProps['styles'] = (info): GetProp<ButtonProps, 'styles', 'Return'> => {
   if (info.props.type === 'primary') {
     return {
       root: {
@@ -1190,7 +1190,7 @@ const stylesFn: ButtonProps['styles'] = (info) => {
       content: {
         color: '#fff',
       },
-    } satisfies ButtonProps['styles'];
+    };
   }
   return {};
 };

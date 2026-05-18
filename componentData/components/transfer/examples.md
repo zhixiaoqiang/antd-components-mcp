@@ -360,6 +360,7 @@ const mockData: RecordType[] = Array.from({ length: 20 }).map((_, i) => ({
 }));
 const initialTargetKeys = mockData.filter((item) => Number(item.key) > 10).map((item) => item.key);
 const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [targetKeys, setTargetKeys] = useState<string[]>(initialTargetKeys);
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [loadingRight, setLoadingRight] = useState<boolean>(false);
@@ -372,13 +373,13 @@ const App: React.FC = () => {
       setLoadingRight(true);
       setTimeout(() => {
         setLoadingRight(false);
-        message.success(`Successfully added ${moveKeys.length} items to the right`);
+        messageApi.success(`Successfully added ${moveKeys.length} items to the right`);
       }, 1000);
     } else {
       setLoadingLeft(true);
       setTimeout(() => {
         setLoadingLeft(false);
-        message.success(`Successfully added ${moveKeys.length} items to the left`);
+        messageApi.success(`Successfully added ${moveKeys.length} items to the left`);
       }, 1000);
     }
   };
@@ -408,38 +409,41 @@ const App: React.FC = () => {
     // The Transfer component will automatically handle data transfer
   };
   return (
-    <Transfer
-      dataSource={mockData}
-      targetKeys={targetKeys}
-      selectedKeys={selectedKeys}
-      onChange={handleChange}
-      onSelectChange={handleSelectChange}
-      render={(item) => item.title}
-      actions={[
-        // Custom right button (transfer data to the right)
-        <Button
-          key="to-right"
-          type="primary"
-          icon={<DoubleRightOutlined />}
-          loading={loadingRight}
-          disabled={rightButtonDisabled}
-          onClick={handleRightButtonClick}
-        >
-          Move To Right
-        </Button>,
-        // Custom left button (transfer data to the left)
-        <Button
-          key="to-left"
-          type="primary"
-          icon={<DoubleLeftOutlined />}
-          loading={loadingLeft}
-          disabled={leftButtonDisabled}
-          onClick={handleLeftButtonClick}
-        >
-          Move To Left
-        </Button>,
-      ]}
-    />
+    <>
+      {contextHolder}
+      <Transfer
+        dataSource={mockData}
+        targetKeys={targetKeys}
+        selectedKeys={selectedKeys}
+        onChange={handleChange}
+        onSelectChange={handleSelectChange}
+        render={(item) => item.title}
+        actions={[
+          // Custom right button (transfer data to the right)
+          <Button
+            key="to-right"
+            type="primary"
+            icon={<DoubleRightOutlined />}
+            loading={loadingRight}
+            disabled={rightButtonDisabled}
+            onClick={handleRightButtonClick}
+          >
+            Move To Right
+          </Button>,
+          // Custom left button (transfer data to the left)
+          <Button
+            key="to-left"
+            type="primary"
+            icon={<DoubleLeftOutlined />}
+            loading={loadingLeft}
+            disabled={leftButtonDisabled}
+            onClick={handleLeftButtonClick}
+          >
+            Move To Left
+          </Button>,
+        ]}
+      />
+    </>
   );
 };
 export default App;
@@ -746,14 +750,14 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Transfer } from 'antd';
-import type { TransferProps } from 'antd';
+import type { GetProp, TransferProps } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token, css }) => ({
   section: { backgroundColor: 'rgba(250,250,250, 0.5)' },
   header: { color: token.colorPrimary },
   actions: css`
     & button {
-      background-color: rgba(255,242,232,0.6);
+      background-color: rgba(255, 242, 232, 0.6);
     }
   `,
 }));
@@ -766,12 +770,12 @@ const initialTargetKeys = mockData.filter((item) => Number(item.key) > 10).map((
 const stylesObject: TransferProps['styles'] = {
   header: { fontWeight: 'bold' },
 };
-const stylesFn: TransferProps['styles'] = (info) => {
+const stylesFn: TransferProps['styles'] = (info): GetProp<TransferProps, 'styles', 'Return'> => {
   if (info.props.status === 'warning') {
     return {
       section: { backgroundColor: 'rgba(246,255,237, 0.6)', borderColor: '#b7eb8f' },
       header: { color: '#8DBCC7', fontWeight: 'normal' },
-    } satisfies TransferProps['styles'];
+    };
   }
   return {};
 };

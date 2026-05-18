@@ -220,7 +220,7 @@ export default Demo;
 import React from 'react';
 import { ArrowUpOutlined } from '@ant-design/icons';
 import { Flex, Statistic } from 'antd';
-import type { StatisticProps } from 'antd';
+import type { GetProp, StatisticProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -229,7 +229,9 @@ const classNames = createStaticStyles(({ css }) => ({
     border-radius: 8px;
   `,
 }));
-const styleFn: StatisticProps['styles'] = ({ props }) => {
+const styleFn: StatisticProps['styles'] = ({
+  props,
+}): GetProp<StatisticProps, 'styles', 'Return'> => {
   const numValue = Number(props.value ?? 0);
   const isNegative = Number.isFinite(numValue) && numValue < 0;
   if (isNegative) {
@@ -240,11 +242,17 @@ const styleFn: StatisticProps['styles'] = ({ props }) => {
       content: {
         color: '#ff7875',
       },
-    } satisfies StatisticProps['styles'];
+      value: {
+        backgroundColor: '#fff1f0',
+        borderRadius: 4,
+        paddingInline: 6,
+        userSelect: 'none',
+      },
+    };
   }
   return {};
 };
-const App: React.FC = () => {
+const Demo: React.FC = () => {
   const statisticSharedProps: StatisticProps = {
     classNames: { root: classNames.root },
     prefix: <ArrowUpOutlined />,
@@ -255,7 +263,17 @@ const App: React.FC = () => {
         {...statisticSharedProps}
         title="Monthly Active Users"
         value={93241}
-        styles={{ title: { color: '#1890ff', fontWeight: 600 }, content: { fontSize: '24px' } }}
+        styles={{
+          title: { color: '#1890ff', fontWeight: 600 },
+          content: { fontSize: '24px' },
+          value: {
+            backgroundColor: '#e6f4ff',
+            borderRadius: 4,
+            color: '#0958d9',
+            paddingInline: 6,
+            userSelect: 'none',
+          },
+        }}
         suffix="users"
       />
       <Statistic
@@ -269,7 +287,7 @@ const App: React.FC = () => {
     </Flex>
   );
 };
-export default App;
+export default Demo;
 ```
 ### 组件 Token
 Component Token Debug.

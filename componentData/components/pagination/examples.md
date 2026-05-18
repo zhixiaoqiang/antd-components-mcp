@@ -287,7 +287,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Pagination } from 'antd';
-import type { PaginationProps } from 'antd';
+import type { GetProp, PaginationProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -295,14 +295,16 @@ const classNames = createStaticStyles(({ css }) => ({
     padding: 8px;
   `,
 }));
-const styleFn: PaginationProps['styles'] = ({ props }) => {
+const styleFn: PaginationProps['styles'] = ({
+  props,
+}): GetProp<PaginationProps, 'styles', 'Return'> => {
   if (props.size === 'small') {
     return {
       item: {
         backgroundColor: `rgba(200, 200, 200, 0.3)`,
         marginInlineEnd: 4,
       },
-    } satisfies PaginationProps['styles'];
+    };
   }
   return {};
 };

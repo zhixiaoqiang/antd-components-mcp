@@ -388,13 +388,13 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Progress } from 'antd';
-import type { ProgressProps } from 'antd';
+import type { GetProp, ProgressProps } from 'antd';
 const classNames: ProgressProps['classNames'] = {
   root: 'demo-progress-root',
   rail: 'demo-progress-rail',
   track: 'demo-progress-track',
 };
-const stylesFn: ProgressProps['styles'] = (info) => {
+const stylesFn: ProgressProps['styles'] = (info): GetProp<ProgressProps, 'styles', 'Return'> => {
   const percent = info?.props?.percent ?? 0;
   const hue = 200 - (200 * percent) / 100;
   return {
@@ -412,7 +412,7 @@ const stylesFn: ProgressProps['styles'] = (info) => {
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
       borderRadius: 8,
     },
-  } satisfies ProgressProps['styles'];
+  };
 };
 const App: React.FC = () => (
   <Flex vertical gap="large">

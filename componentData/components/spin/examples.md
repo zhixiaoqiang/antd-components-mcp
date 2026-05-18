@@ -176,7 +176,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Spin } from 'antd';
-import type { SpinProps } from 'antd';
+import type { GetProp, SpinProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -188,13 +188,13 @@ const stylesObject: SpinProps['styles'] = {
     color: '#00d4ff',
   },
 };
-const stylesFn: SpinProps['styles'] = ({ props }) => {
+const stylesFn: SpinProps['styles'] = ({ props }): GetProp<SpinProps, 'styles', 'Return'> => {
   if (props.size === 'small') {
     return {
       indicator: {
         color: '#722ed1',
       },
-    } satisfies SpinProps['styles'];
+    };
   }
   return {};
 };
