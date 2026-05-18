@@ -7,28 +7,34 @@ import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
-const props: UploadProps = {
-  name: 'file',
-  action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
-  headers: {
-    authorization: 'authorization-text',
-  },
-  onChange(info) {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
+const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const props: UploadProps = {
+    name: 'file',
+    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    headers: {
+      authorization: 'authorization-text',
+    },
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        messageApi.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        messageApi.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
+  return (
+    <>
+      {contextHolder}
+      <Upload {...props}>
+        <Button icon={<UploadOutlined />}>Click to Upload</Button>
+      </Upload>
+    </>
+  );
 };
-const App: React.FC = () => (
-  <Upload {...props}>
-    <Button icon={<UploadOutlined />}>Click to Upload</Button>
-  </Upload>
-);
 export default App;
 ```
 ### 用户头像
@@ -46,20 +52,21 @@ const getBase64 = (img: FileType, callback: (url: string) => void) => {
   reader.addEventListener('load', () => callback(reader.result as string));
   reader.readAsDataURL(img);
 };
-const beforeUpload = (file: FileType) => {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-  if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!');
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
-  }
-  return isJpgOrPng && isLt2M;
-};
 const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
+  const beforeUpload = (file: FileType) => {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      messageApi.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      messageApi.error('Image must smaller than 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+  };
   const handleChange: UploadProps['onChange'] = (info) => {
     if (info.file.status === 'uploading') {
       setLoading(true);
@@ -80,38 +87,41 @@ const App: React.FC = () => {
     </button>
   );
   return (
-    <Flex gap="medium" wrap>
-      <Upload
-        name="avatar"
-        listType="picture-card"
-        className="avatar-uploader"
-        showUploadList={false}
-        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-        beforeUpload={beforeUpload}
-        onChange={handleChange}
-      >
-        {imageUrl ? (
-          <img draggable={false} src={imageUrl} alt="avatar" style={{ width: '100%' }} />
-        ) : (
-          uploadButton
-        )}
-      </Upload>
-      <Upload
-        name="avatar"
-        listType="picture-circle"
-        className="avatar-uploader"
-        showUploadList={false}
-        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-        beforeUpload={beforeUpload}
-        onChange={handleChange}
-      >
-        {imageUrl ? (
-          <img draggable={false} src={imageUrl} alt="avatar" style={{ width: '100%' }} />
-        ) : (
-          uploadButton
-        )}
-      </Upload>
-    </Flex>
+    <>
+      {contextHolder}
+      <Flex gap="medium" wrap>
+        <Upload
+          name="avatar"
+          listType="picture-card"
+          className="avatar-uploader"
+          showUploadList={false}
+          action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+          beforeUpload={beforeUpload}
+          onChange={handleChange}
+        >
+          {imageUrl ? (
+            <img draggable={false} src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+          ) : (
+            uploadButton
+          )}
+        </Upload>
+        <Upload
+          name="avatar"
+          listType="picture-circle"
+          className="avatar-uploader"
+          showUploadList={false}
+          action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+          beforeUpload={beforeUpload}
+          onChange={handleChange}
+        >
+          {imageUrl ? (
+            <img draggable={false} src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+          ) : (
+            uploadButton
+          )}
+        </Upload>
+      </Flex>
+    </>
   );
 };
 export default App;
@@ -398,37 +408,43 @@ import { InboxOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { message, Upload } from 'antd';
 const { Dragger } = Upload;
-const props: UploadProps = {
-  name: 'file',
-  multiple: true,
-  action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    console.log('Dropped files', e.dataTransfer.files);
-  },
+const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const props: UploadProps = {
+    name: 'file',
+    multiple: true,
+    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    onChange(info) {
+      const { status } = info.file;
+      if (status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (status === 'done') {
+        messageApi.success(`${info.file.name} file uploaded successfully.`);
+      } else if (status === 'error') {
+        messageApi.error(`${info.file.name} file upload failed.`);
+      }
+    },
+    onDrop(e) {
+      console.log('Dropped files', e.dataTransfer.files);
+    },
+  };
+  return (
+    <>
+      {contextHolder}
+      <Dragger {...props}>
+        <p className="ant-upload-drag-icon">
+          <InboxOutlined />
+        </p>
+        <p className="ant-upload-text">Click or drag file to this area to upload</p>
+        <p className="ant-upload-hint">
+          Support for a single or bulk upload. Strictly prohibited from uploading company data or
+          other banned files.
+        </p>
+      </Dragger>
+    </>
+  );
 };
-const App: React.FC = () => (
-  <Dragger {...props}>
-    <p className="ant-upload-drag-icon">
-      <InboxOutlined />
-    </p>
-    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-    <p className="ant-upload-hint">
-      Support for a single or bulk upload. Strictly prohibited from uploading company data or other
-      banned files.
-    </p>
-  </Dragger>
-);
 export default App;
 ```
 ### 粘贴上传
@@ -439,29 +455,35 @@ import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
-const props: UploadProps = {
-  name: 'file',
-  pastable: true,
-  action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
-  headers: {
-    authorization: 'authorization-text',
-  },
-  onChange(info) {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
+const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const props: UploadProps = {
+    name: 'file',
+    pastable: true,
+    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    headers: {
+      authorization: 'authorization-text',
+    },
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        messageApi.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        messageApi.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
+  return (
+    <>
+      {contextHolder}
+      <Upload {...props}>
+        <Button icon={<UploadOutlined />}>Paste or click to upload</Button>
+      </Upload>
+    </>
+  );
 };
-const App: React.FC = () => (
-  <Upload {...props}>
-    <Button icon={<UploadOutlined />}>Paste or click to upload</Button>
-  </Upload>
-);
 export default App;
 ```
 ### 文件夹上传
@@ -488,6 +510,7 @@ import { Button, message, Upload } from 'antd';
 import type { GetProp, UploadFile, UploadProps } from 'antd';
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [uploading, setUploading] = useState(false);
   const handleUpload = () => {
@@ -504,10 +527,10 @@ const App: React.FC = () => {
       .then((res) => res.json())
       .then(() => {
         setFileList([]);
-        message.success('upload successfully.');
+        messageApi.success('upload successfully.');
       })
       .catch(() => {
-        message.error('upload failed.');
+        messageApi.error('upload failed.');
       })
       .finally(() => {
         setUploading(false);
@@ -528,6 +551,7 @@ const App: React.FC = () => {
   };
   return (
     <>
+      {contextHolder}
       <Upload {...props}>
         <Button icon={<UploadOutlined />}>Select File</Button>
       </Upload>
@@ -553,23 +577,29 @@ import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
-const props: UploadProps = {
-  beforeUpload: (file) => {
-    const isPNG = file.type === 'image/png';
-    if (!isPNG) {
-      message.error(`${file.name} is not a png file`);
-    }
-    return isPNG || Upload.LIST_IGNORE;
-  },
-  onChange: (info) => {
-    console.log(info.fileList);
-  },
+const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const props: UploadProps = {
+    beforeUpload: (file) => {
+      const isPNG = file.type === 'image/png';
+      if (!isPNG) {
+        messageApi.error(`${file.name} is not a png file`);
+      }
+      return isPNG || Upload.LIST_IGNORE;
+    },
+    onChange: (info) => {
+      console.log(info.fileList);
+    },
+  };
+  return (
+    <>
+      {contextHolder}
+      <Upload {...props}>
+        <Button icon={<UploadOutlined />}>Upload png only</Button>
+      </Upload>
+    </>
+  );
 };
-const App: React.FC = () => (
-  <Upload {...props}>
-    <Button icon={<UploadOutlined />}>Upload png only</Button>
-  </Upload>
-);
 export default App;
 ```
 ### 图片列表样式
@@ -1162,36 +1192,42 @@ import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
-const props: UploadProps = {
-  name: 'file',
-  action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
-  headers: {
-    authorization: 'authorization-text',
-  },
-  onChange(info) {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  progress: {
-    strokeColor: {
-      '0%': '#108ee9',
-      '100%': '#87d068',
+const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const props: UploadProps = {
+    name: 'file',
+    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    headers: {
+      authorization: 'authorization-text',
     },
-    strokeWidth: 3,
-    format: (percent) => percent && `${Number.parseFloat(percent.toFixed(2))}%`,
-  },
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        messageApi.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        messageApi.error(`${info.file.name} file upload failed.`);
+      }
+    },
+    progress: {
+      strokeColor: {
+        '0%': '#108ee9',
+        '100%': '#87d068',
+      },
+      strokeWidth: 3,
+      format: (percent) => percent && `${Number.parseFloat(percent.toFixed(2))}%`,
+    },
+  };
+  return (
+    <>
+      {contextHolder}
+      <Upload {...props}>
+        <Button icon={<UploadOutlined />}>Click to Upload</Button>
+      </Upload>
+    </>
+  );
 };
-const App: React.FC = () => (
-  <Upload {...props}>
-    <Button icon={<UploadOutlined />}>Click to Upload</Button>
-  </Upload>
-);
 export default App;
 ```
 ### 自定义语义结构的样式和类
@@ -1201,7 +1237,7 @@ export default App;
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Flex, Upload } from 'antd';
-import type { UploadProps } from 'antd';
+import type { GetProp, UploadProps } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
@@ -1221,7 +1257,9 @@ const stylesObject: UploadProps<any>['styles'] = {
     borderRadius: 4,
   },
 };
-const stylesFn: UploadProps<any>['styles'] = (info) => {
+const stylesFn: UploadProps<any>['styles'] = (
+  info,
+): GetProp<UploadProps<any>, 'styles', 'Return'> => {
   if (info.props.multiple) {
     return {
       root: { border: '1px solid #5459AC' },
@@ -1235,7 +1273,7 @@ const stylesFn: UploadProps<any>['styles'] = (info) => {
         padding: 8,
         borderRadius: 4,
       },
-    } satisfies UploadProps<any>['styles'];
+    };
   }
   return {};
 };

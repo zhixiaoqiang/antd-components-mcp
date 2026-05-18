@@ -291,14 +291,14 @@ export default Demo;
 import React from 'react';
 import { CloudOutlined, RocketOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import { Flex, Segmented } from 'antd';
-import type { SegmentedProps } from 'antd';
+import type { GetProp, SegmentedProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
     padding: 2px;
   `,
 }));
-const styleFn: SegmentedProps['styles'] = (info) => {
+const styleFn: SegmentedProps['styles'] = (info): GetProp<SegmentedProps, 'styles', 'Return'> => {
   if (info.props.vertical) {
     return {
       root: {
@@ -312,7 +312,7 @@ const styleFn: SegmentedProps['styles'] = (info) => {
       item: {
         textAlign: 'start',
       },
-    } satisfies SegmentedProps['styles'];
+    };
   }
   return {};
 };

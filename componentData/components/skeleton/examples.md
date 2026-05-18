@@ -227,7 +227,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Skeleton } from 'antd';
-import type { SkeletonProps } from 'antd';
+import type { GetProp, SkeletonProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classnames = createStaticStyles(({ css }) => ({
   root: css`
@@ -253,7 +253,7 @@ const styles: SkeletonProps['styles'] = {
     border: '1px solid #aaa',
   },
 };
-const stylesFn: SkeletonProps['styles'] = (info) => {
+const stylesFn: SkeletonProps['styles'] = (info): GetProp<SkeletonProps, 'styles', 'Return'> => {
   if (info.props.active) {
     return {
       root: {
@@ -264,7 +264,7 @@ const stylesFn: SkeletonProps['styles'] = (info) => {
         height: 20,
         borderRadius: 20,
       },
-    } satisfies SkeletonProps['styles'];
+    };
   }
   return {};
 };

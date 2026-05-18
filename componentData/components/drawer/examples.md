@@ -781,7 +781,7 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { Button, Drawer, Flex } from 'antd';
-import type { DrawerProps } from 'antd';
+import type { DrawerProps, GetProp } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const lineStyle: React.CSSProperties = {
   lineHeight: '28px',
@@ -800,18 +800,20 @@ const sharedContent = (
     <div style={lineStyle}>🎨 Powerful theme customization in every detail.</div>
   </>
 );
-const classNames = createStaticStyles(({ css }) => ({
-  container: css`
-    border-radius: 10px;
-    padding: 10px;
-  `,
-}));
+const classNames = createStaticStyles(
+  ({ css }): NonNullable<GetProp<DrawerProps, 'classNames', 'Return'>> => ({
+    root: css`
+      border-radius: 10px;
+      padding: 10px;
+    `,
+  }),
+);
 const styles: DrawerProps['styles'] = {
   mask: {
     backgroundImage: `linear-gradient(to top, #18181b 0, rgba(21, 21, 22, 0.2) 100%)`,
   },
 };
-const stylesFn: DrawerProps['styles'] = (info) => {
+const stylesFn: DrawerProps['styles'] = (info): GetProp<DrawerProps, 'styles', 'Return'> => {
   if (info.props.footer) {
     return {
       header: {
@@ -824,9 +826,8 @@ const stylesFn: DrawerProps['styles'] = (info) => {
         padding: '16px 10px',
         backgroundColor: '#fafafa',
       },
-    } satisfies DrawerProps['styles'];
+    };
   }
-  return {};
 };
 const App: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);

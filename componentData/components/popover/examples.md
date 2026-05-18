@@ -397,7 +397,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Button, Flex, Popover } from 'antd';
-import type { PopoverProps } from 'antd';
+import type { GetProp, PopoverProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   container: css`
@@ -413,7 +413,7 @@ const styles: PopoverProps['styles'] = {
     color: '#262626',
   },
 };
-const stylesFn: PopoverProps['styles'] = (info) => {
+const stylesFn: PopoverProps['styles'] = (info): GetProp<PopoverProps, 'styles', 'Return'> => {
   if (!info.props.arrow) {
     return {
       container: {
@@ -424,9 +424,8 @@ const stylesFn: PopoverProps['styles'] = (info) => {
       content: {
         color: '#fff',
       },
-    } satisfies PopoverProps['styles'];
+    };
   }
-  return {};
 };
 const App: React.FC = () => {
   return (

@@ -930,6 +930,7 @@ interface UserItem {
 const CONTAINER_HEIGHT = 400;
 const PAGE_SIZE = 20;
 const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [data, setData] = useState<UserItem[]>([]);
   const [page, setPage] = useState(1);
   const appendData = (showMessage = true) => {
@@ -940,7 +941,7 @@ const App: React.FC = () => {
         const results = Array.isArray(body) ? body : [];
         setData(data.concat(results));
         setPage(page + 1);
-        showMessage && message.success(`${results.length} more items loaded!`);
+        showMessage && messageApi.success(`${results.length} more items loaded!`);
       })
       .catch(() => {
         console.log('fetch mock data failed');
@@ -958,26 +959,29 @@ const App: React.FC = () => {
     }
   };
   return (
-    <List>
-      <VirtualList
-        data={data}
-        height={CONTAINER_HEIGHT}
-        itemHeight={47}
-        itemKey="email"
-        onScroll={onScroll}
-      >
-        {(item: UserItem) => (
-          <List.Item key={item.email}>
-            <List.Item.Meta
-              avatar={<Avatar src={item.avatar} />}
-              title={<a href="https://ant.design">{item.name}</a>}
-              description={item.email}
-            />
-            <div>Content</div>
-          </List.Item>
-        )}
-      </VirtualList>
-    </List>
+    <>
+      {contextHolder}
+      <List>
+        <VirtualList
+          data={data}
+          height={CONTAINER_HEIGHT}
+          itemHeight={47}
+          itemKey="email"
+          onScroll={onScroll}
+        >
+          {(item: UserItem) => (
+            <List.Item key={item.email}>
+              <List.Item.Meta
+                avatar={<Avatar src={item.avatar} />}
+                title={<a href="https://ant.design">{item.name}</a>}
+                description={item.email}
+              />
+              <div>Content</div>
+            </List.Item>
+          )}
+        </VirtualList>
+      </List>
+    </>
   );
 };
 export default App;

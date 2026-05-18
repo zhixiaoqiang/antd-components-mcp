@@ -471,7 +471,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Mentions } from 'antd';
-import type { MentionsProps } from 'antd';
+import type { GetProp, MentionsProps } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
@@ -493,7 +493,9 @@ const stylesObject: MentionsProps['styles'] = {
     fontWeight: 200,
   },
 };
-const stylesFunction: MentionsProps['styles'] = (info) => {
+const stylesFunction: MentionsProps['styles'] = (
+  info,
+): GetProp<MentionsProps, 'styles', 'Return'> => {
   if (info.props.variant === 'filled') {
     return {
       root: {
@@ -502,7 +504,7 @@ const stylesFunction: MentionsProps['styles'] = (info) => {
       popup: {
         border: '1px solid #722ed1',
       },
-    } satisfies MentionsProps['styles'];
+    };
   }
 };
 const App: React.FC = () => {

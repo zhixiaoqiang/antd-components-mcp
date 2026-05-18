@@ -804,7 +804,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Menu } from 'antd';
-import type { MenuProps } from 'antd';
+import type { GetProp, MenuProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -840,13 +840,13 @@ const styles: MenuProps['styles'] = {
   item: { color: '#1677ff' },
   subMenu: { list: { color: '#fa541c' } },
 };
-const stylesFn: MenuProps['styles'] = (info) => {
+const stylesFn: MenuProps['styles'] = (info): GetProp<MenuProps, 'styles', 'Return'> => {
   const hasSub = info.props.items?.[0];
   return {
     root: {
       backgroundColor: hasSub ? 'rgba(240,249,255, 0.6)' : 'rgba(255,255,255)',
     },
-  } satisfies MenuProps['styles'];
+  };
 };
 const App: React.FC = () => {
   const shareProps: MenuProps = {
@@ -1302,6 +1302,103 @@ const App: React.FC = () => (
   </Space>
 );
 export default App;
+```
+### Extra 折叠调试
+调试 extra 在折叠菜单和 Tooltip 中的展示。
+
+```tsx
+import React, { useState } from 'react';
+import {
+  AppstoreOutlined,
+  ContainerOutlined,
+  DesktopOutlined,
+  MailOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  PieChartOutlined,
+} from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Badge, Button, Menu, Space, Switch } from 'antd';
+type MenuItem = Required<MenuProps>['items'][number];
+const items: MenuItem[] = [
+  {
+    key: '1',
+    icon: <PieChartOutlined />,
+    label: 'Option 1Option 1Option 1Option 1Option 1Option 1Option 1',
+    extra: <Badge count="123" />,
+  },
+  { key: '2', icon: <DesktopOutlined />, label: 'Option 2' },
+  { key: '3', icon: <ContainerOutlined />, label: 'Option 3' },
+  {
+    key: 'sub1',
+    label: 'Navigation One',
+    icon: <MailOutlined />,
+    children: [
+      {
+        key: '5',
+        label: 'Option 5Option 5Option 5Option 5Option 5Option 5',
+        icon: <MailOutlined />,
+        extra: <Badge />,
+      },
+      {
+        key: '6',
+        label: 'Option 6',
+        icon: <MailOutlined />,
+        extra: <Badge />,
+      },
+      { key: '7', label: 'Option 7' },
+      { key: '8', label: 'Option 8' },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Navigation Two',
+    icon: <AppstoreOutlined />,
+    children: [
+      { key: '9', label: 'Option 9' },
+      { key: '10', label: 'Option 10' },
+      {
+        key: 'sub3',
+        label: 'Submenu',
+        children: [
+          { key: '11', label: 'Option 11' },
+          { key: '12', label: 'Option 12' },
+        ],
+      },
+    ],
+  },
+];
+const Demo: React.FC = () => {
+  const [collapsed, setCollapsed] = useState(false);
+  const [tooltipEnabled, setTooltipEnabled] = useState(true);
+  return (
+    <div style={{ width: 256 }}>
+      <Space style={{ marginBottom: 16 }}>
+        <Button
+          type="primary"
+          onClick={() => setCollapsed((prev) => !prev)}
+          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        />
+        <Switch
+          checked={tooltipEnabled}
+          onChange={setTooltipEnabled}
+          checkedChildren="Tooltip On"
+          unCheckedChildren="Tooltip Off"
+        />
+      </Space>
+      <Menu
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['sub1']}
+        mode="inline"
+        theme="dark"
+        inlineCollapsed={collapsed}
+        tooltip={tooltipEnabled ? { placement: 'left' } : false}
+        items={items}
+      />
+    </div>
+  );
+};
+export default Demo;
 ```
 ### 自定义弹出框
 使用 `popupRender` 属性自定义弹出菜单的渲染。

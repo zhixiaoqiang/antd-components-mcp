@@ -443,7 +443,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Timeline } from 'antd';
-import type { TimelineProps } from 'antd';
+import type { GetProp, TimelineProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -456,7 +456,7 @@ const styles: TimelineProps['styles'] = {
     borderColor: '#1890ff',
   },
 };
-const stylesFn: TimelineProps['styles'] = (info) => {
+const stylesFn: TimelineProps['styles'] = (info): GetProp<TimelineProps, 'styles', 'Return'> => {
   if (info.props.orientation === 'vertical') {
     return {
       root: {
@@ -466,7 +466,7 @@ const stylesFn: TimelineProps['styles'] = (info) => {
       itemIcon: {
         borderColor: '#A294F9',
       },
-    } satisfies TimelineProps['styles'];
+    };
   }
   return {};
 };

@@ -84,6 +84,71 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### 堆叠
+堆叠配置，默认关闭。超过阈值后的消息会被自动收起，可以通过 `threshold` 设置触发堆叠的数量。折叠状态下仅展示最新的消息。
+
+```tsx
+import React from 'react';
+import { Button, Divider, InputNumber, message, Space, Switch } from 'antd';
+const App: React.FC = () => {
+  const [enabled, setEnabled] = React.useState(true);
+  const [threshold, setThreshold] = React.useState(3);
+  const indexRef = React.useRef(0);
+  const [messageApi, contextHolder] = message.useMessage({
+    stack: enabled
+      ? {
+          threshold,
+        }
+      : false,
+  });
+  const openMessage = () => {
+    indexRef.current += 1;
+    const isOdd = indexRef.current % 2 === 1;
+    messageApi.open({
+      type: 'info',
+      content: isOdd
+        ? `Message ${indexRef.current}: This is a stacked message.`
+        : `Message ${indexRef.current}: This is a slightly longer stacked message.`,
+      duration: 0,
+    });
+  };
+  return (
+    <>
+      {contextHolder}
+      <Space size="large">
+        <Space style={{ width: '100%' }}>
+          <span>Enabled: </span>
+          <Switch
+            aria-label="Enable message stack"
+            checked={enabled}
+            onChange={(v) => setEnabled(v)}
+          />
+        </Space>
+        <Space style={{ width: '100%' }}>
+          <span>Threshold: </span>
+          <InputNumber
+            aria-label="Stack threshold"
+            disabled={!enabled}
+            value={threshold}
+            step={1}
+            min={1}
+            max={10}
+            onChange={(v) => setThreshold(v ?? 1)}
+          />
+        </Space>
+      </Space>
+      <Divider />
+      <Space>
+        <Button type="primary" onClick={openMessage}>
+          Open the message box
+        </Button>
+        <Button onClick={() => messageApi.destroy()}>Destroy all</Button>
+      </Space>
+    </>
+  );
+};
+export default App;
+```
 ### 加载中
 进行全局 loading，异步自行移除。
 
@@ -137,79 +202,64 @@ const App: React.FC = () => {
 };
 export default App;
 ```
-### 自定义样式
-使用 `style` 和 `className` 来定义样式。
-
-```tsx
-import React from 'react';
-import { Button, message } from 'antd';
-const App: React.FC = () => {
-  const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'This is a prompt message with custom className and style',
-      className: 'custom-class',
-      style: {
-        marginTop: '20vh',
-      },
-    });
-  };
-  return (
-    <>
-      {contextHolder}
-      <Button onClick={success}>Customized style</Button>
-    </>
-  );
-};
-export default App;
-```
-### 自定义语义结构的样式和类
-通过 `classNames` 和 `styles` 传入对象/函数可以自定义消息的[语义化结构](#semantic-dom)样式。
+### 自定义语义结构样式
+通过 `classNames` 和 `styles` 可以自定义消息的[语义化结构](#semantic-dom)样式。
 
 ```tsx
 import React from 'react';
 import { Button, message, Space } from 'antd';
-import type { MessageArgsProps } from 'antd';
-import { createStaticStyles } from 'antd-style';
-const messageClassNames = createStaticStyles(({ css }) => ({
-  icon: css`
-    font-size: 14px;
-  `,
-}));
-const stylesObject: MessageArgsProps['styles'] = {
-  icon: { fontSize: 20 },
+import type { GetProp, MessageArgsProps } from 'antd';
+const defaultStyles: GetProp<MessageArgsProps, 'styles', 'Return'> = {
+  root: {
+    backgroundColor: '#f6ffed',
+    border: '2px solid #95de64',
+    borderRadius: 16,
+    boxShadow: '4px 4px 0 #d9f7be',
+  },
+  icon: {
+    color: '#237804',
+  },
+  title: {
+    color: '#237804',
+    fontWeight: 600,
+  },
 };
-const stylesFn: MessageArgsProps['styles'] = ({ props }) => {
-  if (props.type === 'success') {
+const stylesFn: MessageArgsProps['styles'] = ({
+  props,
+}): GetProp<MessageArgsProps, 'styles', 'Return'> => {
+  if (props.type === 'error') {
     return {
       root: {
-        border: '1px solid #eee',
-        display: 'inline-flex',
-        borderRadius: 10,
-        overflow: 'hidden',
+        ...defaultStyles.root,
+        backgroundColor: '#fff2f0',
+        borderColor: '#ffccc7',
+        boxShadow: '4px 4px 0 #ffccc7',
       },
-    } satisfies MessageArgsProps['styles'];
+      icon: {
+        color: '#cf1322',
+      },
+      title: {
+        color: '#cf1322',
+        fontWeight: 600,
+      },
+    };
   }
-  return {};
+  return defaultStyles;
 };
 const App: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const showObjectStyle = () => {
     messageApi.open({
-      type: 'info',
-      content: 'This is a message with object classNames and styles',
-      classNames: messageClassNames,
-      styles: stylesObject,
+      type: 'success',
+      content: 'This is a message with object styles',
+      styles: defaultStyles,
     });
   };
   const showFunctionStyle = () => {
     messageApi.open({
-      type: 'success',
-      content: 'This is a message with function classNames and styles',
-      classNames: messageClassNames,
+      type: 'error',
+      content: 'This is a message with function styles',
       styles: stylesFn,
-      duration: 60 * 1000,
     });
   };
   return (

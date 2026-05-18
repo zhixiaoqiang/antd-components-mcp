@@ -696,7 +696,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Descriptions, Flex } from 'antd';
-import type { DescriptionsProps } from 'antd';
+import type { DescriptionsProps, GetProp } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -725,7 +725,9 @@ const styles: DescriptionsProps['styles'] = {
     color: '#000',
   },
 };
-const stylesFn: DescriptionsProps['styles'] = (info) => {
+const stylesFn: DescriptionsProps['styles'] = (
+  info,
+): GetProp<DescriptionsProps, 'styles', 'Return'> => {
   if (info.props.size === 'large') {
     return {
       root: {
@@ -733,7 +735,7 @@ const stylesFn: DescriptionsProps['styles'] = (info) => {
         border: '1px solid #CDC1FF',
       },
       label: { color: '#A294F9' },
-    } satisfies DescriptionsProps['styles'];
+    };
   }
   return {};
 };

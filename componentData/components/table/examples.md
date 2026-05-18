@@ -3691,6 +3691,61 @@ const data = [
 const App: React.FC = () => <Table<DataType> columns={columns} dataSource={data} />;
 export default App;
 ```
+### 统一列配置
+通过 `column` 在 Table 上统一设置列属性，并按需在单列上覆盖。
+
+```tsx
+import React from 'react';
+import type { TableProps } from 'antd';
+import { Table } from 'antd';
+interface DataType {
+  key: React.Key;
+  name: string;
+  address: string;
+  description: string;
+}
+const columns: TableProps<DataType>['columns'] = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    width: 140,
+  },
+  {
+    title: 'Description',
+    dataIndex: 'description',
+    width: 180,
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    align: 'left',
+    width: 220,
+  },
+];
+const data: DataType[] = [
+  {
+    key: '1',
+    name: 'John Brown',
+    description: 'Shared column props let repeated column settings live on the table.',
+    address: 'No. 1 Lake Park Road, Hangzhou, Zhejiang, China',
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    description: 'Columns can still override the default alignment or other shared props.',
+    address: 'No. 99 Garden Avenue, Pudong, Shanghai, China',
+  },
+];
+const App: React.FC = () => (
+  <Table<DataType>
+    columns={columns}
+    dataSource={data}
+    column={{ align: 'center', ellipsis: true }}
+    pagination={false}
+  />
+);
+export default App;
+```
 ### 自定义单元格省略提示
 设置 `column.ellipsis.showTitle` 关闭单元格内容自动省略后默认的 `title` 提示, 使用 `Tooltip` 替代。
 
@@ -4904,7 +4959,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Table } from 'antd';
-import type { TableProps } from 'antd';
+import type { GetProp, TableProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -4967,7 +5022,9 @@ const styles: TableProps<DataType>['styles'] = {
     },
   },
 };
-const stylesFn: TableProps<DataType>['styles'] = (info) => {
+const stylesFn: TableProps<DataType>['styles'] = (
+  info,
+): GetProp<TableProps<DataType>, 'styles', 'Return'> => {
   if (info?.props?.size === 'medium') {
     return {
       root: {
@@ -5002,7 +5059,7 @@ const stylesFn: TableProps<DataType>['styles'] = (info) => {
           color: '#b8bdfd',
         },
       },
-    } satisfies TableProps<DataType>['styles'];
+    };
   }
   return {};
 };

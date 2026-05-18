@@ -381,9 +381,6 @@ import React from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, message, Space } from 'antd';
-const onClick: MenuProps['onClick'] = ({ key }) => {
-  message.info(`Click on item ${key}`);
-};
 const items: MenuProps['items'] = [
   {
     label: '1st menu item',
@@ -398,16 +395,25 @@ const items: MenuProps['items'] = [
     key: '3',
   },
 ];
-const App: React.FC = () => (
-  <Dropdown menu={{ items, onClick }}>
-    <a onClick={(e) => e.preventDefault()}>
-      <Space>
-        Hover me, Click menu item
-        <DownOutlined />
-      </Space>
-    </a>
-  </Dropdown>
-);
+const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const onClick: MenuProps['onClick'] = ({ key }) => {
+    messageApi.info(`Click on item ${key}`);
+  };
+  return (
+    <>
+      {contextHolder}
+      <Dropdown menu={{ items, onClick }}>
+        <a onClick={(e) => e.preventDefault()}>
+          <Space>
+            Hover me, Click menu item
+            <DownOutlined />
+          </Space>
+        </a>
+      </Dropdown>
+    </>
+  );
+};
 export default App;
 ```
 ### 带下拉框的按钮
@@ -418,14 +424,6 @@ import React from 'react';
 import { DownOutlined, EllipsisOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, message, Space, Tooltip } from 'antd';
-const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-  message.info('Click on left button.');
-  console.log('click left button', e);
-};
-const handleMenuClick: MenuProps['onClick'] = (e) => {
-  message.info('Click on menu item.');
-  console.log('click', e);
-};
 const items: MenuProps['items'] = [
   {
     label: '1st menu item',
@@ -451,55 +449,69 @@ const items: MenuProps['items'] = [
     disabled: true,
   },
 ];
-const menuProps = {
-  items,
-  onClick: handleMenuClick,
+const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    messageApi.info('Click on left button.');
+    console.log('click left button', e);
+  };
+  const handleMenuClick: MenuProps['onClick'] = (e) => {
+    messageApi.info('Click on menu item.');
+    console.log('click', e);
+  };
+  const menuProps = {
+    items,
+    onClick: handleMenuClick,
+  };
+  return (
+    <>
+      {contextHolder}
+      <Space wrap>
+        <Space.Compact>
+          <Button onClick={handleButtonClick}>Dropdown</Button>
+          <Dropdown menu={menuProps} placement="bottomRight">
+            <Button icon={<EllipsisOutlined />} />
+          </Dropdown>
+        </Space.Compact>
+        <Space.Compact>
+          <Button onClick={handleButtonClick}>Dropdown</Button>
+          <Dropdown menu={menuProps} placement="bottomRight">
+            <Button icon={<UserOutlined />} />
+          </Dropdown>
+        </Space.Compact>
+        <Space.Compact>
+          <Button onClick={handleButtonClick} disabled>
+            Dropdown
+          </Button>
+          <Dropdown menu={menuProps} placement="bottomRight" disabled>
+            <Button icon={<EllipsisOutlined />} disabled />
+          </Dropdown>
+        </Space.Compact>
+        <Space.Compact>
+          <Tooltip title="tooltip">
+            <Button onClick={handleButtonClick}>With Tooltip</Button>
+          </Tooltip>
+          <Dropdown menu={menuProps} placement="bottomRight">
+            <Button loading />
+          </Dropdown>
+        </Space.Compact>
+        <Dropdown menu={menuProps}>
+          <Button onClick={handleButtonClick} icon={<DownOutlined />} iconPlacement="end">
+            Button
+          </Button>
+        </Dropdown>
+        <Space.Compact>
+          <Button onClick={handleButtonClick} danger>
+            Danger
+          </Button>
+          <Dropdown menu={menuProps} placement="bottomRight">
+            <Button icon={<EllipsisOutlined />} danger />
+          </Dropdown>
+        </Space.Compact>
+      </Space>
+    </>
+  );
 };
-const App: React.FC = () => (
-  <Space wrap>
-    <Space.Compact>
-      <Button onClick={handleButtonClick}>Dropdown</Button>
-      <Dropdown menu={menuProps} placement="bottomRight">
-        <Button icon={<EllipsisOutlined />} />
-      </Dropdown>
-    </Space.Compact>
-    <Space.Compact>
-      <Button onClick={handleButtonClick}>Dropdown</Button>
-      <Dropdown menu={menuProps} placement="bottomRight">
-        <Button icon={<UserOutlined />} />
-      </Dropdown>
-    </Space.Compact>
-    <Space.Compact>
-      <Button onClick={handleButtonClick} disabled>
-        Dropdown
-      </Button>
-      <Dropdown menu={menuProps} placement="bottomRight" disabled>
-        <Button icon={<EllipsisOutlined />} disabled />
-      </Dropdown>
-    </Space.Compact>
-    <Space.Compact>
-      <Tooltip title="tooltip">
-        <Button onClick={handleButtonClick}>With Tooltip</Button>
-      </Tooltip>
-      <Dropdown menu={menuProps} placement="bottomRight">
-        <Button loading />
-      </Dropdown>
-    </Space.Compact>
-    <Dropdown menu={menuProps}>
-      <Button onClick={handleButtonClick} icon={<DownOutlined />} iconPlacement="end">
-        Button
-      </Button>
-    </Dropdown>
-    <Space.Compact>
-      <Button onClick={handleButtonClick} danger>
-        Danger
-      </Button>
-      <Dropdown menu={menuProps} placement="bottomRight">
-        <Button icon={<EllipsisOutlined />} danger />
-      </Dropdown>
-    </Space.Compact>
-  </Space>
-);
 export default App;
 ```
 ### 扩展菜单
@@ -925,7 +937,7 @@ export default App;
 import React from 'react';
 import { DownOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Flex, Space } from 'antd';
-import type { DropdownProps, MenuProps } from 'antd';
+import type { DropdownProps, GetProp, MenuProps } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
@@ -975,7 +987,9 @@ const objectStyles: DropdownProps['styles'] = {
     backgroundColor: 'transparent',
   },
 };
-const functionStyles: DropdownProps['styles'] = (info) => {
+const functionStyles: DropdownProps['styles'] = (
+  info,
+): GetProp<DropdownProps, 'styles', 'Return'> => {
   const { props } = info;
   const isClick = props.trigger?.includes('click');
   if (isClick) {
@@ -984,7 +998,7 @@ const functionStyles: DropdownProps['styles'] = (info) => {
         borderColor: '#1890ff',
         borderRadius: '8px',
       },
-    } satisfies DropdownProps['styles'];
+    };
   }
   return {};
 };

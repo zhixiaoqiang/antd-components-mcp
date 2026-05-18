@@ -30,13 +30,15 @@
 | title | 文字内容 | ReactNode | - |  |
 | children | 嵌套的 Anchor Link，`注意：水平方向该属性不支持` | [AnchorItem](#anchoritem)\[] | - |  |
 | replace | 替换浏览器历史记录中的项目 href 而不是推送它 | boolean | false | 5.7.0 |
+| targetOffset | 设置单个锚点的滚动偏移量，会覆盖 Anchor 组件的 targetOffset 属性 | number | - | 6.4.0 |
 ### Link Props
 建议使用 items 形式。
-| 参数   | 说明                           | 类型      | 默认值 | 版本 |
-| ------ | ------------------------------ | --------- | ------ | ---- |
-| href   | 锚点链接                       | string    | -      |      |
-| target | 该属性指定在何处显示链接的资源 | string    | -      |      |
-| title  | 文字内容                       | ReactNode | -      |      |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| href | 锚点链接 | string | - |  |
+| target | 该属性指定在何处显示链接的资源 | string | - |  |
+| title | 文字内容 | ReactNode | - |  |
+| targetOffset | 设置单个锚点的滚动偏移量，会覆盖 Anchor 组件的 targetOffset 属性 | number | - | 6.4.0 |
 ## FAQ
 ### 在 `5.25.0+` 版本中，锚点跳转后，目标元素的 `:target` 伪类未按预期生效 {#faq-target-pseudo-class}
 出于页面性能优化考虑，锚点跳转的实现方式从 `window.location.href` 调整为 `window.history.pushState/replaceState`。由于 `pushState/replaceState` 不会触发页面重载，因此浏览器不会自动更新 `:target` 伪类的匹配状态。可以手动构造完整URL：`href = window.location.origin + window.location.pathname + '#xxx'` 来解决这问题。

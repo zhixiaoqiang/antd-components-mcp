@@ -207,7 +207,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Breadcrumb, Flex } from 'antd';
-import type { BreadcrumbProps } from 'antd';
+import type { BreadcrumbProps, GetProp } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -226,13 +226,15 @@ const styles: BreadcrumbProps['styles'] = {
   item: { color: '#1890ff' },
   separator: { color: 'rgba(0, 0, 0, 0.45)' },
 };
-const stylesFn: BreadcrumbProps['styles'] = (info) => {
+const stylesFn: BreadcrumbProps['styles'] = (
+  info,
+): GetProp<BreadcrumbProps, 'styles', 'Return'> => {
   const items = info.props.items || [];
   if (items.length > 2) {
     return {
       root: { border: '1px solid #F5EFFF', padding: 8, borderRadius: 4 },
       item: { color: '#8F87F1' },
-    } satisfies BreadcrumbProps['styles'];
+    };
   }
   return {};
 };

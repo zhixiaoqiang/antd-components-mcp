@@ -965,21 +965,23 @@ export default App;
 ```tsx
 import * as React from 'react';
 import { Button, Space } from 'antd';
-import type { SpaceProps } from 'antd';
+import type { GetProp, SpaceProps } from 'antd';
 const classNamesObject: SpaceProps['classNames'] = {
   root: 'demo-space-root',
   item: 'demo-space-item',
   separator: 'demo-space-separator',
 };
-const classNamesFn: SpaceProps['classNames'] = (info) => {
+const classNamesFn: SpaceProps['classNames'] = (
+  info,
+): GetProp<SpaceProps, 'classNames', 'Return'> => {
   if (info.props.orientation === 'vertical') {
     return {
       root: 'demo-space-root--vertical',
-    } satisfies SpaceProps['classNames'];
+    };
   } else {
     return {
       root: 'demo-space-root--horizontal',
-    } satisfies SpaceProps['classNames'];
+    };
   }
 };
 const stylesObject: SpaceProps['styles'] = {
@@ -987,7 +989,7 @@ const stylesObject: SpaceProps['styles'] = {
   item: { backgroundColor: '#f0f0f0', padding: 4 },
   separator: { color: 'red', fontWeight: 'bold' },
 };
-const stylesFn: SpaceProps['styles'] = (info) => {
+const stylesFn: SpaceProps['styles'] = (info): GetProp<SpaceProps, 'styles', 'Return'> => {
   if (info.props.size === 'large') {
     return {
       root: {
@@ -995,14 +997,14 @@ const stylesFn: SpaceProps['styles'] = (info) => {
         borderColor: '#1890ff',
         padding: 8,
       },
-    } satisfies SpaceProps['styles'];
+    };
   } else {
     return {
       root: {
         backgroundColor: '#fff7e6',
         borderColor: '#fa8c16',
       },
-    } satisfies SpaceProps['styles'];
+    };
   }
 };
 const App: React.FC = () => {
@@ -1021,5 +1023,27 @@ const App: React.FC = () => {
     </div>
   );
 };
+export default App;
+```
+### 自定义主题
+使用 `ConfigProvider` 自定义 `Space.Addon` 的主题样式。
+
+```tsx
+import React from 'react';
+import { Button, ConfigProvider, Space } from 'antd';
+const App: React.FC = () => (
+  <ConfigProvider
+    theme={{
+      components: {
+        Addon: { colorText: 'blue', algorithm: true },
+      },
+    }}
+  >
+    <Space.Compact>
+      <Space.Addon>Addon</Space.Addon>
+      <Button type="primary">Button</Button>
+    </Space.Compact>
+  </ConfigProvider>
+);
 export default App;
 ```

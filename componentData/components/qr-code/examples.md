@@ -287,7 +287,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, QRCode } from 'antd';
-import type { QRCodeProps } from 'antd';
+import type { GetProp, QRCodeProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   root: css`
@@ -304,7 +304,7 @@ const stylesObject: QRCodeProps['styles'] = {
     backgroundColor: 'rgb(24, 144, 255, 0.1)',
   },
 };
-const stylesFunction: QRCodeProps['styles'] = (info) => {
+const stylesFunction: QRCodeProps['styles'] = (info): GetProp<QRCodeProps, 'styles', 'Return'> => {
   if (info.props.type === 'canvas') {
     return {
       root: {
@@ -313,7 +313,7 @@ const stylesFunction: QRCodeProps['styles'] = (info) => {
         padding: 16,
         backgroundColor: 'rgba(255, 77, 79, 0.1)',
       },
-    } satisfies QRCodeProps['styles'];
+    };
   }
 };
 const App: React.FC = () => {

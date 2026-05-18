@@ -1057,7 +1057,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Cascader, Flex } from 'antd';
-import type { CascaderProps } from 'antd';
+import type { CascaderProps, GetProp } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => {
   return {
@@ -1113,7 +1113,7 @@ const stylesObject: CascaderProps['styles'] = {
     color: '#ccc',
   },
 };
-const stylesFn: CascaderProps['styles'] = (info) => {
+const stylesFn: CascaderProps['styles'] = (info): GetProp<CascaderProps, 'styles', 'Return'> => {
   if (info.props.variant === 'filled') {
     return {
       prefix: {
@@ -1127,7 +1127,7 @@ const stylesFn: CascaderProps['styles'] = (info) => {
           color: '#1890ff',
         },
       },
-    } satisfies CascaderProps['styles'];
+    };
   }
   return {};
 };

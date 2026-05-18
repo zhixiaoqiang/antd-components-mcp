@@ -223,6 +223,7 @@ export default App;
 import React, { useState } from 'react';
 import { Button, message, Popconfirm, Switch } from 'antd';
 const App: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [open, setOpen] = useState(false);
   const [condition, setCondition] = useState(true);
   const changeCondition = (checked: boolean) => {
@@ -230,11 +231,11 @@ const App: React.FC = () => {
   };
   const confirm = () => {
     setOpen(false);
-    message.success('Next step.');
+    messageApi.success('Next step.');
   };
   const cancel = () => {
     setOpen(false);
-    message.error('Click on cancel.');
+    messageApi.error('Click on cancel.');
   };
   const handleOpenChange = (newOpen: boolean) => {
     if (!newOpen) {
@@ -250,24 +251,27 @@ const App: React.FC = () => {
     }
   };
   return (
-    <div>
-      <Popconfirm
-        title="Delete the task"
-        description="Are you sure to delete this task?"
-        open={open}
-        onOpenChange={handleOpenChange}
-        onConfirm={confirm}
-        onCancel={cancel}
-        okText="Yes"
-        cancelText="No"
-      >
-        <Button danger>Delete a task</Button>
-      </Popconfirm>
-      <br />
-      <br />
-      Whether directly execute：
-      <Switch defaultChecked onChange={changeCondition} />
-    </div>
+    <>
+      {contextHolder}
+      <div>
+        <Popconfirm
+          title="Delete the task"
+          description="Are you sure to delete this task?"
+          open={open}
+          onOpenChange={handleOpenChange}
+          onConfirm={confirm}
+          onCancel={cancel}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button danger>Delete a task</Button>
+        </Popconfirm>
+        <br />
+        <br />
+        Whether directly execute：
+        <Switch defaultChecked onChange={changeCondition} />
+      </div>
+    </>
   );
 };
 export default App;
@@ -360,7 +364,7 @@ export default App;
 ```tsx
 import React from 'react';
 import { Button, Flex, Popconfirm } from 'antd';
-import type { PopconfirmProps } from 'antd';
+import type { GetProp, PopconfirmProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const classNames = createStaticStyles(({ css }) => ({
   container: css`
@@ -379,7 +383,9 @@ const styles: PopconfirmProps['styles'] = {
     color: '#262626',
   },
 };
-const stylesFn: PopconfirmProps['styles'] = (info) => {
+const stylesFn: PopconfirmProps['styles'] = (
+  info,
+): GetProp<PopconfirmProps, 'styles', 'Return'> => {
   if (!info.props.arrow) {
     return {
       container: {
@@ -393,9 +399,8 @@ const stylesFn: PopconfirmProps['styles'] = (info) => {
       content: {
         color: '#fff',
       },
-    } satisfies PopconfirmProps['styles'];
+    };
   }
-  return {};
 };
 const App: React.FC = () => {
   return (

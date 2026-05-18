@@ -458,7 +458,7 @@ export default App;
 ```tsx
 import React, { useRef, useState } from 'react';
 import { Button, Divider, Flex, Space, Tour } from 'antd';
-import type { TourProps, TourStepProps } from 'antd';
+import type { GetProp, TourProps, TourStepProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
 const btnProps: {
   nextButtonProps: TourStepProps['nextButtonProps'];
@@ -478,8 +478,12 @@ const btnProps: {
   },
 };
 const classNames = createStaticStyles(({ css }) => ({
-  root: css`border-radius: 4px;`,
-  section: css`border-radius: 8px;`,
+  root: css`
+    border-radius: 4px;
+  `,
+  section: css`
+    border-radius: 8px;
+  `,
 }));
 const stylesObject: TourProps['styles'] = {
   mask: {
@@ -493,7 +497,7 @@ const stylesObject: TourProps['styles'] = {
     borderRadius: '12px 12px 0 0',
   },
 };
-const stylesFunction: TourProps['styles'] = (info) => {
+const stylesFunction: TourProps['styles'] = (info): GetProp<TourProps, 'styles', 'Return'> => {
   if (info.props.type === 'primary') {
     return {
       mask: {
@@ -506,7 +510,7 @@ const stylesFunction: TourProps['styles'] = (info) => {
       cover: {
         borderRadius: '12px 12px 0 0',
       },
-    } satisfies TourProps['styles'];
+    };
   }
   return {};
 };
