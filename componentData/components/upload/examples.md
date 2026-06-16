@@ -487,7 +487,7 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 文件夹上传
-支持上传一个文件夹里的所有文件。 [Safari 里仍然能选择文件?](#%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8A%E4%BC%A0%E5%9C%A8-safari-%E4%BB%8D%E7%84%B6%E5%8F%AF%E4%BB%A5%E9%80%89%E4%B8%AD%E6%96%87%E4%BB%B6)
+支持上传一个文件夹里的所有文件。 [Safari 里仍然能选择文件?](#faq-safari-folder-upload)
 
 ```tsx
 import React from 'react';
@@ -1058,7 +1058,7 @@ const DraggableUploadListItem = ({ originNode, file }: DraggableUploadListItemPr
       ref={setNodeRef}
       style={style}
       // prevent preview event when drag end
-      className={isDragging ? 'is-dragging' : ''}
+      className={isDragging ? 'is-dragging' : undefined}
       {...attributes}
       {...listeners}
     >

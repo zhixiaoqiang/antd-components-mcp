@@ -19,10 +19,16 @@ export default App;
 
 ```tsx
 import React, { useEffect, useState } from 'react';
-import { Button, Flex, Image } from 'antd';
+import { Button, Flex, Image, theme } from 'antd';
 const GeneratingProgress: React.FC = () => {
+  const { token } = theme.useToken();
   const [percent, setPercent] = useState(0);
   const [status, setStatus] = useState<'idle' | 'generating' | 'complete'>('idle');
+  const imageStyles = {
+    root: { borderRadius: token.borderRadiusLG },
+    image: { borderRadius: token.borderRadiusLG },
+    cover: { borderRadius: token.borderRadiusLG },
+  };
   useEffect(() => {
     if (status === 'generating' && percent < 100) {
       const timer = setTimeout(() => {
@@ -45,14 +51,14 @@ const GeneratingProgress: React.FC = () => {
       <Image
         width={200}
         height={200}
-        style={{ borderRadius: 8 }}
+        styles={imageStyles}
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
       />
     ) : (
       <Image
         width={200}
         height={200}
-        style={{ borderRadius: 8 }}
+        styles={imageStyles}
         placeholder={{
           progress: {
             percent: Math.round(percent),
@@ -76,32 +82,33 @@ const GeneratingProgress: React.FC = () => {
   );
 };
 const App: React.FC = () => {
+  const { token } = theme.useToken();
   const [random, setRandom] = useState<number>(() => Date.now());
+  const imageStyles = {
+    root: { borderRadius: token.borderRadiusLG },
+    image: { borderRadius: token.borderRadiusLG },
+    cover: { borderRadius: token.borderRadiusLG },
+  };
   return (
     <>
       <Flex gap={16} wrap>
+        <Image width={200} height={200} styles={imageStyles} placeholder={{ progress: true }} />
         <Image
           width={200}
           height={200}
-          style={{ borderRadius: 8 }}
-          placeholder={{ progress: true }}
-        />
-        <Image
-          width={200}
-          height={200}
-          style={{ borderRadius: 8 }}
+          styles={imageStyles}
           placeholder={{ progress: { render: () => 'loading...' } }}
         />
         <Image
           width={200}
           height={200}
-          style={{ borderRadius: 8 }}
+          styles={imageStyles}
           placeholder={{ progress: { percent: 50 } }}
         />
         <Image
           width={200}
           height={200}
-          style={{ borderRadius: 8 }}
+          styles={imageStyles}
           placeholder={{
             progress: {
               percent: 75,
@@ -129,7 +136,7 @@ const App: React.FC = () => {
             width={200}
             height={200}
             alt="basic image"
-            style={{ borderRadius: 8 }}
+            styles={imageStyles}
             src={`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?${random}`}
             placeholder={
               <div
@@ -138,7 +145,7 @@ const App: React.FC = () => {
                   height: '100%',
                   background: 'rgba(255, 255, 255, 0.3)',
                   backdropFilter: 'blur(10px)',
-                  borderRadius: 8,
+                  borderRadius: token.borderRadiusLG,
                 }}
               />
             }
@@ -295,7 +302,7 @@ import {
   ZoomInOutlined,
   ZoomOutOutlined,
 } from '@ant-design/icons';
-import { Image, Slider, Space } from 'antd';
+import { Image, Space } from 'antd';
 const imageList = [
   'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg',
@@ -341,42 +348,23 @@ const App: React.FC = () => {
               onReset,
             },
           },
-        ) => {
-          const handleScaleChange = (nextScale: number) => {
-            // `@rc-component/image` v1.7.x no longer exposes an `onChangeScale` action.
-            // We approximate scale changes by triggering one step of zoom in/out.
-            if (nextScale > scale) {
-              onZoomIn();
-            } else if (nextScale < scale) {
-              onZoomOut();
-            }
-          };
-          return (
-            <Space size={12} className="toolbar-wrapper">
-              <LeftOutlined disabled={current === 0} onClick={() => onActive?.(-1)} />
-              <RightOutlined
-                disabled={current === imageList.length - 1}
-                onClick={() => onActive?.(1)}
-              />
-              <DownloadOutlined onClick={onDownload} />
-              <SwapOutlined rotate={90} onClick={onFlipY} />
-              <SwapOutlined onClick={onFlipX} />
-              <RotateLeftOutlined onClick={onRotateLeft} />
-              <RotateRightOutlined onClick={onRotateRight} />
-              <ZoomOutOutlined disabled={scale === 1} onClick={onZoomOut} />
-              <Slider
-                min={1}
-                max={50}
-                step={0.1}
-                value={scale}
-                styles={{ root: { width: 100, marginInline: 12 } }}
-                onChange={handleScaleChange}
-              />
-              <ZoomInOutlined disabled={scale === 50} onClick={onZoomIn} />
-              <UndoOutlined onClick={onReset} />
-            </Space>
-          );
-        },
+        ) => (
+          <Space size={12} className="toolbar-wrapper">
+            <LeftOutlined disabled={current === 0} onClick={() => onActive?.(-1)} />
+            <RightOutlined
+              disabled={current === imageList.length - 1}
+              onClick={() => onActive?.(1)}
+            />
+            <DownloadOutlined onClick={onDownload} />
+            <SwapOutlined rotate={90} onClick={onFlipY} />
+            <SwapOutlined onClick={onFlipX} />
+            <RotateLeftOutlined onClick={onRotateLeft} />
+            <RotateRightOutlined onClick={onRotateRight} />
+            <ZoomOutOutlined disabled={scale === 1} onClick={onZoomOut} />
+            <ZoomInOutlined disabled={scale === 50} onClick={onZoomIn} />
+            <UndoOutlined onClick={onReset} />
+          </Space>
+        ),
         onChange: (index) => {
           setCurrent(index);
         },

@@ -184,7 +184,6 @@ export default App;
 
 ```tsx
 import React, { useMemo, useState } from 'react';
-import type { TabBarExtraMap } from '@rc-component/tabs/es/interface';
 import { Button, Checkbox, Divider, Tabs } from 'antd';
 const CheckboxGroup = Checkbox.Group;
 const operations = <Button>Extra Action</Button>;
@@ -194,6 +193,7 @@ const operationsSlot: Record<PositionType, React.ReactNode> = {
 };
 const options = ['left', 'right'];
 type PositionType = 'left' | 'right';
+type TabBarExtraMap = Partial<Record<PositionType, React.ReactNode>>;
 const items = Array.from({ length: 3 }).map((_, i) => {
   const id = String(i + 1);
   return {

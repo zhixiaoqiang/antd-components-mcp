@@ -5,20 +5,20 @@
 ```tsx
 import React from 'react';
 import type { DatePickerProps } from 'antd';
-import { DatePicker, Space } from 'antd';
+import { DatePicker, Flex } from 'antd';
 const onChange: DatePickerProps['onChange'] = (date, dateString) => {
   console.log(date, dateString);
 };
-const App: React.FC = () => (
-  <Space vertical>
+const Demo: React.FC = () => (
+  <Flex gap="small" justify="flex-start" align="flex-start" vertical>
     <DatePicker onChange={onChange} />
     <DatePicker onChange={onChange} picker="week" />
     <DatePicker onChange={onChange} picker="month" />
     <DatePicker onChange={onChange} picker="quarter" />
     <DatePicker onChange={onChange} picker="year" />
-  </Space>
+  </Flex>
 );
-export default App;
+export default Demo;
 ```
 ### 范围选择器
 通过设置 `picker` 属性，指定范围选择器类型。
