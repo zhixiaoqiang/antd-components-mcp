@@ -110,7 +110,7 @@ const IconSlider: React.FC<IconSliderProps> = (props) => {
   const [value, setValue] = useState(0);
   const mid = Number(((max - min) / 2).toFixed(5));
   const preColorCls = value >= mid ? '' : 'icon-wrapper-active';
-  const nextColorCls = value >= mid ? 'icon-wrapper-active' : '';
+  const nextColorCls = value >= mid ? 'icon-wrapper-active' : undefined;
   return (
     <div className="icon-wrapper">
       <FrownOutlined className={preColorCls} />

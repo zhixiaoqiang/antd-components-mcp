@@ -2,22 +2,21 @@
 - 需要表示开关状态/两种状态之间的切换时；
 - 和 `checkbox` 的区别是，切换 `switch` 会直接触发状态改变，而 `checkbox` 一般用于状态标记，需要和提交操作配合。
 ## API
-| 参数 | 说明 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | --- | --- |
-| checked | 指定当前是否选中 | boolean | false |  |
-| checkedChildren | 选中时的内容 | ReactNode | - |  |
-| className | Switch 器类名 | string | - |  |
-| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  |
-| defaultChecked | 初始是否选中 | boolean | false |  |
-| defaultValue | `defaultChecked` 的别名 | boolean | - | 5.12.0 |
-| disabled | 是否禁用 | boolean | false |  |
-| loading | 加载中的开关 | boolean | false |  |
-| size | 开关大小，可选值：`medium` `small` | string | `medium` |  |
-| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  |
-| unCheckedChildren | 非选中时的内容 | ReactNode | - |  |
-| value | `checked` 的别名 | boolean | - | 5.12.0 |
-| onChange | 变化时的回调函数 | function(checked: boolean, event: Event) | - |  |
-| onClick | 点击时的回调函数 | function(checked: boolean, event: Event) | - |  |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| --- | --- | --- | --- | --- | --- |
+| checked | 指定当前是否选中 | boolean | false |  | × |
+| checkedChildren | 选中时的内容 | ReactNode | - |  | × |
+| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |
+| defaultChecked | 初始是否选中 | boolean | false |  | × |
+| defaultValue | `defaultChecked` 的别名 | boolean | - | 5.12.0 | × |
+| disabled | 是否禁用 | boolean | false |  | × |
+| loading | 加载中的开关 | boolean | false |  | × |
+| size | 开关大小，可选值：`medium` `small` | string | `medium` |  | × |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |
+| unCheckedChildren | 非选中时的内容 | ReactNode | - |  | × |
+| value | `checked` 的别名 | boolean | - | 5.12.0 | × |
+| onChange | 变化时的回调函数 | function(checked: boolean, event: Event) | - |  | × |
+| onClick | 点击时的回调函数 | function(checked: boolean, event: Event) | - |  | × |
 ## 方法
 | 名称    | 描述     |
 | ------- | -------- |

@@ -3369,13 +3369,16 @@ interface DragIndexState {
 }
 const DragIndexContext = createContext<DragIndexState>({ active: -1, over: -1 });
 const dragActiveStyle = (dragState: DragIndexState, id: string) => {
-  const { active, over } = dragState;
+  const { active, over, direction } = dragState;
   // drag active style
   let style: React.CSSProperties = {};
   if (active && active === id) {
     style = { backgroundColor: 'gray', opacity: 0.5 };
   } else if (over && id === over && active !== over) {
-    style = { borderInlineStart: '1px dashed gray' };
+    style =
+      direction === 'right'
+        ? { borderInlineEnd: '1px dashed gray' }
+        : { borderInlineStart: '1px dashed gray' };
   }
   return style;
 };
@@ -5021,6 +5024,14 @@ const styles: TableProps<DataType>['styles'] = {
       padding: 10,
     },
   },
+  body: {
+    row: {
+      outline: '1px dashed rgba(226, 225, 225, 0.1)',
+    },
+    cell: {
+      outline: '1px dashed rgba(226, 225, 225, 0.1)',
+    },
+  },
 };
 const stylesFn: TableProps<DataType>['styles'] = (
   info,
@@ -5078,6 +5089,8 @@ const App: React.FC = () => {
         title={() => 'Table Object Styles'}
         footer={() => 'Table Object Footer'}
         size="small"
+        virtual
+        scroll={{ y: 300 }}
       />
       <Table<DataType>
         {...sharedProps}

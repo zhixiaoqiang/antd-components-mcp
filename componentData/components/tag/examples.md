@@ -18,6 +18,7 @@ const App: React.FC = () => (
         href="https://github.com/ant-design/ant-design/issues/1862"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Ant Design issue"
       >
         Link
       </a>
@@ -586,6 +587,7 @@ const App: React.FC = () => (
             href="https://github.com/ant-design/ant-design/issues/1862"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Ant Design issue"
           >
             Link
           </a>
@@ -595,6 +597,7 @@ const App: React.FC = () => (
             href="https://github.com/ant-design/ant-design/issues/1862"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Ant Design issue"
           >
             Link
           </a>
@@ -619,20 +622,8 @@ const App: React.FC = () => (
         </Tag>
       </Flex>
     </ConfigProvider>
-    <ConfigProvider
-      theme={{
-        algorithm: theme.darkAlgorithm,
-      }}
-    >
-      <Flex
-        gap="small"
-        align="center"
-        wrap
-        style={{
-          background: '#000',
-          padding: 4,
-        }}
-      >
+    <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
+      <Flex gap="small" align="center" wrap style={{ backgroundColor: '#000', padding: 4 }}>
         <Tag variant="solid" color="default">
           Dark
         </Tag>
