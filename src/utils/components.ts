@@ -3,6 +3,7 @@ import { EXTRACTED_COMPONENTS_DATA_CHANGELOG_PATH, DOC_FILE_NAME, EXAMPLE_FILE_N
 import { Cache } from "./cache";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
+import fetch from "node-fetch";
 
 import type { ComponentData } from '../scripts/extract-docs';
 
@@ -47,16 +48,37 @@ export async function findComponentByName(componentName: string) {
   );
 }
 
-/** 获取 Ant Design 特定组件文档 */
-export const getComponentDocumentation = async (componentName: string) => {
+/** 获取 Ant Design 特定组件文档（优先远程，失败回退本地） */
+export const getComponentDocumentation = async (componentName: string, lang: string = 'zh-CN') => {
   const component = await findComponentByName(componentName);
 
   if (!component) {
     return ` "${componentName}" 组件文档不存在`;
   }
 
-  const docPath = join(EXTRACTED_COMPONENTS_DATA_PATH, component.dirName, DOC_FILE_NAME);
+  // 优先尝试远程获取
+  const remoteUrl = `https://raw.githubusercontent.com/ant-design/ant-design/refs/heads/master/components/${component.dirName}/index.${lang}.md`;
+ 
+  try {
+    const remoteRes = await fetch(remoteUrl);
+    
+    if (remoteRes.ok) {
+      
+      const remoteText = await remoteRes.text();
+     
+      // 缓存远程内容
+      const cacheComponentDoc = componentCache.get('componentsDoc') || {};
+      cacheComponentDoc[component.name] = remoteText;
+      componentCache.set('componentsDoc', cacheComponentDoc);
+      
+      return remoteText;
+    }
+  } catch (e) {
+    // 忽略，回退本地
+  }
 
+  // 本地回退
+  const docPath = join(EXTRACTED_COMPONENTS_DATA_PATH, component.dirName, DOC_FILE_NAME);
   try {
     const cacheComponentDoc = componentCache.get('componentsDoc') || {}
     if (cacheComponentDoc?.[component.name]) {
@@ -65,13 +87,10 @@ export const getComponentDocumentation = async (componentName: string) => {
 
     if (existsSync(docPath)) {
       const docResult = await readFile(docPath, "utf-8");
-
       cacheComponentDoc[component.name] = docResult
       componentCache.set('componentsDoc', cacheComponentDoc)
-
       return docResult
     }
-
     return `${component.name} 组件文档不存在`;
   } catch (error) {
     console.error(`获取 ${component.name} 组件文档错误: ${(error as Error).message}`);
@@ -79,16 +98,34 @@ export const getComponentDocumentation = async (componentName: string) => {
   }
 };
 
-/** 获取 Ant Design 特定组件示例 */
-export const listComponentExamples = async (componentName: string) => {
+/** 获取 Ant Design 特定组件示例（优先远程，失败回退本地） */
+export const listComponentExamples = async (componentName: string, lang: string = 'zh-CN') => {
   const component = await findComponentByName(componentName);
 
   if (!component) {
     return "当前组件不存在";
   }
 
-  const examplesMdPath = join(EXTRACTED_COMPONENTS_DATA_PATH, component.dirName, EXAMPLE_FILE_NAME);
+  // 优先尝试远程获取
+  const remoteUrl = `https://raw.githubusercontent.com/ant-design/ant-design/refs/heads/master/components/${component.dirName}/demo/index.${lang}.md`;
+  console.error('Attempting remote fetch for example:', remoteUrl);
+  try {
+    const remoteRes = await fetch(remoteUrl);
 
+    if (remoteRes.ok) {
+      console.error('Remote fetch successful for example:', remoteUrl);
+      const remoteText = await remoteRes.text();
+      const cacheComponentExample = componentCache.get('componentExample') || {};
+      cacheComponentExample[component.name] = remoteText;
+      componentCache.set('componentExample', cacheComponentExample);
+      return remoteText;
+    }
+  } catch (e) {
+    // 忽略，回退本地
+  }
+
+  // 本地回退
+  const examplesMdPath = join(EXTRACTED_COMPONENTS_DATA_PATH, component.dirName, EXAMPLE_FILE_NAME);
   if (!existsSync(examplesMdPath)) {
     return `${component.name} 的示例代码不存在`;
   }
@@ -97,16 +134,12 @@ export const listComponentExamples = async (componentName: string) => {
     if (cacheComponentExample?.[component.name]) {
       return cacheComponentExample[component.name]
     }
-
     if (existsSync(examplesMdPath)) {
       const exampleResult = await readFile(examplesMdPath, "utf-8");
-
       cacheComponentExample[component.name] = exampleResult
       componentCache.set('componentExample', cacheComponentExample)
-
       return exampleResult
     }
-
     return await readFile(examplesMdPath, "utf-8");
   } catch (error) {
     console.error(`${component.name} 的示例代码不存在: ${(error as Error).message}`);
