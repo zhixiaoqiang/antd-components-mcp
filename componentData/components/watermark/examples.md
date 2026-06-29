@@ -13,13 +13,13 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 多行水印
-通过 `content` 设置 字符串数组 指定多行文字水印内容。
+通过 `content` 设置字符串和 `WatermarkText` 组成的数组指定多行文字水印内容，并可单独调整每行文字样式。
 
 ```tsx
 import React from 'react';
 import { Watermark } from 'antd';
 const App: React.FC = () => (
-  <Watermark content={['Ant Design', 'Happy Working']}>
+  <Watermark content={['Ant Design', { text: 'Happy Working', font: { fontSize: 12 } }]}>
     <div style={{ height: 500 }} />
   </Watermark>
 );
