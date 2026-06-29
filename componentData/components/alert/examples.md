@@ -372,6 +372,54 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 自定义标题对齐
+未设置 `description` 时，Alert 会让图标、内容、操作区和关闭按钮作为整体垂直居中。组件库不默认改为 `flex-start` 布局并通过 token 补偿偏移，是因为当 `styles` 自定义字体、行高或操作区尺寸后，token 推导出的偏移量可能不再匹配实际样式。若标题可能换行，并希望这些元素与标题首行对齐，可以通过语义化 `styles` 自行调整。
+
+```tsx
+import React from 'react';
+import { Alert, Button, Flex } from 'antd';
+import type { AlertProps } from 'antd';
+const wrapperStyle: React.CSSProperties = {
+  width: 360,
+};
+const title = 'Long alert title wraps to multiple lines when the alert container is narrow enough.';
+const titleLineHeight = 22;
+const iconSize = 14;
+const closeIconSize = 12;
+const smallButtonHeight = 24;
+const firstLineStyles: AlertProps['styles'] = {
+  root: {
+    alignItems: 'flex-start',
+  },
+  icon: {
+    marginBlockStart: (titleLineHeight - iconSize) / 2,
+  },
+  actions: {
+    marginBlockStart: (titleLineHeight - smallButtonHeight) / 2,
+  },
+  close: {
+    marginBlockStart: (titleLineHeight - closeIconSize) / 2,
+  },
+};
+const App: React.FC = () => (
+  <Flex vertical gap="middle" style={wrapperStyle}>
+    <Alert title={title} type="info" showIcon closable styles={firstLineStyles} />
+    <Alert
+      title={title}
+      type="success"
+      showIcon
+      closable
+      styles={firstLineStyles}
+      action={
+        <Button size="small" type="text">
+          Action
+        </Button>
+      }
+    />
+  </Flex>
+);
+export default App;
+```
 ### 组件 Token
 自定义组件 Token。
 

@@ -90,10 +90,11 @@ interface CountConfig {
 | onChange | 当输入框内容全部填充时触发回调 | (value: string) => void | - |  | × |
 | onInput | 输入值变化时触发的回调 | (value: string[]) => void | - | `5.22.0` | × |
 #### VisibilityToggle
-| 参数            | 说明                 | 类型              | 默认值 | 版本 |
-| --------------- | -------------------- | ----------------- | ------ | ---- |
-| visible         | 用于手动控制密码显隐 | boolean           | false  | 4.24 |
-| onVisibleChange | 显隐密码的回调       | (visible) => void | -      | 4.24 |
+| 参数            | 说明                      | 类型              | 默认值 | 版本  |
+| --------------- | ------------------------- | ----------------- | ------ | ----- |
+| tabIndex        | 设置切换按钮的 `tabIndex` | number            | 0      | 6.5.0 |
+| visible         | 用于手动控制密码显隐      | boolean           | false  | 4.24  |
+| onVisibleChange | 显隐密码的回调            | (visible) => void | -      | 4.24  |
 #### Input Methods
 | 名称 | 说明 | 参数 | 版本 |
 | --- | --- | --- | --- |

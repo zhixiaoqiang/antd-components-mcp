@@ -327,6 +327,51 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### 禁用指定滑块
+设置 `disabled` 为数组，可以单独禁用 range 模式下特定的 handle。禁用后该 handle 作为移动边界，其他 handle 无法越过。
+
+```tsx
+import React from 'react';
+import { Checkbox, Flex, Slider } from 'antd';
+const handleOptions = [
+  { key: 'start', label: 'Disabled Handle 1' },
+  { key: 'middle', label: 'Disabled Handle 2' },
+  { key: 'end', label: 'Disabled Handle 3' },
+];
+const App: React.FC = () => {
+  const [value, setValue] = React.useState([20, 50, 80]);
+  const [disabled, setDisabled] = React.useState<boolean[]>([false, false, false]);
+  const handleDisabledChange = (index: number, checked: boolean) => {
+    const newDisabled = [...disabled];
+    newDisabled[index] = checked;
+    setDisabled(newDisabled);
+  };
+  return (
+    <>
+      <Slider
+        range={{ draggableTrack: true, minCount: 2, maxCount: 5 }}
+        value={value}
+        onChange={setValue}
+        disabled={disabled}
+      />
+      <Flex gap="small" align="center" justify="flex-start" style={{ marginTop: 16 }}>
+        {handleOptions.map((handle, index) => {
+          return (
+            <Checkbox
+              key={`item-${handle.key}`}
+              checked={disabled[index]}
+              onChange={(e) => handleDisabledChange(index, e.target.checked)}
+            >
+              {handle.label}
+            </Checkbox>
+          );
+        })}
+      </Flex>
+    </>
+  );
+};
+export default App;
+```
 ### 自定义语义结构的样式和类
 通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Sliders 的[语义化结构](#semantic-dom)样式。
 

@@ -100,7 +100,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 弹出位置
-支持 6 个弹出位置。
+支持 12 个弹出位置。
 
 ```tsx
 import React from 'react';
@@ -154,6 +154,28 @@ const App: React.FC = () => (
       </Dropdown>
       <Dropdown menu={{ items }} placement="topRight">
         <Button>topRight</Button>
+      </Dropdown>
+    </Space>
+    <Space wrap>
+      <Dropdown menu={{ items }} placement="leftTop">
+        <Button>leftTop</Button>
+      </Dropdown>
+      <Dropdown menu={{ items }} placement="left">
+        <Button>left</Button>
+      </Dropdown>
+      <Dropdown menu={{ items }} placement="leftBottom">
+        <Button>leftBottom</Button>
+      </Dropdown>
+    </Space>
+    <Space wrap>
+      <Dropdown menu={{ items }} placement="rightTop">
+        <Button>rightTop</Button>
+      </Dropdown>
+      <Dropdown menu={{ items }} placement="right">
+        <Button>right</Button>
+      </Dropdown>
+      <Dropdown menu={{ items }} placement="rightBottom">
+        <Button>rightBottom</Button>
       </Dropdown>
     </Space>
   </Space>
