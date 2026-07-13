@@ -320,6 +320,7 @@ import React from 'react';
 import { Calendar, Col, Radio, Row, Select } from 'antd';
 import type { CalendarProps } from 'antd';
 import { createStyles } from 'antd-style';
+import type { DefaultOptionType } from 'antd/es/select';
 import { clsx } from 'clsx';
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
@@ -488,10 +489,10 @@ const App: React.FC = () => {
         headerRender={({ value, type, onChange, onTypeChange }) => {
           const start = 0;
           const end = 12;
-          const monthOptions = [];
+          const monthOptions: DefaultOptionType[] = [];
           let current = value.clone();
           const localeData = value.localeData();
-          const months = [];
+          const months: dayjs.MonthNames[] = [];
           for (let i = 0; i < 12; i++) {
             current = current.month(i);
             months.push(localeData.monthsShort(current));
@@ -504,7 +505,7 @@ const App: React.FC = () => {
           }
           const year = value.year();
           const month = value.month();
-          const options = [];
+          const options: DefaultOptionType[] = [];
           for (let i = year - 10; i < year + 10; i += 1) {
             options.push({
               label: getYearLabel(i),

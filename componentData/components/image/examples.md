@@ -497,7 +497,7 @@ const App: React.FC = () => {
   const sharedProps: ImageProps = {
     src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
     width: 160,
-    alt: '示例图片',
+    alt: 'Example image',
     classNames,
   };
   return (
@@ -530,7 +530,7 @@ const App: React.FC = () => (
       cover: (
         <Space vertical align="center">
           <ZoomInOutlined />
-          示例
+          Preview
         </Space>
       ),
     }}
@@ -702,7 +702,7 @@ import React from 'react';
 import { Image } from 'antd';
 const App: React.FC = () => (
   <Image.PreviewGroup
-    preview={{ countRender: (current, total) => `当前 ${current} / 总计 ${total}` }}
+    preview={{ countRender: (current, total) => `Current ${current} / Total ${total}` }}
   >
     <Image
       alt="svg image"
@@ -742,7 +742,7 @@ const App: React.FC = () => (
     }}
   >
     <Image.PreviewGroup
-      preview={{ countRender: (current, total) => `当前 ${current} / 总计 ${total}` }}
+      preview={{ countRender: (current, total) => `Current ${current} / Total ${total}` }}
     >
       <Image
         width={150}
