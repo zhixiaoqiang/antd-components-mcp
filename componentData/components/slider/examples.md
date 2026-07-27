@@ -100,23 +100,44 @@ export default App;
 ```tsx
 import React, { useState } from 'react';
 import { FrownOutlined, SmileOutlined } from '@ant-design/icons';
-import { Slider } from 'antd';
+import { Flex, Slider } from 'antd';
+import { createStyles } from 'antd-style';
+import { clsx } from 'clsx';
+const useStyles = createStyles((props) => {
+  const { css, iconPrefixCls, cssVar } = props;
+  return {
+    wrapper: css`
+      position: relative;
+      .${iconPrefixCls} {
+        color: ${cssVar.colorTextQuaternary};
+        font-size: ${cssVar.fontSizeLG};
+        transition: color ${cssVar.motionDurationFast} ${cssVar.motionEaseInOutCirc};
+        &.isActive {
+          color: ${cssVar.colorPrimary};
+        }
+      }
+    `,
+    slider: css`
+      flex: 1;
+      width: 100%;
+    `,
+  };
+});
 interface IconSliderProps {
   max: number;
   min: number;
 }
 const IconSlider: React.FC<IconSliderProps> = (props) => {
   const { max, min } = props;
+  const { styles } = useStyles();
   const [value, setValue] = useState(0);
   const mid = Number(((max - min) / 2).toFixed(5));
-  const preColorCls = value >= mid ? '' : 'icon-wrapper-active';
-  const nextColorCls = value >= mid ? 'icon-wrapper-active' : undefined;
   return (
-    <div className="icon-wrapper">
-      <FrownOutlined className={preColorCls} />
-      <Slider {...props} onChange={setValue} value={value} />
-      <SmileOutlined className={nextColorCls} />
-    </div>
+    <Flex justify="space-between" align="center" gap="small" className={styles.wrapper}>
+      <FrownOutlined className={clsx({ isActive: value < mid })} />
+      <Slider {...props} onChange={setValue} value={value} className={styles.slider} />
+      <SmileOutlined className={clsx({ isActive: value >= mid })} />
+    </Flex>
   );
 };
 const App: React.FC = () => <IconSlider min={0} max={20} />;
@@ -171,28 +192,32 @@ export default App;
 import React from 'react';
 import { Slider } from 'antd';
 import type { SliderSingleProps } from 'antd';
+const style: React.CSSProperties = {
+  marginBottom: 16,
+};
+const sliderStyle: React.CSSProperties = {
+  marginBottom: 48,
+};
 const marks: SliderSingleProps['marks'] = {
   0: '0°C',
   26: '26°C',
   37: '37°C',
   100: {
-    style: {
-      color: '#f50',
-    },
+    style: { color: '#f50' },
     label: <strong>100°C</strong>,
   },
 };
 const App: React.FC = () => (
   <>
-    <h4>included=true</h4>
-    <Slider marks={marks} defaultValue={37} />
-    <Slider range marks={marks} defaultValue={[26, 37]} />
-    <h4>included=false</h4>
-    <Slider marks={marks} included={false} defaultValue={37} />
-    <h4>marks & step</h4>
-    <Slider marks={marks} step={10} defaultValue={37} />
-    <h4>step=null</h4>
-    <Slider marks={marks} step={null} defaultValue={37} />
+    <h4 style={style}>included=true</h4>
+    <Slider style={sliderStyle} marks={marks} defaultValue={37} />
+    <Slider style={sliderStyle} range marks={marks} defaultValue={[26, 37]} />
+    <h4 style={style}>included=false</h4>
+    <Slider style={sliderStyle} marks={marks} included={false} defaultValue={37} />
+    <h4 style={style}>marks & step</h4>
+    <Slider style={sliderStyle} marks={marks} step={10} defaultValue={37} />
+    <h4 style={style}>step=null</h4>
+    <Slider style={sliderStyle} marks={marks} step={null} defaultValue={37} />
   </>
 );
 export default App;
@@ -378,25 +403,27 @@ export default App;
 ```tsx
 import React from 'react';
 import { Flex, Slider } from 'antd';
-import type { GetProp, SliderSingleProps } from 'antd';
-import { createStaticStyles } from 'antd-style';
-const classNames = createStaticStyles(({ css }) => ({
+import type { SliderSingleProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useHorizontalStyles = createStyles(({ css }) => ({
   root: css`
     width: 300px;
   `,
 }));
-const classNamesFn = createStaticStyles(({ css, cssVar }) => ({
+const useVerticalStyles = createStyles(({ css, prefixCls, cssVar }) => ({
   root: css`
     width: 100px;
-    &:hover .ant-slider-handle:after {
-      box-shadow: 0 0 0 ${cssVar.lineWidthBold} #722ed1;
+    &:hover {
+      .${prefixCls}-slider-handle:after {
+        box-shadow: 0 0 0 ${cssVar.lineWidthBold} #722ed1;
+      }
     }
   `,
   handle: css`
-    &.ant-slider-handle:hover::after,
-    &.ant-slider-handle:active::after,
-    &.ant-slider-handle:focus::after,
-    &.ant-slider-handle::after {
+    &.${prefixCls}-slider-handle:hover::after,
+      &.${prefixCls}-slider-handle:active::after,
+      &.${prefixCls}-slider-handle:focus::after,
+      &.${prefixCls}-slider-handle::after {
       box-shadow: 0 0 0 ${cssVar.lineWidthBold} #722ed1;
     }
   `,
@@ -405,9 +432,7 @@ const stylesObject: SliderSingleProps['styles'] = {
   track: { backgroundImage: 'linear-gradient(180deg, #91caff, #1677ff)' },
   handle: { borderColor: '#1677ff', boxShadow: '0 2px 8px #1677ff' },
 };
-const stylesFn: SliderSingleProps['styles'] = (
-  info,
-): GetProp<SliderSingleProps, 'styles', 'Return'> => {
+const stylesFn: SliderSingleProps['styles'] = (info) => {
   if (info.props.orientation === 'vertical') {
     return {
       root: { height: 300 },
@@ -417,16 +442,23 @@ const stylesFn: SliderSingleProps['styles'] = (
   }
   return {};
 };
+const sharedProps: SliderSingleProps = {
+  defaultValue: 30,
+};
 const App: React.FC = () => {
-  const sharedProps: SliderSingleProps = {
-    defaultValue: 30,
-  };
+  const { styles: horizontalClassNames } = useHorizontalStyles();
+  const { styles: verticalClassNames } = useVerticalStyles();
   return (
     <Flex vertical gap="medium">
-      <Slider {...sharedProps} classNames={classNames} styles={stylesObject} />
       <Slider
         {...sharedProps}
-        classNames={classNamesFn}
+        orientation="horizontal"
+        classNames={horizontalClassNames}
+        styles={stylesObject}
+      />
+      <Slider
+        {...sharedProps}
+        classNames={verticalClassNames}
         orientation="vertical"
         reverse
         styles={stylesFn}

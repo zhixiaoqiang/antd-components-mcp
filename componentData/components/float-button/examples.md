@@ -404,7 +404,7 @@ import type { FloatButtonProps, GetProp } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
-    border: `1px solid ${token.colorBorder}`,
+    border: `${token.lineWidth}px ${token.lineType} ${token.colorBorder}`,
     borderRadius: token.borderRadius,
     padding: `${token.paddingXS}px ${token.padding}px`,
     height: 'auto',

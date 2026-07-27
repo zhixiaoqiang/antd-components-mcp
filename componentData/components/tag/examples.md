@@ -366,6 +366,7 @@ export default App;
 ### 图标按钮
 你可以通过 `icon` 属性为标签添加自定义图标。注意，CheckableTag 的 `icon` 属性在 `>=5.27.0` 版本支持。
 若需要控制图标的位置，请在 `children` 中直接使用 `<XXXIcon />` 组件，而非通过 `icon` 属性实现。
+`icon` 也支持第三方图标库的裸 `<svg>` 元素，无论其尺寸以 `em` 还是 `px` 设置，都会自动与文字居中对齐。
 
 ```tsx
 import React from 'react';
@@ -376,6 +377,18 @@ import {
   YoutubeOutlined,
 } from '@ant-design/icons';
 import { Divider, Flex, Tag } from 'antd';
+// Icons from third-party libraries render as a bare `<svg>` rather than an `.anticon` wrapper.
+// They stay centred whether sized in `em` (StarIcon) or in `px` (HeartIcon, like lucide's default).
+const StarIcon: React.FC = () => (
+  <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+    <path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" />
+  </svg>
+);
+const HeartIcon: React.FC = () => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+    <path d="M12 20.7l-1.4-1.3C5.4 14.8 2 11.7 2 8a5 5 0 0 1 10-1.7A5 5 0 0 1 22 8c0 3.7-3.4 6.8-8.6 11.4L12 20.7z" />
+  </svg>
+);
 const App: React.FC = () => {
   const [checked, setChecked] = React.useState<Array<boolean>>([true, false, false, false]);
   const handleChange = (index: number, value: boolean) => {
@@ -430,6 +443,18 @@ const App: React.FC = () => {
         >
           LinkedIn
         </Tag.CheckableTag>
+      </Flex>
+      <Divider titlePlacement="start">Tag with third-party icon</Divider>
+      <Flex gap="small" wrap align="center">
+        <Tag icon={<StarIcon />} color="#f50">
+          Star (em)
+        </Tag>
+        <Tag icon={<HeartIcon />} color="#eb2f96">
+          Heart (px)
+        </Tag>
+        <Tag icon={<HeartIcon />} closable>
+          Closable
+        </Tag>
       </Flex>
     </>
   );

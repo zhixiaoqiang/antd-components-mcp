@@ -520,8 +520,8 @@ import type { GetProp, InputNumberProps } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyle = createStyles(({ token }) => ({
   root: {
-    border: `1px solid ${token.colorPrimary}`,
-    borderRadius: 8,
+    border: `${token.lineWidth}px ${token.lineType} ${token.colorPrimary}`,
+    borderRadius: token.borderRadiusLG,
     width: 200,
   },
 }));

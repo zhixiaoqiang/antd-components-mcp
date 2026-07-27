@@ -940,6 +940,28 @@ export default App;
 import React from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css, cssVar } = props;
+  return {
+    dynamicDeleteButton: css`
+      position: relative;
+      top: 4px;
+      margin: 0 ${cssVar.marginXS};
+      color: #999;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        color: #777;
+      }
+      &[disabled] {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    `,
+  };
+});
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -957,6 +979,7 @@ const formItemLayoutWithOutLabel = {
   },
 };
 const App: React.FC = () => {
+  const { styles } = useStyles();
   const onFinish = (values: any) => {
     console.log('Received values of form:', values);
   };
@@ -1004,7 +1027,7 @@ const App: React.FC = () => {
                 </Form.Item>
                 {fields.length > 1 ? (
                   <MinusCircleOutlined
-                    className="dynamic-delete-button"
+                    className={styles.dynamicDeleteButton}
                     onClick={() => remove(field.name)}
                   />
                 ) : null}
@@ -3494,17 +3517,21 @@ export default App;
 import React from 'react';
 import { AlertFilled, CloseSquareFilled } from '@ant-design/icons';
 import { Button, Form, Input, Mentions, Tooltip } from 'antd';
-import { createStaticStyles } from 'antd-style';
+import { createStyles } from 'antd-style';
 import uniqueId from 'lodash/uniqueId';
-const classNames = createStaticStyles(({ css }) => ({
-  'custom-feedback-icons': css`
-    .ant-form-item-feedback-icon {
-      pointer-events: all;
-    }
-  `,
-}));
+const useStyles = createStyles((props) => {
+  const { css, prefixCls } = props;
+  return {
+    customFeedbackIcons: css`
+      .${prefixCls}-form-item-feedback-icon {
+        pointer-events: all;
+      }
+    `,
+  };
+});
 const App: React.FC = () => {
   const [form] = Form.useForm();
+  const { styles } = useStyles();
   return (
     <Form
       name="custom-feedback-icons"
@@ -3513,9 +3540,11 @@ const App: React.FC = () => {
       feedbackIcons={({ errors }) => ({
         error: (
           <Tooltip
-            key="tooltipKey"
-            title={errors?.map((error) => <div key={uniqueId()}>{error}</div>)}
             color="red"
+            key="tooltipKey"
+            title={errors?.map((error) => (
+              <div key={uniqueId('red')}>{error}</div>
+            ))}
           >
             <CloseSquareFilled />
           </Tooltip>
@@ -3525,7 +3554,7 @@ const App: React.FC = () => {
       <Form.Item
         name="custom-feedback-test-item"
         label="Test"
-        className={classNames['custom-feedback-icons']}
+        className={styles.customFeedbackIcons}
         rules={[{ required: true, type: 'email' }, { min: 10 }]}
         help=""
         hasFeedback
@@ -3535,16 +3564,18 @@ const App: React.FC = () => {
       <Form.Item
         name="custom-feedback-test-item2"
         label="Test"
-        className={classNames['custom-feedback-icons']}
+        className={styles.customFeedbackIcons}
         rules={[{ required: true, type: 'email' }, { min: 10 }]}
         help=""
         hasFeedback={{
           icons: ({ errors }) => ({
             error: (
               <Tooltip
-                key="tooltipKey"
-                title={errors?.map((error) => <div key={uniqueId()}>{error}</div>)}
                 color="pink"
+                key="tooltipKey"
+                title={errors?.map((error) => (
+                  <div key={uniqueId('pink')}>{error}</div>
+                ))}
               >
                 <AlertFilled />
               </Tooltip>
@@ -3558,7 +3589,7 @@ const App: React.FC = () => {
       <Form.Item
         name="custom-feedback-test-item3"
         label="Test"
-        className={classNames['custom-feedback-icons']}
+        className={styles.customFeedbackIcons}
         hasFeedback
         validateStatus="success"
         initialValue="@mention1"
@@ -3566,14 +3597,8 @@ const App: React.FC = () => {
         <Mentions
           allowClear
           options={[
-            {
-              value: 'mention1',
-              label: 'mention1',
-            },
-            {
-              value: 'mention2',
-              label: 'mention2',
-            },
+            { value: 'mention1', label: 'mention1' },
+            { value: 'mention2', label: 'mention2' },
           ]}
         />
       </Form.Item>

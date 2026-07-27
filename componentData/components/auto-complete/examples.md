@@ -149,6 +149,31 @@ export default App;
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { AutoComplete, Flex, Input } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css, prefixCls, cssVar } = props;
+  return {
+    categorySearch: css`
+      .${prefixCls}-select-dropdown-menu-item-group-title {
+        color: #666;
+        font-weight: ${cssVar.fontWeightStrong};
+      }
+      .${prefixCls}-select-dropdown-menu-item-group {
+        border-bottom: ${cssVar.lineWidth} ${cssVar.lineType} #f6f6f6;
+      }
+      .${prefixCls}-select-dropdown-menu-item {
+        padding-inline-start: ${cssVar.padding};
+      }
+      .${prefixCls}-select-dropdown-menu-item.show-all {
+        text-align: center;
+        cursor: default;
+      }
+      .${prefixCls}-select-dropdown-menu {
+        max-height: 300px;
+      }
+    `,
+  };
+});
 const Title: React.FC<Readonly<{ title?: string }>> = (props) => (
   <Flex align="center" justify="space-between">
     {props.title}
@@ -182,20 +207,19 @@ const options = [
     options: [renderItem('AntDesign design language', 100000)],
   },
 ];
-const App: React.FC = () => (
-  <AutoComplete
-    classNames={{
-      popup: {
-        root: 'certain-category-search-dropdown',
-      },
-    }}
-    popupMatchSelectWidth={500}
-    style={{ width: 250 }}
-    options={options}
-  >
-    <Input.Search size="large" placeholder="input here" />
-  </AutoComplete>
-);
+const App: React.FC = () => {
+  const { styles } = useStyles();
+  return (
+    <AutoComplete
+      classNames={{ popup: { root: styles.categorySearch } }}
+      popupMatchSelectWidth={500}
+      style={{ width: 250 }}
+      options={options}
+    >
+      <Input.Search size="large" placeholder="input here" />
+    </AutoComplete>
+  );
+};
 export default App;
 ```
 ### 查询模式 - 不确定类目

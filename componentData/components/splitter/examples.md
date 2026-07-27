@@ -302,15 +302,15 @@ const useStyles = createStyles(({ token }) => ({
   dragger: {
     '&::before': {
       backgroundColor: 'transparent !important',
-      border: `1px dashed ${token.controlItemBgHover}`,
+      border: `${token.lineWidth}px dashed ${token.controlItemBgHover}`,
     },
     '&:hover::before': {
-      border: `1px dashed ${token.colorPrimary}`,
+      border: `${token.lineWidth}px dashed ${token.colorPrimary}`,
     },
   },
   draggerActive: {
     '&::before': {
-      border: `1px dashed ${token.colorPrimary}`,
+      border: `${token.lineWidth}px dashed ${token.colorPrimary}`,
     },
   },
   draggerIcon: {
@@ -319,7 +319,7 @@ const useStyles = createStyles(({ token }) => ({
     },
   },
   collapsibleIcon: {
-    fontSize: 16,
+    fontSize: token.fontSizeLG,
     color: token.colorTextDescription,
     '&:hover': {
       color: token.colorPrimary,

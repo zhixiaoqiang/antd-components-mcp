@@ -523,6 +523,7 @@ interface DataType {
   title: string;
   description: string;
   tag: string;
+  disabled?: boolean;
 }
 interface TableTransferProps extends TransferProps<TransferItem> {
   dataSource: DataType[];
@@ -552,7 +553,7 @@ const TableTransfer: React.FC<TableTransferProps> = (props) => {
           selections: [Table.SELECTION_ALL, Table.SELECTION_INVERT, Table.SELECTION_NONE],
         };
         return (
-          <Table
+          <Table<DataType>
             rowSelection={rowSelection}
             columns={columns}
             dataSource={filteredItems}
@@ -658,12 +659,9 @@ const generateTree = (
     disabled: checkedKeys.includes(props.key as string),
     children: generateTree(children, checkedKeys),
   }));
-const TreeTransfer: React.FC<TreeTransferProps> = ({
-  dataSource,
-  targetKeys = [],
-  ...restProps
-}) => {
+const TreeTransfer: React.FC<TreeTransferProps> = (props) => {
   const { token } = theme.useToken();
+  const { dataSource, targetKeys = [], ...restProps } = props;
   const transferDataSource: TransferItem[] = [];
   function flatten(list: TreeDataNode[] = []) {
     list.forEach((item) => {
@@ -677,8 +675,7 @@ const TreeTransfer: React.FC<TreeTransferProps> = ({
       {...restProps}
       targetKeys={targetKeys}
       dataSource={transferDataSource}
-      className="tree-transfer"
-      render={(item) => item.title!}
+      render={(item) => item.title}
       showSelectAll={false}
     >
       {({ direction, onItemSelect, selectedKeys }) => {

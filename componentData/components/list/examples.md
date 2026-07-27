@@ -93,6 +93,15 @@ export default App;
 ```tsx
 import React, { useEffect, useState } from 'react';
 import { Avatar, Button, List, Skeleton } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css } = props;
+  return {
+    loadmoreList: css`
+      min-height: 350px;
+    `,
+  };
+});
 interface DataType {
   gender?: string;
   name?: string;
@@ -102,6 +111,7 @@ interface DataType {
 }
 const PAGE_SIZE = 3;
 const App: React.FC = () => {
+  const { styles } = useStyles();
   const [initLoading, setInitLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<DataType[]>([]);
@@ -124,7 +134,7 @@ const App: React.FC = () => {
       setList(results);
     });
   }, []);
-  const onLoadMore = () => {
+  const onLoadMore: React.MouseEventHandler<HTMLElement> = () => {
     setLoading(true);
     setList(data.concat(Array.from({ length: PAGE_SIZE }).map(() => ({ loading: true }))));
     const nextPage = page + 1;
@@ -143,28 +153,19 @@ const App: React.FC = () => {
   };
   const loadMore =
     !initLoading && !loading ? (
-      <div
-        style={{
-          textAlign: 'center',
-          marginTop: 12,
-          height: 32,
-          lineHeight: '32px',
-        }}
-      >
+      <div style={{ textAlign: 'center', marginTop: 12, height: 32, lineHeight: '32px' }}>
         <Button onClick={onLoadMore}>loading more</Button>
       </div>
     ) : null;
   return (
     <List
-      className="demo-loadmore-list"
+      className={styles.loadmoreList}
       loading={initLoading}
       itemLayout="horizontal"
       loadMore={loadMore}
       dataSource={list}
       renderItem={(item) => (
-        <List.Item
-          actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-        >
+        <List.Item actions={[<a key="loadmore-edit">edit</a>, <a key="loadmore-more">more</a>]}>
           <Skeleton avatar title={false} loading={item.loading} active>
             <List.Item.Meta
               avatar={<Avatar src={item.avatar} />}

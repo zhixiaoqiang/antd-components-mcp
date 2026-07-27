@@ -2871,6 +2871,29 @@ export default App;
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import type { GetRef, InputRef, TableProps } from 'antd';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css, cssVar } = props;
+  return {
+    editableRow: css`
+      position: relative;
+      .editable-cell-value-wrap {
+        cursor: pointer;
+        padding: ${cssVar.paddingXXS} ${cssVar.paddingSM};
+        border-width: ${cssVar.lineWidth};
+        border-style: ${cssVar.lineType};
+        border-color: transparent;
+        border-radius: ${cssVar.borderRadiusSM};
+        transition: all ${cssVar.motionDurationFast} ${cssVar.motionEaseInOut};
+      }
+      &:hover {
+        .editable-cell-value-wrap {
+          border-color: ${cssVar.colorBorder};
+        }
+      }
+    `,
+  };
+});
 type FormInstance<T> = GetRef<typeof Form<T>>;
 const EditableContext = React.createContext<FormInstance<any> | null>(null);
 interface Item {
@@ -2899,15 +2922,8 @@ interface EditableCellProps {
   record: Item;
   handleSave: (record: Item) => void;
 }
-const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
-  title,
-  editable,
-  children,
-  dataIndex,
-  record,
-  handleSave,
-  ...restProps
-}) => {
+const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = (props) => {
+  const { title, editable, children, dataIndex, record, handleSave, ...restProps } = props;
   const [editing, setEditing] = useState(false);
   const inputRef = useRef<InputRef>(null);
   const form = useContext(EditableContext)!;
@@ -2917,7 +2933,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
     }
   }, [editing]);
   const toggleEdit = () => {
-    setEditing(!editing);
+    setEditing((prev) => !prev);
     form.setFieldsValue({ [dataIndex]: record[dataIndex] });
   };
   const save = async () => {
@@ -2937,7 +2953,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
         name={dataIndex}
         rules={[{ required: true, message: `${title} is required.` }]}
       >
-        <Input ref={inputRef} onPressEnter={save} onBlur={save} />
+        <Input ref={inputRef} variant="filled" onPressEnter={save} onBlur={save} />
       </Form.Item>
     ) : (
       <div
@@ -2959,6 +2975,7 @@ interface DataType {
 }
 type ColumnTypes = Exclude<TableProps<DataType>['columns'], undefined>;
 const App: React.FC = () => {
+  const { styles } = useStyles();
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
       key: '0',
@@ -3004,7 +3021,7 @@ const App: React.FC = () => {
         ) : null,
     },
   ];
-  const handleAdd = () => {
+  const handleAdd: React.MouseEventHandler<HTMLElement> = () => {
     const newData: DataType = {
       key: count,
       name: `Edward King ${count}`,
@@ -3012,23 +3029,19 @@ const App: React.FC = () => {
       address: `London, Park Lane no. ${count}`,
     };
     setDataSource([...dataSource, newData]);
-    setCount(count + 1);
+    setCount((prevCount) => prevCount + 1);
   };
   const handleSave = (row: DataType) => {
     const newData = [...dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
-    const item = newData[index];
-    newData.splice(index, 1, {
-      ...item,
-      ...row,
-    });
-    setDataSource(newData);
+    if (index !== -1) {
+      const item = newData[index];
+      newData.splice(index, 1, { ...item, ...row });
+      setDataSource(newData);
+    }
   };
   const components = {
-    body: {
-      row: EditableRow,
-      cell: EditableCell,
-    },
+    body: { row: EditableRow, cell: EditableCell },
   };
   const columns = defaultColumns.map((col) => {
     if (!col.editable) {
@@ -3052,7 +3065,7 @@ const App: React.FC = () => {
       </Button>
       <Table<DataType>
         components={components}
-        rowClassName={() => 'editable-row'}
+        rowClassName={() => styles.editableRow}
         bordered
         dataSource={dataSource}
         columns={columns as ColumnTypes}
@@ -3068,8 +3081,22 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react';
-import type { TableProps } from 'antd';
+import type { TableColumnsType } from 'antd';
 import { Form, Input, InputNumber, Popconfirm, Table, Typography } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css, prefixCls, cssVar } = props;
+  return {
+    editableRow: css`
+      position: relative;
+      .${prefixCls}-form-item-explain {
+        position: absolute;
+        top: 100%;
+        font-size: ${cssVar.fontSizeSM};
+      }
+    `,
+  };
+});
 interface DataType {
   key: string;
   name: string;
@@ -3090,16 +3117,8 @@ interface EditableCellProps extends React.HTMLAttributes<HTMLElement> {
   record: DataType;
   index: number;
 }
-const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
-  editing,
-  dataIndex,
-  title,
-  inputType,
-  record,
-  index,
-  children,
-  ...restProps
-}) => {
+const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = (props) => {
+  const { editing, dataIndex, title, inputType, record, index, children, ...restProps } = props;
   const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
   return (
     <td {...restProps}>
@@ -3107,12 +3126,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
         <Form.Item
           name={dataIndex}
           style={{ margin: 0 }}
-          rules={[
-            {
-              required: true,
-              message: `Please Input ${title}!`,
-            },
-          ]}
+          rules={[{ required: true, message: `Please Input ${title}!` }]}
         >
           {inputNode}
         </Form.Item>
@@ -3123,6 +3137,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
   );
 };
 const App: React.FC = () => {
+  const { styles } = useStyles();
   const [form] = Form.useForm();
   const [data, setData] = useState<DataType[]>(originData);
   const [editingKey, setEditingKey] = useState('');
@@ -3141,10 +3156,7 @@ const App: React.FC = () => {
       const index = newData.findIndex((item) => key === item.key);
       if (index > -1) {
         const item = newData[index];
-        newData.splice(index, 1, {
-          ...item,
-          ...row,
-        });
+        newData.splice(index, 1, { ...item, ...row });
         setData(newData);
         setEditingKey('');
       } else {
@@ -3197,13 +3209,13 @@ const App: React.FC = () => {
       },
     },
   ];
-  const mergedColumns: TableProps<DataType>['columns'] = columns.map((col) => {
+  const mergedColumns = columns.map<TableColumnsType<DataType>[number]>((col) => {
     if (!col.editable) {
       return col;
     }
     return {
       ...col,
-      onCell: (record: DataType) => ({
+      onCell: (record) => ({
         record,
         inputType: col.dataIndex === 'age' ? 'number' : 'text',
         dataIndex: col.dataIndex,
@@ -3215,13 +3227,11 @@ const App: React.FC = () => {
   return (
     <Form form={form} component={false}>
       <Table<DataType>
-        components={{
-          body: { cell: EditableCell },
-        }}
         bordered
+        components={{ body: { cell: EditableCell } }}
         dataSource={data}
         columns={mergedColumns}
-        rowClassName="editable-row"
+        rowClassName={() => styles.editableRow}
         pagination={{ onChange: cancel }}
       />
     </Form>
@@ -4552,6 +4562,39 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### Tabs 中的嵌套表格 Debug
+带边框的表格嵌套在展开行的 Tabs 中时应保留上边框。
+
+```tsx
+import React from 'react';
+import type { TableColumnsType, TabsProps } from 'antd';
+import { Table, Tabs } from 'antd';
+interface DataType {
+  key: string;
+  name: string;
+}
+const columns: TableColumnsType<DataType> = [{ title: 'Name', dataIndex: 'name' }];
+const dataSource: DataType[] = [{ key: '0', name: 'Jack' }];
+const items: TabsProps['items'] = [
+  {
+    key: '1',
+    label: 'Tab 1',
+    children: (
+      <Table<DataType> bordered columns={columns} dataSource={dataSource} pagination={false} />
+    ),
+  },
+];
+const expandedRowRender = () => <Tabs defaultActiveKey="1" items={items} />;
+const App: React.FC = () => (
+  <Table<DataType>
+    columns={columns}
+    dataSource={dataSource}
+    expandable={{ expandedRowRender, defaultExpandedRowKeys: ['0'] }}
+    pagination={false}
+  />
+);
+export default App;
+```
 ### 分页设置
 表格的分页设置。
 
@@ -4851,6 +4894,21 @@ import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { GetProp, RadioChangeEvent, TableProps } from 'antd';
 import { Form, Radio, Space, Switch, Table } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css, cssVar } = props;
+  return {
+    tableControlBar: css`
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: ${cssVar.margin};
+      row-gap: ${cssVar.marginXS};
+      column-gap: 0;
+    `,
+  };
+});
 type SizeType = TableProps['size'];
 type ColumnsType<T extends object> = GetProp<TableProps<T>, 'columns'>;
 type TablePagination<T extends object> = NonNullable<Exclude<TableProps<T>['pagination'], boolean>>;
@@ -4919,6 +4977,7 @@ const defaultExpandable: ExpandableConfig<DataType> = {
 const defaultTitle = () => 'Here is title';
 const defaultFooter = () => 'Here is footer';
 const App: React.FC = () => {
+  const { styles } = useStyles();
   const [bordered, setBordered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [size, setSize] = useState<SizeType>('large');
@@ -4999,7 +5058,7 @@ const App: React.FC = () => {
   };
   return (
     <>
-      <Form layout="inline" className="table-demo-control-bar" style={{ marginBottom: 16 }}>
+      <Form layout="inline" className={styles.tableControlBar}>
         <Form.Item label="Bordered">
           <Switch checked={bordered} onChange={handleBorderChange} />
         </Form.Item>
