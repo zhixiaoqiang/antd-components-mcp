@@ -188,8 +188,8 @@ import { Button, Checkbox, Divider, Tabs } from 'antd';
 const CheckboxGroup = Checkbox.Group;
 const operations = <Button>Extra Action</Button>;
 const operationsSlot: Record<PositionType, React.ReactNode> = {
-  left: <Button className="tabs-extra-demo-button">Left Extra Action</Button>,
-  right: <Button>Right Extra Action</Button>,
+  left: <Button style={{ marginInlineEnd: 16 }}>Left Extra Action</Button>,
+  right: <Button style={{ marginInlineStart: 16 }}>Right Extra Action</Button>,
 };
 const options = ['left', 'right'];
 type PositionType = 'left' | 'right';
@@ -484,13 +484,14 @@ export default App;
 import React from 'react';
 import { Tabs } from 'antd';
 import { createStyles } from 'antd-style';
-const useStyle = createStyles(({ token, css }) => {
-  const antdTabsCls = '.ant-tabs';
+const useStyle = createStyles((props) => {
+  const { cssVar, prefixCls, css } = props;
+  const antdTabsCls = `.${prefixCls}-tabs`;
   return css`
     ${antdTabsCls}${antdTabsCls}-card {
       ${antdTabsCls}-body {
-        padding: ${token.padding}px;
-        background: ${token.colorBgContainer};
+        padding: ${cssVar.padding};
+        background: ${cssVar.colorBgContainer};
       }
       ${antdTabsCls}-nav {
         margin: 0;
@@ -498,8 +499,8 @@ const useStyle = createStyles(({ token, css }) => {
           background: transparent;
           border-color: transparent;
           &-active {
-            border-color: ${token.colorBorderBg};
-            background: ${token.colorBgContainer};
+            border-color: ${cssVar.colorBorderBg};
+            background: ${cssVar.colorBgContainer};
           }
         }
         &::before {
@@ -636,20 +637,38 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css, prefixCls } = props;
+  return {
+    root: css`
+      margin: 0;
+      &.${prefixCls}-tabs-editable {
+        .${prefixCls}-tabs-nav {
+          .${prefixCls}-tabs-tab {
+            /* set transition to none when type="editable-card" */
+            transition: none;
+          }
+        }
+      }
+    `,
+  };
+});
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
   'data-node-key': string;
 }
-const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = ({ className, ...props }) => {
+const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = (props) => {
+  const { className, ...rest } = props;
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
-    id: props['data-node-key'],
+    id: rest['data-node-key'],
   });
   const style: React.CSSProperties = {
-    ...props.style,
+    ...rest.style,
     transform: CSS.Translate.toString(transform),
     transition,
     cursor: 'move',
   };
-  return React.cloneElement(props.children as React.ReactElement<any>, {
+  return React.cloneElement(rest.children as React.ReactElement<any>, {
     ref: setNodeRef,
     style,
     ...attributes,
@@ -657,6 +676,7 @@ const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = ({ className
   });
 };
 const App: React.FC = () => {
+  const { styles } = useStyles();
   const [items, setItems] = useState<NonNullable<TabsProps['items']>>([
     { key: '1', label: 'Tab 1', children: 'Content of Tab Pane 1' },
     { key: '2', label: 'Tab 2', children: 'Content of Tab Pane 2' },
@@ -675,6 +695,7 @@ const App: React.FC = () => {
   return (
     <Tabs
       items={items}
+      rootClassName={styles.root}
       renderTabBar={(tabBarProps, DefaultTabBar) => (
         <DndContext sensors={[sensor]} onDragEnd={onDragEnd} collisionDetection={closestCenter}>
           <SortableContext items={items.map((i) => i.key)} strategy={horizontalListSortingStrategy}>

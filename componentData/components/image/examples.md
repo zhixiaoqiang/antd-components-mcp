@@ -303,6 +303,30 @@ import {
   ZoomOutOutlined,
 } from '@ant-design/icons';
 import { Image, Space } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css, iconPrefixCls, cssVar } = props;
+  return {
+    wrapper: css`
+      padding: 0 ${cssVar.paddingLG};
+      color: ${cssVar.colorWhite};
+      font-size: ${cssVar.fontSizeXL};
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 100px;
+      .${iconPrefixCls} {
+        padding: ${cssVar.paddingSM};
+        cursor: pointer;
+        &:hover {
+          opacity: 0.3;
+        }
+        &[disabled] {
+          opacity: 0.3;
+          cursor: not-allowed;
+        }
+      }
+    `,
+  };
+});
 const imageList = [
   'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   'https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg',
@@ -310,6 +334,7 @@ const imageList = [
 // you can download flipped and rotated image
 // https://codesandbox.io/s/zi-ding-yi-gong-ju-lan-antd-5-7-0-forked-c9jvmp
 const App: React.FC = () => {
+  const { styles } = useStyles();
   const [current, setCurrent] = React.useState(0);
   // or you can download flipped and rotated image
   // https://codesandbox.io/s/zi-ding-yi-gong-ju-lan-antd-5-7-0-forked-c9jvmp
@@ -349,7 +374,7 @@ const App: React.FC = () => {
             },
           },
         ) => (
-          <Space size={12} className="toolbar-wrapper">
+          <Space size={12} className={styles.wrapper}>
             <LeftOutlined disabled={current === 0} onClick={() => onActive?.(-1)} />
             <RightOutlined
               disabled={current === imageList.length - 1}
@@ -516,26 +541,35 @@ export default App;
 import React from 'react';
 import { ZoomInOutlined } from '@ant-design/icons';
 import { Image, Space } from 'antd';
-const App: React.FC = () => (
-  <Image
-    width={96}
-    alt="basic image"
-    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    classNames={{
-      popup: {
-        mask: 'customize-mask',
-      },
-    }}
-    preview={{
-      cover: (
-        <Space vertical align="center">
-          <ZoomInOutlined />
-          Preview
-        </Space>
-      ),
-    }}
-  />
-);
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css } = props;
+  return {
+    mask: css`
+      opacity: 1;
+      font-size: 20px;
+    `,
+  };
+});
+const App: React.FC = () => {
+  const { styles } = useStyles();
+  return (
+    <Image
+      width={96}
+      alt="basic image"
+      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+      classNames={{ popup: { mask: styles.mask } }}
+      preview={{
+        cover: (
+          <Space vertical align="center">
+            <ZoomInOutlined />
+            Preview
+          </Space>
+        ),
+      }}
+    />
+  );
+};
 export default App;
 ```
 ### 自定义预览遮罩位置

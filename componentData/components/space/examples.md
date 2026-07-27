@@ -88,39 +88,59 @@ export default App;
 
 ```tsx
 import React from 'react';
-import { Button, Space } from 'antd';
-const App: React.FC = () => (
-  <div className="space-align-container">
-    <div className="space-align-block">
-      <Space align="center">
-        center
-        <Button type="primary">Primary</Button>
-        <span className="mock-block">Block</span>
-      </Space>
-    </div>
-    <div className="space-align-block">
-      <Space align="start">
-        start
-        <Button type="primary">Primary</Button>
-        <span className="mock-block">Block</span>
-      </Space>
-    </div>
-    <div className="space-align-block">
-      <Space align="end">
-        end
-        <Button type="primary">Primary</Button>
-        <span className="mock-block">Block</span>
-      </Space>
-    </div>
-    <div className="space-align-block">
-      <Space align="baseline">
-        baseline
-        <Button type="primary">Primary</Button>
-        <span className="mock-block">Block</span>
-      </Space>
-    </div>
-  </div>
-);
+import { Button, Flex, Space } from 'antd';
+import { createStyles } from 'antd-style';
+const useStyles = createStyles((props) => {
+  const { css, cssVar } = props;
+  return {
+    spaceAlignBox: css`
+      flex: none;
+      margin: ${cssVar.marginXXS};
+      padding: ${cssVar.paddingXXS};
+      border: ${cssVar.lineWidth} ${cssVar.lineType} ${cssVar.blue};
+    `,
+    mockBox: css`
+      display: inline-block;
+      padding: ${cssVar.paddingXL} ${cssVar.padding};
+      background-color: rgba(150, 150, 150, 0.2);
+    `,
+  };
+});
+const App: React.FC = () => {
+  const { styles } = useStyles();
+  return (
+    <Flex wrap align="flex-start">
+      <div className={styles.spaceAlignBox}>
+        <Space align="center">
+          center
+          <Button type="primary">Primary</Button>
+          <span className={styles.mockBox}>Block</span>
+        </Space>
+      </div>
+      <div className={styles.spaceAlignBox}>
+        <Space align="start">
+          start
+          <Button type="primary">Primary</Button>
+          <span className={styles.mockBox}>Block</span>
+        </Space>
+      </div>
+      <div className={styles.spaceAlignBox}>
+        <Space align="end">
+          end
+          <Button type="primary">Primary</Button>
+          <span className={styles.mockBox}>Block</span>
+        </Space>
+      </div>
+      <div className={styles.spaceAlignBox}>
+        <Space align="baseline">
+          baseline
+          <Button type="primary">Primary</Button>
+          <span className={styles.mockBox}>Block</span>
+        </Space>
+      </div>
+    </Flex>
+  );
+};
 export default App;
 ```
 ### 自动换行
@@ -573,7 +593,7 @@ import {
 const selectBefore = (
   <Select
     defaultValue="http"
-    className="select-before"
+    style={{ width: 90 }}
     options={[
       { label: 'http://', value: 'http' },
       { label: 'https://', value: 'https' },
@@ -583,7 +603,7 @@ const selectBefore = (
 const selectAfter = (
   <Select
     defaultValue=".com"
-    className="select-after"
+    style={{ width: 90 }}
     options={[
       { label: '.com', value: '.com' },
       { label: '.jp', value: '.jp' },

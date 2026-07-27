@@ -118,7 +118,11 @@ const Page: React.FC = () => {
     <Space
       vertical
       size={[0, 16]}
-      style={{ width: '100%', paddingTop: 16, borderTop: `1px solid ${token.colorBorder}` }}
+      style={{
+        width: '100%',
+        paddingTop: token.padding,
+        borderTop: `${token.lineWidth}px ${token.lineType} ${token.colorBorder}`,
+      }}
     >
       <Pagination defaultCurrent={1} total={50} showSizeChanger />
       <Space wrap>
@@ -145,7 +149,13 @@ const Page: React.FC = () => {
         </Popconfirm>
       </Space>
       <Transfer dataSource={[]} showSearch targetKeys={[]} />
-      <div style={{ width: 320, border: `1px solid ${token.colorBorder}`, borderRadius: 8 }}>
+      <div
+        style={{
+          width: 320,
+          border: `${token.lineWidth}px ${token.lineType} ${token.colorBorder}`,
+          borderRadius: token.borderRadiusLG,
+        }}
+      >
         <Calendar fullscreen={false} value={dayjs()} />
       </div>
       <Form name="basic" autoComplete="off" labelCol={{ sm: { span: 4 } }} wrapperCol={{ span: 6 }}>
@@ -283,7 +293,21 @@ import {
   Tree,
   TreeSelect,
 } from 'antd';
+import { createStyles } from 'antd-style';
 type DirectionType = ConfigProviderProps['direction'];
+const useStyles = createStyles((props) => {
+  const { css } = props;
+  return {
+    headerExample: css`
+      display: inline-block;
+      width: 42px;
+      height: 42px;
+      vertical-align: middle;
+      background-color: #eee;
+      border-radius: 4px;
+    `,
+  };
+});
 const { Search } = Input;
 const treeData = [
   {
@@ -379,7 +403,9 @@ const cascaderOptions = [
   },
 ];
 type Placement = 'bottomLeft' | 'bottomRight' | 'topLeft' | 'topRight';
-const Page: React.FC<{ placement: Placement }> = ({ placement }) => {
+const Page: React.FC<{ placement: Placement }> = (props) => {
+  const { placement } = props;
+  const { styles } = useStyles();
   const [currentStep, setCurrentStep] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [badgeCount, setBadgeCount] = useState(5);
@@ -695,7 +721,7 @@ const Page: React.FC<{ placement: Placement }> = ({ placement }) => {
                 <Divider titlePlacement="start">Badge example</Divider>
                 <Flex align="center" gap="middle">
                   <Badge count={badgeCount}>
-                    <a href="#" className="head-example" />
+                    <a href="#" className={styles.headerExample} />
                   </Badge>
                   <Space.Compact>
                     <Button icon={<MinusOutlined />} onClick={declineBadge} />
@@ -704,7 +730,7 @@ const Page: React.FC<{ placement: Placement }> = ({ placement }) => {
                 </Flex>
                 <Flex align="center" gap="middle" style={{ marginTop: 12 }}>
                   <Badge dot={showBadge}>
-                    <a href="#" className="head-example" />
+                    <a href="#" className={styles.headerExample} />
                   </Badge>
                   <Switch onChange={onChangeBadge} checked={showBadge} />
                 </Flex>

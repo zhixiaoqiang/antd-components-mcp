@@ -244,3 +244,17 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### List 嵌套调试
+List 嵌套独立 Spin 的调试示例。
+
+```tsx
+import React from 'react';
+import { List, Spin } from 'antd';
+const App: React.FC = () => (
+  <List
+    dataSource={['Apple', 'Banana']}
+    renderItem={(item) => <List.Item extra={<Spin size="small" />}>{item}</List.Item>}
+  />
+);
+export default App;
+```

@@ -270,7 +270,7 @@ import type { GetProp, TimePickerProps } from 'antd';
 import { createStyles } from 'antd-style';
 const useStyles = createStyles(({ token }) => ({
   root: {
-    border: `1px solid ${token.colorPrimary}`,
+    border: `${token.lineWidth}px ${token.lineType} ${token.colorPrimary}`,
     width: 150,
   },
 }));

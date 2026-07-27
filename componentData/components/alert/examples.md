@@ -243,7 +243,7 @@ const ThrowError: React.FC = () => {
   }
   return (
     <Button danger onClick={onClick}>
-      Click me to throw a error
+      Click to throw an error
     </Button>
   );
 };
@@ -451,7 +451,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 自定义语义结构的样式和类
-通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Alert 的[语义化结构](#semantic-dom)样式。
+通过 `classNames` 和 `styles` 传入对象/函数可以自定义 Alert 的 [语义化结构](#semantic-dom) 样式。
 
 ```tsx
 import React from 'react';
