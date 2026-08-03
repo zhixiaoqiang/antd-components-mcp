@@ -490,6 +490,25 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 禁用文字颜色在 Form 中 Debug
+禁用状态下的文字颜色 Debug：AutoComplete 在禁用的 Form 中以及直接禁用时，输入框文字均应使用禁用色。
+
+```tsx
+import React from 'react';
+import { AutoComplete, Flex, Form } from 'antd';
+const options = [{ value: 'Disabled Value' }];
+const App: React.FC = () => (
+  <Flex vertical gap={12} style={{ width: 240 }}>
+    <Form disabled>
+      <Form.Item label="Form disabled" style={{ marginBottom: 0 }}>
+        <AutoComplete value="Disabled Value" options={options} />
+      </Form.Item>
+    </Form>
+    <AutoComplete disabled value="Disabled Value" options={options} />
+  </Flex>
+);
+export default App;
+```
 ### 填充形态自定义输入 Debug
 填充形态自定义输入组件 Debug。
 
