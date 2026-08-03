@@ -353,7 +353,7 @@ import { clsx } from 'clsx';
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
 import { HolidayUtil, Lunar } from 'lunar-typescript';
-const useStyle = createStyles(({ token, css, cx }) => {
+const useStyle = createStyles(({ cssVar, token, css, cx }) => {
   const lunar = css`
     color: ${token.colorTextTertiary};
     font-size: ${token.fontSizeSM}px;
@@ -384,7 +384,7 @@ const useStyle = createStyles(({ token, css, cx }) => {
         max-width: 40px;
         max-height: 40px;
         background: transparent;
-        transition: background-color 300ms;
+        transition: background-color ${cssVar.motionDurationSlow};
         border-radius: ${token.borderRadiusOuter}px;
         border: ${token.lineWidth}px ${token.lineType} transparent;
         box-sizing: border-box;
