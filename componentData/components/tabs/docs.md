@@ -50,7 +50,8 @@ Ant Design 依次提供了三级选项卡，分别用于不同的场景。
 | children | 选项卡内容元素 | ReactNode | - |  |
 | closable | 是否显示选项卡的关闭按钮，在 `type="editable-card"` 时有效 | boolean | true |  |
 ### MoreProps
-| 参数                                         | 说明           | 类型      | 默认值 | 版本 |
-| -------------------------------------------- | -------------- | --------- | ------ | ---- |
-| icon                                         | 自定义折叠图标 | ReactNode | -      |      |
-| [DropdownProps](/components/dropdown-cn#api) |                |           |        |      |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| icon | 自定义折叠图标 | ReactNode | - |  |
+| popupRender | 自定义折叠菜单渲染 | (menu: ReactElement, info: { restTabs: Tab[], onClose: () => void }) => ReactElement | - | 6.6.0 |
+| [DropdownProps](/components/dropdown-cn#api) | 支持 Dropdown 的其他属性 |  |  |  |

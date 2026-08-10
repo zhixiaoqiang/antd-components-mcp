@@ -183,6 +183,74 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### maxCount 包含溢出元素
+使用 HOC 封装 `Avatar.Group`，添加 `overflowInFinal` 属性。开启后 `max.count` 表示总共显示的元素数量，会预留 1 个位置给溢出指示器。
+
+```tsx
+import React, { useState } from 'react';
+import { toArray } from '@rc-component/util';
+import { Avatar, Flex, InputNumber, Switch } from 'antd';
+import type { AvatarGroupProps } from '../AvatarGroup';
+const AvatarGroupOverflow: React.FC<AvatarGroupProps & { overflowInFinal?: boolean }> = (props) => {
+  const { overflowInFinal, ...restProps } = props;
+  const mergedMaxCount = props.max?.count ?? 3;
+  const childrenCount = toArray(props.children).length;
+  if (!overflowInFinal || mergedMaxCount >= childrenCount) {
+    return <Avatar.Group {...restProps} />;
+  }
+  return (
+    <Avatar.Group
+      {...restProps}
+      max={{
+        ...props.max,
+        count: Math.max(1, mergedMaxCount - 1),
+      }}
+    />
+  );
+};
+const App: React.FC = () => {
+  const [avatarCount, setAvatarCount] = useState(4);
+  const [overflowInFinal, setOverflowInFinal] = useState(true);
+  return (
+    <Flex vertical gap="middle">
+      <Flex gap={24}>
+        <span>Avatar count: </span>
+        <InputNumber
+          style={{ width: 120 }}
+          min={2}
+          max={10}
+          value={avatarCount}
+          onChange={(value) => setAvatarCount(value!)}
+          aria-label="Avatar count"
+          mode="spinner"
+        />
+      </Flex>
+      <Flex gap={8}>
+        <span>overflowInFinal: </span>
+        <Switch
+          checked={overflowInFinal}
+          onChange={setOverflowInFinal}
+          aria-label="overflowInFinal"
+        />
+      </Flex>
+      <AvatarGroupOverflow
+        max={{
+          count: 3,
+          style: { backgroundColor: '#52c41a', color: '#fff' },
+        }}
+        overflowInFinal={overflowInFinal}
+      >
+        {Array.from({ length: avatarCount }, (_, i) => (
+          <Avatar key={i} style={{ backgroundColor: '#f56a00' }}>
+            {String.fromCharCode(65 + i)}
+          </Avatar>
+        ))}
+      </AvatarGroupOverflow>
+    </Flex>
+  );
+};
+export default App;
+```
 ### 隐藏情况下计算字符对齐
 切换 Avatar 显示的时候，文本样式应该居中并正确调整字体大小。
 

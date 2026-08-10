@@ -84,7 +84,14 @@
 ### Tree 方法
 | 名称 | 说明 |
 | --- | --- |
-| scrollTo({ key: string \| number; align?: 'top' \| 'bottom' \| 'auto'; offset?: number }) | 虚拟滚动下，滚动到指定 key 条目 |
+| scrollTo({ key: string \| number; align?: 'top' \| 'bottom' \| 'auto'; offset?: number; autoExpand?: boolean }) | 虚拟滚动下，滚动到指定 key 条目。非受控模式下可通过 `autoExpand` 展开目标节点 |
+### Tree Hooks
+#### Tree.useTree
+`type Tree.useTree = (treeData: DataNode[], config: { fieldNames?: FieldNames }) => TreeInstance`
+提供 Tree 数据工具。`getPath(key)` 返回从根节点到目标节点的实体路径，可用于在受控模式下更新 `expandedKeys`。
+```tsx
+const { getPath } = Tree.useTree(treeData, {});
+```
 ## FAQ
 ### defaultExpandAll 在异步加载数据时为何不生效？ {#faq-default-expand-all}
 `default` 前缀属性只有在初始化时生效，因而异步加载数据时 `defaultExpandAll` 已经执行完成。你可以通过受控 `expandedKeys` 或者在数据加载完成后渲染 Tree 来实现全部展开。

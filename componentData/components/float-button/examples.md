@@ -328,19 +328,49 @@ export default Demo;
 ```tsx
 import React from 'react';
 import { FloatButton } from 'antd';
-const App: React.FC = () => (
-  <div style={{ height: '300vh', padding: 10 }}>
-    <div>Scroll to bottom</div>
-    <div>Scroll to bottom</div>
-    <div>Scroll to bottom</div>
-    <div>Scroll to bottom</div>
-    <div>Scroll to bottom</div>
-    <div>Scroll to bottom</div>
-    <div>Scroll to bottom</div>
-    <FloatButton.BackTop />
-  </div>
-);
-export default App;
+const Demo: React.FC = () => {
+  return (
+    <div style={{ height: '300vh', padding: 10 }}>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <FloatButton.BackTop style={{ insetInlineEnd: 24 }} shape="circle" />
+      <FloatButton.BackTop style={{ insetInlineEnd: 88 }} shape="square" />
+    </div>
+  );
+};
+export default Demo;
+```
+### 滚动进度
+通过 `showProgress` 在回到顶部按钮边缘展示当前滚动进度。
+
+```tsx
+import React from 'react';
+import { FloatButton } from 'antd';
+const sharedProps: React.ComponentProps<typeof FloatButton.BackTop> = {
+  showProgress: true,
+  visibilityHeight: 0,
+};
+const Demo: React.FC = () => {
+  return (
+    <div style={{ height: '300vh', padding: 10 }}>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <div>Scroll to bottom</div>
+      <FloatButton.BackTop {...sharedProps} style={{ insetInlineEnd: 24 }} shape="circle" />
+      <FloatButton.BackTop {...sharedProps} style={{ insetInlineEnd: 88 }} shape="square" />
+    </div>
+  );
+};
+export default Demo;
 ```
 ### 徽标数
 右上角附带圆形徽标数字的悬浮按钮。
