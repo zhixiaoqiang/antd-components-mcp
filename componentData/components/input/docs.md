@@ -59,6 +59,7 @@ interface CountConfig {
 | onSearch | 点击搜索图标、清除图标，或按下回车键时的回调 | function(value, event, { source: "input" \| "clear" }) | - |  | × |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-search) , CSSProperties> \| (info: { props }) => Record<[SemanticDOM](#semantic-search) , CSSProperties> | - | 6.0.0 | 6.0.0 |
 | searchIcon | 自定义搜索图标 | ReactNode | - | 6.4.0 | 6.4.0 |
+| variant | 形态变体 | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | 5.13.0 \| `underlined`: 5.24.0 | 6.6.0 |
 其余属性和 Input 一致。
 ### Input.Password
 | 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
@@ -66,6 +67,7 @@ interface CountConfig {
 | classNames | 语义化结构 class | Record<[SemanticDOM](#semantic-password), string> | - | 5.4.0 | 6.4.0 |
 | iconRender | 自定义切换按钮 | (visible) => ReactNode | (visible) => (visible ? &lt;EyeOutlined /> : &lt;EyeInvisibleOutlined />) | 4.3.0 | 6.4.0 |
 | styles | 语义化结构 style | Record<[SemanticDOM](#semantic-password), CSSProperties> | - | 5.4.0 | 6.4.0 |
+| variant | 形态变体 | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | 5.13.0 \| `underlined`: 5.24.0 | 6.6.0 |
 | visibilityToggle | 是否显示切换按钮或者控制密码显隐 | boolean \| [VisibilityToggle](#visibilitytoggle) | true |  | × |
 ### Input.OTP
 `5.16.0` 新增。
@@ -85,7 +87,7 @@ interface CountConfig {
 | status | 设置校验状态 | 'error' \| 'warning' | - |  | × |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-otp) , CSSProperties> \| (info: { props }) => Record<[SemanticDOM](#semantic-otp) , CSSProperties> | - | 6.0.0 | 6.0.0 |
 | size | 输入框大小 | `small` \| `medium` \| `large` | `medium` |  | × |
-| variant | 形态变体 | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | `underlined`: 5.24.0 | × |
+| variant | 形态变体 | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | `underlined`: 5.24.0 | 6.6.0 |
 | value | 输入框内容 | string | - |  | × |
 | onChange | 当输入框内容全部填充时触发回调 | (value: string) => void | - |  | × |
 | onInput | 输入值变化时触发的回调 | (value: string[]) => void | - | `5.22.0` | × |

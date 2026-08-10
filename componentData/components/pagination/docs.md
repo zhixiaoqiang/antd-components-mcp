@@ -9,6 +9,7 @@
 | --- | --- | --- | --- | --- | --- |
 | align | 对齐方式 | start \| center \| end | - | 5.19.0 | × |
 | classNames | 自定义组件内部各语义化结构的类名。支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |
+| components | 自定义内部组件 | { sizeChanger?: React.ComponentType } | - | 6.6.0 | × |
 | current | 当前页数 | number | - |  | × |
 | defaultCurrent | 默认的当前页数 | number | 1 |  | × |
 | defaultPageSize | 默认的每页条数 | number | 10 |  | × |

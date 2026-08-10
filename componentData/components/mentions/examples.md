@@ -322,6 +322,51 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 自定义弹出层
+使用 `popupRender` 对下拉菜单进行自定义渲染。
+
+```tsx
+import React from 'react';
+import { Divider, Mentions, theme } from 'antd';
+const App: React.FC = () => {
+  const { token } = theme.useToken();
+  return (
+    <Mentions
+      style={{ width: '100%' }}
+      popupRender={(menu) => (
+        <>
+          <div
+            style={{
+              padding: `${token.paddingXS}px ${token.paddingSM}px`,
+              fontWeight: token.fontWeightStrong,
+              color: token.colorTextDescription,
+            }}
+          >
+            Custom Header
+          </div>
+          <Divider style={{ margin: `${token.marginXXS}px 0` }} />
+          {menu}
+        </>
+      )}
+      options={[
+        {
+          value: 'afc163',
+          label: 'afc163',
+        },
+        {
+          value: 'zombieJ',
+          label: 'zombieJ',
+        },
+        {
+          value: 'yesmeck',
+          label: 'yesmeck',
+        },
+      ]}
+    />
+  );
+};
+export default App;
+```
 ### 带移除图标
 自定义清除按钮。
 
