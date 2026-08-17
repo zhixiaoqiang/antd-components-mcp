@@ -33,7 +33,7 @@ const App: React.FC = () => {
   const [show, setShow] = useState(true);
   return (
     <Space>
-      <Switch checked={show} onChange={() => setShow(!show)} />
+      <Switch aria-label="Show badge counts" checked={show} onChange={() => setShow(!show)} />
       <Badge count={show ? 11 : 0} showZero color="#faad14" />
       <Badge count={show ? 25 : 0} />
       <Badge count={show ? <ClockCircleOutlined style={{ color: '#f5222d' }} /> : 0} />
@@ -133,7 +133,7 @@ const App: React.FC = () => {
         <Badge dot={show}>
           <Avatar shape="square" size="large" />
         </Badge>
-        <Switch onChange={onChange} checked={show} />
+        <Switch aria-label="Show badge dot" onChange={onChange} checked={show} />
       </Space>
     </Space>
   );

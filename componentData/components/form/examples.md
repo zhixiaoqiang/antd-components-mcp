@@ -1461,11 +1461,13 @@ export default App;
 - <Form.Item label="Field" name="field">
 -   <Input />
 - </Form.Item>
-+ <Form.Item label="Field">
-+   <Form.Item name="field" noStyle><Input /></Form.Item> // 直接包裹才会绑定表单
++ <Form.Item label="Field" htmlFor="field">
++   <Form.Item name="field" noStyle><Input id="field" /></Form.Item>
++   {/* 直接包裹才会绑定表单 */}
 +   <span>description</span>
 + </Form.Item>
 ```
+当带有 `label` 的外层 `Form.Item` 没有 `name` 时，它无法自动推断内层控件的 ID。如果该标签对应一个控件，请为外层设置 `htmlFor`，并为内层控件设置相同的 `id`，以保留点击标签聚焦和屏幕阅读器关联。
 这里展示了三种典型场景：
 - `Username`：输入框后面有描述文案或其他组件，在 `Form.Item` 内使用 `<Form.Item name="field" noStyle />` 去绑定对应子控件。
 - `Address`：有两个控件，在 `Form.Item` 内使用两个 `<Form.Item name="field" noStyle />` 分别绑定对应控件。
@@ -1487,14 +1489,14 @@ const App: React.FC = () => (
     wrapperCol={{ span: 16 }}
     style={{ maxWidth: 600 }}
   >
-    <Form.Item label="Username">
+    <Form.Item label="Username" htmlFor="username">
       <Space>
         <Form.Item
           name="username"
           noStyle
           rules={[{ required: true, message: 'Username is required' }]}
         >
-          <Input style={{ width: 160 }} placeholder="Please input" />
+          <Input id="username" style={{ width: 160 }} placeholder="Please input" />
         </Form.Item>
         <Tooltip title="Useful information">
           <Typography.Link href="#API">Need Help?</Typography.Link>
