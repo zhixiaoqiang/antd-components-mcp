@@ -473,6 +473,25 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### 自定义输入组件配合清除按钮 Debug
+自定义输入组件配合 `allowClear` 时的悬浮态 Debug。
+
+```tsx
+import React from 'react';
+import { AutoComplete, Flex, Input } from 'antd';
+const options = [{ value: 'Burnaby' }, { value: 'Seattle' }, { value: 'Los Angeles' }];
+const App: React.FC = () => (
+  <Flex vertical gap={24} style={{ width: 300 }}>
+    <AutoComplete allowClear defaultValue="Burnaby" options={options}>
+      <Input />
+    </AutoComplete>
+    <AutoComplete allowClear defaultValue="Burnaby" options={options}>
+      <Input.TextArea />
+    </AutoComplete>
+  </Flex>
+);
+export default App;
+```
 ### 禁用自定义输入 Debug
 禁用自定义输入组件 Debug。
 
