@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
-          cache: 'pnpm'  # 缓存 pnpm 依赖
+          package-manager-cache: false
 
       - name: Setup npm registry
         run: npm config set registry 'https://registry.npmmirror.com/'
