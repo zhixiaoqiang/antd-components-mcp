@@ -14,34 +14,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: 10       # 指定 pnpm 版本（可选）
           run_install: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: 'pnpm'  # 缓存 pnpm 依赖
 
       - name: Setup npm registry
         run: npm config set registry 'https://registry.npmmirror.com/'
-
-      - name: Cache pnpm dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.npm
-            ~/.pnpm-store
-            ~/.pnpm-cache
-            ./node_modules
-          key: pnpm-cache
 
       - name: Clone Ant Design
         run: |
@@ -150,7 +140,7 @@ jobs:
 
       - name: Create PR and Try Auto Merge
         if: env.UPDATE_NEEDED == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const head = `${context.repo.owner}:${process.env.DYNAMIC_BRANCH}`;
