@@ -14,7 +14,7 @@
 | image | 设置显示图片，为 string 时表示自定义图片地址。 | ReactNode | `Empty.PRESENTED_IMAGE_DEFAULT` |  | 5.27.0 |
 | ~~imageStyle~~ | 图片样式，请使用 `styles.image` 替代 | CSSProperties | - |  | × |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 5.23.0 |
-## 内置图片
+## 内置图片 {#built-in-images}
 - Empty.PRESENTED_IMAGE_SIMPLE
   <div class="site-empty-buildIn-img site-empty-buildIn-simple"><div>
 - Empty.PRESENTED_IMAGE_DEFAULT

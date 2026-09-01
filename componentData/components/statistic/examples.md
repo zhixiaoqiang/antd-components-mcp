@@ -167,7 +167,7 @@ const Demo: React.FC = () => {
         <Timer
           classNames={{ content: styles.content }}
           type="countdown"
-          title="Million Seconds"
+          title="Milliseconds"
           value={deadline}
           format="HH:mm:ss:SSS"
         />

@@ -34,7 +34,7 @@
 | open | 用于手动控制浮层显隐，小于 4.23.0 使用 `visible`（[为什么?](/docs/react/faq#弹层类组件为什么要统一至-open-属性)） | boolean | false | 4.23.0 | × |
 | zIndex | 设置 Tooltip 的 `z-index` | number | - |  | × |
 | onOpenChange | 显示隐藏的回调 | (open: boolean) => void | - | 4.23.0 | × |
-## 注意
+## 注意 {#note}
 请确保 `Popover` 的子元素能接受 `onMouseEnter`、`onMouseLeave`、`onFocus`、`onClick` 事件。
 ## FAQ
 <Antd component="Alert" title="以下常见问题均适用于 Tooltip、Popconfirm、Popover 组件" type="warning" banner="true"></Antd>

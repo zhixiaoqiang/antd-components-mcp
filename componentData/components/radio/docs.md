@@ -64,7 +64,7 @@ return (
 | id | 添加 Radio Id 属性值 | `string` | - | 4.4.0 |
 | onChange | 当 Radio Group 的值发送改变时触发 | `(e: CheckboxChangeEvent) => void;` | - | 4.4.0 |
 | required | 指定 Radio 选项是否必填 | `boolean` | `false` | 4.4.0 |
-## 方法
+## 方法 {#methods}
 ### Radio
 | 名称    | 描述     |
 | ------- | -------- |
