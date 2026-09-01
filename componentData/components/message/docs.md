@@ -38,7 +38,7 @@
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - | 6.0.0 | 6.0.0 |
 | onClick | 点击 message 时触发的回调函数 | function | - | - | × |
 | onClose | 关闭时触发的回调函数 | function | - | - | × |
-### 全局方法
+### 全局方法 {#global-static-methods}
 还提供了全局配置和全局销毁方法：
 - `message.config(options)`
 - `message.destroy()`

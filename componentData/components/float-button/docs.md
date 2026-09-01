@@ -3,7 +3,7 @@
 - 无论浏览到何处都可以看见的按钮。
 ## API
 > 自 `antd@5.0.0` 版本开始提供该组件。
-### 共同的 API
+### 共同的 API {#common-api}
 | 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | icon | 自定义图标 | ReactNode | - |  | FloatButton: ×，BackTop: 5.27.0 |

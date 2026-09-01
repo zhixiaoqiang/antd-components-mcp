@@ -24,7 +24,7 @@
 | actionsRender | 自定义操作按钮 | `(originNode: ReactNode, info: { current: number, total: number }) => ReactNode` | - | 5.25.0 | × |
 | zIndex | Tour 的层级 | number | 1001 | 5.3.0 | × |
 | getPopupContainer | 设置 Tour 浮层的渲染节点，默认是 body | `(node: HTMLElement) => HTMLElement` | body | 5.12.0 | × |
-### TourStep 引导步骤卡片
+### TourStep 引导步骤卡片 {#tourstep}
 | 属性 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | target | 获取引导卡片指向的元素，为空时居中于屏幕 | `() => HTMLElement` \| `HTMLElement` | - |  |

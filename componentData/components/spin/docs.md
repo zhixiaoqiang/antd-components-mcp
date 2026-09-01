@@ -14,6 +14,6 @@
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |
 | ~~tip~~ | 当作为包裹元素时，可以自定义描述文案。已废弃，请使用 `description` | ReactNode | - |  | × |
 | ~~wrapperClassName~~ | 包装器的类属性。已废弃，请使用 `classNames.root` | string | - |  | × |
-### 静态方法
+### 静态方法 {#static-method}
 - `Spin.setDefaultIndicator(indicator: ReactNode)`
   你可以自定义全局默认 Spin 的元素。

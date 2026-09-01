@@ -4,7 +4,7 @@
 - 只在第一次加载数据的时候使用。
 - 可以被 Spin 完全代替，但是在可用的场景下可以比 Spin 提供更好的视觉效果和用户体验。
 ## API
-### 共同的 API
+### 共同的 API {#common-api}
 <Antd component="Alert" title="以下 API 为 Skeleton、Avatar、Button、Input、Image、Node 共享的 API。" type="info" banner="true"></Antd>
 | 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
 | --- | --- | --- | --- | --- | --- |
