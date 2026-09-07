@@ -32,7 +32,7 @@
 | onDeselect | 取消选中时调用，仅在 multiple 生效 | function({ key, keyPath, selectedKeys, domEvent, itemData }) | - |  | × |
 | onOpenChange | SubMenu 展开/关闭的回调 | function(openKeys: string\[]) | - |  | × |
 | onSelect | 被选中时调用 | function({ key, keyPath, selectedKeys, domEvent, itemData }) | - |  | × |
-| popupRender | 自定义子菜单的弹出框 | (node: ReactElement, props: { item: SubMenuProps; keys: string[] }) => ReactElement | - |  | × |
+| popupRender | 自定义子菜单的弹出框 | (node: ReactElement, props: { item: SubMenuProps; keys: string[] }) => ReactNode | - |  | × |
 > 更多属性查看 [@rc-component/menu](https://github.com/react-component/menu#api)
 ### ItemType
 > type ItemType = [MenuItemType](#menuitemtype) | [SubMenuType](#submenutype) | [MenuItemGroupType](#menuitemgrouptype) | [MenuDividerType](#menudividertype);
@@ -58,7 +58,7 @@
 | popupOffset | 子菜单偏移量，`mode="inline"` 时无效 | \[number, number] | - |  |
 | onTitleClick | 点击子菜单标题 | function({ key, domEvent }) | - |  |
 | theme | 设置子菜单的主题，默认从 Menu 上继承 | `light` \| `dark` | - |  |
-| popupRender | 自定义当前子菜单的弹出框 | (node: ReactElement, props: { item: SubMenuProps; keys: string[] }) => ReactElement | - |  |
+| popupRender | 自定义当前子菜单的弹出框 | (node: ReactElement, props: { item: SubMenuProps; keys: string[] }) => ReactNode | - |  |
 #### MenuItemGroupType
 定义类型为 `group` 时，会作为分组处理:
 ```ts

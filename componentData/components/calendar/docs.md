@@ -32,7 +32,7 @@
 ### 如何在 Calendar 中使用自定义日期库 {#faq-customize-date-library}
 参考 [使用自定义日期库](/docs/react/use-custom-date-library#calendar)。
 ### 如何给日期类组件配置国际化？ {#faq-set-locale-date-components}
-参考 [如何给日期类组件配置国际化](/components/date-picker-cn#%E5%9B%BD%E9%99%85%E5%8C%96%E9%85%8D%E7%BD%AE)。
+参考 [如何给日期类组件配置国际化](/components/date-picker-cn#localization)。
 ### 为什么时间类组件的国际化 locale 设置不生效？ {#faq-locale-not-working}
 参考 FAQ [为什么时间类组件的国际化 locale 设置不生效？](/docs/react/faq#为什么时间类组件的国际化-locale-设置不生效)。
 ### 如何仅获取来自面板点击的日期？ {#faq-get-date-panel-click}

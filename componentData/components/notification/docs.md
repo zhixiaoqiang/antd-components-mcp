@@ -99,7 +99,7 @@ return (
 **异同**：通过 hooks 创建的 `contextHolder` 必须插入到子元素节点中才会生效，当你不需要上下文信息时请直接调用。
 > 可通过 [App 包裹组件](/components/app-cn) 简化 `useNotification` 等方法需要手动植入 contextHolder 的问题。
 ### 静态方法如何设置 prefixCls ？ {#faq-set-prefix-cls}
-你可以通过 [`ConfigProvider.config`](/components/config-provider-cn#configproviderconfig-4130) 进行设置。
+你可以通过 [`ConfigProvider.config`](/components/config-provider-cn#config) 进行设置。
 ### 为什么 `style={{ width: 'max-content' }}` 在 Notification 上不生效？ {#faq-notification-width}
 Notification 使用固定宽度布局，以保证堆叠卡片样式的一致性。因此不支持在通知外层节点上使用 `max-content`、`min-content`、`fit-content(...)` 这类 intrinsic width。
 如果你需要调整 Notification 的整体宽度，建议通过组件 token `width` 来配置：
