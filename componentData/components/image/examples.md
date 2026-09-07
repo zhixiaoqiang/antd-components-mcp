@@ -276,8 +276,8 @@ const App: React.FC = () => {
           open,
           scaleStep,
           src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-          onOpenChange: (value) => {
-            setOpen(value);
+          onOpenChange: (nextOpen) => {
+            setOpen(nextOpen);
           },
         }}
       />
