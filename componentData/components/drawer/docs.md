@@ -6,7 +6,7 @@
 >
 > 自 `5.17.0` 版本，我们提供了 `loading` 属性，内置 Spin 组件作为加载状态，但是自 `5.18.0` 版本开始，我们修复了设计失误，将内置的 Spin 组件替换成了 Skeleton 组件，同时收窄了 `loading` api 的类型范围，只能接收 boolean 类型。
 ## API
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | afterOpenChange | 切换抽屉时动画结束后的回调 | function(open) | - |  | × |
 | ~~bodyStyle~~ | 抽屉内容区域样式，请使用 `styles.body` 替代 | CSSProperties | - | - | × |

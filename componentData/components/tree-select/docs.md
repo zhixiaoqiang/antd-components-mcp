@@ -2,7 +2,7 @@
 类似 Select 的选择控件，可选择的数据结构是一个树形结构时，可以使用 TreeSelect，例如公司层级、学科系统、分类目录等等。
 ## API
 ### Tree props
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | allowClear | 自定义清除按钮 | boolean \| { clearIcon?: ReactNode } | false | 5.8.0: 支持对象形式 | × |
 | ~~autoClearSearchValue~~ | 当多选模式下值被选择，自动清空搜索框 | boolean | true |  | × |
@@ -53,7 +53,7 @@
 | treeExpandAction | 点击节点 title 时的展开逻辑，可选：false \| `click` \| `doubleClick` | string \| boolean | false | 4.21.0 | × |
 | treeExpandedKeys | 设置展开的树节点 | string\[] | - |  | × |
 | treeIcon | 是否展示 TreeNode title 前的图标，没有默认样式，如设置为 true，需要自行定义图标相关样式 | boolean | false |  | × |
-| treeLine | 是否展示线条样式，请参考 [Tree - showLine](/components/tree-cn#tree-demo-line) | boolean \| object | false | 4.17.0 | × |
+| treeLine | 是否展示线条样式，请参考 [Tree - showLine](/components/tree#tree-demo-line) | boolean \| object | false | 4.17.0 | × |
 | treeLoadedKeys | （受控）已经加载的节点，需要配合 `loadData` 使用 | string[] | [] |  | × |
 | ~~treeNodeFilterProp~~ | 输入项过滤对应的 treeNode 属性 | string | `value` |  | × |
 | treeNodeLabelProp | 作为显示的 prop 设置 | string | `title` |  | × |
@@ -98,7 +98,7 @@
 ### onChange 时如何获得父节点信息？ {#faq-parent-node-info}
 从性能角度考虑，我们默认不透出父节点信息。你可以这样获得：<https://codesandbox.io/s/get-parent-node-in-onchange-eb1608>
 ### 自定义 Option 样式导致滚动异常怎么办？ {#faq-custom-option-scroll}
-请参考 Select 的 [FAQ](/components/select-cn)。
+请参考 Select 的 [FAQ](/components/select)。
 ### 为何在搜索时 `loadData` 不会触发展开？ {#faq-load-data-expand}
 在 v4 alpha 版本中，默认在搜索时亦会进行搜索。但是经反馈，在输入时会快速阻塞网络。因而改为搜索不触发 `loadData`。但是你仍然可以通过 `filterTreeNode` 处理异步加载逻辑：
 ```tsx

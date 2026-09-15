@@ -2,13 +2,13 @@
 目标元素的操作需要用户进一步的确认时，在目标元素附近弹出浮层提示，询问用户。
 和 `confirm` 弹出的全屏居中模态对话框相比，交互形式更轻量。
 ## API
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
-| cancelButtonProps | cancel 按钮 props | [ButtonProps](/components/button-cn#api) | - |  | × |
+| cancelButtonProps | cancel 按钮 props | [ButtonProps](/components/button#api) | - |  | × |
 | cancelText | 取消按钮文字 | string | `取消` |  | × |
 | disabled | 阻止点击 Popconfirm 子元素时弹出确认框 | boolean | false |  | × |
 | icon | 自定义弹出气泡 Icon 图标 | ReactNode | &lt;ExclamationCircleFilled /> |  | × |
-| okButtonProps | ok 按钮 props | [ButtonProps](/components/button-cn#api) | - |  | × |
+| okButtonProps | ok 按钮 props | [ButtonProps](/components/button#api) | - |  | × |
 | okText | 确认按钮文字 | string | `确定` |  | × |
 | okType | 确认按钮类型 | string | `primary` |  | × |
 | showCancel | 是否显示取消按钮 | boolean | true | 4.18.0 | × |
@@ -20,7 +20,7 @@
 <!-- 共同的 API -->
 <Antd component="Alert" title="以下 API 为 Tooltip、Popconfirm、Popover 共享的 API。" type="info" banner="true"></Antd>
 <!-- prettier-ignore -->
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | align | 请参考 [dom-align](https://github.com/yiminghe/dom-align) 进行配置 | object | - |  | × |
 | arrow | 修改箭头的显示状态以及修改箭头是否指向目标元素中心 | boolean \| { pointAtCenter: boolean } | true | 5.2.0 | Tooltip: 6.0.0，Popover: 6.0.0，Popconfirm: 6.0.0 |
@@ -75,4 +75,4 @@ import { ConfigProvider, Tooltip, Button } from 'antd';
   <App />
 </ConfigProvider>
 ```
-更多问题，请参考 [Tooltip FAQ](/components/tooltip-cn#faq)。
+更多问题，请参考 [Tooltip FAQ](/components/tooltip#faq)。

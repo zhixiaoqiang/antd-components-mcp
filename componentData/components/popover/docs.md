@@ -2,7 +2,7 @@
 当目标元素有进一步的描述和相关操作时，可以收纳到卡片中，根据用户的操作行为进行展现。
 和 `Tooltip` 的区别是，用户可以对浮层上的元素进行操作，因此它可以承载更复杂的内容，比如链接或按钮等。
 ## API
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 5.23.0 |
 | content | 卡片内容 | ReactNode \| () => ReactNode | - |  | × |
@@ -11,7 +11,7 @@
 <!-- 共同的 API -->
 <Antd component="Alert" title="以下 API 为 Tooltip、Popconfirm、Popover 共享的 API。" type="info" banner="true"></Antd>
 <!-- prettier-ignore -->
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | align | 请参考 [dom-align](https://github.com/yiminghe/dom-align) 进行配置 | object | - |  | × |
 | arrow | 修改箭头的显示状态以及修改箭头是否指向目标元素中心 | boolean \| { pointAtCenter: boolean } | true | 5.2.0 | Tooltip: 6.0.0，Popover: 6.0.0，Popconfirm: 6.0.0 |
@@ -68,4 +68,4 @@ import { ConfigProvider, Tooltip, Button } from 'antd';
   <App />
 </ConfigProvider>
 ```
-更多问题，请参考 [Tooltip FAQ](/components/tooltip-cn#faq)。
+更多问题，请参考 [Tooltip FAQ](/components/tooltip#faq)。

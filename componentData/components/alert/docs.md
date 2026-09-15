@@ -2,7 +2,7 @@
 - 当某个页面需要向用户显示警告的信息时。
 - 非浮层的静态展现形式，始终展现，不会自动消失，用户可以点击关闭。
 ## API
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | action | 自定义操作项 | ReactNode | - |  | × |
 | ~~afterClose~~ | 关闭动画结束后触发的回调函数，请使用 `closable.afterClose` 替换 | () => void | - |  | × |

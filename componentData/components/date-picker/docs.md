@@ -28,7 +28,7 @@ dayjs.locale('zh-cn');
 :::
 ### 共同的 API {#common-api}
 以下 API 为 DatePicker、 RangePicker 共享的 API。
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | allowClear | 自定义清除按钮 | boolean \| { clearIcon?: ReactNode } | true | 5.8.0: 支持对象类型 | 6.4.0 |
 | ~~bordered~~ | 是否带边框，请使用 `variant` 替代 | boolean | true | - | × |
@@ -92,7 +92,7 @@ dayjs.locale('zh-cn');
 | pickerValue | 面板日期，可以用于受控切换面板所在日期。配合 `onPanelChange` 使用。 | [dayjs](https://day.js.org/) | - | 5.14.0 |
 | renderExtraFooter | 在面板中添加额外的页脚 | (mode) => React.ReactNode | - |  |
 | showNow | 显示当前日期时间的快捷选择 | boolean | - | 4.4.0 |
-| showTime | 增加时间选择功能 | Object \| boolean | [TimePicker Options](/components/time-picker-cn#api) |  |
+| showTime | 增加时间选择功能 | Object \| boolean | [TimePicker Options](/components/time-picker#api) |  |
 | ~~showTime.defaultValue~~ | 请使用 `showTime.defaultOpenValue` | [dayjs](https://day.js.org/) | dayjs() | 5.27.3 |
 | showTime.defaultOpenValue | 设置用户选择日期时默认的时分秒，[例子](#date-picker-demo-disabled-date) | [dayjs](https://day.js.org/) | dayjs() |  |
 | showWeek | DatePicker 下展示当前周 | boolean | false | 5.14.0 |
@@ -143,7 +143,7 @@ dayjs.locale('zh-cn');
 | onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs \| null, dateString: string \| null) | - |  |
 | showWeek | DatePicker 下展示当前周 | boolean | true | 5.14.0 |
 ### RangePicker
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | allowEmpty | 允许起始项部分为空 | \[boolean, boolean] | \[false, false] |  | × |
 | cellRender | 自定义单元格的内容。 | (current: dayjs, info: { originNode: React.ReactElement,today: DateType, range?: 'start' \| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \| 'minute' \| 'second' \| 'meridiem' }) => React.ReactNode | - | 5.4.0 | × |
@@ -158,7 +158,7 @@ dayjs.locale('zh-cn');
 | presets | 预设时间范围快捷选择，自 `5.8.0` 起 value 支持函数返回值 | { label: React.ReactNode, value: \[(Dayjs \| (() => Dayjs)), (Dayjs \| (() => Dayjs))] }\[] | - |  | × |
 | renderExtraFooter | 在面板中添加额外的页脚 | () => React.ReactNode | - |  | × |
 | separator | 设置分隔符 | React.ReactNode | `<SwapRightOutlined />` |  | 6.3.0 |
-| showTime | 增加时间选择功能 | Object\|boolean | [TimePicker Options](/components/time-picker-cn#api) |  | × |
+| showTime | 增加时间选择功能 | Object\|boolean | [TimePicker Options](/components/time-picker#api) |  | × |
 | ~~showTime.defaultValue~~ | 请使用 `showTime.defaultOpenValue` | \[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | \[dayjs(), dayjs()] | 5.27.3 | × |
 | showTime.defaultOpenValue | 设置用户选择日期时默认的时分秒，[例子](#date-picker-demo-disabled-date) | \[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | \[dayjs(), dayjs()] |  | × |
 | value | 日期 | \[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - |  | × |
@@ -191,7 +191,7 @@ export type FormatType =
 ### 为什么时间类组件的国际化 locale 设置不生效？ {#faq-locale-not-work}
 参考 FAQ [为什么时间类组件的国际化 locale 设置不生效？](/docs/react/faq#为什么时间类组件的国际化-locale-设置不生效)。
 ### 如何修改周的起始日？ {#faq-week-start-day}
-请使用正确的[语言包](/docs/react/i18n-cn)（[#5605](https://github.com/ant-design/ant-design/issues/5605)），或者修改 dayjs 的 `locale` 配置：<https://codesandbox.io/s/dayjs-day-of-week-x9tuj2?file=/demo.tsx>
+请使用正确的[语言包](/docs/react/i18n)（[#5605](https://github.com/ant-design/ant-design/issues/5605)），或者修改 dayjs 的 `locale` 配置：<https://codesandbox.io/s/dayjs-day-of-week-x9tuj2?file=/demo.tsx>
 ```js
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
@@ -204,4 +204,4 @@ dayjs.updateLocale('zh-cn', {
 ### 为何使用 `panelRender` 时，原来面板无法切换？ {#faq-panel-render-switch}
 当你通过 `panelRender` 动态改变层级结构时，会使得原本的 Panel 被当做新的节点删除并创建。这使得其原本的状态会被重置，保持结构稳定即可。详情请参考 [#27263](https://github.com/ant-design/ant-design/issues/27263)。
 ### 如何理解禁用时间日期？ {#faq-disabled-date-time}
-欢迎阅读博客[《为什么禁用日期这么难？》](/docs/blog/picker-cn)了解如何使用。
+欢迎阅读博客[《为什么禁用日期这么难？》](/docs/blog/picker)了解如何使用。
