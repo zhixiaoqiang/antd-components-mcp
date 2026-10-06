@@ -2,7 +2,7 @@
 安装 [Kitchen Sketch 插件 💎](https://kitchen.alipay.com)，一键填充高逼格头像和文本。
 ## API
 ### Avatar
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | alt | 图像无法显示时的替代文本 | string | - |  | × |
 | gap | 字符类型距离左右两侧边界单位像素 | number | 4 | 4.3.0 | × |

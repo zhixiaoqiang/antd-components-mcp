@@ -190,7 +190,8 @@ export default App;
 import React, { useState } from 'react';
 import { toArray } from '@rc-component/util';
 import { Avatar, Flex, InputNumber, Switch } from 'antd';
-import type { AvatarGroupProps } from '../AvatarGroup';
+import type { GetProps } from 'antd';
+type AvatarGroupProps = GetProps<typeof Avatar.Group>;
 const AvatarGroupOverflow: React.FC<AvatarGroupProps & { overflowInFinal?: boolean }> = (props) => {
   const { overflowInFinal, ...restProps } = props;
   const mergedMaxCount = props.max?.count ?? 3;

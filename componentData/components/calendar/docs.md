@@ -9,7 +9,7 @@
 // dayjs.locale('zh-cn');
 <Calendar cellRender={cellRender} onPanelChange={onPanelChange} onSelect={onSelect} />
 ```
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | cellRender | 自定义单元格的内容 | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \| 'minute' \| 'second' \| 'meridiem' }) => React.ReactNode | - | 5.4.0 | × |
 | classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |
@@ -32,9 +32,9 @@
 ### 如何在 Calendar 中使用自定义日期库 {#faq-customize-date-library}
 参考 [使用自定义日期库](/docs/react/use-custom-date-library#calendar)。
 ### 如何给日期类组件配置国际化？ {#faq-set-locale-date-components}
-参考 [如何给日期类组件配置国际化](/components/date-picker-cn#localization)。
+参考 [如何给日期类组件配置国际化](/components/date-picker#localization)。
 ### 为什么时间类组件的国际化 locale 设置不生效？ {#faq-locale-not-working}
-参考 FAQ [为什么时间类组件的国际化 locale 设置不生效？](/docs/react/faq#为什么时间类组件的国际化-locale-设置不生效)。
+参考 FAQ [为什么时间类组件的国际化 locale 设置不生效？](/docs/react/faq#date-locale-not-working)。
 ### 如何仅获取来自面板点击的日期？ {#faq-get-date-panel-click}
 `onSelect` 事件提供额外的来源信息，你可以通过 `info.source` 来判断来源：
 ```tsx

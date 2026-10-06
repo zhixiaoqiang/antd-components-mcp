@@ -48,7 +48,6 @@ import {
   Cascader,
   ConfigProvider,
   Divider,
-  List,
   Select,
   Space,
   Switch,
@@ -92,8 +91,6 @@ const App: React.FC = () => {
               { title: 'Age', dataIndex: 'age', key: 'age' },
             ]}
           />
-          <h4>List</h4>
-          <List />
         </Space>
       </ConfigProvider>
     </>

@@ -311,9 +311,9 @@ export default App;
 ```tsx
 import React from 'react';
 import { Avatar, Badge, Card, Flex, Space } from 'antd';
-import type { BadgeProps, GetProp } from 'antd';
+import type { BadgeProps, GetProp, GetProps } from 'antd';
 import { createStaticStyles } from 'antd-style';
-import type { RibbonProps } from 'antd/es/badge/Ribbon';
+type RibbonProps = GetProps<typeof Badge.Ribbon>;
 const badgeClassNames = createStaticStyles(({ css }) => ({
   indicator: css`
     font-size: 10px;

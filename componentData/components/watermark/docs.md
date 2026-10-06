@@ -4,7 +4,7 @@
 ## API
 > 自 `antd@5.1.0` 版本开始提供该组件。
 ### Watermark
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | width | 水印的宽度，`content` 的默认值为自身的宽度 | number | 120 |  | × |
 | height | 水印的高度，`content` 的默认值为自身的高度 | number | 64 |  | × |

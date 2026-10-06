@@ -148,6 +148,7 @@ export default App;
 ```
 ### 表单布局
 表单有三种布局。
+`horizontal` 布局默认会在视口宽度不超过 `575px` 时将标签和控件上下排列，以适应窄屏。可通过 `labelCol` 和 `wrapperCol` 的 `xs` 配置自定义窄屏下的列宽。
 
 ```tsx
 import React, { useState } from 'react';
