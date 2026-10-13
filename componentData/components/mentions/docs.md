@@ -2,7 +2,7 @@
 用于在输入中提及某人或某事，常用于发布、聊天或评论功能。
 ## API
 ### Mentions
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | allowClear | 可以点击清除图标删除内容 | boolean \| { clearIcon?: ReactNode, disabled?: boolean } | false | 5.13.0, disabled: 6.4.0 | 6.4.0 |
 | autoSize | 自适应内容高度，可设置为 true \| false 或对象：{ minRows: 2, maxRows: 6 } | boolean \| object | false |  | × |
@@ -10,6 +10,7 @@
 | defaultValue | 默认值 | string | - |  | × |
 | filterOption | 自定义过滤逻辑 | false \| (input: string, option: OptionProps) => boolean | - |  | × |
 | getPopupContainer | 指定建议框挂载的 HTML 节点 | () => HTMLElement | - |  | × |
+| loading | 加载中状态 | boolean | false |  | × |
 | notFoundContent | 当下拉列表为空时显示的内容 | ReactNode | `暂无数据` |  | × |
 | placement | 弹出层展示位置 | `top` \| `bottom` | `bottom` |  | × |
 | popupRender | 自定义下拉菜单渲染 | (menu: React.ReactElement) => ReactNode | - | 6.6.0 | × |
@@ -17,7 +18,7 @@
 | split | 设置选中项前后分隔符 | string | ` ` |  | × |
 | size | 控件大小 | `large` \| `medium` \| `small` | - |  | × |
 | status | 设置校验状态 | 'error' \| 'warning' \| 'success' \| 'validating' | - | 4.19.0 | × |
-| validateSearch | 自定义触发验证逻辑 | (text: string, props: MentionsProps) => void | - |  | × |
+| validateSearch | 自定义搜索文本的校验逻辑，返回 false 时不显示建议列表 | (text: string, split?: string) => boolean | - |  | × |
 | value | 设置值 | string | - |  | × |
 | variant | 形态变体 | `outlined` \| `borderless` \| `filled` \| `underlined` | `outlined` | 5.13.0 \| `underlined`: 5.24.0 | 5.19.0 |
 | onBlur | 失去焦点时触发 | () => void | - |  | × |
