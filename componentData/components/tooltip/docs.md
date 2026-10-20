@@ -2,7 +2,7 @@
 鼠标移入则显示提示，移出消失，气泡浮层不承载复杂文本和操作。
 可用来代替系统默认的 `title` 提示，提供一个 `按钮/文字/操作` 的文案解释。
 ## API
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | title | 提示文字 | ReactNode \| () => ReactNode | - | - | × |
 | color | 设置背景颜色，使用该属性后内部文字颜色将自适应 | string | - | 5.27.0 | × |
@@ -11,7 +11,7 @@
 ### 共同的 API {#common-api}
 <Antd component="Alert" title="以下 API 为 Tooltip、Popconfirm、Popover 共享的 API。" type="info" banner="true"></Antd>
 <!-- prettier-ignore -->
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | align | 请参考 [dom-align](https://github.com/yiminghe/dom-align) 进行配置 | object | - |  | × |
 | arrow | 修改箭头的显示状态以及修改箭头是否指向目标元素中心 | boolean \| { pointAtCenter: boolean } | true | 5.2.0 | Tooltip: 6.0.0，Popover: 6.0.0，Popconfirm: 6.0.0 |
@@ -31,7 +31,7 @@
 | placement | 气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string | `top` |  | × |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties> | - | 5.23.0 | Tooltip: 5.23.0，Popover: 5.23.0，Popconfirm: 5.23.0 |
 | trigger | 触发行为，可选 `hover` \| `focus` \| `click` \| `contextMenu`，可使用数组设置多个触发行为 | string \| string\[] | `hover` |  | Tooltip: 6.1.0，Popover: 6.1.0，Popconfirm: 6.1.0 |
-| open | 用于手动控制浮层显隐，小于 4.23.0 使用 `visible`（[为什么?](/docs/react/faq#弹层类组件为什么要统一至-open-属性)） | boolean | false | 4.23.0 | × |
+| open | 用于手动控制浮层显隐，小于 4.23.0 使用 `visible`（[为什么?](/docs/react/faq#align-pop-component-with-open)） | boolean | false | 4.23.0 | × |
 | zIndex | 设置 Tooltip 的 `z-index` | number | - |  | × |
 | onOpenChange | 显示隐藏的回调 | (open: boolean) => void | - | 4.23.0 | × |
 ### ConfigProvider - tooltip.unique {#config-provider-tooltip-unique}
@@ -76,21 +76,23 @@ Tooltip 默认在关闭时会缓存内容，以防止内容更新时出现闪烁
 <div>
 <img alt="no blink" height="50" src="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*rUbsR4xWpMsAAAAAAAAAAAAADrJ8AQ/original" />
 </div>
+### 布局变化后 Tooltip 没有重新对齐？ {#faq-force-align}
+Tooltip 默认不会持续监听所有外部布局变化，以避免为每个打开的 Tooltip 带来额外开销。当异步加载数据、刷新列表或展开折叠区域导致触发元素的位置发生变化时，可以通过 `ref` 获取 `TooltipRef`，并在布局更新完成后调用 `forceAlign` 方法手动重新对齐（参考 [#57809](https://github.com/ant-design/ant-design/issues/57809)）。详见上方“布局变化后重新对齐” Demo。
 ---
 <!-- 请确保在 FAQ 最后 -->
 <Antd component="Alert" title="以下常见问题均适用于 Tooltip、Popconfirm、Popover 组件" type="warning" banner="true"></Antd>
-### 为何在严格模式中有时候会出现 `findDOMNode is deprecated` 这个警告？
+### 为何在严格模式中有时候会出现 `findDOMNode is deprecated` 这个警告？ {#faq-finddomnode-warning}
 这是由于 `@rc-component/trigger` 的实现方式导致的，`@rc-component/trigger` 强制要求 children 能够接受 ref，否则就会 fallback 到 findDOMNode，所以 children 需要是原生 html 标签，如果不是，则需要使用 `React.forwardRef` 把 `ref` 透传到原生 html 标签。
 - `findDOMNode is deprecated` 重现：<https://codesandbox.io/p/sandbox/finddomnode-c5hy96>
 - 使用 `forwardRef` 消除警告：<https://codesandbox.io/p/sandbox/no-finddomnode-warning-forked-gdxczs>
-### 为什么自定义子组件无法正常工作？
+### 为什么自定义子组件无法正常工作？ {#faq-tooltip-not-opening}
 类似问题: [#15909](https://github.com/ant-design/ant-design/issues/15909), [#12812](https://github.com/ant-design/ant-design/issues/12812)。
 请确保子元素能接受 `onMouseEnter`、`onMouseLeave`、`onPointerEnter`、`onPointerLeave`、`onFocus`、`onClick` 事件。[参考示例](http://ant.design/components/tooltip-cn#tooltip-demo-wrap-custom-component)
-### placement 的行为逻辑是什么？
+### placement 的行为逻辑是什么？ {#whats-the-placement-logic}
 当屏幕空间足够时，会按照 `placement` 的设置进行弹层。当空间不足时则会取反向位置进行弹层（例如 `top` 不够时，会改为 `bottom`，`topLeft` 不够时会改为 `bottomLeft`）。单一方向如 `top` `bottom` `left` `right` 当贴边时进行自动位移：
 <img alt="shift" height="200" src="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*sxaTTJjLtIMAAAAAAAAAAAAADrJ8AQ/original" />
 当设置为边缘对齐方向如 `topLeft` `bottomRight` 等，则会仅做翻转而不做位移。
-### 如何支持键盘无障碍访问？
+### 如何支持键盘无障碍访问？ {#faq-keyboard-accessibility}
 Tooltip 等组件的默认触发方式（`trigger`）为 `hover`，不包含 `focus`，因此无法响应键盘聚焦事件。如果你希望组件支持键盘操作，可以通过以下方式开启：
 - **单个组件开启**：将 `trigger` 属性设置为包含 `focus` 的值，例如 `trigger="focus"` 或 `trigger={['hover', 'focus']}`。
 - **全局开启**：通过 `ConfigProvider` 进行全局配置，这样应用内的所有相关组件都会默认支持键盘聚焦触发。

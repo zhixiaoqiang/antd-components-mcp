@@ -5,7 +5,7 @@
 >
 > 自 `5.10.0` 起，由于 Affix 组件由 class 重构为 FC，之前获取 `ref` 并调用内部实例方法的写法都会失效。
 ## API
-| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |
+| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider#component-config) |
 | --- | --- | --- | --- | --- | --- |
 | offsetBottom | 距离窗口底部达到指定偏移量后触发 | number | - |  | × |
 | offsetTop | 距离窗口顶部达到指定偏移量后触发 | number | 0 |  | × |
