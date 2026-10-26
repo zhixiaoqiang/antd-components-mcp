@@ -6,12 +6,13 @@
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
-import type { HTMLAriaDataAttributes } from 'antd/es/_util/aria-data-attrs';
 type Option = {
   value: string;
   label: string;
   children?: Option[];
-} & HTMLAriaDataAttributes;
+  'aria-label'?: string;
+  'data-title'?: string;
+};
 const options: Option[] = [
   {
     value: 'zhejiang',
@@ -305,7 +306,7 @@ const options: Option[] = [
     children: [
       {
         value: 'hangzhou',
-        label: 'Hanzhou',
+        label: 'Hangzhou',
         children: [
           {
             value: 'xihu',
@@ -812,7 +813,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 前后缀
-通过 `prefix` 自定前缀，通过 `suffixIcon` 自定义选择框后缀图标，通过 `expandIcon` 自定义次级菜单展开图标。
+通过 `prefix` 自定义前缀，通过 `suffixIcon` 自定义选择框后缀图标，通过 `expandIcon` 自定义次级菜单展开图标。
 
 ```tsx
 import React from 'react';
@@ -1218,8 +1219,8 @@ const App: React.FC = () => {
     <Flex vertical gap="small" align="flex-start">
       <Switch
         checked={disabled}
-        checkedChildren="Enabled"
-        unCheckedChildren="Disabled"
+        checkedChildren="Disabled"
+        unCheckedChildren="Enabled"
         onChange={setDisabled}
         aria-label="disabled switch"
       />
@@ -1238,12 +1239,13 @@ export default App;
 import React from 'react';
 import type { CascaderProps } from 'antd';
 import { Cascader } from 'antd';
-import type { HTMLAriaDataAttributes } from 'antd/es/_util/aria-data-attrs';
 type Option = {
   value: string;
   label: string;
   children?: Option[];
-} & HTMLAriaDataAttributes;
+  'aria-label'?: string;
+  'data-title'?: string;
+};
 const options: Option[] = [
   {
     value: 'zhejiang',
