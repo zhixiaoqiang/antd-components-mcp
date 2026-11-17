@@ -549,6 +549,7 @@ export default App;
 ```
 ### 带移除图标
 带移除图标的输入框，点击图标删除所有内容。
+Input 和 TextArea 均支持通过 `allowClear` 配置清除按钮。`tabIndex` 为 `-1` 时，清除按钮不参与 Tab 键导航。
 
 ```tsx
 import React from 'react';

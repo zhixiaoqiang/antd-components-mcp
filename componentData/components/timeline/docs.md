@@ -14,7 +14,7 @@
 | reverse | 节点排序 | boolean | false |  | × |
 | styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |
 | titleSpan | 设置标题占比空间，为到 dot 中心点距离 <InlinePopover previewURL="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*1NJISa7bpqgAAAAAR5AAAAgAerJ8AQ/original"></InlinePopover> | number \| string | 12 |  | × |
-| variant | 设置样式变体 | `filled` \| `outlined` | `outlined` |  | × |
+| variant | 设置样式变体 | `filled` \| `outlined` | `outlined` |  | 6.7.0 |
 ### Items
 时间轴的每一个节点。
 | 参数 | 说明 | 类型 | 默认值 |

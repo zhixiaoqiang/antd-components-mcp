@@ -1210,7 +1210,7 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 前后缀
-自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
+自定义前缀 `prefix` 和后缀 `suffix`。
 
 ```tsx
 import React from 'react';
@@ -1224,14 +1224,14 @@ const onChange = (date: Dayjs | (Dayjs | null)[] | null, dateString: string | st
 };
 const App: React.FC = () => (
   <Space vertical size={12}>
-    <DatePicker suffixIcon={smileIcon} onChange={onChange} />
-    <DatePicker suffixIcon={smileIcon} onChange={onChange} picker="month" />
-    <RangePicker suffixIcon={smileIcon} onChange={onChange} />
-    <DatePicker suffixIcon={smileIcon} onChange={onChange} picker="week" />
-    <DatePicker suffixIcon="ab" onChange={onChange} />
-    <DatePicker suffixIcon="ab" onChange={onChange} picker="month" />
-    <RangePicker suffixIcon="ab" onChange={onChange} />
-    <DatePicker suffixIcon="ab" onChange={onChange} picker="week" />
+    <DatePicker suffix={smileIcon} onChange={onChange} />
+    <DatePicker suffix={smileIcon} onChange={onChange} picker="month" />
+    <RangePicker suffix={smileIcon} onChange={onChange} />
+    <DatePicker suffix={smileIcon} onChange={onChange} picker="week" />
+    <DatePicker suffix="ab" onChange={onChange} />
+    <DatePicker suffix="ab" onChange={onChange} picker="month" />
+    <RangePicker suffix="ab" onChange={onChange} />
+    <DatePicker suffix="ab" onChange={onChange} picker="week" />
     <DatePicker prefix={smileIcon} onChange={onChange} picker="week" />
     <DatePicker prefix="Event Period" onChange={onChange} picker="week" />
     <RangePicker prefix={smileIcon} onChange={onChange} picker="week" />
@@ -1315,19 +1315,19 @@ const App: React.FC = () => (
 );
 export default App;
 ```
-### suffixIcon
-suffixIcon 测试。
+### suffix
+`suffix` 测试。
 
 ```tsx
 import React from 'react';
 import { DatePicker, Space } from 'antd';
 const App: React.FC = () => (
-  <Space orientation="vertical">
-    <DatePicker suffixIcon />
-    <DatePicker suffixIcon={false} />
+  <Space vertical>
+    <DatePicker suffix />
+    <DatePicker suffix={false} />
     <DatePicker />
-    <DatePicker suffixIcon={null} />
-    <DatePicker suffixIcon={'123'} />
+    <DatePicker suffix={null} />
+    <DatePicker suffix="123" />
   </Space>
 );
 export default App;

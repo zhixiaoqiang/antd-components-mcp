@@ -626,7 +626,7 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 前后缀
-自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
+自定义前缀 `prefix` 和后缀 `suffix`。
 
 ```tsx
 import React from 'react';
@@ -655,7 +655,7 @@ const App: React.FC = () => (
       showSearch
     />
     <Select
-      suffixIcon={smileIcon}
+      suffix={smileIcon}
       defaultValue="lucy"
       placeholder="Select"
       style={{ width: 120 }}
@@ -668,7 +668,7 @@ const App: React.FC = () => (
       ]}
     />
     <Select
-      suffixIcon={mehIcon}
+      suffix={mehIcon}
       defaultValue="lucy"
       placeholder="Select"
       style={{ width: 120 }}
@@ -691,7 +691,7 @@ const App: React.FC = () => (
       ]}
     />
     <Select
-      suffixIcon={smileIcon}
+      suffix={smileIcon}
       defaultValue={['lucy']}
       placeholder="Select"
       mode="multiple"
@@ -705,7 +705,7 @@ const App: React.FC = () => (
       ]}
     />
     <Select
-      suffixIcon={mehIcon}
+      suffix={mehIcon}
       defaultValue={['lucy']}
       placeholder="Select"
       mode="multiple"
@@ -955,7 +955,7 @@ const options = [
 ];
 const selectStyle: React.CSSProperties = { width: 280 };
 const App: React.FC = () => {
-  const suffixIcon = (
+  const suffix = (
     <button
       type="button"
       onMouseDown={(event) => event.stopPropagation()}
@@ -979,7 +979,7 @@ const App: React.FC = () => {
         <Select
           allowClear
           defaultValue="long"
-          suffixIcon={suffixIcon}
+          suffix={suffix}
           options={options}
           style={selectStyle}
         />
@@ -989,7 +989,7 @@ const App: React.FC = () => {
         <Select
           allowClear
           defaultValue="long"
-          suffixIcon={null}
+          suffix={null}
           options={options}
           style={selectStyle}
         />
@@ -1703,7 +1703,7 @@ const App: React.FC = () => {
       value={value}
       style={{ width: '100%' }}
       onChange={setValue}
-      suffixIcon={suffix}
+      suffix={suffix}
       placeholder="Please select"
       options={[
         { value: 'Ava Swift', label: 'Ava Swift' },

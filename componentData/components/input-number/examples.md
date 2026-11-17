@@ -112,6 +112,21 @@ const App: React.FC = () => {
 };
 export default App;
 ```
+### 带移除图标
+点击清除图标清空数值，`onChange` 接收 `null`。支持自定义清除图标，值为 `0` 时也可以清空。
+
+```tsx
+import React from 'react';
+import { InputNumber, Space } from 'antd';
+const App: React.FC = () => (
+  <Space vertical>
+    <InputNumber allowClear defaultValue={100} style={{ width: 120 }} />
+    <InputNumber allowClear defaultValue={0} suffix="kg" style={{ width: 120 }} />
+    <InputNumber allowClear mode="spinner" defaultValue={0} style={{ width: 150 }} />
+  </Space>
+);
+export default App;
+```
 ### 高精度小数
 通过 `stringMode` 开启高精度小数支持，`onChange` 事件将返回 string 类型。对于旧版浏览器，你需要 BigInt polyfill。
 

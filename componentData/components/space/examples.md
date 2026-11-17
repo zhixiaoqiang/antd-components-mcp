@@ -138,6 +138,13 @@ const App: React.FC = () => {
           <span className={styles.mockBox}>Block</span>
         </Space>
       </div>
+      <div className={styles.spaceAlignBox}>
+        <Space align="stretch">
+          stretch
+          <Button type="primary">Primary</Button>
+          <span className={styles.mockBox}>Block</span>
+        </Space>
+      </div>
     </Flex>
   );
 };

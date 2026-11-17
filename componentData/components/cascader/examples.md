@@ -813,7 +813,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 前后缀
-通过 `prefix` 自定义前缀，通过 `suffixIcon` 自定义选择框后缀图标，通过 `expandIcon` 自定义次级菜单展开图标。
+通过 `prefix` 自定义前缀，通过 `suffix` 自定义选择框后缀，通过 `expandIcon` 自定义次级菜单展开图标。
 
 ```tsx
 import React from 'react';
@@ -865,14 +865,14 @@ const onChange: CascaderProps<Option>['onChange'] = (value) => {
 const App: React.FC = () => (
   <>
     <Cascader
-      suffixIcon={<SmileOutlined />}
+      suffix={<SmileOutlined />}
       options={options}
       onChange={onChange}
       placeholder="Please select"
     />
     <br />
     <br />
-    <Cascader suffixIcon="ab" options={options} onChange={onChange} placeholder="Please select" />
+    <Cascader suffix="ab" options={options} onChange={onChange} placeholder="Please select" />
     <br />
     <br />
     <Cascader
