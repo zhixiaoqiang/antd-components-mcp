@@ -471,7 +471,7 @@ const Page: React.FC<{ placement: Placement }> = (props) => {
         <Col span={24}>
           <Divider titlePlacement="start">Cascader example</Divider>
           <Cascader
-            suffixIcon={<SearchIcon />}
+            suffix={<SearchIcon />}
             options={cascaderOptions}
             onChange={onCascaderChange}
             placeholder="یک مورد انتخاب کنید"
@@ -479,7 +479,7 @@ const Page: React.FC<{ placement: Placement }> = (props) => {
           />
           &nbsp;&nbsp;&nbsp;&nbsp;With search:&nbsp;&nbsp;
           <Cascader
-            suffixIcon={<SmileOutlined />}
+            suffix={<SmileOutlined />}
             options={cascaderOptions}
             onChange={onCascaderChange}
             placeholder="Select an item"

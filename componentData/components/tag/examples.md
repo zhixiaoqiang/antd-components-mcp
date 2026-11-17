@@ -1,6 +1,6 @@
 ## Tag 组件示例
 ### 基本
-基本标签的用法，可以通过设置 `closeIcon` 变为可关闭标签并自定义关闭按钮，设置为 `true` 时将使用默认关闭按钮。可关闭标签具有 `onClose` 事件。
+设置 `closable` 可显示默认关闭按钮，也可通过对象配置 `closeIcon` 和 `aria-label` 等无障碍属性。顶层 `closeIcon` 是简便配置方式，可设置自定义关闭图标或设为 `true` 显示默认关闭按钮。可关闭标签具有 `onClose` 事件，可通过 `e.preventDefault()` 阻止关闭。
 
 ```tsx
 import React from 'react';
@@ -23,7 +23,7 @@ const App: React.FC = () => (
         Link
       </a>
     </Tag>
-    <Tag closeIcon onClose={preventDefault}>
+    <Tag closable onClose={preventDefault}>
       Prevent Default
     </Tag>
     <Tag closeIcon={<CloseCircleOutlined />} onClose={console.log}>

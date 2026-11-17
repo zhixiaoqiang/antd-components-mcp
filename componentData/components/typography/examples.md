@@ -234,6 +234,15 @@ const App: React.FC = () => (
 );
 export default App;
 ```
+### 闪烁文字
+文字闪烁效果，常用于展示“正在思考/加载”状态。通过 `shimmer` 为 Text、Title、Paragraph 和 Link 开启效果。
+
+```tsx
+import React from 'react';
+import { Typography } from 'antd';
+const App: React.FC = () => <Typography.Text shimmer>Thinking...</Typography.Text>;
+export default App;
+```
 ### 可编辑
 提供可编辑的交互能力。
 

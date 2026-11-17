@@ -578,7 +578,7 @@ const App: React.FC = () => {
       multiple
       maxCount={MAX_COUNT}
       style={{ width: '100%' }}
-      suffixIcon={suffix}
+      suffix={suffix}
       treeCheckable
       placeholder="Please select"
       showCheckedStrategy={TreeSelect.SHOW_CHILD}
@@ -588,7 +588,7 @@ const App: React.FC = () => {
 export default App;
 ```
 ### 前后缀
-自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
+自定义前缀 `prefix` 和后缀 `suffix`。
 
 ```tsx
 import React, { useState } from 'react';
@@ -637,7 +637,7 @@ const App: React.FC = () => {
     <>
       <TreeSelect
         showSearch
-        suffixIcon={icon}
+        suffix={icon}
         style={{ width: '100%' }}
         value={value}
         styles={{

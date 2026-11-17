@@ -369,6 +369,7 @@ export default App;
 ```
 ### 带移除图标
 自定义清除按钮。
+清除按钮的 `tabIndex` 为 `-1` 时，不参与 Tab 键导航。
 
 ```tsx
 import React, { useState } from 'react';

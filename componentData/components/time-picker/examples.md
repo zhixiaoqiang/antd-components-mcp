@@ -234,7 +234,7 @@ const App: React.FC = () => (
 export default App;
 ```
 ### 前后缀
-自定义前缀 `prefix` 和后缀图标 `suffixIcon`。
+自定义前缀 `prefix` 和后缀 `suffix`。
 
 ```tsx
 import React from 'react';
@@ -250,7 +250,7 @@ const onChange: TimePickerProps['onChange'] = (time, timeString) => {
 const App: React.FC = () => (
   <Space vertical size={12}>
     <TimePicker
-      suffixIcon={<SmileOutlined />}
+      suffix={<SmileOutlined />}
       onChange={onChange}
       defaultOpenValue={dayjs('00:00:00', 'HH:mm:ss')}
     />
