@@ -762,23 +762,6 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
-import { createStyles } from 'antd-style';
-const useStyles = createStyles((props) => {
-  const { css, prefixCls } = props;
-  return {
-    root: css`
-      margin: 0;
-      &.${prefixCls}-tabs-editable {
-        .${prefixCls}-tabs-nav {
-          .${prefixCls}-tabs-tab {
-            /* set transition to none when type="editable-card" */
-            transition: none;
-          }
-        }
-      }
-    `,
-  };
-});
 interface DraggableTabPaneProps extends React.HTMLAttributes<HTMLDivElement> {
   'data-node-key': string;
 }
@@ -801,7 +784,6 @@ const DraggableTabNode: React.FC<Readonly<DraggableTabPaneProps>> = (props) => {
   });
 };
 const App: React.FC = () => {
-  const { styles } = useStyles();
   const [items, setItems] = useState<NonNullable<TabsProps['items']>>([
     { key: '1', label: 'Tab 1', children: 'Content of Tab Pane 1' },
     { key: '2', label: 'Tab 2', children: 'Content of Tab Pane 2' },
@@ -820,7 +802,6 @@ const App: React.FC = () => {
   return (
     <Tabs
       items={items}
-      rootClassName={styles.root}
       renderTabBar={(tabBarProps, DefaultTabBar) => (
         <DndContext sensors={[sensor]} onDragEnd={onDragEnd} collisionDetection={closestCenter}>
           <SortableContext items={items.map((i) => i.key)} strategy={horizontalListSortingStrategy}>
